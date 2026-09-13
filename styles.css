@@ -1409,6 +1409,72 @@ p {
     repeating-linear-gradient(90deg, transparent 0 23px, #d9d8d2 24px);
 }
 
+.tree-draft-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  color: var(--faint);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tree-empty {
+  display: grid;
+  width: 132px;
+  min-height: 52px;
+  margin: 0 auto;
+  border: 1px dashed var(--line-strong);
+  border-radius: 8px;
+  color: var(--faint);
+  background: var(--paper-strong);
+  font-size: 0.58rem;
+  place-items: center;
+}
+
+.tree-draft-tokens {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.tree-draft .tree-node {
+  min-height: 38px;
+  justify-content: center;
+}
+
+.tree-draft .tree-node::before {
+  display: none;
+}
+
+.tree-empty-note {
+  margin: 16px 0 0;
+  color: var(--faint);
+  font-size: 0.56rem;
+  text-align: center;
+}
+
+.draft-edge-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 7px 9px;
+  border-radius: 7px;
+  color: var(--muted);
+  background: var(--teal-soft);
+  font-size: 0.55rem;
+}
+
+.draft-edge-preview strong {
+  color: var(--teal-dark);
+  font-family: var(--greek);
+  font-size: 0.7rem;
+}
+
 .tree-root,
 .tree-node {
   display: flex;

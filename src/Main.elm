@@ -142,29 +142,29 @@ init =
     , settings = intensiveSettings
     , activeModule = Nothing
     , phase = Drafting
-    , draft = sampleDraft
+    , draft = emptyDraft
     , skippedModules = []
     , referenceRevealed = False
     , revisionParent = Nothing
     , attemptCount = 2
-    , elapsedSeconds = 214
+    , elapsedSeconds = 0
     , notice = Nothing
     }
 
 
-sampleDraft : Draft
-sampleDraft =
-    { glossDareios = "of Darius"
-    , glossPaides = "children"
-    , glossGignontai = "are born"
-    , morphCase = "Nominative"
-    , morphNumber = "Plural"
-    , morphGender = "Masculine"
-    , dependencyRoot = "γίγνονται"
-    , dependencyHead = "γίγνονται"
-    , dependencyRelation = "nsubj"
-    , literal = "Of Darius and Parysatis are born children two, the elder Artaxerxes, the younger Cyrus."
-    , prose = "Darius and Parysatis had two sons: Artaxerxes was older, and Cyrus younger."
+emptyDraft : Draft
+emptyDraft =
+    { glossDareios = ""
+    , glossPaides = ""
+    , glossGignontai = ""
+    , morphCase = "—"
+    , morphNumber = "—"
+    , morphGender = "—"
+    , dependencyRoot = "—"
+    , dependencyHead = "—"
+    , dependencyRelation = "—"
+    , literal = ""
+    , prose = ""
     }
 
 
@@ -1128,27 +1128,66 @@ viewDependencyDraft model =
 
 viewMiniTree : Model -> Bool -> Html Msg
 viewMiniTree model showReference =
-    div [ classList [ ( "mini-tree", True ), ( "show-reference", showReference ) ], attribute "aria-label" "Dependency draft preview" ]
-        [ div [ class "tree-root" ]
-            [ span [ class "tree-relation" ] [ text "ROOT" ]
-            , span [ class "tree-token" ] [ text model.draft.dependencyRoot ]
+    if showReference then
+        div [ class "mini-tree show-reference", attribute "aria-label" "Imported dependency reference" ]
+            [ div [ class "tree-root" ]
+                [ span [ class "tree-relation" ] [ text "ROOT" ]
+                , span [ class "tree-token" ] [ text "γίγνονται" ]
+                ]
+            , div [ class "tree-stem", attribute "aria-hidden" "true" ] []
+            , div [ class "tree-children" ]
+                [ div [ class "tree-node muted-node" ]
+                    [ span [ class "tree-relation" ] [ text "obl" ]
+                    , span [ class "tree-token" ] [ text "Δαρείου" ]
+                    ]
+                , div [ class "tree-node answer-node" ]
+                    [ span [ class "tree-relation" ] [ text "NSUBJ" ]
+                    , span [ class "tree-token" ] [ text "παῖδες" ]
+                    ]
+                , div [ class "tree-node muted-node" ]
+                    [ span [ class "tree-relation" ] [ text "appos" ]
+                    , span [ class "tree-token" ] [ text "Ἀρταξέρξης" ]
+                    ]
+                ]
             ]
-        , div [ class "tree-stem", attribute "aria-hidden" "true" ] []
-        , div [ class "tree-children" ]
-            [ div [ class "tree-node muted-node" ]
-                [ span [ class "tree-relation" ] [ text "obl" ]
-                , span [ class "tree-token" ] [ text "Δαρείου" ]
+
+    else
+        div [ class "mini-tree tree-draft", attribute "aria-label" "Your dependency draft; reference hidden" ]
+            [ div [ class "tree-draft-heading" ]
+                [ span [] [ text "Your graph" ]
+                , span [] [ text "Reference hidden" ]
                 ]
-            , div [ class "tree-node answer-node" ]
-                [ span [ class "tree-relation" ] [ text (String.toUpper model.draft.dependencyRelation) ]
-                , span [ class "tree-token" ] [ text "παῖδες" ]
+            , if hasResponse model.draft.dependencyRoot then
+                div [ class "tree-root" ]
+                    [ span [ class "tree-relation" ] [ text "YOUR ROOT" ]
+                    , span [ class "tree-token" ] [ text model.draft.dependencyRoot ]
+                    ]
+
+              else
+                div [ class "tree-empty" ] [ text "Choose a root below" ]
+            , div [ class "tree-draft-tokens" ]
+                [ div [ class "tree-node" ] [ span [ class "tree-token" ] [ text "Δαρείου" ] ]
+                , div [ class "tree-node answer-node" ] [ span [ class "tree-token" ] [ text "παῖδες" ] ]
+                , div [ class "tree-node" ] [ span [ class "tree-token" ] [ text "Ἀρταξέρξης" ] ]
                 ]
-            , div [ class "tree-node muted-node" ]
-                [ span [ class "tree-relation" ] [ text "appos" ]
-                , span [ class "tree-token" ] [ text "Ἀρταξέρξης" ]
-                ]
+            , if hasResponse model.draft.dependencyHead then
+                div [ class "draft-edge-preview" ]
+                    [ span [] [ text "Your edge" ]
+                    , strongText
+                        ("παῖδες → "
+                            ++ model.draft.dependencyHead
+                            ++ (if hasResponse model.draft.dependencyRelation then
+                                    " · " ++ String.toUpper model.draft.dependencyRelation
+
+                                else
+                                    ""
+                               )
+                        )
+                    ]
+
+              else
+                p [ class "tree-empty-note" ] [ text "No relationships attached yet." ]
             ]
-        ]
 
 
 viewTranslationDraft : Model -> Bool -> Html Msg
@@ -1216,9 +1255,16 @@ viewModuleComparison model moduleId =
                 ]
 
         MorphologyModule ->
+            let
+                matches =
+                    countTrue
+                        [ model.draft.morphCase == "Nominative"
+                        , model.draft.morphNumber == "Plural"
+                        , model.draft.morphGender == "Masculine"
+                        ]
+            in
             div [ class "comparison-stack" ]
-                [ comparisonBanner "2 of 3 features match" "Accuracy on this token · imported reference"
-                , featureComparison "Part of speech" "Noun" "Noun" True
+                [ comparisonBanner (String.fromInt matches ++ " of 3 features match") "Accuracy on this token · imported reference"
                 , featureComparison "Case" model.draft.morphCase "Nominative" (model.draft.morphCase == "Nominative")
                 , featureComparison "Number" model.draft.morphNumber "Plural" (model.draft.morphNumber == "Plural")
                 , featureComparison "Gender" model.draft.morphGender "Masculine" (model.draft.morphGender == "Masculine")
@@ -1226,8 +1272,16 @@ viewModuleComparison model moduleId =
                 ]
 
         DependencyModule ->
+            let
+                matches =
+                    countTrue
+                        [ model.draft.dependencyRoot == "γίγνονται"
+                        , model.draft.dependencyHead == "γίγνονται"
+                        , model.draft.dependencyRelation == "nsubj"
+                        ]
+            in
             div [ class "comparison-stack" ]
-                [ comparisonBanner "Root and core edge match" "Task-scoped result · 2 of 2"
+                [ comparisonBanner (String.fromInt matches ++ " of 3 fields match") "Task-scoped result · imported reference"
                 , viewMiniTree model True
                 , featureComparison "Root" model.draft.dependencyRoot "γίγνονται" (model.draft.dependencyRoot == "γίγνονται")
                 , featureComparison "Core edge" ("παῖδες → " ++ model.draft.dependencyHead) "παῖδες → γίγνονται" (model.draft.dependencyHead == "γίγνονται")
@@ -1282,7 +1336,15 @@ viewTranslationComparison mine labelText =
         , div [ class "text-comparison" ]
             [ div []
                 [ span [ class "compare-label" ] [ text labelText ]
-                , p [] [ text mine ]
+                , p []
+                    [ text
+                        (if String.isEmpty mine then
+                            "No response submitted."
+
+                         else
+                            mine
+                        )
+                    ]
                 ]
             , div [ class "reference-text" ]
                 [ span [ class "compare-label" ] [ text "Aligned reference" ]
@@ -1592,19 +1654,58 @@ moduleStatus model moduleId =
             Drafting ->
                 case moduleId of
                     GlossModule ->
-                        "3 responses"
+                        responseCountLabel
+                            (countResponses [ model.draft.glossDareios, model.draft.glossGignontai, model.draft.glossPaides ])
+                            3
 
                     MorphologyModule ->
-                        "3 / 3 fields"
+                        responseCountLabel
+                            (countResponses [ model.draft.morphCase, model.draft.morphNumber, model.draft.morphGender ])
+                            3
 
                     DependencyModule ->
-                        "2 edges"
+                        responseCountLabel
+                            (countResponses [ model.draft.dependencyRoot, model.draft.dependencyHead, model.draft.dependencyRelation ])
+                            3
 
                     LiteralModule ->
-                        "Draft"
+                        draftStatus model.draft.literal
 
                     ProseModule ->
-                        "Draft"
+                        draftStatus model.draft.prose
+
+
+countResponses : List String -> Int
+countResponses responses =
+    responses |> List.filter hasResponse |> List.length
+
+
+countTrue : List Bool -> Int
+countTrue values =
+    values |> List.filter identity |> List.length
+
+
+hasResponse : String -> Bool
+hasResponse response =
+    response /= "" && response /= "—"
+
+
+responseCountLabel : Int -> Int -> String
+responseCountLabel count total =
+    if count == 0 then
+        "Not started"
+
+    else
+        String.fromInt count ++ " / " ++ String.fromInt total ++ " fields"
+
+
+draftStatus : String -> String
+draftStatus response =
+    if hasResponse response then
+        "Draft"
+
+    else
+        "Not started"
 
 
 modeLabel : ModuleMode -> String
