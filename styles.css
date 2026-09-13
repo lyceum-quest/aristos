@@ -857,6 +857,24 @@ p {
   gap: 17px;
 }
 
+.chapter-jump {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 650;
+}
+
+.chapter-jump select {
+  min-height: 32px;
+  padding: 0 24px 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--paper-strong);
+  font-size: 0.68rem;
+}
+
 .autosave-status {
   gap: 6px;
   color: var(--muted);
@@ -1040,9 +1058,14 @@ p {
   line-height: inherit;
 }
 
-.greek-token:hover {
+.greek-token:hover,
+.greek-token.is-selected {
   color: var(--teal-dark);
   background: var(--teal-soft);
+}
+
+.greek-token.no-space-after {
+  margin-right: 0;
 }
 
 .greek-token:disabled {
@@ -1508,6 +1531,20 @@ p {
   gap: 6px;
 }
 
+.tree-children.single-edge {
+  display: flex;
+  justify-content: center;
+}
+
+.tree-children.single-edge .tree-node {
+  width: min(150px, 80%);
+}
+
+.tree-children.single-edge::before {
+  right: 50%;
+  left: 50%;
+}
+
 .tree-children::before {
   position: absolute;
   top: -1px;
@@ -1629,6 +1666,22 @@ p {
 .reveal-button:hover {
   border-color: var(--gold);
   background: var(--gold-soft);
+}
+
+.no-reference-panel {
+  margin-top: 18px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  background: var(--canvas);
+  font-size: 0.62rem;
+}
+
+.no-reference-panel p {
+  margin: 4px 0 0;
+  font-size: 0.58rem;
+  line-height: 1.5;
 }
 
 .early-reference {
@@ -2035,6 +2088,37 @@ p {
 .neutral-badge {
   color: var(--teal-dark);
   background: var(--teal-soft);
+}
+
+.history-empty {
+  display: grid;
+  min-height: 220px;
+  padding: 30px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 12px;
+  color: var(--muted);
+  background: var(--paper);
+  place-content: center;
+  text-align: center;
+}
+
+.history-empty .summary-symbol {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.history-empty h2 {
+  margin-bottom: 7px;
+  color: var(--ink);
+  font-family: var(--greek);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.history-empty p {
+  max-width: 420px;
+  margin-bottom: 0;
+  font-size: 0.65rem;
 }
 
 .attempt-card {
@@ -2475,7 +2559,8 @@ p {
     padding: 0 12px;
   }
 
-  .autosave-status {
+  .autosave-status,
+  .chapter-jump > span {
     display: none;
   }
 
