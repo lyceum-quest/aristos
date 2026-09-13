@@ -8,6 +8,9 @@ elm.js
 # Elm REPL scratch files
 repl-temp-*
 
+# Local planning and research documents
+/docs/plans/
+
 # Local editor and OS files
 .DS_Store
 *~
