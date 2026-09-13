@@ -4,6 +4,7 @@
 # Elm build cache and generated browser bundle
 elm-stuff/
 elm.js
+dist/
 
 # Elm REPL scratch files
 repl-temp-*
