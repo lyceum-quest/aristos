@@ -1,142 +1,126 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, aside, button, div, footer, h1, h2, h3, header, main_, nav, p, section, span, text)
-import Html.Attributes exposing (attribute, class, classList, disabled, id, tabindex, type_)
-import Html.Events exposing (onClick)
+import Html exposing (Html, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
+import Html.Attributes exposing (attribute, checked, class, classList, disabled, id, placeholder, rows, selected, type_, value)
+import Html.Events exposing (onClick, onInput)
 import Time
-
-
-type alias WorkId =
-    String
-
-
-type alias UnitId =
-    String
-
-
-type alias TokenId =
-    String
 
 
 type Screen
     = LibraryScreen
-    | ContentsScreen WorkId
-    | ReaderScreen WorkId UnitId
-    | EvidenceScreen
+    | WorkspaceScreen
+    | SettingsScreen
+    | HistoryScreen
+    | AttemptComparisonScreen
 
 
-type alias Work =
-    { id : WorkId
-    , title : String
-    , author : String
-    , label : String
-    , description : String
-    , progressLabel : String
-    , availabilityLabel : String
-    , actionLabel : String
-    , divisions : List Division
-    }
+type Preset
+    = ReadPreset
+    | AssistedPreset
+    | IntensivePreset
+    | CustomPreset
 
 
-type alias Division =
-    { title : String
-    , progressLabel : String
-    , units : List Unit
-    }
+type SettingScope
+    = GlobalScope
+    | WorkScope
+    | SessionScope
 
 
-type alias Unit =
-    { id : UnitId
-    , reference : String
-    , context : String
-    , tokens : List Token
-    , translation : String
-    , gistQuestion : String
-    , gistOptions : List GistOption
-    , focusPrompt : String
-    , focusNote : String
-    , progressLabel : String
-    }
+type ModuleId
+    = GlossModule
+    | MorphologyModule
+    | DependencyModule
+    | LiteralModule
+    | ProseModule
 
 
-type alias GistOption =
-    { label : String
-    , correct : Bool
-    }
+type ModuleMode
+    = ModuleOff
+    | OnDemand
+    | Suggested
+    | EverySentence
 
 
-type alias Token =
-    { id : TokenId
-    , form : String
-    , lemma : String
-    , morphology : String
-    , gloss : String
-    }
-
-
-type LearningPhase
-    = ColdRead
-    | CheckMeaning
-    | Review
+type WorkspacePhase
+    = Drafting
+    | Compared
     | Rereading
 
 
-type HelpLevel
-    = GlossHelp
-    | LemmaHelp
-    | MorphologyHelp
+type alias ModuleSettings =
+    { gloss : ModuleMode
+    , morphology : ModuleMode
+    , dependency : ModuleMode
+    , literal : ModuleMode
+    , prose : ModuleMode
+    }
 
 
-type alias SessionStats =
-    { startedUnitIds : List UnitId
-    , completedUnitIds : List UnitId
-    , readingSeconds : Int
-    , completedWords : Int
-    , gistAttempts : Int
-    , gistCorrect : Int
-    , unassistedGistAttempts : Int
-    , unassistedGistCorrect : Int
-    , glossReveals : Int
-    , lemmaReveals : Int
-    , morphologyReveals : Int
-    , translationReveals : Int
-    , rereads : Int
+type alias Draft =
+    { glossDareios : String
+    , glossPaides : String
+    , glossGignontai : String
+    , morphCase : String
+    , morphNumber : String
+    , morphGender : String
+    , dependencyRoot : String
+    , dependencyHead : String
+    , dependencyRelation : String
+    , literal : String
+    , prose : String
     }
 
 
 type alias Model =
     { screen : Screen
-    , phase : LearningPhase
-    , selectedToken : Maybe ( TokenId, HelpLevel )
-    , translationOpen : Bool
-    , focusOpen : Bool
-    , menuOpen : Bool
-    , gistResult : Maybe Bool
-    , unitHadHelp : Bool
+    , preset : Preset
+    , scope : SettingScope
+    , settings : ModuleSettings
+    , activeModule : Maybe ModuleId
+    , phase : WorkspacePhase
+    , draft : Draft
+    , skippedModules : List ModuleId
+    , referenceRevealed : Bool
+    , revisionParent : Maybe Int
+    , attemptCount : Int
     , elapsedSeconds : Int
-    , stats : SessionStats
+    , notice : Maybe String
     }
 
 
 type Msg
     = ShowLibrary
-    | ShowEvidence
-    | ShowContents WorkId
-    | ShowReader WorkId UnitId
-    | BeginMeaningCheck
-    | AnswerGist Bool
-    | SelectToken TokenId
-    | RevealLemma
-    | RevealMorphology
-    | CloseTokenHelp
-    | ToggleTranslation
-    | ToggleFocus
-    | RereadGreek
-    | FinishAndNext
-    | ToggleMenu
-    | PreviousFixtureUnit
-    | NextFixtureUnit
+    | ShowWorkspace
+    | ShowSettings
+    | ShowHistory
+    | ShowAttemptComparison
+    | SelectPreset Preset
+    | SelectScope SettingScope
+    | ToggleModule ModuleId
+    | CycleModuleMode ModuleId
+    | OpenModule ModuleId
+    | CloseWorkbench
+    | UpdateGlossDareios String
+    | UpdateGlossPaides String
+    | UpdateGlossGignontai String
+    | UpdateMorphCase String
+    | UpdateMorphNumber String
+    | UpdateMorphGender String
+    | UpdateDependencyRoot String
+    | UpdateDependencyHead String
+    | UpdateDependencyRelation String
+    | UpdateLiteral String
+    | UpdateProse String
+    | SkipCurrentModule
+    | RevealAnyway
+    | SubmitCheckpoint
+    | ReviseAttempt
+    | BeginReread
+    | FinishPassage
+    | ShowNotice String
+    | DismissNotice
     | Tick Time.Posix
 
 
@@ -145,144 +129,236 @@ main =
     Browser.element
         { init = \_ -> ( init, Cmd.none )
         , update = update
-        , view = view
         , subscriptions = subscriptions
+        , view = view
         }
 
 
 init : Model
 init =
-    { screen = LibraryScreen
-    , phase = ColdRead
-    , selectedToken = Nothing
-    , translationOpen = False
-    , focusOpen = False
-    , menuOpen = False
-    , gistResult = Nothing
-    , unitHadHelp = False
-    , elapsedSeconds = 0
-    , stats = emptyStats
+    { screen = WorkspaceScreen
+    , preset = IntensivePreset
+    , scope = SessionScope
+    , settings = intensiveSettings
+    , activeModule = Nothing
+    , phase = Drafting
+    , draft = sampleDraft
+    , skippedModules = []
+    , referenceRevealed = False
+    , revisionParent = Nothing
+    , attemptCount = 2
+    , elapsedSeconds = 214
+    , notice = Nothing
     }
 
 
-emptyStats : SessionStats
-emptyStats =
-    { startedUnitIds = []
-    , completedUnitIds = []
-    , readingSeconds = 0
-    , completedWords = 0
-    , gistAttempts = 0
-    , gistCorrect = 0
-    , unassistedGistAttempts = 0
-    , unassistedGistCorrect = 0
-    , glossReveals = 0
-    , lemmaReveals = 0
-    , morphologyReveals = 0
-    , translationReveals = 0
-    , rereads = 0
+sampleDraft : Draft
+sampleDraft =
+    { glossDareios = "of Darius"
+    , glossPaides = "children"
+    , glossGignontai = "are born"
+    , morphCase = "Nominative"
+    , morphNumber = "Plural"
+    , morphGender = "Masculine"
+    , dependencyRoot = "γίγνονται"
+    , dependencyHead = "γίγνονται"
+    , dependencyRelation = "nsubj"
+    , literal = "Of Darius and Parysatis are born children two, the elder Artaxerxes, the younger Cyrus."
+    , prose = "Darius and Parysatis had two sons: Artaxerxes was older, and Cyrus younger."
+    }
+
+
+readSettings : ModuleSettings
+readSettings =
+    { gloss = OnDemand
+    , morphology = ModuleOff
+    , dependency = ModuleOff
+    , literal = ModuleOff
+    , prose = ModuleOff
+    }
+
+
+assistedSettings : ModuleSettings
+assistedSettings =
+    { gloss = Suggested
+    , morphology = OnDemand
+    , dependency = ModuleOff
+    , literal = ModuleOff
+    , prose = Suggested
+    }
+
+
+intensiveSettings : ModuleSettings
+intensiveSettings =
+    { gloss = Suggested
+    , morphology = Suggested
+    , dependency = Suggested
+    , literal = Suggested
+    , prose = Suggested
     }
 
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    case model.screen of
-        ReaderScreen _ _ ->
-            Time.every 1000 Tick
+    if model.screen == WorkspaceScreen then
+        Time.every 1000 Tick
 
-        _ ->
-            Sub.none
+    else
+        Sub.none
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     ( case msg of
         ShowLibrary ->
-            resetPanels { model | screen = LibraryScreen }
+            { model | screen = LibraryScreen, notice = Nothing }
 
-        ShowEvidence ->
-            resetPanels { model | screen = EvidenceScreen }
+        ShowWorkspace ->
+            { model | screen = WorkspaceScreen, notice = Nothing }
 
-        ShowContents workId ->
-            resetPanels { model | screen = ContentsScreen workId }
+        ShowSettings ->
+            { model | screen = SettingsScreen, notice = Nothing }
 
-        ShowReader workId unitId ->
-            openUnit workId unitId model
+        ShowHistory ->
+            { model | screen = HistoryScreen, notice = Nothing }
 
-        BeginMeaningCheck ->
-            { model | phase = CheckMeaning, selectedToken = Nothing, translationOpen = False }
+        ShowAttemptComparison ->
+            { model | screen = AttemptComparisonScreen, notice = Nothing }
 
-        AnswerGist correct ->
-            recordGistAnswer correct model
+        SelectPreset preset ->
+            { model
+                | preset = preset
+                , settings = settingsForPreset preset model.settings
+                , activeModule = firstEnabled (settingsForPreset preset model.settings)
+            }
 
-        SelectToken tokenId ->
-            if model.phase == Rereading then
+        SelectScope scope ->
+            { model | scope = scope }
+
+        ToggleModule moduleId ->
+            let
+                updatedSettings =
+                    setModuleMode moduleId
+                        (if moduleMode moduleId model.settings == ModuleOff then
+                            Suggested
+
+                         else
+                            ModuleOff
+                        )
+                        model.settings
+            in
+            { model
+                | preset = CustomPreset
+                , settings = updatedSettings
+                , activeModule = ensureActiveModule model.activeModule updatedSettings
+            }
+
+        CycleModuleMode moduleId ->
+            { model
+                | preset = CustomPreset
+                , settings = setModuleMode moduleId (nextMode (moduleMode moduleId model.settings)) model.settings
+            }
+
+        OpenModule moduleId ->
+            if moduleMode moduleId model.settings == ModuleOff || model.phase == Rereading then
+                model
+
+            else
+                { model | activeModule = Just moduleId, notice = Nothing }
+
+        CloseWorkbench ->
+            { model | activeModule = Nothing }
+
+        UpdateGlossDareios entered ->
+            updateDraft (\draft -> { draft | glossDareios = entered }) model
+
+        UpdateGlossPaides entered ->
+            updateDraft (\draft -> { draft | glossPaides = entered }) model
+
+        UpdateGlossGignontai entered ->
+            updateDraft (\draft -> { draft | glossGignontai = entered }) model
+
+        UpdateMorphCase entered ->
+            updateDraft (\draft -> { draft | morphCase = entered }) model
+
+        UpdateMorphNumber entered ->
+            updateDraft (\draft -> { draft | morphNumber = entered }) model
+
+        UpdateMorphGender entered ->
+            updateDraft (\draft -> { draft | morphGender = entered }) model
+
+        UpdateDependencyRoot entered ->
+            updateDraft (\draft -> { draft | dependencyRoot = entered }) model
+
+        UpdateDependencyHead entered ->
+            updateDraft (\draft -> { draft | dependencyHead = entered }) model
+
+        UpdateDependencyRelation entered ->
+            updateDraft (\draft -> { draft | dependencyRelation = entered }) model
+
+        UpdateLiteral entered ->
+            updateDraft (\draft -> { draft | literal = entered }) model
+
+        UpdateProse entered ->
+            updateDraft (\draft -> { draft | prose = entered }) model
+
+        SkipCurrentModule ->
+            case model.activeModule of
+                Just moduleId ->
+                    { model
+                        | skippedModules = addUniqueModule moduleId model.skippedModules
+                        , activeModule = Nothing
+                        , notice = Just (moduleName moduleId ++ " skipped for this checkpoint—not marked incorrect.")
+                    }
+
+                Nothing ->
+                    model
+
+        RevealAnyway ->
+            { model
+                | referenceRevealed = True
+                , notice = Just "Reference revealed. This checkpoint will be recorded as assisted."
+            }
+
+        SubmitCheckpoint ->
+            if model.phase /= Drafting then
                 model
 
             else
                 { model
-                    | selectedToken = Just ( tokenId, GlossHelp )
-                    , menuOpen = False
-                    , unitHadHelp = True
-                    , stats = incrementGloss model.stats
+                    | phase = Compared
+                    , attemptCount = model.attemptCount + 1
+                    , notice = Just "Checkpoint submitted. This attempt is now immutable."
+                    , revisionParent = Nothing
                 }
 
-        RevealLemma ->
-            case model.selectedToken of
-                Just ( tokenId, GlossHelp ) ->
-                    { model
-                        | selectedToken = Just ( tokenId, LemmaHelp )
-                        , stats = incrementLemma model.stats
-                    }
-
-                _ ->
-                    model
-
-        RevealMorphology ->
-            case model.selectedToken of
-                Just ( tokenId, LemmaHelp ) ->
-                    { model
-                        | selectedToken = Just ( tokenId, MorphologyHelp )
-                        , stats = incrementMorphology model.stats
-                    }
-
-                _ ->
-                    model
-
-        CloseTokenHelp ->
-            { model | selectedToken = Nothing }
-
-        ToggleTranslation ->
-            if model.phase /= Review then
+        ReviseAttempt ->
+            if model.phase /= Compared then
                 model
-
-            else if model.translationOpen then
-                { model | translationOpen = False }
 
             else
                 { model
-                    | translationOpen = True
-                    , selectedToken = Nothing
-                    , unitHadHelp = True
-                    , stats = incrementTranslation model.stats
+                    | phase = Drafting
+                    , revisionParent = Just model.attemptCount
+                    , referenceRevealed = True
+                    , notice = Just ("Revision started from attempt " ++ twoDigit model.attemptCount ++ ". Submitting creates a linked child attempt.")
                 }
 
-        ToggleFocus ->
-            { model | focusOpen = not model.focusOpen }
+        BeginReread ->
+            { model
+                | phase = Rereading
+                , activeModule = Nothing
+                , notice = Just "Feedback closed. Read the Greek straight through."
+            }
 
-        RereadGreek ->
-            beginReread model
+        FinishPassage ->
+            { model | screen = LibraryScreen, notice = Just "Passage reread recorded. Your next reading remains optional." }
 
-        FinishAndNext ->
-            finishCurrentUnit model
+        ShowNotice notice ->
+            { model | notice = Just notice }
 
-        ToggleMenu ->
-            { model | menuOpen = not model.menuOpen, selectedToken = Nothing }
-
-        PreviousFixtureUnit ->
-            moveUnit -1 model
-
-        NextFixtureUnit ->
-            moveUnit 1 model
+        DismissNotice ->
+            { model | notice = Nothing }
 
         Tick _ ->
             { model | elapsedSeconds = model.elapsedSeconds + 1 }
@@ -290,871 +366,1351 @@ update msg model =
     )
 
 
-resetPanels : Model -> Model
-resetPanels model =
-    { model
-        | selectedToken = Nothing
-        , translationOpen = False
-        , focusOpen = False
-        , menuOpen = False
-    }
-
-
-openUnit : WorkId -> UnitId -> Model -> Model
-openUnit workId unitId model =
-    let
-        started =
-            addUnique unitId model.stats.startedUnitIds
-
-        stats =
-            model.stats
-    in
-    { model
-        | screen = ReaderScreen workId unitId
-        , phase = ColdRead
-        , selectedToken = Nothing
-        , translationOpen = False
-        , focusOpen = False
-        , menuOpen = False
-        , gistResult = Nothing
-        , unitHadHelp = False
-        , elapsedSeconds = 0
-        , stats = { stats | startedUnitIds = started }
-    }
-
-
-recordGistAnswer : Bool -> Model -> Model
-recordGistAnswer correct model =
-    if model.phase /= CheckMeaning || model.gistResult /= Nothing then
-        model
-
-    else
-        let
-            stats =
-                model.stats
-
-            updated =
-                { stats
-                    | gistAttempts = stats.gistAttempts + 1
-                    , gistCorrect = stats.gistCorrect + boolInt correct
-                    , unassistedGistAttempts = stats.unassistedGistAttempts + boolInt (not model.unitHadHelp)
-                    , unassistedGistCorrect = stats.unassistedGistCorrect + boolInt (correct && not model.unitHadHelp)
-                }
-        in
-        { model | phase = Review, gistResult = Just correct, stats = updated }
-
-
-beginReread : Model -> Model
-beginReread model =
-    if model.phase == Review then
-        let
-            stats =
-                model.stats
-        in
-        { model
-            | phase = Rereading
-            , selectedToken = Nothing
-            , translationOpen = False
-            , focusOpen = False
-            , stats = { stats | rereads = stats.rereads + 1 }
-        }
+updateDraft : (Draft -> Draft) -> Model -> Model
+updateDraft change model =
+    if model.phase == Drafting then
+        { model | draft = change model.draft }
 
     else
         model
 
 
-finishCurrentUnit : Model -> Model
-finishCurrentUnit model =
-    case model.screen of
-        ReaderScreen workId unitId ->
-            case findUnit workId unitId of
-                Just unit ->
-                    let
-                        alreadyCompleted =
-                            List.member unitId model.stats.completedUnitIds
+settingsForPreset : Preset -> ModuleSettings -> ModuleSettings
+settingsForPreset preset current =
+    case preset of
+        ReadPreset ->
+            readSettings
 
-                        stats =
-                            model.stats
+        AssistedPreset ->
+            assistedSettings
 
-                        completedStats =
-                            if alreadyCompleted then
-                                stats
+        IntensivePreset ->
+            intensiveSettings
 
-                            else
-                                { stats
-                                    | completedUnitIds = unitId :: stats.completedUnitIds
-                                    , readingSeconds = stats.readingSeconds + model.elapsedSeconds
-                                    , completedWords = stats.completedWords + List.length unit.tokens
-                                }
+        CustomPreset ->
+            current
 
-                        completedModel =
-                            { model | stats = completedStats }
-                    in
-                    if model.phase /= Rereading then
-                        model
 
-                    else
-                        case adjacentUnit 1 workId unitId of
-                            Just nextUnit ->
-                                openUnit workId nextUnit.id completedModel
+firstEnabled : ModuleSettings -> Maybe ModuleId
+firstEnabled settings =
+    [ GlossModule, MorphologyModule, DependencyModule, LiteralModule, ProseModule ]
+        |> List.filter (\moduleId -> moduleMode moduleId settings /= ModuleOff)
+        |> List.head
 
-                            Nothing ->
-                                resetPanels { completedModel | screen = ContentsScreen workId }
 
-                Nothing ->
-                    model
+ensureActiveModule : Maybe ModuleId -> ModuleSettings -> Maybe ModuleId
+ensureActiveModule active settings =
+    case active of
+        Just moduleId ->
+            if moduleMode moduleId settings == ModuleOff then
+                firstEnabled settings
 
-        _ ->
-            model
-
-
-moveUnit : Int -> Model -> Model
-moveUnit offset model =
-    case model.screen of
-        ReaderScreen workId unitId ->
-            case adjacentUnit offset workId unitId of
-                Just unit ->
-                    openUnit workId unit.id model
-
-                Nothing ->
-                    model
-
-        _ ->
-            model
-
-
-adjacentUnit : Int -> WorkId -> UnitId -> Maybe Unit
-adjacentUnit offset workId unitId =
-    findWork workId
-        |> Maybe.andThen
-            (\work ->
-                let
-                    units =
-                        workUnits work
-                in
-                findIndex (\unit -> unit.id == unitId) units
-                    |> Maybe.andThen (\index -> getAt (index + offset) units)
-            )
-
-
-incrementGloss : SessionStats -> SessionStats
-incrementGloss stats =
-    { stats | glossReveals = stats.glossReveals + 1 }
-
-
-incrementLemma : SessionStats -> SessionStats
-incrementLemma stats =
-    { stats | lemmaReveals = stats.lemmaReveals + 1 }
-
-
-incrementMorphology : SessionStats -> SessionStats
-incrementMorphology stats =
-    { stats | morphologyReveals = stats.morphologyReveals + 1 }
-
-
-incrementTranslation : SessionStats -> SessionStats
-incrementTranslation stats =
-    { stats | translationReveals = stats.translationReveals + 1 }
-
-
-addUnique : comparable -> List comparable -> List comparable
-addUnique item items =
-    if List.member item items then
-        items
-
-    else
-        item :: items
-
-
-boolInt : Bool -> Int
-boolInt value =
-    if value then
-        1
-
-    else
-        0
-
-
-view : Model -> Html Msg
-view model =
-    div [ class "app-shell" ]
-        [ case model.screen of
-            LibraryScreen ->
-                viewLibrary model
-
-            ContentsScreen workId ->
-                viewContents workId
-
-            ReaderScreen workId unitId ->
-                viewReader model workId unitId
-
-            EvidenceScreen ->
-                viewEvidence model
-        ]
-
-
-viewLibrary : Model -> Html Msg
-viewLibrary model =
-    div []
-        [ header [ class "site-header" ]
-            [ div [ class "brand" ]
-                [ span [ class "brand-mark", attribute "aria-hidden" "true" ] [ text "Α" ]
-                , span [] [ text "Aristos" ]
-                ]
-            , button [ class "quiet-button evidence-link", type_ "button", onClick ShowEvidence ] [ text "Session evidence" ]
-            ]
-        , main_ [ class "page library-page" ]
-            [ section [ class "intro" ]
-                [ p [ class "eyebrow" ] [ text "Your Greek library" ]
-                , h1 [] [ text "Read, check, reread." ]
-                , p [ class "intro-copy" ] [ text "Build understanding through connected Greek, selective help, immediate feedback, and a fluent second pass." ]
-                ]
-            , viewSessionPulse model.stats
-            , div [ class "work-grid" ] (List.map viewWorkCard works)
-            ]
-        ]
-
-
-viewSessionPulse : SessionStats -> Html Msg
-viewSessionPulse stats =
-    button [ class "session-pulse", type_ "button", onClick ShowEvidence ]
-        [ span [ class "pulse-mark", attribute "aria-hidden" "true" ] [ text "↗" ]
-        , span [ class "pulse-copy" ]
-            [ span [ class "pulse-title" ] [ text "This session" ]
-            , span []
-                [ text
-                    (String.fromInt (List.length stats.completedUnitIds)
-                        ++ " units completed · "
-                        ++ accuracyLabel stats.gistCorrect stats.gistAttempts
-                        ++ " gist accuracy"
-                    )
-                ]
-            ]
-        , span [ class "unit-arrow", attribute "aria-hidden" "true" ] [ text "View →" ]
-        ]
-
-
-viewWorkCard : Work -> Html Msg
-viewWorkCard work =
-    section [ class "work-card" ]
-        [ div [ class "work-card-top" ]
-            [ div []
-                [ p [ class "work-label" ] [ text work.label ]
-                , h2 [ class "work-title" ] [ text work.title ]
-                , p [ class "work-author" ] [ text work.author ]
-                ]
-            , span [ class "status-pill" ] [ text work.availabilityLabel ]
-            ]
-        , p [ class "work-description" ] [ text work.description ]
-        , div [ class "progress-track", attribute "aria-hidden" "true" ]
-            [ span [ class ("progress-fill progress-" ++ work.id) ] [] ]
-        , div [ class "work-card-footer" ]
-            [ span [ class "progress-label" ] [ text work.progressLabel ]
-            , button [ class "primary-button", type_ "button", onClick (ShowContents work.id) ] [ text work.actionLabel ]
-            ]
-        ]
-
-
-viewContents : WorkId -> Html Msg
-viewContents workId =
-    case findWork workId of
-        Nothing ->
-            viewNotFound
-
-        Just work ->
-            div []
-                [ header [ class "site-header" ]
-                    [ button [ class "back-button", type_ "button", onClick ShowLibrary ] [ text "← Library" ]
-                    , span [ class "header-title" ] [ text "Contents" ]
-                    , span [ class "header-spacer" ] []
-                    ]
-                , main_ [ class "page contents-page" ]
-                    [ section [ class "contents-heading" ]
-                        [ p [ class "work-label" ] [ text work.label ]
-                        , h1 [] [ text work.title ]
-                        , p [ class "work-author" ] [ text work.author ]
-                        ]
-                    , div [ class "division-list" ] (List.indexedMap (viewDivision work.id) work.divisions)
-                    ]
-                ]
-
-
-viewDivision : WorkId -> Int -> Division -> Html Msg
-viewDivision workId divisionIndex division =
-    section [ class "division" ]
-        [ div [ class "division-heading" ]
-            [ div []
-                [ p [ class "division-kicker" ] [ text ("Division " ++ String.fromInt (divisionIndex + 1)) ]
-                , h2 [] [ text division.title ]
-                ]
-            , span [ class "progress-label" ] [ text division.progressLabel ]
-            ]
-        , div [ class "unit-list" ] (List.indexedMap (viewUnitRow workId) division.units)
-        ]
-
-
-viewUnitRow : WorkId -> Int -> Unit -> Html Msg
-viewUnitRow workId index unit =
-    button [ class "unit-row", type_ "button", onClick (ShowReader workId unit.id) ]
-        [ span [ class "unit-number" ] [ text (String.fromInt (index + 1)) ]
-        , span [ class "unit-details" ]
-            [ span [ class "unit-reference" ] [ text unit.reference ]
-            , span [ class "unit-sample" ] [ text (unitPreview unit) ]
-            ]
-        , span [ class "unit-progress" ] [ text unit.progressLabel ]
-        , span [ class "unit-arrow", attribute "aria-hidden" "true" ] [ text "→" ]
-        ]
-
-
-viewReader : Model -> WorkId -> UnitId -> Html Msg
-viewReader model workId unitId =
-    case ( findWork workId, findUnit workId unitId ) of
-        ( Just work, Just unit ) ->
-            let
-                units =
-                    workUnits work
-
-                currentIndex =
-                    Maybe.withDefault 0 (findIndex (\candidate -> candidate.id == unit.id) units)
-
-                previousDisabled =
-                    currentIndex == 0
-
-                nextDisabled =
-                    currentIndex >= List.length units - 1
-            in
-            div [ class "reader-layout" ]
-                [ header [ class "reader-header" ]
-                    [ button [ class "back-button", type_ "button", onClick (ShowContents workId) ] [ text "← Contents" ]
-                    , div [ class "reader-heading" ]
-                        [ span [ class "reader-work" ] [ text work.title ]
-                        , span [ class "reader-reference" ] [ text unit.reference ]
-                        ]
-                    , button
-                        [ class "menu-button"
-                        , type_ "button"
-                        , onClick ToggleMenu
-                        , attribute "aria-expanded" (boolString model.menuOpen)
-                        , attribute "aria-label" "Reader menu"
-                        ]
-                        [ text "•••" ]
-                    ]
-                , if model.menuOpen then
-                    viewReaderMenu
-
-                  else
-                    text ""
-                , main_ [ class "reader-main" ]
-                    [ viewLearningPath model.phase
-                    , div [ class "reader-meta" ]
-                        [ span [] [ text "Demo text · Homer, Iliad 1.1–7" ]
-                        , span [] [ text (formatDuration model.elapsedSeconds ++ " · " ++ unit.progressLabel) ]
-                        ]
-                    , viewOrientation model.phase unit
-                    , section
-                        [ classList
-                            [ ( "passage", True )
-                            , ( "reread-passage", model.phase == Rereading )
-                            ]
-                        , attribute "aria-label" "Greek passage"
-                        ]
-                        (List.map (viewToken model.phase model.selectedToken) unit.tokens)
-                    , p [ class "sample-note" ] [ text "Original Homeric Greek is reused as sample copy throughout this UI prototype." ]
-                    , viewPhasePanel model unit
-                    ]
-                , case selectedTokenInUnit model.selectedToken unit of
-                    Just ( token, level ) ->
-                        viewTokenHelp token level
-
-                    Nothing ->
-                        text ""
-                , footer [ class "reader-actions" ]
-                    [ button
-                        [ class "action-button previous-action"
-                        , type_ "button"
-                        , disabled previousDisabled
-                        , onClick PreviousFixtureUnit
-                        ]
-                        [ span [ attribute "aria-hidden" "true" ] [ text "←" ]
-                        , span [] [ text "Previous" ]
-                        ]
-                    , viewPrimaryLearningAction model.phase
-                    , button
-                        [ class "action-button skip-action"
-                        , type_ "button"
-                        , disabled nextDisabled
-                        , onClick NextFixtureUnit
-                        , attribute "aria-label" "Skip to next fixture unit"
-                        ]
-                        [ span [] [ text "Skip" ]
-                        , span [ attribute "aria-hidden" "true" ] [ text "→" ]
-                        ]
-                    ]
-                ]
-
-        _ ->
-            viewNotFound
-
-
-viewLearningPath : LearningPhase -> Html Msg
-viewLearningPath phase =
-    nav [ class "learning-path", attribute "aria-label" "Learning steps" ]
-        [ viewLearningStep 1 "Read" (phaseRank phase) 1
-        , viewLearningStep 2 "Check" (phaseRank phase) 2
-        , viewLearningStep 3 "Review" (phaseRank phase) 3
-        , viewLearningStep 4 "Reread" (phaseRank phase) 4
-        ]
-
-
-viewLearningStep : Int -> String -> Int -> Int -> Html Msg
-viewLearningStep number label current rank =
-    div
-        [ classList
-            [ ( "learning-step", True )
-            , ( "is-current", current == rank )
-            , ( "is-complete", current > rank )
-            ]
-        ]
-        [ span [ class "step-number" ]
-            [ text
-                (if current > rank then
-                    "✓"
-
-                 else
-                    String.fromInt number
-                )
-            ]
-        , span [] [ text label ]
-        ]
-
-
-phaseRank : LearningPhase -> Int
-phaseRank phase =
-    case phase of
-        ColdRead ->
-            1
-
-        CheckMeaning ->
-            2
-
-        Review ->
-            3
-
-        Rereading ->
-            4
-
-
-viewOrientation : LearningPhase -> Unit -> Html Msg
-viewOrientation phase unit =
-    if phase == Rereading then
-        div [ class "reread-callout" ]
-            [ p [ class "eyebrow" ] [ text "Fluent pass" ]
-            , p [] [ text "Read straight through for meaning. Word help is closed for this pass." ]
-            ]
-
-    else
-        section [ class "orientation-card" ]
-            [ p [ class "eyebrow" ] [ text "Before you read" ]
-            , p [] [ text unit.context ]
-            , p [ class "reading-cue" ] [ text "Aim for the main event: who does what, and with what result? Tap a word only if it blocks that meaning." ]
-            ]
-
-
-viewPhasePanel : Model -> Unit -> Html Msg
-viewPhasePanel model unit =
-    case model.phase of
-        ColdRead ->
-            div [ class "phase-note" ]
-                [ p [ class "eyebrow" ] [ text "1 · Read" ]
-                , h2 [] [ text "Form a rough understanding first." ]
-                , p [] [ text "You do not need to parse or translate every word. Continue when you can state the passage’s main event." ]
-                ]
-
-        CheckMeaning ->
-            viewGistQuestion unit
-
-        Review ->
-            viewReview model unit
-
-        Rereading ->
-            div [ class "phase-note reread-note" ]
-                [ p [ class "eyebrow" ] [ text "4 · Reread" ]
-                , h2 [] [ text "Let the Greek carry the meaning." ]
-                , p [] [ text "When the passage reads as a connected thought, finish the unit. Completion means reread—not mastered." ]
-                ]
-
-
-viewGistQuestion : Unit -> Html Msg
-viewGistQuestion unit =
-    section [ class "gist-panel", attribute "aria-labelledby" "gist-title" ]
-        [ p [ class "eyebrow" ] [ text "2 · Check meaning" ]
-        , h2 [ id "gist-title" ] [ text unit.gistQuestion ]
-        , p [ class "panel-instruction" ] [ text "Choose the best account of the passage before checking a translation." ]
-        , div [ class "gist-options" ] (List.map viewGistOption unit.gistOptions)
-        ]
-
-
-viewGistOption : GistOption -> Html Msg
-viewGistOption option =
-    button [ class "gist-option", type_ "button", onClick (AnswerGist option.correct) ]
-        [ span [ class "option-mark", attribute "aria-hidden" "true" ] []
-        , span [] [ text option.label ]
-        ]
-
-
-viewReview : Model -> Unit -> Html Msg
-viewReview model unit =
-    div [ class "review-stack" ]
-        [ section
-            [ classList
-                [ ( "gist-feedback", True )
-                , ( "is-correct", model.gistResult == Just True )
-                ]
-            ]
-            [ p [ class "eyebrow" ] [ text "3 · Review" ]
-            , h2 []
-                [ text
-                    (if model.gistResult == Just True then
-                        "Yes—that is the main event."
-
-                     else
-                        "Not quite. Use the feedback, then look again."
-                    )
-                ]
-            , p [] [ text ("Best answer: " ++ correctGistLabel unit) ]
-            ]
-        , section [ class "review-tools" ]
-            [ div [ class "review-tool" ]
-                [ p [ class "eyebrow" ] [ text "Check the whole" ]
-                , h3 [] [ text "Compare with a translation" ]
-                , p [] [ text "Use this as feedback, not as the text to memorize." ]
-                , button [ class "secondary-button", type_ "button", onClick ToggleTranslation ]
-                    [ text
-                        (if model.translationOpen then
-                            "Hide translation"
-
-                         else
-                            "Reveal translation"
-                        )
-                    ]
-                ]
-            , div [ class "review-tool" ]
-                [ p [ class "eyebrow" ] [ text "Focus on one form" ]
-                , h3 [] [ text unit.focusPrompt ]
-                , p [] [ text "Inspect one useful signal rather than parsing every token." ]
-                , button [ class "secondary-button", type_ "button", onClick ToggleFocus ]
-                    [ text
-                        (if model.focusOpen then
-                            "Hide note"
-
-                         else
-                            "Show note"
-                        )
-                    ]
-                , if model.focusOpen then
-                    p [ class "focus-answer" ] [ text unit.focusNote ]
-
-                  else
-                    text ""
-                ]
-            ]
-        , if model.translationOpen then
-            viewTranslation unit
-
-          else
-            text ""
-        , section [ class "active-prompt" ]
-            [ p [ class "eyebrow" ] [ text "Active recall" ]
-            , h3 [] [ text "Look away and restate the event in one short phrase." ]
-            , p [] [ text "Then begin the clean reread. No written response is stored in this prototype." ]
-            ]
-        ]
-
-
-viewPrimaryLearningAction : LearningPhase -> Html Msg
-viewPrimaryLearningAction phase =
-    case phase of
-        ColdRead ->
-            button [ class "action-button primary-learning-action", type_ "button", onClick BeginMeaningCheck ] [ text "Check understanding" ]
-
-        CheckMeaning ->
-            button [ class "action-button primary-learning-action", type_ "button", disabled True ] [ text "Choose an answer" ]
-
-        Review ->
-            button [ class "action-button primary-learning-action", type_ "button", onClick RereadGreek ] [ text "Reread Greek" ]
-
-        Rereading ->
-            button [ class "action-button primary-learning-action finish-action", type_ "button", onClick FinishAndNext ] [ text "Finish & next" ]
-
-
-viewToken : LearningPhase -> Maybe ( TokenId, HelpLevel ) -> Token -> Html Msg
-viewToken phase selectedToken token =
-    let
-        selected =
-            case selectedToken of
-                Just ( tokenId, _ ) ->
-                    tokenId == token.id
-
-                Nothing ->
-                    False
-    in
-    button
-        [ classList
-            [ ( "greek-token", True )
-            , ( "is-selected", selected )
-            ]
-        , type_ "button"
-        , disabled (phase == Rereading)
-        , onClick (SelectToken token.id)
-        , attribute "aria-pressed" (boolString selected)
-        ]
-        [ text token.form ]
-
-
-viewTranslation : Unit -> Html Msg
-viewTranslation unit =
-    section [ class "translation-panel", attribute "aria-label" "Translation" ]
-        [ div [ class "panel-heading" ]
-            [ div []
-                [ p [ class "eyebrow" ] [ text "Translation feedback" ]
-                , h2 [] [ text "Compare propositions, not wording." ]
-                ]
-            , button [ class "quiet-button", type_ "button", onClick ToggleTranslation, attribute "aria-label" "Close translation" ] [ text "×" ]
-            ]
-        , p [] [ text unit.translation ]
-        ]
-
-
-viewTokenHelp : Token -> HelpLevel -> Html Msg
-viewTokenHelp token level =
-    aside
-        [ class "token-sheet"
-        , attribute "role" "dialog"
-        , attribute "aria-labelledby" "token-sheet-title"
-        ]
-        [ div [ class "sheet-handle", attribute "aria-hidden" "true" ] []
-        , div [ class "panel-heading" ]
-            [ div []
-                [ p [ class "eyebrow" ] [ text "Progressive word help" ]
-                , h2 [ id "token-sheet-title", class "sheet-token" ] [ text token.form ]
-                ]
-            , button [ class "quiet-button close-button", type_ "button", onClick CloseTokenHelp, attribute "aria-label" "Close word help" ] [ text "×" ]
-            ]
-        , div [ class "help-level" ]
-            [ span [ class "help-label" ] [ text "1 · Contextual gloss" ]
-            , p [ class "help-primary" ] [ text token.gloss ]
-            ]
-        , if helpRank level >= 2 then
-            div [ class "help-level" ]
-                [ span [ class "help-label" ] [ text "2 · Lemma" ]
-                , p [] [ text token.lemma ]
-                ]
-
-          else
-            button [ class "help-reveal", type_ "button", onClick RevealLemma ] [ text "Still blocked? Show lemma" ]
-        , if helpRank level >= 3 then
-            div [ class "help-level" ]
-                [ span [ class "help-label" ] [ text "3 · Morphology" ]
-                , p [] [ text token.morphology ]
-                ]
-
-          else if helpRank level >= 2 then
-            button [ class "help-reveal", type_ "button", onClick RevealMorphology ] [ text "Need the form? Show morphology" ]
-
-          else
-            text ""
-        ]
-
-
-helpRank : HelpLevel -> Int
-helpRank level =
-    case level of
-        GlossHelp ->
-            1
-
-        LemmaHelp ->
-            2
-
-        MorphologyHelp ->
-            3
-
-
-viewReaderMenu : Html Msg
-viewReaderMenu =
-    nav [ class "reader-menu", attribute "aria-label" "Reader settings" ]
-        [ p [ class "eyebrow" ] [ text "Reading display" ]
-        , div [ class "menu-row" ]
-            [ span [] [ text "Greek size" ]
-            , div [ class "size-controls", attribute "aria-label" "Greek font size" ]
-                [ button [ type_ "button", tabindex 0 ] [ text "A−" ]
-                , button [ type_ "button", class "is-active", tabindex 0 ] [ text "A" ]
-                , button [ type_ "button", tabindex 0 ] [ text "A+" ]
-                ]
-            ]
-        , div [ class "menu-row" ]
-            [ span [] [ text "Theme" ]
-            , span [ class "menu-value" ] [ text "System" ]
-            ]
-        , button [ class "menu-evidence-link", type_ "button", onClick ShowEvidence ] [ text "View session evidence →" ]
-        ]
-
-
-viewEvidence : Model -> Html Msg
-viewEvidence model =
-    let
-        stats =
-            model.stats
-
-        helpTotal =
-            stats.glossReveals + stats.lemmaReveals + stats.morphologyReveals + stats.translationReveals
-    in
-    div []
-        [ header [ class "site-header" ]
-            [ button [ class "back-button", type_ "button", onClick ShowLibrary ] [ text "← Library" ]
-            , span [ class "header-title" ] [ text "Session evidence" ]
-            , span [ class "header-spacer" ] []
-            ]
-        , main_ [ class "page evidence-page" ]
-            [ section [ class "evidence-heading" ]
-                [ p [ class "eyebrow" ] [ text "Prototype validation" ]
-                , h1 [] [ text "Are we practicing the right behavior?" ]
-                , p [] [ text "These in-memory signals describe this browser session. They do not establish vocabulary retention, transfer, or mastery." ]
-                ]
-            , section [ class "metric-grid", attribute "aria-label" "Session measurements" ]
-                [ viewMetric "Units opened" (String.fromInt (List.length stats.startedUnitIds)) "Distinct fixture units"
-                , viewMetric "Units reread" (String.fromInt (List.length stats.completedUnitIds)) "Finished after a clean pass"
-                , viewMetric "Gist accuracy" (accuracyLabel stats.gistCorrect stats.gistAttempts) (fractionLabel stats.gistCorrect stats.gistAttempts)
-                , viewMetric "Before help" (accuracyLabel stats.unassistedGistCorrect stats.unassistedGistAttempts) "Unassisted gist accuracy"
-                , viewMetric "Reader time" (formatDuration stats.readingSeconds) "Completed units only"
-                , viewMetric "Reading pace" (wordsPerMinuteLabel stats) (String.fromInt stats.completedWords ++ " completed words")
-                ]
-            , section [ class "evidence-section" ]
-                [ div [ class "section-heading" ]
-                    [ div []
-                        [ p [ class "eyebrow" ] [ text "Assistance profile" ]
-                        , h2 [] [ text (String.fromInt helpTotal ++ " help reveals") ]
-                        ]
-                    , span [ class "status-pill" ] [ text (String.fromInt stats.rereads ++ " rereads") ]
-                    ]
-                , div [ class "assistance-grid" ]
-                    [ viewAssistance "Gloss" stats.glossReveals
-                    , viewAssistance "Lemma" stats.lemmaReveals
-                    , viewAssistance "Morphology" stats.morphologyReveals
-                    , viewAssistance "Translation" stats.translationReveals
-                    ]
-                , p [ class "evidence-caption" ] [ text "A useful trend would be stable or improving gist accuracy with fewer high-level hints on comparable unseen passages." ]
-                ]
-            , section [ class "evidence-limit" ]
-                [ p [ class "eyebrow" ] [ text "Missing proof" ]
-                , h2 [] [ text "This is behavior, not yet learning." ]
-                , p [] [ text "A real validation should add delayed tests on unseen Greek, passage difficulty controls, active-time detection, and repeated measurements across sessions." ]
-                ]
-            , p [ class "reset-note" ] [ text "Refresh the browser to reset this prototype session." ]
-            ]
-        ]
-
-
-viewMetric : String -> String -> String -> Html Msg
-viewMetric label value note =
-    div [ class "metric-card" ]
-        [ span [ class "metric-label" ] [ text label ]
-        , span [ class "metric-value" ] [ text value ]
-        , span [ class "metric-note" ] [ text note ]
-        ]
-
-
-viewAssistance : String -> Int -> Html Msg
-viewAssistance label count =
-    div [ class "assistance-item" ]
-        [ span [] [ text label ]
-        , span [ class "assistance-count" ] [ text (String.fromInt count) ]
-        ]
-
-
-viewNotFound : Html Msg
-viewNotFound =
-    main_ [ class "page empty-state" ]
-        [ h1 [] [ text "This fixture is missing." ]
-        , button [ class "primary-button", type_ "button", onClick ShowLibrary ] [ text "Return to library" ]
-        ]
-
-
-selectedTokenInUnit : Maybe ( TokenId, HelpLevel ) -> Unit -> Maybe ( Token, HelpLevel )
-selectedTokenInUnit selectedToken unit =
-    case selectedToken of
-        Just ( tokenId, level ) ->
-            List.filter (\token -> token.id == tokenId) unit.tokens
-                |> List.head
-                |> Maybe.map (\token -> ( token, level ))
+            else
+                active
 
         Nothing ->
             Nothing
 
 
-findWork : WorkId -> Maybe Work
-findWork workId =
-    List.filter (\work -> work.id == workId) works |> List.head
+nextMode : ModuleMode -> ModuleMode
+nextMode mode =
+    case mode of
+        ModuleOff ->
+            OnDemand
+
+        OnDemand ->
+            Suggested
+
+        Suggested ->
+            EverySentence
+
+        EverySentence ->
+            OnDemand
 
 
-findUnit : WorkId -> UnitId -> Maybe Unit
-findUnit workId unitId =
-    findWork workId
-        |> Maybe.andThen
-            (\work ->
-                workUnits work
-                    |> List.filter (\unit -> unit.id == unitId)
-                    |> List.head
+moduleMode : ModuleId -> ModuleSettings -> ModuleMode
+moduleMode moduleId settings =
+    case moduleId of
+        GlossModule ->
+            settings.gloss
+
+        MorphologyModule ->
+            settings.morphology
+
+        DependencyModule ->
+            settings.dependency
+
+        LiteralModule ->
+            settings.literal
+
+        ProseModule ->
+            settings.prose
+
+
+setModuleMode : ModuleId -> ModuleMode -> ModuleSettings -> ModuleSettings
+setModuleMode moduleId mode settings =
+    case moduleId of
+        GlossModule ->
+            { settings | gloss = mode }
+
+        MorphologyModule ->
+            { settings | morphology = mode }
+
+        DependencyModule ->
+            { settings | dependency = mode }
+
+        LiteralModule ->
+            { settings | literal = mode }
+
+        ProseModule ->
+            { settings | prose = mode }
+
+
+view : Model -> Html Msg
+view model =
+    div [ class "app-shell" ]
+        [ viewAppHeader model
+        , case model.notice of
+            Just notice ->
+                div [ class "notice", attribute "role" "status" ]
+                    [ span [] [ text notice ]
+                    , button [ type_ "button", onClick DismissNotice, attribute "aria-label" "Dismiss message" ] [ text "×" ]
+                    ]
+
+            Nothing ->
+                text ""
+        , case model.screen of
+            LibraryScreen ->
+                viewLibrary model
+
+            WorkspaceScreen ->
+                viewWorkspace model
+
+            SettingsScreen ->
+                viewSettings model
+
+            HistoryScreen ->
+                viewHistory model
+
+            AttemptComparisonScreen ->
+                viewAttemptComparison model
+        ]
+
+
+viewAppHeader : Model -> Html Msg
+viewAppHeader model =
+    header [ class "app-header" ]
+        [ button [ class "brand-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Aristos library" ]
+            [ span [ class "brand-mark", attribute "aria-hidden" "true" ] [ text "Α" ]
+            , span [ class "brand-word" ] [ text "Aristos" ]
+            ]
+        , nav [ class "global-nav", attribute "aria-label" "Primary navigation" ]
+            [ navButton "Library" ShowLibrary (model.screen == LibraryScreen)
+            , navButton "Workspace" ShowWorkspace (model.screen == WorkspaceScreen)
+            , navButton "History" ShowHistory (model.screen == HistoryScreen || model.screen == AttemptComparisonScreen)
+            ]
+        , button [ class "settings-button", type_ "button", onClick ShowSettings ]
+            [ span [ attribute "aria-hidden" "true" ] [ text "⚙" ]
+            , span [ class "settings-label" ] [ text "Modules" ]
+            ]
+        ]
+
+
+navButton : String -> Msg -> Bool -> Html Msg
+navButton label msg isActive =
+    button
+        [ classList [ ( "global-nav-button", True ), ( "is-active", isActive ) ]
+        , type_ "button"
+        , onClick msg
+        ]
+        [ text label ]
+
+
+viewLibrary : Model -> Html Msg
+viewLibrary model =
+    main_ [ class "page library-page" ]
+        [ section [ class "library-hero" ]
+            [ div []
+                [ p [ class "eyebrow" ] [ text "Local Greek library" ]
+                , h1 [] [ text "Choose a text. Build a workspace." ]
+                , p [ class "lead" ] [ text "Read freely, or compose only the form, syntax, and translation tools useful for this session." ]
+                ]
+            , div [ class "library-summary" ]
+                [ span [ class "summary-value" ] [ text "3" ]
+                , span [] [ text "content packs" ]
+                , span [ class "summary-divider" ] []
+                , span [ class "summary-value" ] [ text (String.fromInt model.attemptCount) ]
+                , span [] [ text "attempts saved" ]
+                ]
+            ]
+        , section [ class "pack-list", attribute "aria-label" "Content packs" ]
+            [ viewFeaturedPack
+            , viewPackCard "Κατὰ Μᾶρκον" "Gospel of Mark" "Koine · Narrative" "Greek 100% · Morphology 99%" "No validated dependency layer" "8 of 42 passages"
+            , viewPackCard "Ἰλιάς" "Iliad · Book 1" "Homeric · Poetry" "Greek 100% · Lemmas 100%" "Translation alignment limited" "Not started"
+            ]
+        ]
+
+
+viewFeaturedPack : Html Msg
+viewFeaturedPack =
+    section [ class "pack-card featured-pack" ]
+        [ div [ class "pack-accent", attribute "aria-hidden" "true" ] [ text "Ξ" ]
+        , div [ class "pack-body" ]
+            [ div [ class "pack-heading" ]
+                [ div []
+                    [ p [ class "pack-language" ] [ text "Classical Attic · Prose" ]
+                    , h2 [] [ text "Anabasis · Book 1" ]
+                    , p [ class "greek-subtitle" ] [ text "Ξενοφῶντος Ἀνάβασις" ]
+                    ]
+                , span [ class "availability good" ] [ text "On device" ]
+                ]
+            , p [ class "pack-description" ] [ text "A mass-imported fixture with enough annotation layers to exercise the complete workbench." ]
+            , div [ class "capability-strip" ]
+                [ capabilityPill True "Morphology 99%"
+                , capabilityPill True "Dependencies 98%"
+                , capabilityPill True "Translation 100%"
+                , capabilityPill False "Curated gist 0%"
+                ]
+            , div [ class "pack-footer" ]
+                [ div [ class "pack-progress" ]
+                    [ div [ class "progress-track" ] [ span [ class "progress-fill" ] [] ]
+                    , span [] [ text "12 of 86 passages · last read today" ]
+                    ]
+                , div [ class "button-row" ]
+                    [ button [ class "secondary-button", type_ "button", onClick ShowSettings ] [ text "Configure" ]
+                    , button [ class "primary-button", type_ "button", onClick ShowWorkspace ] [ text "Resume reading →" ]
+                    ]
+                ]
+            ]
+        ]
+
+
+viewPackCard : String -> String -> String -> String -> String -> String -> Html Msg
+viewPackCard greekTitle englishTitle genre coverage limitation progress =
+    section [ class "pack-card compact-pack" ]
+        [ div [ class "pack-heading" ]
+            [ div []
+                [ p [ class "pack-language" ] [ text genre ]
+                , h2 [] [ text englishTitle ]
+                , p [ class "greek-subtitle" ] [ text greekTitle ]
+                ]
+            , span [ class "availability" ] [ text "On device" ]
+            ]
+        , div [ class "compact-capabilities" ]
+            [ span [] [ text coverage ]
+            , span [ class "limited-capability" ] [ text limitation ]
+            ]
+        , div [ class "pack-footer" ]
+            [ span [ class "muted" ] [ text progress ]
+            , button [ class "text-button", type_ "button", onClick ShowWorkspace ] [ text "Open →" ]
+            ]
+        ]
+
+
+capabilityPill : Bool -> String -> Html Msg
+capabilityPill available label =
+    span [ classList [ ( "capability-pill", True ), ( "is-limited", not available ) ] ]
+        [ span [ class "capability-dot", attribute "aria-hidden" "true" ] []
+        , text label
+        ]
+
+
+viewSettings : Model -> Html Msg
+viewSettings model =
+    main_ [ class "page settings-page" ]
+        [ section [ class "settings-intro" ]
+            [ div []
+                [ p [ class "eyebrow" ] [ text "Anabasis · Book 1" ]
+                , h1 [] [ text "Compose your reading workspace" ]
+                , p [ class "lead" ] [ text "A preset is only a starting point. Greek remains available even when every learning module is off." ]
+                ]
+            , button [ class "primary-button open-workspace-button", type_ "button", onClick ShowWorkspace ] [ text "Open workspace →" ]
+            ]
+        , section [ class "setting-block" ]
+            [ div [ class "setting-heading" ]
+                [ div []
+                    [ p [ class "eyebrow" ] [ text "Start with a preset" ]
+                    , h2 [] [ text "How intensively do you want to read?" ]
+                    ]
+                , viewScopeControl model.scope
+                ]
+            , div [ class "preset-grid" ]
+                [ viewPresetCard model.preset ReadPreset "Read" "Greek first, with word help available only when needed." "≈ 4 min / passage"
+                , viewPresetCard model.preset AssistedPreset "Assisted" "Selective help and a light comparison prompt." "≈ 8 min / passage"
+                , viewPresetCard model.preset IntensivePreset "Intensive" "Forms, structure, and both translation drafts." "≈ 18 min / passage"
+                , viewPresetCard model.preset CustomPreset "Custom" "Your explicit module and cadence choices." "Variable"
+                ]
+            ]
+        , section [ class "module-settings" ]
+            [ div [ class "module-section-heading" ]
+                [ div []
+                    [ p [ class "eyebrow" ] [ text "Workspace modules" ]
+                    , h2 [] [ text "Available from this content pack" ]
+                    ]
+                , span [ class "coverage-key" ] [ text "Imported fixture · pack v2026.09" ]
+                ]
+            , viewRequiredModule
+            , viewModuleSetting model GlossModule "Enter contextual glosses" "Recall a sense for selected blockers, then compare with the imported gloss." "100% of content tokens" "Perseus treebank · imported"
+            , viewModuleSetting model MorphologyModule "Analyze morphology" "Choose applicable features for selected forms; no free-text label matching." "99.4% of tokens" "UD Greek Perseus · imported"
+            , viewModuleSetting model DependencyModule "Build dependency relationships" "Find the root and attach one core argument. Full trees remain optional." "98.9% of sentences" "UD Greek Perseus · imported"
+            , viewModuleSetting model LiteralModule "Draft a literal translation" "Expose structure and supplied relationships in your own words." "All Greek passages" "Learner-authored"
+            , viewModuleSetting model ProseModule "Draft a prose translation" "State the understood proposition naturally, then compare after submission." "Reference aligned 100%" "Public-domain alignment"
+            , viewUnavailableModule "Curated gist check" "No curated prompts in this edition" "0 of 86 passages"
+            , viewUnavailableModule "Reconstruct word order" "Activity generator not included in this prototype" "Capability pending"
+            ]
+        , footer [ class "settings-footer" ]
+            [ div []
+                [ strongText (scopeLabel model.scope)
+                , span [ class "muted" ] [ text " · Changes are explicit and reversible." ]
+                ]
+            , button [ class "primary-button", type_ "button", onClick ShowWorkspace ] [ text "Use this workspace" ]
+            ]
+        ]
+
+
+viewScopeControl : SettingScope -> Html Msg
+viewScopeControl scope =
+    div [ class "scope-control", attribute "aria-label" "Setting scope" ]
+        [ scopeButton scope GlobalScope "All works"
+        , scopeButton scope WorkScope "This work"
+        , scopeButton scope SessionScope "This session"
+        ]
+
+
+scopeButton : SettingScope -> SettingScope -> String -> Html Msg
+scopeButton current target label =
+    button
+        [ classList [ ( "is-active", current == target ) ]
+        , type_ "button"
+        , onClick (SelectScope target)
+        ]
+        [ text label ]
+
+
+viewPresetCard : Preset -> Preset -> String -> String -> String -> Html Msg
+viewPresetCard current target title description budget =
+    button
+        [ classList [ ( "preset-card", True ), ( "is-selected", current == target ) ]
+        , type_ "button"
+        , onClick (SelectPreset target)
+        , attribute "aria-pressed" (boolString (current == target))
+        ]
+        [ span [ class "preset-check", attribute "aria-hidden" "true" ]
+            [ text
+                (if current == target then
+                    "✓"
+
+                 else
+                    ""
+                )
+            ]
+        , span [ class "preset-title" ] [ text title ]
+        , span [ class "preset-description" ] [ text description ]
+        , span [ class "preset-budget" ] [ text budget ]
+        ]
+
+
+viewRequiredModule : Html Msg
+viewRequiredModule =
+    div [ class "module-row required-module" ]
+        [ div [ class "module-toggle-wrap" ]
+            [ input [ type_ "checkbox", checked True, disabled True, attribute "aria-label" "Greek text required" ] [] ]
+        , div [ class "module-copy" ]
+            [ div [ class "module-title-line" ]
+                [ h3 [] [ text "Greek text" ]
+                , span [ class "required-badge" ] [ text "Required" ]
+                ]
+            , p [] [ text "The passage is the workspace. Every other module may be disabled." ]
+            , span [ class "provenance" ] [ text "Source text · 100% coverage" ]
+            ]
+        , span [ class "module-mode fixed-mode" ] [ text "Always available" ]
+        ]
+
+
+viewModuleSetting : Model -> ModuleId -> String -> String -> String -> String -> Html Msg
+viewModuleSetting model moduleId title description coverage provenance =
+    let
+        mode =
+            moduleMode moduleId model.settings
+
+        enabled =
+            mode /= ModuleOff
+    in
+    div [ classList [ ( "module-row", True ), ( "is-enabled", enabled ) ] ]
+        [ div [ class "module-toggle-wrap" ]
+            [ input
+                [ type_ "checkbox"
+                , checked enabled
+                , onClick (ToggleModule moduleId)
+                , attribute "aria-label" ("Enable " ++ title)
+                ]
+                []
+            ]
+        , div [ class "module-copy" ]
+            [ div [ class "module-title-line" ]
+                [ h3 [] [ text title ]
+                , span [ class "coverage-badge" ] [ text coverage ]
+                ]
+            , p [] [ text description ]
+            , span [ class "provenance" ] [ text provenance ]
+            ]
+        , button
+            [ classList [ ( "module-mode", True ), ( "is-off", not enabled ) ]
+            , type_ "button"
+            , disabled (not enabled)
+            , onClick (CycleModuleMode moduleId)
+            , attribute "aria-label" ("Change cadence for " ++ title)
+            ]
+            [ text (modeLabel mode)
+            , span [ attribute "aria-hidden" "true" ] [ text " ↻" ]
+            ]
+        ]
+
+
+viewUnavailableModule : String -> String -> String -> Html Msg
+viewUnavailableModule title reason coverage =
+    div [ class "module-row unavailable-module" ]
+        [ div [ class "module-toggle-wrap" ]
+            [ input [ type_ "checkbox", disabled True, attribute "aria-label" (title ++ " unavailable") ] [] ]
+        , div [ class "module-copy" ]
+            [ div [ class "module-title-line" ]
+                [ h3 [] [ text title ]
+                , span [ class "coverage-badge unavailable-badge" ] [ text coverage ]
+                ]
+            , p [] [ text reason ]
+            , span [ class "provenance" ] [ text "Unavailable in this content pack" ]
+            ]
+        , span [ class "module-mode fixed-mode" ] [ text "Unavailable" ]
+        ]
+
+
+viewWorkspace : Model -> Html Msg
+viewWorkspace model =
+    main_ [ class "workspace-page" ]
+        [ div [ class "work-context-bar" ]
+            [ div [ class "context-title" ]
+                [ button [ class "icon-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Back to library" ] [ text "←" ]
+                , div []
+                    [ span [ class "context-work" ] [ text "Anabasis · Book 1" ]
+                    , span [ class "context-division" ] [ text "Chapter 1 · Passage 1 of 6" ]
+                    ]
+                ]
+            , div [ class "context-actions" ]
+                [ span [ class "autosave-status" ] [ span [ class "save-dot" ] [], text "Draft saved" ]
+                , button [ class "text-button", type_ "button", onClick ShowHistory ] [ text "History · " , text (String.fromInt model.attemptCount) ]
+                ]
+            ]
+        , div [ classList [ ( "workspace-grid", True ), ( "is-rereading", model.phase == Rereading ) ] ]
+            [ viewSourceRail model
+            , viewReadingStage model
+            , if model.phase == Rereading then
+                text ""
+
+              else
+                viewWorkbench model
+            ]
+        , viewWorkspaceFooter model
+        ]
+
+
+viewSourceRail : Model -> Html Msg
+viewSourceRail model =
+    aside [ class "source-rail" ]
+        [ div [ class "rail-section" ]
+            [ p [ class "rail-label" ] [ text "Source" ]
+            , h2 [] [ text "Ξενοφῶντος Ἀνάβασις" ]
+            , p [ class "muted" ] [ text "Book 1 · Chapter 1.1" ]
+            ]
+        , div [ class "rail-section" ]
+            [ p [ class "rail-label" ] [ text "Session" ]
+            , div [ class "rail-stat" ] [ span [] [ text "Preset" ], strongText (presetLabel model.preset) ]
+            , div [ class "rail-stat" ] [ span [] [ text "Active time" ], strongText (formatDuration model.elapsedSeconds) ]
+            , div [ class "rail-stat" ] [ span [] [ text "Modules" ], strongText (String.fromInt (List.length (enabledModules model.settings))) ]
+            , button [ class "rail-link", type_ "button", onClick ShowSettings ] [ text "Adjust modules →" ]
+            ]
+        , div [ class "rail-section prior-context" ]
+            [ p [ class "rail-label" ] [ text "Source context" ]
+            , p [ class "greek-context" ] [ text "Δαρεῖος μὲν οὖν ἀπέθανεν…" ]
+            , p [ class "context-note" ] [ text "Previous Greek only. No authored summary is present in this pack." ]
+            ]
+        , div [ class "pack-provenance" ]
+            [ span [ class "provenance-icon", attribute "aria-hidden" "true" ] [ text "i" ]
+            , span [] [ text "Imported text and annotations", span [ class "muted" ] [ text " · pack v2026.09" ] ]
+            ]
+        ]
+
+
+viewReadingStage : Model -> Html Msg
+viewReadingStage model =
+    section [ class "reading-stage" ]
+        [ div [ class "passage-heading" ]
+            [ div []
+                [ p [ class "eyebrow" ] [ text (phaseEyebrow model.phase) ]
+                , h1 [] [ text "Anabasis 1.1.1" ]
+                ]
+            , span [ classList [ ( "phase-badge", True ), ( "is-compared", model.phase == Compared ), ( "is-reread", model.phase == Rereading ) ] ]
+                [ text (phaseLabel model.phase) ]
+            ]
+        , if model.phase == Rereading then
+            div [ class "reread-instruction" ]
+                [ span [ class "reread-icon", attribute "aria-hidden" "true" ] [ text "↻" ]
+                , div []
+                    [ strongText "Clean reread"
+                    , p [] [ text "Feedback and word tools are closed. Let the Greek carry the meaning." ]
+                    ]
+                ]
+
+          else
+            p [ class "reading-instruction" ]
+                [ text "Read the whole sentence before opening a tool. "
+                , span [] [ text "Attempt first; references remain hidden until submission." ]
+                ]
+        , viewGreekPassage model
+        , div [ class "source-line" ]
+            [ span [] [ text "Xenophon · normalized public-domain fixture" ]
+            , span [] [ text "18 tokens · 1 sentence" ]
+            ]
+        , if model.phase == Rereading then
+            div [ class "reread-space" ] []
+
+          else
+            viewActivityTray model
+        ]
+
+
+viewGreekPassage : Model -> Html Msg
+viewGreekPassage model =
+    let
+        toolsAvailable =
+            moduleMode GlossModule model.settings /= ModuleOff || moduleMode MorphologyModule model.settings /= ModuleOff
+
+        tokenButton form =
+            button
+                [ class "greek-token"
+                , type_ "button"
+                , disabled (not toolsAvailable || model.phase == Rereading)
+                , onClick
+                    (if moduleMode MorphologyModule model.settings /= ModuleOff then
+                        OpenModule MorphologyModule
+
+                     else
+                        OpenModule GlossModule
+                    )
+                ]
+                [ text form ]
+    in
+    div [ classList [ ( "greek-passage", True ), ( "clean-passage", model.phase == Rereading ) ], attribute "lang" "grc" ]
+        [ tokenButton "Δαρείου"
+        , tokenButton "καὶ"
+        , tokenButton "Παρυσάτιδος"
+        , tokenButton "γίγνονται"
+        , tokenButton "παῖδες"
+        , tokenButton "δύο,"
+        , tokenButton "πρεσβύτερος"
+        , tokenButton "μὲν"
+        , tokenButton "Ἀρταξέρξης,"
+        , tokenButton "νεώτερος"
+        , tokenButton "δὲ"
+        , tokenButton "Κῦρος."
+        ]
+
+
+viewActivityTray : Model -> Html Msg
+viewActivityTray model =
+    let
+        modules =
+            enabledModules model.settings
+    in
+    section [ class "activity-area" ]
+        [ div [ class "activity-heading" ]
+            [ div []
+                [ p [ class "eyebrow" ] [ text "Activity tray" ]
+                , h2 [] [ text "Your tools for this passage" ]
+                ]
+            , span [ class "tray-help" ] [ text "One opens at a time" ]
+            ]
+        , if List.isEmpty modules then
+            div [ class "read-only-state" ]
+                [ span [ class "read-only-mark", attribute "aria-hidden" "true" ] [ text "α" ]
+                , div []
+                    [ strongText "Read-only session"
+                    , p [] [ text "No exercise interrupts this passage. Add a module only if it serves your reading." ]
+                    ]
+                , button [ class "secondary-button", type_ "button", onClick ShowSettings ] [ text "Add modules" ]
+                ]
+
+          else
+            div [ class "activity-tray" ] (List.map (viewActivityChip model) modules)
+        ]
+
+
+viewActivityChip : Model -> ModuleId -> Html Msg
+viewActivityChip model moduleId =
+    let
+        isActive =
+            model.activeModule == Just moduleId
+
+        status =
+            moduleStatus model moduleId
+    in
+    button
+        [ classList
+            [ ( "activity-chip", True )
+            , ( "is-active", isActive )
+            , ( "is-skipped", moduleListMember moduleId model.skippedModules )
+            ]
+        , type_ "button"
+        , onClick (OpenModule moduleId)
+        , attribute "aria-pressed" (boolString isActive)
+        ]
+        [ span [ class "chip-icon", attribute "aria-hidden" "true" ] [ text (moduleIcon moduleId) ]
+        , span [ class "chip-copy" ]
+            [ span [ class "chip-name" ] [ text (moduleShortName moduleId) ]
+            , span [ class "chip-status" ] [ text status ]
+            ]
+        ]
+
+
+viewWorkbench : Model -> Html Msg
+viewWorkbench model =
+    aside
+        [ classList
+            [ ( "workbench", True )
+            , ( "is-empty", model.activeModule == Nothing )
+            ]
+        ]
+        [ case model.activeModule of
+            Nothing ->
+                viewCheckpointSummary model
+
+            Just moduleId ->
+                div []
+                    [ div [ class "workbench-heading" ]
+                        [ div []
+                            [ p [ class "eyebrow" ] [ text "Workbench" ]
+                            , h2 [] [ text (moduleName moduleId) ]
+                            ]
+                        , button [ class "close-workbench", type_ "button", onClick CloseWorkbench, attribute "aria-label" "Close workbench" ] [ text "×" ]
+                        ]
+                    , p [ class "workbench-purpose" ] [ text (modulePurpose moduleId) ]
+                    , if model.phase == Compared then
+                        viewModuleComparison model moduleId
+
+                      else
+                        viewModuleDraft model moduleId
+                    , viewWorkbenchMeta model moduleId
+                    ]
+        ]
+
+
+viewCheckpointSummary : Model -> Html Msg
+viewCheckpointSummary model =
+    div [ class "checkpoint-summary" ]
+        [ span [ class "summary-symbol", attribute "aria-hidden" "true" ] [ text "✓" ]
+        , p [ class "eyebrow" ] [ text "Passage checkpoint" ]
+        , h2 []
+            [ text
+                (if model.phase == Compared then
+                    "Attempt submitted"
+
+                 else
+                    "Work at your own depth"
+                )
+            ]
+        , p []
+            [ text
+                (if model.phase == Compared then
+                    "Open a module to compare your response with its imported reference."
+
+                 else
+                    "Open any module from the tray. One submission freezes all drafts together."
+                )
+            ]
+        , div [ class "summary-list" ]
+            [ summaryLine "Enabled" (String.fromInt (List.length (enabledModules model.settings)))
+            , summaryLine "Skipped" (String.fromInt (List.length model.skippedModules))
+            , summaryLine "Reference viewed" (if model.referenceRevealed then "Yes · assisted" else "No")
+            ]
+        ]
+
+
+viewModuleDraft : Model -> ModuleId -> Html Msg
+viewModuleDraft model moduleId =
+    case moduleId of
+        GlossModule ->
+            viewGlossDraft model
+
+        MorphologyModule ->
+            viewMorphologyDraft model
+
+        DependencyModule ->
+            viewDependencyDraft model
+
+        LiteralModule ->
+            viewTranslationDraft model True
+
+        ProseModule ->
+            viewTranslationDraft model False
+
+
+viewGlossDraft : Model -> Html Msg
+viewGlossDraft model =
+    div [ class "form-stack" ]
+        [ glossField "Δαρείου" model.draft.glossDareios UpdateGlossDareios
+        , glossField "γίγνονται" model.draft.glossGignontai UpdateGlossGignontai
+        , glossField "παῖδες" model.draft.glossPaides UpdateGlossPaides
+        , p [ class "field-note" ] [ text "Original wording is preserved. A different synonym is not automatically wrong." ]
+        , viewRevealedReference model "Imported glosses: of Darius · are born · sons"
+        ]
+
+
+glossField : String -> String -> (String -> Msg) -> Html Msg
+glossField token entered msg =
+    label [ class "gloss-field" ]
+        [ span [ class "field-token" ] [ text token ]
+        , input [ type_ "text", value entered, onInput msg, placeholder "Contextual sense…" ] []
+        ]
+
+
+viewMorphologyDraft : Model -> Html Msg
+viewMorphologyDraft model =
+    div []
+        [ div [ class "target-token-card" ]
+            [ span [ class "token-index" ] [ text "5" ]
+            , div []
+                [ span [ class "target-token" ] [ text "παῖδες" ]
+                , span [ class "target-lemma" ] [ text "Lemma hidden until submit" ]
+                ]
+            ]
+        , div [ class "structured-fields" ]
+            [ selectField "Case" model.draft.morphCase UpdateMorphCase [ "—", "Nominative", "Genitive", "Accusative", "Vocative" ]
+            , selectField "Number" model.draft.morphNumber UpdateMorphNumber [ "—", "Singular", "Dual", "Plural" ]
+            , selectField "Gender" model.draft.morphGender UpdateMorphGender [ "—", "Masculine", "Feminine", "Neuter" ]
+            ]
+        , button [ class "uncertain-button", type_ "button", onClick (ShowNotice "Uncertainty recorded with this draft; it will remain distinct from an omitted answer.") ] [ text "+ Mark an uncertain alternative" ]
+        , viewRevealedReference model "Imported analysis: noun · nominative plural masculine"
+        ]
+
+
+selectField : String -> String -> (String -> Msg) -> List String -> Html Msg
+selectField fieldLabel current msg choices =
+    label [ class "select-field" ]
+        [ span [] [ text fieldLabel ]
+        , select [ value current, onInput msg ]
+            (List.map
+                (\choice -> option [ value choice, selected (choice == current) ] [ text choice ])
+                choices
             )
+        ]
 
 
-workUnits : Work -> List Unit
-workUnits work =
-    List.concatMap .units work.divisions
+viewDependencyDraft : Model -> Html Msg
+viewDependencyDraft model =
+    div []
+        [ div [ class "task-scope" ]
+            [ span [ class "scope-pill" ] [ text "Partial task" ]
+            , span [] [ text "Find the root and attach one core argument." ]
+            ]
+        , viewMiniTree model False
+        , div [ class "dependency-fields" ]
+            [ selectField "Finite predicate / root" model.draft.dependencyRoot UpdateDependencyRoot [ "—", "γίγνονται", "παῖδες", "δύο" ]
+            , div [ class "edge-builder" ]
+                [ span [ class "edge-dependent" ] [ text "παῖδες" ]
+                , span [ class "edge-arrow", attribute "aria-hidden" "true" ] [ text "→" ]
+                , selectField "Head" model.draft.dependencyHead UpdateDependencyHead [ "—", "γίγνονται", "δύο", "Ἀρταξέρξης" ]
+                ]
+            , selectField "Relation" model.draft.dependencyRelation UpdateDependencyRelation [ "—", "nsubj", "obj", "appos", "conj" ]
+            ]
+        , p [ class "field-note" ] [ text "Keyboard controls store token IDs and relations—not screen coordinates." ]
+        , viewRevealedReference model "Imported edge: παῖδες → γίγνονται · NSUBJ"
+        ]
 
 
-findIndex : (a -> Bool) -> List a -> Maybe Int
-findIndex predicate items =
-    items
-        |> List.indexedMap Tuple.pair
-        |> List.filter (\( _, item ) -> predicate item)
-        |> List.head
-        |> Maybe.map Tuple.first
+viewMiniTree : Model -> Bool -> Html Msg
+viewMiniTree model showReference =
+    div [ classList [ ( "mini-tree", True ), ( "show-reference", showReference ) ], attribute "aria-label" "Dependency draft preview" ]
+        [ div [ class "tree-root" ]
+            [ span [ class "tree-relation" ] [ text "ROOT" ]
+            , span [ class "tree-token" ] [ text model.draft.dependencyRoot ]
+            ]
+        , div [ class "tree-stem", attribute "aria-hidden" "true" ] []
+        , div [ class "tree-children" ]
+            [ div [ class "tree-node muted-node" ]
+                [ span [ class "tree-relation" ] [ text "obl" ]
+                , span [ class "tree-token" ] [ text "Δαρείου" ]
+                ]
+            , div [ class "tree-node answer-node" ]
+                [ span [ class "tree-relation" ] [ text (String.toUpper model.draft.dependencyRelation) ]
+                , span [ class "tree-token" ] [ text "παῖδες" ]
+                ]
+            , div [ class "tree-node muted-node" ]
+                [ span [ class "tree-relation" ] [ text "appos" ]
+                , span [ class "tree-token" ] [ text "Ἀρταξέρξης" ]
+                ]
+            ]
+        ]
 
 
-getAt : Int -> List a -> Maybe a
-getAt index items =
-    if index < 0 then
-        Nothing
+viewTranslationDraft : Model -> Bool -> Html Msg
+viewTranslationDraft model literal =
+    let
+        draftText =
+            if literal then
+                model.draft.literal
+
+            else
+                model.draft.prose
+
+        updateMsg =
+            if literal then
+                UpdateLiteral
+
+            else
+                UpdateProse
+
+        promptText =
+            if literal then
+                "Keep visible Greek structure and supplied words where useful."
+
+            else
+                "State the proposition in natural English without imitating Greek order."
+    in
+    div []
+        [ label [ class "translation-editor" ]
+            [ span [] [ text promptText ]
+            , textarea [ rows 8, value draftText, onInput updateMsg, placeholder "Write your translation…" ] []
+            ]
+        , div [ class "editor-status" ]
+            [ span [] [ text (String.fromInt (String.length draftText) ++ " characters") ]
+            , span [] [ text "Autosaved locally" ]
+            ]
+        , viewRevealedReference model "Reference: Darius and Parysatis had two sons, Artaxerxes the elder and Cyrus the younger."
+        ]
+
+
+viewRevealedReference : Model -> String -> Html Msg
+viewRevealedReference model reference =
+    if model.referenceRevealed then
+        div [ class "early-reference" ]
+            [ span [ class "assisted-label" ] [ text "Revealed · assisted" ]
+            , p [] [ text reference ]
+            ]
 
     else
-        items |> List.drop index |> List.head
+        button [ class "reveal-button", type_ "button", onClick RevealAnyway ]
+            [ span [ attribute "aria-hidden" "true" ] [ text "◉" ]
+            , span [] [ strongText "Reveal reference anyway", span [] [ text "Records this attempt as assisted" ] ]
+            ]
 
 
-correctGistLabel : Unit -> String
-correctGistLabel unit =
-    unit.gistOptions
-        |> List.filter .correct
-        |> List.head
-        |> Maybe.map .label
-        |> Maybe.withDefault "No fixture answer"
+viewModuleComparison : Model -> ModuleId -> Html Msg
+viewModuleComparison model moduleId =
+    case moduleId of
+        GlossModule ->
+            div [ class "comparison-stack" ]
+                [ comparisonBanner "Compared with imported contextual glosses" "Differences require your judgment"
+                , comparisonRow "Δαρείου" model.draft.glossDareios "of Darius" True
+                , comparisonRow "γίγνονται" model.draft.glossGignontai "are born" True
+                , comparisonRow "παῖδες" model.draft.glossPaides "sons" False
+                , viewSelfAssessment
+                ]
+
+        MorphologyModule ->
+            div [ class "comparison-stack" ]
+                [ comparisonBanner "2 of 3 features match" "Accuracy on this token · imported reference"
+                , featureComparison "Part of speech" "Noun" "Noun" True
+                , featureComparison "Case" model.draft.morphCase "Nominative" (model.draft.morphCase == "Nominative")
+                , featureComparison "Number" model.draft.morphNumber "Plural" (model.draft.morphNumber == "Plural")
+                , featureComparison "Gender" model.draft.morphGender "Masculine" (model.draft.morphGender == "Masculine")
+                , p [ class "provenance-panel" ] [ text "Reference · UD Greek Perseus 2.15 · imported annotation · pack v2026.09" ]
+                ]
+
+        DependencyModule ->
+            div [ class "comparison-stack" ]
+                [ comparisonBanner "Root and core edge match" "Task-scoped result · 2 of 2"
+                , viewMiniTree model True
+                , featureComparison "Root" model.draft.dependencyRoot "γίγνονται" (model.draft.dependencyRoot == "γίγνονται")
+                , featureComparison "Core edge" ("παῖδες → " ++ model.draft.dependencyHead) "παῖδες → γίγνονται" (model.draft.dependencyHead == "γίγνονται")
+                , featureComparison "Relation" model.draft.dependencyRelation "nsubj" (model.draft.dependencyRelation == "nsubj")
+                , button [ class "disagree-button", type_ "button", onClick (ShowNotice "Disagreement noted. The imported analysis remains visible with its provenance.") ] [ text "I disagree with this reference" ]
+                ]
+
+        LiteralModule ->
+            viewTranslationComparison model.draft.literal "Literal attempt"
+
+        ProseModule ->
+            viewTranslationComparison model.draft.prose "Prose attempt"
 
 
-accuracyLabel : Int -> Int -> String
-accuracyLabel correct attempts =
-    if attempts == 0 then
-        "—"
+comparisonBanner : String -> String -> Html Msg
+comparisonBanner title note =
+    div [ class "comparison-banner" ]
+        [ span [ class "comparison-check", attribute "aria-hidden" "true" ] [ text "✓" ]
+        , div []
+            [ strongText title
+            , span [] [ text note ]
+            ]
+        ]
+
+
+comparisonRow : String -> String -> String -> Bool -> Html Msg
+comparisonRow token mine reference matches =
+    div [ class "gloss-comparison" ]
+        [ span [ class "field-token" ] [ text token ]
+        , div [] [ span [ class "compare-label" ] [ text "You" ], span [] [ text mine ] ]
+        , div [] [ span [ class "compare-label" ] [ text "Reference" ], span [] [ text reference ] ]
+        , span [ classList [ ( "match-mark", True ), ( "is-different", not matches ) ] ]
+            [ text (if matches then "Match" else "Different") ]
+        ]
+
+
+featureComparison : String -> String -> String -> Bool -> Html Msg
+featureComparison feature mine reference matches =
+    div [ class "feature-comparison" ]
+        [ span [ class "feature-name" ] [ text feature ]
+        , span [] [ text mine ]
+        , span [ class "reference-value" ] [ text reference ]
+        , span [ classList [ ( "feature-result", True ), ( "is-wrong", not matches ) ] ]
+            [ text (if matches then "✓" else "!") ]
+        ]
+
+
+viewTranslationComparison : String -> String -> Html Msg
+viewTranslationComparison mine labelText =
+    div [ class "comparison-stack" ]
+        [ comparisonBanner "Ready for your judgment" "No automatic translation score"
+        , div [ class "text-comparison" ]
+            [ div []
+                [ span [ class "compare-label" ] [ text labelText ]
+                , p [] [ text mine ]
+                ]
+            , div [ class "reference-text" ]
+                [ span [ class "compare-label" ] [ text "Aligned reference" ]
+                , p [] [ text "Darius and Parysatis had two sons, Artaxerxes the elder and Cyrus the younger." ]
+                ]
+            ]
+        , viewSelfAssessment
+        ]
+
+
+viewSelfAssessment : Html Msg
+viewSelfAssessment =
+    div [ class "self-assessment" ]
+        [ span [] [ text "How would you assess the difference?" ]
+        , div [ class "assessment-options" ]
+            [ button [ type_ "button", onClick (ShowNotice "Self-assessment recorded: acceptable.") ] [ text "Acceptable" ]
+            , button [ type_ "button", onClick (ShowNotice "Self-assessment recorded: meaning missed.") ] [ text "Meaning missed" ]
+            , button [ type_ "button", onClick (ShowNotice "Self-assessment recorded: structure missed.") ] [ text "Structure missed" ]
+            , button [ type_ "button", onClick (ShowNotice "Self-assessment recorded: wording differs.") ] [ text "Wording differs" ]
+            ]
+        ]
+
+
+viewWorkbenchMeta : Model -> ModuleId -> Html Msg
+viewWorkbenchMeta model moduleId =
+    div [ class "workbench-meta" ]
+        [ span [] [ text (modeLabel (moduleMode moduleId model.settings)) ]
+        , if model.phase == Drafting then
+            button [ class "skip-module", type_ "button", onClick SkipCurrentModule ] [ text "Do this one later" ]
+
+          else
+            span [] [ text "Attempt 0" , text (String.fromInt model.attemptCount) ]
+        ]
+
+
+viewWorkspaceFooter : Model -> Html Msg
+viewWorkspaceFooter model =
+    footer [ class "workspace-footer" ]
+        [ button [ class "footer-side-button", type_ "button", disabled True ] [ text "← Previous" ]
+        , div [ class "checkpoint-copy" ]
+            [ strongText (checkpointTitle model)
+            , span [] [ text (checkpointSubtitle model) ]
+            ]
+        , case model.phase of
+            Drafting ->
+                button [ class "checkpoint-button", type_ "button", onClick SubmitCheckpoint ]
+                    [ text
+                        (case model.revisionParent of
+                            Just _ ->
+                                "Submit revision"
+
+                            Nothing ->
+                                "Submit checkpoint"
+                        )
+                    , span [ attribute "aria-hidden" "true" ] [ text " →" ]
+                    ]
+
+            Compared ->
+                div [ class "footer-button-pair" ]
+                    [ button [ class "secondary-button", type_ "button", onClick ReviseAttempt ] [ text "Revise" ]
+                    , button [ class "checkpoint-button", type_ "button", onClick BeginReread ] [ text "Clean reread →" ]
+                    ]
+
+            Rereading ->
+                button [ class "checkpoint-button", type_ "button", onClick FinishPassage ] [ text "Finish & continue →" ]
+        ]
+
+
+viewHistory : Model -> Html Msg
+viewHistory model =
+    main_ [ class "page history-page" ]
+        [ section [ class "history-intro" ]
+            [ div []
+                [ p [ class "eyebrow" ] [ text "Attempt history" ]
+                , h1 [] [ text "Your work remains yours—and unchanged." ]
+                , p [ class "lead" ] [ text "Submitted attempts are immutable. Compare them, or revise by creating a linked child attempt." ]
+                ]
+            , button [ class "primary-button", type_ "button", onClick ShowWorkspace ] [ text "Return to passage" ]
+            ]
+        , div [ class "history-layout" ]
+            [ aside [ class "history-filter" ]
+                [ p [ class "rail-label" ] [ text "Showing" ]
+                , button [ class "filter-button is-active", type_ "button" ] [ text "This sentence", span [] [ text (String.fromInt model.attemptCount) ] ]
+                , button [ class "filter-button", type_ "button", onClick (ShowNotice "The full-work history filter is outside this fixture’s sample data.") ] [ text "All Anabasis", span [] [ text "18" ] ]
+                , button [ class "filter-button", type_ "button", onClick (ShowNotice "The all-works history filter is outside this fixture’s sample data.") ] [ text "All works", span [] [ text "31" ] ]
+                , div [ class "privacy-note" ]
+                    [ strongText "Local-first history"
+                    , p [] [ text "Clearing site data removes attempts unless exported." ]
+                    , button [ class "text-button", type_ "button", onClick (ShowNotice "Export is represented in the UI; persistence arrives with the attempt-history milestone.") ] [ text "Export data →" ]
+                    ]
+                ]
+            , section [ class "attempt-series" ]
+                [ div [ class "series-heading" ]
+                    [ div []
+                        [ span [ class "series-reference" ] [ text "Anabasis 1.1.1" ]
+                        , p [ class "series-greek" ] [ text "Δαρείου καὶ Παρυσάτιδος γίγνονται παῖδες δύο…" ]
+                        ]
+                    , span [ class "version-badge" ] [ text "Same content version" ]
+                    ]
+                , if model.attemptCount > 2 then
+                    div []
+                        [ viewAttemptCard (twoDigit model.attemptCount) "Today · 10:42" "Intensive" "Current checkpoint" "5 modules · no prior answer visible" True
+                        , div [ class "attempt-link", attribute "aria-hidden" "true" ] [ text "│", span [] [ text "revision of" ], text "│" ]
+                        ]
+
+                  else
+                    text ""
+                , viewAttemptCard "02" "Sep 06 · 09:18" "Assisted" "Compared" "Gloss + prose · 1 reference reveal" False
+                , div [ class "attempt-link", attribute "aria-hidden" "true" ] [ text "│", span [] [ text "earlier reading" ], text "│" ]
+                , viewAttemptCard "01" "Aug 24 · 16:03" "Read" "Reread" "Greek only · 3m 12s" False
+                , button [ class "compare-attempts-button", type_ "button", onClick ShowAttemptComparison ]
+                    [ span [ attribute "aria-hidden" "true" ] [ text "⇄" ]
+                    , span [] [ strongText ("Compare attempts " ++ twoDigit (max 1 (model.attemptCount - 1)) ++ " and " ++ twoDigit model.attemptCount), span [] [ text "Translations, morphology, assistance, and time" ] ]
+                    , span [ attribute "aria-hidden" "true" ] [ text "→" ]
+                    ]
+                ]
+            ]
+        ]
+
+
+viewAttemptCard : String -> String -> String -> String -> String -> Bool -> Html Msg
+viewAttemptCard number date preset status details isCurrent =
+    articleElement [ classList [ ( "attempt-card", True ), ( "is-current", isCurrent ) ] ]
+        [ div [ class "attempt-number" ] [ text number ]
+        , div [ class "attempt-main" ]
+            [ div [ class "attempt-topline" ]
+                [ span [] [ text date ]
+                , span [ class "attempt-preset" ] [ text preset ]
+                ]
+            , h2 [] [ text status ]
+            , p [] [ text details ]
+            ]
+        , span [ class "immutable-badge" ] [ text "Locked" ]
+        ]
+
+
+viewAttemptComparison : Model -> Html Msg
+viewAttemptComparison model =
+    main_ [ class "page attempt-comparison-page" ]
+        [ button [ class "back-link", type_ "button", onClick ShowHistory ] [ text "← Attempt history" ]
+        , section [ class "comparison-intro" ]
+            [ p [ class "eyebrow" ] [ text "Attempt comparison" ]
+            , h1 [] [ text "What changed between readings?" ]
+            , p [ class "lead" ] [ text "These are practice conditions and responses—not proof of Greek mastery." ]
+            ]
+        , div [ class "attempt-columns heading-columns" ]
+            [ div [] [ span [ class "column-label" ] [ text "Earlier" ], h2 [] [ text ("Attempt " ++ twoDigit (max 1 (model.attemptCount - 1))) ], p [] [ text "Sep 06 · Assisted" ] ]
+            , div [] [ span [ class "column-label current-label" ] [ text "Current" ], h2 [] [ text ("Attempt " ++ twoDigit model.attemptCount) ], p [] [ text "Today · Intensive" ] ]
+            ]
+        , section [ class "comparison-section" ]
+            [ div [ class "comparison-section-heading" ]
+                [ p [ class "eyebrow" ] [ text "Prose translation" ]
+                , span [ class "neutral-badge" ] [ text "No automatic score" ]
+                ]
+            , div [ class "attempt-columns" ]
+                [ blockquoteElement "Darius had sons, the older Artaxerxes and young Cyrus."
+                , blockquoteElement model.draft.prose
+                ]
+            ]
+        , section [ class "comparison-section" ]
+            [ div [ class "comparison-section-heading" ]
+                [ p [ class "eyebrow" ] [ text "Conditions" ]
+                , span [ class "neutral-badge" ] [ text "Same pack + reference version" ]
+                ]
+            , div [ class "condition-table" ]
+                [ conditionRow "Modules" "Gloss, prose" "Gloss, morphology, tree, literal, prose"
+                , conditionRow "Reference before submit" "Yes · prose" (if model.referenceRevealed then "Yes · assisted" else "No · unassisted")
+                , conditionRow "Active time" "7m 42s" (formatDuration model.elapsedSeconds)
+                , conditionRow "Morphology" "Not prompted" "3 of 3 features"
+                , conditionRow "Dependency" "Not prompted" "Root + core edge matched"
+                ]
+            ]
+        , section [ class "evidence-limit" ]
+            [ span [ class "evidence-icon", attribute "aria-hidden" "true" ] [ text "i" ]
+            , div []
+                [ strongText "Repeated-sentence improvement is practice performance."
+                , p [] [ text "A delayed check on comparable unseen Greek is required before making a learning claim." ]
+                ]
+            ]
+        ]
+
+
+blockquoteElement : String -> Html Msg
+blockquoteElement content =
+    div [ class "attempt-quote" ] [ p [] [ text content ] ]
+
+
+conditionRow : String -> String -> String -> Html Msg
+conditionRow labelText earlier current =
+    div [ class "condition-row" ]
+        [ strongText labelText
+        , span [] [ text earlier ]
+        , span [] [ text current ]
+        ]
+
+
+articleElement : List (Html.Attribute msg) -> List (Html msg) -> Html msg
+articleElement attributes children =
+    Html.article attributes children
+
+
+strongText : String -> Html msg
+strongText content =
+    Html.strong [] [ text content ]
+
+
+summaryLine : String -> String -> Html Msg
+summaryLine labelText valueText =
+    div [] [ span [] [ text labelText ], strongText valueText ]
+
+
+enabledModules : ModuleSettings -> List ModuleId
+enabledModules settings =
+    [ GlossModule, MorphologyModule, DependencyModule, LiteralModule, ProseModule ]
+        |> List.filter (\moduleId -> moduleMode moduleId settings /= ModuleOff)
+
+
+moduleName : ModuleId -> String
+moduleName moduleId =
+    case moduleId of
+        GlossModule ->
+            "Contextual glosses"
+
+        MorphologyModule ->
+            "Morphology analysis"
+
+        DependencyModule ->
+            "Dependency relationships"
+
+        LiteralModule ->
+            "Literal translation"
+
+        ProseModule ->
+            "Prose translation"
+
+
+moduleShortName : ModuleId -> String
+moduleShortName moduleId =
+    case moduleId of
+        GlossModule ->
+            "Gloss"
+
+        MorphologyModule ->
+            "Morphology"
+
+        DependencyModule ->
+            "Tree"
+
+        LiteralModule ->
+            "Literal"
+
+        ProseModule ->
+            "Prose"
+
+
+moduleIcon : ModuleId -> String
+moduleIcon moduleId =
+    case moduleId of
+        GlossModule ->
+            "Aa"
+
+        MorphologyModule ->
+            "μ"
+
+        DependencyModule ->
+            "⌘"
+
+        LiteralModule ->
+            "≡"
+
+        ProseModule ->
+            "¶"
+
+
+modulePurpose : ModuleId -> String
+modulePurpose moduleId =
+    case moduleId of
+        GlossModule ->
+            "Enter a contextual sense for selected blockers before seeing the imported gloss."
+
+        MorphologyModule ->
+            "Describe only the applicable features of one selected form."
+
+        DependencyModule ->
+            "Reconstruct a small semantic edge set; the complete tree is not required."
+
+        LiteralModule ->
+            "Draft wording that makes Greek structure and supplied relationships visible."
+
+        ProseModule ->
+            "Express the proposition naturally, then judge it against an aligned reference."
+
+
+moduleStatus : Model -> ModuleId -> String
+moduleStatus model moduleId =
+    if moduleListMember moduleId model.skippedModules then
+        "Skipped"
 
     else
-        String.fromInt ((correct * 100) // attempts) ++ "%"
+        case model.phase of
+            Compared ->
+                "Compared"
+
+            Rereading ->
+                "Closed"
+
+            Drafting ->
+                case moduleId of
+                    GlossModule ->
+                        "3 responses"
+
+                    MorphologyModule ->
+                        "3 / 3 fields"
+
+                    DependencyModule ->
+                        "2 edges"
+
+                    LiteralModule ->
+                        "Draft"
+
+                    ProseModule ->
+                        "Draft"
 
 
-fractionLabel : Int -> Int -> String
-fractionLabel correct attempts =
-    if attempts == 0 then
-        "No answers yet"
+modeLabel : ModuleMode -> String
+modeLabel mode =
+    case mode of
+        ModuleOff ->
+            "Off"
 
-    else
-        String.fromInt correct ++ " of " ++ String.fromInt attempts ++ " correct"
+        OnDemand ->
+            "On demand"
+
+        Suggested ->
+            "Suggested"
+
+        EverySentence ->
+            "Every sentence"
+
+
+presetLabel : Preset -> String
+presetLabel preset =
+    case preset of
+        ReadPreset ->
+            "Read"
+
+        AssistedPreset ->
+            "Assisted"
+
+        IntensivePreset ->
+            "Intensive"
+
+        CustomPreset ->
+            "Custom"
+
+
+scopeLabel : SettingScope -> String
+scopeLabel scope =
+    case scope of
+        GlobalScope ->
+            "Default for all works"
+
+        WorkScope ->
+            "Override for this work"
+
+        SessionScope ->
+            "This session only"
+
+
+phaseEyebrow : WorkspacePhase -> String
+phaseEyebrow phase =
+    case phase of
+        Drafting ->
+            "Cold read · respond"
+
+        Compared ->
+            "Compare · reflect"
+
+        Rereading ->
+            "Fluent pass"
+
+
+phaseLabel : WorkspacePhase -> String
+phaseLabel phase =
+    case phase of
+        Drafting ->
+            "Drafting"
+
+        Compared ->
+            "Submitted · locked"
+
+        Rereading ->
+            "Reread"
+
+
+checkpointTitle : Model -> String
+checkpointTitle model =
+    case model.phase of
+        Drafting ->
+            case model.revisionParent of
+                Just parent ->
+                    "Revision of attempt 0" ++ String.fromInt parent
+
+                Nothing ->
+                    "One checkpoint · " ++ String.fromInt (List.length (enabledModules model.settings)) ++ " modules"
+
+        Compared ->
+            "Attempt 0" ++ String.fromInt model.attemptCount ++ " is immutable"
+
+        Rereading ->
+            "Finish when the sentence reads as a whole"
+
+
+checkpointSubtitle : Model -> String
+checkpointSubtitle model =
+    case model.phase of
+        Drafting ->
+            if model.referenceRevealed then
+                "Reference viewed · will be marked assisted"
+
+            else
+                "References hidden · draft autosaved"
+
+        Compared ->
+            "Review any module, revise, or close feedback"
+
+        Rereading ->
+            "Completion means reread—not mastered"
 
 
 formatDuration : Int -> String
@@ -1166,28 +1722,49 @@ formatDuration seconds =
         remainder =
             modBy 60 seconds
     in
-    if minutes == 0 then
-        String.fromInt remainder ++ "s"
+    String.fromInt minutes ++ "m " ++ String.fromInt remainder ++ "s"
+
+
+addUniqueModule : ModuleId -> List ModuleId -> List ModuleId
+addUniqueModule moduleId modules =
+    if moduleListMember moduleId modules then
+        modules
 
     else
-        String.fromInt minutes ++ "m " ++ String.fromInt remainder ++ "s"
+        moduleId :: modules
 
 
-wordsPerMinuteLabel : SessionStats -> String
-wordsPerMinuteLabel stats =
-    if stats.readingSeconds == 0 then
-        "—"
+moduleListMember : ModuleId -> List ModuleId -> Bool
+moduleListMember moduleId modules =
+    List.any (\candidate -> moduleKey candidate == moduleKey moduleId) modules
+
+
+moduleKey : ModuleId -> String
+moduleKey moduleId =
+    case moduleId of
+        GlossModule ->
+            "gloss"
+
+        MorphologyModule ->
+            "morphology"
+
+        DependencyModule ->
+            "dependency"
+
+        LiteralModule ->
+            "literal"
+
+        ProseModule ->
+            "prose"
+
+
+twoDigit : Int -> String
+twoDigit number =
+    if number < 10 then
+        "0" ++ String.fromInt number
 
     else
-        String.fromInt ((stats.completedWords * 60) // stats.readingSeconds) ++ " wpm"
-
-
-unitPreview : Unit -> String
-unitPreview unit =
-    unit.tokens
-        |> List.take 6
-        |> List.map .form
-        |> String.join " "
+        String.fromInt number
 
 
 boolString : Bool -> String
@@ -1197,191 +1774,3 @@ boolString value =
 
     else
         "false"
-
-
-works : List Work
-works =
-    [ { id = "mark"
-      , title = "Gospel of Mark"
-      , author = "Κατὰ Μᾶρκον"
-      , label = "Koine · Narrative"
-      , description = "A direct, fast-moving introduction to connected Greek prose."
-      , progressLabel = "8 of 42 units · 1,140 words"
-      , availabilityLabel = "On device · 1.8 MB"
-      , actionLabel = "Resume"
-      , divisions =
-            [ { title = "Κεφάλαιον Αʹ"
-              , progressLabel = "3 of 6 read"
-              , units = sampleUnits "mark-a"
-              }
-            , { title = "Κεφάλαιον Βʹ"
-              , progressLabel = "Not started"
-              , units = sampleUnits "mark-b"
-              }
-            ]
-      }
-    , { id = "cyropaedia"
-      , title = "Cyropaedia · Book 1"
-      , author = "Ξενοφῶν"
-      , label = "Classical Attic · Prose"
-      , description = "Measured historical prose with clear narrative structure."
-      , progressLabel = "Not started · 14,021 words"
-      , availabilityLabel = "3.2 MB"
-      , actionLabel = "Download"
-      , divisions =
-            [ { title = "Βιβλίον Αʹ · Τμῆμα Αʹ"
-              , progressLabel = "Not started"
-              , units = sampleUnits "cyr-a"
-              }
-            , { title = "Βιβλίον Αʹ · Τμῆμα Βʹ"
-              , progressLabel = "Not started"
-              , units = sampleUnits "cyr-b"
-              }
-            ]
-      }
-    , { id = "genesis"
-      , title = "Septuagint Genesis"
-      , author = "Γένεσις"
-      , label = "Koine · Sacred narrative"
-      , description = "A substantial reading path with compact scenes and familiar stories."
-      , progressLabel = "24 of 146 units · 5,870 words"
-      , availabilityLabel = "On device · 5.6 MB"
-      , actionLabel = "Resume"
-      , divisions =
-            [ { title = "Κεφάλαιον Αʹ"
-              , progressLabel = "Complete"
-              , units = sampleUnits "gen-a"
-              }
-            , { title = "Κεφάλαιον Βʹ"
-              , progressLabel = "1 of 4 read"
-              , units = sampleUnits "gen-b"
-              }
-            ]
-      }
-    ]
-
-
-sampleUnits : String -> List Unit
-sampleUnits prefix =
-    [ { id = prefix ++ "-1"
-      , reference = "Ἰλιάς 1.1–2"
-      , context = "The poet opens by asking a goddess to sing about the force that drives the epic’s suffering."
-      , tokens = unitOneTokens (prefix ++ "-1")
-      , translation = "Sing, goddess, of the destructive anger of Achilles, which brought countless sorrows upon the Achaeans. Demo translation for layout only."
-      , gistQuestion = "What does the poet ask the goddess to sing about?"
-      , gistOptions =
-            [ { label = "Achilles’ destructive anger and the suffering it caused", correct = True }
-            , { label = "The Achaeans’ joyful return from Troy", correct = False }
-            , { label = "Zeus teaching Achilles how to fight", correct = False }
-            ]
-      , focusPrompt = "What role does Μῆνιν play at the opening?"
-      , focusNote = "Its accusative form marks the theme or object of ἄειδε: ‘sing wrath.’ The delayed verb makes the opening noun especially prominent."
-      , progressLabel = "1 of 3"
-      }
-    , { id = prefix ++ "-2"
-      , reference = "Ἰλιάς 1.3–5"
-      , context = "The invocation expands from anger to its consequences for heroes and their bodies."
-      , tokens = unitTwoTokens (prefix ++ "-2")
-      , translation = "It sent many mighty souls of heroes to Hades and made their bodies prey for dogs and birds. Demo translation for layout only."
-      , gistQuestion = "What consequences of the anger are emphasized?"
-      , gistOptions =
-            [ { label = "Heroes died, and their bodies were left as prey", correct = True }
-            , { label = "The gods immediately ended the war", correct = False }
-            , { label = "Achilles rescued the Achaean army", correct = False }
-            ]
-      , focusPrompt = "How do ψυχὰς and αὐτοὺς contrast?"
-      , focusNote = "The poem separates the heroes’ souls, sent to Hades, from ‘themselves’—their bodies—left as prey."
-      , progressLabel = "2 of 3"
-      }
-    , { id = prefix ++ "-3"
-      , reference = "Ἰλιάς 1.6–7"
-      , context = "The poet now identifies the quarrel from which the poem’s central conflict began."
-      , tokens = unitThreeTokens (prefix ++ "-3")
-      , translation = "From the first moment when the son of Atreus and brilliant Achilles divided in strife. Demo translation for layout only."
-      , gistQuestion = "Which event marks the beginning of the conflict?"
-      , gistOptions =
-            [ { label = "Agamemnon and Achilles separated after quarrelling", correct = True }
-            , { label = "Achilles first arrived at Troy", correct = False }
-            , { label = "Zeus announced peace among the Greeks", correct = False }
-            ]
-      , focusPrompt = "Why is διαστήτην singular-looking but about two people?"
-      , focusNote = "It is a third-person dual form: the pair—the son of Atreus and Achilles—stood apart."
-      , progressLabel = "3 of 3"
-      }
-    ]
-
-
-unitOneTokens : String -> List Token
-unitOneTokens prefix =
-    tokenList prefix
-        [ ( "Μῆνιν", ( "μῆνις", "accusative singular feminine", "wrath" ) )
-        , ( "ἄειδε,", ( "ἀείδω", "present active imperative, 2nd singular", "sing" ) )
-        , ( "θεά,", ( "θεά", "vocative singular feminine", "goddess" ) )
-        , ( "Πηληϊάδεω", ( "Πηληϊάδης", "genitive singular masculine", "son of Peleus" ) )
-        , ( "Ἀχιλῆος", ( "Ἀχιλλεύς", "genitive singular masculine", "Achilles" ) )
-        , ( "οὐλομένην,", ( "ὄλλυμι", "aorist middle participle, accusative singular feminine", "destructive" ) )
-        , ( "ἣ", ( "ὅς", "nominative singular feminine", "which" ) )
-        , ( "μυρί᾽", ( "μυρίος", "accusative plural neuter", "countless" ) )
-        , ( "Ἀχαιοῖς", ( "Ἀχαιός", "dative plural masculine", "for the Achaeans" ) )
-        , ( "ἄλγε᾽", ( "ἄλγος", "accusative plural neuter", "sorrows" ) )
-        , ( "ἔθηκε,", ( "τίθημι", "aorist active indicative, 3rd singular", "caused" ) )
-        ]
-
-
-unitTwoTokens : String -> List Token
-unitTwoTokens prefix =
-    tokenList prefix
-        [ ( "πολλὰς", ( "πολύς", "accusative plural feminine", "many" ) )
-        , ( "δ᾽", ( "δέ", "conjunction", "and" ) )
-        , ( "ἰφθίμους", ( "ἴφθιμος", "accusative plural feminine", "mighty" ) )
-        , ( "ψυχὰς", ( "ψυχή", "accusative plural feminine", "souls" ) )
-        , ( "Ἄϊδι", ( "Ἅιδης", "dative singular masculine", "to Hades" ) )
-        , ( "προΐαψεν", ( "προϊάπτω", "aorist active indicative, 3rd singular", "sent forth" ) )
-        , ( "ἡρώων,", ( "ἥρως", "genitive plural masculine", "of heroes" ) )
-        , ( "αὐτοὺς", ( "αὐτός", "accusative plural masculine", "them" ) )
-        , ( "δὲ", ( "δέ", "conjunction", "but" ) )
-        , ( "ἑλώρια", ( "ἑλώριον", "accusative plural neuter", "prey" ) )
-        , ( "τεῦχε", ( "τεύχω", "imperfect active indicative, 3rd singular", "made" ) )
-        , ( "κύνεσσιν", ( "κύων", "dative plural", "for dogs" ) )
-        , ( "οἰωνοῖσί", ( "οἰωνός", "dative plural masculine", "for birds" ) )
-        , ( "τε", ( "τε", "conjunction", "and" ) )
-        , ( "πᾶσι,", ( "πᾶς", "dative plural masculine", "all" ) )
-        , ( "Διὸς", ( "Ζεύς", "genitive singular masculine", "of Zeus" ) )
-        , ( "δ᾽", ( "δέ", "conjunction", "and" ) )
-        , ( "ἐτελείετο", ( "τελέω", "imperfect middle indicative, 3rd singular", "was fulfilled" ) )
-        , ( "βουλή,", ( "βουλή", "nominative singular feminine", "will" ) )
-        ]
-
-
-unitThreeTokens : String -> List Token
-unitThreeTokens prefix =
-    tokenList prefix
-        [ ( "ἐξ", ( "ἐκ", "preposition with genitive", "from" ) )
-        , ( "οὗ", ( "ὅς", "genitive singular neuter", "which point" ) )
-        , ( "δὴ", ( "δή", "particle", "indeed" ) )
-        , ( "τὰ", ( "ὁ", "accusative plural neuter", "the" ) )
-        , ( "πρῶτα", ( "πρῶτος", "accusative plural neuter", "first" ) )
-        , ( "διαστήτην", ( "διΐστημι", "aorist active dual, 3rd person", "stood apart" ) )
-        , ( "ἐρίσαντε", ( "ἐρίζω", "aorist active participle, nominative dual", "quarrelling" ) )
-        , ( "Ἀτρεΐδης", ( "Ἀτρεΐδης", "nominative singular masculine", "son of Atreus" ) )
-        , ( "τε", ( "τε", "conjunction", "and" ) )
-        , ( "ἄναξ", ( "ἄναξ", "nominative singular masculine", "lord" ) )
-        , ( "ἀνδρῶν", ( "ἀνήρ", "genitive plural masculine", "of men" ) )
-        , ( "καὶ", ( "καί", "conjunction", "and" ) )
-        , ( "δῖος", ( "δῖος", "nominative singular masculine", "brilliant" ) )
-        , ( "Ἀχιλλεύς.", ( "Ἀχιλλεύς", "nominative singular masculine", "Achilles" ) )
-        ]
-
-
-tokenList : String -> List ( String, ( String, String, String ) ) -> List Token
-tokenList prefix entries =
-    entries
-        |> List.indexedMap
-            (\index ( form, ( lemma, morphology, gloss ) ) ->
-                { id = prefix ++ "-token-" ++ String.fromInt index
-                , form = form
-                , lemma = lemma
-                , morphology = morphology
-                , gloss = gloss
-                }
-            )
