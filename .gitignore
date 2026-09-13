@@ -1,0 +1,13 @@
+# Kai-generated environment
+.kai/
+
+# Elm build cache and generated browser bundle
+elm-stuff/
+elm.js
+
+# Elm REPL scratch files
+repl-temp-*
+
+# Local editor and OS files
+.DS_Store
+*~

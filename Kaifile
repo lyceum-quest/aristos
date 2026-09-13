@@ -1,0 +1,32 @@
+environment dev {
+  packages: [
+    "elmPackages.elm",
+    "elmPackages.elm-live"
+  ]
+}
+
+task build {
+  environment: "dev"
+  run: ["elm", "make", "src/Main.elm", "--output=elm.js"]
+}
+
+task serve {
+  environment: "dev"
+  run: [
+    "elm-live",
+    "src/Main.elm",
+    "--dir=.",
+    "--host=localhost",
+    "--port=8000",
+    "--hot",
+    "--",
+    "--output=elm.js"
+  ]
+}
+
+workflow dev {
+  steps: [
+    "run build",
+    "run serve"
+  ]
+}
