@@ -17,7 +17,7 @@ repl-temp-*
 /scripts/deploy
 
 # Local planning and research documents (directory and all contents)
-/docs/plans/
+/plans/
 
 # Local editor and OS files
 .DS_Store
