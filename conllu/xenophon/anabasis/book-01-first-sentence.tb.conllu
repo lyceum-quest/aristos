@@ -1,9 +1,9 @@
-# global.columns = ID FORM LEMMA UPOS XPOS FEATS HEAD DEPREL DEPS MISC
 # source = Xenophon, Anabasis (Book 1)
 # source_edition = Glaux (Greek Language Automated XML)
+# cts_urn = urn:cts:greekLit:tlg0032.tlg006.perseus-grc2:1.1.1
 # encoder = Gemini 3 Flash (Large Language Model)
 # editor = Gregory Crane (Human Philologist)
-# project = Beyond Translation / Perseus Digital Library
+# project = Lyceum Digital Library
 # conversion_method = LLM-augmented transformation to Universal Dependencies
 # gloss_type = Context-aware philological glosses
 # date_modified = 2026-04-24
