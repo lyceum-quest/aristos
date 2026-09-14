@@ -6,50 +6,11 @@
   <meta name="color-scheme" content="light dark">
   <meta name="description" content="Aristos configurable Ancient Greek reading workspace prototype">
   <title>Aristos · Greek reading workspace</title>
-  <script>
-    try {
-      document.documentElement.dataset.theme = localStorage.getItem("aristos-theme") === "light" ? "light" : "dark";
-    } catch (_) {
-      document.documentElement.dataset.theme = "dark";
-    }
-  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="app">Loading local corpus…</div>
-  <script src="corpus-preload.js"></script>
   <script src="elm.js"></script>
-  <script>
-    (async function () {
-      let corpus = null;
-      try {
-        const preload = await window.AristosPreload.load();
-        corpus = preload.corpora[0].parsed;
-      } catch (error) {
-        console.error("Aristos corpus preload failed", error);
-      }
-
-      const app = Elm.Main.init({
-        node: document.getElementById("app"),
-        flags: {
-          corpus: corpus,
-          theme: document.documentElement.dataset.theme
-        }
-      });
-
-      app.ports.saveTheme.subscribe(function (theme) {
-        document.documentElement.dataset.theme = theme;
-        try {
-          localStorage.setItem("aristos-theme", theme);
-        } catch (_) {}
-      });
-
-      app.ports.saveProgress.subscribe(function (progress) {
-        window.AristosPreload.saveProgress(progress).catch(function (error) {
-          console.warn("Aristos could not persist learner progress", error);
-        });
-      });
-    })();
-  </script>
+  <script src="browser-bridge.js"></script>
 </body>
 </html>

@@ -39,7 +39,7 @@
   --greek: "GFS Didot", "Noto Serif", "New Athena Unicode", Palatino, serif;
 }
 
-:root[data-theme="light"] {
+.app-shell.light-theme {
   color-scheme: light;
   --canvas: #f1eee7;
   --paper: #fbfaf6;
@@ -132,6 +132,10 @@ p {
 
 .app-shell {
   min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 18% 0%, var(--canvas-glow), transparent 30rem),
+    var(--canvas);
 }
 
 .app-header {

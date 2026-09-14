@@ -43,12 +43,12 @@ an application deploy. To apply the declarative NixOS module explicitly:
 
 ```sh
 kai workflow release
-./scripts/deploy-infrastructure.sh
+kai run provision
 ```
 
-The host configuration is assembled in `/var/lib/aristos-deploy` from
-`deploy/flake.nix` and the local Lyceum checkout. It explicitly preserves the
-currently deployed Lyceum reader/admin packages and all existing Caddy routes;
-this is necessary because the sibling open-source checkout no longer declares
-the private admin service or the independently deployed Conllu route. Override
-`LYCEUM_SOURCE` if that checkout moves.
+The Roc deployment CLI assembles the host configuration in
+`/var/lib/aristos-deploy` from `deploy/flake.nix` and the local Lyceum checkout.
+This host-extension flake remains handwritten because the current Kai machine
+model cannot preserve and extend undeclared sibling services. It explicitly
+preserves the deployed Lyceum reader/admin packages and all existing Caddy
+routes. Override `LYCEUM_SOURCE` if that checkout moves.

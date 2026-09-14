@@ -5,6 +5,7 @@ environment dev {
     "curl",
     "elmPackages.elm",
     "elmPackages.elm-live",
+    "git",
     "gnugrep",
     "openssh",
     "roc",
@@ -21,6 +22,11 @@ task preload {
     "anabasis",
     "conllu/xenophon/anabasis/book-01-first-sentence.tb.conllu"
   ]
+}
+
+task check-browser-boundary {
+  environment: "dev"
+  run: ["roc", "scripts/check-browser-boundary.roc"]
 }
 
 task build {
@@ -44,17 +50,23 @@ task serve {
 
 task bundle {
   environment: "dev"
-  run: ["./scripts/build-release.sh"]
+  run: ["roc", "scripts/build-release.roc"]
 }
 
 task publish {
   environment: "dev"
-  run: ["./scripts/deploy.sh"]
+  run: ["roc", "scripts/deploy.roc"]
+}
+
+task provision {
+  environment: "dev"
+  run: ["roc", "scripts/deploy.roc", "infrastructure"]
 }
 
 workflow dev {
   steps: [
     "run preload",
+    "run check-browser-boundary",
     "run build",
     "run serve"
   ]
@@ -63,6 +75,7 @@ workflow dev {
 workflow release {
   steps: [
     "run preload",
+    "run check-browser-boundary",
     "run bundle"
   ]
 }
@@ -70,6 +83,7 @@ workflow release {
 workflow deploy {
   steps: [
     "run preload",
+    "run check-browser-boundary",
     "run bundle",
     "run publish"
   ]

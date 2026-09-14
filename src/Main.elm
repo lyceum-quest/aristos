@@ -1,10 +1,12 @@
 port module Main exposing (main)
 
 import Browser
+import Conllu
 import Dict exposing (Dict)
 import Html exposing (Html, a, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
 import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, target, type_, value)
 import Html.Events exposing (onClick, onInput)
+import Http
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Time
@@ -80,49 +82,42 @@ type alias Draft =
 
 
 type alias Corpus =
-    { source : CorpusSource
-    , sentences : List Sentence
-    }
+    Conllu.Corpus
 
 
 type alias CorpusSource =
-    { name : String
-    , url : String
-    , commit : String
-    , license : String
-    , edition : String
-    }
+    Conllu.CorpusSource
 
 
 type alias Sentence =
-    { id : String
-    , chapter : Int
-    , verse : String
-    , text : String
-    , literalTranslation : String
-    , proseTranslation : String
-    , tokens : List CorpusToken
-    }
+    Conllu.Sentence
 
 
 type alias CorpusToken =
-    { id : Int
-    , form : String
-    , lemma : String
-    , upos : String
-    , morphology : Morphology
-    , head : Int
-    , relation : String
-    , gloss : String
-    , spaceAfter : Bool
-    }
+    Conllu.CorpusToken
 
 
 type alias Morphology =
-    { summary : String
-    , case_ : String
-    , number : String
-    , gender : String
+    Conllu.Morphology
+
+
+type alias Manifest =
+    { version : Int
+    , corpora : List ManifestEntry
+    }
+
+
+type alias ManifestEntry =
+    { id : String
+    , path : String
+    , source : CorpusSource
+    }
+
+
+type alias StorageResponse =
+    { id : String
+    , ok : Bool
+    , value : Decode.Value
     }
 
 
@@ -145,6 +140,10 @@ type alias Model =
     , elapsedSeconds : Int
     , notice : Maybe String
     , theme : Theme
+    , corpusReady : Bool
+    , corpusLoadedFromNetwork : Bool
+    , legacyManifestEntry : Maybe ManifestEntry
+    , legacyCorpusRaw : Maybe String
     }
 
 
@@ -183,28 +182,31 @@ type Msg
     | DismissNotice
     | ToggleTheme
     | Tick Time.Posix
+    | GotManifest (Result Http.Error Manifest)
+    | GotCorpus ManifestEntry (Result Http.Error String)
+    | GotStorage Decode.Value
 
 
-port saveTheme : String -> Cmd msg
+port storageRequest : Encode.Value -> Cmd msg
 
 
-port saveProgress : Encode.Value -> Cmd msg
+port storageResponse : (Decode.Value -> msg) -> Sub msg
 
 
 main : Program Decode.Value Model Msg
 main =
     Browser.element
-        { init = \flags -> ( init flags, Cmd.none )
+        { init = init
         , update = update
         , subscriptions = subscriptions
         , view = view
         }
 
 
-init : Decode.Value -> Model
-init flags =
-    { screen = LibraryScreen
-    , corpus = decodeCorpus flags
+init : Decode.Value -> ( Model, Cmd Msg )
+init _ =
+    ( { screen = LibraryScreen
+    , corpus = fallbackCorpus
     , sentenceIndex = 0
     , selectedTokenId = Nothing
     , preset = IntensivePreset
@@ -220,29 +222,20 @@ init flags =
     , attemptCount = 0
     , elapsedSeconds = 0
     , notice = Nothing
-    , theme = decodeTheme flags
+    , theme = DarkTheme
+    , corpusReady = False
+    , corpusLoadedFromNetwork = False
+    , legacyManifestEntry = Nothing
+    , legacyCorpusRaw = Nothing
     }
-
-
-decodeCorpus : Decode.Value -> Corpus
-decodeCorpus flags =
-    case Decode.decodeValue (Decode.field "corpus" corpusDecoder) flags of
-        Ok corpus ->
-            corpus
-
-        Err _ ->
-            Decode.decodeValue corpusDecoder flags
-                |> Result.withDefault fallbackCorpus
-
-
-decodeTheme : Decode.Value -> Theme
-decodeTheme flags =
-    case Decode.decodeValue (Decode.field "theme" Decode.string) flags of
-        Ok "light" ->
-            LightTheme
-
-        _ ->
-            DarkTheme
+    , Cmd.batch
+        [ fetchManifest
+        , storageGet "theme" "metadata" "theme"
+        , storageGet "cached-corpus" "metadata" "cached-corpus"
+        , storageGet "legacy-manifest" "metadata" "preload-manifest"
+        , storageGet "legacy-corpus" "corpora" "anabasis"
+        ]
+    )
 
 
 emptyDraft : Draft
@@ -259,16 +252,17 @@ emptyDraft =
     }
 
 
-corpusDecoder : Decode.Decoder Corpus
-corpusDecoder =
-    Decode.map2 Corpus
-        (Decode.field "source" corpusSourceDecoder)
-        (Decode.field "sentences" (Decode.list sentenceDecoder))
-
-
 corpusSourceDecoder : Decode.Decoder CorpusSource
 corpusSourceDecoder =
-    Decode.map5 CorpusSource
+    Decode.map5
+        (\name url commit license edition ->
+            { name = name
+            , url = url
+            , commit = commit
+            , license = license
+            , edition = edition
+            }
+        )
         (Decode.field "name" Decode.string)
         (Decode.field "url" Decode.string)
         (Decode.field "commit" Decode.string)
@@ -276,52 +270,34 @@ corpusSourceDecoder =
         (Decode.field "edition" Decode.string)
 
 
-sentenceDecoder : Decode.Decoder Sentence
-sentenceDecoder =
-    Decode.map7 Sentence
-        (Decode.field "i" Decode.string)
-        (Decode.field "c" Decode.int)
-        (Decode.field "v" Decode.string)
-        (Decode.field "x" Decode.string)
-        (Decode.field "d" Decode.string)
-        (Decode.field "e" Decode.string)
-        (Decode.field "t" (Decode.list corpusTokenDecoder))
+manifestDecoder : Decode.Decoder Manifest
+manifestDecoder =
+    Decode.map2 Manifest
+        (Decode.field "version" Decode.int)
+        (Decode.field "corpora" (Decode.list manifestEntryDecoder))
 
 
-corpusTokenDecoder : Decode.Decoder CorpusToken
-corpusTokenDecoder =
-    Decode.map8
-        (\tokenId form lemma upos morphology head relation gloss ->
-            \spaceAfter ->
-                { id = tokenId
-                , form = form
-                , lemma = lemma
-                , upos = upos
-                , morphology = morphology
-                , head = head
-                , relation = relation
-                , gloss = gloss
-                , spaceAfter = spaceAfter
-                }
-        )
-        (Decode.field "i" Decode.int)
-        (Decode.field "f" Decode.string)
-        (Decode.field "l" Decode.string)
-        (Decode.field "p" Decode.string)
-        morphologyDecoder
-        (Decode.field "h" Decode.int)
-        (Decode.field "r" Decode.string)
-        (Decode.field "s" Decode.string)
-        |> Decode.andThen (\buildToken -> Decode.map buildToken (Decode.field "a" Decode.bool))
+manifestEntryDecoder : Decode.Decoder ManifestEntry
+manifestEntryDecoder =
+    Decode.map3 ManifestEntry
+        (Decode.field "id" Decode.string)
+        (Decode.field "path" Decode.string)
+        (Decode.field "source" corpusSourceDecoder)
 
 
-morphologyDecoder : Decode.Decoder Morphology
-morphologyDecoder =
-    Decode.map4 Morphology
-        (Decode.field "m" Decode.string)
-        (Decode.field "c" Decode.string)
-        (Decode.field "n" Decode.string)
-        (Decode.field "g" Decode.string)
+storageResponseDecoder : Decode.Decoder StorageResponse
+storageResponseDecoder =
+    Decode.map3 StorageResponse
+        (Decode.field "id" Decode.string)
+        (Decode.field "ok" Decode.bool)
+        (Decode.field "value" Decode.value)
+
+
+cachedCorpusDecoder : Decode.Decoder ( ManifestEntry, String )
+cachedCorpusDecoder =
+    Decode.map2 Tuple.pair
+        (Decode.field "entry" manifestEntryDecoder)
+        (Decode.field "raw" Decode.string)
 
 
 fallbackCorpus : Corpus
@@ -352,7 +328,12 @@ fallbackToken tokenId form lemma upos summary case_ number gender head relation 
     , form = form
     , lemma = lemma
     , upos = upos
-    , morphology = Morphology summary case_ number gender
+    , morphology =
+        { summary = summary
+        , case_ = case_
+        , number = number
+        , gender = gender
+        }
     , head = head
     , relation = relation
     , gloss = gloss
@@ -392,21 +373,44 @@ intensiveSettings =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    if model.screen == WorkspaceScreen then
-        Time.every 1000 Tick
+    Sub.batch
+        [ storageResponse GotStorage
+        , if model.screen == WorkspaceScreen then
+            Time.every 1000 Tick
 
-    else
-        Sub.none
+          else
+            Sub.none
+        ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
+    case msg of
+        GotManifest result ->
+            ( model, commandForManifest result )
+
+        GotCorpus entry result ->
+            handleFetchedCorpus entry result model
+
+        GotStorage value ->
+            ( handleStorageResponse value model, Cmd.none )
+
+        _ ->
+            updateInteraction msg model
+
+
+updateInteraction : Msg -> Model -> ( Model, Cmd Msg )
+updateInteraction msg model =
     ( case msg of
         ShowLibrary ->
             { model | screen = LibraryScreen, notice = Nothing }
 
         ShowWorkspace ->
-            { model | screen = WorkspaceScreen, notice = Nothing }
+            if model.corpusReady then
+                { model | screen = WorkspaceScreen, notice = Nothing }
+
+            else
+                { model | notice = Just "The local corpus is still loading." }
 
         ShowSettings ->
             { model | screen = SettingsScreen, notice = Nothing }
@@ -594,6 +598,15 @@ update msg model =
 
         Tick _ ->
             { model | elapsedSeconds = model.elapsedSeconds + 1 }
+
+        GotManifest _ ->
+            model
+
+        GotCorpus _ _ ->
+            model
+
+        GotStorage _ ->
+            model
     , commandFor msg model
     )
 
@@ -602,26 +615,270 @@ commandFor : Msg -> Model -> Cmd Msg
 commandFor msg model =
     case msg of
         ToggleTheme ->
-            saveTheme
-                (if model.theme == DarkTheme then
-                    "light"
+            storagePut "theme" "metadata"
+                (Encode.object
+                    [ ( "key", Encode.string "theme" )
+                    , ( "value"
+                      , Encode.string
+                            (if model.theme == DarkTheme then
+                                "light"
 
-                 else
-                    "dark"
+                             else
+                                "dark"
+                            )
+                      )
+                    ]
                 )
 
         SubmitCheckpoint ->
             if model.phase == Drafting then
-                saveProgress (encodeProgress False (model.attemptCount + 1) model)
+                storagePut "save-progress" "progress"
+                    (encodeProgress False (model.attemptCount + 1) model)
 
             else
                 Cmd.none
 
         FinishPassage ->
-            saveProgress (encodeProgress True model.attemptCount model)
+            storagePut "save-progress" "progress"
+                (encodeProgress True model.attemptCount model)
 
         _ ->
             Cmd.none
+
+
+fetchManifest : Cmd Msg
+fetchManifest =
+    Http.request
+        { method = "GET"
+        , headers = [ Http.header "Cache-Control" "no-cache" ]
+        , url = "preload/corpora.json"
+        , body = Http.emptyBody
+        , expect = Http.expectJson GotManifest manifestDecoder
+        , timeout = Nothing
+        , tracker = Nothing
+        }
+
+
+commandForManifest : Result Http.Error Manifest -> Cmd Msg
+commandForManifest result =
+    case result of
+        Ok manifest ->
+            if manifest.version /= 1 then
+                Cmd.none
+
+            else
+                manifest.corpora
+                    |> List.head
+                    |> Maybe.map fetchCorpus
+                    |> Maybe.withDefault Cmd.none
+
+        Err _ ->
+            Cmd.none
+
+
+fetchCorpus : ManifestEntry -> Cmd Msg
+fetchCorpus entry =
+    Http.request
+        { method = "GET"
+        , headers = [ Http.header "Cache-Control" "no-cache" ]
+        , url = "preload/" ++ entry.path
+        , body = Http.emptyBody
+        , expect = Http.expectString (GotCorpus entry)
+        , timeout = Nothing
+        , tracker = Nothing
+        }
+
+
+handleFetchedCorpus : ManifestEntry -> Result Http.Error String -> Model -> ( Model, Cmd Msg )
+handleFetchedCorpus entry result model =
+    case result of
+        Ok raw ->
+            case Conllu.parse entry.source raw of
+                Ok corpus ->
+                    ( installCorpus True corpus model
+                    , Cmd.batch
+                        [ storagePut "cache-corpus" "metadata"
+                            (Encode.object
+                                [ ( "key", Encode.string "cached-corpus" )
+                                , ( "value"
+                                  , Encode.object
+                                        [ ( "entry", encodeManifestEntry entry )
+                                        , ( "raw", Encode.string raw )
+                                        ]
+                                  )
+                                ]
+                            )
+                        , storagePut "cache-manifest" "metadata"
+                            (Encode.object
+                                [ ( "key", Encode.string "preload-manifest" )
+                                , ( "value"
+                                  , Encode.object
+                                        [ ( "version", Encode.int 1 )
+                                        , ( "corpora", Encode.list encodeManifestEntry [ entry ] )
+                                        ]
+                                  )
+                                ]
+                            )
+                        , storagePut "cache-raw-corpus" "corpora"
+                            (Encode.object
+                                [ ( "id", Encode.string entry.id )
+                                , ( "path", Encode.string entry.path )
+                                , ( "content", Encode.string raw )
+                                ]
+                            )
+                        ]
+                    )
+
+                Err problem ->
+                    ( { model | notice = Just ("Corpus could not be parsed: " ++ problem) }, Cmd.none )
+
+        Err _ ->
+            ( model, Cmd.none )
+
+
+handleStorageResponse : Decode.Value -> Model -> Model
+handleStorageResponse value model =
+    case Decode.decodeValue storageResponseDecoder value of
+        Ok response ->
+            if not response.ok then
+                model
+
+            else if response.id == "theme" then
+                case Decode.decodeValue (Decode.field "value" Decode.string) response.value of
+                    Ok "light" ->
+                        { model | theme = LightTheme }
+
+                    Ok "dark" ->
+                        { model | theme = DarkTheme }
+
+                    _ ->
+                        model
+
+            else if response.id == "cached-corpus" && not model.corpusLoadedFromNetwork then
+                case Decode.decodeValue (Decode.field "value" cachedCorpusDecoder) response.value of
+                    Ok ( entry, raw ) ->
+                        useCachedCorpus entry raw model
+
+                    Err _ ->
+                        model
+
+            else if response.id == "legacy-manifest" then
+                case Decode.decodeValue (Decode.field "value" manifestDecoder) response.value of
+                    Ok manifest ->
+                        { model | legacyManifestEntry = List.head manifest.corpora }
+                            |> loadLegacyCache
+
+                    Err _ ->
+                        model
+
+            else if response.id == "legacy-corpus" then
+                case Decode.decodeValue (Decode.field "content" Decode.string) response.value of
+                    Ok raw ->
+                        { model | legacyCorpusRaw = Just raw }
+                            |> loadLegacyCache
+
+                    Err _ ->
+                        model
+
+            else
+                model
+
+        Err _ ->
+            model
+
+
+useCachedCorpus : ManifestEntry -> String -> Model -> Model
+useCachedCorpus entry raw model =
+    case Conllu.parse entry.source raw of
+        Ok corpus ->
+            installCorpus False corpus model
+
+        Err _ ->
+            model
+
+
+installCorpus : Bool -> Corpus -> Model -> Model
+installCorpus loadedFromNetwork corpus model =
+    { model
+        | screen =
+            if model.corpusReady then
+                LibraryScreen
+
+            else
+                model.screen
+        , corpus = corpus
+        , corpusReady = True
+        , corpusLoadedFromNetwork = model.corpusLoadedFromNetwork || loadedFromNetwork
+        , sentenceIndex = 0
+        , selectedTokenId = Nothing
+        , activeModule = Nothing
+        , phase = Drafting
+        , draft = emptyDraft
+        , previousDraft = Nothing
+        , skippedModules = []
+        , referenceRevealed = False
+        , revisionParent = Nothing
+        , attemptCount = 0
+        , elapsedSeconds = 0
+    }
+
+
+loadLegacyCache : Model -> Model
+loadLegacyCache model =
+    if model.corpusReady then
+        model
+
+    else
+        case ( model.legacyManifestEntry, model.legacyCorpusRaw ) of
+            ( Just entry, Just raw ) ->
+                useCachedCorpus entry raw model
+
+            _ ->
+                model
+
+
+storageGet : String -> String -> String -> Cmd msg
+storageGet requestId store key =
+    storageRequest
+        (Encode.object
+            [ ( "id", Encode.string requestId )
+            , ( "operation", Encode.string "get" )
+            , ( "store", Encode.string store )
+            , ( "key", Encode.string key )
+            ]
+        )
+
+
+storagePut : String -> String -> Encode.Value -> Cmd msg
+storagePut requestId store storedValue =
+    storageRequest
+        (Encode.object
+            [ ( "id", Encode.string requestId )
+            , ( "operation", Encode.string "put" )
+            , ( "store", Encode.string store )
+            , ( "value", storedValue )
+            ]
+        )
+
+
+encodeManifestEntry : ManifestEntry -> Encode.Value
+encodeManifestEntry entry =
+    Encode.object
+        [ ( "id", Encode.string entry.id )
+        , ( "path", Encode.string entry.path )
+        , ( "source", encodeCorpusSource entry.source )
+        ]
+
+
+encodeCorpusSource : CorpusSource -> Encode.Value
+encodeCorpusSource source =
+    Encode.object
+        [ ( "name", Encode.string source.name )
+        , ( "url", Encode.string source.url )
+        , ( "commit", Encode.string source.commit )
+        , ( "license", Encode.string source.license )
+        , ( "edition", Encode.string source.edition )
+        ]
 
 
 encodeProgress : Bool -> Int -> Model -> Encode.Value
@@ -958,7 +1215,15 @@ viewFeaturedPack model =
                     ]
                 , div [ class "button-row" ]
                     [ button [ class "secondary-button", type_ "button", onClick ShowSettings ] [ text "Configure" ]
-                    , button [ class "primary-button", type_ "button", onClick ShowWorkspace ] [ text "Start Anabasis →" ]
+                    , button [ class "primary-button", type_ "button", disabled (not model.corpusReady), onClick ShowWorkspace ]
+                        [ text
+                            (if model.corpusReady then
+                                "Start Anabasis →"
+
+                             else
+                                "Loading corpus…"
+                            )
+                        ]
                     ]
                 ]
             ]

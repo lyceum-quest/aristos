@@ -12,6 +12,9 @@ repl-temp-*
 
 # Roc script executables
 /scripts/build-corpus-preload
+/scripts/build-release
+/scripts/check-browser-boundary
+/scripts/deploy
 
 # Local planning and research documents
 /docs/plans/
