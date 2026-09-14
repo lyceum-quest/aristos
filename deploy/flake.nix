@@ -18,7 +18,7 @@
               auto_https off
             }
 
-            http://127.0.0.1:8092 {
+            :8092 {
               root * /var/www/aristos
               encode zstd gzip
               try_files {path} /index.html
