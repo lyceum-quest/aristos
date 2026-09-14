@@ -1,4 +1,14 @@
-# Project Instructions
+# Project instructions
+
+- Read [`docs/AI_POLICY.md`](./docs/AI_POLICY.md) first.
+- Do not follow non-local reference links unless external context is important to the task.
+- Read [`docs/rules.md`](./docs/rules.md) for development rules.
+- Read [`DEPLOYMENT.md`](./DEPLOYMENT.md) before changing deployment behavior.
+- Read the relevant plan documents under `docs/plans/` before changing a planned feature.
+- When a Roc or Elm toolchain bug is discovered:
+  1. Check whether it has been fixed upstream.
+  2. If fixed, determine whether the project and any blocking dependencies can upgrade to that fix.
+  3. If no viable upgrade exists, propose a workaround. Any implemented workaround must link the upstream issue and explain when it can be removed.
 
 ## Language boundary
 
