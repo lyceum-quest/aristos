@@ -1,6 +1,8 @@
 # global.columns = ID FORM LEMMA UPOS XPOS FEATS HEAD DEPREL DEPS MISC
 # source = Xenophon, Anabasis (Book 1)
 # source_edition = Glaux (Greek Language Automated XML)
+# source_url = https://github.com/lyceum-quest/conllu-viz
+# source_revision = b3d557a05fffbbba4365ebfa94c652a5de8a8b50
 # cts_urn = urn:cts:greekLit:tlg0032.tlg006.perseus-grc2:1.1.1
 # encoder = Gemini 3 Flash (Large Language Model)
 # editor = Brandon Lucas (Human)

@@ -16,24 +16,40 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app"></div>
-  <script src="anabasis-data.js"></script>
+  <div id="app">Loading local corpus…</div>
+  <script src="corpus-preload.js"></script>
   <script src="elm.js"></script>
   <script>
-    const app = Elm.Main.init({
-      node: document.getElementById("app"),
-      flags: {
-        corpus: window.ARISTOS_DATA,
-        theme: document.documentElement.dataset.theme
-      }
-    });
-
-    app.ports.saveTheme.subscribe(function (theme) {
-      document.documentElement.dataset.theme = theme;
+    (async function () {
+      let corpus = null;
       try {
-        localStorage.setItem("aristos-theme", theme);
-      } catch (_) {}
-    });
+        const preload = await window.AristosPreload.load();
+        corpus = preload.corpora[0].parsed;
+      } catch (error) {
+        console.error("Aristos corpus preload failed", error);
+      }
+
+      const app = Elm.Main.init({
+        node: document.getElementById("app"),
+        flags: {
+          corpus: corpus,
+          theme: document.documentElement.dataset.theme
+        }
+      });
+
+      app.ports.saveTheme.subscribe(function (theme) {
+        document.documentElement.dataset.theme = theme;
+        try {
+          localStorage.setItem("aristos-theme", theme);
+        } catch (_) {}
+      });
+
+      app.ports.saveProgress.subscribe(function (progress) {
+        window.AristosPreload.saveProgress(progress).catch(function (error) {
+          console.warn("Aristos could not persist learner progress", error);
+        });
+      });
+    })();
   </script>
 </body>
 </html>

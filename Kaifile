@@ -12,9 +12,15 @@ environment dev {
   ]
 }
 
-task import-anabasis {
+task preload {
   environment: "dev"
-  run: ["roc", "scripts/import-lyceum-anabasis.roc"]
+  run: [
+    "roc",
+    "scripts/build-corpus-preload.roc",
+    "preload",
+    "anabasis",
+    "conllu/xenophon/anabasis/book-01-first-sentence.tb.conllu"
+  ]
 }
 
 task build {
@@ -36,20 +42,35 @@ task serve {
   ]
 }
 
-task release {
+task bundle {
   environment: "dev"
   run: ["./scripts/build-release.sh"]
 }
 
-task deploy {
+task publish {
   environment: "dev"
   run: ["./scripts/deploy.sh"]
 }
 
 workflow dev {
   steps: [
-    "run import-anabasis",
+    "run preload",
     "run build",
     "run serve"
+  ]
+}
+
+workflow release {
+  steps: [
+    "run preload",
+    "run bundle"
+  ]
+}
+
+workflow deploy {
+  steps: [
+    "run preload",
+    "run bundle",
+    "run publish"
   ]
 }

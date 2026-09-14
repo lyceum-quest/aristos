@@ -6,6 +6,7 @@ import Html exposing (Html, a, aside, button, div, footer, h1, h2, h3, header, i
 import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, target, type_, value)
 import Html.Events exposing (onClick, onInput)
 import Json.Decode as Decode
+import Json.Encode as Encode
 import Time
 
 
@@ -185,6 +186,9 @@ type Msg
 
 
 port saveTheme : String -> Cmd msg
+
+
+port saveProgress : Encode.Value -> Cmd msg
 
 
 main : Program Decode.Value Model Msg
@@ -606,8 +610,29 @@ commandFor msg model =
                     "dark"
                 )
 
+        SubmitCheckpoint ->
+            if model.phase == Drafting then
+                saveProgress (encodeProgress False (model.attemptCount + 1) model)
+
+            else
+                Cmd.none
+
+        FinishPassage ->
+            saveProgress (encodeProgress True model.attemptCount model)
+
         _ ->
             Cmd.none
+
+
+encodeProgress : Bool -> Int -> Model -> Encode.Value
+encodeProgress completed attemptCount model =
+    Encode.object
+        [ ( "id", Encode.string (currentSentence model).id )
+        , ( "sentenceIndex", Encode.int model.sentenceIndex )
+        , ( "attemptCount", Encode.int attemptCount )
+        , ( "elapsedSeconds", Encode.int model.elapsedSeconds )
+        , ( "completed", Encode.bool completed )
+        ]
 
 
 moveToSentence : Int -> Model -> Model

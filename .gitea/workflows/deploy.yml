@@ -33,4 +33,4 @@ jobs:
       - name: Deploy
         env:
           TARGET_HOST: root@144.202.31.40
-        run: nix run github:thebrandonlucas/kai/9b9fcfc79932a5df50fa577379d7ad4acd77883c -- run deploy
+        run: nix run github:thebrandonlucas/kai/9b9fcfc79932a5df50fa577379d7ad4acd77883c -- workflow deploy

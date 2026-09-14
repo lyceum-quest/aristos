@@ -5,12 +5,13 @@
 elm-stuff/
 elm.js
 dist/
+preload/
 
 # Elm REPL scratch files
 repl-temp-*
 
 # Roc script executables
-/scripts/import-lyceum-anabasis
+/scripts/build-corpus-preload
 
 # Local planning and research documents
 /docs/plans/

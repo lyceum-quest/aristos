@@ -17,10 +17,10 @@ allowing the existing public Caddy instance to remain the sole owner of ports
 
 ## Deploy
 
-Run the Kai task:
+Run the Kai workflow:
 
 ```sh
-kai run deploy
+kai workflow deploy
 ```
 
 Defaults:
@@ -30,9 +30,9 @@ TARGET_HOST=lyceum-staging
 REMOTE_DIR=/var/www/aristos
 ```
 
-The task builds an optimized Elm release, synchronizes the static bundle, and
-verifies Aristos plus the existing Conllu and Lyceum endpoints. Pushes and
-merges to `master` run the same task through `.gitea/workflows/deploy.yml`.
+The workflow builds an optimized Elm release, synchronizes the static bundle,
+and verifies Aristos plus the existing Conllu and Lyceum endpoints. Pushes and
+merges to `master` run the same workflow through `.gitea/workflows/deploy.yml`.
 Configure the repository action secret `DEPLOY_SSH_KEY` with an unencrypted SSH
 private key authorized for `root@144.202.31.40`.
 
@@ -42,6 +42,7 @@ The static service and public route normally do not need to be rebuilt during
 an application deploy. To apply the declarative NixOS module explicitly:
 
 ```sh
+kai workflow release
 ./scripts/deploy-infrastructure.sh
 ```
 
