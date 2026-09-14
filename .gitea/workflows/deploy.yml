@@ -1,0 +1,36 @@
+name: Deploy Aristos
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: aristos-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: https://github.com/actions/checkout@v4
+
+      - name: Install Nix
+        uses: https://github.com/cachix/install-nix-action@v31
+
+      - name: Configure deployment SSH key
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          test -n "$DEPLOY_SSH_KEY"
+          install -d -m 700 "$HOME/.ssh"
+          printf '%s\n' "$DEPLOY_SSH_KEY" > "$HOME/.ssh/id_ed25519"
+          chmod 600 "$HOME/.ssh/id_ed25519"
+          printf '%s\n' '144.202.31.40 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFApJvwYXLciqCBurHXaaevKJMVOUgBZNpRgwvuyj8yR' >> "$HOME/.ssh/known_hosts"
+
+      - name: Deploy
+        env:
+          TARGET_HOST: root@144.202.31.40
+        run: nix run github:thebrandonlucas/kai/9b9fcfc79932a5df50fa577379d7ad4acd77883c -- run deploy

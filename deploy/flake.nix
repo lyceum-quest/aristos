@@ -26,6 +26,10 @@
             }
           '';
         in {
+          users.users.root.openssh.authorizedKeys.keys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2UytIqUbPYXbsjjnIIEE/F0nHNm7AhVjz7ITxjIMNb github-actions-deploy"
+          ];
+
           # Preserve the exact reader and admin builds from the existing host
           # while extending its stale source configuration.
           services.lyceum.package = deployedLyceum;

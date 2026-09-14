@@ -17,8 +17,10 @@ allowing the existing public Caddy instance to remain the sole owner of ports
 
 ## Deploy
 
+Run the Kai task:
+
 ```sh
-./scripts/deploy.sh
+kai run deploy
 ```
 
 Defaults:
@@ -28,9 +30,20 @@ TARGET_HOST=lyceum-staging
 REMOTE_DIR=/var/www/aristos
 ```
 
-The script builds an optimized Elm release, synchronizes the static bundle,
-applies the declarative NixOS module, and verifies Aristos plus the existing
-Conllu and Lyceum endpoints.
+The task builds an optimized Elm release, synchronizes the static bundle, and
+verifies Aristos plus the existing Conllu and Lyceum endpoints. Pushes and
+merges to `master` run the same task through `.gitea/workflows/deploy.yml`.
+Configure the repository action secret `DEPLOY_SSH_KEY` with an unencrypted SSH
+private key authorized for `root@144.202.31.40`.
+
+## Provision infrastructure
+
+The static service and public route normally do not need to be rebuilt during
+an application deploy. To apply the declarative NixOS module explicitly:
+
+```sh
+./scripts/deploy-infrastructure.sh
+```
 
 The host configuration is assembled in `/var/lib/aristos-deploy` from
 `deploy/flake.nix` and the local Lyceum checkout. It explicitly preserves the

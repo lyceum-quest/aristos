@@ -1,7 +1,13 @@
 environment dev {
   packages: [
+    "bashInteractive",
+    "coreutils",
+    "curl",
     "elmPackages.elm",
-    "elmPackages.elm-live"
+    "elmPackages.elm-live",
+    "gnugrep",
+    "openssh",
+    "rsync"
   ]
 }
 
@@ -22,6 +28,16 @@ task serve {
     "--",
     "--output=elm.js"
   ]
+}
+
+task release {
+  environment: "dev"
+  run: ["./scripts/build-release.sh"]
+}
+
+task deploy {
+  environment: "dev"
+  run: ["./scripts/deploy.sh"]
 }
 
 workflow dev {
