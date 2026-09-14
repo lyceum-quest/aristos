@@ -23,11 +23,11 @@ ssh "$TARGET_HOST" "
   chown -R root:root '$REMOTE_DIR'
   find '$REMOTE_DIR' -type d -exec chmod 755 {} +
   find '$REMOTE_DIR' -type f -exec chmod 644 {} +
-  curl --fail --silent --show-error http://127.0.0.1:8092/ | grep -q 'genesis-data.js'
+  curl --fail --silent --show-error http://127.0.0.1:8092/ | grep -q 'anabasis-data.js'
 "
 
 for attempt in {1..12}; do
-  if curl --fail --silent --show-error https://aristos.lyceum.quest/ 2>/dev/null | grep -q 'genesis-data.js'; then
+  if curl --fail --silent --show-error https://aristos.lyceum.quest/ 2>/dev/null | grep -q 'anabasis-data.js'; then
     break
   fi
   if [[ "$attempt" == 12 ]]; then

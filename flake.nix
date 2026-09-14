@@ -9,7 +9,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.${system}.default = pkgs.mkShell {
-        packages = [ pkgs.elmPackages.elm ];
+        packages = [ pkgs.elmPackages.elm pkgs.roc ];
       };
     };
 }

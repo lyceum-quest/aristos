@@ -34,11 +34,11 @@ ssh "$TARGET_HOST" "
   nix flake lock
   nixos-rebuild switch --impure --flake 'path:$DEPLOY_STATE#staging'
   systemctl is-active --quiet lyceum lyceum-admin caddy aristos-caddy
-  curl --fail --silent --show-error http://127.0.0.1:8092/ | grep -q 'genesis-data.js'
+  curl --fail --silent --show-error http://127.0.0.1:8092/ | grep -q 'anabasis-data.js'
 "
 
 for attempt in {1..12}; do
-  if curl --fail --silent --show-error https://aristos.lyceum.quest/ 2>/dev/null | grep -q 'genesis-data.js'; then
+  if curl --fail --silent --show-error https://aristos.lyceum.quest/ 2>/dev/null | grep -q 'anabasis-data.js'; then
     break
   fi
   if [[ "$attempt" == 12 ]]; then

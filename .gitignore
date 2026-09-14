@@ -9,6 +9,9 @@ dist/
 # Elm REPL scratch files
 repl-temp-*
 
+# Roc script executables
+/scripts/import-lyceum-anabasis
+
 # Local planning and research documents
 /docs/plans/
 

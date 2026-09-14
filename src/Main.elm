@@ -2,8 +2,8 @@ port module Main exposing (main)
 
 import Browser
 import Dict exposing (Dict)
-import Html exposing (Html, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
-import Html.Attributes exposing (attribute, checked, class, classList, disabled, id, placeholder, rows, selected, type_, value)
+import Html exposing (Html, a, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
+import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, target, type_, value)
 import Html.Events exposing (onClick, onInput)
 import Json.Decode as Decode
 import Time
@@ -98,6 +98,8 @@ type alias Sentence =
     , chapter : Int
     , verse : String
     , text : String
+    , literalTranslation : String
+    , proseTranslation : String
     , tokens : List CorpusToken
     }
 
@@ -272,11 +274,13 @@ corpusSourceDecoder =
 
 sentenceDecoder : Decode.Decoder Sentence
 sentenceDecoder =
-    Decode.map5 Sentence
+    Decode.map7 Sentence
         (Decode.field "i" Decode.string)
         (Decode.field "c" Decode.int)
         (Decode.field "v" Decode.string)
         (Decode.field "x" Decode.string)
+        (Decode.field "d" Decode.string)
+        (Decode.field "e" Decode.string)
         (Decode.field "t" (Decode.list corpusTokenDecoder))
 
 
@@ -319,30 +323,20 @@ morphologyDecoder =
 fallbackCorpus : Corpus
 fallbackCorpus =
     { source =
-        { name = "UD Ancient Greek PTNK"
-        , url = "https://github.com/UniversalDependencies/UD_Ancient_Greek-PTNK"
-        , commit = "818fb315ff1f6cd95b6e7fa90f3707488d2b010d"
+        { name = "Lyceum Digital Library"
+        , url = "https://github.com/lyceum-quest/conllu-viz"
+        , commit = ""
         , license = "CC BY-SA 4.0"
-        , edition = "Septuagint according to Codex Alexandrinus"
+        , edition = "GLAux (Greek Language Automated XML)"
         }
     , sentences =
-        [ { id = "Septuagint-Genesis-1:1-grc"
+        [ { id = "missing"
           , chapter = 1
-          , verse = "1"
-          , text = "Ἐν ἀρχῇ ἐποίησεν ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν."
-          , tokens =
-                [ fallbackToken 1 "Ἐν" "ἐν" "ADP" "" "" "" "" 2 "case" "in,on,by,with,to" True
-                , fallbackToken 2 "ἀρχῇ" "ἀρχή" "NOUN" "Case=Dat|Gender=Fem|Number=Sing" "Dat" "Sing" "Fem" 3 "obl:tmod" "beginning,ruler,office" True
-                , fallbackToken 3 "ἐποίησεν" "ποιέω" "VERB" "Aspect=Perf|Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin|Voice=Act" "" "Sing" "" 0 "root" "to-do,make" True
-                , fallbackToken 4 "ὁ" "ὁ" "DET" "Case=Nom|Definite=Def|Gender=Masc|Number=Sing|PronType=Art" "Nom" "Sing" "Masc" 5 "det" "the;-oh" True
-                , fallbackToken 5 "θεὸς" "θεός" "NOUN" "Case=Nom|Gender=Masc|Number=Sing" "Nom" "Sing" "Masc" 3 "nsubj" "god" True
-                , fallbackToken 6 "τὸν" "ὁ" "DET" "Case=Acc|Definite=Def|Gender=Masc|Number=Sing|PronType=Art" "Acc" "Sing" "Masc" 7 "det" "the" True
-                , fallbackToken 7 "οὐρανὸν" "οὐρανός" "NOUN" "Case=Acc|Gender=Masc|Number=Sing" "Acc" "Sing" "Masc" 3 "obj" "heaven,sky" True
-                , fallbackToken 8 "καὶ" "καί" "CCONJ" "" "" "" "" 10 "cc" "and,also,even,then,next" True
-                , fallbackToken 9 "τὴν" "ὁ" "DET" "Case=Acc|Definite=Def|Gender=Fem|Number=Sing|PronType=Art" "Acc" "Sing" "Fem" 10 "det" "the" True
-                , fallbackToken 10 "γῆν" "γῆ" "NOUN" "Case=Acc|Gender=Fem|Number=Sing" "Acc" "Sing" "Fem" 7 "conj" "earth" False
-                , fallbackToken 11 "." "." "PUNCT" "" "" "" "" 3 "punct" "" True
-                ]
+          , verse = "1.1.1"
+          , text = "No Anabasis data loaded."
+          , literalTranslation = ""
+          , proseTranslation = ""
+          , tokens = []
           }
         ]
     }
@@ -573,10 +567,10 @@ update msg model =
         FinishPassage ->
             if model.sentenceIndex < List.length model.corpus.sentences - 1 then
                 moveToSentence (model.sentenceIndex + 1) model
-                    |> withNotice "Passage reread recorded. The next Genesis passage is ready."
+                    |> withNotice "Passage reread recorded. The next Anabasis passage is ready."
 
             else
-                { model | screen = LibraryScreen, notice = Just "Genesis reread recorded. You reached the end of the bundled text." }
+                { model | screen = LibraryScreen, notice = Just "Anabasis reread recorded. You reached the end of the bundled text." }
 
         ShowNotice notice ->
             { model | notice = Just notice }
@@ -660,6 +654,36 @@ firstSentenceIndexForChapter chapter sentences =
         |> List.filter (\( _, sentence ) -> sentence.chapter == chapter)
         |> List.head
         |> Maybe.map Tuple.first
+
+
+corpusChapters : List Sentence -> List Int
+corpusChapters sentences =
+    sentences
+        |> List.map .chapter
+        |> List.foldl
+            (\chapter chapters ->
+                if List.member chapter chapters then
+                    chapters
+
+                else
+                    chapter :: chapters
+            )
+            []
+        |> List.sort
+
+
+sourceDetails : CorpusSource -> String
+sourceDetails source =
+    [ source.edition
+    , source.license
+    , if String.isEmpty source.commit then
+        ""
+
+      else
+        "source " ++ String.left 12 source.commit
+    ]
+        |> List.filter (not << String.isEmpty)
+        |> String.join " · "
 
 
 updateDraft : (Draft -> Draft) -> Model -> Model
@@ -867,16 +891,16 @@ viewLibrary model =
                 , p [ class "lead" ] [ text "Read freely, or compose only the form, syntax, and translation tools useful for this session." ]
                 ]
             , div [ class "library-summary" ]
-                [ span [ class "summary-value" ] [ text "50" ]
-                , span [] [ text "Genesis chapters" ]
+                [ span [ class "summary-value" ] [ text "1" ]
+                , span [] [ text "Anabasis section" ]
                 , span [ class "summary-divider" ] []
                 , span [ class "summary-value" ] [ text (String.fromInt (List.length model.corpus.sentences)) ]
-                , span [] [ text "real passages" ]
+                , span [] [ text "imported sentence" ]
                 ]
             ]
         , section [ class "pack-list", attribute "aria-label" "Content packs" ]
             [ viewFeaturedPack model
-            , viewPackCard "Ξενοφῶντος Ἀνάβασις" "Anabasis · Book 1" "Classical Attic · Prose" "UI fixture removed" "Not bundled in this build" "Coming later"
+            , viewPackCard "Γένεσις" "Genesis · Complete" "Septuagint · Biblical Greek" "Corpus retained outside this build" "Not bundled in this build" "Available later"
             , viewPackCard "Ἰλιάς" "Iliad · Book 1" "Homeric · Poetry" "UI fixture removed" "Not bundled in this build" "Coming later"
             ]
         ]
@@ -885,31 +909,31 @@ viewLibrary model =
 viewFeaturedPack : Model -> Html Msg
 viewFeaturedPack model =
     section [ class "pack-card featured-pack" ]
-        [ div [ class "pack-accent", attribute "aria-hidden" "true" ] [ text "Γ" ]
+        [ div [ class "pack-accent", attribute "aria-hidden" "true" ] [ text "Ξ" ]
         , div [ class "pack-body" ]
             [ div [ class "pack-heading" ]
                 [ div []
-                    [ p [ class "pack-language" ] [ text "Septuagint · Biblical Greek" ]
-                    , h2 [] [ text "Genesis · Complete" ]
-                    , p [ class "greek-subtitle" ] [ text "Γένεσις" ]
+                    [ p [ class "pack-language" ] [ text "Classical Attic · Prose" ]
+                    , h2 [] [ text "Anabasis · Book 1" ]
+                    , p [ class "greek-subtitle" ] [ text "Ξενοφῶντος Ἀνάβασις" ]
                     ]
-                , span [ class "availability good" ] [ text "Bundled · 6.2 MB" ]
+                , span [ class "availability good" ] [ text "Bundled · one sentence" ]
                 ]
-            , p [ class "pack-description" ] [ text "All 50 chapters from a real annotated treebank—not repeated prototype copy." ]
+            , p [ class "pack-description" ] [ text "The opening sentence, imported directly from the smaller Lyceum CoNLL-U fixture." ]
             , div [ class "capability-strip" ]
-                [ capabilityPill True "Glosses 100%"
-                , capabilityPill True "Morphology 76%"
-                , capabilityPill True "Dependencies 100%"
-                , capabilityPill False "Translation 0%"
+                [ capabilityPill True "Glosses 12/12"
+                , capabilityPill True "Morphology 7/12"
+                , capabilityPill True "Dependencies 1/1"
+                , capabilityPill True "Translations 1/1"
                 ]
             , div [ class "pack-footer" ]
                 [ div [ class "pack-progress" ]
                     [ div [ class "progress-track" ] [ span [ class "progress-fill" ] [] ]
-                    , span [] [ text (String.fromInt (List.length model.corpus.sentences) ++ " passages · 37,106 tokens · CC BY-SA 4.0") ]
+                    , span [] [ text (String.fromInt (List.length model.corpus.sentences) ++ " sentence · 15 tokens · " ++ model.corpus.source.license) ]
                     ]
                 , div [ class "button-row" ]
                     [ button [ class "secondary-button", type_ "button", onClick ShowSettings ] [ text "Configure" ]
-                    , button [ class "primary-button", type_ "button", onClick ShowWorkspace ] [ text "Start Genesis →" ]
+                    , button [ class "primary-button", type_ "button", onClick ShowWorkspace ] [ text "Start Anabasis →" ]
                     ]
                 ]
             ]
@@ -951,7 +975,7 @@ viewSettings model =
     main_ [ class "page settings-page" ]
         [ section [ class "settings-intro" ]
             [ div []
-                [ p [ class "eyebrow" ] [ text "Genesis · Complete" ]
+                [ p [ class "eyebrow" ] [ text "Anabasis · Book 1" ]
                 , h1 [] [ text "Compose your reading workspace" ]
                 , p [ class "lead" ] [ text "A preset is only a starting point. Greek remains available even when every learning module is off." ]
                 ]
@@ -978,16 +1002,15 @@ viewSettings model =
                     [ p [ class "eyebrow" ] [ text "Workspace modules" ]
                     , h2 [] [ text "Available from this content pack" ]
                     ]
-                , span [ class "coverage-key" ] [ text "UD Ancient Greek PTNK · commit 818fb31" ]
+                , span [ class "coverage-key" ] [ text (model.corpus.source.name ++ " · imported CoNLL-U") ]
                 ]
             , viewRequiredModule
-            , viewModuleSetting model GlossModule "Enter contextual glosses" "Recall a sense for every glossed word, then compare with the imported gloss." "100% of glossed words" "UD Ancient Greek PTNK · imported"
-            , viewModuleSetting model MorphologyModule "Analyze morphology" "Choose applicable features for selected forms; no free-text label matching." "76% feature coverage" "UD Ancient Greek PTNK · imported"
-            , viewModuleSetting model DependencyModule "Build dependency relationships" "Find the root and attach one core argument. Full trees remain optional." "100% of sentences" "UD PTNK · projected, corrected reference"
-            , viewModuleSetting model LiteralModule "Draft a literal translation" "Expose structure and supplied relationships in your own words." "All Greek passages" "Learner-authored · no reference"
-            , viewModuleSetting model ProseModule "Draft a prose translation" "State the understood proposition naturally and retain it for later comparison." "All Greek passages" "Learner-authored · no aligned reference"
-            , viewUnavailableModule "Reference translations" "No source-aligned English translation in this pack" "0 of 1,491 passages"
-            , viewUnavailableModule "Curated gist check" "No curated prompts in this edition" "0 of 1,491 passages"
+            , viewModuleSetting model GlossModule "Enter contextual glosses" "Recall a sense for every glossed word, then compare with the imported gloss." "12 of 12 words" "Lyceum · imported"
+            , viewModuleSetting model MorphologyModule "Analyze morphology" "Choose applicable features for selected forms; no free-text label matching." "7 of 12 words" "Lyceum · imported"
+            , viewModuleSetting model DependencyModule "Build dependency relationships" "Find the root and attach one core argument. Full trees remain optional." "1 of 1 sentences" "Lyceum · imported reference"
+            , viewModuleSetting model LiteralModule "Draft a literal translation" "Expose structure and supplied relationships in your own words." "1 of 1 sentences" "Lyceum · aligned reference"
+            , viewModuleSetting model ProseModule "Draft a prose translation" "State the understood proposition naturally and retain it for later comparison." "1 of 1 sentences" "Lyceum · aligned reference"
+            , viewUnavailableModule "Curated gist check" "No curated prompts in this edition" "0 of 1 sentences"
             , viewUnavailableModule "Reconstruct word order" "Activity generator not included in this prototype" "Capability pending"
             ]
         , footer [ class "settings-footer" ]
@@ -1127,15 +1150,15 @@ viewWorkspace model =
             [ div [ class "context-title" ]
                 [ button [ class "icon-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Back to library" ] [ text "←" ]
                 , div []
-                    [ span [ class "context-work" ] [ text "Genesis · Septuagint" ]
+                    [ span [ class "context-work" ] [ text "Xenophon · Anabasis" ]
                     , span [ class "context-division" ] [ text (sentenceReference sentence ++ " · Passage " ++ String.fromInt (model.sentenceIndex + 1) ++ " of " ++ String.fromInt (List.length model.corpus.sentences)) ]
                     ]
                 ]
             , div [ class "context-actions" ]
                 [ label [ class "chapter-jump" ]
-                    [ span [] [ text "Chapter" ]
+                    [ span [] [ text "Book" ]
                     , select [ value (String.fromInt sentence.chapter), onInput JumpToChapter ]
-                        (List.range 1 50
+                        (corpusChapters model.corpus.sentences
                             |> List.map (\chapter -> option [ value (String.fromInt chapter), selected (chapter == sentence.chapter) ] [ text (String.fromInt chapter) ])
                         )
                     ]
@@ -1170,7 +1193,7 @@ viewSourceRail model =
     aside [ class "source-rail" ]
         [ div [ class "rail-section" ]
             [ p [ class "rail-label" ] [ text "Source" ]
-            , h2 [] [ text "Ἡ Γένεσις κατὰ τοὺς Ἑβδομήκοντα" ]
+            , h2 [] [ text "Ξενοφῶντος Ἀνάβασις" ]
             , p [ class "muted" ] [ text (sentenceReference sentence) ]
             ]
         , div [ class "rail-section" ]
@@ -1187,7 +1210,10 @@ viewSourceRail model =
             ]
         , div [ class "pack-provenance" ]
             [ span [ class "provenance-icon", attribute "aria-hidden" "true" ] [ text "i" ]
-            , span [] [ text model.corpus.source.name, span [ class "muted" ] [ text (" · " ++ model.corpus.source.license ++ " · 818fb31") ] ]
+            , span []
+                [ a [ href model.corpus.source.url, target "_blank", rel "noopener noreferrer" ] [ text model.corpus.source.name ]
+                , span [ class "muted" ] [ text (" · " ++ sourceDetails model.corpus.source) ]
+                ]
             ]
         ]
 
@@ -1243,7 +1269,7 @@ viewGreekPassage model =
         tokenButton token =
             let
                 morphologyAvailable =
-                    moduleMode MorphologyModule model.settings /= ModuleOff && token.morphology.summary /= ""
+                    moduleMode MorphologyModule model.settings /= ModuleOff && isMorphologyEligible token
 
                 glossAvailable =
                     moduleMode GlossModule model.settings /= ModuleOff && token.gloss /= ""
@@ -1480,7 +1506,7 @@ viewMorphologyDraft model =
         , div [ class "structured-fields" ]
             [ selectField "Case" model.draft.morphCase UpdateMorphCase [ "—", "Nominative", "Genitive", "Dative", "Accusative", "Vocative" ]
             , selectField "Number" model.draft.morphNumber UpdateMorphNumber [ "—", "Singular", "Dual", "Plural" ]
-            , selectField "Gender" model.draft.morphGender UpdateMorphGender [ "—", "Masculine", "Feminine", "Neuter" ]
+            , selectField "Gender" model.draft.morphGender UpdateMorphGender [ "—", "Masculine", "Feminine", "Neuter", "Common" ]
             ]
         , p [ class "field-note" ] [ text "These features describe the whole token. No automatic stem/ending boundary is claimed." ]
         , button [ class "uncertain-button", type_ "button", onClick (ShowNotice "Uncertainty recorded with this draft; it will remain distinct from an omitted answer.") ] [ text "+ Mark an uncertain alternative" ]
@@ -1546,7 +1572,7 @@ viewDependencyDraft model =
                 ]
             , selectValueField "Relation" model.draft.dependencyRelation UpdateDependencyRelation relationChoices
             ]
-        , p [ class "field-note" ] [ text "Answers store token IDs and relations—not screen coordinates. PTNK dependencies are attributed references, not unquestionable truth." ]
+        , p [ class "field-note" ] [ text "Answers store token IDs and relations—not screen coordinates. Lyceum dependencies are attributed references, not unquestionable truth." ]
         , viewRevealedReference model ("Imported edge: " ++ target.form ++ " → " ++ rootOrHeadForm sentence target ++ " · " ++ String.toUpper target.relation)
         ]
 
@@ -1637,12 +1663,22 @@ viewMiniTree model showReference =
 viewTranslationDraft : Model -> Bool -> Html Msg
 viewTranslationDraft model literal =
     let
+        sentence =
+            currentSentence model
+
         draftText =
             if literal then
                 model.draft.literal
 
             else
                 model.draft.prose
+
+        reference =
+            if literal then
+                sentence.literalTranslation
+
+            else
+                sentence.proseTranslation
 
         updateMsg =
             if literal then
@@ -1667,10 +1703,7 @@ viewTranslationDraft model literal =
             [ span [] [ text (String.fromInt (String.length draftText) ++ " characters") ]
             , span [] [ text "Autosaved locally" ]
             ]
-        , div [ class "no-reference-panel" ]
-            [ strongText "No aligned translation in this content pack"
-            , p [] [ text "Your draft will be retained exactly as written, but no English reference or translation score will be shown." ]
-            ]
+        , viewRevealedReference model ("Imported translation: " ++ reference)
         ]
 
 
@@ -1744,7 +1777,7 @@ viewModuleComparison model moduleId =
                 , featureComparison "Case" model.draft.morphCase referenceCase (model.draft.morphCase == referenceCase)
                 , featureComparison "Number" model.draft.morphNumber referenceNumber (model.draft.morphNumber == referenceNumber)
                 , featureComparison "Gender" model.draft.morphGender referenceGender (model.draft.morphGender == referenceGender)
-                , p [ class "provenance-panel" ] [ text ("Lemma " ++ target.lemma ++ " · " ++ target.morphology.summary ++ " · UD Ancient Greek PTNK") ]
+                , p [ class "provenance-panel" ] [ text ("Lemma " ++ target.lemma ++ " · " ++ target.morphology.summary ++ " · " ++ model.corpus.source.name) ]
                 ]
 
         DependencyModule ->
@@ -1775,7 +1808,7 @@ viewModuleComparison model moduleId =
                     rootOrHeadForm sentence target
             in
             div [ class "comparison-stack" ]
-                [ comparisonBanner (String.fromInt matches ++ " of 3 fields match") "Task-scoped result · imported PTNK reference"
+                [ comparisonBanner (String.fromInt matches ++ " of 3 fields match") "Task-scoped result · imported Lyceum reference"
                 , viewMiniTree model True
                 , featureComparison "Root" (tokenFormForValue sentence model.draft.dependencyRoot) root.form (model.draft.dependencyRoot == rootId)
                 , featureComparison "Core edge" (target.form ++ " → " ++ submittedHead) (target.form ++ " → " ++ referenceHead) (model.draft.dependencyHead == headId)
@@ -1784,10 +1817,10 @@ viewModuleComparison model moduleId =
                 ]
 
         LiteralModule ->
-            viewTranslationComparison model.draft.literal "Literal attempt"
+            viewTranslationComparison model.draft.literal sentence.literalTranslation "Literal attempt"
 
         ProseModule ->
-            viewTranslationComparison model.draft.prose "Prose attempt"
+            viewTranslationComparison model.draft.prose sentence.proseTranslation "Prose attempt"
 
 
 comparisonBanner : String -> String -> Html Msg
@@ -1823,10 +1856,10 @@ featureComparison feature mine reference matches =
         ]
 
 
-viewTranslationComparison : String -> String -> Html Msg
-viewTranslationComparison mine labelText =
+viewTranslationComparison : String -> String -> String -> Html Msg
+viewTranslationComparison mine reference labelText =
     div [ class "comparison-stack" ]
-        [ comparisonBanner "Draft submitted" "No automatic translation score"
+        [ comparisonBanner "Compared with imported translation" "No automatic translation score"
         , div [ class "text-comparison" ]
             [ div []
                 [ span [ class "compare-label" ] [ text labelText ]
@@ -1840,11 +1873,12 @@ viewTranslationComparison mine labelText =
                         )
                     ]
                 ]
+            , div []
+                [ span [ class "compare-label" ] [ text "Lyceum reference" ]
+                , p [] [ text reference ]
+                ]
             ]
-        , div [ class "no-reference-panel" ]
-            [ strongText "No aligned English reference"
-            , p [] [ text "This PTNK content pack supplies Greek annotations but no translation. Your exact draft remains available for a later revision." ]
-            ]
+        , p [ class "field-note" ] [ text "Translation differences require judgment; wording is not scored automatically." ]
         ]
 
 
@@ -1948,7 +1982,7 @@ viewHistory model =
             [ aside [ class "history-filter" ]
                 [ p [ class "rail-label" ] [ text "Showing" ]
                 , button [ class "filter-button is-active", type_ "button" ] [ text "This passage", span [] [ text (String.fromInt model.attemptCount) ] ]
-                , button [ class "filter-button", type_ "button", onClick (ShowNotice "Cross-passage history arrives with persistent attempt storage.") ] [ text "All Genesis", span [] [ text "—" ] ]
+                , button [ class "filter-button", type_ "button", onClick (ShowNotice "Cross-passage history arrives with persistent attempt storage.") ] [ text "All Anabasis", span [] [ text "—" ] ]
                 , div [ class "privacy-note" ]
                     [ strongText "In-memory prototype"
                     , p [] [ text "Refreshing the page clears attempts in this release." ]
@@ -1960,7 +1994,7 @@ viewHistory model =
                         [ span [ class "series-reference" ] [ text (sentenceReference sentence) ]
                         , p [ class "series-greek" ] [ text (truncate 100 sentence.text) ]
                         ]
-                    , span [ class "version-badge" ] [ text "PTNK · 818fb31" ]
+                    , span [ class "version-badge" ] [ text model.corpus.source.name ]
                     ]
                  ]
                     ++ attemptCards
@@ -2027,7 +2061,7 @@ viewAttemptComparison model =
         , section [ class "comparison-section" ]
             [ div [ class "comparison-section-heading" ]
                 [ p [ class "eyebrow" ] [ text "Prose translation" ]
-                , span [ class "neutral-badge" ] [ text "No aligned reference or score" ]
+                , span [ class "neutral-badge" ] [ text "Imported reference available in workspace" ]
                 ]
             , div [ class "attempt-columns" ]
                 [ blockquoteElement (responseOrEmpty previous.prose)
@@ -2037,7 +2071,7 @@ viewAttemptComparison model =
         , section [ class "comparison-section" ]
             [ div [ class "comparison-section-heading" ]
                 [ p [ class "eyebrow" ] [ text "Morphology response" ]
-                , span [ class "neutral-badge" ] [ text "Same PTNK reference version" ]
+                , span [ class "neutral-badge" ] [ text "Same Lyceum reference version" ]
                 ]
             , div [ class "condition-table" ]
                 [ conditionRow "Case" previous.morphCase model.draft.morphCase
@@ -2098,15 +2132,17 @@ fallbackSentence =
         |> Maybe.withDefault
             { id = "missing"
             , chapter = 1
-            , verse = "1"
-            , text = "No Genesis data loaded."
+            , verse = "1.1.1"
+            , text = "No Anabasis data loaded."
+            , literalTranslation = ""
+            , proseTranslation = ""
             , tokens = []
             }
 
 
 sentenceReference : Sentence -> String
 sentenceReference sentence =
-    "Genesis " ++ String.fromInt sentence.chapter ++ ":" ++ String.replace "-" "–" sentence.verse
+    "Anabasis " ++ String.replace "-" "–" sentence.verse
 
 
 getAt : Int -> List a -> Maybe a
@@ -2209,6 +2245,9 @@ featureLabel feature =
 
         "Neut" ->
             "Neuter"
+
+        "Com" ->
+            "Common"
 
         _ ->
             feature

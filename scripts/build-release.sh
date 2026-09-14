@@ -14,11 +14,13 @@ if [[ "$($ELM --version)" != "0.19.2" ]]; then
   exit 1
 fi
 
+cd "$ROOT"
 rm -rf "$DIST"
-mkdir -p "$DIST/data/ptnk"
+mkdir -p "$DIST/conllu/xenophon/anabasis"
 
+roc "$ROOT/scripts/import-lyceum-anabasis.roc"
 "$ELM" make "$ROOT/src/Main.elm" --optimize --output="$DIST/elm.js"
-cp "$ROOT/index.html" "$ROOT/styles.css" "$ROOT/genesis-data.js" "$DIST/"
-cp "$ROOT/data/ptnk/LICENSE.txt" "$ROOT/data/ptnk/README.md" "$DIST/data/ptnk/"
+cp "$ROOT/index.html" "$ROOT/styles.css" "$ROOT/anabasis-data.js" "$DIST/"
+cp "$ROOT/conllu/xenophon/anabasis/book-01-first-sentence.tb.conllu" "$DIST/conllu/xenophon/anabasis/"
 
 printf 'Built %s (%s)\n' "$DIST" "$(du -sh "$DIST" | cut -f1)"

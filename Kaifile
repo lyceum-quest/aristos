@@ -7,8 +7,14 @@ environment dev {
     "elmPackages.elm-live",
     "gnugrep",
     "openssh",
+    "roc",
     "rsync"
   ]
+}
+
+task import-anabasis {
+  environment: "dev"
+  run: ["roc", "scripts/import-lyceum-anabasis.roc"]
 }
 
 task build {
@@ -42,6 +48,7 @@ task deploy {
 
 workflow dev {
   steps: [
+    "run import-anabasis",
     "run build",
     "run serve"
   ]
