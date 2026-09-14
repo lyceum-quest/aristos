@@ -16,8 +16,9 @@ repl-temp-*
 /scripts/check-browser-boundary
 /scripts/deploy
 
-# Local planning and research documents (directory and all contents)
+# Local planning and research documents (directories and all contents)
 /plans/
+/docs/plans/
 
 # Local editor and OS files
 .DS_Store
