@@ -1,6 +1,7 @@
 module Main exposing (main)
 
 import Browser
+import Dict exposing (Dict)
 import Html exposing (Html, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
 import Html.Attributes exposing (attribute, checked, class, classList, disabled, id, placeholder, rows, selected, type_, value)
 import Html.Events exposing (onClick, onInput)
@@ -60,9 +61,7 @@ type alias ModuleSettings =
 
 
 type alias Draft =
-    { glossDareios : String
-    , glossPaides : String
-    , glossGignontai : String
+    { glosses : Dict Int String
     , morphCase : String
     , morphNumber : String
     , morphGender : String
@@ -156,9 +155,7 @@ type Msg
     | CycleModuleMode ModuleId
     | OpenModule ModuleId
     | CloseWorkbench
-    | UpdateGlossDareios String
-    | UpdateGlossPaides String
-    | UpdateGlossGignontai String
+    | UpdateGloss Int String
     | UpdateMorphCase String
     | UpdateMorphNumber String
     | UpdateMorphGender String
@@ -214,9 +211,7 @@ init flags =
 
 emptyDraft : Draft
 emptyDraft =
-    { glossDareios = ""
-    , glossPaides = ""
-    , glossGignontai = ""
+    { glosses = Dict.empty
     , morphCase = "—"
     , morphNumber = "—"
     , morphGender = "—"
@@ -468,14 +463,8 @@ update msg model =
         CloseWorkbench ->
             { model | activeModule = Nothing }
 
-        UpdateGlossDareios entered ->
-            updateDraft (\draft -> { draft | glossDareios = entered }) model
-
-        UpdateGlossPaides entered ->
-            updateDraft (\draft -> { draft | glossPaides = entered }) model
-
-        UpdateGlossGignontai entered ->
-            updateDraft (\draft -> { draft | glossGignontai = entered }) model
+        UpdateGloss tokenId entered ->
+            updateDraft (\draft -> { draft | glosses = Dict.insert tokenId entered draft.glosses }) model
 
         UpdateMorphCase entered ->
             updateDraft (\draft -> { draft | morphCase = entered }) model
@@ -901,7 +890,7 @@ viewSettings model =
                 , span [ class "coverage-key" ] [ text "UD Ancient Greek PTNK · commit 818fb31" ]
                 ]
             , viewRequiredModule
-            , viewModuleSetting model GlossModule "Enter contextual glosses" "Recall a sense for selected blockers, then compare with the imported gloss." "100% of content tokens" "UD Ancient Greek PTNK · imported"
+            , viewModuleSetting model GlossModule "Enter contextual glosses" "Recall a sense for every glossed word, then compare with the imported gloss." "100% of glossed words" "UD Ancient Greek PTNK · imported"
             , viewModuleSetting model MorphologyModule "Analyze morphology" "Choose applicable features for selected forms; no free-text label matching." "76% feature coverage" "UD Ancient Greek PTNK · imported"
             , viewModuleSetting model DependencyModule "Build dependency relationships" "Find the root and attach one core argument. Full trees remain optional." "100% of sentences" "UD PTNK · projected, corrected reference"
             , viewModuleSetting model LiteralModule "Draft a literal translation" "Expose structure and supplied relationships in your own words." "All Greek passages" "Learner-authored · no reference"
@@ -1341,9 +1330,9 @@ viewGlossDraft model =
 
         fields =
             targets
-                |> List.indexedMap
-                    (\index token ->
-                        glossField token.form (glossDraftAt index model.draft) (glossUpdateAt index)
+                |> List.map
+                    (\token ->
+                        glossField token.form (glossDraftAt token.id model.draft) (UpdateGloss token.id)
                     )
 
         references =
@@ -1622,11 +1611,11 @@ viewModuleComparison model moduleId =
 
                 rows =
                     targets
-                        |> List.indexedMap
-                            (\index token ->
+                        |> List.map
+                            (\token ->
                                 let
                                     entered =
-                                        glossDraftAt index model.draft
+                                        glossDraftAt token.id model.draft
                                 in
                                 comparisonRow token.form entered token.gloss (normalizedGlossMatch entered token.gloss)
                             )
@@ -2049,38 +2038,13 @@ truncate limit content =
 glossTargets : Sentence -> List CorpusToken
 glossTargets sentence =
     sentence.tokens
-        |> List.filter
-            (\token ->
-                token.gloss /= ""
-                    && not (List.member token.upos [ "PUNCT", "DET", "CCONJ", "SCONJ", "PART", "ADP" ])
-            )
-        |> List.take 3
+        |> List.filter (\token -> token.gloss /= "" && token.upos /= "PUNCT")
 
 
 glossDraftAt : Int -> Draft -> String
-glossDraftAt index draft =
-    case index of
-        0 ->
-            draft.glossDareios
-
-        1 ->
-            draft.glossGignontai
-
-        _ ->
-            draft.glossPaides
-
-
-glossUpdateAt : Int -> String -> Msg
-glossUpdateAt index =
-    case index of
-        0 ->
-            UpdateGlossDareios
-
-        1 ->
-            UpdateGlossGignontai
-
-        _ ->
-            UpdateGlossPaides
+glossDraftAt tokenId draft =
+    Dict.get tokenId draft.glosses
+        |> Maybe.withDefault ""
 
 
 morphologyTarget : Model -> CorpusToken
@@ -2328,7 +2292,7 @@ modulePurpose : ModuleId -> String
 modulePurpose moduleId =
     case moduleId of
         GlossModule ->
-            "Enter a contextual sense for selected blockers before seeing the imported gloss."
+            "Enter a contextual sense for each word before seeing the imported gloss."
 
         MorphologyModule ->
             "Describe only the applicable features of one selected form."
@@ -2359,9 +2323,16 @@ moduleStatus model moduleId =
             Drafting ->
                 case moduleId of
                     GlossModule ->
+                        let
+                            targets =
+                                glossTargets (currentSentence model)
+                        in
                         responseCountLabel
-                            (countResponses [ model.draft.glossDareios, model.draft.glossGignontai, model.draft.glossPaides ])
-                            3
+                            (targets
+                                |> List.map (\token -> glossDraftAt token.id model.draft)
+                                |> countResponses
+                            )
+                            (List.length targets)
 
                     MorphologyModule ->
                         responseCountLabel
