@@ -1,0 +1,43 @@
+# global.columns = ID FORM LEMMA UPOS XPOS FEATS HEAD DEPREL DEPS MISC
+# source = Xenophon, Anabasis (Book 1)
+# source_edition = Glaux (Greek Language Automated XML)
+# encoder = Gemini 3 Flash (Large Language Model)
+# editor = Gregory Crane (Human Philologist)
+# project = Beyond Translation / Perseus Digital Library
+# conversion_method = LLM-augmented transformation to Universal Dependencies
+# gloss_type = Context-aware philological glosses
+# date_modified = 2026-04-24
+# license = CC BY-SA 4.0
+# contact = Tufts University Department of Classical Studies
+# source_repository = https://github.com/lyceum-quest/conllu-viz.git
+# source_revision = b3d557a05fffbbba4365ebfa94c652a5de8a8b50
+# source_path = conllu/xenophon/anabasis/book-01.tb.conllu
+# source_sha256 = bbf896b5c3058615e471b1050039c35c47caac6c83841d8198681dff34306b82
+# artifact_creator = Brandon Lucas <blu@blu.cx>
+# model = gpt-5.6-sol
+# model_provider = openai-codex
+# model_role = Source discovery and exact first-sentence extraction
+# harness = pi 0.84.3
+# extraction_method = Exact copy; upstream annotations unchanged
+# date_extracted = 2026-09-14
+
+# sentence_id = 1
+# translation_lang = en
+# prose_translation = Darius and Parysatis had two sons, the elder being Artaxerxes and the younger Cyrus.
+# literal_translation = Of-Darius and of-Parysatis are-born sons two, elder indeed Artaxerxes, younger but Cyrus.
+1	Δαρείου	Δαρεῖος	PROPN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	5	nmod	_	Ref=1.1.1|gloss=of-Darius
+2	καὶ	καί	CCONJ	b--------	_	3	cc	_	Ref=1.1.1|gloss=and
+3	Παρυσάτιδος	Παρύσατις	PROPN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	1	conj	_	Ref=1.1.1|gloss=of-Parysatis
+4	γίγνονται	γίγνομαι	VERB	v3ppie---	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=1.1.1|gloss=are-born
+5	παῖδες	παῖς	NOUN	n-p---cn-	Case=Nom|Gender=Com|Number=Plur	4	nsubj	_	Ref=1.1.1|gloss=sons
+6	δύο	δύο	NUM	a--------	_	5	nummod	_	Ref=1.1.1|gloss=two
+7	,	,	PUNCT	u--------	_	8	punct	_	Ref=1.1.1|gloss=,
+8	πρεσβύτερος	πρέσβυς	ADJ	a-s---mnc	Case=Nom|Degree=Cmp|Gender=Masc|Number=Sing	5	appos	_	Ref=1.1.1|gloss=elder
+9	μὲν	μέν	ADV	d--------	_	8	discourse	_	Ref=1.1.1|gloss=indeed
+10	Ἀρταξέρξης	Ἀρταξέρξης	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	8	nsubj	_	Ref=1.1.1|gloss=Artaxerxes
+11	,	,	PUNCT	u--------	_	12	punct	_	Ref=1.1.1|gloss=,
+12	νεώτερος	νέος	ADJ	a-s---mnc	Case=Nom|Degree=Cmp|Gender=Masc|Number=Sing	8	conj	_	Ref=1.1.1|gloss=younger
+13	δὲ	δέ	CCONJ	b--------	_	12	discourse	_	Ref=1.1.1|gloss=but
+14	Κῦρος	Κῦρος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	12	nsubj	_	Ref=1.1.1|gloss=Cyrus
+15	·	·	PUNCT	u--------	_	4	punct	_	Ref=1.1.1|gloss=;
+
