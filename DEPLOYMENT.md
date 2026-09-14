@@ -29,7 +29,12 @@ REMOTE_DIR=/var/www/aristos
 ```
 
 The script builds an optimized Elm release, synchronizes the static bundle,
-applies the declarative NixOS module, and verifies the public HTTPS endpoint.
-The root `flake.nix` extends the Lyceum staging configuration from the local
-`/home/blu/src/greek/lyceum/website` checkout so existing services remain
-declared. Update that path if the checkout moves.
+applies the declarative NixOS module, and verifies Aristos plus the existing
+Conllu and Lyceum endpoints.
+
+The host configuration is assembled in `/var/lib/aristos-deploy` from
+`deploy/flake.nix` and the local Lyceum checkout. It explicitly preserves the
+currently deployed Lyceum reader/admin packages and all existing Caddy routes;
+this is necessary because the sibling open-source checkout no longer declares
+the private admin service or the independently deployed Conllu route. Override
+`LYCEUM_SOURCE` if that checkout moves.
