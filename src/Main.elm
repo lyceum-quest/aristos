@@ -1,4 +1,4 @@
-module Main exposing (main)
+port module Main exposing (main)
 
 import Browser
 import Dict exposing (Dict)
@@ -28,6 +28,11 @@ type SettingScope
     = GlobalScope
     | WorkScope
     | SessionScope
+
+
+type Theme
+    = DarkTheme
+    | LightTheme
 
 
 type ModuleId
@@ -136,6 +141,7 @@ type alias Model =
     , attemptCount : Int
     , elapsedSeconds : Int
     , notice : Maybe String
+    , theme : Theme
     }
 
 
@@ -172,7 +178,11 @@ type Msg
     | FinishPassage
     | ShowNotice String
     | DismissNotice
+    | ToggleTheme
     | Tick Time.Posix
+
+
+port saveTheme : String -> Cmd msg
 
 
 main : Program Decode.Value Model Msg
@@ -188,9 +198,7 @@ main =
 init : Decode.Value -> Model
 init flags =
     { screen = LibraryScreen
-    , corpus =
-        Decode.decodeValue corpusDecoder flags
-            |> Result.withDefault fallbackCorpus
+    , corpus = decodeCorpus flags
     , sentenceIndex = 0
     , selectedTokenId = Nothing
     , preset = IntensivePreset
@@ -206,7 +214,29 @@ init flags =
     , attemptCount = 0
     , elapsedSeconds = 0
     , notice = Nothing
+    , theme = decodeTheme flags
     }
+
+
+decodeCorpus : Decode.Value -> Corpus
+decodeCorpus flags =
+    case Decode.decodeValue (Decode.field "corpus" corpusDecoder) flags of
+        Ok corpus ->
+            corpus
+
+        Err _ ->
+            Decode.decodeValue corpusDecoder flags
+                |> Result.withDefault fallbackCorpus
+
+
+decodeTheme : Decode.Value -> Theme
+decodeTheme flags =
+    case Decode.decodeValue (Decode.field "theme" Decode.string) flags of
+        Ok "light" ->
+            LightTheme
+
+        _ ->
+            DarkTheme
 
 
 emptyDraft : Draft
@@ -554,10 +584,36 @@ update msg model =
         DismissNotice ->
             { model | notice = Nothing }
 
+        ToggleTheme ->
+            { model
+                | theme =
+                    if model.theme == DarkTheme then
+                        LightTheme
+
+                    else
+                        DarkTheme
+            }
+
         Tick _ ->
             { model | elapsedSeconds = model.elapsedSeconds + 1 }
-    , Cmd.none
+    , commandFor msg model
     )
+
+
+commandFor : Msg -> Model -> Cmd Msg
+commandFor msg model =
+    case msg of
+        ToggleTheme ->
+            saveTheme
+                (if model.theme == DarkTheme then
+                    "light"
+
+                 else
+                    "dark"
+                )
+
+        _ ->
+            Cmd.none
 
 
 moveToSentence : Int -> Model -> Model
@@ -708,7 +764,13 @@ setModuleMode moduleId mode settings =
 
 view : Model -> Html Msg
 view model =
-    div [ class "app-shell" ]
+    div
+        [ classList
+            [ ( "app-shell", True )
+            , ( "dark-theme", model.theme == DarkTheme )
+            , ( "light-theme", model.theme == LightTheme )
+            ]
+        ]
         [ viewAppHeader model
         , case model.notice of
             Just notice ->
@@ -749,9 +811,38 @@ viewAppHeader model =
             , navButton "Workspace" ShowWorkspace (model.screen == WorkspaceScreen)
             , navButton "History" ShowHistory (model.screen == HistoryScreen || model.screen == AttemptComparisonScreen)
             ]
-        , button [ class "settings-button", type_ "button", onClick ShowSettings ]
-            [ span [ attribute "aria-hidden" "true" ] [ text "⚙" ]
-            , span [ class "settings-label" ] [ text "Modules" ]
+        , div [ class "header-actions" ]
+            [ button
+                [ class "theme-button"
+                , type_ "button"
+                , onClick ToggleTheme
+                , attribute "aria-label" (themeActionLabel model.theme)
+                , attribute "aria-pressed" (boolString (model.theme == DarkTheme))
+                , attribute "title" (themeActionLabel model.theme)
+                ]
+                [ span [ attribute "aria-hidden" "true" ]
+                    [ text
+                        (if model.theme == DarkTheme then
+                            "☀"
+
+                         else
+                            "☾"
+                        )
+                    ]
+                , span [ class "theme-label" ]
+                    [ text
+                        (if model.theme == DarkTheme then
+                            "Light"
+
+                         else
+                            "Dark"
+                        )
+                    ]
+                ]
+            , button [ class "settings-button", type_ "button", onClick ShowSettings ]
+                [ span [ attribute "aria-hidden" "true" ] [ text "⚙" ]
+                , span [ class "settings-label" ] [ text "Modules" ]
+                ]
             ]
         ]
 
@@ -1391,6 +1482,7 @@ viewMorphologyDraft model =
             , selectField "Number" model.draft.morphNumber UpdateMorphNumber [ "—", "Singular", "Dual", "Plural" ]
             , selectField "Gender" model.draft.morphGender UpdateMorphGender [ "—", "Masculine", "Feminine", "Neuter" ]
             ]
+        , p [ class "field-note" ] [ text "These features describe the whole token. No automatic stem/ending boundary is claimed." ]
         , button [ class "uncertain-button", type_ "button", onClick (ShowNotice "Uncertainty recorded with this draft; it will remain distinct from an omitted answer.") ] [ text "+ Mark an uncertain alternative" ]
         , viewRevealedReference model ("Imported analysis: " ++ reference)
         ]
@@ -2414,6 +2506,16 @@ presetLabel preset =
 
         CustomPreset ->
             "Custom"
+
+
+themeActionLabel : Theme -> String
+themeActionLabel theme =
+    case theme of
+        DarkTheme ->
+            "Use light theme"
+
+        LightTheme ->
+            "Use dark theme"
 
 
 scopeLabel : SettingScope -> String

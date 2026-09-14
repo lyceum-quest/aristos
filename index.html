@@ -6,6 +6,13 @@
   <meta name="color-scheme" content="light dark">
   <meta name="description" content="Aristos configurable Ancient Greek reading workspace prototype">
   <title>Aristos · Greek reading workspace</title>
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("aristos-theme") === "light" ? "light" : "dark";
+    } catch (_) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,9 +20,19 @@
   <script src="genesis-data.js"></script>
   <script src="elm.js"></script>
   <script>
-    Elm.Main.init({
+    const app = Elm.Main.init({
       node: document.getElementById("app"),
-      flags: window.ARISTOS_DATA
+      flags: {
+        corpus: window.ARISTOS_DATA,
+        theme: document.documentElement.dataset.theme
+      }
+    });
+
+    app.ports.saveTheme.subscribe(function (theme) {
+      document.documentElement.dataset.theme = theme;
+      try {
+        localStorage.setItem("aristos-theme", theme);
+      } catch (_) {}
     });
   </script>
 </body>

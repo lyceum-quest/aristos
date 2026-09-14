@@ -1,6 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=GFS+Didot&display=swap");
 
 :root {
+  color-scheme: dark;
+  --canvas: #0c1211;
+  --paper: #111a19;
+  --paper-strong: #172321;
+  --ink: #e8efed;
+  --muted: #a2b0ad;
+  --faint: #73847f;
+  --line: #283835;
+  --line-strong: #405550;
+  --teal: #55b8ab;
+  --teal-dark: #8bd7cd;
+  --teal-soft: #173733;
+  --gold: #d2a052;
+  --gold-soft: #352a1b;
+  --rose: #db7e84;
+  --rose-soft: #392326;
+  --blue-soft: #202d36;
+  --accent-ink: #071311;
+  --header-bg: rgb(17 26 25 / 90%);
+  --header-line: rgb(64 85 80 / 78%);
+  --card-bg: rgb(17 26 25 / 88%);
+  --footer-bg: rgb(17 26 25 / 94%);
+  --mobile-nav-bg: rgb(17 26 25 / 97%);
+  --surface-muted: #0e1716;
+  --surface-input: #0d1615;
+  --surface-quote: #101817;
+  --grid-overlay: rgb(14 23 22 / 92%);
+  --teal-line: #28524c;
+  --gold-line: #5b482d;
+  --gold-ink: #e4bd7d;
+  --focus-ring: rgb(85 184 171 / 38%);
+  --canvas-glow: rgb(210 160 82 / 7%);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 28%), 0 5px 18px rgb(0 0 0 / 18%);
+  --shadow-lg: 0 24px 65px rgb(0 0 0 / 42%);
+  --sans: "DM Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+  --greek: "GFS Didot", "Noto Serif", "New Athena Unicode", Palatino, serif;
+}
+
+:root[data-theme="light"] {
   color-scheme: light;
   --canvas: #f1eee7;
   --paper: #fbfaf6;
@@ -18,10 +57,23 @@
   --rose: #a85055;
   --rose-soft: #f6e8e7;
   --blue-soft: #e9eef4;
+  --accent-ink: #ffffff;
+  --header-bg: rgb(251 250 246 / 90%);
+  --header-line: rgb(216 216 208 / 88%);
+  --card-bg: rgb(251 250 246 / 84%);
+  --footer-bg: rgb(251 250 246 / 92%);
+  --mobile-nav-bg: rgb(251 250 246 / 96%);
+  --surface-muted: #f5f3ed;
+  --surface-input: #faf9f5;
+  --surface-quote: #f7f5ef;
+  --grid-overlay: rgb(249 248 244 / 91%);
+  --teal-line: #c9dfda;
+  --gold-line: #e3d3bb;
+  --gold-ink: #79511d;
+  --focus-ring: rgb(23 107 98 / 25%);
+  --canvas-glow: rgb(196 134 50 / 8%);
   --shadow-sm: 0 1px 2px rgb(18 42 39 / 6%), 0 5px 18px rgb(18 42 39 / 4%);
   --shadow-lg: 0 24px 65px rgb(20 41 38 / 13%);
-  --sans: "DM Sans", Inter, ui-sans-serif, system-ui, sans-serif;
-  --greek: "GFS Didot", "Noto Serif", "New Athena Unicode", Palatino, serif;
 }
 
 * {
@@ -39,7 +91,7 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 18% 0%, rgb(196 134 50 / 8%), transparent 30rem),
+    radial-gradient(circle at 18% 0%, var(--canvas-glow), transparent 30rem),
     var(--canvas);
   font-family: var(--sans);
   font-size: 15px;
@@ -62,7 +114,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgb(23 107 98 / 25%);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
@@ -91,12 +143,13 @@ p {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0 24px;
-  border-bottom: 1px solid rgb(216 216 208 / 88%);
-  background: rgb(251 250 246 / 90%);
+  border-bottom: 1px solid var(--header-line);
+  background: var(--header-bg);
   backdrop-filter: blur(18px);
 }
 
 .brand-button,
+.theme-button,
 .settings-button,
 .global-nav-button,
 .icon-button,
@@ -135,6 +188,39 @@ p {
   place-items: center;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 8px;
+}
+
+.theme-button,
+.settings-button {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--paper);
+  font-size: 0.76rem;
+  font-weight: 650;
+}
+
+.theme-button:hover,
+.settings-button:hover {
+  border-color: var(--teal);
+  color: var(--teal-dark);
+}
+
+.theme-button > span:first-child {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 .global-nav {
   display: flex;
   align-items: center;
@@ -170,24 +256,6 @@ p {
 
 .global-nav-button.is-active::after {
   background: var(--teal);
-}
-
-.settings-button {
-  display: flex;
-  align-items: center;
-  justify-self: end;
-  gap: 8px;
-  padding: 0 13px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: var(--paper);
-  font-size: 0.76rem;
-  font-weight: 650;
-}
-
-.settings-button:hover {
-  border-color: var(--teal);
-  color: var(--teal);
 }
 
 .notice {
@@ -277,6 +345,18 @@ p {
   background: var(--teal-dark);
 }
 
+.brand-mark,
+.primary-button,
+.checkpoint-button,
+.is-selected .preset-check,
+.reread-icon,
+.is-active .chip-icon,
+.comparison-check,
+.feature-result,
+.compare-attempts-button > span:first-child {
+  color: var(--accent-ink);
+}
+
 .secondary-button {
   border: 1px solid var(--line-strong);
   color: var(--ink);
@@ -362,7 +442,7 @@ p {
 .pack-card {
   border: 1px solid var(--line);
   border-radius: 16px;
-  background: rgb(251 250 246 / 84%);
+  background: var(--card-bg);
   box-shadow: var(--shadow-sm);
 }
 
@@ -465,7 +545,7 @@ p {
   align-items: center;
   gap: 7px;
   padding: 6px 9px;
-  border: 1px solid #c9dfda;
+  border: 1px solid var(--teal-line);
   border-radius: 7px;
   color: var(--teal-dark);
   background: var(--teal-soft);
@@ -481,8 +561,8 @@ p {
 }
 
 .capability-pill.is-limited {
-  border-color: #e3d3bb;
-  color: #79511d;
+  border-color: var(--gold-line);
+  color: var(--gold-ink);
   background: var(--gold-soft);
 }
 
@@ -533,7 +613,7 @@ p {
 }
 
 .limited-capability {
-  color: #96682c;
+  color: var(--gold-ink);
 }
 
 .compact-pack .pack-footer {
@@ -733,7 +813,7 @@ p {
 }
 
 .required-badge {
-  color: #76501d;
+  color: var(--gold-ink);
   background: var(--gold-soft);
 }
 
@@ -789,7 +869,7 @@ p {
   padding: 11px 13px 11px 20px;
   border: 1px solid var(--line);
   border-radius: 13px;
-  background: rgb(255 255 255 / 90%);
+  background: var(--footer-bg);
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(14px);
   font-size: 0.72rem;
@@ -902,7 +982,7 @@ p {
 .source-rail {
   padding: 31px 23px 40px;
   border-right: 1px solid var(--line);
-  background: #f5f3ed;
+  background: var(--surface-muted);
 }
 
 .rail-section {
@@ -1005,16 +1085,16 @@ p {
 .phase-badge {
   flex: none;
   padding: 6px 9px;
-  border: 1px solid #e5d1b5;
+  border: 1px solid var(--gold-line);
   border-radius: 999px;
-  color: #82571f;
+  color: var(--gold-ink);
   background: var(--gold-soft);
   font-size: 0.61rem;
   font-weight: 700;
 }
 
 .phase-badge.is-compared {
-  border-color: #c5dfd9;
+  border-color: var(--teal-line);
   color: var(--teal-dark);
   background: var(--teal-soft);
 }
@@ -1184,7 +1264,7 @@ p {
   padding: 16px;
   border: 1px dashed var(--line-strong);
   border-radius: 11px;
-  background: #f8f6f1;
+  background: var(--surface-muted);
 }
 
 .read-only-mark {
@@ -1192,7 +1272,7 @@ p {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  color: #835b24;
+  color: var(--gold-ink);
   background: var(--gold-soft);
   font-family: var(--greek);
   place-items: center;
@@ -1210,7 +1290,7 @@ p {
   gap: 13px;
   margin: 24px 0 30px;
   padding: 13px;
-  border: 1px solid #c9dfda;
+  border: 1px solid var(--teal-line);
   border-radius: 10px;
   background: var(--teal-soft);
 }
@@ -1248,7 +1328,7 @@ p {
 .workbench {
   min-width: 0;
   padding: 31px 24px 120px;
-  background: #f5f3ed;
+  background: var(--surface-muted);
 }
 
 .workbench-heading {
@@ -1324,7 +1404,7 @@ p {
   padding: 0 9px;
   border: 1px solid var(--line);
   border-radius: 7px;
-  background: #faf9f5;
+  background: var(--surface-input);
   font-size: 0.72rem;
 }
 
@@ -1414,7 +1494,7 @@ p {
 }
 
 .scope-pill {
-  color: #79511d;
+  color: var(--gold-ink);
   background: var(--gold-soft);
 }
 
@@ -1424,12 +1504,12 @@ p {
   margin-bottom: 17px;
   padding: 16px 8px;
   overflow: hidden;
-  border: 1px solid #dad7ce;
+  border: 1px solid var(--line);
   border-radius: 10px;
   background:
-    linear-gradient(#f9f8f4e8, #f9f8f4e8),
-    repeating-linear-gradient(0deg, transparent 0 23px, #d9d8d2 24px),
-    repeating-linear-gradient(90deg, transparent 0 23px, #d9d8d2 24px);
+    linear-gradient(var(--grid-overlay), var(--grid-overlay)),
+    repeating-linear-gradient(0deg, transparent 0 23px, var(--line) 24px),
+    repeating-linear-gradient(90deg, transparent 0 23px, var(--line) 24px);
 }
 
 .tree-draft-heading {
@@ -1693,7 +1773,7 @@ p {
 }
 
 .assisted-label {
-  color: #855b23;
+  color: var(--gold-ink);
   font-size: 0.56rem;
   font-weight: 750;
   letter-spacing: 0.06em;
@@ -1779,7 +1859,7 @@ p {
   gap: 10px;
   margin-bottom: 5px;
   padding: 11px;
-  border: 1px solid #c8dfda;
+  border: 1px solid var(--teal-line);
   border-radius: 9px;
   background: var(--teal-soft);
 }
@@ -1840,7 +1920,7 @@ p {
 }
 
 .match-mark.is-different {
-  color: #835b24;
+  color: var(--gold-ink);
   background: var(--gold-soft);
 }
 
@@ -1952,7 +2032,7 @@ p {
   gap: 20px;
   padding: 10px 22px;
   border-top: 1px solid var(--line);
-  background: rgb(251 250 246 / 92%);
+  background: var(--footer-bg);
   box-shadow: 0 -10px 30px rgb(18 42 39 / 7%);
   backdrop-filter: blur(18px);
 }
@@ -2134,7 +2214,7 @@ p {
 }
 
 .attempt-card.is-current {
-  border-color: #b9d8d1;
+  border-color: var(--teal-line);
   box-shadow: 3px 0 0 var(--teal) inset, var(--shadow-sm);
 }
 
@@ -2312,7 +2392,7 @@ p {
   padding: 17px;
   border: 1px solid var(--line);
   border-radius: 9px;
-  background: #f7f5ef;
+  background: var(--surface-quote);
 }
 
 .attempt-quote p {
@@ -2346,7 +2426,7 @@ p {
   gap: 12px;
   margin-top: 24px;
   padding: 17px;
-  border: 1px solid #e3d3bb;
+  border: 1px solid var(--gold-line);
   border-radius: 11px;
   background: var(--gold-soft);
   font-size: 0.69rem;
@@ -2365,7 +2445,7 @@ p {
 
 .evidence-limit p {
   margin: 3px 0 0;
-  color: #74562f;
+  color: var(--gold-ink);
   font-size: 0.62rem;
 }
 
@@ -2415,7 +2495,7 @@ p {
     min-height: 58px;
     grid-template-columns: repeat(3, 1fr);
     border-top: 1px solid var(--line);
-    background: rgb(251 250 246 / 96%);
+    background: var(--mobile-nav-bg);
     backdrop-filter: blur(16px);
   }
 
@@ -2713,6 +2793,7 @@ p {
 
 @media (max-width: 480px) {
   .brand-word,
+  .theme-label,
   .settings-label {
     position: absolute;
     width: 1px;
@@ -2722,6 +2803,7 @@ p {
     white-space: nowrap;
   }
 
+  .theme-button,
   .settings-button {
     width: 40px;
     padding: 0;
