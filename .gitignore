@@ -15,6 +15,7 @@ repl-temp-*
 /scripts/build-release
 /scripts/check-browser-boundary
 /scripts/deploy
+/scripts/lint
 
 # Local planning and research documents (directories and all contents)
 /plans/

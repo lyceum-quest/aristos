@@ -24,6 +24,11 @@ task preload {
   ]
 }
 
+task lint {
+  environment: "dev"
+  run: ["roc", "scripts/lint.roc"]
+}
+
 task check-browser-boundary {
   environment: "dev"
   run: ["roc", "scripts/check-browser-boundary.roc"]
