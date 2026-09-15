@@ -1,6 +1,6 @@
 {
   "experiment_name": "qwen3.5-397b-a17b",
-  "experiment_version": 3,
+  "experiment_version": 4,
   "provider": {
     "name": "ppq",
     "base_url": "https://api.ppq.ai/v1",

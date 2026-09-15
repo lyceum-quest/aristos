@@ -1,0 +1,34 @@
+{
+  "experiment_name": "mistral-small-4",
+  "experiment_version": 4,
+  "provider": {
+    "name": "ppq",
+    "base_url": "https://api.ppq.ai/v1",
+    "api_key_env": "PPQ_API_KEY"
+  },
+  "model": {
+    "id": "mistralai/mistral-small-2603"
+  },
+  "generation": {
+    "profile": "mistral-non-thinking",
+    "temperature": 0,
+    "seed": 1,
+    "reasoning_effort": "none",
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": [
+        "Mistral"
+      ],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "max_tokens": 4096
+  },
+  "validation": {
+    "max_attempts": 2
+  }
+}

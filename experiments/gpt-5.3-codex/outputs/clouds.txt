@@ -8,7 +8,7 @@
 χρῆμα <=> thing
 τῶν <=> of the
 νυκτῶν <=> nights
-ὅσον· <=> how great
+ὅσον· <=> how long
 
 ἀπέραντον. <=> endless
 οὐδέποθʼ <=> never
@@ -19,7 +19,7 @@
 μὴν <=> indeed
 πάλαι <=> long ago
 γʼ <=> at least
-ἀλεκτρυόνος <=> of a rooster
+ἀλεκτρυόνος <=> a rooster
 ἤκουσʼ <=> I heard
 ἐγώ· <=> I
 
@@ -31,4 +31,4 @@
 οὐκ <=> not
 ἂν <=> would
 πρὸ <=> before
-τοῦ. <=> this
+τοῦ. <=> that time

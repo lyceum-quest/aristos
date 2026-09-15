@@ -2,7 +2,7 @@
 ἄειδε <=> sing
 θεὰ <=> goddess
 Πηληϊάδεω <=> of Peleus' son
-Ἀχιλῆος <=> of Achilles
+Ἀχιλῆος <=> Achilles
 
 οὐλομένην, <=> destructive
 ἣ <=> which
@@ -20,7 +20,7 @@
 
 ἡρώων, <=> of heroes
 αὐτοὺς <=> them
-δὲ <=> but
+δὲ <=> and
 ἑλώρια <=> prey
 τεῦχε <=> made
 κύνεσσιν <=> to dogs
@@ -30,5 +30,5 @@
 πᾶσι, <=> all
 Διὸς <=> of Zeus
 δʼ <=> and
-ἐτελείετο <=> was being fulfilled
+ἐτελείετο <=> was fulfilled
 βουλή, <=> plan

@@ -20,7 +20,7 @@
 σκότος <=> darkness
 ἐπάνω <=> over
 τῆς <=> the
-ἀβύσσου, <=> deep
+ἀβύσσου, <=> abyss
 καὶ <=> and
 πνεῦμα <=> spirit
 θεοῦ <=> of God
@@ -36,5 +36,5 @@
 γενηθήτω <=> let there be
 φῶς. <=> light
 καὶ <=> and
-ἐγένετο <=> there was
+ἐγένετο <=> came to be
 φῶς. <=> light

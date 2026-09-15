@@ -4,16 +4,16 @@
 Πηληϊάδεω <=> of Peleus
 Ἀχιλῆος <=> of Achilles
 
-οὐλομένην, <=> blameful
-ἣ <=> she
+οὐλομένην, <=> wretched
+ἣ <=> who
 μυρίʼ <=> many
-Ἀχαιοῖς <=> Greeks
+Ἀχαιοῖς <=> Achaeans
 ἄλγεʼ <=> sorrows
 ἔθηκε, <=> brought
 
 πολλὰς <=> many
-δʼ <=> dauntless
-ἰφθίμους <=> souls
+δʼ <=> but
+ἰφθίμους <=> valiant
 ψυχὰς <=> souls
 Ἄϊδι <=> to Hades
 προΐαψεν <=> sent
@@ -21,7 +21,7 @@
 ἡρώων, <=> of heroes
 αὐτοὺς <=> themselves
 δὲ <=> but
-ἑλώρια <=> spoils
+ἑλώρια <=> prize
 τεῦχε <=> made
 κύνεσσιν <=> for dogs
 
@@ -31,4 +31,4 @@
 Διὸς <=> of Zeus
 δʼ <=> but
 ἐτελείετο <=> was fulfilled
-βουλή, <=> the plan
+βουλή, <=> plan

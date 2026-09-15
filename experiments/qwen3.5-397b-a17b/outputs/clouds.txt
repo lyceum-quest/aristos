@@ -1,5 +1,5 @@
-ἰοὺ <=> alas
-ἰού· <=> alas
+ἰοὺ <=> oh dear
+ἰού· <=> oh dear
 
 ὦ <=> O
 Ζεῦ <=> Zeus
@@ -8,7 +8,7 @@
 χρῆμα <=> thing
 τῶν <=> of the
 νυκτῶν <=> nights
-ὅσον· <=> how great
+ὅσον· <=> how long
 
 ἀπέραντον. <=> endless
 οὐδέποθʼ <=> never
@@ -25,8 +25,8 @@
 
 οἱ <=> the
 δʼ <=> but
-οἰκέται <=> servants
-ῥέγκουσιν· <=> are snoring
+οἰκέται <=> slaves
+ῥέγκουσιν· <=> snore
 ἀλλʼ <=> but
 οὐκ <=> not
 ἂν <=> would

@@ -10,7 +10,7 @@
 γῆν. <=> earth
 
 ἡ <=> the
-δὲ <=> now
+δὲ <=> but
 γῆ <=> earth
 ἦν <=> was
 ἀόρατος <=> invisible
@@ -22,9 +22,9 @@
 τῆς <=> the
 ἀβύσσου, <=> abyss
 καὶ <=> and
-πνεῦμα <=> Spirit
+πνεῦμα <=> spirit
 θεοῦ <=> of God
-ἐπεφέρετο <=> was moving
+ἐπεφέρετο <=> was hovering
 ἐπάνω <=> over
 τοῦ <=> the
 ὕδατος. <=> water
@@ -36,5 +36,5 @@
 γενηθήτω <=> Let there be
 φῶς. <=> light
 καὶ <=> And
-ἐγένετο <=> there was
+ἐγένετο <=> came to be
 φῶς. <=> light
