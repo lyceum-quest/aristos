@@ -1,0 +1,37 @@
+{
+  "experiment_name": "qwen3.5-397b-a17b",
+  "experiment_version": 4,
+  "provider": {
+    "name": "ppq",
+    "base_url": "https://api.ppq.ai/v1",
+    "api_key_env": "PPQ_API_KEY"
+  },
+  "model": {
+    "id": "qwen/qwen3.5-397b-a17b"
+  },
+  "generation": {
+    "profile": "full-sampling",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "seed": 1,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": [
+        "DeepInfra"
+      ],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "max_tokens": 4096,
+    "frequency_penalty": 0,
+    "presence_penalty": 0
+  },
+  "validation": {
+    "max_attempts": 2
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "experiment_name": "claude-sonnet-4.6",
+  "experiment_version": 4,
+  "provider": {
+    "name": "ppq",
+    "base_url": "https://api.ppq.ai/v1",
+    "api_key_env": "PPQ_API_KEY"
+  },
+  "model": {
+    "id": "anthropic/claude-sonnet-4.6"
+  },
+  "generation": {
+    "profile": "anthropic-non-thinking",
+    "temperature": 0,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": [
+        "Anthropic"
+      ],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "max_tokens": 4096
+  },
+  "validation": {
+    "max_attempts": 2
+  }
+}

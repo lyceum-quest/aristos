@@ -1,0 +1,32 @@
+{
+  "experiment_name": "gpt-5.3-codex",
+  "experiment_version": 4,
+  "provider": {
+    "name": "ppq",
+    "base_url": "https://api.ppq.ai/v1",
+    "api_key_env": "PPQ_API_KEY"
+  },
+  "model": {
+    "id": "gpt-5.3-codex"
+  },
+  "generation": {
+    "profile": "openai-non-thinking",
+    "seed": 1,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": [
+        "OpenAI"
+      ],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "max_tokens": 4096
+  },
+  "validation": {
+    "max_attempts": 2
+  }
+}
