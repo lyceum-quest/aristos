@@ -17,6 +17,7 @@ repl-temp-*
 /scripts/check-browser-boundary
 /scripts/deploy
 /scripts/lint
+/scripts/run-deepseek-experiment
 
 # Local planning and research documents (directories and all contents)
 /plans/

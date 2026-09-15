@@ -29,6 +29,16 @@ task lint {
   run: ["roc", "scripts/lint.roc"]
 }
 
+task check-deepseek-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-deepseek-experiment.roc", "--check"]
+}
+
+task deepseek-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-deepseek-experiment.roc"]
+}
+
 task check-browser-boundary {
   environment: "dev"
   run: ["roc", "scripts/check-browser-boundary.roc"]
@@ -80,6 +90,7 @@ workflow dev {
 workflow release {
   steps: [
     "run preload",
+    "run check-deepseek-experiment",
     "run check-browser-boundary",
     "run bundle"
   ]
