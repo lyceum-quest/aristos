@@ -65,14 +65,14 @@ task roc-version {
   run: ["roc", "version"]
 }
 
-task check-deepseek-experiment {
+task check-deepseek-v4-flash-0731-experiment {
   environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "deepseek", "--check"]
+  run: ["roc", "scripts/run-model-experiment.roc", "deepseek-v4-flash-0731", "--check"]
 }
 
-task deepseek-experiment {
+task deepseek-v4-flash-0731-experiment {
   environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "deepseek"]
+  run: ["roc", "scripts/run-model-experiment.roc", "deepseek-v4-flash-0731"]
 }
 
 task check-qwen35-experiment {
@@ -192,7 +192,7 @@ workflow release {
     "run check-lint-tool",
     "run check-model-experiment-tool",
     "run preload",
-    "run check-deepseek-experiment",
+    "run check-deepseek-v4-flash-0731-experiment",
     "run check-qwen35-experiment",
     "run check-qwen35-397b-experiment",
     "run check-claude-sonnet-46-experiment",

@@ -1,5 +1,5 @@
 {
-  "experiment_name": "deepseek",
+  "experiment_name": "deepseek-v4-flash-0731",
   "experiment_version": 4,
   "provider": {
     "name": "ppq",
