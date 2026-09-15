@@ -49,6 +49,16 @@ task qwen35-experiment {
   run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-9b"]
 }
 
+task check-qwen35-397b-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-397b-a17b", "--check"]
+}
+
+task qwen35-397b-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-397b-a17b"]
+}
+
 task check-browser-boundary {
   environment: "dev"
   run: ["roc", "scripts/check-browser-boundary.roc"]
@@ -102,6 +112,7 @@ workflow release {
     "run preload",
     "run check-deepseek-experiment",
     "run check-qwen35-experiment",
+    "run check-qwen35-397b-experiment",
     "run check-browser-boundary",
     "run bundle"
   ]
