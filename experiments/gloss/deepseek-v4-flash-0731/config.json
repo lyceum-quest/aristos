@@ -1,0 +1,37 @@
+{
+  "experiment_name": "deepseek-v4-flash-0731",
+  "experiment_version": 4,
+  "provider": {
+    "name": "ppq",
+    "base_url": "https://api.ppq.ai/v1",
+    "api_key_env": "PPQ_API_KEY"
+  },
+  "model": {
+    "id": "deepseek/deepseek-v4-flash-0731"
+  },
+  "generation": {
+    "profile": "full-sampling",
+    "temperature": 1,
+    "top_p": 1,
+    "top_k": 0,
+    "seed": 1,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": [
+        "OpenInference"
+      ],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "max_tokens": 4096,
+    "frequency_penalty": 0,
+    "presence_penalty": 0
+  },
+  "validation": {
+    "max_attempts": 2
+  }
+}
