@@ -31,12 +31,22 @@ task lint {
 
 task check-deepseek-experiment {
   environment: "dev"
-  run: ["roc", "scripts/run-deepseek-experiment.roc", "--check"]
+  run: ["roc", "scripts/run-model-experiment.roc", "deepseek", "--check"]
 }
 
 task deepseek-experiment {
   environment: "dev"
-  run: ["roc", "scripts/run-deepseek-experiment.roc"]
+  run: ["roc", "scripts/run-model-experiment.roc", "deepseek"]
+}
+
+task check-qwen35-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-9b", "--check"]
+}
+
+task qwen35-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-9b"]
 }
 
 task check-browser-boundary {
@@ -91,6 +101,7 @@ workflow release {
   steps: [
     "run preload",
     "run check-deepseek-experiment",
+    "run check-qwen35-experiment",
     "run check-browser-boundary",
     "run bundle"
   ]

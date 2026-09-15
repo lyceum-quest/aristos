@@ -1,5 +1,5 @@
 {
-  "experiment_name": "deepseek",
+  "experiment_name": "qwen3.5-9b",
   "experiment_version": 3,
   "provider": {
     "name": "ppq",
@@ -7,12 +7,12 @@
     "api_key_env": "PPQ_API_KEY"
   },
   "model": {
-    "id": "deepseek/deepseek-v4-flash-0731"
+    "id": "qwen/qwen3.5-9b"
   },
   "generation": {
-    "temperature": 1,
-    "top_p": 1,
-    "top_k": 0,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
     "seed": 1,
     "reasoning": {
       "enabled": false,
@@ -21,7 +21,7 @@
     "include_reasoning": false,
     "provider": {
       "only": [
-        "OpenInference"
+        "DeepInfra"
       ],
       "require_parameters": true,
       "allow_fallbacks": false

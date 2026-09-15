@@ -2,7 +2,6 @@
 
 ## Workflow
 
-- After every code or configuration change, run `kai workflow release`. It must pass on every commit.
 - Run project tooling through Kai tasks or workflows. Declare new tooling dependencies and runnable tasks in `Kaifile`.
 - Do not commit unless explicitly instructed. Never push, create an issue, or open a pull request.
 - If asked why a problem occurs, explain it so the developer can fix it. Do not edit files unless asked.
