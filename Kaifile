@@ -59,6 +59,26 @@ task qwen35-397b-experiment {
   run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-397b-a17b"]
 }
 
+task check-claude-sonnet-46-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "claude-sonnet-4.6", "--check"]
+}
+
+task claude-sonnet-46-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "claude-sonnet-4.6"]
+}
+
+task check-gpt53-codex-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "gpt-5.3-codex", "--check"]
+}
+
+task gpt53-codex-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "gpt-5.3-codex"]
+}
+
 task check-browser-boundary {
   environment: "dev"
   run: ["roc", "scripts/check-browser-boundary.roc"]
@@ -113,6 +133,8 @@ workflow release {
     "run check-deepseek-experiment",
     "run check-qwen35-experiment",
     "run check-qwen35-397b-experiment",
+    "run check-claude-sonnet-46-experiment",
+    "run check-gpt53-codex-experiment",
     "run check-browser-boundary",
     "run bundle"
   ]

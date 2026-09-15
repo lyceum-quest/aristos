@@ -12,6 +12,7 @@ import cli.Stderr
 import cli.Stdout
 import cli.Utc
 import json.Json
+import json.Option
 
 main! = \args ->
     displayed = List.map args Arg.display
@@ -64,16 +65,17 @@ read_config! = \experiment_dir ->
         { experiment_name : Str
         , experiment_version : U64
         , generation :
-            { frequency_penalty : Dec
+            { frequency_penalty : Option.Option Dec
             , include_reasoning : Bool
             , max_tokens : U64
-            , presence_penalty : Dec
+            , presence_penalty : Option.Option Dec
+            , profile : Str
             , provider : { allow_fallbacks : Bool, only : List Str, require_parameters : Bool }
             , reasoning : { enabled : Bool, exclude : Bool }
-            , seed : U64
-            , temperature : Dec
-            , top_k : U64
-            , top_p : Dec
+            , seed : Option.Option U64
+            , temperature : Option.Option Dec
+            , top_k : Option.Option U64
+            , top_p : Option.Option Dec
             }
         , model : { id : Str }
         , provider : { api_key_env : Str, base_url : Str, name : Str }
@@ -373,7 +375,7 @@ write_attempt_record! = \path, attempt, body, decoded, finish_reason, response, 
 request_body = \config, work, source, tokens, feedback ->
     system_prompt = "Produce concise contextual English word glosses for Ancient Greek tokens. Return only the requested JSON. Do not return Greek text, lemmas, morphology, commentary, or a prose translation."
     token_table =
-        List.map tokens \token -> "$(token.id)\t$(Num.to_str token.line)\t$(token.form)"
+        List.map tokens \token -> "$(token.id) | $(Num.to_str token.line) | $(token.form)"
         |> \rows -> Str.join_with rows "\n"
     retry_instruction =
         if feedback == "" then
@@ -391,7 +393,7 @@ request_body = \config, work, source, tokens, feedback ->
             , ""
             , "SOURCE CONTEXT:"
             , source
-            , "TARGET TOKENS (id, source line, immutable Greek form):"
+            , "TARGET TOKENS (id | source line | immutable Greek form):"
             , token_table
             ]
             "\n"
@@ -427,27 +429,69 @@ request_body = \config, work, source, tokens, feedback ->
             }
         , type: "json_schema"
         }
-    body =
-        { frequency_penalty: generation.frequency_penalty
-        , include_reasoning: generation.include_reasoning
-        , max_tokens: generation.max_tokens
-        , messages:
-            [ { content: system_prompt, role: "system" }
-            , { content: user_prompt, role: "user" }
-            ]
-        , model: config.model.id
-        , presence_penalty: generation.presence_penalty
-        , provider: generation.provider
-        , reasoning: generation.reasoning
-        , response_format
-        , seed: generation.seed
-        , temperature: generation.temperature
-        , top_k: generation.top_k
-        , top_p: generation.top_p
-        }
+    messages =
+        [ { content: system_prompt, role: "system" }
+        , { content: user_prompt, role: "user" }
+        ]
+    encoded =
+        when generation.profile is
+            "full-sampling" ->
+                frequency_penalty = required_generation_parameter(generation.frequency_penalty, "frequency_penalty")?
+                presence_penalty = required_generation_parameter(generation.presence_penalty, "presence_penalty")?
+                seed = required_generation_parameter(generation.seed, "seed")?
+                temperature = required_generation_parameter(generation.temperature, "temperature")?
+                top_k = required_generation_parameter(generation.top_k, "top_k")?
+                top_p = required_generation_parameter(generation.top_p, "top_p")?
+                body =
+                    { frequency_penalty
+                    , include_reasoning: generation.include_reasoning
+                    , max_tokens: generation.max_tokens
+                    , messages
+                    , model: config.model.id
+                    , presence_penalty
+                    , provider: generation.provider
+                    , reasoning: generation.reasoning
+                    , response_format
+                    , seed
+                    , temperature
+                    , top_k
+                    , top_p
+                    }
+                Ok (Encode.to_bytes(body, Json.utf8))
+            "anthropic-non-thinking" ->
+                temperature = required_generation_parameter(generation.temperature, "temperature")?
+                body =
+                    { include_reasoning: generation.include_reasoning
+                    , max_tokens: generation.max_tokens
+                    , messages
+                    , model: config.model.id
+                    , provider: generation.provider
+                    , reasoning: generation.reasoning
+                    , response_format
+                    , temperature
+                    }
+                Ok (Encode.to_bytes(body, Json.utf8))
+            "openai-non-thinking" ->
+                seed = required_generation_parameter(generation.seed, "seed")?
+                body =
+                    { include_reasoning: generation.include_reasoning
+                    , max_tokens: generation.max_tokens
+                    , messages
+                    , model: config.model.id
+                    , provider: generation.provider
+                    , reasoning: generation.reasoning
+                    , response_format
+                    , seed
+                    }
+                Ok (Encode.to_bytes(body, Json.utf8))
+            other -> Err (UnsupportedGenerationProfile other)
 
-    encoded = Encode.to_bytes(body, Json.utf8)
-    Str.from_utf8(encoded)
+    Str.from_utf8(encoded?)
+
+required_generation_parameter = \option, name ->
+    when Option.get_result(option) is
+        Some value -> Ok value
+        None -> Err (MissingGenerationParameter name)
 
 validate_content = \content, work, tokens ->
     decoded = Decode.from_bytes(Str.to_utf8(content), Json.utf8)

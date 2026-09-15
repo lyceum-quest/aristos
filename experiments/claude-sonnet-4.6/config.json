@@ -1,5 +1,5 @@
 {
-  "experiment_name": "deepseek",
+  "experiment_name": "claude-sonnet-4.6",
   "experiment_version": 3,
   "provider": {
     "name": "ppq",
@@ -7,14 +7,11 @@
     "api_key_env": "PPQ_API_KEY"
   },
   "model": {
-    "id": "deepseek/deepseek-v4-flash-0731"
+    "id": "anthropic/claude-sonnet-4.6"
   },
   "generation": {
-    "profile": "full-sampling",
-    "temperature": 1,
-    "top_p": 1,
-    "top_k": 0,
-    "seed": 1,
+    "profile": "anthropic-non-thinking",
+    "temperature": 0,
     "reasoning": {
       "enabled": false,
       "exclude": true
@@ -22,14 +19,12 @@
     "include_reasoning": false,
     "provider": {
       "only": [
-        "OpenInference"
+        "Anthropic"
       ],
       "require_parameters": true,
       "allow_fallbacks": false
     },
-    "max_tokens": 4096,
-    "frequency_penalty": 0,
-    "presence_penalty": 0
+    "max_tokens": 4096
   },
   "validation": {
     "max_attempts": 2
