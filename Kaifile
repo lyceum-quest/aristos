@@ -8,9 +8,10 @@ environment dev {
     "git",
     "gnugrep",
     "openssh",
-    "roc",
+    "rocpkgs.nightly",
     "rsync"
   ]
+  overlays: ["github:roc-lang/roc-overlay"]
 }
 
 task preload {
@@ -27,6 +28,41 @@ task preload {
 task lint {
   environment: "dev"
   run: ["roc", "scripts/lint.roc"]
+}
+
+task check-preload-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/build-corpus-preload.roc"]
+}
+
+task check-release-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/build-release.roc"]
+}
+
+task check-browser-boundary-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/check-browser-boundary.roc"]
+}
+
+task check-deploy-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/deploy.roc"]
+}
+
+task check-lint-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/lint.roc"]
+}
+
+task check-model-experiment-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/run-model-experiment.roc"]
+}
+
+task roc-version {
+  environment: "dev"
+  run: ["roc", "version"]
 }
 
 task check-deepseek-experiment {
@@ -79,6 +115,26 @@ task gpt53-codex-experiment {
   run: ["roc", "scripts/run-model-experiment.roc", "gpt-5.3-codex"]
 }
 
+task check-qwen38-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.8-27b", "--check"]
+}
+
+task qwen38-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.8-27b"]
+}
+
+task check-mistral-small4-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "mistral-small-4", "--check"]
+}
+
+task mistral-small4-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-model-experiment.roc", "mistral-small-4"]
+}
+
 task check-browser-boundary {
   environment: "dev"
   run: ["roc", "scripts/check-browser-boundary.roc"]
@@ -129,12 +185,20 @@ workflow dev {
 
 workflow release {
   steps: [
+    "run check-preload-tool",
+    "run check-release-tool",
+    "run check-browser-boundary-tool",
+    "run check-deploy-tool",
+    "run check-lint-tool",
+    "run check-model-experiment-tool",
     "run preload",
     "run check-deepseek-experiment",
     "run check-qwen35-experiment",
     "run check-qwen35-397b-experiment",
     "run check-claude-sonnet-46-experiment",
     "run check-gpt53-codex-experiment",
+    "run check-qwen38-experiment",
+    "run check-mistral-small4-experiment",
     "run check-browser-boundary",
     "run bundle"
   ]
