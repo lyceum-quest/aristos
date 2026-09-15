@@ -1,5 +1,6 @@
 # Kai-generated environment
 .kai/
+.env
 
 # Elm build cache and generated browser bundle
 elm-stuff/
