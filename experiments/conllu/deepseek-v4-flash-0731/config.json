@@ -43,7 +43,7 @@
     "top_k": 0,
     "seed": 1,
     "reasoning": {
-      "enabled": true,
+      "enabled": false,
       "exclude": true
     },
     "include_reasoning": false,
