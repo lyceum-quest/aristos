@@ -1,5 +1,5 @@
 {
-  "experiment_name": "deepseek-v4-flash-0731",
+  "experiment_name": "deepseek-v4-pro-0813",
   "experiment_version": 2,
   "execution": {
     "min_overt_tokens_per_shard": 30,
@@ -12,7 +12,7 @@
     "api_key_env": "PPQ_API_KEY"
   },
   "model": {
-    "id": "deepseek/deepseek-v4-flash-0731"
+    "id": "deepseek/deepseek-v4-pro-0813"
   },
   "generation": {
     "profile": "full-sampling",
@@ -27,7 +27,7 @@
     "include_reasoning": false,
     "provider": {
       "only": [
-        "OpenInference"
+        "Fireworks"
       ],
       "require_parameters": true,
       "allow_fallbacks": false

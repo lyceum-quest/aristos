@@ -125,7 +125,7 @@ experiment_dir_for = |experiment_name|
 	if !valid_path_segment(experiment_name) {
 		Err(InvalidExperimentName(experiment_name))
 	} else {
-		Ok("experiments/${experiment_name}")
+		Ok("experiments/gloss/${experiment_name}")
 	}
 
 valid_path_segment = |segment|

@@ -1,0 +1,59 @@
+# sentence_id = 1
+# source_document_id = 0032-006
+# citation = 1.1.1
+# translation_lang = en
+# prose_translation = Darius and Parysatis had two sons, the elder being Artaxerxes and the younger Cyrus.
+# literal_translation = Of-Darius and of-Parysatis are-born sons two, elder indeed Artaxerxes, younger but Cyrus.
+1	Δαρείου	Δαρεῖος	PROPN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	5	nmod	_	gloss=of-Darius|Ref=1.1.1
+2	καὶ	καί	CCONJ	c--------	_	3	cc	_	gloss=and|Ref=1.1.1
+3	Παρυσάτιδος	Παρύσατις	PROPN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	1	conj	_	gloss=of-Parysatis|Ref=1.1.1
+4	γίγνονται	γίγνομαι	VERB	v3ppie---	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	gloss=are-born|Ref=1.1.1
+5	παῖδες	παῖς	NOUN	n-p---cn-	Case=Nom|Gender=Com|Number=Plur	4	nsubj	_	gloss=sons|Ref=1.1.1
+6	δύο	δύο	NUM	m--------	_	5	nummod	_	gloss=two|Ref=1.1.1
+7	,	,	PUNCT	u--------	_	8	punct	_	gloss=,|Ref=1.1.1
+8	πρεσβύτερος	πρέσβυς	ADJ	a-s---mnc	Case=Nom|Degree=Cmp|Gender=Masc|Number=Sing	5	appos	_	gloss=elder|Ref=1.1.1
+9	μὲν	μέν	ADV	d--------	_	8	discourse	_	gloss=indeed|Ref=1.1.1
+10	Ἀρταξέρξης	Ἀρταξέρξης	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	8	nsubj	_	gloss=Artaxerxes|Ref=1.1.1
+11	,	,	PUNCT	u--------	_	12	punct	_	gloss=,|Ref=1.1.1
+12	νεώτερος	νέος	ADJ	a-s---mnc	Case=Nom|Degree=Cmp|Gender=Masc|Number=Sing	8	conj	_	gloss=younger|Ref=1.1.1
+13	δὲ	δέ	CCONJ	c--------	_	12	discourse	_	gloss=but|Ref=1.1.1
+14	Κῦρος	Κῦρος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	12	nsubj	_	gloss=Cyrus|Ref=1.1.1
+15	·	·	PUNCT	u--------	_	4	punct	_	gloss=;|Ref=1.1.1
+
+# sentence_id = 2
+# source_document_id = 0032-006
+# citation = 1.1.1
+# translation_lang = en
+# prose_translation = When Darius fell ill and suspected that his life was coming to an end, he wished both his sons to be present.
+# literal_translation = When Darius was ill and suspected the end of his life, he wished both sons to be present.
+1	ἐπεὶ	ἐπεί	SCONJ	c--------	_	3	mark	_	gloss=when|Ref=1.1.1
+2	δὲ	δέ	CCONJ	c--------	_	11	discourse	_	gloss=but|Ref=1.1.1
+3	ἠσθένει	ἀσθενέω	VERB	v3siia---	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act	11	advcl	_	gloss=was-ill|Ref=1.1.1
+4	Δαρεῖος	Δαρεῖος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	3	nsubj	_	gloss=Darius|Ref=1.1.1
+5	καὶ	καί	CCONJ	c--------	_	6	cc	_	gloss=and|Ref=1.1.1
+6	ὑπώπτευε	ὑποπτεύω	VERB	v3siia---	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act	3	conj	_	gloss=suspected|Ref=1.1.1
+7	τελευτὴν	τελευτή	NOUN	n-s---fa-	Case=Acc|Gender=Fem|Number=Sing	6	obj	_	gloss=end|Ref=1.1.1
+8	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Gender=Masc|Number=Sing	9	det	_	gloss=of-the|Ref=1.1.1
+9	βίου	βίος	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	7	nmod	_	gloss=of-life|Ref=1.1.1
+10	,	,	PUNCT	u--------	_	11	punct	_	gloss=,|Ref=1.1.1
+11	ἐβούλετο	βούλομαι	VERB	v3siim---	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Mid	0	root	_	gloss=wished|Ref=1.1.1
+12	τὼ	ὁ	DET	l-d---ma-	Case=Acc|Gender=Masc|Number=Dual	13	det	_	gloss=the-two|Ref=1.1.1
+13	παῖδε	παῖς	NOUN	n-d---ca-	Case=Acc|Gender=Com|Number=Dual	15	nsubj	_	gloss=sons|Ref=1.1.1
+14	ἀμφοτέρω	ἀμφότερος	DET	a-d---ma-	Case=Acc|Gender=Masc|Number=Dual	13	det	_	gloss=both|Ref=1.1.1
+15	παρεῖναι	πάρειμι	VERB	v--pna---	VerbForm=Inf|Voice=Act	11	xcomp	_	gloss=to-be-present|Ref=1.1.1
+16	.	.	PUNCT	u--------	_	11	punct	_	gloss=.|Ref=1.1.1
+
+# sentence_id = 3
+# source_document_id = 0032-006
+# citation = 1.1.2
+# translation_lang = en
+# prose_translation = The elder son, then, happened to be present.
+# literal_translation = The elder, then, happened to be present.
+1	ὁ	ὁ	DET	l-s---mn-	Case=Nom|Gender=Masc|Number=Sing	4	det	_	gloss=the|Ref=1.1.2
+2	μὲν	μέν	ADV	d--------	_	6	discourse	_	gloss=indeed|Ref=1.1.2
+3	οὖν	οὖν	ADV	d--------	_	6	discourse	_	gloss=then|Ref=1.1.2
+4	πρεσβύτερος	πρέσβυς	ADJ	a-s---mnc	Case=Nom|Degree=Cmp|Gender=Masc|Number=Sing	6	nsubj	_	gloss=elder|Ref=1.1.2
+5	παρὼν	πάρειμι	VERB	v-sppamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Pres|VerbForm=Part|Voice=Act	6	advcl	_	gloss=being-present|Ref=1.1.2
+6	ἐτύγχανε	τυγχάνω	VERB	v3siia---	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act	0	root	_	gloss=happened|Ref=1.1.2
+7	·	·	PUNCT	u--------	_	6	punct	_	gloss=;|Ref=1.1.2
+

@@ -1,0 +1,216 @@
+# sentence_id = 1
+# translation_lang = en
+# prose_translation = Oh! oh!
+# literal_translation = oh! oh!
+1	ἰοὺ	ἰού	INTJ	i--------	_	0	root	_	Ref=1|line=1|speaker=Στρεψιάδης|gloss=oh!
+2	ἰού	ἰού	INTJ	i--------	_	1	discourse	_	Ref=1|line=1|speaker=Στρεψιάδης|gloss=oh!
+3	·	·	PUNCT	u--------	_	1	punct	_	Ref=1|line=1|speaker=Στρεψιάδης|gloss=;
+
+# sentence_id = 2
+# translation_lang = en
+# prose_translation = O Zeus the king, what a thing this length of nights is!
+# literal_translation = o Zeus king, the thing of-the nights how-great!
+1	ὦ	ὦ	PART	i--------	_	2	discourse	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=o
+2	Ζεῦ	Ζεύς	PROPN	n-s---mv-	Case=Voc|Gender=Masc|Number=Sing	5	vocative	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=Zeus
+3	βασιλεῦ	βασιλεύς	NOUN	n-s---mv-	Case=Voc|Gender=Masc|Number=Sing	2	appos	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=king
+4	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	5	det	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=the
+5	χρῆμα	χρῆμα	NOUN	n-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=thing
+6	τῶν	ὁ	DET	l-p---fg-	Case=Gen|Gender=Fem|Number=Plur|PronType=Art	7	det	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=the
+7	νυκτῶν	νύξ	NOUN	n-p---fg-	Case=Gen|Gender=Fem|Number=Plur	5	nmod	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=of-nights
+8	ὅσον	ὅσος	ADJ	p-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Rel	5	amod	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=how-great
+9	·	·	PUNCT	u--------	_	5	punct	_	Ref=2|line=2|speaker=Στρεψιάδης|gloss=;
+
+# sentence_id = 3
+# translation_lang = en
+# prose_translation = Endless.
+# literal_translation = endless.
+1	ἀπέραντον	ἀπέραντος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=3|line=3|speaker=Στρεψιάδης|gloss=endless
+2	.	.	PUNCT	u--------	_	1	punct	_	Ref=3|line=3|speaker=Στρεψιάδης|gloss=.
+
+# sentence_id = 4
+# translation_lang = en
+# prose_translation = Will day never come?
+# literal_translation = never day will-come?
+1	οὐδέποθ’	οὐδέποτε	ADV	d--------	_	3	advmod	_	Ref=4|line=3|speaker=Στρεψιάδης|gloss=never
+2	ἡμέρα	ἡμέρα	NOUN	n-s---fn-	Case=Nom|Gender=Fem|Number=Sing	3	nsubj	_	Ref=4|line=3|speaker=Στρεψιάδης|gloss=day
+3	γενήσεται	γίγνομαι	VERB	v3sfim---	Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin|Voice=Mid	0	root	_	Ref=4|line=3|speaker=Στρεψιάδης|gloss=will-come
+4	;	;	PUNCT	u--------	_	3	punct	_	Ref=4|line=3|speaker=Στρεψιάδης|gloss=?
+
+# sentence_id = 5
+# translation_lang = en
+# prose_translation = And yet long ago I heard the cock.
+# literal_translation = and indeed long-ago at-least of-cock i-heard.
+1	καὶ	καί	CCONJ	c--------	_	6	discourse	_	Ref=5|line=4|speaker=Στρεψιάδης|gloss=and
+2	μὴν	μήν	PART	g--------	_	6	discourse	_	Ref=5|line=4|speaker=Στρεψιάδης|gloss=indeed
+3	πάλαι	πάλαι	ADV	d--------	_	6	advmod	_	Ref=5|line=4|speaker=Στρεψιάδης|gloss=long-ago
+4	γ’	γε	PART	g--------	_	3	discourse	_	Ref=5|line=4|speaker=Στρεψιάδης|gloss=at-least
+5	ἀλεκτρυόνος	ἀλεκτρυών	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	6	obj	_	Ref=5|line=4|speaker=Στρεψιάδης|gloss=of-cock
+6	ἤκουσ’	ἀκούω	VERB	v1saia---	Mood=Ind|Number=Sing|Person=1|Tense=Aor|VerbForm=Fin|Voice=Act	0	root	_	Ref=5|line=4|speaker=Στρεψιάδης|gloss=i-heard
+7	ἐγώ	ἐγώ	PRON	p-s---cn-	Case=Nom|Number=Sing|Person=1|PronType=Prs	6	nsubj	_	Ref=5|line=4|speaker=Στρεψιάδης|gloss=i
+8	·	·	PUNCT	u--------	_	6	punct	_	Ref=5|line=4|speaker=Στρεψιάδης|gloss=;
+
+# sentence_id = 6
+# translation_lang = en
+# prose_translation = But the servants are snoring.
+# literal_translation = the but servants snore.
+1	οἱ	ὁ	DET	l-p---mn-	Case=Nom|Gender=Masc|Number=Plur|PronType=Art	3	det	_	Ref=6|line=5|speaker=Στρεψιάδης|gloss=the
+2	δ’	δέ	CCONJ	c--------	_	3	cc	_	Ref=6|line=5|speaker=Στρεψιάδης|gloss=but
+3	οἰκέται	οἰκέτης	NOUN	n-p---mn-	Case=Nom|Gender=Masc|Number=Plur	4	nsubj	_	Ref=6|line=5|speaker=Στρεψιάδης|gloss=servants
+4	ῥέγκουσιν	ῥέγκω	VERB	v3ppia---	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	Ref=6|line=5|speaker=Στρεψιάδης|gloss=snore
+5	·	·	PUNCT	u--------	_	4	punct	_	Ref=6|line=5|speaker=Στρεψιάδης|gloss=;
+
+# sentence_id = 7
+# translation_lang = en
+# prose_translation = But I could not before...
+# literal_translation = but not would before the ...
+1	ἀλλ’	ἀλλά	CCONJ	c--------	_	4	cc	_	Ref=7|line=5|speaker=Στρεψιάδης|gloss=but
+2	οὐκ	οὐ	PART	d--------	Polarity=Neg	4	advmod	_	Ref=7|line=5|speaker=Στρεψιάδης|gloss=not
+3	ἂν	ἄν	PART	g--------	_	4	advmod	_	Ref=7|line=5|speaker=Στρεψιάδης|gloss=would
+4	πρὸ	πρό	ADP	r--------	_	0	root	_	Ref=7|line=5|speaker=Στρεψιάδης|gloss=before
+5	τοῦ	ὁ	DET	l-s---ng-	Case=Gen|Gender=Neut|Number=Sing|PronType=Art	4	obl	_	Ref=7|line=5|speaker=Στρεψιάδης|gloss=the
+6	.	.	PUNCT	u--------	_	4	punct	_	Ref=7|line=5|speaker=Στρεψιάδης|gloss=.
+
+# sentence_id = 8
+# translation_lang = en
+# prose_translation = Damn you, war, for many reasons, since I cannot even punish my servants.
+# literal_translation = perish you-should then o war for many things, since not-even to-punish is-possible to-me the servants.
+1	ἀπόλοιο	ἀπόλλυμι	VERB	v2saom---	Mood=Opt|Number=Sing|Person=2|Tense=Aor|VerbForm=Fin|Voice=Mid	0	root	_	Ref=8|line=6|speaker=Στρεψιάδης|gloss=perish-you-should
+2	δῆτ’	δῆτα	PART	g--------	_	1	discourse	_	Ref=8|line=6|speaker=Στρεψιάδης|gloss=then
+3	ὦ	ὦ	PART	i--------	_	4	discourse	_	Ref=8|line=6|speaker=Στρεψιάδης|gloss=o
+4	πόλεμε	πόλεμος	NOUN	n-s---mv-	Case=Voc|Gender=Masc|Number=Sing	1	vocative	_	Ref=8|line=6|speaker=Στρεψιάδης|gloss=war
+5	πολλῶν	πολύς	ADJ	a-p---ng-	Case=Gen|Gender=Neut|Number=Plur	6	obl	_	Ref=8|line=6|speaker=Στρεψιάδης|gloss=of-many-things
+6	οὕνεκα	ἕνεκα	ADP	r--------	_	1	obl	_	Ref=8|line=6|speaker=Στρεψιάδης|gloss=for-sake-of
+7	,	,	PUNCT	u--------	_	11	punct	_	Ref=8|line=6|speaker=Στρεψιάδης|gloss=,
+8	ὅτ’	ὅτε	SCONJ	c--------	_	11	mark	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=since
+9	οὐ	οὐ	PART	d--------	Polarity=Neg	11	advmod	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=not
+10	-δὲ	δέ	PART	c--------	_	9	advmod	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=even
+11	κολάσ’	κολάζω	VERB	v--ana---	VerbForm=Inf|Tense=Aor|Voice=Act	1	advcl	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=to-punish
+12	ἔξεστί	ἔξεστι	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	11	aux	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=is-possible
+13	μοι	ἐγώ	PRON	p-s---cd-	Case=Dat|Number=Sing|Person=1|PronType=Prs	11	iobj	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=to-me
+14	τοὺς	ὁ	DET	l-p---ma-	Case=Acc|Gender=Masc|Number=Plur|PronType=Art	15	det	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=the
+15	οἰκέτας	οἰκέτης	NOUN	n-p---ma-	Case=Acc|Gender=Masc|Number=Plur	11	obj	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=servants
+16	.	.	PUNCT	u--------	_	1	punct	_	Ref=8|line=7|speaker=Στρεψιάδης|gloss=.
+
+# sentence_id = 9
+# translation_lang = en
+# prose_translation = But this fine young man does not wake at night; instead he farts wrapped up in five blankets.
+# literal_translation = but not this decent young-man wakes of-night, but farts in five blankets wrapped-up.
+1	ἀλλ’	ἀλλά	CCONJ	c--------	_	8	cc	_	Ref=9|line=8|speaker=Στρεψιάδης|gloss=but
+2	οὐ	οὐ	PART	d--------	Polarity=Neg	8	advmod	_	Ref=9|line=8|speaker=Στρεψιάδης|gloss=not
+3	-δ’	δέ	PART	c--------	_	2	advmod	_	Ref=9|line=8|speaker=Στρεψιάδης|gloss=indeed
+4	ὁ	ὁ	DET	l-s---mn-	Case=Nom|Gender=Masc|Number=Sing|PronType=Art	7	det	_	Ref=9|line=8|speaker=Στρεψιάδης|gloss=the
+5	χρηστὸς	χρηστός	ADJ	a-s---mn-	Case=Nom|Gender=Masc|Number=Sing	7	amod	_	Ref=9|line=8|speaker=Στρεψιάδης|gloss=fine
+6	οὑτοσὶ	οὗτος	PRON	p-s---mn-	Case=Nom|Gender=Masc|Number=Sing|PronType=Dem	7	det	_	Ref=9|line=8|speaker=Στρεψιάδης|gloss=this
+7	νεανίας	νεανίας	NOUN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	8	nsubj	_	Ref=9|line=8|speaker=Στρεψιάδης|gloss=young-man
+8	ἐγείρεται	ἐγείρω	VERB	v3spim---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=9|line=9|speaker=Στρεψιάδης|gloss=wakes
+9	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Art	10	det	_	Ref=9|line=9|speaker=Στρεψιάδης|gloss=of-the
+10	νυκτός	νύξ	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	8	obl	_	Ref=9|line=9|speaker=Στρεψιάδης|gloss=night
+11	,	,	PUNCT	u--------	_	13	punct	_	Ref=9|line=9|speaker=Στρεψιάδης|gloss=,
+12	ἀλλὰ	ἀλλά	CCONJ	c--------	_	13	cc	_	Ref=9|line=9|speaker=Στρεψιάδης|gloss=but
+13	πέρδεται	πέρδομαι	VERB	v3spim---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	8	conj	_	Ref=9|line=9|speaker=Στρεψιάδης|gloss=farts
+14	ἐν	ἐν	ADP	r--------	_	16	case	_	Ref=9|line=10|speaker=Στρεψιάδης|gloss=in
+15	πέντε	πέντε	NUM	m--------	NumType=Card	16	nummod	_	Ref=9|line=10|speaker=Στρεψιάδης|gloss=five
+16	σισύραις	σισύρα	NOUN	n-p---fd-	Case=Dat|Gender=Fem|Number=Plur	13	obl	_	Ref=9|line=10|speaker=Στρεψιάδης|gloss=blankets
+17	ἐγκεκορδυλημένος	ἐγκορδυλέω	VERB	v-srpmmn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Perf|VerbForm=Part|Voice=Mid	13	advcl	_	Ref=9|line=10|speaker=Στρεψιάδης|gloss=wrapped-up
+18	.	.	PUNCT	u--------	_	8	punct	_	Ref=9|line=10|speaker=Στρεψιάδης|gloss=.
+
+# sentence_id = 10
+# translation_lang = en
+# prose_translation = But if it seems best, let us snore wrapped up.
+# literal_translation = but if it-seems let-us-snore covered.
+1	ἀλλ’	ἀλλά	CCONJ	c--------	_	4	cc	_	Ref=10|line=11|speaker=Στρεψιάδης|gloss=but
+2	εἰ	εἰ	SCONJ	c--------	_	3	mark	_	Ref=10|line=11|speaker=Στρεψιάδης|gloss=if
+3	δοκεῖ	δοκέω	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	4	advcl	_	Ref=10|line=11|speaker=Στρεψιάδης|gloss=it-seems
+4	ῥέγκωμεν	ῥέγκω	VERB	v1ppsa---	Mood=Sub|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	Ref=10|line=11|speaker=Στρεψιάδης|gloss=let-us-snore
+5	ἐγκεκαλυμμένοι	ἐγκαλύπτω	VERB	v-prpmmn-	Case=Nom|Gender=Masc|Number=Plur|Tense=Perf|VerbForm=Part|Voice=Mid	4	advcl	_	Ref=10|line=11|speaker=Στρεψιάδης|gloss=covered
+6	.	.	PUNCT	u--------	_	4	punct	_	Ref=10|line=11|speaker=Στρεψιάδης|gloss=.
+
+# sentence_id = 11
+# translation_lang = en
+# prose_translation = But I cannot, miserable man, sleep, being bitten by expense and feed and debts because of this son here.
+# literal_translation = but not i-am-able wretched to-sleep being-bitten by the expense and the feed and the debts because-of this this son.
+1	ἀλλ’	ἀλλά	CCONJ	c--------	_	3	cc	_	Ref=11|line=12|speaker=Στρεψιάδης|gloss=but
+2	οὐ	οὐ	PART	d--------	Polarity=Neg	3	advmod	_	Ref=11|line=12|speaker=Στρεψιάδης|gloss=not
+3	δύναμαι	δύναμαι	VERB	v1spim---	Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=11|line=12|speaker=Στρεψιάδης|gloss=i-am-able
+4	δείλαιος	δείλαιος	ADJ	a-s---mn-	Case=Nom|Gender=Masc|Number=Sing	3	advcl	_	Ref=11|line=12|speaker=Στρεψιάδης|gloss=wretched
+5	εὕδειν	εὕδω	VERB	v--pna---	Tense=Pres|VerbForm=Inf|Voice=Act	3	xcomp	_	Ref=11|line=12|speaker=Στρεψιάδης|gloss=to-sleep
+6	δακνόμενος	δάκνω	VERB	v-sppmmn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Pres|VerbForm=Part|Voice=Mid	3	advcl	_	Ref=11|line=12|speaker=Στρεψιάδης|gloss=being-bitten
+7	ὑπὸ	ὑπό	ADP	r--------	_	9	case	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=by
+8	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Art	9	det	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=the
+9	δαπάνης	δαπάνη	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	6	obl	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=expense
+10	καὶ	καί	CCONJ	c--------	_	12	cc	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=and
+11	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Art	12	det	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=the
+12	φάτνης	φάτνη	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	9	conj	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=feed
+13	καὶ	καί	CCONJ	c--------	_	15	cc	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=and
+14	τῶν	ὁ	DET	l-p---ng-	Case=Gen|Gender=Neut|Number=Plur|PronType=Art	15	det	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=the
+15	χρεῶν	χρέος	NOUN	n-p---ng-	Case=Gen|Gender=Neut|Number=Plur	9	conj	_	Ref=11|line=13|speaker=Στρεψιάδης|gloss=debts
+16	διὰ	διά	ADP	r--------	_	19	case	_	Ref=11|line=14|speaker=Στρεψιάδης|gloss=because-of
+17	τουτονὶ	οὗτος	PRON	p-s---ma-	Case=Acc|Gender=Masc|Number=Sing|PronType=Dem	19	det	_	Ref=11|line=14|speaker=Στρεψιάδης|gloss=this
+18	τὸν	ὁ	DET	l-s---ma-	Case=Acc|Gender=Masc|Number=Sing|PronType=Art	19	det	_	Ref=11|line=14|speaker=Στρεψιάδης|gloss=the
+19	υἱόν	υἱός	NOUN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	6	obl	_	Ref=11|line=14|speaker=Στρεψιάδης|gloss=son
+20	.	.	PUNCT	u--------	_	3	punct	_	Ref=11|line=14|speaker=Στρεψιάδης|gloss=.
+
+# sentence_id = 12
+# translation_lang = en
+# prose_translation = And he, with long hair, rides horses and drives a pair and dreams of horses.
+# literal_translation = he but hair having rides and drives-a-pair and dreams horses.
+1	ὁ	ὁ	PRON	l-s---mn-	Case=Nom|Gender=Masc|Number=Sing|PronType=Dem	5	nsubj	_	Ref=12|line=14|speaker=Στρεψιάδης|gloss=he
+2	δὲ	δέ	PART	c--------	_	5	discourse	_	Ref=12|line=14|speaker=Στρεψιάδης|gloss=but
+3	κόμην	κόμη	NOUN	n-s---fa-	Case=Acc|Gender=Fem|Number=Sing	4	obj	_	Ref=12|line=14|speaker=Στρεψιάδης|gloss=hair
+4	ἔχων	ἔχω	VERB	v-sppamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Pres|VerbForm=Part|Voice=Act	5	advcl	_	Ref=12|line=14|speaker=Στρεψιάδης|gloss=having
+5	ἱππάζεταί	ἱππάζομαι	VERB	v3spim---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=12|line=15|speaker=Στρεψιάδης|gloss=rides
+6	τε	τε	CCONJ	c--------	_	7	cc	_	Ref=12|line=15|speaker=Στρεψιάδης|gloss=and
+7	καὶ	καί	CCONJ	c--------	_	8	cc	_	Ref=12|line=15|speaker=Στρεψιάδης|gloss=and
+8	ξυνωρικεύεται	ξυνωρικεύω	VERB	v3spim---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	5	conj	_	Ref=12|line=15|speaker=Στρεψιάδης|gloss=drives-a-pair
+9	ὀνειροπολεῖ	ὀνειροπολέω	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	5	conj	_	Ref=12|line=16|speaker=Στρεψιάδης|gloss=dreams
+10	θ’	τε	CCONJ	c--------	_	9	cc	_	Ref=12|line=16|speaker=Στρεψιάδης|gloss=and
+11	ἵππους	ἵππος	NOUN	n-p---ma-	Case=Acc|Gender=Masc|Number=Plur	9	obj	_	Ref=12|line=16|speaker=Στρεψιάδης|gloss=horses
+12	·	·	PUNCT	u--------	_	5	punct	_	Ref=12|line=16|speaker=Στρεψιάδης|gloss=;
+
+# sentence_id = 13
+# translation_lang = en
+# prose_translation = But I am ruined, watching the moon bring in the twentieth days.
+# literal_translation = i but am-ruined seeing leading the moon twenties.
+1	ἐγὼ	ἐγώ	PRON	p-s---cn-	Case=Nom|Number=Sing|Person=1|PronType=Prs	3	nsubj	_	Ref=13|line=16|speaker=Στρεψιάδης|gloss=i
+2	δ’	δέ	CCONJ	c--------	_	3	cc	_	Ref=13|line=16|speaker=Στρεψιάδης|gloss=but
+3	ἀπόλλυμαι	ἀπόλλυμι	VERB	v1spim---	Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=13|line=16|speaker=Στρεψιάδης|gloss=am-ruined
+4	ὁρῶν	ὁράω	VERB	v-sppamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Pres|VerbForm=Part|Voice=Act	3	advcl	_	Ref=13|line=17|speaker=Στρεψιάδης|gloss=seeing
+5	ἄγουσαν	ἄγω	VERB	v-sppafa-	Case=Acc|Gender=Fem|Number=Sing|Tense=Pres|VerbForm=Part|Voice=Act	7	acl	_	Ref=13|line=17|speaker=Στρεψιάδης|gloss=leading
+6	τὴν	ὁ	DET	l-s---fa-	Case=Acc|Gender=Fem|Number=Sing|PronType=Art	7	det	_	Ref=13|line=17|speaker=Στρεψιάδης|gloss=the
+7	σελήνην	σελήνη	NOUN	n-s---fa-	Case=Acc|Gender=Fem|Number=Sing	5	obj	_	Ref=13|line=17|speaker=Στρεψιάδης|gloss=moon
+8	εἰκάδας	εἰκάς	NOUN	n-p---fa-	Case=Acc|Gender=Fem|Number=Plur	4	obj	_	Ref=13|line=17|speaker=Στρεψιάδης|gloss=twentieth-days
+9	·	·	PUNCT	u--------	_	3	punct	_	Ref=13|line=17|speaker=Στρεψιάδης|gloss=;
+
+# sentence_id = 14
+# translation_lang = en
+# prose_translation = For the interest keeps advancing.
+# literal_translation = for the interests advance.
+1	οἱ	ὁ	DET	l-p---mn-	Case=Nom|Gender=Masc|Number=Plur|PronType=Art	3	det	_	Ref=14|line=18|speaker=Στρεψιάδης|gloss=the
+2	γὰρ	γάρ	PART	g--------	_	4	discourse	_	Ref=14|line=18|speaker=Στρεψιάδης|gloss=for
+3	τόκοι	τόκος	NOUN	n-p---mn-	Case=Nom|Gender=Masc|Number=Plur	4	nsubj	_	Ref=14|line=18|speaker=Στρεψιάδης|gloss=interests
+4	χωροῦσιν	χωρέω	VERB	v3ppia---	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	Ref=14|line=18|speaker=Στρεψιάδης|gloss=advance
+5	.	.	PUNCT	u--------	_	4	punct	_	Ref=14|line=18|speaker=Στρεψιάδης|gloss=.
+
+# sentence_id = 15
+# translation_lang = en
+# prose_translation = Light the lamp, boy, and bring out the notebook, so that I may take it and read how many people I owe, and calculate the interest.
+# literal_translation = light boy lamp, and bring-out the notebook, so-that having-taken i-may-read to-how-many i-owe and calculate the interests.
+1	ἅπτε	ἅπτω	VERB	v2spma---	Mood=Imp|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	Ref=15|line=18|speaker=Στρεψιάδης|gloss=light
+2	παῖ	παῖς	NOUN	n-s---cv-	Case=Voc|Gender=Com|Number=Sing	1	vocative	_	Ref=15|line=18|speaker=Στρεψιάδης|gloss=boy
+3	λύχνον	λύχνος	NOUN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	1	obj	_	Ref=15|line=18|speaker=Στρεψιάδης|gloss=lamp
+4	,	,	PUNCT	u--------	_	6	punct	_	Ref=15|line=18|speaker=Στρεψιάδης|gloss=,
+5	κα-	καί	CCONJ	c--------	_	6	cc	_	Ref=15|line=19|speaker=Στρεψιάδης|gloss=and
+6	κἄκφερε	ἐκφέρω	VERB	v2spma---	Mood=Imp|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act	1	conj	_	Ref=15|line=19|speaker=Στρεψιάδης|gloss=bring-out
+7	τὸ	ὁ	DET	l-s---na-	Case=Acc|Gender=Neut|Number=Sing|PronType=Art	8	det	_	Ref=15|line=19|speaker=Στρεψιάδης|gloss=the
+8	γραμματεῖον	γραμματεῖον	NOUN	n-s---na-	Case=Acc|Gender=Neut|Number=Sing	6	obj	_	Ref=15|line=19|speaker=Στρεψιάδης|gloss=notebook
+9	,	,	PUNCT	u--------	_	12	punct	_	Ref=15|line=19|speaker=Στρεψιάδης|gloss=,
+10	ἵν’	ἵνα	SCONJ	c--------	_	12	mark	_	Ref=15|line=19|speaker=Στρεψιάδης|gloss=so-that
+11	ἀναγνῶ	ἀναγιγνώσκω	VERB	v1sasa---	Mood=Sub|Number=Sing|Person=1|Tense=Aor|VerbForm=Fin|Voice=Act	6	advcl	_	Ref=15|line=19|speaker=Στρεψιάδης|gloss=i-may-read
+12	λαβὼν	λαμβάνω	VERB	v-sapamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Aor|VerbForm=Part|Voice=Act	11	advcl	_	Ref=15|line=19|speaker=Στρεψιάδης|gloss=having-taken
+13	ὁπόσοις	ὁπόσος	PRON	p-p---md-	Case=Dat|Gender=Masc|Number=Plur|PronType=Int	14	iobj	_	Ref=15|line=20|speaker=Στρεψιάδης|gloss=to-how-many
+14	ὀφείλω	ὀφείλω	VERB	v1spia---	Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act	11	ccomp	_	Ref=15|line=20|speaker=Στρεψιάδης|gloss=i-owe
+15	καὶ	καί	CCONJ	c--------	_	16	cc	_	Ref=15|line=20|speaker=Στρεψιάδης|gloss=and
+16	λογίσωμαι	λογίζομαι	VERB	v1sasm---	Mood=Sub|Number=Sing|Person=1|Tense=Aor|VerbForm=Fin|Voice=Mid	11	conj	_	Ref=15|line=20|speaker=Στρεψιάδης|gloss=i-may-calculate
+17	τοὺς	ὁ	DET	l-p---ma-	Case=Acc|Gender=Masc|Number=Plur|PronType=Art	18	det	_	Ref=15|line=20|speaker=Στρεψιάδης|gloss=the
+18	τόκους	τόκος	NOUN	n-p---ma-	Case=Acc|Gender=Masc|Number=Plur	16	obj	_	Ref=15|line=20|speaker=Στρεψιάδης|gloss=interests
+19	.	.	PUNCT	u--------	_	1	punct	_	Ref=15|line=20|speaker=Στρεψιάδης|gloss=.

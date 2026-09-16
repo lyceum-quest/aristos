@@ -1,0 +1,231 @@
+# sentence_id = 1
+# translation_lang = en
+# prose_translation = Darius and Parysatis had two sons, the elder Artaxerxes and the younger Cyrus.
+# literal_translation = Of-Darius and of-Parysatis are-born sons two, elder indeed Artaxerxes, younger but Cyrus.
+# source_sent_id = 0032-006:1
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.1
+1	Δαρείου	Δαρεῖος	PROPN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	5	nmod	_	Ref=1.1.1|gloss=of-darius
+2	καὶ	καί	CCONJ	c--------	_	3	cc	_	Ref=1.1.1|gloss=and
+3	Παρυσάτιδος	Παρύσατις	PROPN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	1	conj	_	Ref=1.1.1|gloss=of-parysatis
+4	γίγνονται	γίγνομαι	VERB	v3ppim---	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=1.1.1|gloss=are-born
+5	παῖδες	παῖς	NOUN	n-p---cn-	Case=Nom|Gender=Com|Number=Plur	4	nsubj	_	Ref=1.1.1|gloss=sons
+6	δύο	δύο	NUM	m--------	NumType=Card	5	nummod	_	Ref=1.1.1|gloss=two
+7	,	,	PUNCT	u--------	_	8	punct	_	Ref=1.1.1|gloss=,
+8	πρεσβύτερος	πρέσβυς	ADJ	a-s---mnc	Case=Nom|Degree=Cmp|Gender=Masc|Number=Sing	5	appos	_	Ref=1.1.1|gloss=elder
+9	μὲν	μέν	ADV	g--------	_	8	discourse	_	Ref=1.1.1|gloss=indeed
+10	Ἀρταξέρξης	Ἀρταξέρξης	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	8	nsubj	_	Ref=1.1.1|gloss=artaxerxes
+11	,	,	PUNCT	u--------	_	12	punct	_	Ref=1.1.1|gloss=,
+12	νεώτερος	νέος	ADJ	a-s---mnc	Case=Nom|Degree=Cmp|Gender=Masc|Number=Sing	8	conj	_	Ref=1.1.1|gloss=younger
+13	δὲ	δέ	CCONJ	c--------	_	12	discourse	_	Ref=1.1.1|gloss=but
+14	Κῦρος	Κῦρος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	12	nsubj	_	Ref=1.1.1|gloss=cyrus
+15	·	·	PUNCT	u--------	_	4	punct	_	Ref=1.1.1|gloss=;
+
+# sentence_id = 2
+# translation_lang = en
+# prose_translation = But when Darius was sick and suspected that the end of his life was near, he wished both his sons to be present.
+# literal_translation = When but was-ill Darius and suspected end of-life, he-wished the two sons both to-be-present.
+# source_sent_id = 0032-006:2
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.1
+1	ἐπεὶ	ἐπεί	SCONJ	c--------	_	4	mark	_	Ref=1.1.1|gloss=when
+2	δὲ	δέ	ADV	c--------	_	4	discourse	_	Ref=1.1.1|gloss=but
+3	ἠσθένει	ἀσθενέω	VERB	v3siia---	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act	4	conj	_	Ref=1.1.1|gloss=was-sick
+4	Δαρεῖος	Δαρεῖος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	11	nsubj	_	Ref=1.1.1|gloss=darius
+5	καὶ	καί	CCONJ	c--------	_	6	cc	_	Ref=1.1.1|gloss=and
+6	ὑπώπτευε	ὑποπτεύω	VERB	v3siia---	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act	3	conj	_	Ref=1.1.1|gloss=was-suspecting
+7	τελευτὴν	τελευτή	NOUN	n-s---fa-	Case=Acc|Gender=Fem|Number=Sing	6	obj	_	Ref=1.1.1|gloss=end
+8	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Definite=Def|Gender=Masc|Number=Sing|PronType=Art	9	det	_	Ref=1.1.1|gloss=of-the
+9	βίου	βίος	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	7	nmod	_	Ref=1.1.1|gloss=life
+10	,	,	PUNCT	u--------	_	11	punct	_	Ref=1.1.1|gloss=,
+11	ἐβούλετο	βούλομαι	VERB	v3siim---	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Mid	0	root	_	Ref=1.1.1|gloss=wished
+12	τὼ	ὁ	DET	l-d---ma-	Case=Acc|Definite=Def|Gender=Masc|Number=Dual|PronType=Art	13	det	_	Ref=1.1.1|gloss=the-two
+13	παῖδε	παῖς	NOUN	n-d---ma-	Case=Acc|Gender=Masc|Number=Dual	15	nsubj	_	Ref=1.1.1|gloss=sons
+14	ἀμφοτέρω	ἀμφότερος	ADJ	a-d---ma-	Case=Acc|Gender=Masc|Number=Dual	13	amod	_	Ref=1.1.1|gloss=both
+15	παρεῖναι	πάρειμι	VERB	v--pna---	Tense=Pres|VerbForm=Inf|Voice=Act	11	xcomp	_	Ref=1.1.1|gloss=to-be-present
+16	.	.	PUNCT	u--------	_	11	punct	_	Ref=1.1.1|gloss=.
+
+# sentence_id = 3
+# translation_lang = en
+# prose_translation = The elder son happened to be present.
+# literal_translation = The indeed therefore elder being-present happened.
+# source_sent_id = 0032-006:3
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.2
+1	ὁ	ὁ	DET	l-s---mn-	Case=Nom|Definite=Def|Gender=Masc|Number=Sing|PronType=Art	4	det	_	Ref=1.1.2|gloss=the
+2	μὲν	μέν	ADV	g--------	_	4	discourse	_	Ref=1.1.2|gloss=indeed
+3	οὖν	οὖν	ADV	g--------	_	4	discourse	_	Ref=1.1.2|gloss=therefore
+4	πρεσβύτερος	πρέσβυς	ADJ	a-s---mnc	Case=Nom|Degree=Cmp|Gender=Masc|Number=Sing	6	nsubj	_	Ref=1.1.2|gloss=elder
+5	παρὼν	πάρειμι	VERB	v-sppamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Pres|VerbForm=Part|Voice=Act	6	xcomp	_	Ref=1.1.2|gloss=being-present
+6	ἐτύγχανε	τυγχάνω	VERB	v3siia---	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act	0	root	_	Ref=1.1.2|gloss=happened
+7	·	·	PUNCT	u--------	_	6	punct	_	Ref=1.1.2|gloss=;
+
+# sentence_id = 4
+# translation_lang = en
+# prose_translation = But Cyrus he summoned from the province of which he had made him satrap, and he also appointed him general of all those who muster in the plain of Castolus.
+# literal_translation = Cyrus but he-sends-for from the rule which him satrap he-made, and general but him he-appointed of-all who into Castolus' plain are-mustered.
+# source_sent_id = 0032-006:4
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.2
+1	Κῦρον	Κῦρος	PROPN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	3	obj	_	Ref=1.1.2|gloss=cyrus
+2	δὲ	δέ	ADV	c--------	_	3	discourse	_	Ref=1.1.2|gloss=but
+3	μεταπέμπεται	μεταπέμπω	VERB	v3spim---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=1.1.2|gloss=he-sends-for
+4	ἀπὸ	ἀπό	ADP	r--------	_	6	case	_	Ref=1.1.2|gloss=from
+5	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Definite=Def|Gender=Fem|Number=Sing|PronType=Art	6	det	_	Ref=1.1.2|gloss=the
+6	ἀρχῆς	ἀρχή	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	3	obl	_	Ref=1.1.2|gloss=province
+7	ἧς	ὅς	PRON	p-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Rel	10	obl	_	Ref=1.1.2|gloss=of-which
+8	αὐτὸν	αὐτός	PRON	p-s---ma-	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs	10	obj	_	Ref=1.1.2|gloss=him
+9	σατράπην	σατράπης	NOUN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	10	xcomp	_	Ref=1.1.2|gloss=satrap
+10	ἐποίησε	ποιέω	VERB	v3saia---	Mood=Ind|Number=Sing|Person=3|Tense=Aor|VerbForm=Fin|Voice=Act	6	acl:relcl	_	Ref=1.1.2|gloss=he-made
+11	,	,	PUNCT	u--------	_	13	punct	_	Ref=1.1.2|gloss=,
+12	καὶ	καί	CCONJ	c--------	_	13	cc	_	Ref=1.1.2|gloss=and
+13	στρατηγὸν	στρατηγός	NOUN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	15	xcomp	_	Ref=1.1.2|gloss=general
+14	δὲ	δέ	ADV	c--------	_	15	discourse	_	Ref=1.1.2|gloss=also
+15	ἀπέδειξε	ἀποδείκνυμι	VERB	v3saia---	Mood=Ind|Number=Sing|Person=3|Tense=Aor|VerbForm=Fin|Voice=Act	3	conj	_	Ref=1.1.2|gloss=he-appointed
+16	αὐτὸν	αὐτός	PRON	p-s---ma-	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs	15	obj	_	Ref=1.1.2|gloss=him
+17	πάντων	πᾶς	DET	p-p---mg-	Case=Gen|Gender=Masc|Number=Plur|PronType=Tot	18	det	_	Ref=1.1.2|gloss=of-all
+18	ὅσοι	ὅσος	PRON	p-p---mn-	Case=Nom|Gender=Masc|Number=Plur|PronType=Rel	13	nmod	_	Ref=1.1.2|gloss=who
+19	ἐς	εἰς	ADP	r--------	_	21	case	_	Ref=1.1.2|gloss=into
+20	Καστωλοῦ	Καστωλός	PROPN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	21	nmod	_	Ref=1.1.2|gloss=of-castolus
+21	πεδίον	πεδίον	NOUN	n-s---na-	Case=Acc|Gender=Neut|Number=Sing	22	obl	_	Ref=1.1.2|gloss=plain
+22	ἁθροίζονται	ἀθροίζω	VERB	v3ppim---	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	18	acl:relcl	_	Ref=1.1.2|gloss=are-mustered
+23	.	.	PUNCT	u--------	_	3	punct	_	Ref=1.1.2|gloss=.
+
+# sentence_id = 5
+# translation_lang = en
+# prose_translation = Cyrus therefore set out, taking Tissaphernes as a friend, and he went up with three hundred Greek hoplites, with Xenias of Parrhasia as their commander.
+# literal_translation = Goes-up therefore Cyrus having-taken Tissaphernes as friend, and of-the Greeks having hoplites three-hundred, he-went-up, commanding them Xenias Parrhasian.
+# source_sent_id = 0032-006:5
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.2
+1	ἀναβαίνει	ἀναβαίνω	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	Ref=1.1.2|gloss=goes-up
+2	οὖν	οὖν	ADV	g--------	_	1	discourse	_	Ref=1.1.2|gloss=therefore
+3	ὁ	ὁ	DET	l-s---mn-	Case=Nom|Definite=Def|Gender=Masc|Number=Sing|PronType=Art	4	det	_	Ref=1.1.2|gloss=the
+4	Κῦρος	Κῦρος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	Ref=1.1.2|gloss=cyrus
+5	λαβὼν	λαμβάνω	VERB	v-sapamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Aor|VerbForm=Part|Voice=Act	1	advcl	_	Ref=1.1.2|gloss=having-taken
+6	Τισσαφέρνην	Τισσαφέρνης	PROPN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	5	obj	_	Ref=1.1.2|gloss=tissaphernes
+7	ὡς	ὡς	SCONJ	c--------	_	8	mark	_	Ref=1.1.2|gloss=as
+8	φίλον	φίλος	ADJ	a-s---ma-	Case=Acc|Gender=Masc|Number=Sing	6	xcomp	_	Ref=1.1.2|gloss=friend
+9	,	,	PUNCT	u--------	_	13	punct	_	Ref=1.1.2|gloss=,
+10	καὶ	καί	CCONJ	c--------	_	13	cc	_	Ref=1.1.2|gloss=and
+11	τῶν	ὁ	DET	l-p---mg-	Case=Gen|Definite=Def|Gender=Masc|Number=Plur|PronType=Art	12	det	_	Ref=1.1.2|gloss=of-the
+12	Ἑλλήνων	Ἕλλην	NOUN	n-p---mg-	Case=Gen|Gender=Masc|Number=Plur	13	nmod	_	Ref=1.1.2|gloss=greeks
+13	ἔχων	ἔχω	VERB	v-sppamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Pres|VerbForm=Part|Voice=Act	1	advcl	_	Ref=1.1.2|gloss=having
+14	ὁπλίτας	ὁπλίτης	NOUN	n-p---ma-	Case=Acc|Gender=Masc|Number=Plur	13	obj	_	Ref=1.1.2|gloss=hoplites
+15	ἀνέβη	ἀναβαίνω	VERB	v3saia---	Mood=Ind|Number=Sing|Person=3|Tense=Aor|VerbForm=Fin|Voice=Act	1	conj	_	Ref=1.1.2|gloss=went-up
+16	τριακοσίους	τριακόσιοι	NUM	m-p---ma-	Case=Acc|Gender=Masc|Number=Plur|NumType=Card	14	nummod	_	Ref=1.1.2|gloss=three-hundred
+17	,	,	PUNCT	u--------	_	15	punct	_	Ref=1.1.2|gloss=,
+18	ἄρχοντα	ἄρχω	VERB	v-sppama-	Case=Acc|Gender=Masc|Number=Sing|Tense=Pres|VerbForm=Part|Voice=Act	15	advcl	_	Ref=1.1.2|gloss=having-as-commander
+19	δὲ	δέ	ADV	c--------	_	18	discourse	_	Ref=1.1.2|gloss=and
+20	αὐτῶν	αὐτός	PRON	p-p---mg-	Case=Gen|Gender=Masc|Number=Plur|Person=3|PronType=Prs	18	obj	_	Ref=1.1.2|gloss=of-them
+21	Ξενίαν	Ξενίας	PROPN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	18	obj	_	Ref=1.1.2|gloss=xenias
+22	Παρράσιον	Παρράσιος	ADJ	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	21	amod	_	Ref=1.1.2|gloss=parrhasian
+23	.	.	PUNCT	u--------	_	1	punct	_	Ref=1.1.2|gloss=.
+
+# sentence_id = 6
+# translation_lang = en
+# prose_translation = But after Darius died and Artaxerxes had taken the throne, Tissaphernes slandered Cyrus to his brother, saying that he was plotting against him.
+# literal_translation = When but died Darius and entered into the kingship Artaxerxes, Tissaphernes accuses the Cyrus to the brother as plotting against-him.
+# source_sent_id = 0032-006:6
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.3
+1	ἐπεὶ	ἐπεί	SCONJ	c--------	_	3	mark	_	Ref=1.1.3|gloss=when
+2	δὲ	δέ	ADV	c--------	_	3	discourse	_	Ref=1.1.3|gloss=but
+3	ἐτελεύτησε	τελευτάω	VERB	v3saia---	Mood=Ind|Number=Sing|Person=3|Tense=Aor|VerbForm=Fin|Voice=Act	12	advcl	_	Ref=1.1.3|gloss=died
+4	Δαρεῖος	Δαρεῖος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	3	nsubj	_	Ref=1.1.3|gloss=darius
+5	καὶ	καί	CCONJ	c--------	_	6	cc	_	Ref=1.1.3|gloss=and
+6	κατέστη	καθίστημι	VERB	v3saia---	Mood=Ind|Number=Sing|Person=3|Tense=Aor|VerbForm=Fin|Voice=Act	3	conj	_	Ref=1.1.3|gloss=took-place
+7	εἰς	εἰς	ADP	r--------	_	9	case	_	Ref=1.1.3|gloss=into
+8	τὴν	ὁ	DET	l-s---fa-	Case=Acc|Definite=Def|Gender=Fem|Number=Sing|PronType=Art	9	det	_	Ref=1.1.3|gloss=the
+9	βασιλείαν	βασιλεία	NOUN	n-s---fa-	Case=Acc|Gender=Fem|Number=Sing	6	obl	_	Ref=1.1.3|gloss=kingship
+10	Ἀρταξέρξης	Ἀρταξέρξης	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	Ref=1.1.3|gloss=artaxerxes
+11	,	,	PUNCT	u--------	_	12	punct	_	Ref=1.1.3|gloss=,
+12	Τισσαφέρνης	Τισσαφέρνης	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	0	root	_	Ref=1.1.3|gloss=tissaphernes
+13	διαβάλλει	διαβάλλω	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	12	flat	_	Ref=1.1.3|gloss=slanders
+14	τὸν	ὁ	DET	l-s---ma-	Case=Acc|Definite=Def|Gender=Masc|Number=Sing|PronType=Art	15	det	_	Ref=1.1.3|gloss=the
+15	Κῦρον	Κῦρος	PROPN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	13	obj	_	Ref=1.1.3|gloss=cyrus
+16	πρὸς	πρός	ADP	r--------	_	18	case	_	Ref=1.1.3|gloss=to
+17	τὸν	ὁ	DET	l-s---ma-	Case=Acc|Definite=Def|Gender=Masc|Number=Sing|PronType=Art	18	det	_	Ref=1.1.3|gloss=the
+18	ἀδελφὸν	ἀδελφός	NOUN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	13	obl	_	Ref=1.1.3|gloss=brother
+19	ὡς	ὡς	SCONJ	c--------	_	20	mark	_	Ref=1.1.3|gloss=that
+20	ἐπιβουλεύοι	ἐπιβουλεύω	VERB	v3spoa---	Mood=Opt|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	13	advcl	_	Ref=1.1.3|gloss=was-plotting
+21	αὐτῷ	αὐτός	PRON	p-s---md-	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs	20	iobj	_	Ref=1.1.3|gloss=against-him
+22	.	.	PUNCT	u--------	_	12	punct	_	Ref=1.1.3|gloss=.
+
+# sentence_id = 7
+# translation_lang = en
+# prose_translation = And he believed the charge and arrested Cyrus as one who would kill him.
+# literal_translation = He but is-persuaded and arrests Cyrus as going-to-kill.
+# source_sent_id = 0032-006:7
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.3
+1	ὁ	ὁ	PRON	l-s---mn-	Case=Nom|Gender=Masc|Number=Sing|PronType=Dem	3	nsubj	_	Ref=1.1.3|gloss=he
+2	δὲ	δέ	ADV	c--------	_	3	discourse	_	Ref=1.1.3|gloss=but
+3	πείθεται	πείθω	VERB	v3spim---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=1.1.3|gloss=is-persuaded
+4	καὶ	καί	CCONJ	c--------	_	5	cc	_	Ref=1.1.3|gloss=and
+5	συλλαμβάνει	συλλαμβάνω	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	3	conj	_	Ref=1.1.3|gloss=arrests
+6	Κῦρον	Κῦρος	PROPN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	5	obj	_	Ref=1.1.3|gloss=cyrus
+7	ὡς	ὡς	SCONJ	c--------	_	8	mark	_	Ref=1.1.3|gloss=as
+8	ἀποκτενῶν	ἀποκτείνω	VERB	v-sfpamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Fut|VerbForm=Part|Voice=Act	5	advcl	_	Ref=1.1.3|gloss=about-to-kill
+9	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.1.3|gloss=;
+
+# sentence_id = 8
+# translation_lang = en
+# prose_translation = But his mother begged him off and sent him back again to his province.
+# literal_translation = The but mother having-begged him sends-away back to the province.
+# source_sent_id = 0032-006:8
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.3
+1	ἡ	ὁ	DET	l-s---fn-	Case=Nom|Definite=Def|Gender=Fem|Number=Sing|PronType=Art	3	det	_	Ref=1.1.3|gloss=the
+2	δὲ	δέ	ADV	c--------	_	3	discourse	_	Ref=1.1.3|gloss=but
+3	μήτηρ	μήτηρ	NOUN	n-s---fn-	Case=Nom|Gender=Fem|Number=Sing	6	nsubj	_	Ref=1.1.3|gloss=mother
+4	ἐξαιτησαμένη	ἐξαιτέω	VERB	v-sapmfn-	Case=Nom|Gender=Fem|Number=Sing|Tense=Aor|VerbForm=Part|Voice=Mid	6	advcl	_	Ref=1.1.3|gloss=having-begged-off
+5	αὐτὸν	αὐτός	PRON	p-s---ma-	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs	4	obj	_	Ref=1.1.3|gloss=him
+6	ἀποπέμπει	ἀποπέμπω	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	Ref=1.1.3|gloss=sends-away
+7	πάλιν	πάλιν	ADV	d--------	_	6	advmod	_	Ref=1.1.3|gloss=back
+8	ἐπὶ	ἐπί	ADP	r--------	_	10	case	_	Ref=1.1.3|gloss=to
+9	τὴν	ὁ	DET	l-s---fa-	Case=Acc|Definite=Def|Gender=Fem|Number=Sing|PronType=Art	10	det	_	Ref=1.1.3|gloss=the
+10	ἀρχήν	ἀρχή	NOUN	n-s---fa-	Case=Acc|Gender=Fem|Number=Sing	6	obl	_	Ref=1.1.3|gloss=province
+11	.	.	PUNCT	u--------	_	6	punct	_	Ref=1.1.3|gloss=.
+
+# sentence_id = 9
+# translation_lang = en
+# prose_translation = And after he had departed, having run a risk and been dishonored, he planned so that he might no longer be at his brother’s mercy, but, if possible, might be king instead of him.
+# literal_translation = He but when departed having-risked and having-been-dishonored, plans how no-longer still he-will-be under the brother, but, if he-can, he-will-be-king instead-of that-one.
+# source_sent_id = 0032-006:9
+# div_book = 1
+# div_chapter = 1.1
+# div_section = 1.1.4
+1	ὁ	ὁ	PRON	l-s---mn-	Case=Nom|Gender=Masc|Number=Sing|PronType=Dem	9	nsubj	_	Ref=1.1.4|gloss=he
+2	δ’	δέ	ADV	c--------	_	9	discourse	_	Ref=1.1.4|gloss=but
+3	ὡς	ὡς	SCONJ	c--------	_	4	mark	_	Ref=1.1.4|gloss=when
+4	ἀπῆλθε	ἀπέρχομαι	VERB	v3saia---	Mood=Ind|Number=Sing|Person=3|Tense=Aor|VerbForm=Fin|Voice=Act	9	advcl	_	Ref=1.1.4|gloss=departed
+5	κινδυνεύσας	κινδυνεύω	VERB	v-sapamn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Aor|VerbForm=Part|Voice=Act	4	advcl	_	Ref=1.1.4|gloss=having-risked
+6	καὶ	καί	CCONJ	c--------	_	7	cc	_	Ref=1.1.4|gloss=and
+7	ἀτιμασθείς	ἀτιμάζω	VERB	v-sappmn-	Case=Nom|Gender=Masc|Number=Sing|Tense=Aor|VerbForm=Part|Voice=Pass	5	conj	_	Ref=1.1.4|gloss=having-been-dishonored
+8	,	,	PUNCT	u--------	_	9	punct	_	Ref=1.1.4|gloss=,
+9	βουλεύεται	βουλεύω	VERB	v3spim---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	0	root	_	Ref=1.1.4|gloss=plans
+10	ὅπως	ὅπως	SCONJ	c--------	_	13	mark	_	Ref=1.1.4|gloss=so-that
+11	μήποτε	μήποτε	ADV	c--------	Polarity=Neg	13	advmod	_	Ref=1.1.4|gloss=no-longer
+12	ἔτι	ἔτι	ADV	d--------	_	13	advmod	_	Ref=1.1.4|gloss=still
+13	ἔσται	εἰμί	VERB	v3sfim---	Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin|Voice=Act	9	advcl	_	Ref=1.1.4|gloss=will-be
+14	ἐπὶ	ἐπί	ADP	r--------	_	16	case	_	Ref=1.1.4|gloss=under
+15	τῷ	ὁ	DET	l-s---md-	Case=Dat|Definite=Def|Gender=Masc|Number=Sing|PronType=Art	16	det	_	Ref=1.1.4|gloss=the
+16	ἀδελφῷ	ἀδελφός	NOUN	n-s---md-	Case=Dat|Gender=Masc|Number=Sing	13	obl	_	Ref=1.1.4|gloss=brother
+17	,	,	PUNCT	u--------	_	22	punct	_	Ref=1.1.4|gloss=,
+18	ἀλλά	ἀλλά	CCONJ	c--------	_	22	cc	_	Ref=1.1.4|gloss=but
+19	,	,	PUNCT	u--------	_	20	punct	_	Ref=1.1.4|gloss=,
+20	ἢν	ἐάν	SCONJ	c--------	_	21	mark	_	Ref=1.1.4|gloss=if
+21	δύνηται	δύναμαι	VERB	v3spsm---	Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid	22	advcl	_	Ref=1.1.4|gloss=he-can
+22	βασιλεύσει	βασιλεύω	VERB	v3sfia---	Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin|Voice=Act	13	conj	_	Ref=1.1.4|gloss=will-be-king
+23	ἀντ’	ἀντί	ADP	r--------	_	24	case	_	Ref=1.1.4|gloss=in-place-of
+24	ἐκείνου	ἐκεῖνος	PRON	p-s---mg-	Case=Gen|Gender=Masc|Number=Sing|PronType=Dem	22	obl	_	Ref=1.1.4|gloss=him
+25	.	.	PUNCT	u--------	_	9	punct	_	Ref=1.1.4|gloss=.

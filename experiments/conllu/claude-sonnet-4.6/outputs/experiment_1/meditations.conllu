@@ -1,0 +1,231 @@
+# sentence_id = 1
+# source_sent_id = 904478
+# source_doc = 0562-001
+# div_section = 1.1.1
+# translation_lang = en
+# prose_translation = From his grandfather Verus he inherited a gentle and kindly character.
+# literal_translation = From the grandfather Verus, the good-natured and unangeredness.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.1.1|gloss=from
+2	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	3	det	_	Ref=1.1.1|gloss=the
+3	πάππου	πάππης	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	6	nmod	_	Ref=1.1.1|gloss=of-grandfather
+4	Οὐήρου	Οὐῆρος	PROPN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	3	nmod	_	Ref=1.1.1|gloss=of-Verus
+5	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Definite=Def|Gender=Neut|Number=Sing	6	det	_	Ref=1.1.1|gloss=the
+6	καλόηθες	καλοήθης	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.1.1|gloss=good-natured
+7	καὶ	καί	CCONJ	c--------	_	8	cc	_	Ref=1.1.1|gloss=and
+8	ἀόργητον	ἀόργητος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	6	conj	_	Ref=1.1.1|gloss=unangeredness
+9	.	.	PUNCT	u--------	_	6	punct	_	Ref=1.1.1|gloss=.
+
+# sentence_id = 2
+# source_sent_id = 904479
+# source_doc = 0562-001
+# div_section = 1.2.1
+# translation_lang = en
+# prose_translation = From the reputation and memory of the one who begat him, modesty and manliness.
+# literal_translation = From the reputation and memory concerning the one who begat, the modest and manly.
+1	παρὰ	παρά	ADP	r--------	_	2	case	_	Ref=1.2.1|gloss=from
+2	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Definite=Def|Gender=Fem|Number=Sing	3	det	_	Ref=1.2.1|gloss=the
+3	δόξης	δόξα	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	12	nmod	_	Ref=1.2.1|gloss=of-reputation
+4	καὶ	καί	CCONJ	c--------	_	5	cc	_	Ref=1.2.1|gloss=and
+5	μνήμης	μνήμη	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	3	conj	_	Ref=1.2.1|gloss=of-memory
+6	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Definite=Def|Gender=Fem|Number=Sing	5	det	_	Ref=1.2.1|gloss=the
+7	περὶ	περί	ADP	r--------	_	9	case	_	Ref=1.2.1|gloss=concerning
+8	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	9	det	_	Ref=1.2.1|gloss=the
+9	γεννήσαντος	γεννάω	VERB	v-sapamg-	Case=Gen|Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part|Voice=Act	5	nmod	_	Ref=1.2.1|gloss=of-the-one-who-begat
+10	τὸ	ὁ	DET	l-s---na-	Case=Acc|Definite=Def|Gender=Neut|Number=Sing	11	det	_	Ref=1.2.1|gloss=the
+11	αἰδῆμον	αἰδήμων	ADJ	a-s---na-	Case=Acc|Gender=Neut|Number=Sing	0	root	_	Ref=1.2.1|gloss=modesty
+12	καὶ	καί	CCONJ	c--------	_	13	cc	_	Ref=1.2.1|gloss=and
+13	ἀρρενικόν	ἀρρενικός	ADJ	a-s---na-	Case=Acc|Gender=Neut|Number=Sing	11	conj	_	Ref=1.2.1|gloss=manliness
+14	.	.	PUNCT	u--------	_	11	punct	_	Ref=1.2.1|gloss=.
+
+# sentence_id = 3
+# source_sent_id = 904480
+# source_doc = 0562-001
+# div_section = 1.3.1
+# translation_lang = en
+# prose_translation = From his mother, piety and generosity, and abstaining not only from doing evil but also from even entertaining such thoughts.
+# literal_translation = From the mother, the pious and generous and abstaining not only from doing evil, but also from coming to be of such a mind.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.3.1|gloss=from
+2	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Definite=Def|Gender=Fem|Number=Sing	3	det	_	Ref=1.3.1|gloss=the
+3	μητρὸς	μήτηρ	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	5	nmod	_	Ref=1.3.1|gloss=of-mother
+4	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Definite=Def|Gender=Neut|Number=Sing	5	det	_	Ref=1.3.1|gloss=the
+5	θεοσεβὲς	θεοσεβής	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.3.1|gloss=piety
+6	καὶ	καί	CCONJ	c--------	_	7	cc	_	Ref=1.3.1|gloss=and
+7	μεταδοτικὸν	μεταδοτικός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	5	conj	_	Ref=1.3.1|gloss=generosity
+8	καὶ	καί	CCONJ	c--------	_	9	cc	_	Ref=1.3.1|gloss=and
+9	ἀφεκτικὸν	ἀφεκτικός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	5	conj	_	Ref=1.3.1|gloss=abstaining
+10	οὐ	οὐ	ADV	d--------	_	11	advmod	_	Ref=1.3.1|gloss=not
+11	μόνον	μόνος	ADV	d--------	_	13	advmod	_	Ref=1.3.1|gloss=only
+12	τοῦ	ὁ	DET	l-s---ng-	Case=Gen|Definite=Def|Gender=Neut|Number=Sing	13	det	_	Ref=1.3.1|gloss=the
+13	κακοποιεῖν	κακοποιέω	VERB	v--pna---	VerbForm=Inf|Voice=Act	9	nmod	_	Ref=1.3.1|gloss=of-doing-evil
+14	,	,	PUNCT	u--------	_	16	punct	_	Ref=1.3.1|gloss=,
+15	ἀλλὰ	ἀλλά	CCONJ	c--------	_	22	cc	_	Ref=1.3.1|gloss=but
+16	καὶ	καί	ADV	d--------	_	22	advmod	_	Ref=1.3.1|gloss=also
+17	τοῦ	ὁ	DET	l-s---ng-	Case=Gen|Definite=Def|Gender=Neut|Number=Sing	22	det	_	Ref=1.3.1|gloss=the
+18	ἐπὶ	ἐπί	ADP	r--------	_	20	case	_	Ref=1.3.1|gloss=upon
+19	ἐννοίας	ἔννοια	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	18	nmod	_	Ref=1.3.1|gloss=of-thoughts
+20	γίνεσθαι	γίγνομαι	VERB	v--pnm---	VerbForm=Inf|Voice=Mid	9	conj	_	Ref=1.3.1|gloss=of-coming-to-be
+21	τοιαύτης	τοιοῦτος	DET	p-s---fg-	Case=Gen|Gender=Fem|Number=Sing	19	nmod	_	Ref=1.3.1|gloss=of-such
+22	·	·	PUNCT	u--------	_	5	punct	_	Ref=1.3.1|gloss=;
+
+# sentence_id = 4
+# source_sent_id = 904481
+# source_doc = 0562-001
+# div_section = 1.3.1
+# translation_lang = en
+# prose_translation = And furthermore, simplicity in his way of life and far removed from the lifestyle of the wealthy.
+# literal_translation = And still the simple in the way of life and far from the wealthy manner of living.
+1	ἔτι	ἔτι	ADV	d--------	_	4	advmod	_	Ref=1.3.1|gloss=still
+2	δὲ	δέ	CCONJ	c--------	_	4	cc	_	Ref=1.3.1|gloss=and
+3	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Definite=Def|Gender=Neut|Number=Sing	4	det	_	Ref=1.3.1|gloss=the
+4	λιτὸν	λιτός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.3.1|gloss=simplicity
+5	κατὰ	κατά	ADP	r--------	_	7	case	_	Ref=1.3.1|gloss=in
+6	τὴν	ὁ	DET	l-s---fa-	Case=Acc|Definite=Def|Gender=Fem|Number=Sing	7	det	_	Ref=1.3.1|gloss=the
+7	δίαιταν	δίαιτα	NOUN	n-s---fa-	Case=Acc|Gender=Fem|Number=Sing	4	nmod	_	Ref=1.3.1|gloss=way-of-life
+8	καὶ	καί	CCONJ	c--------	_	9	cc	_	Ref=1.3.1|gloss=and
+9	πόρρω	πόρρω	ADV	d--------	_	4	conj	_	Ref=1.3.1|gloss=far
+10	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Definite=Def|Gender=Fem|Number=Sing	12	det	_	Ref=1.3.1|gloss=the
+11	πλουσιακῆς	πλουσιακός	ADJ	a-s---fg-	Case=Gen|Gender=Fem|Number=Sing	12	amod	_	Ref=1.3.1|gloss=wealthy
+12	διαγωγῆς	διαγωγή	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	9	nmod	_	Ref=1.3.1|gloss=of-lifestyle
+13	.	.	PUNCT	u--------	_	4	punct	_	Ref=1.3.1|gloss=.
+
+# sentence_id = 5
+# source_sent_id = 904482
+# source_doc = 0562-001
+# div_section = 1.4.1
+# translation_lang = en
+# prose_translation = From his great-grandfather, not attending public schools but being taught at home by good teachers, and learning that one ought to spend lavishly on such things.
+# literal_translation = From the great-grandfather, the not attending public schools and the using good teachers at home and the knowing that one must spend lavishly on such things.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.4.1|gloss=from
+2	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	3	det	_	Ref=1.4.1|gloss=the
+3	προπάππου	πρόπαππος	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	8	nmod	_	Ref=1.4.1|gloss=of-great-grandfather
+4	τὸ	ὁ	DET	l-s---na-	Case=Acc|Definite=Def|Gender=Neut|Number=Sing	8	det	_	Ref=1.4.1|gloss=the
+5	μὴ	μή	ADV	d--------	_	8	advmod	_	Ref=1.4.1|gloss=not
+6	εἰς	εἰς	ADP	r--------	_	8	case	_	Ref=1.4.1|gloss=to
+7	δημοσίας	δημόσιος	ADJ	a-p---fa-	Case=Acc|Gender=Fem|Number=Plur	8	amod	_	Ref=1.4.1|gloss=public
+8	διατριβὰς	διατριβή	NOUN	n-p---fa-	Case=Acc|Gender=Fem|Number=Plur	9	nmod	_	Ref=1.4.1|gloss=schools
+9	φοιτῆσαι	φοιτάω	VERB	v--ana---	VerbForm=Inf|Voice=Act	0	root	_	Ref=1.4.1|gloss=not-attending
+10	καὶ	καί	CCONJ	c--------	_	19	cc	_	Ref=1.4.1|gloss=and
+11	τὸ	ὁ	DET	l-s---na-	Case=Acc|Definite=Def|Gender=Neut|Number=Sing	19	det	_	Ref=1.4.1|gloss=the
+12	ἀγαθοῖς	ἀγαθός	ADJ	a-p---md-	Case=Dat|Gender=Masc|Number=Plur	13	amod	_	Ref=1.4.1|gloss=good
+13	διδασκάλοις	διδάσκαλος	NOUN	n-p---md-	Case=Dat|Gender=Masc|Number=Plur	19	nmod	_	Ref=1.4.1|gloss=teachers
+14	κατ'	κατά	ADP	r--------	_	15	case	_	Ref=1.4.1|gloss=at
+15	οἶκον	οἶκος	NOUN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	19	nmod	_	Ref=1.4.1|gloss=home
+16	χρήσασθαι	χράομαι	VERB	v--anm---	VerbForm=Inf|Voice=Mid	9	conj	_	Ref=1.4.1|gloss=using
+17	καὶ	καί	CCONJ	c--------	_	19	cc	_	Ref=1.4.1|gloss=and
+18	τὸ	ὁ	DET	l-s---na-	Case=Acc|Definite=Def|Gender=Neut|Number=Sing	19	det	_	Ref=1.4.1|gloss=the
+19	γνῶναι	γιγνώσκω	VERB	v--ana---	VerbForm=Inf|Voice=Act	9	conj	_	Ref=1.4.1|gloss=knowing
+20	ὅτι	ὅτι	SCONJ	c--------	_	23	mark	_	Ref=1.4.1|gloss=that
+21	εἰς	εἰς	ADP	r--------	_	22	case	_	Ref=1.4.1|gloss=on
+22	τὰ	ὁ	DET	l-p---na-	Case=Acc|Definite=Def|Gender=Neut|Number=Plur	23	nmod	_	Ref=1.4.1|gloss=the
+23	τοιαῦτα	τοιοῦτος	DET	p-p---na-	Case=Acc|Gender=Neut|Number=Plur	26	nmod	_	Ref=1.4.1|gloss=such-things
+24	δεῖ	δεῖ	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	19	ccomp	_	Ref=1.4.1|gloss=it-is-necessary
+25	ἐκτενῶς	ἐκτενής	ADV	d--------	_	26	advmod	_	Ref=1.4.1|gloss=lavishly
+26	ἀναλίσκειν	ἀναλίσκω	VERB	v--pna---	VerbForm=Inf|Voice=Act	24	csubj	_	Ref=1.4.1|gloss=to-spend
+27	.	.	PUNCT	u--------	_	9	punct	_	Ref=1.4.1|gloss=.
+
+# sentence_id = 6
+# source_sent_id = 904483
+# source_doc = 0562-001
+# div_section = 1.5.1
+# translation_lang = en
+# prose_translation = From his tutor, not to become a Prasianus or a Venetianus or a Palmularius or a Scutarius.
+# literal_translation = From the tutor, the not becoming neither a Prasianus nor a Venetianus nor a Palmularius nor a Scutarius.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.5.1|gloss=from
+2	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	3	det	_	Ref=1.5.1|gloss=the
+3	τροφέως	τροφεύς	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	14	nmod	_	Ref=1.5.1|gloss=of-tutor
+4	τὸ	ὁ	DET	l-s---na-	Case=Acc|Definite=Def|Gender=Neut|Number=Sing	14	det	_	Ref=1.5.1|gloss=the
+5	μή	μή	ADV	d--------	_	14	advmod	_	Ref=1.5.1|gloss=not
+6	-τε	τε	CCONJ	c--------	_	7	cc	_	Ref=1.5.1|gloss=neither
+7	Πρασιανὸς	Πρασιανός	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	14	nsubj	_	Ref=1.5.1|gloss=a-Prasianus
+8	μή	μή	ADV	d--------	_	9	advmod	_	Ref=1.5.1|gloss=nor
+9	-τε	τε	CCONJ	c--------	_	10	cc	_	Ref=1.5.1|gloss=nor
+10	Βενετιανὸς	Βενετιανός	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	7	conj	_	Ref=1.5.1|gloss=a-Venetianus
+11	μή	μή	ADV	d--------	_	12	advmod	_	Ref=1.5.1|gloss=nor
+12	-τε	τε	CCONJ	c--------	_	13	cc	_	Ref=1.5.1|gloss=nor
+13	Παλμουλάριος	Παλμουλάριος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	7	conj	_	Ref=1.5.1|gloss=a-Palmularius
+14	γενέσθαι	γίγνομαι	VERB	v--anm---	VerbForm=Inf|Voice=Mid	0	root	_	Ref=1.5.1|gloss=to-become
+15	ἢ	ἤ	CCONJ	c--------	_	16	cc	_	Ref=1.5.1|gloss=or
+16	Σκουτάριος	Σκουτάριος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	7	conj	_	Ref=1.5.1|gloss=a-Scutarius
+17	·	·	PUNCT	u--------	_	14	punct	_	Ref=1.5.1|gloss=;
+
+# sentence_id = 7
+# source_sent_id = 904484
+# source_doc = 0562-001
+# div_section = 1.5.1
+# translation_lang = en
+# prose_translation = And also the capacity for endurance and wanting little.
+# literal_translation = And the endurance-bearing and needing-little.
+1	καὶ	καί	ADV	d--------	_	3	advmod	_	Ref=1.5.1|gloss=and
+2	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Definite=Def|Gender=Neut|Number=Sing	3	det	_	Ref=1.5.1|gloss=the
+3	φερέπονον	φερέπονος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.5.1|gloss=endurance-bearing
+4	καὶ	καί	CCONJ	c--------	_	5	cc	_	Ref=1.5.1|gloss=and
+5	ὀλιγοδεές	ὀλιγοδεής	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	3	conj	_	Ref=1.5.1|gloss=needing-little
+6	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.5.1|gloss=;
+
+# sentence_id = 8
+# source_sent_id = 904485
+# source_doc = 0562-001
+# div_section = 1.5.1
+# translation_lang = en
+# prose_translation = And also self-reliance and not meddling in others' affairs.
+# literal_translation = And the self-working and not-meddling.
+1	καὶ	καί	ADV	d--------	_	3	advmod	_	Ref=1.5.1|gloss=and
+2	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Definite=Def|Gender=Neut|Number=Sing	3	det	_	Ref=1.5.1|gloss=the
+3	αὐτουργικὸν	αὐτουργικός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.5.1|gloss=self-reliance
+4	καὶ	καί	CCONJ	c--------	_	5	cc	_	Ref=1.5.1|gloss=and
+5	ἀπολύπραγμον	ἀπολυπράγμων	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	3	conj	_	Ref=1.5.1|gloss=not-meddling
+6	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.5.1|gloss=;
+
+# sentence_id = 9
+# source_sent_id = 904486
+# source_doc = 0562-001
+# div_section = 1.5.1
+# translation_lang = en
+# prose_translation = And also being unreceptive to slander.
+# literal_translation = And the hard-to-receive of slander.
+1	καὶ	καί	ADV	d--------	_	3	advmod	_	Ref=1.5.1|gloss=and
+2	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Definite=Def|Gender=Neut|Number=Sing	3	det	_	Ref=1.5.1|gloss=the
+3	δυσπρόσδεκτον	δυσπρόσδεκτος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.5.1|gloss=unreceptiveness
+4	διαβολῆς	διαβολή	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	3	nmod	_	Ref=1.5.1|gloss=of-slander
+5	.	.	PUNCT	u--------	_	3	punct	_	Ref=1.5.1|gloss=.
+
+# sentence_id = 10
+# source_sent_id = 904487
+# source_doc = 0562-001
+# div_section = 1.6.1
+# translation_lang = en
+# prose_translation = From Diognetus, not being devoted to vain pursuits.
+# literal_translation = From Diognetus, the not-vainly-zealous.
+1	παρὰ	παρά	ADP	r--------	_	2	case	_	Ref=1.6.1|gloss=from
+2	Διογνήτου	Διόγνητος	PROPN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	4	nmod	_	Ref=1.6.1|gloss=of-Diognetus
+3	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Definite=Def|Gender=Neut|Number=Sing	4	det	_	Ref=1.6.1|gloss=the
+4	ἀκενόσπουδον	ἀκενόσπουδος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.6.1|gloss=not-vainly-zealous
+5	·	·	PUNCT	u--------	_	4	punct	_	Ref=1.6.1|gloss=;
+
+# sentence_id = 11
+# source_sent_id = 904488
+# source_doc = 0562-001
+# div_section = 1.6.1
+# translation_lang = en
+# prose_translation = And disbelief in the claims of wonder-workers and sorcerers about incantations and the driving away of demons and such things.
+# literal_translation = And the disbelieving in the things said by wonder-workers and sorcerers about incantations and about the driving away of demons and such things.
+1	καὶ	καί	ADV	d--------	_	3	advmod	_	Ref=1.6.1|gloss=and
+2	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Definite=Def|Gender=Neut|Number=Sing	3	det	_	Ref=1.6.1|gloss=the
+3	ἀπιστητικὸν	ἀπιστητικός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.6.1|gloss=disbelieving
+4	τοῖς	ὁ	DET	l-p---nd-	Case=Dat|Definite=Def|Gender=Neut|Number=Plur	3	nmod	_	Ref=1.6.1|gloss=the
+5	ὑπὸ	ὑπό	ADP	r--------	_	9	case	_	Ref=1.6.1|gloss=by
+6	τῶν	ὁ	DET	l-p---mg-	Case=Gen|Definite=Def|Gender=Masc|Number=Plur	7	det	_	Ref=1.6.1|gloss=the
+7	τερατευομένων	τερατεύομαι	VERB	v-pppmng-	Case=Gen|Gender=Masc|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Mid	9	nsubj	_	Ref=1.6.1|gloss=wonder-workers
+8	καὶ	καί	CCONJ	c--------	_	9	cc	_	Ref=1.6.1|gloss=and
+9	γοήτων	γόης	NOUN	n-p---mg-	Case=Gen|Gender=Masc|Number=Plur	3	nmod	_	Ref=1.6.1|gloss=of-sorcerers
+10	περὶ	περί	ADP	r--------	_	11	case	_	Ref=1.6.1|gloss=about
+11	ἐπῳδῶν	ἐπῳδή	NOUN	n-p---fg-	Case=Gen|Gender=Fem|Number=Plur	3	nmod	_	Ref=1.6.1|gloss=incantations
+12	καὶ	καί	CCONJ	c--------	_	15	cc	_	Ref=1.6.1|gloss=and
+13	περὶ	περί	ADP	r--------	_	15	case	_	Ref=1.6.1|gloss=about
+14	δαιμόνων	δαίμων	NOUN	n-p---mg-	Case=Gen|Gender=Masc|Number=Plur	15	nmod	_	Ref=1.6.1|gloss=of-demons
+15	ἀποπομπῆς	ἀποπομπή	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	11	conj	_	Ref=1.6.1|gloss=driving-away
+16	καὶ	καί	CCONJ	c--------	_	18	cc	_	Ref=1.6.1|gloss=and
+17	τῶν	ὁ	DET	l-p---ng-	Case=Gen|Definite=Def|Gender=Neut|Number=Plur	18	det	_	Ref=1.6.1|gloss=the
+18	τοιούτων	τοιοῦτος	DET	p-p---ng-	Case=Gen|Gender=Neut|Number=Plur	15	conj	_	Ref=1.6.1|gloss=such-things
+19	λεγομένοις	λέγω	VERB	v-pppmnd-	Case=Dat|Gender=Neut|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Pass	4	acl	_	Ref=1.6.1|gloss=things-said
+20	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.6.1|gloss=;

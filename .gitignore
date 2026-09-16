@@ -18,6 +18,7 @@ repl-temp-*
 /scripts/deploy
 /scripts/lint
 /scripts/run-model-experiment
+/scripts/run-conllu-experiment
 
 # Local planning and research documents (directories and all contents)
 /plans/

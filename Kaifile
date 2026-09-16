@@ -60,6 +60,11 @@ task check-model-experiment-tool {
   run: ["roc", "check", "scripts/run-model-experiment.roc"]
 }
 
+task check-conllu-experiment-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/run-conllu-experiment.roc"]
+}
+
 task roc-version {
   environment: "dev"
   run: ["roc", "version"]
@@ -135,6 +140,81 @@ task mistral-small4-experiment {
   run: ["roc", "scripts/run-model-experiment.roc", "mistral-small-4"]
 }
 
+task check-conllu-deepseek-v4-flash-0731-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731", "--check"]
+}
+
+task conllu-deepseek-v4-flash-0731-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731"]
+}
+
+task smoke-conllu-deepseek-v4-flash-0731-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731", "--smoke"]
+}
+
+task check-conllu-deepseek-v4-pro-0813-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-pro-0813", "--check"]
+}
+
+task conllu-deepseek-v4-pro-0813-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-pro-0813"]
+}
+
+task smoke-conllu-deepseek-v4-pro-0813-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-pro-0813", "--smoke"]
+}
+
+task check-conllu-glm53-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "glm-5.3", "--check"]
+}
+
+task conllu-glm53-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "glm-5.3"]
+}
+
+task smoke-conllu-glm53-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "glm-5.3", "--smoke"]
+}
+
+task check-conllu-claude-sonnet-46-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "claude-sonnet-4.6", "--check"]
+}
+
+task conllu-claude-sonnet-46-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "claude-sonnet-4.6"]
+}
+
+task smoke-conllu-claude-sonnet-46-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "claude-sonnet-4.6", "--smoke"]
+}
+
+task check-conllu-gpt53-codex-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "gpt-5.3-codex", "--check"]
+}
+
+task conllu-gpt53-codex-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "gpt-5.3-codex"]
+}
+
+task smoke-conllu-gpt53-codex-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "gpt-5.3-codex", "--smoke"]
+}
+
 task check-browser-boundary {
   environment: "dev"
   run: ["roc", "scripts/check-browser-boundary.roc"]
@@ -191,6 +271,7 @@ workflow release {
     "run check-deploy-tool",
     "run check-lint-tool",
     "run check-model-experiment-tool",
+    "run check-conllu-experiment-tool",
     "run preload",
     "run check-deepseek-v4-flash-0731-experiment",
     "run check-qwen35-experiment",
@@ -199,6 +280,11 @@ workflow release {
     "run check-gpt53-codex-experiment",
     "run check-qwen38-experiment",
     "run check-mistral-small4-experiment",
+    "run check-conllu-deepseek-v4-flash-0731-experiment",
+    "run check-conllu-deepseek-v4-pro-0813-experiment",
+    "run check-conllu-glm53-experiment",
+    "run check-conllu-claude-sonnet-46-experiment",
+    "run check-conllu-gpt53-codex-experiment",
     "run check-browser-boundary",
     "run bundle"
   ]

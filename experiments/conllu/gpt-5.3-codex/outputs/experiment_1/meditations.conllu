@@ -1,0 +1,198 @@
+# sentence_id = 1
+# translation_lang = en
+# prose_translation = From his grandfather Verus: a good nature and freedom from anger.
+# literal_translation = From the grandfather Verus the kind and unangered.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.1.1|gloss=from
+2	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Gender=Masc|Number=Sing|PronType=Art	3	det	_	Ref=1.1.1|gloss=the
+3	πάππου	πάππος	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	0	root	_	Ref=1.1.1|gloss=grandfather
+4	Οὐήρου	Οὐῆρος	PROPN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	3	nmod	_	Ref=1.1.1|gloss=verus
+5	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	6	det	_	Ref=1.1.1|gloss=the
+6	καλόηθες	καλοήθης	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	3	appos	_	Ref=1.1.1|gloss=kindness
+7	καὶ	καί	CCONJ	c--------	_	8	cc	_	Ref=1.1.1|gloss=and
+8	ἀόργητον	ἀόργητος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	6	conj	_	Ref=1.1.1|gloss=freedom-from-anger
+9	.	.	PUNCT	u--------	_	3	punct	_	Ref=1.1.1|gloss=.
+
+# sentence_id = 2
+# translation_lang = en
+# prose_translation = From my mother's reputation and memory: modesty and manliness.
+# literal_translation = From the reputation and memory concerning the one who begot me, the modest and manly.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.2.1|gloss=from
+2	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Art	3	det	_	Ref=1.2.1|gloss=the
+3	δόξης	δόξα	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	0	root	_	Ref=1.2.1|gloss=reputation
+4	καὶ	καί	CCONJ	c--------	_	5	cc	_	Ref=1.2.1|gloss=and
+5	μνήμης	μνήμη	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	3	conj	_	Ref=1.2.1|gloss=memory
+6	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Art	10	det	_	Ref=1.2.1|gloss=of-the
+7	περὶ	περί	ADP	r--------	_	10	case	_	Ref=1.2.1|gloss=concerning
+8	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Gender=Masc|Number=Sing|PronType=Art	10	det	_	Ref=1.2.1|gloss=the
+9	γεννήσαντος	γεννάω	VERB	v-sapamg-	Case=Gen|Gender=Masc|Number=Sing|Tense=Aor|VerbForm=Part|Voice=Act	5	nmod	_	Ref=1.2.1|gloss=who-begot
+10	τὸ	ὁ	DET	l-s---na-	Case=Acc|Gender=Neut|Number=Sing|PronType=Art	11	det	_	Ref=1.2.1|gloss=the
+11	αἰδῆμον	αἰδήμων	ADJ	a-s---na-	Case=Acc|Gender=Neut|Number=Sing	9	obj	_	Ref=1.2.1|gloss=modesty
+12	καὶ	καί	CCONJ	c--------	_	13	cc	_	Ref=1.2.1|gloss=and
+13	ἀρρενικόν	ἀρρενικός	ADJ	a-s---na-	Case=Acc|Gender=Neut|Number=Sing	11	conj	_	Ref=1.2.1|gloss=manliness
+14	.	.	PUNCT	u--------	_	3	punct	_	Ref=1.2.1|gloss=.
+
+# sentence_id = 3
+# translation_lang = en
+# prose_translation = From my mother: piety and generosity, and abstinence not only from doing wrong but even from the thought of it.
+# literal_translation = From the mother the pious and generous and restrained, not only of doing-wrong, but also of coming to be in thought of such a thing.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.3.1|gloss=from
+2	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Art	3	det	_	Ref=1.3.1|gloss=the
+3	μητρὸς	μήτηρ	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	0	root	_	Ref=1.3.1|gloss=mother
+4	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	5	det	_	Ref=1.3.1|gloss=the
+5	θεοσεβὲς	θεοσεβής	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	3	appos	_	Ref=1.3.1|gloss=piety
+6	καὶ	καί	CCONJ	c--------	_	7	cc	_	Ref=1.3.1|gloss=and
+7	μεταδοτικὸν	μεταδοτικός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	5	conj	_	Ref=1.3.1|gloss=generosity
+8	καὶ	καί	CCONJ	c--------	_	9	cc	_	Ref=1.3.1|gloss=and
+9	ἀφεκτικὸν	ἀφεκτικός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	5	conj	_	Ref=1.3.1|gloss=abstinence
+10	οὐ	οὐ	ADV	d--------	Polarity=Neg	11	advmod	_	Ref=1.3.1|gloss=not
+11	μόνον	μόνον	ADV	d--------	_	13	advmod	_	Ref=1.3.1|gloss=only
+12	τοῦ	ὁ	DET	l-s---ng-	Case=Gen|Gender=Neut|Number=Sing|PronType=Art	13	det	_	Ref=1.3.1|gloss=of-the
+13	κακοποιεῖν	κακοποιέω	VERB	v--pna---	Tense=Pres|VerbForm=Inf|Voice=Act	9	nmod	_	Ref=1.3.1|gloss=doing-wrong
+14	,	,	PUNCT	u--------	_	16	punct	_	Ref=1.3.1|gloss=,
+15	ἀλλὰ	ἀλλά	CCONJ	c--------	_	16	cc	_	Ref=1.3.1|gloss=but
+16	καὶ	καί	ADV	c--------	_	13	conj	_	Ref=1.3.1|gloss=also
+17	τοῦ	ὁ	DET	l-s---ng-	Case=Gen|Gender=Neut|Number=Sing|PronType=Art	20	det	_	Ref=1.3.1|gloss=of-the
+18	ἐπὶ	ἐπί	ADP	r--------	_	19	case	_	Ref=1.3.1|gloss=in
+19	ἐννοίας	ἔννοια	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	20	nmod	_	Ref=1.3.1|gloss=thought
+20	γίνεσθαι	γίγνομαι	VERB	v--pnm---	Tense=Pres|VerbForm=Inf|Voice=Mid	16	nmod	_	Ref=1.3.1|gloss=coming-to-be
+21	τοιαύτης	τοιοῦτος	DET	p-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Dem	19	det	_	Ref=1.3.1|gloss=of-such-a-kind
+22	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.3.1|gloss=;
+
+# sentence_id = 4
+# translation_lang = en
+# prose_translation = Further, simplicity in way of life and distance from luxurious living.
+# literal_translation = Still further the simple in respect to manner-of-life and far from luxurious lifestyle.
+1	ἔτι	ἔτι	ADV	d--------	_	3	advmod	_	Ref=1.3.1|gloss=further
+2	δὲ	δέ	CCONJ	c--------	_	3	discourse	_	Ref=1.3.1|gloss=and
+3	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	4	det	_	Ref=1.3.1|gloss=the
+4	λιτὸν	λιτός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.3.1|gloss=simplicity
+5	κατὰ	κατά	ADP	r--------	_	7	case	_	Ref=1.3.1|gloss=in
+6	τὴν	ὁ	DET	l-s---fa-	Case=Acc|Gender=Fem|Number=Sing|PronType=Art	7	det	_	Ref=1.3.1|gloss=the
+7	δίαιταν	δίαιτα	NOUN	n-s---fa-	Case=Acc|Gender=Fem|Number=Sing	4	nmod	_	Ref=1.3.1|gloss=way-of-life
+8	καὶ	καί	CCONJ	c--------	_	9	cc	_	Ref=1.3.1|gloss=and
+9	πόρρω	πόρρω	ADV	d--------	_	4	conj	_	Ref=1.3.1|gloss=distance
+10	τῆς	ὁ	DET	l-s---fg-	Case=Gen|Gender=Fem|Number=Sing|PronType=Art	12	det	_	Ref=1.3.1|gloss=from-the
+11	πλουσιακῆς	πλουσιακός	ADJ	a-s---fg-	Case=Gen|Gender=Fem|Number=Sing	12	amod	_	Ref=1.3.1|gloss=luxurious
+12	διαγωγῆς	διαγωγή	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	9	nmod	_	Ref=1.3.1|gloss=lifestyle
+13	.	.	PUNCT	u--------	_	4	punct	_	Ref=1.3.1|gloss=.
+
+# sentence_id = 5
+# translation_lang = en
+# prose_translation = From my great-grandfather: not to have attended public schools, to have had good teachers at home, and to have learned that one must spend generously on such things.
+# literal_translation = From the great-grandfather not to frequent public lectures and to employ good teachers at home and to learn that for such things it-is-necessary to spend freely.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.4.1|gloss=from
+2	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Gender=Masc|Number=Sing|PronType=Art	3	det	_	Ref=1.4.1|gloss=the
+3	προπάππου	πρόπαππος	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	0	root	_	Ref=1.4.1|gloss=great-grandfather
+4	τὸ	ὁ	DET	l-s---na-	Case=Acc|Gender=Neut|Number=Sing|PronType=Art	9	det	_	Ref=1.4.1|gloss=the
+5	μὴ	μή	ADV	d--------	Polarity=Neg	9	advmod	_	Ref=1.4.1|gloss=not
+6	εἰς	εἰς	ADP	r--------	_	8	case	_	Ref=1.4.1|gloss=to
+7	δημοσίας	δημόσιος	ADJ	a-p---fa-	Case=Acc|Gender=Fem|Number=Plur	8	amod	_	Ref=1.4.1|gloss=public
+8	διατριβὰς	διατριβή	NOUN	n-p---fa-	Case=Acc|Gender=Fem|Number=Plur	9	obl	_	Ref=1.4.1|gloss=schools
+9	φοιτῆσαι	φοιτάω	VERB	v--ana---	Tense=Aor|VerbForm=Inf|Voice=Act	3	appos	_	Ref=1.4.1|gloss=to-attend
+10	καὶ	καί	CCONJ	c--------	_	17	cc	_	Ref=1.4.1|gloss=and
+11	τὸ	ὁ	DET	l-s---na-	Case=Acc|Gender=Neut|Number=Sing|PronType=Art	16	det	_	Ref=1.4.1|gloss=the
+12	ἀγαθοῖς	ἀγαθός	ADJ	a-p---md-	Case=Dat|Gender=Masc|Number=Plur	13	amod	_	Ref=1.4.1|gloss=good
+13	διδασκάλοις	διδάσκαλος	NOUN	n-p---md-	Case=Dat|Gender=Masc|Number=Plur	16	iobj	_	Ref=1.4.1|gloss=teachers
+14	κατ’	κατά	ADP	r--------	_	15	case	_	Ref=1.4.1|gloss=at
+15	οἶκον	οἶκος	NOUN	n-s---ma-	Case=Acc|Gender=Masc|Number=Sing	16	obl	_	Ref=1.4.1|gloss=home
+16	χρήσασθαι	χράομαι	VERB	v--anm---	Tense=Aor|VerbForm=Inf|Voice=Mid	9	conj	_	Ref=1.4.1|gloss=to-employ
+17	καὶ	καί	CCONJ	c--------	_	19	cc	_	Ref=1.4.1|gloss=and
+18	τὸ	ὁ	DET	l-s---na-	Case=Acc|Gender=Neut|Number=Sing|PronType=Art	19	det	_	Ref=1.4.1|gloss=the
+19	γνῶναι	γιγνώσκω	VERB	v--ana---	Tense=Aor|VerbForm=Inf|Voice=Act	9	conj	_	Ref=1.4.1|gloss=to-learn
+20	ὅτι	ὅτι	SCONJ	c--------	_	24	mark	_	Ref=1.4.1|gloss=that
+21	εἰς	εἰς	ADP	r--------	_	23	case	_	Ref=1.4.1|gloss=for
+22	τὰ	ὁ	DET	l-p---na-	Case=Acc|Gender=Neut|Number=Plur|PronType=Art	23	det	_	Ref=1.4.1|gloss=the
+23	τοιαῦτα	τοιοῦτος	ADJ	p-p---na-	Case=Acc|Gender=Neut|Number=Plur	24	obl	_	Ref=1.4.1|gloss=such-things
+24	δεῖ	δεῖ	VERB	v3spia---	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	19	ccomp	_	Ref=1.4.1|gloss=it-is-necessary
+25	ἐκτενῶς	ἐκτενῶς	ADV	d--------	_	26	advmod	_	Ref=1.4.1|gloss=liberally
+26	ἀναλίσκειν	ἀναλίσκω	VERB	v--pna---	Tense=Pres|VerbForm=Inf|Voice=Act	24	xcomp	_	Ref=1.4.1|gloss=to-spend
+27	.	.	PUNCT	u--------	_	3	punct	_	Ref=1.4.1|gloss=.
+
+# sentence_id = 6
+# translation_lang = en
+# prose_translation = From my tutor: not to be either a partisan of the Greens or Blues, nor of the light-armed or heavy-armed gladiators.
+# literal_translation = From the tutor the not becoming neither green-faction nor blue-faction nor palmularius or scutarius.
+1	παρὰ	παρά	ADP	r--------	_	3	case	_	Ref=1.5.1|gloss=from
+2	τοῦ	ὁ	DET	l-s---mg-	Case=Gen|Gender=Masc|Number=Sing|PronType=Art	3	det	_	Ref=1.5.1|gloss=the
+3	τροφέως	τροφεύς	NOUN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	0	root	_	Ref=1.5.1|gloss=tutor
+4	τὸ	ὁ	DET	l-s---na-	Case=Acc|Gender=Neut|Number=Sing|PronType=Art	16	det	_	Ref=1.5.1|gloss=the
+5	μή	μή	ADV	d--------	Polarity=Neg	16	advmod	_	Ref=1.5.1|gloss=not
+6	-τε	τε	CCONJ	c--------	_	7	cc	_	Ref=1.5.1|gloss=nor
+7	Πρασιανὸς	Πρασιανός	NOUN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	16	xcomp	_	Ref=1.5.1|gloss=green-partisan
+8	μή	μή	ADV	d--------	Polarity=Neg	10	advmod	_	Ref=1.5.1|gloss=not
+9	-τε	τε	CCONJ	c--------	_	10	cc	_	Ref=1.5.1|gloss=nor
+10	Βενετιανὸς	Βενετιανός	NOUN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	7	conj	_	Ref=1.5.1|gloss=blue-partisan
+11	μή	μή	ADV	d--------	Polarity=Neg	13	advmod	_	Ref=1.5.1|gloss=not
+12	-τε	τε	CCONJ	c--------	_	13	cc	_	Ref=1.5.1|gloss=nor
+13	Παλμουλάριος	Παλμουλάριος	NOUN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	7	conj	_	Ref=1.5.1|gloss=palmularius
+14	ἢ	ἤ	CCONJ	c--------	_	15	cc	_	Ref=1.5.1|gloss=or
+15	Σκουτάριος	Σκουτάριος	NOUN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	13	conj	_	Ref=1.5.1|gloss=scutarius
+16	γενέσθαι	γίγνομαι	VERB	v--anm---	Tense=Aor|VerbForm=Inf|Voice=Mid	3	appos	_	Ref=1.5.1|gloss=to-become
+17	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.5.1|gloss=;
+
+# sentence_id = 7
+# translation_lang = en
+# prose_translation = And endurance of toil and contentment with little.
+# literal_translation = And the toil-enduring and needing-little.
+1	καὶ	καί	CCONJ	c--------	_	3	cc	_	Ref=1.5.1|gloss=and
+2	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	3	det	_	Ref=1.5.1|gloss=the
+3	φερέπονον	φερέπονος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.5.1|gloss=endurance-of-toil
+4	καὶ	καί	CCONJ	c--------	_	5	cc	_	Ref=1.5.1|gloss=and
+5	ὀλιγοδεές	ὀλιγοδεής	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	3	conj	_	Ref=1.5.1|gloss=contentment-with-little
+6	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.5.1|gloss=;
+
+# sentence_id = 8
+# translation_lang = en
+# prose_translation = And self-reliance and refraining from meddling.
+# literal_translation = And the self-working and free-from-busyness.
+1	καὶ	καί	CCONJ	c--------	_	3	cc	_	Ref=1.5.1|gloss=and
+2	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	3	det	_	Ref=1.5.1|gloss=the
+3	αὐτουργικὸν	αὐτουργικός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.5.1|gloss=self-reliance
+4	καὶ	καί	CCONJ	c--------	_	5	cc	_	Ref=1.5.1|gloss=and
+5	ἀπολύπραγμον	ἀπολύπραγμον	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	3	conj	_	Ref=1.5.1|gloss=non-meddling
+6	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.5.1|gloss=;
+
+# sentence_id = 9
+# translation_lang = en
+# prose_translation = And being inaccessible to slander.
+# literal_translation = And the hard-to-admit of-slander.
+1	καὶ	καί	CCONJ	c--------	_	3	cc	_	Ref=1.5.1|gloss=and
+2	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	3	det	_	Ref=1.5.1|gloss=the
+3	δυσπρόσδεκτον	δυσπρόσδεκτος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.5.1|gloss=inaccessibility
+4	διαβολῆς	διαβολή	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	3	nmod	_	Ref=1.5.1|gloss=to-slander
+5	.	.	PUNCT	u--------	_	3	punct	_	Ref=1.5.1|gloss=.
+
+# sentence_id = 10
+# translation_lang = en
+# prose_translation = From Diognetus: seriousness without affectation.
+# literal_translation = From Diognetus the unpretentious-serious.
+1	παρὰ	παρά	ADP	r--------	_	2	case	_	Ref=1.6.1|gloss=from
+2	Διογνήτου	Διόγνητος	PROPN	n-s---mg-	Case=Gen|Gender=Masc|Number=Sing	0	root	_	Ref=1.6.1|gloss=diognetus
+3	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	4	det	_	Ref=1.6.1|gloss=the
+4	ἀκενόσπουδον	ἀκενόσπουδος	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	2	appos	_	Ref=1.6.1|gloss=unaffected-seriousness
+5	·	·	PUNCT	u--------	_	2	punct	_	Ref=1.6.1|gloss=;
+
+# sentence_id = 11
+# translation_lang = en
+# prose_translation = And disbelief in what is said by wonder-workers and magicians about spells, driving away daimones, and such matters.
+# literal_translation = And the distrust toward the things by wonder-workers and magicians said, about incantations and about daimon-expulsions and things of such sort spoken-of.
+1	καὶ	καί	CCONJ	c--------	_	3	cc	_	Ref=1.6.1|gloss=and
+2	τὸ	ὁ	DET	l-s---nn-	Case=Nom|Gender=Neut|Number=Sing|PronType=Art	3	det	_	Ref=1.6.1|gloss=the
+3	ἀπιστητικὸν	ἀπιστητικός	ADJ	a-s---nn-	Case=Nom|Gender=Neut|Number=Sing	0	root	_	Ref=1.6.1|gloss=distrust
+4	τοῖς	ὁ	DET	l-p---nd-	Case=Dat|Gender=Neut|Number=Plur|PronType=Art	18	det	_	Ref=1.6.1|gloss=the
+5	ὑπὸ	ὑπό	ADP	r--------	_	7	case	_	Ref=1.6.1|gloss=by
+6	τῶν	ὁ	DET	l-p---mg-	Case=Gen|Gender=Masc|Number=Plur|PronType=Art	7	det	_	Ref=1.6.1|gloss=the
+7	τερατευομένων	τερατεύομαι	VERB	v-pppmng-	Case=Gen|Gender=Masc|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Mid	18	obl	_	Ref=1.6.1|gloss=wonder-workers
+8	καὶ	καί	CCONJ	c--------	_	9	cc	_	Ref=1.6.1|gloss=and
+9	γοήτων	γόης	NOUN	n-p---mg-	Case=Gen|Gender=Masc|Number=Plur	7	conj	_	Ref=1.6.1|gloss=magicians
+10	περὶ	περί	ADP	r--------	_	11	case	_	Ref=1.6.1|gloss=about
+11	ἐπῳδῶν	ἐπῳδή	NOUN	n-p---fg-	Case=Gen|Gender=Fem|Number=Plur	18	nmod	_	Ref=1.6.1|gloss=incantations
+12	καὶ	καί	CCONJ	c--------	_	13	cc	_	Ref=1.6.1|gloss=and
+13	περὶ	περί	ADP	r--------	_	14	case	_	Ref=1.6.1|gloss=about
+14	δαιμόνων	δαίμων	NOUN	n-p---mg-	Case=Gen|Gender=Masc|Number=Plur	11	conj	_	Ref=1.6.1|gloss=daimones
+15	ἀποπομπῆς	ἀποπομπή	NOUN	n-s---fg-	Case=Gen|Gender=Fem|Number=Sing	14	nmod	_	Ref=1.6.1|gloss=expulsion
+16	καὶ	καί	CCONJ	c--------	_	18	cc	_	Ref=1.6.1|gloss=and
+17	τῶν	ὁ	DET	l-p---ng-	Case=Gen|Gender=Neut|Number=Plur|PronType=Art	18	det	_	Ref=1.6.1|gloss=of-the
+18	λεγομένοις	λέγω	VERB	v-pppmnd-	Case=Dat|Gender=Neut|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Mid	3	nmod	_	Ref=1.6.1|gloss=things-said
+19	τοιούτων	τοιοῦτος	ADJ	p-p---ng-	Case=Gen|Gender=Neut|Number=Plur	18	nmod	_	Ref=1.6.1|gloss=of-such-kind
+20	·	·	PUNCT	u--------	_	3	punct	_	Ref=1.6.1|gloss=;

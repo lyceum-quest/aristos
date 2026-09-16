@@ -1,6 +1,6 @@
 {
   "experiment_name": "qwen3.5-397b-a17b",
-  "experiment_version": 4,
+  "experiment_version": 1,
   "provider": {
     "name": "ppq",
     "base_url": "https://api.ppq.ai/v1",
@@ -27,7 +27,7 @@
       "require_parameters": true,
       "allow_fallbacks": false
     },
-    "max_tokens": 4096,
+    "max_tokens": 16384,
     "frequency_penalty": 0,
     "presence_penalty": 0
   },

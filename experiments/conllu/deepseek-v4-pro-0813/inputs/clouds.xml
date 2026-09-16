@@ -1,0 +1,189 @@
+<!-- experiment_source_repository = https://github.com/alekkeersmaekers/glaux -->
+<!-- experiment_source_release = v2.1 -->
+<!-- experiment_source_revision = be838c1ac152a0a8380ffbb0844504d7d253c1d6 -->
+<!-- experiment_source_file = xml/0019-003.xml -->
+<!-- experiment_source_doi = https://doi.org/10.5281/zenodo.17295426 -->
+<!-- experiment_source_sha256 = 8a0f3f00cca66dd410efa8127a62d20baa1d8d20c9916239ef0f7a3e1a975596 -->
+<!-- original_text_source = Perseus -->
+<!-- original_text_source_format = XML -->
+<!-- source_license = CC BY-SA 4.0 -->
+<!-- annotation_status = automatic; metadata TREEBANK_ANNOTATIONS is NA and selected sentences have analysis=auto -->
+<!-- excerpt = opening source sentences 1-15; lines 1-20; 142 overt word elements -->
+<treebank version="2" xml:lang="grc">
+  <sentence struct_id="69025" id="1" document_id="0019-003" analysis="auto">
+    <word id="101148405" form="ἰοὺ" line="1" speaker="Στρεψιάδης" lemma="ἰού" postag="i--------" head="1000067501" relation="ExD"/>
+    <word id="101148406" form="ἰού" line="1" speaker="Στρεψιάδης" lemma="ἰού" postag="i--------" head="1000067501" relation="ExD"/>
+    <word id="101148407" form="·" line="1" speaker="Στρεψιάδης" lemma="·" postag="u--------" head="0" relation="AuxK"/>
+    <word id="1000067501" form="E" lemma="E" postag="z--------" head="0" relation="PRED" artificial="elliptic" line="1"/>
+  </sentence>
+  <sentence struct_id="69026" id="2" document_id="0019-003" analysis="auto">
+    <word id="101148408" form="ὦ" line="2" speaker="Στρεψιάδης" lemma="ὦ" postag="i--------" head="101148409" relation="AuxZ"/>
+    <word id="101148409" form="Ζεῦ" line="2" speaker="Στρεψιάδης" lemma="Ζεύς" postag="n-s---mv-" head="1000067502" relation="ExD" animacy="human" sense="eden.n.01"/>
+    <word id="101148410" form="βασιλεῦ" line="2" speaker="Στρεψιάδης" lemma="βασιλεύς" postag="n-s---mv-" head="101148409" relation="ATR" animacy="human" sense="king.n.01"/>
+    <word id="101148411" form="τὸ" line="2" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---nn-" head="101148412" relation="ATR"/>
+    <word id="101148412" form="χρῆμα" line="2" speaker="Στρεψιάδης" lemma="χρῆμα" postag="n-s---nn-" head="1000067502" relation="SBJ" animacy="concrete" sense="wealth.n.03"/>
+    <word id="101148413" form="τῶν" line="2" speaker="Στρεψιάδης" lemma="ὁ" postag="l-p---fg-" head="101148414" relation="ATR"/>
+    <word id="101148414" form="νυκτῶν" line="2" speaker="Στρεψιάδης" lemma="νύξ" postag="n-p---fg-" head="101148412" relation="ATR" animacy="time" sense="night.n.01"/>
+    <word id="101148415" form="ὅσον" line="2" speaker="Στρεψιάδης" lemma="ὅσος" postag="p-s---nn-" head="1000067502" relation="PNOM"/>
+    <word id="101148416" form="·" line="2" speaker="Στρεψιάδης" lemma="·" postag="u--------" head="0" relation="AuxK"/>
+    <word id="1000067502" form="E" lemma="E" postag="z--------" head="0" relation="PRED" artificial="elliptic" line="2"/>
+  </sentence>
+  <sentence struct_id="69027" id="3" document_id="0019-003" analysis="auto">
+    <word id="101148417" form="ἀπέραντον" line="3" speaker="Στρεψιάδης" lemma="ἀπέραντος" postag="a-s---nn-" head="1000067503" relation="PNOM"/>
+    <word id="101148418" form="." line="3" speaker="Στρεψιάδης" lemma="." postag="u--------" head="0" relation="AuxK"/>
+    <word id="1000067503" form="E" lemma="E" postag="z--------" head="0" relation="PRED" artificial="elliptic" line="3"/>
+  </sentence>
+  <sentence struct_id="69028" id="4" document_id="0019-003" analysis="auto">
+    <word id="101148419" form="οὐδέποθ’" line="3" speaker="Στρεψιάδης" lemma="οὐδέποτε" postag="d--------" head="101148421" relation="ADV"/>
+    <word id="101148420" form="ἡμέρα" line="3" speaker="Στρεψιάδης" lemma="ἡμέρα" postag="n-s---fn-" head="101148421" relation="SBJ" animacy="time" sense="day.n.04"/>
+    <word id="101148421" form="γενήσεται" line="3" speaker="Στρεψιάδης" lemma="γίγνομαι" postag="v3sfim---" head="0" relation="PRED"/>
+    <word id="101148422" form=";" line="3" speaker="Στρεψιάδης" lemma=";" postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69029" id="5" document_id="0019-003" analysis="auto">
+    <word id="101148423" form="καὶ" line="4" speaker="Στρεψιάδης" lemma="καί" postag="c--------" head="101148428" relation="AuxY"/>
+    <word id="101148424" form="μὴν" line="4" speaker="Στρεψιάδης" lemma="μήν" postag="g--------" head="101148428" relation="AuxY"/>
+    <word id="101148425" form="πάλαι" line="4" speaker="Στρεψιάδης" lemma="πάλαι" postag="d--------" head="101148428" relation="ADV"/>
+    <word id="101148426" form="γ’" line="4" speaker="Στρεψιάδης" lemma="γε" postag="g--------" head="101148425" relation="AuxZ"/>
+    <word id="101148427" form="ἀλεκτρυόνος" line="4" speaker="Στρεψιάδης" lemma="ἀλεκτρυών" postag="n-s---mg-" head="101148428" relation="OBJ" animacy="animal" sense="cock.n.05"/>
+    <word id="101148428" form="ἤκουσ’" line="4" speaker="Στρεψιάδης" lemma="ἀκούω" postag="v1saia---" head="0" relation="PRED"/>
+    <word id="101148429" form="ἐγώ" line="4" speaker="Στρεψιάδης" lemma="ἐγώ" postag="p-s---cn-" head="101148428" relation="SBJ"/>
+    <word id="101148430" form="·" line="4" speaker="Στρεψιάδης" lemma="·" postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69030" id="6" document_id="0019-003" analysis="auto">
+    <word id="101148431" form="οἱ" line="5" speaker="Στρεψιάδης" lemma="ὁ" postag="l-p---mn-" head="101148433" relation="ATR"/>
+    <word id="101148432" form="δ’" line="5" speaker="Στρεψιάδης" lemma="δέ" postag="c--------" head="101148434" relation="AuxY"/>
+    <word id="101148433" form="οἰκέται" line="5" speaker="Στρεψιάδης" lemma="οἰκέτης" postag="n-p---mn-" head="101148434" relation="SBJ" animacy="human" sense="servant.n.01"/>
+    <word id="101148434" form="ῥέγκουσιν" line="5" speaker="Στρεψιάδης" lemma="ῥέγκω" postag="v3ppia---" head="0" relation="PRED"/>
+    <word id="101148435" form="·" line="5" speaker="Στρεψιάδης" lemma="·" postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69031" id="7" document_id="0019-003" analysis="auto">
+    <word id="101148436" form="ἀλλ’" line="5" speaker="Στρεψιάδης" lemma="ἀλλά" postag="c--------" head="1000067504" relation="AuxY"/>
+    <word id="101148437" form="οὐκ" line="5" speaker="Στρεψιάδης" lemma="οὐ" postag="d--------" head="1000067504" relation="AuxZ"/>
+    <word id="101148438" form="ἂν" line="5" speaker="Στρεψιάδης" lemma="ἄν" postag="g--------" head="1000067504" relation="AuxY"/>
+    <word id="101148439" form="πρὸ" line="5" speaker="Στρεψιάδης" lemma="πρό" postag="r--------" head="1000067504" relation="AuxP"/>
+    <word id="101148440" form="τοῦ" line="5" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---ng-" head="101148439" relation="ADV"/>
+    <word id="101148441" form="." line="5" speaker="Στρεψιάδης" lemma="." postag="u--------" head="0" relation="AuxK"/>
+    <word id="1000067504" form="E" lemma="E" postag="z--------" head="0" relation="PRED" artificial="elliptic" line="5"/>
+  </sentence>
+  <sentence struct_id="69032" id="8" document_id="0019-003" analysis="auto">
+    <word id="101148442" form="ἀπόλοιο" line="6" speaker="Στρεψιάδης" lemma="ἀπόλλυμι" postag="v2saom---" head="0" relation="PRED"/>
+    <word id="101148443" form="δῆτ’" line="6" speaker="Στρεψιάδης" lemma="δῆτα" postag="g--------" head="101148442" relation="AuxZ"/>
+    <word id="101148444" form="ὦ" line="6" speaker="Στρεψιάδης" lemma="ὦ" postag="i--------" head="101148445" relation="AuxZ"/>
+    <word id="101148445" form="πόλεμε" line="6" speaker="Στρεψιάδης" lemma="πόλεμος" postag="n-s---mv-" head="101148442" relation="ExD" animacy="nonconc" sense="war.n.01"/>
+    <word id="101148446" form="πολλῶν" line="6" speaker="Στρεψιάδης" lemma="πολύς" postag="a-p---ng-" head="101148447" relation="ADV"/>
+    <word id="101148447" form="οὕνεκα" line="6" speaker="Στρεψιάδης" lemma="οὕνεκα" postag="r--------" head="101148442" relation="AuxP"/>
+    <word id="101148448" form="," line="6" speaker="Στρεψιάδης" lemma="," postag="u--------" head="0" relation="AuxX"/>
+    <word id="101148449" form="ὅτ’" line="7" speaker="Στρεψιάδης" lemma="ὅτε" postag="c--------" head="101148442" relation="AuxC"/>
+    <word id="101148450" form="οὐ" line="7" speaker="Στρεψιάδης" lemma="οὐ" postag="d--------" head="101148453" relation="AuxZ"/>
+    <word id="101148451" form="-δὲ" line="7" speaker="Στρεψιάδης" lemma="δέ" postag="c--------" head="101148450" relation="MWE"/>
+    <word id="101148452" form="κολάσ’" line="7" speaker="Στρεψιάδης" lemma="κολάζω" postag="v--ana---" head="101148453" relation="SBJ"/>
+    <word id="101148453" form="ἔξεστί" line="7" speaker="Στρεψιάδης" lemma="ἔξεστι" postag="v3spia---" head="101148449" relation="ADV"/>
+    <word id="101148454" form="μοι" line="7" speaker="Στρεψιάδης" lemma="ἐγώ" postag="p-s---cd-" head="101148452" relation="OBJ"/>
+    <word id="101148455" form="τοὺς" line="7" speaker="Στρεψιάδης" lemma="ὁ" postag="l-p---ma-" head="101148456" relation="ATR"/>
+    <word id="101148456" form="οἰκέτας" line="7" speaker="Στρεψιάδης" lemma="οἰκέτης" postag="n-p---ma-" head="101148452" relation="OBJ" animacy="human" sense="servant.n.01"/>
+    <word id="101148457" form="." line="7" speaker="Στρεψιάδης" lemma="." postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69033" id="9" document_id="0019-003" analysis="auto">
+    <word id="101148458" form="ἀλλ’" line="8" speaker="Στρεψιάδης" lemma="ἀλλά" postag="c--------" head="101148469" relation="AuxY"/>
+    <word id="101148459" form="οὐ" line="8" speaker="Στρεψιάδης" lemma="οὐ" postag="d--------" head="101148465" relation="AuxZ"/>
+    <word id="101148460" form="-δ’" line="8" speaker="Στρεψιάδης" lemma="δέ" postag="c--------" head="101148459" relation="MWE"/>
+    <word id="101148461" form="ὁ" line="8" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---mn-" head="101148464" relation="ATR"/>
+    <word id="101148462" form="χρηστὸς" line="8" speaker="Στρεψιάδης" lemma="χρηστός" postag="a-s---mn-" head="101148464" relation="ATR"/>
+    <word id="101148463" form="οὑτοσὶ" line="8" speaker="Στρεψιάδης" lemma="οὗτος" postag="p-s---mn-" head="101148464" relation="ATR"/>
+    <word id="101148464" form="νεανίας" line="8" speaker="Στρεψιάδης" lemma="νεανίας" postag="n-s---mn-" head="101148465" relation="SBJ" animacy="human" sense="young_person.n.01"/>
+    <word id="101148465" form="ἐγείρεται" line="9" speaker="Στρεψιάδης" lemma="ἐγείρω" postag="v3spim---" head="101148469" relation="PRED_CO"/>
+    <word id="101148466" form="τῆς" line="9" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---fg-" head="101148467" relation="ATR"/>
+    <word id="101148467" form="νυκτός" line="9" speaker="Στρεψιάδης" lemma="νύξ" postag="n-s---fg-" head="101148465" relation="ADV" animacy="time" sense="night.n.01"/>
+    <word id="101148468" form="," line="9" speaker="Στρεψιάδης" lemma="," postag="u--------" head="0" relation="AuxX"/>
+    <word id="101148469" form="ἀλλὰ" line="9" speaker="Στρεψιάδης" lemma="ἀλλά" postag="c--------" head="0" relation="COORD"/>
+    <word id="101148470" form="πέρδεται" line="9" speaker="Στρεψιάδης" lemma="πέρδομαι" postag="v3spim---" head="101148469" relation="PRED_CO"/>
+    <word id="101148471" form="ἐν" line="10" speaker="Στρεψιάδης" lemma="ἐν" postag="r--------" head="101148470" relation="AuxP"/>
+    <word id="101148472" form="πέντε" line="10" speaker="Στρεψιάδης" lemma="πέντε" postag="m--------" head="101148473" relation="ATR"/>
+    <word id="101148473" form="σισύραις" line="10" speaker="Στρεψιάδης" lemma="σισύρα" postag="n-p---fd-" head="101148471" relation="ADV" animacy="concrete" sense="blanket.n.01"/>
+    <word id="101148474" form="ἐγκεκορδυλημένος" line="10" speaker="Στρεψιάδης" lemma="ἐγκορδυλέω" postag="v-srpmmn-" head="101148470" relation="ADV"/>
+    <word id="101148475" form="." line="10" speaker="Στρεψιάδης" lemma="." postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69034" id="10" document_id="0019-003" analysis="auto">
+    <word id="101148476" form="ἀλλ’" line="11" speaker="Στρεψιάδης" lemma="ἀλλά" postag="c--------" head="101148479" relation="AuxY"/>
+    <word id="101148477" form="εἰ" line="11" speaker="Στρεψιάδης" lemma="εἰ" postag="c--------" head="101148479" relation="AuxC"/>
+    <word id="101148478" form="δοκεῖ" line="11" speaker="Στρεψιάδης" lemma="δοκέω" postag="v3spia---" head="101148477" relation="ADV"/>
+    <word id="101148479" form="ῥέγκωμεν" line="11" speaker="Στρεψιάδης" lemma="ῥέγκω" postag="v1ppsa---" head="0" relation="PRED"/>
+    <word id="101148480" form="ἐγκεκαλυμμένοι" line="11" speaker="Στρεψιάδης" lemma="ἐγκαλύπτω" postag="v-prpmmn-" head="101148479" relation="ADV"/>
+    <word id="101148481" form="." line="11" speaker="Στρεψιάδης" lemma="." postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69035" id="11" document_id="0019-003" analysis="auto">
+    <word id="101148482" form="ἀλλ’" line="12" speaker="Στρεψιάδης" lemma="ἀλλά" postag="c--------" head="101148484" relation="AuxY"/>
+    <word id="101148483" form="οὐ" line="12" speaker="Στρεψιάδης" lemma="οὐ" postag="d--------" head="101148484" relation="AuxZ"/>
+    <word id="101148484" form="δύναμαι" line="12" speaker="Στρεψιάδης" lemma="δύναμαι" postag="v1spim---" head="0" relation="PRED"/>
+    <word id="101148485" form="δείλαιος" line="12" speaker="Στρεψιάδης" lemma="δείλαιος" postag="a-s---mn-" head="101148484" relation="ADV"/>
+    <word id="101148486" form="εὕδειν" line="12" speaker="Στρεψιάδης" lemma="εὕδω" postag="v--pna---" head="101148484" relation="OBJ"/>
+    <word id="101148487" form="δακνόμενος" line="12" speaker="Στρεψιάδης" lemma="δάκνω" postag="v-sppmmn-" head="101148484" relation="ADV"/>
+    <word id="101148488" form="ὑπὸ" line="13" speaker="Στρεψιάδης" lemma="ὑπό" postag="r--------" head="101148487" relation="AuxP"/>
+    <word id="101148489" form="τῆς" line="13" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---fg-" head="101148490" relation="ATR"/>
+    <word id="101148490" form="δαπάνης" line="13" speaker="Στρεψιάδης" lemma="δαπάνη" postag="n-s---fg-" head="101148494" relation="OBJ_CO" animacy="nonconc" sense="expense.n.01"/>
+    <word id="101148491" form="καὶ" line="13" speaker="Στρεψιάδης" lemma="καί" postag="c--------" head="101148494" relation="AuxY"/>
+    <word id="101148492" form="τῆς" line="13" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---fg-" head="101148493" relation="ATR"/>
+    <word id="101148493" form="φάτνης" line="13" speaker="Στρεψιάδης" lemma="φάτνη" postag="n-s---fg-" head="101148494" relation="OBJ_CO" animacy="concrete" sense="manger.n.01"/>
+    <word id="101148494" form="καὶ" line="13" speaker="Στρεψιάδης" lemma="καί" postag="c--------" head="101148488" relation="COORD"/>
+    <word id="101148495" form="τῶν" line="13" speaker="Στρεψιάδης" lemma="ὁ" postag="l-p---ng-" head="101148496" relation="ATR"/>
+    <word id="101148496" form="χρεῶν" line="13" speaker="Στρεψιάδης" lemma="χρέος" postag="n-p---ng-" head="101148494" relation="OBJ_CO" animacy="nonconc" sense="debt.n.02"/>
+    <word id="101148497" form="διὰ" line="14" speaker="Στρεψιάδης" lemma="διά" postag="r--------" head="101148487" relation="AuxP"/>
+    <word id="101148498" form="τουτονὶ" line="14" speaker="Στρεψιάδης" lemma="οὗτος" postag="p-s---ma-" head="101148500" relation="ATR"/>
+    <word id="101148499" form="τὸν" line="14" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---ma-" head="101148500" relation="ATR"/>
+    <word id="101148500" form="υἱόν" line="14" speaker="Στρεψιάδης" lemma="υἱός" postag="n-s---ma-" head="101148497" relation="ADV" animacy="human" sense="son.n.01"/>
+    <word id="101148501" form="." line="14" speaker="Στρεψιάδης" lemma="." postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69036" id="12" document_id="0019-003" analysis="auto">
+    <word id="101148502" form="ὁ" line="14" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---mn-" head="101148507" relation="SBJ"/>
+    <word id="101148503" form="δὲ" line="14" speaker="Στρεψιάδης" lemma="δέ" postag="c--------" head="101148507" relation="AuxY"/>
+    <word id="101148504" form="κόμην" line="14" speaker="Στρεψιάδης" lemma="κόμη" postag="n-s---fa-" head="101148505" relation="OBJ" animacy="body" sense="hair.n.01"/>
+    <word id="101148505" form="ἔχων" line="14" speaker="Στρεψιάδης" lemma="ἔχω" postag="v-sppamn-" head="101148507" relation="ADV"/>
+    <word id="101148506" form="ἱππάζεταί" line="15" speaker="Στρεψιάδης" lemma="ἱππάζομαι" postag="v3spim---" head="101148511" relation="PRED_CO"/>
+    <word id="101148507" form="τε" line="15" speaker="Στρεψιάδης" lemma="τε" postag="c--------" head="101148511" relation="AuxY"/>
+    <word id="101148508" form="καὶ" line="15" speaker="Στρεψιάδης" lemma="καί" postag="c--------" head="101148511" relation="AuxY"/>
+    <word id="101148509" form="ξυνωρικεύεται" line="15" speaker="Στρεψιάδης" lemma="ξυνωρικεύω" postag="v3spim---" head="101148511" relation="PRED_CO"/>
+    <word id="101148510" form="ὀνειροπολεῖ" line="16" speaker="Στρεψιάδης" lemma="ὀνειροπολέω" postag="v3spia---" head="101148511" relation="PRED_CO"/>
+    <word id="101148511" form="θ’" line="16" speaker="Στρεψιάδης" lemma="τε" postag="c--------" head="0" relation="COORD"/>
+    <word id="101148512" form="ἵππους" line="16" speaker="Στρεψιάδης" lemma="ἵππος" postag="n-p---ma-" head="101148510" relation="OBJ" animacy="animal" sense="horse.n.01"/>
+    <word id="101148513" form="·" line="16" speaker="Στρεψιάδης" lemma="·" postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69037" id="13" document_id="0019-003" analysis="auto">
+    <word id="101148514" form="ἐγὼ" line="16" speaker="Στρεψιάδης" lemma="ἐγώ" postag="p-s---cn-" head="101148516" relation="SBJ"/>
+    <word id="101148515" form="δ’" line="16" speaker="Στρεψιάδης" lemma="δέ" postag="c--------" head="101148516" relation="AuxY"/>
+    <word id="101148516" form="ἀπόλλυμαι" line="16" speaker="Στρεψιάδης" lemma="ἀπόλλυμι" postag="v1spim---" head="0" relation="PRED"/>
+    <word id="101148517" form="ὁρῶν" line="17" speaker="Στρεψιάδης" lemma="ὁράω" postag="v-sppamn-" head="101148516" relation="ADV"/>
+    <word id="101148518" form="ἄγουσαν" line="17" speaker="Στρεψιάδης" lemma="ἄγω" postag="v-sppafa-" head="101148521" relation="ATR"/>
+    <word id="101148519" form="τὴν" line="17" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---fa-" head="101148520" relation="ATR"/>
+    <word id="101148520" form="σελήνην" line="17" speaker="Στρεψιάδης" lemma="σελήνη" postag="n-s---fa-" head="101148518" relation="OBJ" animacy="natobj" sense="moon.n.01"/>
+    <word id="101148521" form="εἰκάδας" line="17" speaker="Στρεψιάδης" lemma="εἰκάς" postag="n-p---fa-" head="101148517" relation="OBJ" animacy="time" sense="twentieth.n.01"/>
+    <word id="101148522" form="·" line="17" speaker="Στρεψιάδης" lemma="·" postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69038" id="14" document_id="0019-003" analysis="auto">
+    <word id="101148523" form="οἱ" line="18" speaker="Στρεψιάδης" lemma="ὁ" postag="l-p---mn-" head="101148525" relation="ATR"/>
+    <word id="101148524" form="γὰρ" line="18" speaker="Στρεψιάδης" lemma="γάρ" postag="g--------" head="101148526" relation="AuxY"/>
+    <word id="101148525" form="τόκοι" line="18" speaker="Στρεψιάδης" lemma="τόκος" postag="n-p---mn-" head="101148526" relation="SBJ" animacy="nonconc" sense="interest.n.04"/>
+    <word id="101148526" form="χωροῦσιν" line="18" speaker="Στρεψιάδης" lemma="χωρέω" postag="v3ppia---" head="0" relation="PRED"/>
+    <word id="101148527" form="." line="18" speaker="Στρεψιάδης" lemma="." postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+  <sentence struct_id="69039" id="15" document_id="0019-003" analysis="auto">
+    <word id="101148528" form="ἅπτε" line="18" speaker="Στρεψιάδης" lemma="ἅπτω" postag="v2spma---" head="101148532" relation="PRED_CO"/>
+    <word id="101148529" form="παῖ" line="18" speaker="Στρεψιάδης" lemma="παῖς" postag="n-s---cv-" head="101148532" relation="ExD" animacy="human" sense="servant.n.01"/>
+    <word id="101148530" form="λύχνον" line="18" speaker="Στρεψιάδης" lemma="λύχνος" postag="n-s---ma-" head="101148528" relation="OBJ" animacy="concrete" sense="lamp.n.01"/>
+    <word id="101148531" form="," line="18" speaker="Στρεψιάδης" lemma="," postag="u--------" head="0" relation="AuxX"/>
+    <word id="101148532" form="κα-" line="19" speaker="Στρεψιάδης" lemma="καί" postag="c--------" head="0" relation="COORD"/>
+    <word id="101148533" form="κἄκφερε" line="19" speaker="Στρεψιάδης" lemma="ἐκφέρω" postag="v2spma---" head="101148532" relation="PRED_CO"/>
+    <word id="101148534" form="τὸ" line="19" speaker="Στρεψιάδης" lemma="ὁ" postag="l-s---na-" head="101148535" relation="ATR"/>
+    <word id="101148535" form="γραμματεῖον" line="19" speaker="Στρεψιάδης" lemma="γραμματεῖον" postag="n-s---na-" head="101148533" relation="OBJ" animacy="concrete" sense="pad.n.01"/>
+    <word id="101148536" form="," line="19" speaker="Στρεψιάδης" lemma="," postag="u--------" head="0" relation="AuxX"/>
+    <word id="101148537" form="ἵν’" line="19" speaker="Στρεψιάδης" lemma="ἵνα" postag="c--------" head="101148533" relation="AuxC"/>
+    <word id="101148538" form="ἀναγνῶ" line="19" speaker="Στρεψιάδης" lemma="ἀναγιγνώσκω" postag="v1sasa---" head="101148537" relation="ADV"/>
+    <word id="101148539" form="λαβὼν" line="19" speaker="Στρεψιάδης" lemma="λαμβάνω" postag="v-sapamn-" head="101148538" relation="ADV"/>
+    <word id="101148540" form="ὁπόσοις" line="20" speaker="Στρεψιάδης" lemma="ὁπόσος" postag="p-p---md-" head="101148541" relation="OBJ"/>
+    <word id="101148541" form="ὀφείλω" line="20" speaker="Στρεψιάδης" lemma="ὀφείλω" postag="v1spia---" head="101148542" relation="OBJ_CO"/>
+    <word id="101148542" form="καὶ" line="20" speaker="Στρεψιάδης" lemma="καί" postag="c--------" head="101148539" relation="COORD"/>
+    <word id="101148543" form="λογίσωμαι" line="20" speaker="Στρεψιάδης" lemma="λογίζομαι" postag="v1sasm---" head="101148542" relation="OBJ_CO"/>
+    <word id="101148544" form="τοὺς" line="20" speaker="Στρεψιάδης" lemma="ὁ" postag="l-p---ma-" head="101148545" relation="ATR"/>
+    <word id="101148545" form="τόκους" line="20" speaker="Στρεψιάδης" lemma="τόκος" postag="n-p---ma-" head="101148543" relation="OBJ" animacy="nonconc" sense="interest.n.04"/>
+    <word id="101148546" form="." line="20" speaker="Στρεψιάδης" lemma="." postag="u--------" head="0" relation="AuxK"/>
+  </sentence>
+</treebank>
