@@ -29,6 +29,7 @@ Generation : {
 }
 
 Config : {
+	compact_generation : Try(Generation, [Missing]),
 	execution : { max_overt_tokens_per_shard : U64, min_overt_tokens_per_shard : U64, shard_delay_ms : U64 },
 	experiment_name : Str,
 	experiment_version : U64,
@@ -68,6 +69,17 @@ ModelSentence : {
 
 ModelPayload : { sentences : List(ModelSentence) }
 
+CompactModelToken : { gloss : Str, id : U64 }
+
+CompactModelSentence : {
+	literal_translation : Str,
+	prose_translation : Str,
+	source_sentence_id : Str,
+	tokens : List(CompactModelToken),
+}
+
+CompactModelPayload : { sentences : List(CompactModelSentence) }
+
 DecodedResponse : {
 	choices : List({ finish_reason : Str, message : { content : Str } }),
 	id : Str,
@@ -88,10 +100,12 @@ main! = |args| {
 	match List.drop_first(displayed, 1) {
 		[experiment_name] => run_named_experiment!(experiment_name)
 		[experiment_name, "--check"] => check_named_experiment!(experiment_name)
+		[experiment_name, "--check-compact"] => check_compact_named_experiment!(experiment_name)
 		[experiment_name, "--smoke"] => smoke_named_experiment!(experiment_name)
+		[experiment_name, "--smoke-compact"] => smoke_compact_named_experiment!(experiment_name)
 		[experiment_name, "--resume", run_id] => resume_named_experiment!(experiment_name, run_id)
 		_ => {
-			_ = Stderr.line!("usage: run-conllu-experiment <experiment-name> [--check | --smoke | --resume <run-id>]")?
+			_ = Stderr.line!("usage: run-conllu-experiment <experiment-name> [--check | --check-compact | --smoke | --smoke-compact | --resume <run-id>]")?
 			Err(Exit(2))
 		}
 	}
@@ -104,6 +118,27 @@ check_named_experiment! = |experiment_name| {
 	inputs = discover_inputs!(experiment_dir)?
 	_ = build_requests!(inputs, config, experiment_dir)?
 	_ = Stdout.line!("checked ${experiment_name} experiment: ${U64.to_str(List.len(inputs))} input(s)")?
+	Ok({})
+}
+
+check_compact_named_experiment! = |experiment_name| {
+	experiment_dir = experiment_dir_for(experiment_name)?
+	config = read_config!(experiment_dir)?
+	_ = validate_config(config, experiment_name)?
+	inputs = discover_inputs!(experiment_dir)?
+	input_path = match inputs {
+		[path, ..] => Ok(path)
+		[] => Err(NoInputs)
+	}?
+	source = Path.read_utf8!(Path.utf8(input_path))?
+	sentences = parse_glaux_xml(source)?
+	shards = shard_sentences(sentences, config.execution.min_overt_tokens_per_shard, config.execution.max_overt_tokens_per_shard)?
+	first_shard = match shards {
+		[shard, ..] => Ok(shard)
+		[] => Err(NoSourceSentences)
+	}?
+	_ = compact_request_body(config, first_shard, "")?
+	_ = Stdout.line!("checked compact ${experiment_name} smoke request")?
 	Ok({})
 }
 
@@ -141,6 +176,44 @@ smoke_named_experiment! = |experiment_name| {
 		generated = run_attempt!(work, first_shard, config, api_key, run_id, run_dir, 1, shard_count, 1, "")?
 		_ = write_output!(generated.conllu, output_path)?
 		_ = Stdout.line!("completed smoke run ${run_id}\t${output_path}")?
+		Ok({})
+	}
+}
+
+smoke_compact_named_experiment! = |experiment_name| {
+	experiment_dir = experiment_dir_for(experiment_name)?
+	config = read_config!(experiment_dir)?
+	_ = validate_config(config, experiment_name)?
+	api_key = read_api_key!(config.provider.api_key_env)?
+	inputs = discover_inputs!(experiment_dir)?
+	input_path = match inputs {
+		[path, ..] => Ok(path)
+		[] => Err(NoInputs)
+	}?
+	source = Path.read_utf8!(Path.utf8(input_path))?
+	sentences = parse_glaux_xml(source)?
+	shards = shard_sentences(sentences, config.execution.min_overt_tokens_per_shard, config.execution.max_overt_tokens_per_shard)?
+	first_shard = match shards {
+		[shard, ..] => Ok(shard)
+		[] => Err(NoSourceSentences)
+	}?
+	started = Utc.now!()
+	run_id = "smoke-compact-${run_id_for(started, config.experiment_version)}"
+	run_dir = "${experiment_dir}/responses/${run_id}"
+	work = work_name(experiment_dir, input_path)
+	shard_count = List.len(shards)
+	output_dir = "${experiment_dir}/outputs/experiment_${U64.to_str(config.experiment_version)}/smoke-compact/${run_id}"
+	output_path = "${output_dir}/${work}.shard-1-of-${U64.to_str(shard_count)}.semantics.txt"
+
+	if Path.exists!(Path.utf8(run_dir))? {
+		Err(RunAlreadyExists(run_dir))
+	} else {
+		_ = Path.create_all!(Path.utf8(run_dir))?
+		_ = Path.create_all!(Path.utf8(output_dir))?
+		_ = Path.write_utf8!(Path.utf8("${run_dir}/run-id"), "${run_id}\n")?
+		generated = run_compact_attempt!(work, first_shard, config, api_key, run_id, run_dir, 1, shard_count, 1, "")?
+		_ = write_output!(generated.output, output_path)?
+		_ = Stdout.line!("completed compact smoke run ${run_id}\t${output_path}")?
 		Ok({})
 	}
 }
@@ -368,6 +441,47 @@ run_shards! = |shards, work, config, api_key, run_id, run_dir, shard_index, shar
 		}
 	}
 
+run_compact_attempt! = |work, sentences, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, feedback| {
+	body = compact_request_body(config, sentences, feedback)?
+	captured = send_transport_attempt!(
+		work,
+		config,
+		api_key,
+		run_id,
+		run_dir,
+		shard_index,
+		shard_count,
+		attempt,
+		body,
+		1,
+	)?
+	outcome = process_compact_completion!(work, sentences, run_id, shard_index, shard_count, attempt, body, captured)?
+
+	match outcome {
+		Accepted(output) => Ok({ output, request_body: body })
+		Rejected(error_text) => {
+			_ = Stdout.line!("rejected compact ${work} shard ${U64.to_str(shard_index)}/${U64.to_str(shard_count)} attempt ${U64.to_str(attempt)}: ${error_text}")?
+			if attempt < config.validation.max_attempts {
+				_ = if config.execution.shard_delay_ms > 0 Sleep.millis!(config.execution.shard_delay_ms) else {}
+				run_compact_attempt!(
+					work,
+					sentences,
+					config,
+					api_key,
+					run_id,
+					run_dir,
+					shard_index,
+					shard_count,
+					attempt + 1,
+					error_text,
+				)
+			} else {
+				Err(ValidationAttemptsExhausted(work, shard_index, attempt, error_text))
+			}
+		}
+	}
+}
+
 run_attempt! = |work, sentences, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, feedback| {
 	body = request_body(config, work, sentences, feedback)?
 	captured = send_transport_attempt!(
@@ -515,6 +629,52 @@ send_transport_attempt! = |work, config, api_key, run_id, run_dir, shard_index, 
 					transport_attempt,
 				})
 			}
+		}
+	}
+}
+
+process_compact_completion! = |work, sentences, run_id, shard_index, shard_count, attempt, body, captured| {
+	received_at = captured.received_at
+	request_id = captured.request_id
+	requested_at = captured.requested_at
+	response = captured.response
+	response_body = captured.response_body
+	response_path = captured.response_path
+	timestamp = captured.timestamp
+	transport_attempt = captured.transport_attempt
+	match decode_response(response_body) {
+		Ok(decoded) =>
+			match decoded.choices {
+				[choice, ..] => {
+					validation = if choice.finish_reason != "stop" {
+						Err(IncompleteFinish(choice.finish_reason))
+					} else {
+						validate_compact_content(choice.message.content, sentences)
+					}
+
+					match validation {
+						Ok(output) => {
+							_ = write_attempt_record!(response_path, attempt, transport_attempt, shard_index, shard_count, body, decoded, choice.finish_reason, response, response_body, request_id, timestamp, requested_at, received_at, run_id, work, "valid", "")?
+							_ = Stdout.line!("${work}\tcompact shard ${U64.to_str(shard_index)}/${U64.to_str(shard_count)}\tattempt ${U64.to_str(attempt)}\ttransport ${U64.to_str(transport_attempt)}\t${decoded.model}\t${decoded.provider}\t${U64.to_str(decoded.usage.prompt_tokens)}/${U64.to_str(decoded.usage.completion_tokens)}/${U64.to_str(decoded.usage.total_tokens)}\t${choice.finish_reason}\t${response_path}")?
+							Ok(Accepted(output))
+						}
+						Err(validation_error) => {
+							error_text = validation_error_text(validation_error)
+							_ = write_attempt_record!(response_path, attempt, transport_attempt, shard_index, shard_count, body, decoded, choice.finish_reason, response, response_body, request_id, timestamp, requested_at, received_at, run_id, work, "rejected", error_text)?
+							Ok(Rejected(error_text))
+						}
+					}
+				}
+				[] => {
+					error_text = validation_error_text(MissingResponseChoice)
+					_ = write_attempt_record!(response_path, attempt, transport_attempt, shard_index, shard_count, body, decoded, "", response, response_body, request_id, timestamp, requested_at, received_at, run_id, work, "rejected", error_text)?
+					Ok(Rejected(error_text))
+				}
+			}
+		Err(_) => {
+			error_text = validation_error_text(InvalidResponseEnvelope)
+			_ = write_attempt_record!(response_path, attempt, transport_attempt, shard_index, shard_count, body, empty_decoded_response, "", response, response_body, request_id, timestamp, requested_at, received_at, run_id, work, "rejected", error_text)?
+			Ok(Rejected(error_text))
 		}
 	}
 }
@@ -697,7 +857,7 @@ empty_decoded_response = {
 decode_response = |response_body| {
 	body = Str.from_utf8(response_body) ? |_| InvalidResponseEnvelope
 	decoded : Try(DecodedResponse, _)
-	decoded = Json.parse(body)
+	decoded = Json.parse(Str.trim(body))
 	match decoded {
 		Ok(response) => Ok(response)
 		Err(_) => Err(InvalidResponseEnvelope)
@@ -978,6 +1138,110 @@ golden_example = \\
 	\\14	Κῦρος	Κῦρος	PROPN	n-s---mn-	Case=Nom|Gender=Masc|Number=Sing	12	nsubj	_	Ref=1.1.1|gloss=Cyrus
 	\\15	·	·	PUNCT	u--------	_	4	punct	_	Ref=1.1.1|gloss=;
 
+compact_request_body = |config, sentences, feedback| {
+	generation : Generation
+	generation = required_generation_parameter(config.compact_generation, "compact_generation")?
+	system_prompt = \\
+		\\Act as an Ancient Greek philologist.
+		\\Return only the requested structured JSON. The tool owns the Greek forms, token IDs, and serialization.
+	instructions = \\
+		\\Translate each complete Ancient Greek sentence and provide one concise contextual English gloss for every target token.
+		\\Return exactly one sentence object per source sentence, in source order, and exactly one token object per target, in target order.
+		\\Copy source_sentence_id and each local integer token id exactly. Do not return Greek forms, morphology, syntax, or CoNLL-U rows.
+		\\The prose translation must be natural English. The literal translation must remain close to Greek wording and structure.
+		\\Glosses must reflect each inflected token in context. Use hyphens instead of spaces inside a gloss.
+	retry_instruction = if feedback == "" {
+		""
+	} else {
+		"RETRY: The previous captured response was rejected: ${feedback}\nCorrect that bounded schema error."
+	}
+	user_prompt = Str.join_with(
+		[
+			instructions,
+			retry_instruction,
+			"",
+			"SOURCE SENTENCES (source_sentence_id | local id | immutable FORM):",
+			render_target_table(sentences),
+		],
+		"\n",
+	)
+	sentence_count = List.len(sentences)
+	sentence_ids = List.map(sentences, |sentence| sentence.source_sentence_id)
+	token_schema = {
+		additionalProperties: Bool.False,
+		properties: {
+			gloss: { minLength: 1, type: "string" },
+			id: { minimum: 1, type: "integer" },
+		},
+		required: ["id", "gloss"],
+		type: "object",
+	}
+	sentence_schema = {
+		additionalProperties: Bool.False,
+		properties: {
+			literal_translation: { minLength: 1, type: "string" },
+			prose_translation: { minLength: 1, type: "string" },
+			source_sentence_id: { enum: sentence_ids, type: "string" },
+			tokens: { items: token_schema, minItems: 1, type: "array" },
+		},
+		required: ["source_sentence_id", "prose_translation", "literal_translation", "tokens"],
+		type: "object",
+	}
+	response_format = {
+		json_schema: {
+			name: "glaux_semantic_overlay_v2",
+			schema: {
+				additionalProperties: Bool.False,
+				properties: {
+					sentences: {
+						items: sentence_schema,
+						maxItems: sentence_count,
+						minItems: sentence_count,
+						type: "array",
+					},
+				},
+				required: ["sentences"],
+				type: "object",
+			},
+			strict: Bool.True,
+		},
+		type: "json_schema",
+	}
+	messages = [
+		{ content: system_prompt, role: "system" },
+		{ content: user_prompt, role: "user" },
+	]
+	model_id : Str
+	model_id = config.model.id
+	match generation.profile {
+		"full-sampling" => {
+			frequency_penalty = required_generation_parameter(generation.frequency_penalty, "frequency_penalty")?
+			presence_penalty = required_generation_parameter(generation.presence_penalty, "presence_penalty")?
+			seed = required_generation_parameter(generation.seed, "seed")?
+			temperature = required_generation_parameter(generation.temperature, "temperature")?
+			top_k = required_generation_parameter(generation.top_k, "top_k")?
+			top_p = required_generation_parameter(generation.top_p, "top_p")?
+			body = {
+				frequency_penalty,
+				include_reasoning: generation.include_reasoning,
+				max_tokens: generation.max_tokens,
+				messages,
+				model: model_id,
+				presence_penalty,
+				provider: generation.provider,
+				reasoning: generation.reasoning,
+				response_format,
+				seed,
+				temperature,
+				top_k,
+				top_p,
+			}
+			Json.to_str_try(body)
+		}
+		other => Err(UnsupportedGenerationProfile(other))
+	}
+}
+
 request_body = |config, _work, sentences, feedback| {
 	system_prompt = \\
 		\\Act as an Ancient Greek philologist and Universal Dependencies treebank editor.
@@ -1014,10 +1278,6 @@ request_body = |config, _work, sentences, feedback| {
 		"\n",
 	)
 
-	generation : Generation
-	generation = config.generation
-	model_id : Str
-	model_id = config.model.id
 	sentence_count = List.len(sentences)
 	sentence_ids = List.map(sentences, |sentence| sentence.source_sentence_id)
 	token_schema = {
@@ -1071,6 +1331,10 @@ request_body = |config, _work, sentences, feedback| {
 		{ content: system_prompt, role: "system" },
 		{ content: user_prompt, role: "user" },
 	]
+	generation : Generation
+	generation = config.generation
+	model_id : Str
+	model_id = config.model.id
 	match generation.profile {
 		"full-sampling" => {
 			frequency_penalty = required_generation_parameter(generation.frequency_penalty, "frequency_penalty")?
@@ -1151,6 +1415,83 @@ required_generation_parameter = |option, name|
 		Ok(value) => Ok(value)
 		Err(Missing) => Err(MissingGenerationParameter(name))
 	}
+
+validate_compact_content = |content, source_sentences| {
+	decoded : Try(CompactModelPayload, _)
+	decoded = Json.parse(content)
+	match decoded {
+		Ok(payload) =>
+			if List.len(payload.sentences) != List.len(source_sentences) {
+				Err(WrongSentenceCount(List.len(source_sentences), List.len(payload.sentences)))
+			} else {
+				validate_compact_sentences(source_sentences, payload.sentences, [])
+			}
+		Err(_) => Err(InvalidContentJson)
+	}
+}
+
+validate_compact_sentences = |source_sentences, model_sentences, rendered|
+	match (source_sentences, model_sentences) {
+		([], []) => Ok(Str.join_with(rendered, ""))
+		([source, .. as rest_source], [model, .. as rest_model]) => {
+			if model.source_sentence_id != source.source_sentence_id {
+				Err(WrongSentenceId(source.source_sentence_id, model.source_sentence_id))
+			} else if List.len(model.tokens) != List.len(source.overt_words) {
+				Err(WrongTokenCount(source.source_sentence_id, List.len(source.overt_words), List.len(model.tokens)))
+			} else {
+				prose = Str.trim(model.prose_translation)
+				literal = Str.trim(model.literal_translation)
+				if !safe_comment_value(prose) {
+					Err(UnsafeTranslation(source.source_sentence_id, "prose_translation"))
+				} else if !safe_comment_value(literal) {
+					Err(UnsafeTranslation(source.source_sentence_id, "literal_translation"))
+				} else {
+					rows = validate_compact_tokens(source.source_sentence_id, source.overt_words, model.tokens, 1, [])?
+					block = serialize_compact_sentence(source, prose, literal, rows)
+					validate_compact_sentences(rest_source, rest_model, List.append(rendered, block))
+				}
+			}
+		}
+		_ => Err(InternalSentenceLengthMismatch)
+	}
+
+validate_compact_tokens = |sentence_id, source_words, model_tokens, expected_id, rows|
+	match (source_words, model_tokens) {
+		([], []) => Ok(rows)
+		([source_word, .. as rest_source], [token, .. as rest_model]) => {
+			gloss = Str.trim(token.gloss)
+			if token.id != expected_id {
+				Err(WrongTokenId(sentence_id, expected_id, token.id))
+			} else if !safe_misc_value(gloss) {
+				Err(UnsafeTokenField(sentence_id, expected_id, "gloss"))
+			} else {
+				row = "${U64.to_str(token.id)}\t${source_word.form}\t${gloss}"
+				validate_compact_tokens(sentence_id, rest_source, rest_model, expected_id + 1, List.append(rows, row))
+			}
+		}
+		_ => Err(InternalTokenLengthMismatch(sentence_id))
+	}
+
+serialize_compact_sentence = |source, prose, literal, rows| {
+	first = first_source_word(source.overt_words)
+	citation_comment = if first.reference == "" "" else "# citation = ${first.reference}\n"
+	speaker_comment = if first.speaker == "" "" else "# speaker = ${first.speaker}\n"
+	Str.join_with(
+		[
+			"# sentence_id = ${source.source_sentence_id}\n",
+			"# source_document_id = ${source.document_id}\n",
+			citation_comment,
+			speaker_comment,
+			"# translation_lang = en\n",
+			"# prose_translation = ${prose}\n",
+			"# literal_translation = ${literal}\n",
+			"# columns = ID FORM GLOSS\n",
+			Str.join_with(rows, "\n"),
+			"\n\n",
+		],
+		"",
+	)
+}
 
 validate_content = |content, source_sentences| {
 	decoded : Try(ModelPayload, _)

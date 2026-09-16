@@ -1,0 +1,62 @@
+# sentence_id = 1
+# source_document_id = 0032-006
+# citation = 1.1.1
+# translation_lang = en
+# prose_translation = Darius and Parysatis had two sons: the elder, Artaxerxes, and the younger, Cyrus.
+# literal_translation = Of Darius and Parysatis are born two sons, elder indeed Artaxerxes, younger but Cyrus.
+# columns = ID FORM GLOSS
+1	Δαρείου	of-Darius
+2	καὶ	and
+3	Παρυσάτιδος	of-Parysatis
+4	γίγνονται	are-born
+5	παῖδες	sons
+6	δύο	two
+7	,	,
+8	πρεσβύτερος	elder
+9	μὲν	indeed
+10	Ἀρταξέρξης	Artaxerxes
+11	,	,
+12	νεώτερος	younger
+13	δὲ	but
+14	Κῦρος	Cyrus
+15	·	.
+
+# sentence_id = 2
+# source_document_id = 0032-006
+# citation = 1.1.1
+# translation_lang = en
+# prose_translation = When Darius was ill and suspected his life was ending, he wanted both his sons to be present.
+# literal_translation = When but was-sick Darius and suspected end of-the life, he-wished the two sons both to-be-present.
+# columns = ID FORM GLOSS
+1	ἐπεὶ	when
+2	δὲ	but
+3	ἠσθένει	was-sick
+4	Δαρεῖος	Darius
+5	καὶ	and
+6	ὑπώπτευε	suspected
+7	τελευτὴν	end
+8	τοῦ	of-the
+9	βίου	life
+10	,	,
+11	ἐβούλετο	he-wished
+12	τὼ	the-two
+13	παῖδε	sons
+14	ἀμφοτέρω	both
+15	παρεῖναι	to-be-present
+16	.	.
+
+# sentence_id = 3
+# source_document_id = 0032-006
+# citation = 1.1.2
+# translation_lang = en
+# prose_translation = Now the elder happened to be present.
+# literal_translation = The indeed therefore elder being-present happened.
+# columns = ID FORM GLOSS
+1	ὁ	the
+2	μὲν	indeed
+3	οὖν	therefore
+4	πρεσβύτερος	elder
+5	παρὼν	being-present
+6	ἐτύγχανε	happened
+7	·	.
+

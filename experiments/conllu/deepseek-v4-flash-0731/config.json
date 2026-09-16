@@ -6,6 +6,28 @@
     "max_overt_tokens_per_shard": 50,
     "shard_delay_ms": 5000
   },
+  "compact_generation": {
+    "profile": "full-sampling",
+    "temperature": 1,
+    "top_p": 1,
+    "top_k": 0,
+    "seed": 1,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": [
+        "OpenInference"
+      ],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "max_tokens": 4096,
+    "frequency_penalty": 0,
+    "presence_penalty": 0
+  },
   "provider": {
     "name": "ppq",
     "base_url": "https://api.ppq.ai/v1",
