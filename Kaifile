@@ -165,6 +165,21 @@ task smoke-compact-conllu-deepseek-v4-flash-0731-experiment {
   run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731", "--smoke-compact"]
 }
 
+task check-oga-conllu-deepseek-v4-flash-0731-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "oga-deepseek-v4-flash-0731", "--oga-check"]
+}
+
+task smoke-oga-conllu-deepseek-v4-flash-0731-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "oga-deepseek-v4-flash-0731", "--oga-smoke"]
+}
+
+task oga-conllu-deepseek-v4-flash-0731-experiment {
+  environment: "dev"
+  run: ["roc", "scripts/run-conllu-experiment.roc", "oga-deepseek-v4-flash-0731", "--oga"]
+}
+
 task check-conllu-deepseek-v4-pro-0813-experiment {
   environment: "dev"
   run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-pro-0813", "--check"]

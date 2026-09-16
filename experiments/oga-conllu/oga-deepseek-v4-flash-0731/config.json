@@ -1,0 +1,141 @@
+{
+  "experiment_name": "oga-deepseek-v4-flash-0731",
+  "experiment_version": 1,
+  "execution": {
+    "min_overt_tokens_per_shard": 30,
+    "max_overt_tokens_per_shard": 50,
+    "shard_delay_ms": 5000
+  },
+  "compact_generation": {
+    "profile": "full-sampling",
+    "temperature": 1,
+    "top_p": 1,
+    "top_k": 0,
+    "seed": 1,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": [
+        "OpenInference"
+      ],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "max_tokens": 4096,
+    "frequency_penalty": 0,
+    "presence_penalty": 0
+  },
+  "provider": {
+    "name": "ppq",
+    "base_url": "https://api.ppq.ai/v1",
+    "api_key_env": "PPQ_API_KEY"
+  },
+  "model": {
+    "id": "deepseek/deepseek-v4-flash-0731"
+  },
+  "generation": {
+    "profile": "full-sampling",
+    "temperature": 1,
+    "top_p": 1,
+    "top_k": 0,
+    "seed": 1,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": [
+        "OpenInference"
+      ],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    },
+    "max_tokens": 4096,
+    "frequency_penalty": 0,
+    "presence_penalty": 0
+  },
+  "validation": {
+    "max_attempts": 2
+  },
+  "oga": {
+    "root": "../OGA/opera_graeca_adnotata_v0.2.0/workspace/conllu",
+    "source_version": "v0.2.0",
+    "source_doi": "https://doi.org/10.5281/zenodo.14206061",
+    "editor": "Unreviewed experiment output",
+    "project": "Lyceum Digital Library",
+    "gloss_type": "Context-aware philological glosses",
+    "date_modified": "2026-09-16",
+    "contact": "Lyceum Quest",
+    "works": [
+      {
+        "name": "anabasis",
+        "source": "Xenophon, Anabasis (Book 1)",
+        "source_file": "tlg0032.tlg006.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+        "source_sha256": "0f9cbba8e4fdf28ddcedc70259c18f3d00573bc9a82d3acc6a9a050d17542780",
+        "cts_urn": "urn:cts:greekLit:tlg0032.tlg006.perseus-grc2",
+        "sentence_count": 9,
+        "citations": [
+          "1.1.1",
+          "1.1.1",
+          "1.1.2",
+          "1.1.2",
+          "1.1.2",
+          "1.1.3",
+          "1.1.3",
+          "1.1.3",
+          "1.1.4"
+        ]
+      },
+      {
+        "name": "clouds",
+        "source": "Aristophanes, Clouds (lines 1-20)",
+        "source_file": "tlg0019.tlg003.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+        "source_sha256": "207d66e994b49288151ee13e8ab85160b95438c609766f48c9b31f0f85059a3a",
+        "cts_urn": "urn:cts:greekLit:tlg0019.tlg003.perseus-grc2",
+        "sentence_count": 15,
+        "citations": [
+          "1",
+          "2",
+          "3",
+          "3",
+          "4",
+          "5",
+          "5",
+          "6-7",
+          "8-10",
+          "11",
+          "12-14",
+          "14-16",
+          "16-17",
+          "18",
+          "18-20"
+        ]
+      },
+      {
+        "name": "meditations",
+        "source": "Marcus Aurelius, Meditations (Book 1)",
+        "source_file": "tlg0562.tlg001.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+        "source_sha256": "842e56989ee023bf3a6a1237272f27b4c3fd8a191824e494393ec92ea55ada9c",
+        "cts_urn": "urn:cts:greekLit:tlg0562.tlg001.perseus-grc2",
+        "sentence_count": 11,
+        "citations": [
+          "1.1.1",
+          "1.2.1",
+          "1.3.1",
+          "1.3.1",
+          "1.4.1",
+          "1.5.1",
+          "1.5.1",
+          "1.5.1",
+          "1.5.1",
+          "1.6.1",
+          "1.6.1"
+        ]
+      }
+    ]
+  }
+}

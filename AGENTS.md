@@ -5,6 +5,7 @@
 - Read [`docs/rules.md`](./docs/rules.md) for development rules.
 - Read [`DEPLOYMENT.md`](./DEPLOYMENT.md) before changing deployment behavior.
 - Read the relevant plan documents under `docs/plans/` before changing a planned feature.
+- The local Opera Graeca Adnotata v0.2.0 corpus is installed at `../OGA/opera_graeca_adnotata_v0.2.0` relative to this repository; its CoNLL-U files are under `workspace/conllu/`.
 - When a Roc or Elm toolchain bug is discovered:
   1. Check whether it has been fixed upstream.
   2. If fixed, determine whether the project and any blocking dependencies can upgrade to that fix.

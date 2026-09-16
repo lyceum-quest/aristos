@@ -3,6 +3,7 @@ app [main!] {
 	http: "https://github.com/roc-lang/http/releases/download/1.0.0/6ZUwqYhCS8PU9Mo6MF7oV82ET2o7KYb57CLKDq4cq4sS.tar.zst",
 }
 
+import cli.Cmd
 import cli.Http
 import cli.OsStr
 import cli.Path
@@ -28,6 +29,28 @@ Generation : {
 	top_p : Try(Dec, [Missing]),
 }
 
+OgaWork : {
+	citations : List(Str),
+	cts_urn : Str,
+	name : Str,
+	sentence_count : U64,
+	source : Str,
+	source_file : Str,
+	source_sha256 : Str,
+}
+
+OgaSettings : {
+	contact : Str,
+	date_modified : Str,
+	editor : Str,
+	gloss_type : Str,
+	project : Str,
+	root : Str,
+	source_doi : Str,
+	source_version : Str,
+	works : List(OgaWork),
+}
+
 Config : {
 	compact_generation : Try(Generation, [Missing]),
 	execution : { max_overt_tokens_per_shard : U64, min_overt_tokens_per_shard : U64, shard_delay_ms : U64 },
@@ -35,8 +58,17 @@ Config : {
 	experiment_version : U64,
 	generation : Generation,
 	model : { id : Str },
+	oga : Try(OgaSettings, [Missing]),
 	provider : { api_key_env : Str, base_url : Str, name : Str },
 	validation : { max_attempts : U64 },
+}
+
+OgaRow : { artificial : Bool, form : Str, id : U64, misc : Str, prefix : Str }
+
+OgaSentence : {
+	citation : Str,
+	rows : List(OgaRow),
+	source_sentence_id : Str,
 }
 
 SourceWord : { form : Str, reference : Str, source_id : Str, speaker : Str }
@@ -103,9 +135,12 @@ main! = |args| {
 		[experiment_name, "--check-compact"] => check_compact_named_experiment!(experiment_name)
 		[experiment_name, "--smoke"] => smoke_named_experiment!(experiment_name)
 		[experiment_name, "--smoke-compact"] => smoke_compact_named_experiment!(experiment_name)
+		[experiment_name, "--oga-check"] => check_oga_named_experiment!(experiment_name)
+		[experiment_name, "--oga-smoke"] => smoke_oga_named_experiment!(experiment_name)
+		[experiment_name, "--oga"] => run_oga_named_experiment!(experiment_name)
 		[experiment_name, "--resume", run_id] => resume_named_experiment!(experiment_name, run_id)
 		_ => {
-			_ = Stderr.line!("usage: run-conllu-experiment <experiment-name> [--check | --check-compact | --smoke | --smoke-compact | --resume <run-id>]")?
+			_ = Stderr.line!("usage: run-conllu-experiment <experiment-name> [--check | --check-compact | --smoke | --smoke-compact | --oga-check | --oga-smoke | --oga | --resume <run-id>]")?
 			Err(Exit(2))
 		}
 	}
@@ -269,6 +304,13 @@ experiment_dir_for = |experiment_name|
 		Err(InvalidExperimentName(experiment_name))
 	} else {
 		Ok("experiments/conllu/${experiment_name}")
+	}
+
+oga_experiment_dir_for = |experiment_name|
+	if !valid_path_segment(experiment_name) {
+		Err(InvalidExperimentName(experiment_name))
+	} else {
+		Ok("experiments/oga-conllu/${experiment_name}")
 	}
 
 valid_path_segment = |segment|
@@ -805,6 +847,645 @@ process_completion! = |work, sentences, run_id, shard_index, shard_count, attemp
 		}
 	}
 }
+
+check_oga_named_experiment! = |experiment_name| {
+	experiment_dir = oga_experiment_dir_for(experiment_name)?
+	config = read_config!(experiment_dir)?
+	_ = validate_config(config, experiment_name)?
+	oga = required_oga_settings(config.oga)?
+	_ = check_oga_works!(oga.works, oga, config)?
+	_ = Stdout.line!("checked ${experiment_name} OGA experiment: ${U64.to_str(List.len(oga.works))} work(s)")?
+	Ok({})
+}
+
+smoke_oga_named_experiment! = |experiment_name| {
+	experiment_dir = oga_experiment_dir_for(experiment_name)?
+	config = read_config!(experiment_dir)?
+	_ = validate_config(config, experiment_name)?
+	oga = required_oga_settings(config.oga)?
+	work = match oga.works {
+		[first, ..] => Ok(first)
+		[] => Err(NoOgaWorks)
+	}?
+	sentences = read_oga_work!(oga, work)?
+	shards = oga_shard_sentences(sentences, config.execution.min_overt_tokens_per_shard, config.execution.max_overt_tokens_per_shard)?
+	first_shard = match shards {
+		[shard, ..] => Ok(shard)
+		[] => Err(NoSourceSentences)
+	}?
+	api_key = read_api_key!(config.provider.api_key_env)?
+	started = Utc.now!()
+	run_id = "oga-smoke-${run_id_for(started, config.experiment_version)}"
+	run_dir = "${experiment_dir}/responses/${run_id}"
+	output_dir = "${experiment_dir}/outputs/experiment_${U64.to_str(config.experiment_version)}/smoke/${run_id}"
+	output_path = "${output_dir}/${work.name}.shard-1-of-${U64.to_str(List.len(shards))}.conllu"
+
+	if Path.exists!(Path.utf8(run_dir))? {
+		Err(RunAlreadyExists(run_dir))
+	} else {
+		_ = Path.create_all!(Path.utf8(run_dir))?
+		_ = Path.create_all!(Path.utf8(output_dir))?
+		_ = Path.write_utf8!(Path.utf8("${run_dir}/run-id"), "${run_id}\n")?
+		generated = run_oga_attempt!(work, first_shard, config, api_key, run_id, run_dir, 1, List.len(shards), 1, "")?
+		output = "${oga_file_header(oga, work, config, run_id, first_shard)}${generated.conllu}"
+		_ = write_output!(output, output_path)?
+		_ = Stdout.line!("completed OGA smoke run ${run_id}\t${output_path}")?
+		Ok({})
+	}
+}
+
+run_oga_named_experiment! = |experiment_name| {
+	experiment_dir = oga_experiment_dir_for(experiment_name)?
+	config = read_config!(experiment_dir)?
+	_ = validate_config(config, experiment_name)?
+	oga = required_oga_settings(config.oga)?
+	_ = check_oga_works!(oga.works, oga, config)?
+	api_key = read_api_key!(config.provider.api_key_env)?
+	started = Utc.now!()
+	run_id = "oga-${run_id_for(started, config.experiment_version)}"
+	run_dir = "${experiment_dir}/responses/${run_id}"
+	output_dir = "${experiment_dir}/outputs/experiment_${U64.to_str(config.experiment_version)}/${run_id}"
+
+	if Path.exists!(Path.utf8(run_dir))? {
+		Err(RunAlreadyExists(run_dir))
+	} else {
+		_ = Path.create_all!(Path.utf8(run_dir))?
+		_ = Path.create_all!(Path.utf8(output_dir))?
+		_ = Path.write_utf8!(Path.utf8("${run_dir}/run-id"), "${run_id}\n")?
+		_ = run_oga_works!(oga.works, oga, config, api_key, run_id, run_dir, output_dir, Bool.False)?
+		_ = Stdout.line!("completed OGA run ${run_id}")?
+		Ok({})
+	}
+}
+
+required_oga_settings = |setting|
+	match setting {
+		Ok(oga) => if List.is_empty(oga.works) Err(NoOgaWorks) else Ok(oga)
+		Err(Missing) => Err(MissingOgaSettings)
+	}
+
+check_oga_works! = |works, oga, config|
+	match works {
+		[] => Ok({})
+		[work, .. as rest] => {
+			sentences = read_oga_work!(oga, work)?
+			shards = oga_shard_sentences(sentences, config.execution.min_overt_tokens_per_shard, config.execution.max_overt_tokens_per_shard)?
+			_ = build_oga_requests!(shards, config, work)?
+			check_oga_works!(rest, oga, config)
+		}
+	}
+
+build_oga_requests! = |shards, config, work|
+	match shards {
+		[] => Ok({})
+		[shard, .. as rest] => {
+			_ = oga_request_body(config, shard, "")?
+			build_oga_requests!(rest, config, work)
+		}
+	}
+
+run_oga_works! = |works, oga, config, api_key, run_id, run_dir, output_dir, paid_before|
+	match works {
+		[] => Ok({})
+		[work, .. as rest] => {
+			sentences = read_oga_work!(oga, work)?
+			shards = oga_shard_sentences(sentences, config.execution.min_overt_tokens_per_shard, config.execution.max_overt_tokens_per_shard)?
+			rendered = run_oga_shards!(shards, work, config, api_key, run_id, run_dir, 1, List.len(shards), paid_before, "")?
+			output_path = "${output_dir}/${work.name}.conllu"
+			_ = write_output!("${oga_file_header(oga, work, config, run_id, sentences)}${rendered}", output_path)?
+			_ = Stdout.line!("completed OGA work ${work.name}\t${output_path}")?
+			run_oga_works!(rest, oga, config, api_key, run_id, run_dir, output_dir, Bool.True)
+		}
+	}
+
+run_oga_shards! = |shards, work, config, api_key, run_id, run_dir, shard_index, shard_count, paid_before, rendered|
+	match shards {
+		[] => Ok(rendered)
+		[sentences, .. as rest] => {
+			_ = if paid_before and config.execution.shard_delay_ms > 0 Sleep.millis!(config.execution.shard_delay_ms) else {}
+			generated = run_oga_attempt!(work, sentences, config, api_key, run_id, run_dir, shard_index, shard_count, 1, "")?
+			run_oga_shards!(
+				rest,
+				work,
+				config,
+				api_key,
+				run_id,
+				run_dir,
+				shard_index + 1,
+				shard_count,
+				Bool.True,
+				"${rendered}${generated.conllu}",
+			)
+		}
+	}
+
+run_oga_attempt! = |work, sentences, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, feedback| {
+	body = oga_request_body(config, sentences, feedback)?
+	captured = send_transport_attempt!(
+		work.name,
+		config,
+		api_key,
+		run_id,
+		run_dir,
+		shard_index,
+		shard_count,
+		attempt,
+		body,
+		1,
+	)?
+	outcome = process_oga_completion!(work, sentences, run_id, shard_index, shard_count, attempt, body, captured)?
+
+	match outcome {
+		Accepted(conllu) => Ok({ conllu, request_body: body })
+		Rejected(error_text) => {
+			_ = Stdout.line!("rejected OGA ${work.name} shard ${U64.to_str(shard_index)}/${U64.to_str(shard_count)} attempt ${U64.to_str(attempt)}: ${error_text}")?
+			if attempt < config.validation.max_attempts {
+				_ = if config.execution.shard_delay_ms > 0 Sleep.millis!(config.execution.shard_delay_ms) else {}
+				run_oga_attempt!(work, sentences, config, api_key, run_id, run_dir, shard_index, shard_count, attempt + 1, error_text)
+			} else {
+				Err(ValidationAttemptsExhausted(work.name, shard_index, attempt, error_text))
+			}
+		}
+	}
+}
+
+process_oga_completion! = |work, sentences, run_id, shard_index, shard_count, attempt, body, captured| {
+	received_at = captured.received_at
+	request_id = captured.request_id
+	requested_at = captured.requested_at
+	response = captured.response
+	response_body = captured.response_body
+	response_path = captured.response_path
+	timestamp = captured.timestamp
+	transport_attempt = captured.transport_attempt
+	match decode_response(response_body) {
+		Ok(decoded) =>
+			match decoded.choices {
+				[choice, ..] => {
+					validation = if choice.finish_reason != "stop" {
+						Err(IncompleteFinish(choice.finish_reason))
+					} else {
+						validate_oga_content(choice.message.content, sentences)
+					}
+					match validation {
+						Ok(conllu) => {
+							_ = write_attempt_record!(response_path, attempt, transport_attempt, shard_index, shard_count, body, decoded, choice.finish_reason, response, response_body, request_id, timestamp, requested_at, received_at, run_id, work.name, "valid", "")?
+							_ = Stdout.line!("${work.name}\tOGA shard ${U64.to_str(shard_index)}/${U64.to_str(shard_count)}\tattempt ${U64.to_str(attempt)}\ttransport ${U64.to_str(transport_attempt)}\t${decoded.model}\t${decoded.provider}\t${U64.to_str(decoded.usage.prompt_tokens)}/${U64.to_str(decoded.usage.completion_tokens)}/${U64.to_str(decoded.usage.total_tokens)}\t${choice.finish_reason}\t${response_path}")?
+							Ok(Accepted(conllu))
+						}
+						Err(validation_error) => {
+							error_text = validation_error_text(validation_error)
+							_ = write_attempt_record!(response_path, attempt, transport_attempt, shard_index, shard_count, body, decoded, choice.finish_reason, response, response_body, request_id, timestamp, requested_at, received_at, run_id, work.name, "rejected", error_text)?
+							Ok(Rejected(error_text))
+						}
+					}
+				}
+				[] => {
+					error_text = validation_error_text(MissingResponseChoice)
+					_ = write_attempt_record!(response_path, attempt, transport_attempt, shard_index, shard_count, body, decoded, "", response, response_body, request_id, timestamp, requested_at, received_at, run_id, work.name, "rejected", error_text)?
+					Ok(Rejected(error_text))
+				}
+			}
+		Err(_) => {
+			error_text = validation_error_text(InvalidResponseEnvelope)
+			_ = write_attempt_record!(response_path, attempt, transport_attempt, shard_index, shard_count, body, empty_decoded_response, "", response, response_body, request_id, timestamp, requested_at, received_at, run_id, work.name, "rejected", error_text)?
+			Ok(Rejected(error_text))
+		}
+	}
+}
+
+read_oga_work! = |oga, work| {
+	if !valid_path_segment(work.name) or !valid_path_segment(work.source_file) {
+		Err(InvalidOgaWorkPath(work.name, work.source_file))
+	} else if work.sentence_count == 0 {
+		Err(OgaSentenceCountMustBePositive(work.name))
+	} else if List.len(work.citations) != work.sentence_count {
+		Err(OgaCitationCountMismatch(work.name, work.sentence_count, List.len(work.citations)))
+	} else if !safe_comment_value(work.source) or !safe_comment_value(work.cts_urn) {
+		Err(UnsafeOgaWorkMetadata(work.name))
+	} else {
+		path = "${oga.root}/${work.source_file}"
+		_ = verify_oga_sha256!(path, work.source_sha256)?
+		source = Path.read_utf8!(Path.utf8(path))?
+		parse_oga_conllu(source, work)
+	}
+}
+
+verify_oga_sha256! = |path, expected| {
+	output = Cmd.new_str("sha256sum")
+		.args_str([path])
+		.exec_output!()?
+	actual = match Str.split_on(Str.trim(output.stdout_utf8), " ") {
+		[hash, ..] => Ok(hash)
+		[] => Err(InvalidSha256Output(path))
+	}?
+	if actual == expected Ok({}) else Err(OgaSha256Mismatch(path, expected, actual))
+}
+
+parse_oga_conllu = |source, work| {
+	if Str.trim(source) == "" {
+		Err(EmptyOgaInput(work.name))
+	} else {
+		lines = Str.split_on(Str.replace_each(source, "\r\n", "\n"), "\n")
+		parse_oga_lines(lines, work, [], [])
+	}
+}
+
+parse_oga_lines = |lines, work, current_rows, sentences| {
+	if List.len(sentences) == work.sentence_count {
+		Ok(sentences)
+	} else {
+		match lines {
+			[] => {
+				finished = finish_oga_sentence(current_rows, sentences, work)?
+				if List.len(finished) == work.sentence_count {
+					Ok(finished)
+				} else {
+					Err(OgaSourceTooShort(work.name, work.sentence_count, List.len(finished)))
+				}
+			}
+			[line, .. as rest] => {
+				trimmed = Str.trim(line)
+				if trimmed == "" {
+					next_sentences = finish_oga_sentence(current_rows, sentences, work)?
+					parse_oga_lines(rest, work, [], next_sentences)
+				} else if Str.starts_with(trimmed, "#") {
+					Err(UnexpectedOgaComment(work.name, trimmed))
+				} else {
+					row = parse_oga_row(line, work.name)?
+					parse_oga_lines(rest, work, List.append(current_rows, row), sentences)
+				}
+			}
+		}
+	}
+}
+
+finish_oga_sentence = |rows, sentences, work|
+	if List.is_empty(rows) {
+		Ok(sentences)
+	} else {
+		index = List.len(sentences) + 1
+		citation = oga_citation_at(work.citations, index, 1)?
+		sentence : OgaSentence
+		sentence = {
+			citation,
+			rows,
+			source_sentence_id: U64.to_str(index),
+		}
+		Ok(List.append(sentences, sentence))
+	}
+
+oga_citation_at = |citations, target, current|
+	match citations {
+		[] => Err(MissingOgaCitation(target))
+		[citation, .. as rest] => if target == current Ok(citation) else oga_citation_at(rest, target, current + 1)
+	}
+
+parse_oga_row = |line, work|
+	match Str.split_on(line, "\t") {
+		[id_text, form, lemma, upos, xpos, feats, head, deprel, deps, misc] => {
+			id = U64.from_str(id_text) ? |_| InvalidOgaTokenId(work, id_text)
+			prefix = Str.join_with([id_text, form, lemma, upos, xpos, feats, head, deprel, deps], "\t")
+			row : OgaRow
+			row = {
+				artificial: Str.starts_with(misc, "e_"),
+				form,
+				id,
+				misc,
+				prefix,
+			}
+			Ok(row)
+		}
+		_ => Err(InvalidOgaColumnCount(work, line))
+	}
+
+oga_sentence_overt_count = |sentence| oga_rows_overt_count(sentence.rows, 0)
+
+oga_rows_overt_count = |rows, count|
+	match rows {
+		[] => count
+		[row, .. as rest] => oga_rows_overt_count(rest, if row.artificial count else count + 1)
+	}
+
+oga_shard_sentences = |sentences, minimum, maximum| {
+	greedy = oga_shard_loop(sentences, maximum, [], 0, [])?
+	Ok(oga_rebalance_tail(greedy, minimum, maximum))
+}
+
+oga_shard_loop = |remaining, maximum, current, current_count, shards|
+	match remaining {
+		[] => if List.is_empty(current) Ok(shards) else Ok(List.append(shards, current))
+		[sentence, .. as rest] => {
+			count = oga_sentence_overt_count(sentence)
+			if count > maximum {
+				Err(SentenceExceedsShardLimit(sentence.source_sentence_id, count, maximum))
+			} else if !List.is_empty(current) and current_count + count > maximum {
+				oga_shard_loop(remaining, maximum, [], 0, List.append(shards, current))
+			} else {
+				oga_shard_loop(rest, maximum, List.append(current, sentence), current_count + count, shards)
+			}
+		}
+	}
+
+oga_rebalance_tail = |shards, minimum, maximum|
+	match split_last(shards, []) {
+		Err(_) => shards
+		Ok(split_tail) =>
+			match split_last(split_tail.before, []) {
+				Err(_) => shards
+				Ok(split_previous) => {
+					initial = {
+						current: split_tail.last,
+						previous: split_previous.last,
+						score: oga_shard_shortfall(split_previous.last, minimum) + oga_shard_shortfall(split_tail.last, minimum),
+					}
+					balanced = oga_explore_tail_balance(split_previous.last, split_tail.last, minimum, maximum, initial)
+					List.concat(split_previous.before, [balanced.previous, balanced.current])
+				}
+			}
+	}
+
+oga_explore_tail_balance = |previous, current, minimum, maximum, best|
+	match split_last(previous, []) {
+		Err(_) => best
+		Ok(split_previous) => {
+			next_current = List.concat([split_previous.last], current)
+			if oga_shard_word_count(next_current) > maximum {
+				best
+			} else {
+				next_previous = split_previous.before
+				next_score = oga_shard_shortfall(next_previous, minimum) + oga_shard_shortfall(next_current, minimum)
+				next_best = if next_score < best.score {
+					{ current: next_current, previous: next_previous, score: next_score }
+				} else {
+					best
+				}
+				oga_explore_tail_balance(next_previous, next_current, minimum, maximum, next_best)
+			}
+		}
+	}
+
+oga_shard_word_count = |sentences| oga_shard_word_count_loop(sentences, 0)
+
+oga_shard_word_count_loop = |sentences, count|
+	match sentences {
+		[] => count
+		[sentence, .. as rest] => oga_shard_word_count_loop(rest, count + oga_sentence_overt_count(sentence))
+	}
+
+oga_shard_shortfall = |sentences, minimum| {
+	count = oga_shard_word_count(sentences)
+	if count >= minimum 0 else minimum - count
+}
+
+render_oga_source = |sentences|
+	Str.join_with(List.map(sentences, |sentence| render_oga_rows(sentence.rows)), "\n\n")
+
+render_oga_rows = |rows|
+	Str.join_with(List.map(rows, |row| "${row.prefix}\t${row.misc}"), "\n")
+
+render_oga_targets = |sentences|
+	Str.join_with(List.map(sentences, |sentence| render_oga_sentence_targets(sentence.rows, sentence.source_sentence_id, [])), "\n")
+
+render_oga_sentence_targets = |rows, sentence_id, rendered|
+	match rows {
+		[] => Str.join_with(rendered, "\n")
+		[row, .. as rest] => {
+			next = if row.artificial rendered else List.append(rendered, "${sentence_id} | ${U64.to_str(row.id)} | ${row.form}")
+			render_oga_sentence_targets(rest, sentence_id, next)
+		}
+	}
+
+oga_request_body = |config, sentences, feedback| {
+	generation : Generation
+	generation = required_generation_parameter(config.compact_generation, "compact_generation")?
+	system_prompt = \\
+		\\Act as an Ancient Greek philologist.
+		\\Return only the requested structured JSON. The tool owns the OGA CoNLL-U rows, token IDs, metadata, and serialization.
+	instructions = \\
+		\\The source is Opera Graeca Adnotata v0.2.0 CoNLL-U with existing automatic tokenization, lemmas, morphology, and dependencies.
+		\\Add only the semantic fields OGA lacks: a prose English translation, a close literal English translation, and one concise contextual English gloss for each overt token.
+		\\Return exactly one sentence object per source block, in source order, and exactly one token object per overt target, in target order.
+		\\Copy source_sentence_id and each listed integer token id exactly. Rows whose MISC identifier begins e_ are artificial ellipsis context and are not output targets.
+		\\Do not correct, replace, or return Greek forms, lemmas, morphology, dependencies, token rows, citations, or metadata.
+		\\Glosses must reflect each inflected token in context. Use hyphens instead of spaces inside a gloss.
+	retry_instruction = if feedback == "" {
+		""
+	} else {
+		"RETRY: The previous captured response was rejected: ${feedback}\nCorrect that bounded schema error."
+	}
+	user_prompt = Str.join_with(
+		[
+			instructions,
+			retry_instruction,
+			"",
+			"SOURCE OGA CONLLU BLOCKS:",
+			render_oga_source(sentences),
+			"",
+			"OVERT OUTPUT TARGETS (source_sentence_id | original local ID | immutable FORM):",
+			render_oga_targets(sentences),
+		],
+		"\n",
+	)
+	sentence_count = List.len(sentences)
+	sentence_ids = List.map(sentences, |sentence| sentence.source_sentence_id)
+	token_schema = {
+		additionalProperties: Bool.False,
+		properties: {
+			gloss: { minLength: 1, type: "string" },
+			id: { minimum: 1, type: "integer" },
+		},
+		required: ["id", "gloss"],
+		type: "object",
+	}
+	sentence_schema = {
+		additionalProperties: Bool.False,
+		properties: {
+			literal_translation: { minLength: 1, type: "string" },
+			prose_translation: { minLength: 1, type: "string" },
+			source_sentence_id: { enum: sentence_ids, type: "string" },
+			tokens: { items: token_schema, minItems: 1, type: "array" },
+		},
+		required: ["source_sentence_id", "prose_translation", "literal_translation", "tokens"],
+		type: "object",
+	}
+	response_format = {
+		json_schema: {
+			name: "oga_semantic_overlay_v1",
+			schema: {
+				additionalProperties: Bool.False,
+				properties: {
+					sentences: {
+						items: sentence_schema,
+						maxItems: sentence_count,
+						minItems: sentence_count,
+						type: "array",
+					},
+				},
+				required: ["sentences"],
+				type: "object",
+			},
+			strict: Bool.True,
+		},
+		type: "json_schema",
+	}
+	messages = [
+		{ content: system_prompt, role: "system" },
+		{ content: user_prompt, role: "user" },
+	]
+	model_id : Str
+	model_id = config.model.id
+	match generation.profile {
+		"full-sampling" => {
+			frequency_penalty = required_generation_parameter(generation.frequency_penalty, "frequency_penalty")?
+			presence_penalty = required_generation_parameter(generation.presence_penalty, "presence_penalty")?
+			seed = required_generation_parameter(generation.seed, "seed")?
+			temperature = required_generation_parameter(generation.temperature, "temperature")?
+			top_k = required_generation_parameter(generation.top_k, "top_k")?
+			top_p = required_generation_parameter(generation.top_p, "top_p")?
+			body = {
+				frequency_penalty,
+				include_reasoning: generation.include_reasoning,
+				max_tokens: generation.max_tokens,
+				messages,
+				model: model_id,
+				presence_penalty,
+				provider: generation.provider,
+				reasoning: generation.reasoning,
+				response_format,
+				seed,
+				temperature,
+				top_k,
+				top_p,
+			}
+			Json.to_str_try(body)
+		}
+		other => Err(UnsupportedGenerationProfile(other))
+	}
+}
+
+validate_oga_content = |content, source_sentences| {
+	decoded : Try(CompactModelPayload, _)
+	decoded = Json.parse(content)
+	match decoded {
+		Ok(payload) =>
+			if List.len(payload.sentences) != List.len(source_sentences) {
+				Err(WrongSentenceCount(List.len(source_sentences), List.len(payload.sentences)))
+			} else {
+				validate_oga_sentences(source_sentences, payload.sentences, [])
+			}
+		Err(_) => Err(InvalidContentJson)
+	}
+}
+
+validate_oga_sentences = |source_sentences, model_sentences, rendered|
+	match (source_sentences, model_sentences) {
+		([], []) => Ok(Str.join_with(rendered, ""))
+		([source, .. as rest_source], [model, .. as rest_model]) => {
+			if model.source_sentence_id != source.source_sentence_id {
+				Err(WrongSentenceId(source.source_sentence_id, model.source_sentence_id))
+			} else if List.len(model.tokens) != oga_sentence_overt_count(source) {
+				Err(WrongTokenCount(source.source_sentence_id, oga_sentence_overt_count(source), List.len(model.tokens)))
+			} else {
+				prose = Str.trim(model.prose_translation)
+				literal = Str.trim(model.literal_translation)
+				if !safe_comment_value(prose) {
+					Err(UnsafeTranslation(source.source_sentence_id, "prose_translation"))
+				} else if !safe_comment_value(literal) {
+					Err(UnsafeTranslation(source.source_sentence_id, "literal_translation"))
+				} else {
+					rows = validate_oga_rows(source.source_sentence_id, source.citation, source.rows, model.tokens, [])?
+					block = serialize_oga_sentence(source, prose, literal, rows)
+					validate_oga_sentences(rest_source, rest_model, List.append(rendered, block))
+				}
+			}
+		}
+		_ => Err(InternalSentenceLengthMismatch)
+	}
+
+validate_oga_rows = |sentence_id, citation, source_rows, model_tokens, rendered|
+	match source_rows {
+		[] =>
+			match model_tokens {
+				[] => Ok(rendered)
+				_ => Err(InternalTokenLengthMismatch(sentence_id))
+			}
+		[row, .. as rest_rows] =>
+			if row.artificial {
+				validate_oga_rows(sentence_id, citation, rest_rows, model_tokens, List.append(rendered, "${row.prefix}\t${row.misc}"))
+			} else {
+				match model_tokens {
+					[] => Err(InternalTokenLengthMismatch(sentence_id))
+					[token, .. as rest_tokens] => {
+						gloss = Str.trim(token.gloss)
+						if token.id != row.id {
+							Err(WrongTokenId(sentence_id, row.id, token.id))
+						} else if !safe_misc_value(gloss) {
+							Err(UnsafeTokenField(sentence_id, row.id, "gloss"))
+						} else {
+							misc = if row.misc == "_" "gloss=${gloss}" else "${row.misc}|gloss=${gloss}"
+							validate_oga_rows(sentence_id, citation, rest_rows, rest_tokens, List.append(rendered, "${row.prefix}\t${misc}"))
+						}
+					}
+				}
+		}
+	}
+
+serialize_oga_sentence = |source, prose, literal, rows|
+	Str.join_with(
+		[
+			"# sentence_id = ${source.source_sentence_id}\n",
+			"# citation = ${source.citation}\n",
+			"# translation_lang = en\n",
+			"# prose_translation = ${prose}\n",
+			"# literal_translation = ${literal}\n",
+			Str.join_with(rows, "\n"),
+			"\n\n",
+		],
+		"",
+	)
+
+oga_file_header = |oga, work, config, run_id, sentences|
+	Str.join_with(
+		[
+			"# global.columns = ID FORM LEMMA UPOS XPOS FEATS HEAD DEPREL DEPS MISC",
+			"# source = ${work.source}",
+			"# source_edition = Opera Graeca Adnotata ${oga.source_version}",
+			"# source_url = ${oga.source_doi}",
+			"# source_revision = ${oga.source_version}",
+			"# source_file = ${work.source_file}",
+			"# source_sha256 = ${work.source_sha256}",
+			"# cts_urn = ${oga_cts_urn(work.cts_urn, sentences)}",
+			"# encoder = ${config.model.id} (Large Language Model)",
+			"# generation_run_id = ${run_id}",
+			"# editor = ${oga.editor}",
+			"# project = ${oga.project}",
+			"# conversion_method = LLM semantic overlay on preserved OGA morphosyntax",
+			"# gloss_type = ${oga.gloss_type}",
+			"# date_modified = ${oga.date_modified}",
+			"# license = CC BY-SA 4.0",
+			"# contact = ${oga.contact}",
+			"",
+		],
+		"\n",
+	)
+
+oga_cts_urn = |work_urn, sentences|
+	match sentences {
+		[] => work_urn
+		[first, ..] =>
+			match split_last(sentences, []) {
+				Err(_) => work_urn
+				Ok(split) => {
+					last_endpoint = match split_last(Str.split_on(split.last.citation, "-"), []) {
+						Ok(parts) => parts.last
+						Err(_) => split.last.citation
+					}
+					passage = if first.citation == last_endpoint first.citation else "${first.citation}-${last_endpoint}"
+					"${work_urn}:${passage}"
+				}
+			}
+	}
 
 max_transport_attempts : U64
 max_transport_attempts = 5
