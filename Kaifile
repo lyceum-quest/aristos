@@ -65,6 +65,11 @@ task check-conllu-experiment-tool {
   run: ["roc", "check", "scripts/run-conllu-experiment.roc"]
 }
 
+task check-jev-gloss-experiment-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/run-jev-gloss-experiment.roc"]
+}
+
 task roc-version {
   environment: "dev"
   run: ["roc", "version"]
@@ -78,6 +83,26 @@ task check-deepseek-v4-flash-0731-experiment {
 task deepseek-v4-flash-0731-experiment {
   environment: "dev"
   run: ["roc", "scripts/run-model-experiment.roc", "deepseek-v4-flash-0731"]
+}
+
+task check-deepseek-v4-flash-0731-experiment-3 {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--check"]
+}
+
+task smoke-deepseek-v4-flash-0731-experiment-3 {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--smoke"]
+}
+
+task deepseek-v4-flash-0731-experiment-3 {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--run"]
+}
+
+task resume-deepseek-v4-flash-0731-experiment-3 {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--resume"]
 }
 
 task check-qwen35-experiment {
@@ -297,8 +322,10 @@ workflow release {
     "run check-lint-tool",
     "run check-model-experiment-tool",
     "run check-conllu-experiment-tool",
+    "run check-jev-gloss-experiment-tool",
     "run preload",
     "run check-deepseek-v4-flash-0731-experiment",
+    "run check-deepseek-v4-flash-0731-experiment-3",
     "run check-qwen35-experiment",
     "run check-qwen35-397b-experiment",
     "run check-claude-sonnet-46-experiment",

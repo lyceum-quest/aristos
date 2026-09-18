@@ -30,6 +30,98 @@
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2UytIqUbPYXbsjjnIIEE/F0nHNm7AhVjz7ITxjIMNb github-actions-deploy"
           ];
 
+          swapDevices = [{
+            device = "/var/lib/swapfile";
+            size = 4096;
+          }];
+
+          users.groups.paseo = {};
+          users.users.paseo = {
+            isSystemUser = true;
+            group = "paseo";
+            home = "/var/lib/paseo";
+            createHome = true;
+            shell = pkgs.bashInteractive;
+          };
+
+          systemd.services.paseo-install = {
+            description = "Install pinned Paseo and Pi releases";
+            after = [ "network-online.target" ];
+            before = [ "paseo.service" ];
+            wants = [ "network-online.target" ];
+            path = [ pkgs.nodejs_22 ];
+            script = ''
+              set -eu
+              paseo_version="$(/var/lib/paseo/npm/bin/paseo --version 2>/dev/null || true)"
+              pi_version="$(/var/lib/paseo/npm/bin/pi --version 2>/dev/null || true)"
+              if [ "$paseo_version" != "0.8.0" ] || [ "$pi_version" != "0.85.1" ]; then
+                npm install --global --prefix /var/lib/paseo/npm \
+                  @getpaseo/cli@0.8.0 \
+                  @earendil-works/pi-coding-agent@0.85.1
+              fi
+            '';
+            serviceConfig = {
+              Type = "oneshot";
+              User = "paseo";
+              Group = "paseo";
+              StateDirectory = "paseo";
+              NoNewPrivileges = true;
+              PrivateTmp = true;
+              ProtectHome = true;
+              ProtectSystem = "full";
+              ReadWritePaths = [ "/var/lib/paseo" ];
+            };
+          };
+
+          systemd.services.paseo = {
+            description = "Paseo coding agent server";
+            after = [ "network-online.target" "paseo-install.service" ];
+            requires = [ "paseo-install.service" ];
+            wants = [ "network-online.target" ];
+            wantedBy = [ "multi-user.target" ];
+            environment = {
+              HOME = "/var/lib/paseo";
+              PASEO_HOME = "/var/lib/paseo/.paseo";
+              PASEO_HOSTNAMES = "paseo.lyceum.quest";
+              PASEO_LISTEN = "127.0.0.1:6767";
+              PASEO_RELAY_ENABLED = "false";
+              PASEO_WEB_UI_ENABLED = "true";
+              PATH = lib.mkForce "/var/lib/paseo/npm/bin:${lib.makeBinPath [
+                pkgs.bashInteractive
+                pkgs.coreutils
+                pkgs.curl
+                pkgs.fd
+                pkgs.findutils
+                pkgs.gawk
+                pkgs.git
+                pkgs.gnugrep
+                pkgs.gnused
+                pkgs.jq
+                pkgs.nix
+                pkgs.nodejs_22
+                pkgs.openssh
+                pkgs.ripgrep
+                pkgs.rsync
+              ]}";
+            };
+            serviceConfig = {
+              Type = "simple";
+              ExecStart = "/var/lib/paseo/npm/bin/paseo daemon start";
+              EnvironmentFile = "/var/lib/paseo/paseo.env";
+              User = "paseo";
+              Group = "paseo";
+              StateDirectory = "paseo";
+              WorkingDirectory = "/var/lib/paseo";
+              Restart = "on-failure";
+              RestartSec = 5;
+              NoNewPrivileges = true;
+              PrivateDevices = true;
+              ProtectHome = true;
+              ProtectSystem = "full";
+              ReadWritePaths = [ "/var/lib/paseo" ];
+            };
+          };
+
           # Preserve the exact reader and admin builds from the existing host
           # while extending its stale source configuration.
           services.lyceum.package = deployedLyceum;
@@ -97,6 +189,9 @@
             '';
             "aristos.lyceum.quest".extraConfig = ''
               reverse_proxy 127.0.0.1:8092
+            '';
+            "paseo.lyceum.quest".extraConfig = ''
+              reverse_proxy 127.0.0.1:6767
             '';
           };
         };

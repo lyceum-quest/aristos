@@ -1,0 +1,57 @@
+{
+  "experiment_name": "deepseek-v4-flash-0731-jev-gloss",
+  "experiment_version": 3,
+  "candidates": {
+    "provider": {
+      "name": "ppq",
+      "base_url": "https://api.ppq.ai/v1",
+      "api_key_env": "PPQ_API_KEY"
+    },
+    "model": {
+      "id": "deepseek/deepseek-v4-flash-0731"
+    },
+    "generation": {
+      "profile": "full-sampling",
+      "temperature": 1,
+      "top_p": 1,
+      "top_k": 0,
+      "seed": 1,
+      "reasoning": {
+        "enabled": false,
+        "exclude": true
+      },
+      "include_reasoning": false,
+      "provider": {
+        "only": [
+          "OpenInference"
+        ],
+        "require_parameters": true,
+        "allow_fallbacks": false
+      },
+      "max_tokens": 4096,
+      "frequency_penalty": 0,
+      "presence_penalty": 0
+    },
+    "validation": {
+      "max_attempts": 2
+    }
+  },
+  "selector": {
+    "provider": {
+      "name": "typesafe",
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "api_key_env": "TYPESAFE_API_KEY"
+    },
+    "model": {
+      "id": "jev-1.13.0"
+    },
+    "input_cost_per_million_tokens_usd": 0.042,
+    "validation": {
+      "max_attempts": 2
+    }
+  },
+  "execution": {
+    "candidate_count": 3,
+    "tokens_per_shard": 50
+  }
+}
