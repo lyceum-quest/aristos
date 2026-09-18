@@ -95,6 +95,16 @@ task smoke-deepseek-v4-flash-0731-experiment-3 {
   run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--smoke"]
 }
 
+task check-resume-smoke-deepseek-v4-flash-0731-experiment-3 {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--check-resume-smoke"]
+}
+
+task resume-smoke-deepseek-v4-flash-0731-experiment-3 {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--resume-smoke"]
+}
+
 task deepseek-v4-flash-0731-experiment-3 {
   environment: "dev"
   run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--run"]

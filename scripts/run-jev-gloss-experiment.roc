@@ -3,9 +3,11 @@ app [main!] {
 	http: "https://github.com/roc-lang/http/releases/download/1.0.0/6ZUwqYhCS8PU9Mo6MF7oV82ET2o7KYb57CLKDq4cq4sS.tar.zst",
 }
 
+import cli.Cmd
 import cli.Http
 import cli.OsStr
 import cli.Path
+import cli.Sleep
 import cli.Stderr
 import cli.Stdout
 import cli.Utc
@@ -18,6 +20,7 @@ Generation : {
 	max_tokens : U64,
 	presence_penalty : Dec,
 	profile : Str,
+	provider : { allow_fallbacks : Bool, only : List(Str), require_parameters : Bool },
 	reasoning : { enabled : Bool, exclude : Bool },
 	seed : U64,
 	temperature : Dec,
@@ -39,6 +42,7 @@ Config : {
 		input_cost_per_million_tokens_usd : Dec,
 		model : { id : Str },
 		provider : { api_key_env : Str, endpoint : Str, name : Str },
+		transport : { backoff_initial_ms : U64, backoff_max_ms : U64, max_retries : U64, max_retry_after_ms : U64 },
 		validation : { max_attempts : U64 },
 	},
 }
@@ -159,11 +163,13 @@ ParsedJevAnswer : { choice : Str, confidence : Dec, probabilities : List(ParsedP
 JevAttemptRecord : {
 	attempt : U64,
 	call : CallAudit,
+	headers_path : Str,
 	http_status : U16,
 	parsed_answer_count : U64,
 	parsed_answers : List(ParsedJevAnswer),
 	parsed_model : Str,
 	parsed_usage : { input_tokens : U64, output_tokens : U64 },
+	possible_duplicate_billing : Bool,
 	raw_response_path : Str,
 	request_body : Str,
 	request_path : Str,
@@ -171,6 +177,9 @@ JevAttemptRecord : {
 	shard_count : U64,
 	shard_index : U64,
 	stage : Str,
+	transport : Str,
+	transport_attempt : U64,
+	transport_output_path : Str,
 	validation_error : Str,
 	validation_status : Str,
 	work : Str,
@@ -180,30 +189,42 @@ FailureAttemptRecord : {
 	attempt : U64,
 	client_request_id : Str,
 	elapsed_ms : U128,
+	headers_path : Str,
 	http_status : U16,
+	possible_duplicate_billing : Bool,
 	provider_request_id : Str,
 	raw_response_path : Str,
 	received_at : Str,
 	request_path : Str,
 	requested_at : Str,
+	retry_delay_ms : U64,
 	run_id : Str,
 	shard_count : U64,
 	shard_index : U64,
 	stage : Str,
+	transport : Str,
+	transport_attempt : U64,
+	transport_error_category : Str,
+	transport_error_message : Str,
+	transport_output_path : Str,
 	validation_error : Str,
 	validation_status : Str,
 	work : Str,
 }
 
+CurlOutputRecord : { exit_code : Str, http_status : U16, stderr : Str, stdout : Str }
+
 main! = |args| {
 	displayed = List.map(args, OsStr.display)
 	match List.drop_first(displayed, 1) {
 		["--check"] => check_experiment!()
+		["--check-resume-smoke"] => check_latest_smoke_resume!()
 		["--smoke"] => start_run!(Bool.True)
 		["--run"] => start_run!(Bool.False)
 		["--resume"] => resume_latest!()
+		["--resume-smoke"] => resume_latest_smoke!()
 		_ => {
-			_ = Stderr.line!("usage: run-jev-gloss-experiment [--check | --smoke | --run | --resume]")?
+			_ = Stderr.line!("usage: run-jev-gloss-experiment [--check | --check-resume-smoke | --smoke | --run | --resume | --resume-smoke]")?
 			Err(Exit(2))
 		}
 	}
@@ -280,14 +301,47 @@ resume_latest! = || {
 	_ = validate_config(config)?
 	inputs = discover_inputs!()?
 	_ = validate_input_set(inputs)?
-	run_id = latest_incomplete_run!()?
+	run_id = latest_incomplete_run!("run-", "${experiment_dir}/outputs")?
 	run_dir = "${experiment_dir}/responses/${run_id}"
 	output_dir = "${experiment_dir}/outputs/${run_id}"
-	_ = validate_run_manifest!(run_id, run_dir, output_dir, config)?
+	_ = validate_run_manifest!(run_id, run_dir, output_dir, "full", config)?
 	keys = read_api_keys!(config)?
 	_ = run_inputs!(inputs, config, keys, run_id, run_dir, output_dir, Bool.False)?
 	_ = write_new_utf8!("complete\n", "${run_dir}/run.complete")?
 	_ = Stdout.line!("completed resumed run ${run_id}\t${output_dir}")?
+	Ok({})
+}
+
+check_latest_smoke_resume! = || {
+	config = read_config!()?
+	_ = validate_config(config)?
+	inputs = discover_inputs!()?
+	_ = validate_input_set(inputs)?
+	run_id = latest_incomplete_run!("smoke-", "${experiment_dir}/outputs/smoke")?
+	run_dir = "${experiment_dir}/responses/${run_id}"
+	output_dir = "${experiment_dir}/outputs/smoke/${run_id}"
+	_ = validate_run_manifest!(run_id, run_dir, output_dir, "smoke", config)?
+	path = smoke_input(inputs)?
+	_ = validate_smoke_checkpoint!(path, config, run_id, run_dir)?
+	_ = Stdout.line!("checked resumable smoke run ${run_id}: accepted candidates will be reused; no API keys read and no requests sent")?
+	Ok({})
+}
+
+resume_latest_smoke! = || {
+	config = read_config!()?
+	_ = validate_config(config)?
+	inputs = discover_inputs!()?
+	_ = validate_input_set(inputs)?
+	run_id = latest_incomplete_run!("smoke-", "${experiment_dir}/outputs/smoke")?
+	run_dir = "${experiment_dir}/responses/${run_id}"
+	output_dir = "${experiment_dir}/outputs/smoke/${run_id}"
+	_ = validate_run_manifest!(run_id, run_dir, output_dir, "smoke", config)?
+	path = smoke_input(inputs)?
+	_ = validate_smoke_checkpoint!(path, config, run_id, run_dir)?
+	typesafe = read_typesafe_api_key!(config)?
+	_ = run_inputs!([path], config, { ppq: "", typesafe }, run_id, run_dir, output_dir, Bool.True)?
+	_ = write_new_utf8!("complete\n", "${run_dir}/run.complete")?
+	_ = Stdout.line!("completed resumed smoke run ${run_id}\t${output_dir}")?
 	Ok({})
 }
 
@@ -309,14 +363,14 @@ create_run! = |run_id, run_dir, output_dir, smoke, config| {
 	}
 }
 
-validate_run_manifest! = |run_id, run_dir, output_dir, config| {
+validate_run_manifest! = |run_id, run_dir, output_dir, expected_mode, config| {
 	if !Path.exists!(Path.utf8(output_dir))? {
 		Err(MissingRunOutputDirectory(output_dir))
 	} else {
 		raw = Path.read_utf8!(Path.utf8("${run_dir}/run.json"))?
 		manifest : Manifest
 		manifest = Json.parse(raw)?
-		if manifest.run_id != run_id or manifest.mode != "full" or manifest.experiment_version != config.experiment_version {
+		if manifest.run_id != run_id or manifest.mode != expected_mode or manifest.experiment_version != config.experiment_version {
 			Err(RunManifestMismatch(run_id))
 		} else {
 			Ok({})
@@ -324,13 +378,35 @@ validate_run_manifest! = |run_id, run_dir, output_dir, config| {
 	}
 }
 
-latest_incomplete_run! = || {
-	root = "${experiment_dir}/responses"
-	entries = Path.list!(Path.utf8(root))?
-	find_latest_run!(entries, "")
+validate_smoke_checkpoint! = |path, config, run_id, run_dir| {
+	source = Path.read_utf8!(Path.utf8(path))?
+	_ = validate_source(source, path)?
+	all_shards = shard_tokens(tokenize_source(source), config.execution.tokens_per_shard)
+	match all_shards {
+		[first, ..] => {
+			work = work_name(path)
+			shard_count = List.len(all_shards)
+			checkpoint_path = "${run_dir}/${work}.shard-1-of-${U64.to_str(shard_count)}.candidates.json"
+			checkpoint = read_candidate_checkpoint!(checkpoint_path)?
+			_ = validate_candidate_checkpoint(checkpoint, first, work, 1, shard_count, config)?
+			_ = validate_checkpoint_request!(checkpoint, source, first, run_dir, config)?
+			if Path.exists!(Path.utf8("${run_dir}/${work}.complete"))? {
+				Err(RunManifestMismatch(run_id))
+			} else {
+				Ok({})
+			}
+		}
+		[] => Err(NoTokens(path))
+	}
 }
 
-find_latest_run! = |entries, latest|
+latest_incomplete_run! = |required_prefix, output_root| {
+	root = "${experiment_dir}/responses"
+	entries = Path.list!(Path.utf8(root))?
+	find_latest_run!(entries, "", required_prefix, output_root)
+}
+
+find_latest_run! = |entries, latest, required_prefix, output_root|
 	match entries {
 		[] => if latest == "" Err(NoIncompleteRun) else Ok(latest)
 		[entry, .. as rest] => {
@@ -341,9 +417,9 @@ find_latest_run! = |entries, latest|
 				IsDir => Bool.True
 				_ => Bool.False
 			}
-			eligible = is_dir and Str.starts_with(name, "run-") and Str.ends_with(name, "-v3") and Path.exists!(Path.utf8("${path}/run.json"))? and Path.exists!(Path.utf8("${experiment_dir}/outputs/${name}"))? and !Path.exists!(Path.utf8("${path}/run.complete"))?
+			eligible = is_dir and Str.starts_with(name, required_prefix) and Str.ends_with(name, "-v3") and Path.exists!(Path.utf8("${path}/run.json"))? and Path.exists!(Path.utf8("${output_root}/${name}"))? and !Path.exists!(Path.utf8("${path}/run.complete"))?
 			next = if eligible and (latest == "" or compare_str(latest, name) == Before) name else latest
-			find_latest_run!(rest, next)
+			find_latest_run!(rest, next, required_prefix, output_root)
 		}
 	}
 
@@ -416,7 +492,7 @@ run_shards! = |shards, work, source, config, keys, run_id, run_dir, shard_index,
 				candidate_checkpoint = load_or_generate_candidates!(base, work, source, tokens, config, keys.ppq, run_id, run_dir, shard_index, shard_count)?
 				presented = present_candidates(tokens, candidate_checkpoint.candidates)
 				jev_body = jev_request_body(config, source, tokens, presented)?
-				run_jev_attempt!(work, tokens, presented, candidate_checkpoint.call, config, keys.typesafe, run_id, run_dir, shard_index, shard_count, 1, jev_body)?
+				run_jev_attempt!(work, tokens, presented, candidate_checkpoint.call, config, keys.typesafe, run_id, run_dir, shard_index, shard_count, 1, jev_body, Bool.False)?
 			}
 			run_shards!(rest, work, source, config, keys, run_id, run_dir, shard_index + 1, shard_count, List.append(found, audit))
 		}
@@ -466,10 +542,11 @@ send_candidate_request! = |work, config, api_key, run_id, run_dir, shard_index, 
 		.add_header("Content-Type", "application/json")
 		.with_body(Str.to_utf8(body))
 	match Http.send!(request) {
-		Err(_) => {
+		Err(problem) => {
 			received_at = Utc.now!()
+			error = http_transport_error(problem, api_key)
 			_ = write_new_bytes!([], raw_path)?
-			_ = write_transport_failure!("deepseek", work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at))?
+			_ = write_native_transport_failure!("deepseek", work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at), error.category, error.message)?
 			Err(DeepSeekTransportFailure(work, shard_index))
 		}
 		Ok(response) => {
@@ -478,7 +555,7 @@ send_candidate_request! = |work, config, api_key, run_id, run_dir, shard_index, 
 			_ = write_new_bytes!(raw, raw_path)?
 			status = Response.status(response)
 			if status < 200 or status >= 300 {
-				_ = write_http_failure!("deepseek", work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at), status, Response.headers(response))?
+				_ = write_native_http_failure!("deepseek", work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at), status, Response.headers(response))?
 				Err(DeepSeekHttpFailure(status))
 			} else {
 				Ok({
@@ -510,6 +587,8 @@ process_candidate_response! = |work, tokens, config, run_id, run_dir, shard_inde
 						Err(IncompleteFinish(choice.finish_reason))
 					} else if decoded.model != config.candidates.model.id {
 						Err(WrongCandidateModel(config.candidates.model.id, decoded.model))
+					} else if decoded.provider != "Sail Research" {
+						Err(WrongCandidateProvider("Sail Research", decoded.provider))
 					} else {
 						validate_candidate_content(choice.message.content, tokens)
 					}
@@ -554,7 +633,7 @@ deep_call_audit = |config, decoded, captured| {
 		received_at: captured.received_at,
 		requested_at: captured.requested_at,
 		requested_model: config.candidates.model.id,
-		requested_provider: "ppq/automatic-routing",
+		requested_provider: "ppq/sail-research",
 		resolved_model: decoded.model,
 		resolved_provider: decoded.provider,
 		response_id: decoded.id,
@@ -590,15 +669,21 @@ write_candidate_attempt! = |work, run_id, run_dir, shard_index, shard_count, att
 	write_new_utf8!("${json}\n", "${run_dir}/${captured.client_request_id}.attempt.json")
 }
 
-run_jev_attempt! = |work, tokens, presented, candidate_call, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, body| {
-	captured = send_jev_request!(work, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, body)?
+run_jev_attempt! = |work, tokens, presented, candidate_call, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, body, possible_duplicate_billing| {
+	transport_state = jev_transport_state!(run_dir, work, shard_index, attempt)?
+	if transport_state.current_count > config.selector.transport.max_retries {
+		Err(JevTransportFailure(work, shard_index))?
+	} else {}
+	retries_remaining = config.selector.transport.max_retries - transport_state.current_count
+	duplicate_risk = possible_duplicate_billing or transport_state.prior_request_exists
+	captured = send_jev_request!(work, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, transport_state.next_attempt, retries_remaining, body, duplicate_risk)?
 	outcome = process_jev_response!(work, tokens, presented, candidate_call, config, run_id, run_dir, shard_index, shard_count, attempt, body, captured)?
 	match outcome {
 		Accepted(value) => Ok(value)
 		Rejected(error_text) => {
 			_ = Stdout.line!("rejected Jev selection ${work} shard ${U64.to_str(shard_index)}/${U64.to_str(shard_count)} attempt ${U64.to_str(attempt)}: ${error_text}")?
 			if attempt < config.selector.validation.max_attempts {
-				run_jev_attempt!(work, tokens, presented, candidate_call, config, api_key, run_id, run_dir, shard_index, shard_count, attempt + 1, body)
+				run_jev_attempt!(work, tokens, presented, candidate_call, config, api_key, run_id, run_dir, shard_index, shard_count, attempt + 1, body, captured.possible_duplicate_billing)
 			} else {
 				Err(JevValidationAttemptsExhausted(work, shard_index, error_text))
 			}
@@ -606,48 +691,138 @@ run_jev_attempt! = |work, tokens, presented, candidate_call, config, api_key, ru
 	}
 }
 
-send_jev_request! = |work, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, body| {
+jev_transport_state! = |run_dir, work, shard_index, validation_attempt| {
+	entries = Path.list!(Path.utf8(run_dir))?
+	prefix = "jev-${work}-shard-${U64.to_str(shard_index)}-"
+	request_entries = List.keep_if(entries, |entry| {
+		name = Path.display(entry)
+		Str.contains(name, prefix) and Str.ends_with(name, ".request.json")
+	})
+	validation_marker = "${prefix}validation-${U64.to_str(validation_attempt)}-transport-"
+	current_count = List.len(List.keep_if(request_entries, |entry| {
+		name = Path.display(entry)
+		new_attempt = Str.contains(name, validation_marker)
+		legacy_attempt = validation_attempt == 1 and Str.contains(name, "${prefix}attempt-")
+		new_attempt or legacy_attempt
+	}))
+	Ok({
+		current_count,
+		next_attempt: List.len(request_entries) + 1,
+		prior_request_exists: !List.is_empty(request_entries),
+	})
+}
+
+# Work around basic-cli's HTTP/1-only Hyper transport failure for this valid TypeSafe POST.
+# Upstream: https://github.com/roc-lang/basic-cli/issues/455 and https://github.com/roc-lang/basic-cli/issues/438
+# Remove curl after a released compatible basic-cli transport completes this retained request and exposes safe diagnostics.
+send_jev_request! = |work, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, transport_attempt, retries_remaining, body, possible_duplicate_billing| {
 	requested_at = Utc.now!()
 	requested_text = Utc.to_iso_8601(requested_at)
 	nonce = U128.to_str(Utc.to_nanos_since_epoch(requested_at))
-	client_request_id = "jev-${work}-shard-${U64.to_str(shard_index)}-attempt-${U64.to_str(attempt)}-${nonce}"
+	client_request_id = "jev-${work}-shard-${U64.to_str(shard_index)}-validation-${U64.to_str(attempt)}-transport-${U64.to_str(transport_attempt)}-${nonce}"
 	request_path = "${run_dir}/${client_request_id}.request.json"
 	raw_path = "${run_dir}/${client_request_id}.raw.json"
+	headers_path = "${run_dir}/${client_request_id}.headers"
+	transport_output_path = "${run_dir}/${client_request_id}.transport.json"
 	_ = write_new_utf8!(body, request_path)?
-	request = Request.from_method(POST)
-		.with_uri(config.selector.provider.endpoint)
-		.with_timeout(TimeoutMilliseconds(300000))
-		.add_header("Authorization", "Bearer ${api_key}")
-		.add_header("Content-Type", "application/json")
-		.with_body(Str.to_utf8(body))
-	match Http.send!(request) {
-		Err(_) => {
+	curl_result = Cmd.new_str("curl")
+		.args_str([
+			"--silent",
+			"--show-error",
+			"--request",
+			"POST",
+			"--connect-timeout",
+			"30",
+			"--max-time",
+			"300",
+			"--proto",
+			"=https",
+			"--header",
+			"Content-Type: application/json",
+			"--header",
+			"Expect:",
+			"--variable",
+			"%ARISTOS_TYPESAFE_API_KEY",
+			"--expand-header",
+			"Authorization: Bearer {{ARISTOS_TYPESAFE_API_KEY}}",
+			"--data-binary",
+			"@${request_path}",
+			"--dump-header",
+			headers_path,
+			"--output",
+			raw_path,
+			"--write-out",
+			"%{http_code}",
+			config.selector.provider.endpoint,
+		])
+		.env_str("ARISTOS_TYPESAFE_API_KEY", api_key)
+		.exec_output!()
+	match curl_result {
+		Ok(output) => {
+			status = curl_http_status(output.stdout_utf8)
+			_ = write_curl_output!(transport_output_path, "0", status, output.stdout_utf8, safe_transport_message(output.stderr_utf8_lossy, api_key))?
+			_ = ensure_bytes_artifact!(raw_path)?
+			_ = ensure_bytes_artifact!(headers_path)?
 			received_at = Utc.now!()
-			_ = write_new_bytes!([], raw_path)?
-			_ = write_transport_failure!("jev", work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at))?
-			Err(JevTransportFailure(work, shard_index))
-		}
-		Ok(response) => {
-			received_at = Utc.now!()
-			raw = Response.body(response)
-			_ = write_new_bytes!(raw, raw_path)?
-			status = Response.status(response)
+			raw = Path.read_bytes!(Path.utf8(raw_path))?
+			headers = read_curl_headers!(headers_path)?
 			if status < 200 or status >= 300 {
-				_ = write_http_failure!("jev", work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at), status, Response.headers(response))?
-				Err(JevHttpFailure(status))
+				retryable = is_transient_jev_status(status)
+				delay_ms = if retryable and retries_remaining > 0 retry_delay_ms!(headers, config.selector.transport, config.selector.transport.max_retries - retries_remaining + 1)? else 0
+				_ = write_http_failure!("jev", work, run_id, run_dir, shard_index, shard_count, attempt, "curl-workaround", transport_attempt, client_request_id, request_path, raw_path, headers_path, transport_output_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at), status, headers, delay_ms, possible_duplicate_billing)?
+				if retryable and retries_remaining > 0 {
+					_ = Stdout.line!("retrying Jev transport ${work} shard ${U64.to_str(shard_index)}/${U64.to_str(shard_count)} after ${U64.to_str(delay_ms)} ms: HTTP ${U16.to_str(status)}")?
+					_ = Sleep.millis!(delay_ms)
+					send_jev_request!(work, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, transport_attempt + 1, retries_remaining - 1, body, possible_duplicate_billing)
+				} else {
+					Err(JevHttpFailure(status))
+				}
 			} else {
 				Ok({
 					client_request_id,
 					elapsed_ms: Utc.delta_as_millis(received_at, requested_at),
-					headers: Response.headers(response),
+					headers,
+					headers_path,
+					possible_duplicate_billing,
 					raw,
 					raw_path,
 					received_at: Utc.to_iso_8601(received_at),
 					requested_at: requested_text,
 					request_path,
 					status,
+					transport: "curl-workaround",
+					transport_attempt,
+					transport_output_path,
 				})
 			}
+		}
+		Err(NonZeroExitCode(details)) => {
+			status = curl_http_status(details.stdout_utf8_lossy)
+			stderr = safe_transport_message(details.stderr_utf8_lossy, api_key)
+			error = curl_transport_error(details.exit_code, stderr)
+			_ = write_curl_output!(transport_output_path, I32.to_str(details.exit_code), status, details.stdout_utf8_lossy, stderr)?
+			_ = ensure_bytes_artifact!(raw_path)?
+			_ = ensure_bytes_artifact!(headers_path)?
+			received_at = Utc.now!()
+			next_duplicate = possible_duplicate_billing or error.ambiguous
+			retryable = error.retryable
+			delay_ms = if retryable and retries_remaining > 0 retry_backoff_ms(config.selector.transport, config.selector.transport.max_retries - retries_remaining + 1) else 0
+			_ = write_transport_failure!("jev", work, run_id, run_dir, shard_index, shard_count, attempt, transport_attempt, client_request_id, request_path, raw_path, headers_path, transport_output_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at), status, "curl-workaround", error.category, error.message, delay_ms, next_duplicate)?
+			if retryable and retries_remaining > 0 {
+				_ = Stdout.line!("retrying Jev transport ${work} shard ${U64.to_str(shard_index)}/${U64.to_str(shard_count)} after ${U64.to_str(delay_ms)} ms: ${error.category}")?
+				_ = Sleep.millis!(delay_ms)
+				send_jev_request!(work, config, api_key, run_id, run_dir, shard_index, shard_count, attempt, transport_attempt + 1, retries_remaining - 1, body, next_duplicate)
+			} else {
+				Err(JevTransportFailure(work, shard_index))
+			}
+		}
+		Err(_) => {
+			_ = write_curl_output!(transport_output_path, "not-started", 0, "", "curl process could not be started")?
+			_ = ensure_bytes_artifact!(raw_path)?
+			_ = ensure_bytes_artifact!(headers_path)?
+			received_at = Utc.now!()
+			_ = write_transport_failure!("jev", work, run_id, run_dir, shard_index, shard_count, attempt, transport_attempt, client_request_id, request_path, raw_path, headers_path, transport_output_path, requested_text, Utc.to_iso_8601(received_at), Utc.delta_as_millis(received_at, requested_at), 0, "curl-workaround", "process-start", "curl process could not be started", 0, possible_duplicate_billing)?
+			Err(JevTransportFailure(work, shard_index))
 		}
 	}
 }
@@ -726,11 +901,13 @@ write_jev_attempt! = |work, run_id, run_dir, shard_index, shard_count, attempt, 
 	record = {
 		attempt,
 		call,
+		headers_path: captured.headers_path,
 		http_status: captured.status,
 		parsed_answer_count: Dict.len(decoded.answers),
 		parsed_answers: parsed_jev_answers(decoded.answers),
 		parsed_model: decoded.model,
 		parsed_usage: decoded.usage,
+		possible_duplicate_billing: captured.possible_duplicate_billing,
 		raw_response_path: captured.raw_path,
 		request_body: body,
 		request_path: captured.request_path,
@@ -738,6 +915,9 @@ write_jev_attempt! = |work, run_id, run_dir, shard_index, shard_count, attempt, 
 		shard_count,
 		shard_index,
 		stage: "jev-selection",
+		transport: captured.transport,
+		transport_attempt: captured.transport_attempt,
+		transport_output_path: captured.transport_output_path,
 		validation_error: error_text,
 		validation_status: status,
 		work,
@@ -763,23 +943,31 @@ parsed_jev_answers = |answers|
 		}
 	)
 
-write_transport_failure! = |stage, work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_at, received_at, elapsed_ms| {
+write_transport_failure! = |stage, work, run_id, run_dir, shard_index, shard_count, attempt, transport_attempt, client_request_id, request_path, raw_path, headers_path, transport_output_path, requested_at, received_at, elapsed_ms, http_status, transport, category, message, retry_delay_ms, possible_duplicate_billing| {
 	record : FailureAttemptRecord
 	record = {
 		attempt,
 		client_request_id,
 		elapsed_ms,
-		http_status: 0,
+		headers_path,
+		http_status,
+		possible_duplicate_billing,
 		provider_request_id: "",
 		raw_response_path: raw_path,
 		received_at,
 		request_path,
 		requested_at,
+		retry_delay_ms,
 		run_id,
 		shard_count,
 		shard_index,
 		stage,
-		validation_error: "HTTP transport failed before a response was captured",
+		transport,
+		transport_attempt,
+		transport_error_category: category,
+		transport_error_message: message,
+		transport_output_path,
+		validation_error: "HTTP transport failed before a complete response was captured",
 		validation_status: "transport-failed",
 		work,
 	}
@@ -787,22 +975,30 @@ write_transport_failure! = |stage, work, run_id, run_dir, shard_index, shard_cou
 	write_new_utf8!("${json}\n", "${run_dir}/${client_request_id}.attempt.json")
 }
 
-write_http_failure! = |stage, work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_at, received_at, elapsed_ms, http_status, headers| {
+write_http_failure! = |stage, work, run_id, run_dir, shard_index, shard_count, attempt, transport, transport_attempt, client_request_id, request_path, raw_path, headers_path, transport_output_path, requested_at, received_at, elapsed_ms, http_status, headers, retry_delay_ms, possible_duplicate_billing| {
 	record : FailureAttemptRecord
 	record = {
 		attempt,
 		client_request_id,
 		elapsed_ms,
+		headers_path,
 		http_status,
+		possible_duplicate_billing,
 		provider_request_id: response_request_id(headers),
 		raw_response_path: raw_path,
 		received_at,
 		request_path,
 		requested_at,
+		retry_delay_ms,
 		run_id,
 		shard_count,
 		shard_index,
 		stage,
+		transport,
+		transport_attempt,
+		transport_error_category: "http-status",
+		transport_error_message: "provider returned HTTP ${U16.to_str(http_status)}",
+		transport_output_path,
 		validation_error: "provider returned a non-success HTTP status",
 		validation_status: "http-rejected",
 		work,
@@ -810,6 +1006,153 @@ write_http_failure! = |stage, work, run_id, run_dir, shard_index, shard_count, a
 	json = Json.to_str_try(record)?
 	write_new_utf8!("${json}\n", "${run_dir}/${client_request_id}.attempt.json")
 }
+
+write_native_transport_failure! = |stage, work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_at, received_at, elapsed_ms, category, message| {
+	write_transport_failure!(stage, work, run_id, run_dir, shard_index, shard_count, attempt, 1, client_request_id, request_path, raw_path, "", "", requested_at, received_at, elapsed_ms, 0, "basic-cli", category, message, 0, Bool.False)
+}
+
+write_native_http_failure! = |stage, work, run_id, run_dir, shard_index, shard_count, attempt, client_request_id, request_path, raw_path, requested_at, received_at, elapsed_ms, http_status, headers| {
+	write_http_failure!(stage, work, run_id, run_dir, shard_index, shard_count, attempt, "basic-cli", 1, client_request_id, request_path, raw_path, "", "", requested_at, received_at, elapsed_ms, http_status, headers, 0, Bool.False)
+}
+
+write_curl_output! = |path, exit_code, http_status, stdout, stderr| {
+	record : CurlOutputRecord
+	record = { exit_code, http_status, stderr, stdout }
+	json = Json.to_str_try(record)?
+	write_new_utf8!("${json}\n", path)
+}
+
+ensure_bytes_artifact! = |path|
+	if Path.exists!(Path.utf8(path))? Ok({}) else write_new_bytes!([], path)
+
+curl_http_status = |stdout|
+	match U16.from_str(Str.trim(stdout)) {
+		Ok(status) => status
+		Err(_) => 0
+	}
+
+safe_transport_message = |message, api_key| {
+	trimmed = Str.trim(message)
+	redacted = if api_key == "" trimmed else Str.replace_each(trimmed, api_key, "[REDACTED]")
+	if redacted == "" "no transport detail was returned" else redacted
+}
+
+curl_transport_error = |exit_code, message| {
+	category = if exit_code == 6 {
+		"dns"
+	} else if exit_code == 7 {
+		"connect"
+	} else if exit_code == 28 {
+		"timeout"
+	} else if exit_code == 35 or exit_code == 51 or exit_code == 58 or exit_code == 60 {
+		"tls"
+	} else if exit_code == 52 {
+		"empty-response"
+	} else if exit_code == 55 {
+		"send"
+	} else if exit_code == 56 {
+		"receive"
+	} else {
+		"curl-exit"
+	}
+	ambiguous = exit_code != 6 and exit_code != 7 and exit_code != 35 and exit_code != 51 and exit_code != 58 and exit_code != 60
+	retryable = exit_code == 5 or exit_code == 6 or exit_code == 7 or exit_code == 16 or exit_code == 18 or exit_code == 28 or exit_code == 52 or exit_code == 55 or exit_code == 56 or exit_code == 92
+	{ ambiguous, category, message, retryable }
+}
+
+http_transport_error = |problem, api_key|
+	match problem {
+		HttpErr(Timeout) => { category: "timeout", message: "basic-cli HTTP request timed out" }
+		HttpErr(NetworkError) => { category: "network", message: "basic-cli reported a network error" }
+		HttpErr(BadBody) => { category: "response-body", message: "basic-cli failed while collecting the response body" }
+		HttpErr(Other(bytes)) => { category: "other", message: safe_transport_message(Str.from_utf8_lossy(bytes), api_key) }
+		InvalidUrl(_) => { category: "invalid-url", message: "basic-cli rejected the request URL" }
+	}
+
+read_curl_headers! = |path| {
+	bytes = Path.read_bytes!(Path.utf8(path))?
+	text = Str.from_utf8(bytes) ? |_| InvalidUtf8Response
+	Ok(parse_curl_header_lines(Str.split_on(text, "\n"), []))
+}
+
+parse_curl_header_lines = |lines, found|
+	match lines {
+		[] => found
+		[line, .. as rest] => {
+			clean = Str.trim(line)
+			parts = Str.split_on(clean, ":")
+			next = match parts {
+				[name, value, .. as remaining] => List.append(found, { name: Str.trim(name), value: Str.trim(Str.join_with(List.prepend(remaining, value), ":")) })
+				_ => found
+			}
+			parse_curl_header_lines(rest, next)
+		}
+	}
+
+is_transient_jev_status = |status| status == 408 or status == 429 or status >= 500
+
+retry_backoff_ms = |transport, retry_number| {
+	uncapped = retry_backoff_uncapped(transport.backoff_initial_ms, retry_number)
+	if uncapped > transport.backoff_max_ms transport.backoff_max_ms else uncapped
+}
+
+retry_backoff_uncapped : U64, U64 -> U64
+retry_backoff_uncapped = |delay, retry_number|
+	if retry_number <= 1 delay else retry_backoff_uncapped(delay * 2, retry_number - 1)
+
+retry_delay_ms! = |headers, transport, retry_number| {
+	fallback = retry_backoff_ms(transport, retry_number)
+	retry_after_millis = response_header_value(headers, "retry-after-ms")
+	retry_after = response_header_value(headers, "retry-after")
+	if retry_after_millis != "" {
+		Ok(retry_header_delay(retry_after_millis, 1, fallback, transport.max_retry_after_ms))
+	} else if retry_after == "" {
+		Ok(fallback)
+	} else {
+		match U64.from_str(retry_after) {
+			Ok(seconds) => Ok(retry_header_delay(U64.to_str(seconds), 1000, fallback, transport.max_retry_after_ms))
+			Err(_) => retry_after_date_ms!(retry_after, fallback, transport.max_retry_after_ms)
+		}
+	}
+}
+
+retry_header_delay = |value, multiplier, fallback, maximum|
+	match U64.from_str(value) {
+		Ok(number) => {
+			delay = number * multiplier
+			if delay <= maximum delay else fallback
+		}
+		Err(_) => fallback
+	}
+
+retry_after_date_ms! = |value, fallback, maximum| {
+	parsed = Cmd.new_str("date")
+		.args_str(["--date", value, "+%s"])
+		.exec_output!()
+	match parsed {
+		Ok(output) => {
+			now_text = U128.to_str(Utc.to_millis_since_epoch(Utc.now!()))
+			match (U64.from_str(Str.trim(output.stdout_utf8)), U64.from_str(now_text)) {
+				(Ok(target_seconds), Ok(now_millis)) => {
+					target_millis = target_seconds * 1000
+					delay = if target_millis > now_millis target_millis - now_millis else 0
+					Ok(if delay <= maximum delay else fallback)
+				}
+				_ => Ok(fallback)
+			}
+		}
+		Err(_) => Ok(fallback)
+	}
+}
+
+response_header_value = |headers, expected|
+	match headers {
+		[] => ""
+		[header, .. as rest] => {
+			{name, value} = header
+			if Str.caseless_ascii_equals(name, expected) value else response_header_value(rest, expected)
+		}
+	}
 
 candidate_request_body = |config, source, tokens, feedback| {
 	generation : Generation
@@ -883,6 +1226,7 @@ candidate_request_body = |config, source, tokens, feedback| {
 		],
 		model: model_id,
 		presence_penalty: generation.presence_penalty,
+		provider: generation.provider,
 		reasoning: generation.reasoning,
 		response_format,
 		seed: generation.seed,
@@ -1174,10 +1518,14 @@ validate_config = |config| {
 		Err(InvalidSamplingPins)
 	} else if generation.reasoning.enabled or !generation.reasoning.exclude or generation.include_reasoning {
 		Err(InvalidReasoningPins)
+	} else if generation.provider.only != ["sail-research"] or !generation.provider.require_parameters or generation.provider.allow_fallbacks {
+		Err(InvalidSailResearchPins)
 	} else if config.candidates.validation.max_attempts != 2 or config.selector.validation.max_attempts != 2 {
 		Err(InvalidValidationPins)
 	} else if config.selector.provider.name != "typesafe" or config.selector.provider.endpoint != "https://api.typesafe.ai/v1/systemone" or config.selector.provider.api_key_env != "TYPESAFE_API_KEY" {
 		Err(InvalidSelectorProviderPins)
+	} else if config.selector.transport.max_retries != 2 or config.selector.transport.backoff_initial_ms != 500 or config.selector.transport.backoff_max_ms != 5000 or config.selector.transport.max_retry_after_ms != 60000 {
+		Err(InvalidSelectorTransportPins)
 	} else if config.selector.model.id != "jev-1.13.0" or config.selector.input_cost_per_million_tokens_usd != 0.042 {
 		Err(InvalidSelectorModelPins)
 	} else {
@@ -1234,6 +1582,11 @@ read_api_keys! = |config| {
 	Ok({ ppq, typesafe })
 }
 
+read_typesafe_api_key! = |config| {
+	env = Path.read_utf8!(Path.utf8(".env"))?
+	env_value(env, config.selector.provider.api_key_env)
+}
+
 env_value = |env, variable| {
 	prefix = "${variable}="
 	match List.keep_if(Str.split_on(env, "\n"), |line| Str.starts_with(line, prefix)) {
@@ -1252,6 +1605,26 @@ read_candidate_checkpoint! = |path| {
 	Ok(value)
 }
 
+validate_checkpoint_request! = |checkpoint, source, tokens, run_dir, config| {
+	path = "${run_dir}/${checkpoint.call.client_request_id}.request.json"
+	raw = Path.read_utf8!(Path.utf8(path))?
+	request : { messages : List({ content : Str, role : Str }), model : Str, provider : { allow_fallbacks : Bool, only : List(Str), require_parameters : Bool } }
+	request = Json.parse(raw)?
+	table = Str.join_with(List.map(tokens, |token| "${token.id} | ${U64.to_str(token.line)} | ${token.form}"), "\n")
+	expected = "COMPLETE SOURCE PASSAGE:\n${source}\nTARGET TOKENS (immutable ID | source line | exact form):\n${table}"
+	if request.model != config.candidates.model.id or request.provider != config.candidates.generation.provider or !request_messages_contain(request.messages, expected) {
+		Err(CandidateCheckpointSourceMismatch(path))
+	} else {
+		Ok({})
+	}
+}
+
+request_messages_contain = |messages, expected|
+	match messages {
+		[] => Bool.False
+		[message, .. as rest] => if message.role == "user" and Str.contains(message.content, expected) Bool.True else request_messages_contain(rest, expected)
+	}
+
 read_shard_audit! = |path| {
 	raw = Path.read_utf8!(Path.utf8(path))?
 	value : ShardAudit
@@ -1262,7 +1635,7 @@ read_shard_audit! = |path| {
 validate_candidate_checkpoint = |checkpoint, tokens, work, shard_index, shard_count, config|
 	if checkpoint.work != work or checkpoint.shard_index != shard_index or checkpoint.shard_count != shard_count or checkpoint.experiment_version != config.experiment_version {
 		Err(CandidateCheckpointMismatch(work, shard_index))
-	} else if checkpoint.call.requested_model != config.candidates.model.id or checkpoint.call.resolved_model != config.candidates.model.id or checkpoint.call.requested_provider != "ppq/automatic-routing" or checkpoint.call.resolved_provider == "" {
+	} else if checkpoint.call.requested_model != config.candidates.model.id or checkpoint.call.resolved_model != config.candidates.model.id or checkpoint.call.requested_provider != "ppq/sail-research" or checkpoint.call.resolved_provider != "Sail Research" {
 		Err(CandidateCheckpointCallMismatch(work, shard_index))
 	} else {
 		_ = validate_candidates(tokens, checkpoint.candidates)?
@@ -1272,7 +1645,7 @@ validate_candidate_checkpoint = |checkpoint, tokens, work, shard_index, shard_co
 validate_shard_audit = |audit, tokens, work, shard_index, shard_count, config|
 	if audit.work != work or audit.shard_index != shard_index or audit.shard_count != shard_count or audit.experiment_version != config.experiment_version {
 		Err(ShardAuditMismatch(work, shard_index))
-	} else if audit.candidate_call.requested_model != config.candidates.model.id or audit.candidate_call.resolved_model != config.candidates.model.id or audit.candidate_call.requested_provider != "ppq/automatic-routing" or audit.candidate_call.resolved_provider == "" {
+	} else if audit.candidate_call.requested_model != config.candidates.model.id or audit.candidate_call.resolved_model != config.candidates.model.id or audit.candidate_call.requested_provider != "ppq/sail-research" or audit.candidate_call.resolved_provider != "Sail Research" {
 		Err(ShardCandidateCallMismatch(work, shard_index))
 	} else if audit.jev_call.requested_model != config.selector.model.id or audit.jev_call.resolved_model != config.selector.model.id or audit.jev_call.requested_provider != config.selector.provider.name or audit.jev_call.resolved_provider != config.selector.provider.name {
 		Err(ShardJevCallMismatch(work, shard_index))
@@ -1397,6 +1770,7 @@ candidate_error_text = |problem|
 		WrongCandidateCount(id, actual) => "token ${id} had ${U64.to_str(actual)} candidates instead of 3"
 		WrongCandidateId(expected, actual) => "expected candidate token ID ${expected} but received ${actual}"
 		WrongCandidateModel(expected, actual) => "expected DeepSeek response model ${expected} but received ${actual}"
+		WrongCandidateProvider(expected, actual) => "expected DeepSeek response provider ${expected} but received ${actual}"
 		WrongCandidateTokenCount(expected, actual) => "expected ${U64.to_str(expected)} candidate rows but received ${U64.to_str(actual)}"
 	}
 

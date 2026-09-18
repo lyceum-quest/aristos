@@ -21,6 +21,13 @@
         "exclude": true
       },
       "include_reasoning": false,
+      "provider": {
+        "only": [
+          "sail-research"
+        ],
+        "require_parameters": true,
+        "allow_fallbacks": false
+      },
       "max_tokens": 4096,
       "frequency_penalty": 0,
       "presence_penalty": 0
@@ -39,6 +46,12 @@
       "id": "jev-1.13.0"
     },
     "input_cost_per_million_tokens_usd": 0.042,
+    "transport": {
+      "max_retries": 2,
+      "backoff_initial_ms": 500,
+      "backoff_max_ms": 5000,
+      "max_retry_after_ms": 60000
+    },
     "validation": {
       "max_attempts": 2
     }
