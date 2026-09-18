@@ -18,7 +18,6 @@ Generation : {
 	max_tokens : U64,
 	presence_penalty : Dec,
 	profile : Str,
-	provider : { allow_fallbacks : Bool, only : List(Str), require_parameters : Bool },
 	reasoning : { enabled : Bool, exclude : Bool },
 	seed : U64,
 	temperature : Dec,
@@ -511,8 +510,6 @@ process_candidate_response! = |work, tokens, config, run_id, run_dir, shard_inde
 						Err(IncompleteFinish(choice.finish_reason))
 					} else if decoded.model != config.candidates.model.id {
 						Err(WrongCandidateModel(config.candidates.model.id, decoded.model))
-					} else if decoded.provider != "OpenInference" {
-						Err(WrongCandidateProvider("OpenInference", decoded.provider))
 					} else {
 						validate_candidate_content(choice.message.content, tokens)
 					}
@@ -557,7 +554,7 @@ deep_call_audit = |config, decoded, captured| {
 		received_at: captured.received_at,
 		requested_at: captured.requested_at,
 		requested_model: config.candidates.model.id,
-		requested_provider: "ppq/OpenInference",
+		requested_provider: "ppq/automatic-routing",
 		resolved_model: decoded.model,
 		resolved_provider: decoded.provider,
 		response_id: decoded.id,
@@ -886,7 +883,6 @@ candidate_request_body = |config, source, tokens, feedback| {
 		],
 		model: model_id,
 		presence_penalty: generation.presence_penalty,
-		provider: generation.provider,
 		reasoning: generation.reasoning,
 		response_format,
 		seed: generation.seed,
@@ -1178,8 +1174,6 @@ validate_config = |config| {
 		Err(InvalidSamplingPins)
 	} else if generation.reasoning.enabled or !generation.reasoning.exclude or generation.include_reasoning {
 		Err(InvalidReasoningPins)
-	} else if generation.provider.only != ["OpenInference"] or !generation.provider.require_parameters or generation.provider.allow_fallbacks {
-		Err(InvalidOpenInferencePins)
 	} else if config.candidates.validation.max_attempts != 2 or config.selector.validation.max_attempts != 2 {
 		Err(InvalidValidationPins)
 	} else if config.selector.provider.name != "typesafe" or config.selector.provider.endpoint != "https://api.typesafe.ai/v1/systemone" or config.selector.provider.api_key_env != "TYPESAFE_API_KEY" {
@@ -1268,7 +1262,7 @@ read_shard_audit! = |path| {
 validate_candidate_checkpoint = |checkpoint, tokens, work, shard_index, shard_count, config|
 	if checkpoint.work != work or checkpoint.shard_index != shard_index or checkpoint.shard_count != shard_count or checkpoint.experiment_version != config.experiment_version {
 		Err(CandidateCheckpointMismatch(work, shard_index))
-	} else if checkpoint.call.requested_model != config.candidates.model.id or checkpoint.call.resolved_model != config.candidates.model.id or checkpoint.call.requested_provider != "ppq/OpenInference" or checkpoint.call.resolved_provider != "OpenInference" {
+	} else if checkpoint.call.requested_model != config.candidates.model.id or checkpoint.call.resolved_model != config.candidates.model.id or checkpoint.call.requested_provider != "ppq/automatic-routing" or checkpoint.call.resolved_provider == "" {
 		Err(CandidateCheckpointCallMismatch(work, shard_index))
 	} else {
 		_ = validate_candidates(tokens, checkpoint.candidates)?
@@ -1278,7 +1272,7 @@ validate_candidate_checkpoint = |checkpoint, tokens, work, shard_index, shard_co
 validate_shard_audit = |audit, tokens, work, shard_index, shard_count, config|
 	if audit.work != work or audit.shard_index != shard_index or audit.shard_count != shard_count or audit.experiment_version != config.experiment_version {
 		Err(ShardAuditMismatch(work, shard_index))
-	} else if audit.candidate_call.requested_model != config.candidates.model.id or audit.candidate_call.resolved_model != config.candidates.model.id or audit.candidate_call.requested_provider != "ppq/OpenInference" or audit.candidate_call.resolved_provider != "OpenInference" {
+	} else if audit.candidate_call.requested_model != config.candidates.model.id or audit.candidate_call.resolved_model != config.candidates.model.id or audit.candidate_call.requested_provider != "ppq/automatic-routing" or audit.candidate_call.resolved_provider == "" {
 		Err(ShardCandidateCallMismatch(work, shard_index))
 	} else if audit.jev_call.requested_model != config.selector.model.id or audit.jev_call.resolved_model != config.selector.model.id or audit.jev_call.requested_provider != config.selector.provider.name or audit.jev_call.resolved_provider != config.selector.provider.name {
 		Err(ShardJevCallMismatch(work, shard_index))
@@ -1403,7 +1397,6 @@ candidate_error_text = |problem|
 		WrongCandidateCount(id, actual) => "token ${id} had ${U64.to_str(actual)} candidates instead of 3"
 		WrongCandidateId(expected, actual) => "expected candidate token ID ${expected} but received ${actual}"
 		WrongCandidateModel(expected, actual) => "expected DeepSeek response model ${expected} but received ${actual}"
-		WrongCandidateProvider(expected, actual) => "expected DeepSeek response provider ${expected} but received ${actual}"
 		WrongCandidateTokenCount(expected, actual) => "expected ${U64.to_str(expected)} candidate rows but received ${U64.to_str(actual)}"
 	}
 

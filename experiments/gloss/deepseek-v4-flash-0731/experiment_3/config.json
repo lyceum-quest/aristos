@@ -21,13 +21,6 @@
         "exclude": true
       },
       "include_reasoning": false,
-      "provider": {
-        "only": [
-          "OpenInference"
-        ],
-        "require_parameters": true,
-        "allow_fallbacks": false
-      },
       "max_tokens": 4096,
       "frequency_penalty": 0,
       "presence_penalty": 0

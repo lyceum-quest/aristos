@@ -2,7 +2,7 @@
 
 This frozen, gloss-only experiment uses one DeepSeek V4 Flash request per 50-token shard to generate exactly three contextual gloss candidates per immutable token ID, then one direct TypeSafe Jev request to choose `a`, `b`, `c`, or `none` independently for each token. `none` renders as `[UNRESOLVED]`; no confidence threshold is applied. The complete Jev probability distribution, confidence, and winner/runner-up margin remain available for later calibration.
 
-`config.json` pins `deepseek/deepseek-v4-flash-0731` to PPQ's OpenInference provider with the sampling settings from the completed DeepSeek experiment. It separately pins `jev-1.13.0` at `https://api.typesafe.ai/v1/systemone`. The runner reads `PPQ_API_KEY` and `TYPESAFE_API_KEY` from the repository-root `.env` only for paid modes.
+`config.json` pins `deepseek/deepseek-v4-flash-0731` with the sampling settings from the completed DeepSeek experiment and leaves PPQ provider routing unrestricted. It separately pins `jev-1.13.0` at `https://api.typesafe.ai/v1/systemone`. The runner reads `PPQ_API_KEY` and `TYPESAFE_API_KEY` from the repository-root `.env` only for paid modes.
 
 The six files under `inputs/` are byte-for-byte frozen copies of the completed experiment's inputs. DeepSeek receives the complete work as context and must return concise, hyphenated contextual candidates in the style of the Anabasis corpus, including grammatical information when natural in English (`of-Darius`, `of-birds`, `to-him`, `are-born`, `he-was-thinking`). Jev receives the same complete work, token IDs and forms, and deterministically rotated anonymous candidates.
 
