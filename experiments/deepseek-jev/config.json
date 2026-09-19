@@ -1,0 +1,61 @@
+{
+  "experiment_name": "deepseek-jev-adaptive-gloss",
+  "experiment_version": 1,
+  "input": {
+    "source_path": "experiments/deepseek-jev/iliad-1.1-20.txt",
+    "source_sha256": "1263ac162eea8365bd04261361668fab579c2f97299ac0a8b4429f7f33133807",
+    "tokens_path": "experiments/deepseek-jev/tokens.json",
+    "tokens_sha256": "09497d4c5decffba19b456258396a578d86d880847f1b49c44038d91c10fe32a",
+    "line_count": 20,
+    "token_count": 136
+  },
+  "generator": {
+    "provider": {
+      "name": "ppq",
+      "base_url": "https://api.ppq.ai/v1",
+      "api_key_env": "PPQ_API_KEY",
+      "id": "sail-research",
+      "request_name": "sail-research",
+      "response_name": "Sail Research"
+    },
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "generation": {
+      "temperature": 1,
+      "top_p": 1,
+      "top_k": 0,
+      "seed": 1,
+      "max_tokens": 4096,
+      "frequency_penalty": 0,
+      "presence_penalty": 0,
+      "reasoning": {
+        "enabled": false,
+        "exclude": true
+      },
+      "include_reasoning": false,
+      "require_parameters": true,
+      "allow_fallbacks": false
+    }
+  },
+  "validator": {
+    "provider": {
+      "name": "typesafe",
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "api_key_env": "TYPESAFE_API_KEY"
+    },
+    "model": "jev-1.13.0",
+    "primitive": "noul",
+    "input_cost_per_million_tokens_usd": 0.042
+  },
+  "execution": {
+    "max_semantic_rounds": 3,
+    "acceptance_threshold": 0.5,
+    "smoke_token_count": 10
+  },
+  "retry": {
+    "malformed_response_retries": 1,
+    "transport_retries": 2,
+    "backoff_initial_ms": 500,
+    "backoff_max_ms": 5000,
+    "max_retry_after_ms": 60000
+  }
+}

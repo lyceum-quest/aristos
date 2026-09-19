@@ -80,6 +80,17 @@ task check-jev-gloss-evaluation-4-tool {
   run: ["roc", "check", "scripts/evaluate-jev-gloss-experiment-4.roc"]
 }
 
+task check-deepseek-jev-tool {
+  environment: "dev"
+  run: ["roc", "check", "experiments/deepseek-jev/run.roc"]
+}
+
+# This experiment task is no-spend.
+task check-deepseek-jev {
+  environment: "dev"
+  run: ["roc", "experiments/deepseek-jev/run.roc", "--check"]
+}
+
 task roc-version {
   environment: "dev"
   run: ["roc", "version"]
@@ -382,6 +393,28 @@ task smoke-conllu-gpt53-codex-experiment {
   run: ["roc", "scripts/run-conllu-experiment.roc", "gpt-5.3-codex", "--smoke"]
 }
 
+# Every deepseek-jev task below makes paid API calls and requires
+# DEEPSEEK_JEV_AUTHORIZE=smoke or DEEPSEEK_JEV_AUTHORIZE=full.
+task smoke-deepseek-jev {
+  environment: "dev"
+  run: ["roc", "experiments/deepseek-jev/run.roc", "--smoke"]
+}
+
+task resume-smoke-deepseek-jev {
+  environment: "dev"
+  run: ["roc", "experiments/deepseek-jev/run.roc", "--resume-smoke"]
+}
+
+task run-deepseek-jev {
+  environment: "dev"
+  run: ["roc", "experiments/deepseek-jev/run.roc", "--run"]
+}
+
+task resume-deepseek-jev {
+  environment: "dev"
+  run: ["roc", "experiments/deepseek-jev/run.roc", "--resume"]
+}
+
 task check-browser-boundary {
   environment: "dev"
   run: ["roc", "scripts/check-browser-boundary.roc"]
@@ -442,6 +475,8 @@ workflow release {
     "run check-jev-gloss-experiment-tool",
     "run check-jev-gloss-experiment-4-tool",
     "run check-jev-gloss-evaluation-4-tool",
+    "run check-deepseek-jev-tool",
+    "run check-deepseek-jev",
     "run preload",
     "run check-deepseek-v4-flash-0731-experiment",
     "run check-deepseek-v4-flash-0731-experiment-3",
