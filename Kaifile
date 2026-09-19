@@ -85,7 +85,8 @@ task check-deepseek-jev-tool {
   run: ["roc", "check", "experiments/deepseek-jev/run.roc"]
 }
 
-# This experiment task is no-spend.
+# DeepSeek/Jev tasks read DEEPSEEK_JEV_CONFIG, defaulting to
+# experiments/deepseek-jev/config.json. This check is no-spend.
 task check-deepseek-jev {
   environment: "dev"
   run: ["roc", "experiments/deepseek-jev/run.roc", "--check"]
@@ -393,18 +394,8 @@ task smoke-conllu-gpt53-codex-experiment {
   run: ["roc", "scripts/run-conllu-experiment.roc", "gpt-5.3-codex", "--smoke"]
 }
 
-# Every deepseek-jev task below makes paid API calls and requires
-# DEEPSEEK_JEV_AUTHORIZE=smoke or DEEPSEEK_JEV_AUTHORIZE=full.
-task smoke-deepseek-jev {
-  environment: "dev"
-  run: ["roc", "experiments/deepseek-jev/run.roc", "--smoke"]
-}
-
-task resume-smoke-deepseek-jev {
-  environment: "dev"
-  run: ["roc", "experiments/deepseek-jev/run.roc", "--resume-smoke"]
-}
-
+# Every deepseek-jev task below makes paid API calls and requires the
+# config-specific DEEPSEEK_JEV_AUTHORIZE=run:<sha256> printed by its check.
 task run-deepseek-jev {
   environment: "dev"
   run: ["roc", "experiments/deepseek-jev/run.roc", "--run"]

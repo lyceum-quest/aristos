@@ -30,7 +30,14 @@ Generation : {
 }
 Retry : { backoff_initial_ms : U64, backoff_max_ms : U64, malformed_response_retries : U64, max_retry_after_ms : U64, transport_retries : U64 }
 Config : {
-	execution : { acceptance_threshold : Dec, max_semantic_rounds : U64, smoke_token_count : U64 },
+	artifacts : { outputs_path : Str, responses_path : Str },
+	execution : {
+		acceptance_threshold : Dec,
+		context : { line_count : U64, reference_token_id : U64 },
+		deterministic_batch_size : U64,
+		max_semantic_rounds : U64,
+		target : { reference_token_id : U64, token_count : U64 },
+	},
 	experiment_name : Str,
 	experiment_version : U64,
 	generator : {
@@ -82,6 +89,7 @@ CallAudit : {
 	validation_attempt : U64,
 }
 GeneratedCheckpoint : {
+	batch : U64,
 	call : CallAudit,
 	experiment_version : U64,
 	generated : List(DeepRow),
@@ -90,8 +98,9 @@ GeneratedCheckpoint : {
 	run_id : Str,
 }
 Judgment : { accepted : Bool, gloss : Str, id : U64, key : Str, score : Dec, threshold : Dec, word : Str }
-RoundCheckpoint : {
+BatchCheckpoint : {
 	accepted_ids : List(U64),
+	batch : U64,
 	deepseek_call : CallAudit,
 	experiment_version : U64,
 	generated : List(DeepRow),
@@ -102,11 +111,24 @@ RoundCheckpoint : {
 	round : U64,
 	run_id : Str,
 }
+RoundCheckpoint : {
+	accepted_ids : List(U64),
+	batches : List(BatchCheckpoint),
+	experiment_version : U64,
+	generated : List(DeepRow),
+	judgments : List(Judgment),
+	pending_ids : List(U64),
+	rejected_ids : List(U64),
+	round : U64,
+	run_id : Str,
+}
 FinalRow : { gloss : Str, valid : Bool, word : Str }
-Metrics : { first_pass_accepted : U64, round_2_recovered : U64, round_3_recovered : U64, unresolved : U64 }
-Manifest : { experiment_version : U64, mode : Str, run_id : Str, target_count : U64 }
+RoundMetric : { accepted : U64, round : U64 }
+Metrics : { per_round_accepted : List(RoundMetric), unresolved : U64 }
+Manifest : { config : Config, config_sha256 : Str, run_id : Str, target_count : U64 }
 AttemptRecord : {
 	ambiguous_possible_charge : Bool,
+	batch : U64,
 	client_request_id : Str,
 	cost_usd : Dec,
 	elapsed_ms : U128,
@@ -132,9 +154,9 @@ RunAudit : {
 	accounting : Accounting,
 	attempts : List(AttemptRecord),
 	config : Config,
+	config_sha256 : Str,
 	final_path : Str,
 	metrics : Metrics,
-	mode : Str,
 	rounds : List(RoundCheckpoint),
 	run_id : Str,
 	source_sha256 : Str,
@@ -146,93 +168,99 @@ JevQuestion : { criteria : { false : Str, true : Str }, instructions : Str, type
 JevStateRow : { gloss : Str, id : U64, line : U64, position : U64, word : Str }
 PromptToken : { id : U64, line : U64, position : U64, previous_rejected_glosses : List(Str), word : Str }
 
-experiment_dir = "experiments/deepseek-jev"
-config_path = "experiments/deepseek-jev/config.json"
+default_config_path = "experiments/deepseek-jev/config.json"
 unresolved = "[UNRESOLVED]"
 
 main! = |args| {
 	displayed = List.map(args, OsStr.display)
+	configured_path = Env.var_str!(OsStr.from_str("DEEPSEEK_JEV_CONFIG")) ?? default_config_path
 	match List.drop_first(displayed, 1) {
-		["--check"] => check!()
-		["--smoke"] => start!("smoke")
-		["--run"] => start!("full")
-		["--resume-smoke"] => resume!("smoke")
-		["--resume"] => resume!("full")
+		["--check"] => check!(configured_path)
+		["--check", path] => check!(path)
+		["--run"] => start!(configured_path)
+		["--run", path] => start!(path)
+		["--resume"] => resume!(configured_path)
+		["--resume", path] => resume!(path)
 		_ => {
-			_ = Stderr.line!("usage: run.roc [--check | --smoke | --run | --resume-smoke | --resume]")?
+			_ = Stderr.line!("usage: run.roc [--check | --run | --resume] [config.json]")?
 			Err(Exit(2))
 		}
 	}
 }
 
-check! = || {
-	prepared = prepare!()?
-	tokens = prepared.tokens
-	fake1 = fake_generated(tokens, 1)
-	_ = validate_generated(1, tokens, [], fake1)?
-	scores1 = synthetic_judgments(prepared.config, 1, fake1, "odd")?
-	pending2 = tokens_for_ids(tokens, rejected_ids(scores1), [])?
-	fake2 = fake_generated(pending2, 2)
-	_ = validate_generated(2, pending2, [fake1.tokens], fake2)?
-	scores2 = synthetic_judgments(prepared.config, 2, fake2, "half")?
-	pending3 = tokens_for_ids(tokens, rejected_ids(scores2), [])?
-	fake3 = fake_generated(pending3, 3)
-	_ = validate_generated(3, pending3, [fake1.tokens, fake2.tokens], fake3)?
-	scores3 = synthetic_judgments(prepared.config, 3, fake3, "reject")?
-	rounds : List(RoundCheckpoint)
-	rounds = [fake_round(1, fake1, scores1), fake_round(2, fake2, scores2), fake_round(3, fake3, scores3)]
+check! = |config_path| {
+	prepared = prepare!(config_path)?
+	tokens = prepared.target_tokens
+	rounds = synthetic_rounds(prepared.config, tokens, 1, tokens, [], [])?
 	final = assemble_final(tokens, rounds)
 	_ = validate_final(tokens, final)?
-	_ = validate_simulation(tokens, rounds, final)?
+	_ = validate_simulation(prepared.config, tokens, rounds, final)?
+	fake1 = fake_generated(tokens, 1)
 	all_accepted = synthetic_judgments(prepared.config, 1, fake1, "accept")?
-	early_rounds = [fake_round(1, fake1, all_accepted)]
+	early_rounds = [fake_round(prepared.config, 1, fake1, all_accepted)]
 	early_final = assemble_final(tokens, early_rounds)
 	if !List.is_empty(rejected_ids(all_accepted)) {
 		Err(EarlyTerminationSimulationFailed)
 	} else {
-		_ = validate_simulation(tokens, early_rounds, early_final)?
-		deep_body = deep_request_body(prepared.config, prepared.source, 1, tokens, [], "")?
-		jev_body = jev_request_body(prepared.config, prepared.source, 1, tokens, fake1.tokens)?
+		_ = validate_simulation(prepared.config, tokens, early_rounds, early_final)?
+		first_batch = take_at_most(tokens, prepared.config.execution.deterministic_batch_size, [])
+		deep_body = deep_request_body(prepared.config, prepared.context, 1, first_batch, [], "")?
+		jev_body = jev_request_body(prepared.config, prepared.context, 1, first_batch, fake_generated(first_batch, 1).tokens)?
 		_deep_json : {}
 		_deep_json = Json.parse(deep_body)?
 		_jev_json : {}
 		_jev_json = Json.parse(jev_body)?
-		_ = Stdout.line!("checked deepseek-jev: hashes, 136-token reconstruction, pinned requests, three-round routing, early stop, unresolved output, and retry limits; no API keys read and no requests sent")?
+		_ = Stdout.line!("checked ${prepared.config.experiment_name}: configured hashes and reconstruction, target/context selections, deterministic batches, adaptive routing, early stop, unresolved output, pins, and retry limits; no API keys read and no requests sent\nauthorize this exact config with DEEPSEEK_JEV_AUTHORIZE=run:${prepared.config_sha256}")?
 		Ok({})
 	}
 }
 
-prepare! = || {
+prepare! = |config_path| {
 	raw_config = Path.read_utf8!(Path.utf8(config_path))?
 	config : Config
 	config = Json.parse(raw_config)?
+	canonical_config = Json.to_str_try(config)?
+	config_sha256 = sha256_text!(canonical_config)?
 	_ = validate_config(config)?
-	_ = verify_sha256!(config.input.source_path, config.input.source_sha256, |expected, actual| SourceHashMismatch(expected, actual))?
-	_ = verify_sha256!(config.input.tokens_path, config.input.tokens_sha256, |expected, actual| TokensHashMismatch(expected, actual))?
 	source = Path.read_utf8!(Path.utf8(config.input.source_path))?
 	raw_tokens = Path.read_utf8!(Path.utf8(config.input.tokens_path))?
+	actual_source_sha256 = sha256_text!(source)?
+	actual_tokens_sha256 = sha256_text!(raw_tokens)?
+	_ = if actual_source_sha256 == config.input.source_sha256 Ok({}) else Err(SourceHashMismatch(config.input.source_sha256, actual_source_sha256))?
+	_ = if actual_tokens_sha256 == config.input.tokens_sha256 Ok({}) else Err(TokensHashMismatch(config.input.tokens_sha256, actual_tokens_sha256))?
 	tokens : List(Token)
 	tokens = Json.parse(raw_tokens)?
 	_ = validate_fixed_input(source, tokens, config)?
-	Ok({ config, source, tokens })
+	target_tokens = select_token_range(tokens, config.execution.target.reference_token_id, config.execution.target.token_count, [])?
+	context_token = token_by_id(tokens, config.execution.context.reference_token_id)?
+	context = context_for(source, context_token.line, config.execution.context.line_count)?
+	context_last_line = context_token.line + config.execution.context.line_count - 1
+	if List.any(target_tokens, |token| token.line < context_token.line or token.line > context_last_line) {
+		Err(TargetOutsideContext)
+	} else {
+		Ok({ config, config_sha256, context, source, target_tokens, tokens })
+	}
 }
 
 validate_config = |config| {
 	g = config.generator.generation
 	r = config.retry
-	if config.experiment_name != "deepseek-jev-adaptive-gloss" or config.experiment_version != 1 {
+	e = config.execution
+	if Str.trim(config.experiment_name) == "" or config.experiment_version == 0 {
 		Err(InvalidExperimentIdentity)
-	} else if config.input.source_path != "experiments/deepseek-jev/iliad-1.1-20.txt" or config.input.source_sha256 != "1263ac162eea8365bd04261361668fab579c2f97299ac0a8b4429f7f33133807" or config.input.tokens_path != "experiments/deepseek-jev/tokens.json" or config.input.tokens_sha256 != "09497d4c5decffba19b456258396a578d86d880847f1b49c44038d91c10fe32a" or config.input.line_count != 20 or config.input.token_count != 136 {
+	} else if config.input.source_path == "" or config.input.source_sha256 == "" or config.input.tokens_path == "" or config.input.tokens_sha256 == "" or config.input.line_count == 0 or config.input.token_count == 0 {
 		Err(InvalidInputPins)
-	} else if config.generator.provider != { api_key_env: "PPQ_API_KEY", base_url: "https://api.ppq.ai/v1", id: "sail-research", name: "ppq", request_name: "sail-research", response_name: "Sail Research" } or config.generator.model != "deepseek/deepseek-v4-flash-0731" {
+	} else if config.artifacts.responses_path == "" or config.artifacts.outputs_path == "" or config.artifacts.responses_path == config.artifacts.outputs_path {
+		Err(InvalidArtifactPaths)
+	} else if config.generator.provider.api_key_env != "PPQ_API_KEY" or !Str.starts_with(config.generator.provider.base_url, "https://") or config.generator.provider.id == "" or config.generator.provider.id != config.generator.provider.request_name or config.generator.provider.name == "" or config.generator.provider.response_name == "" or config.generator.model == "" {
 		Err(InvalidGeneratorPins)
-	} else if g.temperature != 1 or g.top_p != 1 or g.top_k != 0 or g.seed != 1 or g.max_tokens != 4096 or g.frequency_penalty != 0 or g.presence_penalty != 0 or g.reasoning.enabled or !g.reasoning.exclude or g.include_reasoning or !g.require_parameters or g.allow_fallbacks {
+	} else if g.max_tokens == 0 or g.temperature < 0 or g.top_p < 0 or g.top_p > 1 or g.frequency_penalty < -2 or g.frequency_penalty > 2 or g.presence_penalty < -2 or g.presence_penalty > 2 or !g.require_parameters or g.allow_fallbacks {
 		Err(InvalidGenerationPins)
-	} else if config.validator.provider != { api_key_env: "TYPESAFE_API_KEY", endpoint: "https://api.typesafe.ai/v1/systemone", name: "typesafe" } or config.validator.model != "jev-1.13.0" or config.validator.primitive != "noul" or config.validator.input_cost_per_million_tokens_usd != 0.042 {
+	} else if config.validator.provider.api_key_env != "TYPESAFE_API_KEY" or !Str.starts_with(config.validator.provider.endpoint, "https://") or config.validator.provider.name == "" or config.validator.model == "" or config.validator.primitive != "noul" or config.validator.input_cost_per_million_tokens_usd < 0 {
 		Err(InvalidValidatorPins)
-	} else if config.execution.max_semantic_rounds != 3 or config.execution.acceptance_threshold != 0.5 or config.execution.smoke_token_count != 10 {
+	} else if e.max_semantic_rounds == 0 or e.max_semantic_rounds > 3 or e.acceptance_threshold < 0 or e.acceptance_threshold > 1 or e.deterministic_batch_size == 0 or e.target.reference_token_id == 0 or e.target.token_count == 0 or e.context.reference_token_id == 0 or e.context.line_count == 0 {
 		Err(InvalidExecutionPins)
-	} else if r.malformed_response_retries != 1 or r.transport_retries != 2 or r.backoff_initial_ms != 500 or r.backoff_max_ms != 5000 or r.max_retry_after_ms != 60000 {
+	} else if r.backoff_initial_ms == 0 or r.backoff_initial_ms > r.backoff_max_ms or r.max_retry_after_ms < r.backoff_initial_ms {
 		Err(InvalidRetryPins)
 	} else {
 		Ok({})
@@ -276,47 +304,52 @@ reconstruct_source = |tokens, current_line, found|
 		}
 	}
 
-verify_sha256! = |path, expected, mismatch| {
-	output = Cmd.new_str("sha256sum").args_str([path]).exec_output!()?
-	actual = match Str.split_on(Str.trim(output.stdout_utf8), " ") { [hash, ..] => Ok(hash), [] => Err(InvalidSha256Output) }?
-	if actual == expected Ok({}) else Err(mismatch(expected, actual))
-}
-
-start! = |mode| {
-	prepared = prepare!()?
-	_ = authorize_paid!(mode)?
-	_ = (if mode == "full" require_completed_smoke!(prepared.config, prepared.tokens) else Ok({}))?
-	keys = read_keys!(prepared.config)?
-	target_tokens = if mode == "smoke" take_exact(prepared.tokens, prepared.config.execution.smoke_token_count, [])? else prepared.tokens
+sha256_text! = |text| {
 	now = Utc.now!()
-	run_id = "${mode}-${run_id_for(now, prepared.config.experiment_version)}"
-	run_dir = "${experiment_dir}/responses/${run_id}"
-	output_dir = "${experiment_dir}/outputs/${mode}/${run_id}"
-	_ = create_run!(prepared.config, mode, run_id, run_dir, output_dir, List.len(target_tokens))?
+	path = "/tmp/aristos-deepseek-jev-config-${U128.to_str(Utc.to_nanos_since_epoch(now))}.json"
+	_ = write_new_utf8!(text, path)?
+	result = sha256_for!(path)
+	_ = Path.delete!(Path.utf8(path))?
+	result
+}
+sha256_for! = |path| {
+	output = Cmd.new_str("sha256sum").args_str([path]).exec_output!()?
+	match Str.split_on(Str.trim(output.stdout_utf8), " ") { [hash, ..] => Ok(hash), [] => Err(InvalidSha256Output) }
+}
+start! = |config_path| {
+	prepared = prepare!(config_path)?
+	_ = authorize_paid!(prepared.config_sha256)?
+	keys = read_keys!(prepared.config)?
+	target_tokens = prepared.target_tokens
+	now = Utc.now!()
+	run_id = run_id_for(now, prepared.config.experiment_version)
+	run_dir = "${prepared.config.artifacts.responses_path}/${run_id}"
+	output_dir = "${prepared.config.artifacts.outputs_path}/${run_id}"
+	_ = create_run!(prepared.config, prepared.config_sha256, run_id, run_dir, output_dir, List.len(target_tokens))?
 	_ = acquire_run_lock!(run_dir)?
-	result = execute!(prepared, target_tokens, keys, mode, run_id, run_dir, output_dir)
+	result = execute!(prepared, target_tokens, keys, run_id, run_dir, output_dir)
 	_ = release_run_lock!(run_dir)?
 	result
 }
 
-resume! = |mode| {
-	prepared = prepare!()?
-	_ = authorize_paid!(mode)?
-	run_id = latest_incomplete_run!(mode)?
-	run_dir = "${experiment_dir}/responses/${run_id}"
-	output_dir = "${experiment_dir}/outputs/${mode}/${run_id}"
-	target_tokens = if mode == "smoke" take_exact(prepared.tokens, prepared.config.execution.smoke_token_count, [])? else prepared.tokens
-	_ = validate_manifest!(prepared.config, mode, run_id, run_dir, output_dir, List.len(target_tokens))?
+resume! = |config_path| {
+	prepared = prepare!(config_path)?
+	_ = authorize_paid!(prepared.config_sha256)?
+	run_id = latest_incomplete_run!(prepared.config.artifacts.responses_path, prepared.config, prepared.config_sha256, List.len(prepared.target_tokens))?
+	run_dir = "${prepared.config.artifacts.responses_path}/${run_id}"
+	output_dir = "${prepared.config.artifacts.outputs_path}/${run_id}"
+	target_tokens = prepared.target_tokens
+	_ = validate_manifest!(prepared.config, prepared.config_sha256, run_id, run_dir, output_dir, List.len(target_tokens))?
 	_ = acquire_run_lock!(run_dir)?
-	result = resume_locked!(prepared, target_tokens, mode, run_id, run_dir, output_dir)
+	result = resume_locked!(prepared, target_tokens, run_id, run_dir, output_dir)
 	_ = release_run_lock!(run_dir)?
 	result
 }
 
-resume_locked! = |prepared, target_tokens, mode, run_id, run_dir, output_dir| {
+resume_locked! = |prepared, target_tokens, run_id, run_dir, output_dir| {
 	_ = preflight_resume_artifacts!(run_dir)?
 	keys = read_keys!(prepared.config)?
-	execute!(prepared, target_tokens, keys, mode, run_id, run_dir, output_dir)
+	execute!(prepared, target_tokens, keys, run_id, run_dir, output_dir)
 }
 
 acquire_run_lock! = |run_dir| {
@@ -330,9 +363,9 @@ acquire_run_lock! = |run_dir| {
 
 release_run_lock! = |run_dir| Path.delete_empty!(Path.utf8("${run_dir}/.run-lock"))
 
-authorize_paid! = |mode| {
-	wanted = if mode == "smoke" "smoke" else "full"
-	actual = Env.var_str!("DEEPSEEK_JEV_AUTHORIZE") ?? ""
+authorize_paid! = |config_sha256| {
+	wanted = "run:${config_sha256}"
+	actual = Env.var_str!(OsStr.from_str("DEEPSEEK_JEV_AUTHORIZE")) ?? ""
 	if actual == wanted Ok({}) else Err(PaidAuthorizationRequired(wanted))
 }
 
@@ -343,7 +376,7 @@ read_keys! = |config| {
 }
 
 read_key! = |name| {
-	exported = if name == "PPQ_API_KEY" Env.var_str!("PPQ_API_KEY") ?? "" else if name == "TYPESAFE_API_KEY" Env.var_str!("TYPESAFE_API_KEY") ?? "" else ""
+	exported = Env.var_str!(OsStr.from_str(name)) ?? ""
 	if Str.trim(exported) != "" {
 		Ok(Str.trim(exported))
 	} else {
@@ -363,31 +396,31 @@ env_value = |env, name| {
 	}
 }
 
-create_run! = |config, mode, run_id, run_dir, output_dir, target_count| {
+create_run! = |config, config_sha256, run_id, run_dir, output_dir, target_count| {
 	if Path.exists!(Path.utf8(run_dir))? or Path.exists!(Path.utf8(output_dir))? {
 		Err(RunAlreadyExists(run_id))
 	} else {
 		_ = Path.create_all!(Path.utf8(run_dir))?
 		_ = Path.create_all!(Path.utf8(output_dir))?
 		manifest : Manifest
-		manifest = { experiment_version: config.experiment_version, mode, run_id, target_count }
+		manifest = { config, config_sha256, run_id, target_count }
 		json = Json.to_str_try(manifest)?
 		write_new_utf8!("${json}\n", "${run_dir}/run.json")
 	}
 }
 
-validate_manifest! = |config, mode, run_id, run_dir, output_dir, target_count| {
+validate_manifest! = |config, config_sha256, run_id, run_dir, output_dir, target_count| {
 	if !Path.exists!(Path.utf8(output_dir))? or Path.exists!(Path.utf8("${run_dir}/run.complete"))? {
 		Err(InvalidResumeRun(run_id))
 	} else {
 		raw = Path.read_utf8!(Path.utf8("${run_dir}/run.json"))?
 		manifest : Manifest
 		manifest = Json.parse(raw)?
-		if manifest == { experiment_version: config.experiment_version, mode, run_id, target_count } Ok({}) else Err(ManifestMismatch(run_id))
+		if manifest == { config, config_sha256, run_id, target_count } Ok({}) else Err(ManifestMismatch(run_id))
 	}
 }
 
-execute! = |prepared, target_tokens, keys, mode, run_id, run_dir, output_dir| {
+execute! = |prepared, target_tokens, keys, run_id, run_dir, output_dir| {
 	progress = load_progress!(prepared.config, target_tokens, run_id, run_dir, 1, target_tokens, [], [])?
 	completed = run_rounds!(prepared, target_tokens, keys, run_id, run_dir, progress.next_round, progress.pending, progress.rounds)?
 	final = assemble_final(target_tokens, completed)
@@ -397,12 +430,12 @@ execute! = |prepared, target_tokens, keys, mode, run_id, run_dir, output_dir| {
 	attempts = List.sort_with(read_all_attempts!(run_dir, run_id)?, compare_attempt_records)
 	audit : RunAudit
 	audit = {
-		accounting: accounting_for(attempts),
+		accounting: accounting_for(attempts, completed),
 		attempts,
 		config: prepared.config,
+		config_sha256: prepared.config_sha256,
 		final_path,
 		metrics: metrics_for(completed, final),
-		mode,
 		rounds: completed,
 		run_id,
 		source_sha256: prepared.config.input.source_sha256,
@@ -439,17 +472,6 @@ run_rounds! = |prepared, target_tokens, keys, run_id, run_dir, round, pending, r
 	if round > prepared.config.execution.max_semantic_rounds or List.is_empty(pending) {
 		Ok(rounds)
 	} else {
-		generated_path = generated_checkpoint_path(run_dir, round)
-		generated_checkpoint = if Path.exists!(Path.utf8(generated_path))? {
-			raw = Path.read_utf8!(Path.utf8(generated_path))?
-			loaded : GeneratedCheckpoint
-			loaded = Json.parse(raw)?
-			_ = validate_generated_checkpoint!(prepared.config, run_id, round, pending, List.map(rounds, |r| r.generated), loaded)?
-			loaded
-		} else {
-			state = next_attempt_state!(run_dir, run_id, "deepseek", round, prepared.config.retry)?
-			run_deep_attempt!(prepared, pending, List.map(rounds, |r| r.generated), keys.ppq, run_id, run_dir, round, state.validation_attempt, state.transport_attempt, state.feedback)?
-		}
 		checkpoint_path = round_checkpoint_path(run_dir, round)
 		checkpoint = if Path.exists!(Path.utf8(checkpoint_path))? {
 			raw = Path.read_utf8!(Path.utf8(checkpoint_path))?
@@ -458,14 +480,72 @@ run_rounds! = |prepared, target_tokens, keys, run_id, run_dir, round, pending, r
 			_ = validate_round_checkpoint!(prepared.config, target_tokens, run_id, round, pending, List.map(rounds, |r| r.generated), loaded)?
 			loaded
 		} else {
-			body = jev_request_body(prepared.config, prepared.source, round, pending, generated_checkpoint.generated)?
-			state = next_attempt_state!(run_dir, run_id, "jev", round, prepared.config.retry)?
-			run_jev_attempt!(prepared.config, target_tokens, generated_checkpoint, keys.typesafe, run_id, run_dir, round, state.validation_attempt, state.transport_attempt, body)?
+			run_round_batches!(prepared, target_tokens, keys, run_id, run_dir, round, pending, List.map(rounds, |r| r.generated), pending, 1, [])?
 		}
 		next_pending = tokens_for_ids(target_tokens, checkpoint.rejected_ids, [])?
 		run_rounds!(prepared, target_tokens, keys, run_id, run_dir, round + 1, next_pending, List.append(rounds, checkpoint))
 	}
 }
+
+run_round_batches! = |prepared, target_tokens, keys, run_id, run_dir, round, round_pending, previous_rounds, remaining, batch, completed_batches| {
+	if List.is_empty(remaining) {
+		checkpoint = round_from_batches(prepared.config, run_id, round, round_pending, completed_batches)
+		_ = validate_round_checkpoint!(prepared.config, target_tokens, run_id, round, round_pending, previous_rounds, checkpoint)?
+		json = Json.to_str_try(checkpoint)?
+		_ = write_atomic_new!("${json}\n", round_checkpoint_path(run_dir, round))?
+		Ok(checkpoint)
+	} else {
+		batch_tokens = take_at_most(remaining, prepared.config.execution.deterministic_batch_size, [])
+		rest = drop_at_most(remaining, prepared.config.execution.deterministic_batch_size)
+		batch_path = batch_checkpoint_path(run_dir, round, batch)
+		batch_checkpoint = if Path.exists!(Path.utf8(batch_path))? {
+			raw = Path.read_utf8!(Path.utf8(batch_path))?
+			loaded : BatchCheckpoint
+			loaded = Json.parse(raw)?
+			_ = validate_batch_checkpoint!(prepared.config, target_tokens, run_id, round, batch, batch_tokens, previous_rounds, loaded)?
+			loaded
+		} else {
+			generated_path = generated_checkpoint_path(run_dir, round, batch)
+			generated_checkpoint = if Path.exists!(Path.utf8(generated_path))? {
+				raw = Path.read_utf8!(Path.utf8(generated_path))?
+				loaded : GeneratedCheckpoint
+				loaded = Json.parse(raw)?
+				_ = validate_generated_checkpoint!(prepared.config, run_id, round, batch, batch_tokens, previous_rounds, loaded)?
+				loaded
+			} else {
+				state = next_attempt_state!(run_dir, run_id, "deepseek", round, batch, prepared.config.retry)?
+				run_deep_attempt!(prepared, batch_tokens, previous_rounds, keys.ppq, run_id, run_dir, round, batch, state.validation_attempt, state.transport_attempt, state.feedback, state.resume_body)?
+			}
+			body = jev_request_body(prepared.config, prepared.context, round, batch_tokens, generated_checkpoint.generated)?
+			state = next_attempt_state!(run_dir, run_id, "jev", round, batch, prepared.config.retry)?
+			run_jev_attempt!(prepared.config, target_tokens, generated_checkpoint, keys.typesafe, run_id, run_dir, round, batch, state.validation_attempt, state.transport_attempt, body)?
+		}
+		run_round_batches!(prepared, target_tokens, keys, run_id, run_dir, round, round_pending, previous_rounds, rest, batch + 1, List.append(completed_batches, batch_checkpoint))
+	}
+}
+
+round_from_batches = |config, run_id, round, pending, batches| {
+	generated = concat_batch_generated(batches, [])
+	judgments = concat_batch_judgments(batches, [])
+	checkpoint : RoundCheckpoint
+	checkpoint = {
+		accepted_ids: accepted_ids(judgments),
+		batches,
+		experiment_version: config.experiment_version,
+		generated,
+		judgments,
+		pending_ids: List.map(pending, |token| token.id),
+		rejected_ids: rejected_ids(judgments),
+		round,
+		run_id,
+	}
+	checkpoint
+}
+
+concat_batch_generated = |batches, found|
+	match batches { [] => found, [batch, .. as rest] => concat_batch_generated(rest, List.concat(found, batch.generated)) }
+concat_batch_judgments = |batches, found|
+	match batches { [] => found, [batch, .. as rest] => concat_batch_judgments(rest, List.concat(found, batch.judgments)) }
 
 deep_request_body = |config, source, round, pending, previous_rounds, feedback| {
 	g : Generation
@@ -589,7 +669,7 @@ jev_request_body = |config, source, round, tokens, generated| {
 	state = { generated_tokens: state_rows, semantic_round: round, source_passage: source_text, task: "Judge each token/gloss pair independently. Do not compare candidates, generate alternatives, alter token data, or consider accepted tokens from other rounds." }
 	state_json = Json.to_str_try(state)?
 	model_json = Json.to_str_try(config.validator.model)?
-	questions = jev_question_entries(round, generated, 0, [])?
+	questions = jev_question_entries(config.validator.primitive, round, generated, 0, [])?
 	Ok("{\"model\":${model_json},\"questions\":{${Str.join_with(questions, ",")}},\"state\":${state_json}}")
 }
 
@@ -608,7 +688,7 @@ jev_state_rows = |tokens, rows, found|
 		_ => Err(DeepCoverageMismatch)
 	}
 
-jev_question_entries = |round, rows, index, found|
+jev_question_entries = |primitive, round, rows, index, found|
 	match rows {
 		[] => Ok(found)
 		[row, .. as rest] => {
@@ -619,41 +699,40 @@ jev_question_entries = |round, rows, index, found|
 					false: "False if the gloss has the wrong lexical sense, morphology, syntactic contribution, occurrence, or context; is unnatural as a concise English token gloss; or would create a phrase-level mistranslation.",
 				},
 				instructions: "Is `generated_tokens[${U64.to_str(index)}].gloss` a valid contextual gloss for the exact word and occurrence in `generated_tokens[${U64.to_str(index)}]`? Use the complete source passage for context. Judge only this pair and do not propose a replacement.",
-				type: jev_primitive,
+				type: primitive,
 			}
 			key_json = Json.to_str_try(question_key(round, row.id))?
 			question_json = Json.to_str_try(question)?
-			jev_question_entries(round, rest, index + 1, List.append(found, "${key_json}:${question_json}"))
+			jev_question_entries(primitive, round, rest, index + 1, List.append(found, "${key_json}:${question_json}"))
 		}
 	}
 
-jev_primitive = "noul"
 question_key = |round, id| "round_${U64.to_str(round)}_token_${U64.to_str(id)}"
 
-run_deep_attempt! = |prepared, pending, previous_rounds, api_key, run_id, run_dir, round, validation_attempt, transport_attempt, feedback| {
-	body = deep_request_body(prepared.config, prepared.source, round, pending, previous_rounds, feedback)?
-	captured = send_deep_request!(prepared.config, api_key, run_id, run_dir, round, validation_attempt, transport_attempt, body)?
+run_deep_attempt! = |prepared, pending, previous_rounds, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt, feedback, resume_body| {
+	body = if resume_body == "" deep_request_body(prepared.config, prepared.context, round, pending, previous_rounds, feedback)? else resume_body
+	captured = send_deep_request!(prepared.config, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt, body)?
 	parsed : Try(DeepResponse, _)
 	parsed = decode_json_bytes(captured.raw)
 	match parsed {
-		Err(_) => retry_deep_validation!(prepared, pending, previous_rounds, api_key, run_id, run_dir, round, validation_attempt, captured, "captured response was not the required PPQ completion envelope", 0, Bool.True)
+		Err(_) => retry_deep_validation!(prepared, pending, previous_rounds, api_key, run_id, run_dir, round, batch, validation_attempt, captured, "captured response was not the required PPQ completion envelope", 0, Bool.True)
 		Ok(decoded) => {
 			known_cost = if decoded.usage.cost >= 0 decoded.usage.cost else 0
 			if decoded.model != prepared.config.generator.model or decoded.provider != prepared.config.generator.provider.response_name {
 				error_text = "resolved DeepSeek identity ${decoded.model}/${decoded.provider} did not match the configured pin"
-				_ = write_attempt!(captured, run_id, "deepseek", round, validation_attempt, "pin-mismatch", error_text, known_cost, decoded.usage.cost <= 0, 0)?
+				_ = write_attempt!(captured, run_id, "deepseek", round, batch, validation_attempt, "pin-mismatch", error_text, known_cost, decoded.usage.cost <= 0, 0)?
 				Err(DeepIdentityPinMismatch(decoded.model, decoded.provider))
 			} else {
 				validation = validate_deep_response(prepared.config, round, pending, previous_rounds, decoded)
 				match validation {
-					Err(error_text) => retry_deep_validation!(prepared, pending, previous_rounds, api_key, run_id, run_dir, round, validation_attempt, captured, error_text, known_cost, decoded.usage.cost <= 0)
+					Err(error_text) => retry_deep_validation!(prepared, pending, previous_rounds, api_key, run_id, run_dir, round, batch, validation_attempt, captured, error_text, known_cost, decoded.usage.cost <= 0)
 					Ok(rows) => {
 						call = deep_call_audit(prepared.config, decoded, captured, validation_attempt)
 						checkpoint : GeneratedCheckpoint
-						checkpoint = { call, experiment_version: prepared.config.experiment_version, generated: rows, pending_ids: List.map(pending, |token| token.id), round, run_id }
+						checkpoint = { batch, call, experiment_version: prepared.config.experiment_version, generated: rows, pending_ids: List.map(pending, |token| token.id), round, run_id }
 						json = Json.to_str_try(checkpoint)?
-						_ = write_atomic_new!("${json}\n", generated_checkpoint_path(run_dir, round))?
-						_ = write_attempt!(captured, run_id, "deepseek", round, validation_attempt, "valid", "", decoded.usage.cost, decoded.usage.cost == 0, 0)?
+						_ = write_atomic_new!("${json}\n", generated_checkpoint_path(run_dir, round, batch))?
+						_ = write_attempt!(captured, run_id, "deepseek", round, batch, validation_attempt, "valid", "", decoded.usage.cost, decoded.usage.cost == 0, 0)?
 						Ok(checkpoint)
 					}
 				}
@@ -682,19 +761,19 @@ validate_deep_response = |config, round, pending, previous_rounds, decoded| {
 	}
 }
 
-retry_deep_validation! = |prepared, pending, previous_rounds, api_key, run_id, run_dir, round, attempt, captured, error_text, cost, ambiguous| {
-	_ = write_attempt!(captured, run_id, "deepseek", round, attempt, "rejected", error_text, cost, ambiguous, 0)?
-	_ = Stdout.line!("rejected DeepSeek round ${U64.to_str(round)} response ${U64.to_str(attempt)}: ${error_text}")?
+retry_deep_validation! = |prepared, pending, previous_rounds, api_key, run_id, run_dir, round, batch, attempt, captured, error_text, cost, ambiguous| {
+	_ = write_attempt!(captured, run_id, "deepseek", round, batch, attempt, "rejected", error_text, cost, ambiguous, 0)?
+	_ = Stdout.line!("rejected DeepSeek round ${U64.to_str(round)} batch ${U64.to_str(batch)} response ${U64.to_str(attempt)}: ${error_text}")?
 	if attempt <= prepared.config.retry.malformed_response_retries {
-		run_deep_attempt!(prepared, pending, previous_rounds, api_key, run_id, run_dir, round, attempt + 1, 1, error_text)
+		run_deep_attempt!(prepared, pending, previous_rounds, api_key, run_id, run_dir, round, batch, attempt + 1, 1, error_text, "")
 	} else {
 		Err(DeepValidationAttemptsExhausted(error_text))
 	}
 }
 
-send_deep_request! = |config, api_key, run_id, run_dir, round, validation_attempt, transport_attempt, body| {
+send_deep_request! = |config, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt, body| {
 	requested_at = Utc.now!()
-	client_request_id = attempt_id("deepseek", round, validation_attempt, transport_attempt, requested_at)
+	client_request_id = attempt_id("deepseek", round, batch, validation_attempt, transport_attempt, requested_at)
 	request_path = "${run_dir}/${client_request_id}.request.json"
 	raw_path = "${run_dir}/${client_request_id}.raw.json"
 	headers_path = "${run_dir}/${client_request_id}.headers.json"
@@ -713,10 +792,10 @@ send_deep_request! = |config, api_key, run_id, run_dir, round, validation_attemp
 			_ = write_new_utf8!("[]\n", headers_path)?
 			captured = empty_capture(client_request_id, request_path, raw_path, headers_path, requested_at, received_at, "basic-cli", transport_attempt, 0)
 			delay = if error.retryable and transport_attempt <= config.retry.transport_retries retry_backoff_ms(config.retry, transport_attempt) else 0
-			_ = write_attempt!(captured, run_id, "deepseek", round, validation_attempt, "transport-failed", error.message, 0, error.ambiguous, delay)?
+			_ = write_attempt!(captured, run_id, "deepseek", round, batch, validation_attempt, "transport-failed", error.message, 0, error.ambiguous, delay)?
 			if delay > 0 {
 				_ = Sleep.millis!(delay)
-				send_deep_request!(config, api_key, run_id, run_dir, round, validation_attempt, transport_attempt + 1, body)
+				send_deep_request!(config, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt + 1, body)
 			} else {
 				Err(DeepTransportFailure(error.category))
 			}
@@ -734,10 +813,10 @@ send_deep_request! = |config, api_key, run_id, run_dir, round, validation_attemp
 			} else {
 				retryable = is_transient_status(status)
 				delay = if retryable and transport_attempt <= config.retry.transport_retries retry_delay_ms!(headers, config.retry, transport_attempt)? else 0
-				_ = write_attempt!(captured, run_id, "deepseek", round, validation_attempt, "http-rejected", "PPQ returned HTTP ${U16.to_str(status)}", 0, retryable, delay)?
+				_ = write_attempt!(captured, run_id, "deepseek", round, batch, validation_attempt, "http-rejected", "PPQ returned HTTP ${U16.to_str(status)}", 0, retryable, delay)?
 				if delay > 0 {
 					_ = Sleep.millis!(delay)
-					send_deep_request!(config, api_key, run_id, run_dir, round, validation_attempt, transport_attempt + 1, body)
+					send_deep_request!(config, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt + 1, body)
 				} else {
 					Err(DeepHttpFailure(status))
 				}
@@ -759,7 +838,7 @@ deep_call_audit = |config, decoded, captured, validation_attempt| {
 		request_path: captured.request_path,
 		requested_at: captured.requested_at,
 		requested_model: config.generator.model,
-		requested_provider: "ppq/${config.generator.provider.id}",
+		requested_provider: "${config.generator.provider.name}/${config.generator.provider.id}",
 		resolved_model: decoded.model,
 		resolved_provider: decoded.provider,
 		response_id: decoded.id,
@@ -771,20 +850,20 @@ deep_call_audit = |config, decoded, captured, validation_attempt| {
 	call
 }
 
-run_jev_attempt! = |config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, validation_attempt, transport_attempt, body| {
-	captured = send_jev_request!(config, api_key, run_id, run_dir, round, validation_attempt, transport_attempt, body)?
+run_jev_attempt! = |config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt, body| {
+	captured = send_jev_request!(config, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt, body)?
 	parsed : Try(JevResponse, _)
 	parsed = decode_json_bytes(captured.raw)
 	match parsed {
-		Err(_) => retry_jev_validation!(config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, validation_attempt, body, captured, "captured response was not the direct TypeSafe Noul schema", 0)
+		Err(_) => retry_jev_validation!(config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, batch, validation_attempt, body, captured, "captured response was not the direct TypeSafe Noul schema", 0)
 		Ok(decoded) => {
 			cost = U64.to_dec(decoded.usage.input_tokens) * config.validator.input_cost_per_million_tokens_usd / 1000000
 			raw_text = Str.from_utf8(captured.raw) ? |_| InvalidUtf8Response
 			if !answer_keys_occur_once(raw_text, round, generated_checkpoint.generated) {
-				retry_jev_validation!(config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, validation_attempt, body, captured, "Jev response contained a missing or duplicate answer key", cost)
+				retry_jev_validation!(config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, batch, validation_attempt, body, captured, "Jev response contained a missing or duplicate answer key", cost)
 			} else if decoded.model != config.validator.model {
 				error_text = "resolved Jev model ${decoded.model} did not match ${config.validator.model}"
-				_ = write_attempt!(captured, run_id, "jev", round, validation_attempt, "pin-mismatch", error_text, cost, decoded.usage.input_tokens == 0, 0)?
+				_ = write_attempt!(captured, run_id, "jev", round, batch, validation_attempt, "pin-mismatch", error_text, cost, decoded.usage.input_tokens == 0, 0)?
 				Err(JevIdentityPinMismatch(decoded.model))
 			} else {
 				validation = if decoded.usage.input_tokens == 0 or decoded.usage.output_tokens == 0 {
@@ -793,12 +872,13 @@ run_jev_attempt! = |config, target_tokens, generated_checkpoint, api_key, run_id
 					match validate_jev_answers(config, round, generated_checkpoint.generated, decoded.answers) { Ok(rows) => Ok(rows), Err(problem) => Err(jev_error_text(problem)) }
 				}
 				match validation {
-					Err(error_text) => retry_jev_validation!(config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, validation_attempt, body, captured, error_text, cost)
+					Err(error_text) => retry_jev_validation!(config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, batch, validation_attempt, body, captured, error_text, cost)
 					Ok(judgments) => {
 					call = jev_call_audit(config, decoded, captured, validation_attempt, cost)
-					checkpoint : RoundCheckpoint
+					checkpoint : BatchCheckpoint
 					checkpoint = {
 						accepted_ids: accepted_ids(judgments),
+						batch,
 						deepseek_call: generated_checkpoint.call,
 						experiment_version: config.experiment_version,
 						generated: generated_checkpoint.generated,
@@ -809,11 +889,11 @@ run_jev_attempt! = |config, target_tokens, generated_checkpoint, api_key, run_id
 						round,
 						run_id,
 					}
-					_ = validate_round_checkpoint!(config, target_tokens, run_id, round, tokens_for_ids(target_tokens, generated_checkpoint.pending_ids, [])?, [], checkpoint)?
+					_ = validate_batch_checkpoint!(config, target_tokens, run_id, round, batch, tokens_for_ids(target_tokens, generated_checkpoint.pending_ids, [])?, [], checkpoint)?
 					json = Json.to_str_try(checkpoint)?
-					_ = write_atomic_new!("${json}\n", round_checkpoint_path(run_dir, round))?
-						_ = write_attempt!(captured, run_id, "jev", round, validation_attempt, "valid", "", cost, Bool.False, 0)?
-						Ok(checkpoint)
+					_ = write_atomic_new!("${json}\n", batch_checkpoint_path(run_dir, round, batch))?
+					_ = write_attempt!(captured, run_id, "jev", round, batch, validation_attempt, "valid", "", cost, Bool.False, 0)?
+					Ok(checkpoint)
 					}
 				}
 			}
@@ -821,11 +901,11 @@ run_jev_attempt! = |config, target_tokens, generated_checkpoint, api_key, run_id
 	}
 }
 
-retry_jev_validation! = |config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, attempt, body, captured, error_text, cost| {
-	_ = write_attempt!(captured, run_id, "jev", round, attempt, "rejected", error_text, cost, Bool.True, 0)?
-	_ = Stdout.line!("rejected Jev round ${U64.to_str(round)} response ${U64.to_str(attempt)}: ${error_text}")?
+retry_jev_validation! = |config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, batch, attempt, body, captured, error_text, cost| {
+	_ = write_attempt!(captured, run_id, "jev", round, batch, attempt, "rejected", error_text, cost, Bool.True, 0)?
+	_ = Stdout.line!("rejected Jev round ${U64.to_str(round)} batch ${U64.to_str(batch)} response ${U64.to_str(attempt)}: ${error_text}")?
 	if attempt <= config.retry.malformed_response_retries {
-		run_jev_attempt!(config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, attempt + 1, 1, body)
+		run_jev_attempt!(config, target_tokens, generated_checkpoint, api_key, run_id, run_dir, round, batch, attempt + 1, 1, body)
 	} else {
 		Err(JevValidationAttemptsExhausted(error_text))
 	}
@@ -834,9 +914,9 @@ retry_jev_validation! = |config, target_tokens, generated_checkpoint, api_key, r
 # Work around basic-cli's HTTP/1-only Hyper transport failure for this valid TypeSafe POST.
 # Upstream: https://github.com/roc-lang/basic-cli/issues/455 and https://github.com/roc-lang/basic-cli/issues/438
 # Remove curl after a released compatible basic-cli transport completes this retained request and exposes safe diagnostics; stable basic-cli 0.22.2 does neither.
-send_jev_request! = |config, api_key, run_id, run_dir, round, validation_attempt, transport_attempt, body| {
+send_jev_request! = |config, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt, body| {
 	requested_at = Utc.now!()
-	client_request_id = attempt_id("jev", round, validation_attempt, transport_attempt, requested_at)
+	client_request_id = attempt_id("jev", round, batch, validation_attempt, transport_attempt, requested_at)
 	request_path = "${run_dir}/${client_request_id}.request.json"
 	raw_path = "${run_dir}/${client_request_id}.raw.json"
 	headers_path = "${run_dir}/${client_request_id}.headers"
@@ -866,10 +946,10 @@ send_jev_request! = |config, api_key, run_id, run_dir, round, validation_attempt
 			} else {
 				retryable = is_transient_status(status)
 				delay = if retryable and transport_attempt <= config.retry.transport_retries retry_delay_ms!(headers, config.retry, transport_attempt)? else 0
-				_ = write_attempt!(captured, run_id, "jev", round, validation_attempt, "http-rejected", "TypeSafe returned HTTP ${U16.to_str(status)}", 0, retryable, delay)?
+				_ = write_attempt!(captured, run_id, "jev", round, batch, validation_attempt, "http-rejected", "TypeSafe returned HTTP ${U16.to_str(status)}", 0, retryable, delay)?
 				if delay > 0 {
 					_ = Sleep.millis!(delay)
-					send_jev_request!(config, api_key, run_id, run_dir, round, validation_attempt, transport_attempt + 1, body)
+					send_jev_request!(config, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt + 1, body)
 				} else {
 					Err(JevHttpFailure(status))
 				}
@@ -886,10 +966,10 @@ send_jev_request! = |config, api_key, run_id, run_dir, round, validation_attempt
 			captured = empty_capture(client_request_id, request_path, raw_path, headers_path, requested_at, received_at, "curl-workaround", transport_attempt, status)
 			captured_with_transport = { ..captured, transport_output_path: transport_path }
 			delay = if error.retryable and transport_attempt <= config.retry.transport_retries retry_backoff_ms(config.retry, transport_attempt) else 0
-			_ = write_attempt!(captured_with_transport, run_id, "jev", round, validation_attempt, "transport-failed", error.message, 0, error.ambiguous, delay)?
+			_ = write_attempt!(captured_with_transport, run_id, "jev", round, batch, validation_attempt, "transport-failed", error.message, 0, error.ambiguous, delay)?
 			if delay > 0 {
 				_ = Sleep.millis!(delay)
-				send_jev_request!(config, api_key, run_id, run_dir, round, validation_attempt, transport_attempt + 1, body)
+				send_jev_request!(config, api_key, run_id, run_dir, round, batch, validation_attempt, transport_attempt + 1, body)
 			} else {
 				Err(JevTransportFailure(error.category))
 			}
@@ -901,7 +981,7 @@ send_jev_request! = |config, api_key, run_id, run_dir, round, validation_attempt
 			received_at = Utc.now!()
 			captured = empty_capture(client_request_id, request_path, raw_path, headers_path, requested_at, received_at, "curl-workaround", transport_attempt, 0)
 			captured_with_transport = { ..captured, transport_output_path: transport_path }
-			_ = write_attempt!(captured_with_transport, run_id, "jev", round, validation_attempt, "transport-failed", "curl process could not be started", 0, Bool.False, 0)?
+			_ = write_attempt!(captured_with_transport, run_id, "jev", round, batch, validation_attempt, "transport-failed", "curl process could not be started", 0, Bool.False, 0)?
 			Err(JevTransportFailure("process-start"))
 		}
 	}
@@ -967,40 +1047,70 @@ jev_call_audit = |config, decoded, captured, validation_attempt, cost| {
 	call
 }
 
-validate_generated_checkpoint! = |config, run_id, round, pending, previous, checkpoint| {
-	if checkpoint.experiment_version != config.experiment_version or checkpoint.run_id != run_id or checkpoint.round != round or checkpoint.pending_ids != List.map(pending, |t| t.id) {
+validate_generated_checkpoint! = |config, run_id, round, batch, pending, previous, checkpoint| {
+	if checkpoint.experiment_version != config.experiment_version or checkpoint.run_id != run_id or checkpoint.round != round or checkpoint.batch != batch or checkpoint.pending_ids != List.map(pending, |t| t.id) {
 		Err(GeneratedCheckpointIdentityMismatch(round))
-	} else if checkpoint.call.requested_model != config.generator.model or checkpoint.call.resolved_model != config.generator.model or checkpoint.call.requested_provider != "ppq/${config.generator.provider.id}" or checkpoint.call.resolved_provider != config.generator.provider.response_name {
+	} else if checkpoint.call.requested_model != config.generator.model or checkpoint.call.resolved_model != config.generator.model or checkpoint.call.requested_provider != "${config.generator.provider.name}/${config.generator.provider.id}" or checkpoint.call.resolved_provider != config.generator.provider.response_name {
 		Err(GeneratedCheckpointPinMismatch(round))
 	} else {
 		payload : DeepPayload
 		payload = { round, tokens: checkpoint.generated }
 		_ = validate_generated(round, pending, previous, payload)?
-		_ = validate_call_artifacts!(checkpoint.call, run_id, "deepseek", round)?
+		_ = validate_call_artifacts!(config, checkpoint.call, run_id, "deepseek", round, batch)?
 		validate_deep_checkpoint_response!(config, round, pending, previous, checkpoint.generated, checkpoint.call)
 	}
 }
 
-validate_round_checkpoint! = |config, target_tokens, run_id, round, pending, previous, checkpoint| {
-	if checkpoint.experiment_version != config.experiment_version or checkpoint.run_id != run_id or checkpoint.round != round or checkpoint.pending_ids != List.map(pending, |t| t.id) or checkpoint.deepseek_call.requested_model != config.generator.model or checkpoint.deepseek_call.requested_provider != "ppq/${config.generator.provider.id}" or checkpoint.deepseek_call.resolved_model != config.generator.model or checkpoint.deepseek_call.resolved_provider != config.generator.provider.response_name or checkpoint.jev_call.requested_model != config.validator.model or checkpoint.jev_call.requested_provider != config.validator.provider.name or checkpoint.jev_call.resolved_model != config.validator.model or checkpoint.jev_call.resolved_provider != config.validator.provider.name {
-		Err(RoundCheckpointIdentityMismatch(round))
+validate_batch_checkpoint! = |config, target_tokens, run_id, round, batch, pending, previous, checkpoint| {
+	if checkpoint.experiment_version != config.experiment_version or checkpoint.run_id != run_id or checkpoint.round != round or checkpoint.batch != batch or checkpoint.pending_ids != List.map(pending, |t| t.id) or checkpoint.deepseek_call.requested_model != config.generator.model or checkpoint.deepseek_call.requested_provider != "${config.generator.provider.name}/${config.generator.provider.id}" or checkpoint.deepseek_call.resolved_model != config.generator.model or checkpoint.deepseek_call.resolved_provider != config.generator.provider.response_name or checkpoint.jev_call.requested_model != config.validator.model or checkpoint.jev_call.requested_provider != config.validator.provider.name or checkpoint.jev_call.resolved_model != config.validator.model or checkpoint.jev_call.resolved_provider != config.validator.provider.name {
+		Err(BatchCheckpointIdentityMismatch(round, batch))
 	} else {
 		payload : DeepPayload
 		payload = { round, tokens: checkpoint.generated }
 		validated = validate_generated(round, pending, previous, payload)?
 		if List.len(checkpoint.judgments) != List.len(validated) or checkpoint.accepted_ids != accepted_ids(checkpoint.judgments) or checkpoint.rejected_ids != rejected_ids(checkpoint.judgments) {
-			Err(RoundCheckpointRoutingMismatch(round))
+			Err(BatchCheckpointRoutingMismatch(round, batch))
 		} else {
 			_ = validate_judgments(config, round, validated, checkpoint.judgments)?
 			_ = tokens_for_ids(target_tokens, checkpoint.accepted_ids, [])?
 			_ = tokens_for_ids(target_tokens, checkpoint.rejected_ids, [])?
-			_ = validate_call_artifacts!(checkpoint.deepseek_call, run_id, "deepseek", round)?
-			_ = validate_call_artifacts!(checkpoint.jev_call, run_id, "jev", round)?
+			_ = validate_call_artifacts!(config, checkpoint.deepseek_call, run_id, "deepseek", round, batch)?
+			_ = validate_call_artifacts!(config, checkpoint.jev_call, run_id, "jev", round, batch)?
 			_ = validate_deep_checkpoint_response!(config, round, pending, previous, checkpoint.generated, checkpoint.deepseek_call)?
 			validate_jev_checkpoint_response!(config, round, checkpoint.generated, checkpoint.judgments, checkpoint.jev_call)
 		}
 	}
 }
+
+validate_round_checkpoint! = |config, target_tokens, run_id, round, pending, previous, checkpoint| {
+	if checkpoint.experiment_version != config.experiment_version or checkpoint.run_id != run_id or checkpoint.round != round or checkpoint.pending_ids != List.map(pending, |t| t.id) {
+		Err(RoundCheckpointIdentityMismatch(round))
+	} else {
+		payload : DeepPayload
+		payload = { round, tokens: checkpoint.generated }
+		validated = validate_generated(round, pending, previous, payload)?
+		if List.len(checkpoint.judgments) != List.len(validated) or checkpoint.accepted_ids != accepted_ids(checkpoint.judgments) or checkpoint.rejected_ids != rejected_ids(checkpoint.judgments) or checkpoint.generated != concat_batch_generated(checkpoint.batches, []) or checkpoint.judgments != concat_batch_judgments(checkpoint.batches, []) {
+			Err(RoundCheckpointRoutingMismatch(round))
+		} else {
+			_ = validate_judgments(config, round, validated, checkpoint.judgments)?
+			_ = validate_round_batches!(config, target_tokens, run_id, round, previous, pending, checkpoint.batches, 1)?
+			Ok({})
+		}
+	}
+}
+
+validate_round_batches! = |config, target_tokens, run_id, round, previous, remaining, batches, batch_number|
+	match batches {
+		[] => if List.is_empty(remaining) Ok({}) else Err(RoundCheckpointBatchCoverageMismatch(round))
+		[batch, .. as rest] => if List.is_empty(remaining) {
+			Err(RoundCheckpointBatchCoverageMismatch(round))
+		} else {
+			batch_tokens = take_at_most(remaining, config.execution.deterministic_batch_size, [])
+			next = drop_at_most(remaining, config.execution.deterministic_batch_size)
+			_ = validate_batch_checkpoint!(config, target_tokens, run_id, round, batch_number, batch_tokens, previous, batch)?
+			validate_round_batches!(config, target_tokens, run_id, round, previous, next, rest, batch_number + 1)
+		}
+	}
 
 validate_judgments = |config, round, rows, judgments|
 	match (rows, judgments) {
@@ -1009,13 +1119,17 @@ validate_judgments = |config, round, rows, judgments|
 		_ => Err(StoredJudgmentCoverageMismatch)
 	}
 
-validate_call_artifacts! = |call, run_id, stage, round| {
-	root = "${experiment_dir}/responses/${run_id}/"
-	expected_prefix = "${stage}-round-${U64.to_str(round)}-"
+validate_call_artifacts! = |config, call, run_id, stage, round, batch| {
+	root = "${config.artifacts.responses_path}/${run_id}/"
+	expected_prefix = "${stage}-round-${U64.to_str(round)}-batch-${U64.to_str(batch)}-"
 	request_name = path_file_name(call.request_path)
 	raw_name = path_file_name(call.raw_response_path)
 	headers_name = path_file_name(call.headers_path)
-	paths_bound = Str.starts_with(call.request_path, root) and Str.starts_with(call.raw_response_path, root) and Str.starts_with(call.headers_path, root) and Str.starts_with(call.client_request_id, expected_prefix) and request_name == "${call.client_request_id}.request.json" and raw_name == "${call.client_request_id}.raw.json" and (headers_name == "${call.client_request_id}.headers.json" or headers_name == "${call.client_request_id}.headers")
+	expected_request_path = "${root}${call.client_request_id}.request.json"
+	expected_raw_path = "${root}${call.client_request_id}.raw.json"
+	expected_headers_json_path = "${root}${call.client_request_id}.headers.json"
+	expected_headers_path = "${root}${call.client_request_id}.headers"
+	paths_bound = call.request_path == expected_request_path and call.raw_response_path == expected_raw_path and (call.headers_path == expected_headers_json_path or call.headers_path == expected_headers_path) and Str.starts_with(call.client_request_id, expected_prefix) and request_name == "${call.client_request_id}.request.json" and raw_name == "${call.client_request_id}.raw.json" and (headers_name == "${call.client_request_id}.headers.json" or headers_name == "${call.client_request_id}.headers")
 	if !paths_bound or !Path.exists!(Path.utf8(call.request_path))? or !Path.exists!(Path.utf8(call.raw_response_path))? or !Path.exists!(Path.utf8(call.headers_path))? {
 		Err(MissingCallArtifact(call.client_request_id))
 	} else if call.token_usage.total_tokens != call.token_usage.input_tokens + call.token_usage.output_tokens or call.token_usage.reasoning_tokens > call.token_usage.output_tokens or call.cost_usd < 0 {
@@ -1094,16 +1208,13 @@ validate_final_rows = |tokens, rows|
 	}
 
 metrics_for = |rounds, final| {
-	first = match rounds { [r, ..] => List.len(r.accepted_ids), [] => 0 }
-	second = round_accept_count(rounds, 2)
-	third = round_accept_count(rounds, 3)
-	{ first_pass_accepted: first, round_2_recovered: second, round_3_recovered: third, unresolved: List.len(List.keep_if(final, |row| !row.valid)) }
+	per_round_accepted : List(RoundMetric)
+	per_round_accepted = List.map(rounds, |round| { accepted: List.len(round.accepted_ids), round: round.round })
+	{ per_round_accepted, unresolved: List.len(List.keep_if(final, |row| !row.valid)) }
 }
-round_accept_count = |rounds, wanted|
-	match rounds { [] => 0, [round, .. as rest] => if round.round == wanted List.len(round.accepted_ids) else round_accept_count(rest, wanted) }
 
-validate_simulation = |tokens, rounds, final| {
-	if List.is_empty(rounds) or List.len(rounds) > 3 or List.len(final) != List.len(tokens) {
+validate_simulation = |config, tokens, rounds, final| {
+	if List.is_empty(rounds) or List.len(rounds) > config.execution.max_semantic_rounds or List.len(final) != List.len(tokens) {
 		Err(SimulationCoverageFailed)
 	} else {
 		match rounds {
@@ -1115,7 +1226,8 @@ validate_simulation = |tokens, rounds, final| {
 					Err(SimulationRoutingFailed)
 				} else {
 					_ = validate_round_chain(rest, first, first.accepted_ids, unresolved_count)?
-					if List.any(tokens, |token| attempt_count(token.id, rounds) > 3) Err(SimulationAttemptBoundFailed) else Ok({})
+					_ = validate_simulated_batches(rounds, config.execution.deterministic_batch_size)?
+					if List.any(tokens, |token| attempt_count(token.id, rounds) > config.execution.max_semantic_rounds) Err(SimulationAttemptBoundFailed) else Ok({})
 				}
 			}
 		}
@@ -1124,9 +1236,9 @@ validate_simulation = |tokens, rounds, final| {
 
 validate_round_chain = |remaining, previous, accepted, unresolved_count|
 	match remaining {
-		[] => if List.len(previous.rejected_ids) != unresolved_count or (previous.round < 3 and !List.is_empty(previous.rejected_ids)) { Err(SimulationRoutingFailed) } else Ok({})
+		[] => if List.len(previous.rejected_ids) != unresolved_count { Err(SimulationRoutingFailed) } else Ok({})
 		[next, .. as rest] => {
-			if next.round != previous.round + 1 or next.round > 3 or next.pending_ids != previous.rejected_ids or !disjoint(accepted, next.pending_ids) {
+			if next.round != previous.round + 1 or next.pending_ids != previous.rejected_ids or !disjoint(accepted, next.pending_ids) {
 				Err(SimulationRoutingFailed)
 			} else {
 				validate_round_chain(rest, next, List.concat(accepted, next.accepted_ids), unresolved_count)
@@ -1134,8 +1246,42 @@ validate_round_chain = |remaining, previous, accepted, unresolved_count|
 		}
 	}
 
+validate_simulated_batches = |rounds, batch_size|
+	match rounds {
+		[] => Ok({})
+		[round, .. as rest] => if concat_batch_generated(round.batches, []) != round.generated or concat_batch_judgments(round.batches, []) != round.judgments {
+			Err(SimulationBatchingFailed)
+		} else {
+			_ = validate_simulated_round_batches(round.batches, batch_size)?
+			validate_simulated_batches(rest, batch_size)
+		}
+	}
+validate_simulated_round_batches = |batches, batch_size|
+	match batches {
+		[] => Ok({})
+		[batch, .. as rest] => if List.is_empty(batch.pending_ids) or List.len(batch.pending_ids) > batch_size or List.len(batch.generated) != List.len(batch.pending_ids) or List.len(batch.judgments) != List.len(batch.pending_ids) {
+			Err(SimulationBatchingFailed)
+		} else {
+			validate_simulated_round_batches(rest, batch_size)
+		}
+	}
+
 disjoint = |left, right| !List.any(left, |id| List.contains(right, id))
 attempt_count = |id, rounds| List.len(List.keep_if(rounds, |round| List.contains(round.pending_ids, id)))
+
+synthetic_rounds = |config, all_tokens, round, pending, previous_generated, found| {
+	if round > config.execution.max_semantic_rounds or List.is_empty(pending) {
+		Ok(found)
+	} else {
+		payload = fake_generated(pending, round)
+		_ = validate_generated(round, pending, previous_generated, payload)?
+		pattern = if round == 1 "odd" else if round == config.execution.max_semantic_rounds "reject" else "half"
+		judgments = synthetic_judgments(config, round, payload, pattern)?
+		checkpoint = fake_round(config, round, payload, judgments)
+		next = tokens_for_ids(all_tokens, rejected_ids(judgments), [])?
+		synthetic_rounds(config, all_tokens, round + 1, next, List.append(previous_generated, payload.tokens), List.append(found, checkpoint))
+	}
+}
 
 fake_generated = |tokens, round| { round, tokens: List.map(tokens, |token| { gloss: "synthetic-${U64.to_str(round)}-${U64.to_str(token.id)}", id: token.id, word: token.word }) }
 synthetic_judgments = |config, round, payload, pattern| {
@@ -1152,24 +1298,45 @@ synthetic_answers = |round, rows, pattern, found|
 			synthetic_answers(round, rest, pattern, Dict.insert(found, question_key(round, row.id), answer))
 		}
 	}
-fake_round = |round, payload, judgments| {
-	empty_call : CallAudit
-	empty_call = { client_request_id: "synthetic", cost_usd: 0, elapsed_ms: 0, headers_path: "synthetic", provider_request_id: "synthetic", raw_response_path: "synthetic", received_at: "synthetic", request_path: "synthetic", requested_at: "synthetic", requested_model: "synthetic", requested_provider: "synthetic", resolved_model: "synthetic", resolved_provider: "synthetic", response_id: "synthetic", token_usage: { input_tokens: 0, output_tokens: 0, reasoning_tokens: 0, total_tokens: 0 }, transport: "synthetic", transport_attempt: 1, validation_attempt: 1 }
-	{ accepted_ids: accepted_ids(judgments), deepseek_call: empty_call, experiment_version: 1, generated: payload.tokens, jev_call: empty_call, judgments, pending_ids: List.map(payload.tokens, |row| row.id), rejected_ids: rejected_ids(judgments), round, run_id: "synthetic" }
+fake_round = |config, round, payload, judgments| {
+	batches = fake_batches(config, round, payload.tokens, judgments, 1, [])
+	{ accepted_ids: accepted_ids(judgments), batches, experiment_version: config.experiment_version, generated: payload.tokens, judgments, pending_ids: List.map(payload.tokens, |row| row.id), rejected_ids: rejected_ids(judgments), round, run_id: "synthetic" }
 }
 
+fake_batches = |config, round, rows, judgments, batch_number, found|
+	if List.is_empty(rows) and List.is_empty(judgments) {
+		found
+	} else {
+		batch_rows = take_at_most(rows, config.execution.deterministic_batch_size, [])
+		batch_judgments = take_at_most(judgments, config.execution.deterministic_batch_size, [])
+		empty_call : CallAudit
+		empty_call = { client_request_id: "synthetic", cost_usd: 0, elapsed_ms: 0, headers_path: "synthetic", provider_request_id: "synthetic", raw_response_path: "synthetic", received_at: "synthetic", request_path: "synthetic", requested_at: "synthetic", requested_model: "synthetic", requested_provider: "synthetic", resolved_model: "synthetic", resolved_provider: "synthetic", response_id: "synthetic", token_usage: { input_tokens: 0, output_tokens: 0, reasoning_tokens: 0, total_tokens: 0 }, transport: "synthetic", transport_attempt: 1, validation_attempt: 1 }
+		batch : BatchCheckpoint
+		batch = { accepted_ids: accepted_ids(batch_judgments), batch: batch_number, deepseek_call: empty_call, experiment_version: config.experiment_version, generated: batch_rows, jev_call: empty_call, judgments: batch_judgments, pending_ids: List.map(batch_rows, |row| row.id), rejected_ids: rejected_ids(batch_judgments), round, run_id: "synthetic" }
+		fake_batches(config, round, drop_at_most(rows, config.execution.deterministic_batch_size), drop_at_most(judgments, config.execution.deterministic_batch_size), batch_number + 1, List.append(found, batch))
+	}
+
 # Resume uses immutable attempt records. A recorded retry delay means the bounded retry was authorized but interrupted; zero means the bound was exhausted.
-next_attempt_state! = |run_dir, run_id, stage, round, retry| {
+next_attempt_state! = |run_dir, run_id, stage, round, batch, retry| {
 	entries = Path.list!(Path.utf8(run_dir))?
 	_ = reject_orphan_attempt_artifacts!(entries, stage, round)?
-	records = read_attempt_entries!(entries, run_id, stage, round, [])?
+	records = read_attempt_entries!(entries, run_id, stage, round, batch, [])?
 	match latest_attempt(records) {
-		Err(_) => Ok({ feedback: "", transport_attempt: 1, validation_attempt: 1 })
+		Err(_) => Ok({ feedback: "", resume_body: "", transport_attempt: 1, validation_attempt: 1 })
 		Ok(record) => {
 			if record.status == "rejected" {
-				if record.validation_attempt <= retry.malformed_response_retries Ok({ feedback: record.validation_error, transport_attempt: 1, validation_attempt: record.validation_attempt + 1 }) else Err(RecordedValidationAttemptsExhausted(stage, round))
+				if record.validation_attempt <= retry.malformed_response_retries Ok({ feedback: record.validation_error, resume_body: "", transport_attempt: 1, validation_attempt: record.validation_attempt + 1 }) else Err(RecordedValidationAttemptsExhausted(stage, round))
 			} else if record.status == "transport-failed" or record.status == "http-rejected" {
-				if record.retry_delay_ms > 0 and record.transport_attempt <= retry.transport_retries Ok({ feedback: "", transport_attempt: record.transport_attempt + 1, validation_attempt: record.validation_attempt }) else Err(RecordedTransportAttemptsExhausted(stage, round))
+				if record.retry_delay_ms > 0 and record.transport_attempt <= retry.transport_retries {
+					expected_prefix = "${stage}-round-${U64.to_str(round)}-batch-${U64.to_str(batch)}-"
+					expected_request_path = "${run_dir}/${record.client_request_id}.request.json"
+					if record.request_path != expected_request_path or !Str.starts_with(record.client_request_id, expected_prefix) {
+						Err(MissingCallArtifact(record.client_request_id))
+					} else {
+						body = Path.read_utf8!(Path.utf8(expected_request_path))?
+						Ok({ feedback: "", resume_body: body, transport_attempt: record.transport_attempt + 1, validation_attempt: record.validation_attempt })
+					}
+				} else Err(RecordedTransportAttemptsExhausted(stage, round))
 			} else {
 				Err(IncompleteAcceptedCheckpoint(stage, round))
 			}
@@ -1191,10 +1358,27 @@ reject_orphan_attempt_artifacts! = |entries, stage, round|
 			stem = attempt_artifact_stem(path)
 			name = path_file_name(path)
 			prefix = if round == 0 "${stage}-round-" else "${stage}-round-${U64.to_str(round)}-"
-			if stem != "" and Str.starts_with(name, prefix) and !Path.exists!(Path.utf8("${stem}.attempt.json"))? {
+			missing_attempt = stem != "" and Str.starts_with(name, prefix) and !Path.exists!(Path.utf8("${stem}.attempt.json"))?
+			checkpointed = if missing_attempt checkpoint_references_attempt!(entries, path_file_name(stem))? else Bool.False
+			if missing_attempt and !checkpointed {
 				Err(OrphanAttemptArtifact(stage, path))
 			} else {
 				reject_orphan_attempt_artifacts!(rest, stage, round)
+			}
+		}
+	}
+
+checkpoint_references_attempt! = |entries, client_request_id|
+	match entries {
+		[] => Ok(Bool.False)
+		[entry, .. as rest] => {
+			path = Path.display(entry)
+			is_checkpoint = Str.ends_with(path, ".generated.json") or Str.ends_with(path, ".checkpoint.json")
+			if is_checkpoint {
+				text = Path.read_utf8!(entry)?
+				if Str.contains(text, "\"client_request_id\":\"${client_request_id}\"") Ok(Bool.True) else checkpoint_references_attempt!(rest, client_request_id)
+			} else {
+				checkpoint_references_attempt!(rest, client_request_id)
 			}
 		}
 	}
@@ -1216,10 +1400,37 @@ attempt_artifact_stem = |path|
 
 read_all_attempts! = |run_dir, run_id| {
 	entries = Path.list!(Path.utf8(run_dir))?
-	read_attempt_entries!(entries, run_id, "", 0, [])
+	read_attempt_entries!(entries, run_id, "", 0, 0, [])
 }
 
-accounting_for = |records| accounting_loop(records, { ambiguous_attempts: 0, charged_attempts: 0, known_cost_usd: 0 })
+accounting_for = |records, rounds| {
+	from_attempts = accounting_loop(records, { ambiguous_attempts: 0, charged_attempts: 0, known_cost_usd: 0 })
+	account_missing_checkpoint_calls(rounds, records, from_attempts)
+}
+account_missing_checkpoint_calls = |rounds, records, found|
+	match rounds {
+		[] => found
+		[round, .. as rest] => account_missing_checkpoint_calls(rest, records, account_missing_batch_calls(round.batches, records, found))
+	}
+account_missing_batch_calls = |batches, records, found|
+	match batches {
+		[] => found
+		[batch, .. as rest] => {
+			with_deep = account_missing_call(batch.deepseek_call, records, found)
+			with_jev = account_missing_call(batch.jev_call, records, with_deep)
+			account_missing_batch_calls(rest, records, with_jev)
+		}
+	}
+account_missing_call = |call, records, found|
+	if List.any(records, |record| record.client_request_id == call.client_request_id) {
+		found
+	} else {
+		{
+			ambiguous_attempts: found.ambiguous_attempts,
+			charged_attempts: found.charged_attempts + if call.cost_usd > 0 1 else 0,
+			known_cost_usd: found.known_cost_usd + call.cost_usd,
+		}
+	}
 accounting_loop = |records, found|
 	match records {
 		[] => found
@@ -1230,7 +1441,7 @@ accounting_loop = |records, found|
 		})
 	}
 
-read_attempt_entries! = |entries, run_id, stage, round, found|
+read_attempt_entries! = |entries, run_id, stage, round, batch, found|
 	match entries {
 		[] => Ok(found)
 		[entry, .. as rest] => {
@@ -1242,23 +1453,36 @@ read_attempt_entries! = |entries, run_id, stage, round, found|
 				if record.run_id != run_id {
 					Err(AttemptRunMismatch(path))
 				} else {
-					include = (stage == "" or record.stage == stage) and (round == 0 or record.round == round)
-					read_attempt_entries!(rest, run_id, stage, round, if include List.append(found, record) else found)
+					include = (stage == "" or record.stage == stage) and (round == 0 or record.round == round) and (batch == 0 or record.batch == batch)
+					read_attempt_entries!(rest, run_id, stage, round, batch, if include List.append(found, record) else found)
 				}
 			} else {
-				read_attempt_entries!(rest, run_id, stage, round, found)
+				read_attempt_entries!(rest, run_id, stage, round, batch, found)
 			}
 		}
 	}
 latest_attempt = |records|
 	match records { [] => Err(NoAttempt), [first, .. as rest] => Ok(latest_attempt_loop(rest, first)) }
 latest_attempt_loop = |records, latest|
-	match records { [] => latest, [first, .. as rest] => latest_attempt_loop(rest, if compare_str(latest.client_request_id, first.client_request_id) == Before first else latest) }
+	match records { [] => latest, [first, .. as rest] => latest_attempt_loop(rest, if attempt_is_after(first, latest) first else latest) }
+attempt_is_after = |candidate, current|
+	if candidate.validation_attempt > current.validation_attempt {
+		Bool.True
+	} else if candidate.validation_attempt < current.validation_attempt {
+		Bool.False
+	} else if candidate.transport_attempt > current.transport_attempt {
+		Bool.True
+	} else if candidate.transport_attempt < current.transport_attempt {
+		Bool.False
+	} else {
+		compare_str(current.requested_at, candidate.requested_at) == Before
+	}
 
-write_attempt! = |captured, run_id, stage, round, validation_attempt, status, error_text, cost, ambiguous, retry_delay_ms| {
+write_attempt! = |captured, run_id, stage, round, batch, validation_attempt, status, error_text, cost, ambiguous, retry_delay_ms| {
 	record : AttemptRecord
 	record = {
 		ambiguous_possible_charge: ambiguous,
+		batch,
 		client_request_id: captured.client_request_id,
 		cost_usd: cost,
 		elapsed_ms: captured.elapsed_ms,
@@ -1302,8 +1526,9 @@ capture = |client_request_id, request_path, raw_path, headers_path, requested_at
 empty_capture = |client_request_id, request_path, raw_path, headers_path, requested_at, received_at, transport, transport_attempt, status| capture(client_request_id, request_path, raw_path, headers_path, requested_at, received_at, [], [], transport, transport_attempt, status, "")
 
 round_checkpoint_path = |run_dir, round| "${run_dir}/round-${U64.to_str(round)}.checkpoint.json"
-generated_checkpoint_path = |run_dir, round| "${run_dir}/round-${U64.to_str(round)}.generated.json"
-attempt_id = |stage, round, validation, transport, timestamp| "${stage}-round-${U64.to_str(round)}-validation-${U64.to_str(validation)}-transport-${U64.to_str(transport)}-${U128.to_str(Utc.to_nanos_since_epoch(timestamp))}"
+batch_checkpoint_path = |run_dir, round, batch| "${run_dir}/round-${U64.to_str(round)}-batch-${U64.to_str(batch)}.checkpoint.json"
+generated_checkpoint_path = |run_dir, round, batch| "${run_dir}/round-${U64.to_str(round)}-batch-${U64.to_str(batch)}.generated.json"
+attempt_id = |stage, round, batch, validation, transport, timestamp| "${stage}-round-${U64.to_str(round)}-batch-${U64.to_str(batch)}-validation-${U64.to_str(validation)}-transport-${U64.to_str(transport)}-${U128.to_str(Utc.to_nanos_since_epoch(timestamp))}"
 
 tokens_for_ids = |tokens, ids, found|
 	match ids {
@@ -1316,81 +1541,56 @@ tokens_for_ids = |tokens, ids, found|
 token_by_id = |tokens, id|
 	match tokens { [] => Err(UnknownTokenId(id)), [token, .. as rest] => if token.id == id Ok(token) else token_by_id(rest, id) }
 take_exact = |items, count, found|
-	if count == 0 Ok(found) else match items { [] => Err(NotEnoughTokens), [first, .. as rest] => take_exact(rest, count - 1, List.append(found, first)) }
+	if count == 0 Ok(found) else match items { [] => Err(NotEnoughItems), [first, .. as rest] => take_exact(rest, count - 1, List.append(found, first)) }
 
-require_completed_smoke! = |config, tokens| {
-	root = "${experiment_dir}/responses"
-	if !Path.exists!(Path.utf8(root))? {
-		Err(CompletedSmokeRequired)
-	} else {
-		entries = Path.list!(Path.utf8(root))?
-		completed = has_completed_smoke!(entries, config, tokens)?
-		if completed Ok({}) else Err(CompletedSmokeRequired)
+take_at_most = |items, count, found|
+	if count == 0 found else match items { [] => found, [first, .. as rest] => take_at_most(rest, count - 1, List.append(found, first)) }
+
+drop_at_most = |items, count|
+	if count == 0 items else match items { [] => [], [_, .. as rest] => drop_at_most(rest, count - 1) }
+
+drop_exact = |items, count|
+	if count == 0 Ok(items) else match items { [] => Err(NotEnoughItems), [_, .. as rest] => drop_exact(rest, count - 1) }
+
+select_token_range = |tokens, reference_id, count, found|
+	match tokens {
+		[] => Err(UnknownTokenId(reference_id))
+		[token, .. as rest] => if token.id == reference_id take_exact(List.prepend(rest, token), count, found) else select_token_range(rest, reference_id, count, found)
 	}
+
+context_for = |source, reference_line, line_count| {
+	lines = Str.split_on(Str.trim_end(source), "\n")
+	remaining = drop_exact(lines, reference_line - 1)?
+	selected = take_exact(remaining, line_count, [])?
+	Ok("${Str.join_with(selected, "\n")}\n")
 }
 
-has_completed_smoke! = |entries, config, tokens|
+latest_incomplete_run! = |root, config, config_sha256, target_count| {
+	if !Path.exists!(Path.utf8(root))? {
+		Err(NoIncompleteRun(root))
+	} else {
+		entries = Path.list!(Path.utf8(root))?
+		find_latest_run!(entries, config, config_sha256, target_count, "")
+	}
+}
+find_latest_run! = |entries, config, config_sha256, target_count, latest|
 	match entries {
-		[] => Ok(Bool.False)
+		[] => if latest == "" Err(NoIncompleteRun(config.experiment_name)) else Ok(latest)
 		[entry, .. as rest] => {
 			path = Path.display(entry)
 			name = path_file_name(path)
 			is_dir = match Path.type!(entry)? { IsDir => Bool.True, _ => Bool.False }
-			complete = if is_dir and Str.starts_with(name, "smoke-") Path.exists!(Path.utf8("${path}/run.complete"))? else Bool.False
-			if complete {
-				validated = validate_completed_smoke!(path, name, config, tokens)
-				match validated { Ok(_) => Ok(Bool.True), Err(_) => has_completed_smoke!(rest, config, tokens) }
+			incomplete = is_dir and Str.starts_with(name, "run-") and Path.exists!(Path.utf8("${path}/run.json"))? and !Path.exists!(Path.utf8("${path}/run.complete"))?
+			matches = if incomplete {
+				raw = Path.read_utf8!(Path.utf8("${path}/run.json"))?
+				manifest : Manifest
+				manifest = Json.parse(raw)?
+				manifest == { config, config_sha256, run_id: name, target_count }
 			} else {
-				has_completed_smoke!(rest, config, tokens)
+				Bool.False
 			}
-		}
-	}
-
-validate_completed_smoke! = |run_dir, run_id, config, tokens| {
-	manifest_raw = Path.read_utf8!(Path.utf8("${run_dir}/run.json"))?
-	manifest : Manifest
-	manifest = Json.parse(manifest_raw)?
-	if manifest != { experiment_version: config.experiment_version, mode: "smoke", run_id, target_count: config.execution.smoke_token_count } {
-		Err(ManifestMismatch(run_id))
-	} else {
-		audit_path = "${experiment_dir}/outputs/smoke/${run_id}/audit.json"
-		final_path = "${experiment_dir}/outputs/smoke/${run_id}/final.json"
-		audit_raw = Path.read_utf8!(Path.utf8(audit_path))?
-		audit : RunAudit
-		audit = Json.parse(audit_raw)?
-		final_raw = Path.read_utf8!(Path.utf8(final_path))?
-		final : List(FinalRow)
-		final = Json.parse(final_raw)?
-		smoke_tokens = take_exact(tokens, config.execution.smoke_token_count, [])?
-		_ = validate_final(smoke_tokens, final)?
-		_ = validate_simulation(smoke_tokens, audit.rounds, final)?
-		if audit.config != config or audit.mode != "smoke" or audit.run_id != run_id or audit.final_path != final_path or audit.source_sha256 != config.input.source_sha256 or audit.tokens_sha256 != config.input.tokens_sha256 or audit.metrics != metrics_for(audit.rounds, final) or audit.accounting != accounting_for(audit.attempts) {
-			Err(InvalidCompletedSmoke(run_id))
-		} else {
-			Ok({})
-		}
-	}
-}
-
-latest_incomplete_run! = |mode| {
-	root = "${experiment_dir}/responses"
-	if !Path.exists!(Path.utf8(root))? {
-		Err(NoIncompleteRun(mode))
-	} else {
-		entries = Path.list!(Path.utf8(root))?
-		find_latest_run!(entries, "${mode}-", "")
-	}
-}
-find_latest_run! = |entries, prefix, latest|
-	match entries {
-		[] => if latest == "" Err(NoIncompleteRun(prefix)) else Ok(latest)
-		[entry, .. as rest] => {
-			path = Path.display(entry)
-			name = path_file_name(path)
-			is_dir = match Path.type!(entry)? { IsDir => Bool.True, _ => Bool.False }
-			eligible = is_dir and Str.starts_with(name, prefix) and Path.exists!(Path.utf8("${path}/run.json"))? and !Path.exists!(Path.utf8("${path}/run.complete"))?
-			next = if eligible and (latest == "" or compare_str(latest, name) == Before) name else latest
-			find_latest_run!(rest, prefix, next)
+			next = if matches and (latest == "" or compare_str(latest, name) == Before) name else latest
+			find_latest_run!(rest, config, config_sha256, target_count, next)
 		}
 	}
 path_file_name = |path| match List.last(Str.split_on(path, "/")) { Ok(name) => name, Err(_) => path }
@@ -1474,7 +1674,7 @@ retry_header_delay = |value, multiplier, fallback, maximum|
 	match U64.from_str(value) {
 		Ok(number) => {
 			delay = number * multiplier
-			if delay <= maximum delay else fallback
+			if delay == 0 fallback else if delay <= maximum delay else fallback
 		}
 		Err(_) => fallback
 	}
@@ -1532,7 +1732,7 @@ write_atomic_or_verify! = |content, path| {
 }
 run_id_for = |timestamp, version| {
 	compact = Str.replace_each(Str.replace_each(Utc.to_iso_8601(timestamp), "-", ""), ":", "")
-	"${compact}-${U128.to_str(Utc.to_nanos_since_epoch(timestamp))}-v${U64.to_str(version)}"
+	"run-${compact}-${U128.to_str(Utc.to_nanos_since_epoch(timestamp))}-v${U64.to_str(version)}"
 }
 compare_attempt_records = |a, b| compare_str(a.client_request_id, b.client_request_id)
 compare_str = |a, b| compare_bytes(Str.to_utf8(a), Str.to_utf8(b))
