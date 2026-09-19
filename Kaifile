@@ -70,6 +70,16 @@ task check-jev-gloss-experiment-tool {
   run: ["roc", "check", "scripts/run-jev-gloss-experiment.roc"]
 }
 
+task check-jev-gloss-experiment-4-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/run-jev-gloss-experiment-4.roc"]
+}
+
+task check-jev-gloss-evaluation-4-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/evaluate-jev-gloss-experiment-4.roc"]
+}
+
 task roc-version {
   environment: "dev"
   run: ["roc", "version"]
@@ -113,6 +123,103 @@ task deepseek-v4-flash-0731-experiment-3 {
 task resume-deepseek-v4-flash-0731-experiment-3 {
   environment: "dev"
   run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--resume"]
+}
+
+# Experiment 4 construction and evaluation tasks are no-spend.
+task check-deepseek-v4-flash-0731-experiment-4 {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--check"]
+}
+
+task construct-deepseek-v4-flash-0731-experiment-4 {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--construct"]
+}
+
+task worksheet-deepseek-v4-flash-0731-experiment-4 {
+  environment: "dev"
+  run: ["roc", "scripts/evaluate-jev-gloss-experiment-4.roc", "--worksheet"]
+}
+
+task worksheet-runs-deepseek-v4-flash-0731-experiment-4 {
+  environment: "dev"
+  run: ["roc", "scripts/evaluate-jev-gloss-experiment-4.roc", "--worksheet-runs"]
+}
+
+task evaluate-example-deepseek-v4-flash-0731-experiment-4 {
+  environment: "dev"
+  run: [
+    "roc",
+    "scripts/evaluate-jev-gloss-experiment-4.roc",
+    "--evaluate",
+    "experiments/gloss/deepseek-v4-flash-0731/experiment_4/evaluation/v1/scores.example.v1.tsv"
+  ]
+}
+
+task evaluate-runs-deepseek-v4-flash-0731-experiment-4 {
+  environment: "dev"
+  run: ["roc", "scripts/evaluate-jev-gloss-experiment-4.roc", "--evaluate-runs"]
+}
+
+task replay-policy-deepseek-v4-flash-0731-experiment-4-openinference {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--replay-latest-openinference"]
+}
+
+task replay-policy-deepseek-v4-flash-0731-experiment-4-sail-research {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--replay-latest-sail-research"]
+}
+
+# Every task below this warning makes paid API calls.
+task candidates-deepseek-v4-flash-0731-experiment-4-openinference {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--candidates-openinference"]
+}
+
+task candidates-deepseek-v4-flash-0731-experiment-4-sail-research {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--candidates-sail-research"]
+}
+
+task smoke-deepseek-v4-flash-0731-experiment-4-openinference {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--smoke-openinference"]
+}
+
+task smoke-deepseek-v4-flash-0731-experiment-4-sail-research {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--smoke-sail-research"]
+}
+
+task resume-smoke-deepseek-v4-flash-0731-experiment-4-openinference {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--resume-smoke-openinference"]
+}
+
+task resume-smoke-deepseek-v4-flash-0731-experiment-4-sail-research {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--resume-smoke-sail-research"]
+}
+
+task deepseek-v4-flash-0731-experiment-4-openinference {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--run-openinference"]
+}
+
+task deepseek-v4-flash-0731-experiment-4-sail-research {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--run-sail-research"]
+}
+
+task resume-deepseek-v4-flash-0731-experiment-4-openinference {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--resume-openinference"]
+}
+
+task resume-deepseek-v4-flash-0731-experiment-4-sail-research {
+  environment: "dev"
+  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--resume-sail-research"]
 }
 
 task check-qwen35-experiment {
@@ -333,9 +440,15 @@ workflow release {
     "run check-model-experiment-tool",
     "run check-conllu-experiment-tool",
     "run check-jev-gloss-experiment-tool",
+    "run check-jev-gloss-experiment-4-tool",
+    "run check-jev-gloss-evaluation-4-tool",
     "run preload",
     "run check-deepseek-v4-flash-0731-experiment",
     "run check-deepseek-v4-flash-0731-experiment-3",
+    "run check-deepseek-v4-flash-0731-experiment-4",
+    "run construct-deepseek-v4-flash-0731-experiment-4",
+    "run worksheet-deepseek-v4-flash-0731-experiment-4",
+    "run evaluate-example-deepseek-v4-flash-0731-experiment-4",
     "run check-qwen35-experiment",
     "run check-qwen35-397b-experiment",
     "run check-claude-sonnet-46-experiment",

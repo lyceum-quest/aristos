@@ -1,0 +1,41 @@
+Evaluation report: experiment 4 blind gloss comparison
+
+Accuracy (human-scored outputs only)
+- original OpenInference direct: 0/0 (N/A)
+- experiment 3 selected: 0/0 (N/A)
+- experiment 4 OpenInference baseline-preserved raw audit: 0/0 (N/A)
+- experiment 4 Sail Research baseline-preserved raw audit: 0/0 (N/A)
+
+Experiment 4 stored raw-audit output (candidate-1 baseline preserved pending any human-calibrated policy replay)
+- OpenInference baseline retention: 0/0 (N/A)
+- Sail Research baseline retention: 0/0 (N/A)
+
+Candidate evaluation (only sets with all three human validity marks)
+- OpenInference candidate oracle recall: 0/0 (N/A)
+- Sail Research candidate oracle recall: 0/0 (N/A)
+- OpenInference selector accuracy conditional on candidate recall: 0/0 (N/A)
+- Sail Research selector accuracy conditional on candidate recall: 0/0 (N/A)
+
+Raw selector decisions (separate from baseline-preserved output; not production output unless a later policy replay applies them)
+- OpenInference top selector differs from baseline: 0/0 (N/A)
+- Sail Research top selector differs from baseline: 0/0 (N/A)
+
+Unresolved rates
+- original OpenInference direct output: 0/50 (0.0)
+- experiment 3 selected output: 1/50 (0.02)
+- experiment 4 OpenInference baseline-preserved output: 0/0 (N/A)
+- experiment 4 Sail Research baseline-preserved output: 0/0 (N/A)
+- human preferred none: 0/0 (N/A)
+
+Cost ledger
+- original-openinference-candidate: known USD 0.00009557 over 1 charged attempt(s); ambiguous possible attempts 0, known possible USD 0.0, no unknown amount
+- experiment-3-candidates-all-attempts: known USD 0.0009916119 over 2 charged attempt(s); ambiguous possible attempts 0, known possible USD 0.0, no unknown amount
+- experiment-3-jev: known USD 0.000394044 over 1 charged attempt(s); ambiguous possible attempts 1, known possible USD 0.0, unknown additional amount possible
+- experiment-4-openinference-candidates-all-runs: N/A: no attempt artifacts
+- experiment-4-openinference-selector-all-runs: N/A: no attempt artifacts
+- experiment-4-sail-research-candidates-all-runs: N/A: no attempt artifacts
+- experiment-4-sail-research-selector-all-runs: N/A: no attempt artifacts
+- total known charged cost: USD 0.0014812259 over 4 charged attempt(s)
+- total ambiguous possible charges: 1 attempt(s), recorded possible USD 0.0, unknown amount possible=true
+
+N/A means denominator 0. Unknown possible charges are not treated as zero or folded into known charged cost.

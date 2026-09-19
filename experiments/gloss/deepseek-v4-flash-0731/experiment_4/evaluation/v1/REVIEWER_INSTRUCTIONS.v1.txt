@@ -1,0 +1,9 @@
+
+Blind review worksheet. Do not open the accompanying MACHINE_KEY_NOT_FOR_REVIEWER file until scoring is complete.
+Experiment-4 output columns are baseline-preserved raw-audit outputs pending any human-calibrated policy replay. Candidate-set validity questions are separate; selector tops are not presented as effective production output.
+
+For each nonblank output a-d, set correctness to yes, no, or unscored. Set its error category to none for yes; morphology, syntax, sense, context, english, phrase, or other for no; and unscored when correctness is unscored. Leave blank outputs unscored.
+
+Set preferred to a, b, c, d, tie, none, or unscored. For each nonblank candidate in sets x and y, set validity to yes, no, or unscored. Leave blank candidates unscored. Notes are free text but must not contain tabs or line breaks.
+
+All supplied outputs and candidates are anonymous. The worksheet contains no AI-generated correctness or validity labels.
