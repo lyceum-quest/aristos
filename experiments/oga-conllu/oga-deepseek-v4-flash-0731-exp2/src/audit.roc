@@ -10,7 +10,7 @@ main! = |args| match List.drop_first(args, 1) {
 	[input_arg] => {
 		input = OsStr.display(input_arg)
 		config : Config
-		config = Json.parse(Path.read_utf8!(Path.utf8("experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/audit.config.json"))?)?
+		config = Json.parse(Path.read_utf8!(Path.utf8("experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/config/audit.config.json"))?)?
 		env = Path.read_utf8!(Path.utf8(".env"))?
 		prefix = "${config.api_key_env}="
 		key = match List.keep_if(Str.split_on(env, "\n"), |line| Str.starts_with(line, prefix)) { [line, ..] => Ok(Str.replace_first(line, prefix, "")), [] => Err(MissingApiKey(config.api_key_env)) }?

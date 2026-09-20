@@ -19,8 +19,8 @@ task prep {
   environment: "dev"
   run: [
     "roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/prep.roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/tlg0012.tlg001.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/prep.roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/tlg0012.tlg001.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
     "1"
   ]
 }
@@ -29,7 +29,7 @@ task gloss {
   environment: "dev"
   run: [
     "roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/gloss.roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/output.conllu"
   ]
 }
@@ -38,7 +38,7 @@ task audit {
   environment: "dev"
   run: [
     "roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/audit.roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/audit.roc",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/gloss-output.conllu"
   ]
 }
