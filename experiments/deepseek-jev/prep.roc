@@ -10,10 +10,10 @@ main! = |args|
 		[input_arg] => {
 			input = OsStr.display(input_arg)
 			source = Path.read_utf8!(Path.utf8(input))?
-			lines = Str.split_on(Str.trim_end(source), "\n")
+			words = List.keep_if(Str.split_on(Str.replace_each(Str.trim(source), "\n", " "), " "), |word| word != "")
 			first_sent_id : U64
 			first_sent_id = 1
-			rows = rows_for(lines, first_sent_id, [])
+			rows = rows_for(words, first_sent_id, [], [])
 			output = if Str.ends_with(input, ".txt") Str.replace_last(input, ".txt", ".json") else "${input}.json"
 			json = Json.to_str_try(rows)?
 			_ = Path.write_utf8!(Path.utf8(output), "${json}\n")?
@@ -25,12 +25,22 @@ main! = |args|
 		}
 	}
 
-rows_for = |lines, sent_id, found|
-	match lines {
-		[] => found
-		[sentence, .. as rest] => {
-			words = List.keep_if(Str.split_on(sentence, " "), |word| word != "")
-			rows = List.map(words, |word| { word, sentence, sent_id, gloss: "" })
-			rows_for(rest, sent_id + 1, List.concat(found, rows))
+rows_for = |words, sent_id, pending, found|
+	match words {
+		[] => List.concat(found, sentence_rows(pending, sent_id))
+		[word, .. as rest] => {
+			next = List.append(pending, word)
+			if sentence_end(word) {
+				rows_for(rest, sent_id + 1, [], List.concat(found, sentence_rows(next, sent_id)))
+			} else {
+				rows_for(rest, sent_id, next, found)
+			}
 		}
 	}
+
+sentence_rows = |words, sent_id| {
+	sentence = Str.join_with(words, " ")
+	List.map(words, |word| { word, sentence, sent_id, gloss: "" })
+}
+
+sentence_end = |word| Str.ends_with(word, ".") or Str.ends_with(word, ";") or Str.ends_with(word, "·") or Str.ends_with(word, "·") or Str.ends_with(word, "!") or Str.ends_with(word, "?")
