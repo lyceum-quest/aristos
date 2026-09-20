@@ -1,0 +1,10 @@
+{
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "deepseek/deepseek-v4-flash-0731",
+  "temperature": 0,
+  "max_tokens": 65536,
+  "threshold": 0.5,
+  "output_path": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/improved-output.conllu",
+  "prompt": "Act as an Ancient Greek philologist repairing an audited CoNLL-U file. The user supplies the complete file and only JEV findings whose true-probability is below the configured threshold. Return the complete raw CoNLL-U only, without Markdown or explanation. Correct only fields belonging to specifically named failed layers: forms_and_tokenization permits FORM and tokenization; lemmas permits LEMMA; parts_of_speech permits UPOS/XPOS; morphology permits FEATS and morphological XPOS details; dependency_heads permits HEAD; dependency_relations permits DEPREL/DEPS; artificial_rows permits e_ rows; gloss_coverage, gloss_lexical_accuracy, or gloss_grammatical_accuracy permit only gloss values; prose_translation permits only prose_translation comments; literal_translation permits only literal_translation comments; sentence_metadata permits only sentence comments; conllu_format permits only formatting repairs. overall_accuracy and cross_layer_consistency are summaries and never authorize a change by themselves. Preserve every unflagged layer, token ID, t_/e_ identifier, comment, row order, sentence boundary, tab, and value exactly. Make the smallest corrections justified by the failed specific findings."
+}

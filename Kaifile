@@ -43,6 +43,16 @@ task audit {
   ]
 }
 
+task improve {
+  environment: "dev"
+  run: [
+    "roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/improve.roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/gloss-output.conllu",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/audit.json"
+  ]
+}
+
 task lint {
   environment: "dev"
   run: ["roc", "scripts/lint.roc"]
@@ -108,7 +118,8 @@ workflow conllu {
   steps: [
     "run prep",
     "run gloss",
-    "run audit"
+    "run audit",
+    "run improve"
   ]
 }
 
