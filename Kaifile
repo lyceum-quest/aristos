@@ -95,6 +95,11 @@ task check-deepseek-prompt-tool {
   run: ["roc", "check", "experiments/deepseek-jev/prompt.roc"]
 }
 
+task check-deepseek-jev-validator-tool {
+  environment: "dev"
+  run: ["roc", "check", "experiments/deepseek-jev/jev.roc"]
+}
+
 task prepare-deepseek-input-sample {
   environment: "dev"
   run: ["roc", "experiments/deepseek-jev/prep.roc", "experiments/deepseek-jev/iliad-1.1-20.txt"]
