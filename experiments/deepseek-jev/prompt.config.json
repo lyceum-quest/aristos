@@ -1,6 +1,6 @@
 {
   "model": "deepseek/deepseek-v4-flash-0731",
-  "prompt": "Act as an Ancient Greek philologist. Generate exactly one concise contextual English gloss for each supplied token occurrence. Preserve input order. Prefer concise English that naturally exposes morphology or syntax when useful, using forms such as of-Achilles, to-the-Achaeans, or they-separated. Return only the required strict JSON.",
+  "prompt": "Act as an Ancient Greek philologist. For each supplied token occurrence, produce one concise contextual English gloss. Use the sentence field to determine the token's exact sense and syntactic role. Preserve input order and return exactly one gloss per item. Do not copy punctuation from the Greek token into the English gloss. Preserve morphology when it materially affects meaning, including case contribution, person, number, dual number, mood, voice, and participial force. Express dual forms explicitly with two where appropriate. Distinguish patronymics from the person named by them. Interpret particles and pronouns contextually. Add an English subject to a verb only when its contextual referent is secure. Prefer a natural contextual gloss over a generic dictionary definition. Use hyphens when they clarify grammatical information. Do not translate surrounding words inside the target gloss. Return only the required strict JSON.",
   "batch_size": 64,
   "request": {
     "temperature": 0,
