@@ -11,7 +11,7 @@ fields = ["sentence_id", "translation_lang", "prose_translation", "literal_trans
 main! = |args| match List.drop_first(args, 1) {
 	[input] => run!(OsStr.display(input), 0)
 	[input, count] => run!(OsStr.display(input), U64.from_str(OsStr.display(count))?)
-	_ => Err(Usage("run.roc <file.conllu> [sentence-count]"))
+	_ => Err(Usage("prep.roc <file.conllu> [sentence-count]"))
 }
 run! = |input, count| {
 	config : Config

@@ -65,23 +65,18 @@ task check-conllu-experiment-tool {
   run: ["roc", "check", "scripts/run-conllu-experiment.roc"]
 }
 
-task check-oga-conllu-exp2-tool {
+# These experiment tasks make paid API calls.
+task prep {
   environment: "dev"
-  run: ["roc", "check", "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/run.roc"]
+  run: [
+    "roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/prep.roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/tlg0012.tlg001.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+    "1"
+  ]
 }
 
-task check-oga-conllu-exp2-gloss-tool {
-  environment: "dev"
-  run: ["roc", "check", "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/gloss.roc"]
-}
-
-task check-oga-conllu-exp2-audit-tool {
-  environment: "dev"
-  run: ["roc", "check", "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/audit.roc"]
-}
-
-# Paid DeepSeek call over the translated exp2 output.
-task gloss-oga-conllu-exp2-output {
+task gloss {
   environment: "dev"
   run: [
     "roc",
@@ -90,13 +85,12 @@ task gloss-oga-conllu-exp2-output {
   ]
 }
 
-# Paid JEV call over the exp2 output.
-task audit-oga-conllu-exp2-output {
+task audit {
   environment: "dev"
   run: [
     "roc",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/audit.roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/output.conllu"
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/gloss-output.conllu"
   ]
 }
 
@@ -505,6 +499,14 @@ task provision {
   run: ["roc", "scripts/deploy.roc", "infrastructure"]
 }
 
+workflow conllu {
+  steps: [
+    "run prep",
+    "run gloss",
+    "run audit"
+  ]
+}
+
 workflow dev {
   steps: [
     "run preload",
@@ -523,9 +525,6 @@ workflow release {
     "run check-lint-tool",
     "run check-model-experiment-tool",
     "run check-conllu-experiment-tool",
-    "run check-oga-conllu-exp2-tool",
-    "run check-oga-conllu-exp2-gloss-tool",
-    "run check-oga-conllu-exp2-audit-tool",
     "run check-jev-gloss-experiment-tool",
     "run check-jev-gloss-experiment-4-tool",
     "run check-jev-gloss-evaluation-4-tool",
