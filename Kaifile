@@ -85,6 +85,16 @@ task check-deepseek-jev-tool {
   run: ["roc", "check", "experiments/deepseek-jev/run.roc"]
 }
 
+task check-deepseek-input-tool {
+  environment: "dev"
+  run: ["roc", "check", "experiments/deepseek-jev/deepseek.roc"]
+}
+
+task prepare-deepseek-input-sample {
+  environment: "dev"
+  run: ["roc", "experiments/deepseek-jev/deepseek.roc", "experiments/deepseek-jev/iliad-1.1-20.txt"]
+}
+
 # DeepSeek/Jev tasks read DEEPSEEK_JEV_CONFIG, defaulting to
 # experiments/deepseek-jev/config.json. This check is no-spend.
 task check-deepseek-jev {
