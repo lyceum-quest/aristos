@@ -65,6 +65,11 @@ task check-conllu-experiment-tool {
   run: ["roc", "check", "scripts/run-conllu-experiment.roc"]
 }
 
+task check-oga-conllu-exp2-tool {
+  environment: "dev"
+  run: ["roc", "check", "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/run.roc"]
+}
+
 task check-jev-gloss-experiment-tool {
   environment: "dev"
   run: ["roc", "check", "scripts/run-jev-gloss-experiment.roc"]
@@ -488,6 +493,7 @@ workflow release {
     "run check-lint-tool",
     "run check-model-experiment-tool",
     "run check-conllu-experiment-tool",
+    "run check-oga-conllu-exp2-tool",
     "run check-jev-gloss-experiment-tool",
     "run check-jev-gloss-experiment-4-tool",
     "run check-jev-gloss-evaluation-4-tool",

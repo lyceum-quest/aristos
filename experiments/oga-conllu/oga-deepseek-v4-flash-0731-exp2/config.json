@@ -1,0 +1,9 @@
+{
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "deepseek/deepseek-v4-flash-0731",
+  "temperature": 0,
+  "max_tokens": 65536,
+  "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
+  "prompt": "You are given one or more blank-line-separated Ancient Greek CoNLL-U sentence blocks whose MISC columns already contain contextual glosses. Return raw CoNLL-U only, with no Markdown fence or explanation. Copy every input token row, tab, field, gloss, sentence boundary, and sentence order exactly. Before each sentence's token rows add exactly these four single-line comments in this order: # sentence_id = N (numbered from 1 in this input), # translation_lang = en, # prose_translation = a natural English translation, and # literal_translation = a close English translation preserving Greek order and morphology, using hyphens within multiword token renderings. Do not add any other comments and do not change any input text."
+}
