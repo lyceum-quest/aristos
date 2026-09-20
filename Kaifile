@@ -14,57 +14,6 @@ environment dev {
   overlays: ["github:roc-lang/roc-overlay"]
 }
 
-task preload {
-  environment: "dev"
-  run: [
-    "roc",
-    "scripts/build-corpus-preload.roc",
-    "preload",
-    "anabasis",
-    "conllu/xenophon/anabasis/book-01-first-sentence.tb.conllu"
-  ]
-}
-
-task lint {
-  environment: "dev"
-  run: ["roc", "scripts/lint.roc"]
-}
-
-task check-preload-tool {
-  environment: "dev"
-  run: ["roc", "check", "scripts/build-corpus-preload.roc"]
-}
-
-task check-release-tool {
-  environment: "dev"
-  run: ["roc", "check", "scripts/build-release.roc"]
-}
-
-task check-browser-boundary-tool {
-  environment: "dev"
-  run: ["roc", "check", "scripts/check-browser-boundary.roc"]
-}
-
-task check-deploy-tool {
-  environment: "dev"
-  run: ["roc", "check", "scripts/deploy.roc"]
-}
-
-task check-lint-tool {
-  environment: "dev"
-  run: ["roc", "check", "scripts/lint.roc"]
-}
-
-task check-model-experiment-tool {
-  environment: "dev"
-  run: ["roc", "check", "scripts/run-model-experiment.roc"]
-}
-
-task check-conllu-experiment-tool {
-  environment: "dev"
-  run: ["roc", "check", "scripts/run-conllu-experiment.roc"]
-}
-
 # These experiment tasks make paid API calls.
 task prep {
   environment: "dev"
@@ -94,394 +43,50 @@ task audit {
   ]
 }
 
-task check-jev-gloss-experiment-tool {
+task lint {
   environment: "dev"
-  run: ["roc", "check", "scripts/run-jev-gloss-experiment.roc"]
+  run: ["roc", "scripts/lint.roc"]
 }
 
-task check-jev-gloss-experiment-4-tool {
+task check-lint-tool {
   environment: "dev"
-  run: ["roc", "check", "scripts/run-jev-gloss-experiment-4.roc"]
+  run: ["roc", "check", "scripts/lint.roc"]
 }
 
-task check-jev-gloss-evaluation-4-tool {
-  environment: "dev"
-  run: ["roc", "check", "scripts/evaluate-jev-gloss-experiment-4.roc"]
-}
-
-task check-deepseek-jev-tool {
-  environment: "dev"
-  run: ["roc", "check", "experiments/deepseek-jev/run.roc"]
-}
-
-task check-deepseek-prep-tool {
-  environment: "dev"
-  run: ["roc", "check", "experiments/deepseek-jev/prep.roc"]
-}
-
-task check-deepseek-prompt-tool {
-  environment: "dev"
-  run: ["roc", "check", "experiments/deepseek-jev/prompt.roc"]
-}
-
-task check-deepseek-morph-tool {
-  environment: "dev"
-  run: ["roc", "check", "experiments/deepseek-jev/morph.roc"]
-}
-
-task check-deepseek-jev-validator-tool {
-  environment: "dev"
-  run: ["roc", "check", "experiments/deepseek-jev/jev.roc"]
-}
-
-task prepare-deepseek-input-sample {
-  environment: "dev"
-  run: ["roc", "experiments/deepseek-jev/prep.roc", "experiments/deepseek-jev/iliad-1.1-20.txt"]
-}
-
-# DeepSeek/Jev tasks read DEEPSEEK_JEV_CONFIG, defaulting to
-# experiments/deepseek-jev/config.json. This check is no-spend.
-task check-deepseek-jev {
-  environment: "dev"
-  run: ["roc", "experiments/deepseek-jev/run.roc", "--check"]
-}
-
-task roc-version {
-  environment: "dev"
-  run: ["roc", "version"]
-}
-
-task check-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "deepseek-v4-flash-0731", "--check"]
-}
-
-task deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "deepseek-v4-flash-0731"]
-}
-
-task check-deepseek-v4-flash-0731-experiment-3 {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--check"]
-}
-
-task smoke-deepseek-v4-flash-0731-experiment-3 {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--smoke"]
-}
-
-task check-resume-smoke-deepseek-v4-flash-0731-experiment-3 {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--check-resume-smoke"]
-}
-
-task resume-smoke-deepseek-v4-flash-0731-experiment-3 {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--resume-smoke"]
-}
-
-task deepseek-v4-flash-0731-experiment-3 {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--run"]
-}
-
-task resume-deepseek-v4-flash-0731-experiment-3 {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment.roc", "--resume"]
-}
-
-# Experiment 4 construction and evaluation tasks are no-spend.
-task check-deepseek-v4-flash-0731-experiment-4 {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--check"]
-}
-
-task construct-deepseek-v4-flash-0731-experiment-4 {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--construct"]
-}
-
-task worksheet-deepseek-v4-flash-0731-experiment-4 {
-  environment: "dev"
-  run: ["roc", "scripts/evaluate-jev-gloss-experiment-4.roc", "--worksheet"]
-}
-
-task worksheet-runs-deepseek-v4-flash-0731-experiment-4 {
-  environment: "dev"
-  run: ["roc", "scripts/evaluate-jev-gloss-experiment-4.roc", "--worksheet-runs"]
-}
-
-task evaluate-example-deepseek-v4-flash-0731-experiment-4 {
+task preload {
   environment: "dev"
   run: [
     "roc",
-    "scripts/evaluate-jev-gloss-experiment-4.roc",
-    "--evaluate",
-    "experiments/gloss/deepseek-v4-flash-0731/experiment_4/evaluation/v1/scores.example.v1.tsv"
+    "scripts/build-corpus-preload.roc",
+    "preload",
+    "anabasis",
+    "conllu/xenophon/anabasis/book-01-first-sentence.tb.conllu"
   ]
 }
 
-task evaluate-runs-deepseek-v4-flash-0731-experiment-4 {
+task check-preload-tool {
   environment: "dev"
-  run: ["roc", "scripts/evaluate-jev-gloss-experiment-4.roc", "--evaluate-runs"]
+  run: ["roc", "check", "scripts/build-corpus-preload.roc"]
 }
 
-task replay-policy-deepseek-v4-flash-0731-experiment-4-openinference {
+task check-release-tool {
   environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--replay-latest-openinference"]
+  run: ["roc", "check", "scripts/build-release.roc"]
 }
 
-task replay-policy-deepseek-v4-flash-0731-experiment-4-sail-research {
+task check-browser-boundary-tool {
   environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--replay-latest-sail-research"]
+  run: ["roc", "check", "scripts/check-browser-boundary.roc"]
 }
 
-# Every task below this warning makes paid API calls.
-task candidates-deepseek-v4-flash-0731-experiment-4-openinference {
+task check-deploy-tool {
   environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--candidates-openinference"]
-}
-
-task candidates-deepseek-v4-flash-0731-experiment-4-sail-research {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--candidates-sail-research"]
-}
-
-task smoke-deepseek-v4-flash-0731-experiment-4-openinference {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--smoke-openinference"]
-}
-
-task smoke-deepseek-v4-flash-0731-experiment-4-sail-research {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--smoke-sail-research"]
-}
-
-task resume-smoke-deepseek-v4-flash-0731-experiment-4-openinference {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--resume-smoke-openinference"]
-}
-
-task resume-smoke-deepseek-v4-flash-0731-experiment-4-sail-research {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--resume-smoke-sail-research"]
-}
-
-task deepseek-v4-flash-0731-experiment-4-openinference {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--run-openinference"]
-}
-
-task deepseek-v4-flash-0731-experiment-4-sail-research {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--run-sail-research"]
-}
-
-task resume-deepseek-v4-flash-0731-experiment-4-openinference {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--resume-openinference"]
-}
-
-task resume-deepseek-v4-flash-0731-experiment-4-sail-research {
-  environment: "dev"
-  run: ["roc", "scripts/run-jev-gloss-experiment-4.roc", "--resume-sail-research"]
-}
-
-task check-qwen35-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-9b", "--check"]
-}
-
-task qwen35-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-9b"]
-}
-
-task check-qwen35-397b-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-397b-a17b", "--check"]
-}
-
-task qwen35-397b-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.5-397b-a17b"]
-}
-
-task check-claude-sonnet-46-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "claude-sonnet-4.6", "--check"]
-}
-
-task claude-sonnet-46-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "claude-sonnet-4.6"]
-}
-
-task check-gpt53-codex-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "gpt-5.3-codex", "--check"]
-}
-
-task gpt53-codex-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "gpt-5.3-codex"]
-}
-
-task check-qwen38-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.8-27b", "--check"]
-}
-
-task qwen38-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "qwen3.8-27b"]
-}
-
-task check-mistral-small4-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "mistral-small-4", "--check"]
-}
-
-task mistral-small4-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-model-experiment.roc", "mistral-small-4"]
-}
-
-task check-conllu-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731", "--check"]
-}
-
-task conllu-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731"]
-}
-
-task smoke-conllu-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731", "--smoke"]
-}
-
-task check-compact-conllu-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731", "--check-compact"]
-}
-
-task smoke-compact-conllu-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-flash-0731", "--smoke-compact"]
-}
-
-task check-oga-conllu-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "oga-deepseek-v4-flash-0731", "--oga-check"]
-}
-
-task smoke-oga-conllu-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "oga-deepseek-v4-flash-0731", "--oga-smoke"]
-}
-
-task oga-conllu-deepseek-v4-flash-0731-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "oga-deepseek-v4-flash-0731", "--oga"]
-}
-
-task check-conllu-deepseek-v4-pro-0813-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-pro-0813", "--check"]
-}
-
-task conllu-deepseek-v4-pro-0813-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-pro-0813"]
-}
-
-task smoke-conllu-deepseek-v4-pro-0813-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "deepseek-v4-pro-0813", "--smoke"]
-}
-
-task check-conllu-glm53-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "glm-5.3", "--check"]
-}
-
-task conllu-glm53-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "glm-5.3"]
-}
-
-task smoke-conllu-glm53-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "glm-5.3", "--smoke"]
-}
-
-task check-conllu-claude-sonnet-46-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "claude-sonnet-4.6", "--check"]
-}
-
-task conllu-claude-sonnet-46-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "claude-sonnet-4.6"]
-}
-
-task smoke-conllu-claude-sonnet-46-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "claude-sonnet-4.6", "--smoke"]
-}
-
-task check-conllu-gpt53-codex-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "gpt-5.3-codex", "--check"]
-}
-
-task conllu-gpt53-codex-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "gpt-5.3-codex"]
-}
-
-task smoke-conllu-gpt53-codex-experiment {
-  environment: "dev"
-  run: ["roc", "scripts/run-conllu-experiment.roc", "gpt-5.3-codex", "--smoke"]
-}
-
-# Every deepseek-jev task below makes paid API calls and requires the
-# config-specific DEEPSEEK_JEV_AUTHORIZE=run:<sha256> printed by its check.
-task run-deepseek-jev {
-  environment: "dev"
-  run: ["roc", "experiments/deepseek-jev/run.roc", "--run"]
-}
-
-task resume-deepseek-jev {
-  environment: "dev"
-  run: ["roc", "experiments/deepseek-jev/run.roc", "--resume"]
+  run: ["roc", "check", "scripts/deploy.roc"]
 }
 
 task check-browser-boundary {
   environment: "dev"
   run: ["roc", "scripts/check-browser-boundary.roc"]
-}
-
-task build {
-  environment: "dev"
-  run: ["elm", "make", "src/Main.elm", "--output=elm.js"]
-}
-
-task serve {
-  environment: "dev"
-  run: [
-    "elm-live",
-    "src/Main.elm",
-    "--dir=.",
-    "--host=localhost",
-    "--port=8000",
-    "--hot",
-    "--",
-    "--output=elm.js"
-  ]
 }
 
 task bundle {
@@ -507,15 +112,6 @@ workflow conllu {
   ]
 }
 
-workflow dev {
-  steps: [
-    "run preload",
-    "run check-browser-boundary",
-    "run build",
-    "run serve"
-  ]
-}
-
 workflow release {
   steps: [
     "run check-preload-tool",
@@ -523,31 +119,7 @@ workflow release {
     "run check-browser-boundary-tool",
     "run check-deploy-tool",
     "run check-lint-tool",
-    "run check-model-experiment-tool",
-    "run check-conllu-experiment-tool",
-    "run check-jev-gloss-experiment-tool",
-    "run check-jev-gloss-experiment-4-tool",
-    "run check-jev-gloss-evaluation-4-tool",
-    "run check-deepseek-jev-tool",
-    "run check-deepseek-jev",
     "run preload",
-    "run check-deepseek-v4-flash-0731-experiment",
-    "run check-deepseek-v4-flash-0731-experiment-3",
-    "run check-deepseek-v4-flash-0731-experiment-4",
-    "run construct-deepseek-v4-flash-0731-experiment-4",
-    "run worksheet-deepseek-v4-flash-0731-experiment-4",
-    "run evaluate-example-deepseek-v4-flash-0731-experiment-4",
-    "run check-qwen35-experiment",
-    "run check-qwen35-397b-experiment",
-    "run check-claude-sonnet-46-experiment",
-    "run check-gpt53-codex-experiment",
-    "run check-qwen38-experiment",
-    "run check-mistral-small4-experiment",
-    "run check-conllu-deepseek-v4-flash-0731-experiment",
-    "run check-conllu-deepseek-v4-pro-0813-experiment",
-    "run check-conllu-glm53-experiment",
-    "run check-conllu-claude-sonnet-46-experiment",
-    "run check-conllu-gpt53-codex-experiment",
     "run check-browser-boundary",
     "run bundle"
   ]
