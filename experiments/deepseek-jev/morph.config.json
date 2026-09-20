@@ -1,0 +1,132 @@
+{
+  "model": "jev-1.13.0",
+  "state": {
+    "word": "",
+    "sentence": ""
+  },
+  "questions": {
+    "part_of_speech": {
+      "type": "choice",
+      "instructions": "What is the contextual part of speech of `word` in `sentence`? Choose exactly one Universal Dependencies part of speech.",
+      "criteria": {
+        "adjective": "An adjective.",
+        "adposition": "A preposition or postposition.",
+        "adverb": "An adverb.",
+        "auxiliary": "A verb functioning as an auxiliary in this context.",
+        "coordinating_conjunction": "A conjunction coordinating words, phrases, or clauses.",
+        "determiner": "An article or other determiner.",
+        "interjection": "An interjection.",
+        "noun": "A common noun.",
+        "numeral": "A numeral.",
+        "particle": "A grammatical particle.",
+        "pronoun": "A pronoun.",
+        "proper_noun": "A proper name.",
+        "punctuation": "A standalone punctuation token.",
+        "subordinating_conjunction": "A conjunction introducing a subordinate clause.",
+        "symbol": "A symbol that is not punctuation.",
+        "verb": "A lexical verb, including a finite verb, infinitive, or participle.",
+        "other": "A token that cannot be assigned another listed part of speech."
+      }
+    },
+    "case": {
+      "type": "choice",
+      "instructions": "What contextual grammatical case does `word` bear in `sentence`?",
+      "criteria": {
+        "nominative": "Nominative case.",
+        "genitive": "Genitive case.",
+        "dative": "Dative case, including historical locative or instrumental functions.",
+        "accusative": "Accusative case.",
+        "vocative": "Vocative case.",
+        "not_applicable": "This word is not contextually inflected for case."
+      }
+    },
+    "gender": {
+      "type": "choice",
+      "instructions": "What contextual grammatical gender does `word` bear in `sentence`?",
+      "criteria": {
+        "masculine": "Masculine gender.",
+        "feminine": "Feminine gender.",
+        "neuter": "Neuter gender.",
+        "common": "A common-gender form.",
+        "not_applicable": "This word is not contextually inflected for gender."
+      }
+    },
+    "number": {
+      "type": "choice",
+      "instructions": "What contextual grammatical number does `word` bear in `sentence`?",
+      "criteria": {
+        "singular": "Singular number.",
+        "dual": "Dual number.",
+        "plural": "Plural number.",
+        "not_applicable": "This word is not contextually inflected for number."
+      }
+    },
+    "person": {
+      "type": "choice",
+      "instructions": "What grammatical person does `word` express in `sentence`?",
+      "criteria": {
+        "first": "First person.",
+        "second": "Second person.",
+        "third": "Third person.",
+        "not_applicable": "This word does not contextually express grammatical person."
+      }
+    },
+    "tense": {
+      "type": "choice",
+      "instructions": "What traditional Ancient Greek tense or tense stem does `word` use in `sentence`? Judge the inflected form, not the English translation.",
+      "criteria": {
+        "present": "Present tense or present stem.",
+        "imperfect": "Imperfect tense.",
+        "future": "Future tense or future stem.",
+        "aorist": "Aorist tense or aorist stem.",
+        "perfect": "Perfect tense or perfect stem.",
+        "pluperfect": "Pluperfect tense.",
+        "future_perfect": "Future perfect tense or stem.",
+        "not_applicable": "This word has no contextual verbal tense or tense stem."
+      }
+    },
+    "mood": {
+      "type": "choice",
+      "instructions": "What finite verbal mood does `word` use in `sentence`? Infinitives and participles are classified by `verb_form`.",
+      "criteria": {
+        "indicative": "Indicative mood.",
+        "subjunctive": "Subjunctive mood.",
+        "optative": "Optative mood.",
+        "imperative": "Imperative mood.",
+        "not_applicable": "This word is not a finite verb bearing mood."
+      }
+    },
+    "voice": {
+      "type": "choice",
+      "instructions": "What contextual grammatical voice does `word` use in `sentence`?",
+      "criteria": {
+        "active": "Active voice.",
+        "middle": "Middle voice, including contextually middle deponents.",
+        "passive": "Passive voice.",
+        "middle_or_passive": "Morphologically middle-passive and context does not justify resolving it.",
+        "not_applicable": "This word has no contextual verbal voice."
+      }
+    },
+    "verb_form": {
+      "type": "choice",
+      "instructions": "What verbal form type is `word` in `sentence`?",
+      "criteria": {
+        "finite": "A finite verb.",
+        "infinitive": "An infinitive.",
+        "participle": "A participle.",
+        "verbal_adjective": "A verbal adjective.",
+        "not_applicable": "This word is not a verbal form."
+      }
+    },
+    "degree": {
+      "type": "choice",
+      "instructions": "What degree does `word` express in `sentence`?",
+      "criteria": {
+        "positive": "Positive degree.",
+        "comparative": "Comparative degree.",
+        "superlative": "Superlative degree.",
+        "not_applicable": "This word is not contextually inflected for degree."
+      }
+    }
+  }
+}

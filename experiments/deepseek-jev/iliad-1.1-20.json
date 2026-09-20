@@ -1,1 +1,1878 @@
-[{"gloss":"wrath","noul":0.94,"sent_id":1,"sentence":"μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος","valid":true,"word":"μῆνιν"},{"gloss":"sing","noul":0.77,"sent_id":1,"sentence":"μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος","valid":true,"word":"ἄειδε"},{"gloss":"goddess","noul":0.93,"sent_id":1,"sentence":"μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος","valid":true,"word":"θεὰ"},{"gloss":"son-of-Peleus","noul":0.81,"sent_id":1,"sentence":"μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος","valid":true,"word":"Πηληϊάδεω"},{"gloss":"of-Achilles","noul":0.73,"sent_id":1,"sentence":"μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος","valid":true,"word":"Ἀχιλῆος"},{"gloss":"destructive","noul":0.89,"sent_id":2,"sentence":"οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,","valid":true,"word":"οὐλομένην,"},{"gloss":"who","noul":0.92,"sent_id":2,"sentence":"οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,","valid":true,"word":"ἣ"},{"gloss":"countless","noul":0.89,"sent_id":2,"sentence":"οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,","valid":true,"word":"μυρίʼ"},{"gloss":"for-the-Achaeans","noul":0.78,"sent_id":2,"sentence":"οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,","valid":true,"word":"Ἀχαιοῖς"},{"gloss":"pains","noul":0.89,"sent_id":2,"sentence":"οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,","valid":true,"word":"ἄλγεʼ"},{"gloss":"she-put","noul":0.75,"sent_id":2,"sentence":"οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,","valid":true,"word":"ἔθηκε,"},{"gloss":"many","noul":0.92,"sent_id":3,"sentence":"πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν","valid":true,"word":"πολλὰς"},{"gloss":"and","noul":0.88,"sent_id":3,"sentence":"πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν","valid":true,"word":"δʼ"},{"gloss":"strong","noul":0.85,"sent_id":3,"sentence":"πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν","valid":true,"word":"ἰφθίμους"},{"gloss":"souls","noul":0.86,"sent_id":3,"sentence":"πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν","valid":true,"word":"ψυχὰς"},{"gloss":"to-Hades","noul":0.79,"sent_id":3,"sentence":"πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν","valid":true,"word":"Ἄϊδι"},{"gloss":"he-sent-forth","noul":0.78,"sent_id":3,"sentence":"πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν","valid":true,"word":"προΐαψεν"},{"gloss":"of-heroes","noul":0.74,"sent_id":4,"sentence":"ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν","valid":true,"word":"ἡρώων,"},{"gloss":"themselves","noul":0.76,"sent_id":4,"sentence":"ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν","valid":true,"word":"αὐτοὺς"},{"gloss":"but","noul":0.75,"sent_id":4,"sentence":"ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν","valid":true,"word":"δὲ"},{"gloss":"as-prey","noul":0.73,"sent_id":4,"sentence":"ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν","valid":true,"word":"ἑλώρια"},{"gloss":"he-made","noul":0.71,"sent_id":4,"sentence":"ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν","valid":true,"word":"τεῦχε"},{"gloss":"for-dogs","noul":0.71,"sent_id":4,"sentence":"ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν","valid":true,"word":"κύνεσσιν"},{"gloss":"for-birds","noul":0.75,"sent_id":5,"sentence":"οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,","valid":true,"word":"οἰωνοῖσί"},{"gloss":"and","noul":0.72,"sent_id":5,"sentence":"οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,","valid":true,"word":"τε"},{"gloss":"all","noul":0.7,"sent_id":5,"sentence":"οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,","valid":true,"word":"πᾶσι,"},{"gloss":"of-Zeus","noul":0.71,"sent_id":5,"sentence":"οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,","valid":true,"word":"Διὸς"},{"gloss":"but","noul":0.68,"sent_id":5,"sentence":"οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,","valid":true,"word":"δʼ"},{"gloss":"was-being-fulfilled","noul":0.72,"sent_id":5,"sentence":"οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,","valid":true,"word":"ἐτελείετο"},{"gloss":"plan","noul":0.76,"sent_id":5,"sentence":"οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,","valid":true,"word":"βουλή,"},{"gloss":"from","noul":0.72,"sent_id":6,"sentence":"ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε","valid":true,"word":"ἐξ"},{"gloss":"which","noul":0.73,"sent_id":6,"sentence":"ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε","valid":true,"word":"οὗ"},{"gloss":"indeed","noul":0.75,"sent_id":6,"sentence":"ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε","valid":true,"word":"δὴ"},{"gloss":"the","noul":0.72,"sent_id":6,"sentence":"ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε","valid":true,"word":"τὰ"},{"gloss":"first","noul":0.73,"sent_id":6,"sentence":"ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε","valid":true,"word":"πρῶτα"},{"gloss":"they-two-stood-apart","noul":0.73,"sent_id":6,"sentence":"ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε","valid":true,"word":"διαστήτην"},{"gloss":"having-quarreled","noul":0.77,"sent_id":6,"sentence":"ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε","valid":true,"word":"ἐρίσαντε"},{"gloss":"son-of-Atreus","noul":0.78,"sent_id":7,"sentence":"Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.","valid":true,"word":"Ἀτρεΐδης"},{"gloss":"and","noul":0.78,"sent_id":7,"sentence":"Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.","valid":true,"word":"τε"},{"gloss":"lord","noul":0.77,"sent_id":7,"sentence":"Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.","valid":true,"word":"ἄναξ"},{"gloss":"of-men","noul":0.77,"sent_id":7,"sentence":"Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.","valid":true,"word":"ἀνδρῶν"},{"gloss":"and","noul":0.76,"sent_id":7,"sentence":"Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.","valid":true,"word":"καὶ"},{"gloss":"brilliant","noul":0.75,"sent_id":7,"sentence":"Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.","valid":true,"word":"δῖος"},{"gloss":"Achilles","noul":0.75,"sent_id":7,"sentence":"Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.","valid":true,"word":"Ἀχιλλεύς."},{"gloss":"who","noul":0.75,"sent_id":8,"sentence":"τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;","valid":true,"word":"τίς"},{"gloss":"and","noul":0.75,"sent_id":8,"sentence":"τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;","valid":true,"word":"τʼ"},{"gloss":"then","noul":0.74,"sent_id":8,"sentence":"τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;","valid":true,"word":"ἄρ"},{"gloss":"those-two","noul":0.75,"sent_id":8,"sentence":"τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;","valid":true,"word":"σφωε"},{"gloss":"of-gods","noul":0.75,"sent_id":8,"sentence":"τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;","valid":true,"word":"θεῶν"},{"gloss":"in-strife","noul":0.74,"sent_id":8,"sentence":"τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;","valid":true,"word":"ἔριδι"},{"gloss":"brought-together","noul":0.74,"sent_id":8,"sentence":"τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;","valid":true,"word":"ξυνέηκε"},{"gloss":"to-fight","noul":0.75,"sent_id":8,"sentence":"τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;","valid":true,"word":"μάχεσθαι;"},{"gloss":"of-Leto","noul":0.74,"sent_id":9,"sentence":"Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς","valid":true,"word":"Λητοῦς"},{"gloss":"and","noul":0.73,"sent_id":9,"sentence":"Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς","valid":true,"word":"καὶ"},{"gloss":"of-Zeus","noul":0.72,"sent_id":9,"sentence":"Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς","valid":true,"word":"Διὸς"},{"gloss":"son","noul":0.7,"sent_id":9,"sentence":"Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς","valid":true,"word":"υἱός·"},{"gloss":"he","noul":0.73,"sent_id":9,"sentence":"Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς","valid":true,"word":"ὃ"},{"gloss":"for","noul":0.72,"sent_id":9,"sentence":"Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς","valid":true,"word":"γὰρ"},{"gloss":"at-the-king","noul":0.73,"sent_id":9,"sentence":"Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς","valid":true,"word":"βασιλῆϊ"},{"gloss":"having-been-enraged","noul":0.72,"sent_id":9,"sentence":"Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς","valid":true,"word":"χολωθεὶς"},{"gloss":"plague","noul":0.73,"sent_id":10,"sentence":"νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,","valid":true,"word":"νοῦσον"},{"gloss":"through","noul":0.72,"sent_id":10,"sentence":"νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,","valid":true,"word":"ἀνὰ"},{"gloss":"army","noul":0.73,"sent_id":10,"sentence":"νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,","valid":true,"word":"στρατὸν"},{"gloss":"he-roused","noul":0.72,"sent_id":10,"sentence":"νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,","valid":true,"word":"ὄρσε"},{"gloss":"evil","noul":0.73,"sent_id":10,"sentence":"νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,","valid":true,"word":"κακήν,"},{"gloss":"were perishing","noul":0.74,"sent_id":10,"sentence":"νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,","valid":true,"word":"ὀλέκοντο"},{"gloss":"and","noul":0.74,"sent_id":10,"sentence":"νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,","valid":true,"word":"δὲ"},{"gloss":"troops","noul":0.73,"sent_id":10,"sentence":"νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,","valid":true,"word":"λαοί,"},{"gloss":"because","noul":0.73,"sent_id":11,"sentence":"οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα","valid":true,"word":"οὕνεκα"},{"gloss":"the","noul":0.73,"sent_id":11,"sentence":"οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα","valid":true,"word":"τὸν"},{"gloss":"Chryses","noul":0.73,"sent_id":11,"sentence":"οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα","valid":true,"word":"Χρύσην"},{"gloss":"dishonored","noul":0.73,"sent_id":11,"sentence":"οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα","valid":true,"word":"ἠτίμασεν"},{"gloss":"priest","noul":0.73,"sent_id":11,"sentence":"οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα","valid":true,"word":"ἀρητῆρα"},{"gloss":"son-of-Atreus","noul":0.74,"sent_id":12,"sentence":"Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν","valid":true,"word":"Ἀτρεΐδης·"},{"gloss":"who","noul":0.75,"sent_id":12,"sentence":"Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν","valid":true,"word":"ὃ"},{"gloss":"for","noul":0.74,"sent_id":12,"sentence":"Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν","valid":true,"word":"γὰρ"},{"gloss":"came","noul":0.73,"sent_id":12,"sentence":"Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν","valid":true,"word":"ἦλθε"},{"gloss":"swift","noul":0.73,"sent_id":12,"sentence":"Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν","valid":true,"word":"θοὰς"},{"gloss":"to","noul":0.73,"sent_id":12,"sentence":"Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν","valid":true,"word":"ἐπὶ"},{"gloss":"ships","noul":0.73,"sent_id":12,"sentence":"Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν","valid":true,"word":"νῆας"},{"gloss":"of-the-Achaeans","noul":0.73,"sent_id":12,"sentence":"Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν","valid":true,"word":"Ἀχαιῶν"},{"gloss":"intending-to-release","noul":0.73,"sent_id":13,"sentence":"λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,","valid":true,"word":"λυσόμενός"},{"gloss":"and","noul":0.72,"sent_id":13,"sentence":"λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,","valid":true,"word":"τε"},{"gloss":"daughter","noul":0.73,"sent_id":13,"sentence":"λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,","valid":true,"word":"θύγατρα"},{"gloss":"bringing","noul":0.73,"sent_id":13,"sentence":"λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,","valid":true,"word":"φέρων"},{"gloss":"and","noul":0.74,"sent_id":13,"sentence":"λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,","valid":true,"word":"τʼ"},{"gloss":"countless","noul":0.73,"sent_id":13,"sentence":"λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,","valid":true,"word":"ἀπερείσιʼ"},{"gloss":"ransom","noul":0.73,"sent_id":13,"sentence":"λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,","valid":true,"word":"ἄποινα,"},{"gloss":"garlands","noul":0.73,"sent_id":14,"sentence":"στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος","valid":true,"word":"στέμματʼ"},{"gloss":"holding","noul":0.73,"sent_id":14,"sentence":"στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος","valid":true,"word":"ἔχων"},{"gloss":"in","noul":0.74,"sent_id":14,"sentence":"στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος","valid":true,"word":"ἐν"},{"gloss":"hands","noul":0.73,"sent_id":14,"sentence":"στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος","valid":true,"word":"χερσὶν"},{"gloss":"of-far-shooting","noul":0.73,"sent_id":14,"sentence":"στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος","valid":true,"word":"ἑκηβόλου"},{"gloss":"Apollo","noul":0.74,"sent_id":14,"sentence":"στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος","valid":true,"word":"Ἀπόλλωνος"},{"gloss":"golden","noul":0.75,"sent_id":15,"sentence":"χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,","valid":true,"word":"χρυσέῳ"},{"gloss":"upon","noul":0.74,"sent_id":15,"sentence":"χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,","valid":true,"word":"ἀνὰ"},{"gloss":"staff","noul":0.73,"sent_id":15,"sentence":"χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,","valid":true,"word":"σκήπτρῳ,"},{"gloss":"and","noul":0.74,"sent_id":15,"sentence":"χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,","valid":true,"word":"καὶ"},{"gloss":"was-beseeching","noul":0.75,"sent_id":15,"sentence":"χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,","valid":true,"word":"λίσσετο"},{"gloss":"all","noul":0.79,"sent_id":15,"sentence":"χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,","valid":true,"word":"πάντας"},{"gloss":"Achaeans","noul":0.74,"sent_id":15,"sentence":"χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,","valid":true,"word":"Ἀχαιούς,"},{"gloss":"sons-of-Atreus","noul":0.74,"sent_id":16,"sentence":"Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·","valid":true,"word":"Ἀτρεΐδα"},{"gloss":"and","noul":0.73,"sent_id":16,"sentence":"Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·","valid":true,"word":"δὲ"},{"gloss":"especially","noul":0.74,"sent_id":16,"sentence":"Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·","valid":true,"word":"μάλιστα"},{"gloss":"two","noul":0.74,"sent_id":16,"sentence":"Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·","valid":true,"word":"δύω,"},{"gloss":"marshals","noul":0.73,"sent_id":16,"sentence":"Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·","valid":true,"word":"κοσμήτορε"},{"gloss":"of-hosts","noul":0.73,"sent_id":16,"sentence":"Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·","valid":true,"word":"λαῶν·"},{"gloss":"sons-of-Atreus","noul":0.74,"sent_id":17,"sentence":"Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,","valid":true,"word":"Ἀτρεΐδαι"},{"gloss":"and","noul":0.73,"sent_id":17,"sentence":"Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,","valid":true,"word":"τε"},{"gloss":"and","noul":0.74,"sent_id":17,"sentence":"Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,","valid":true,"word":"καὶ"},{"gloss":"other","noul":0.73,"sent_id":17,"sentence":"Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,","valid":true,"word":"ἄλλοι"},{"gloss":"well-greaved","noul":0.72,"sent_id":17,"sentence":"Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,","valid":true,"word":"ἐϋκνήμιδες"},{"gloss":"Achaeans","noul":0.72,"sent_id":17,"sentence":"Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,","valid":true,"word":"Ἀχαιοί,"},{"gloss":"to-you","noul":0.73,"sent_id":18,"sentence":"ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες","valid":true,"word":"ὑμῖν"},{"gloss":"indeed","noul":0.74,"sent_id":18,"sentence":"ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες","valid":true,"word":"μὲν"},{"gloss":"gods","noul":0.73,"sent_id":18,"sentence":"ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες","valid":true,"word":"θεοὶ"},{"gloss":"may-they-grant","noul":0.73,"sent_id":18,"sentence":"ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες","valid":true,"word":"δοῖεν"},{"gloss":"Olympian","noul":0.73,"sent_id":18,"sentence":"ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες","valid":true,"word":"Ὀλύμπια"},{"gloss":"dwellings","noul":0.74,"sent_id":18,"sentence":"ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες","valid":true,"word":"δώματʼ"},{"gloss":"having","noul":0.75,"sent_id":18,"sentence":"ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες","valid":true,"word":"ἔχοντες"},{"gloss":"to-sack","noul":0.73,"sent_id":19,"sentence":"ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·","valid":true,"word":"ἐκπέρσαι"},{"gloss":"of-Priam","noul":0.74,"sent_id":19,"sentence":"ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·","valid":true,"word":"Πριάμοιο"},{"gloss":"city","noul":0.74,"sent_id":19,"sentence":"ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·","valid":true,"word":"πόλιν,"},{"gloss":"well","noul":0.75,"sent_id":19,"sentence":"ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·","valid":true,"word":"εὖ"},{"gloss":"and","noul":0.75,"sent_id":19,"sentence":"ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·","valid":true,"word":"δʼ"},{"gloss":"homeward","noul":0.73,"sent_id":19,"sentence":"ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·","valid":true,"word":"οἴκαδʼ"},{"gloss":"to-arrive","noul":0.74,"sent_id":19,"sentence":"ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·","valid":true,"word":"ἱκέσθαι·"},{"gloss":"daughter","noul":0.73,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"παῖδα"},{"gloss":"and","noul":0.74,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"δʼ"},{"gloss":"for me","noul":0.72,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"ἐμοὶ"},{"gloss":"may you release","noul":0.72,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"λύσαιτε"},{"gloss":"dear","noul":0.73,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"φίλην,"},{"gloss":"the","noul":0.73,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"τὰ"},{"gloss":"and","noul":0.73,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"δʼ"},{"gloss":"ransom-payments","noul":0.73,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"ἄποινα"},{"gloss":"to accept","noul":0.73,"sent_id":20,"sentence":"παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,","valid":true,"word":"δέχεσθαι,"}]
+[
+  {
+    "gloss": "wrath",
+    "noul": 0.94,
+    "sent_id": 1,
+    "sentence": "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος",
+    "valid": true,
+    "word": "μῆνιν",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "sing",
+    "noul": 0.85,
+    "sent_id": 1,
+    "sentence": "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος",
+    "valid": true,
+    "word": "ἄειδε",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "second",
+      "tense": "aorist",
+      "mood": "imperative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "goddess",
+    "noul": 0.92,
+    "sent_id": 1,
+    "sentence": "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος",
+    "valid": true,
+    "word": "θεὰ",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "vocative",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "of Peleus",
+    "noul": 0.44,
+    "sent_id": 1,
+    "sentence": "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος",
+    "valid": false,
+    "word": "Πηληϊάδεω",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "of Achilles",
+    "noul": 0.79,
+    "sent_id": 1,
+    "sentence": "μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος",
+    "valid": true,
+    "word": "Ἀχιλῆος",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "destructive",
+    "noul": 0.89,
+    "sent_id": 2,
+    "sentence": "οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,",
+    "valid": true,
+    "word": "οὐλομένην,",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "singular",
+      "verb_form": "verbal_adjective"
+    }
+  },
+  {
+    "gloss": "who",
+    "noul": 0.93,
+    "sent_id": 2,
+    "sentence": "οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,",
+    "valid": true,
+    "word": "ἣ",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "nominative",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "countless",
+    "noul": 0.88,
+    "sent_id": 2,
+    "sentence": "οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,",
+    "valid": true,
+    "word": "μυρίʼ",
+    "morphology": {
+      "part_of_speech": "numeral"
+    }
+  },
+  {
+    "gloss": "for Achaeans",
+    "noul": 0.86,
+    "sent_id": 2,
+    "sentence": "οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,",
+    "valid": true,
+    "word": "Ἀχαιοῖς",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "dative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "pains",
+    "noul": 0.89,
+    "sent_id": 2,
+    "sentence": "οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,",
+    "valid": true,
+    "word": "ἄλγεʼ",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "caused",
+    "noul": 0.87,
+    "sent_id": 2,
+    "sentence": "οὐλομένην, ἣ μυρίʼ Ἀχαιοῖς ἄλγεʼ ἔθηκε,",
+    "valid": true,
+    "word": "ἔθηκε,",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "indicative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "many",
+    "noul": 0.93,
+    "sent_id": 3,
+    "sentence": "πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν",
+    "valid": true,
+    "word": "πολλὰς",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "plural",
+      "degree": "positive"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.89,
+    "sent_id": 3,
+    "sentence": "πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν",
+    "valid": true,
+    "word": "δʼ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "brave",
+    "noul": 0.9,
+    "sent_id": 3,
+    "sentence": "πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν",
+    "valid": true,
+    "word": "ἰφθίμους",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "plural",
+      "degree": "positive"
+    }
+  },
+  {
+    "gloss": "souls",
+    "noul": 0.86,
+    "sent_id": 3,
+    "sentence": "πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν",
+    "valid": true,
+    "word": "ψυχὰς",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "to Hades",
+    "noul": 0.83,
+    "sent_id": 3,
+    "sentence": "πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν",
+    "valid": true,
+    "word": "Ἄϊδι",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "dative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "sent forth",
+    "noul": 0.86,
+    "sent_id": 3,
+    "sentence": "πολλὰς δʼ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν",
+    "valid": true,
+    "word": "προΐαψεν",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "indicative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "of heroes",
+    "noul": 0.79,
+    "sent_id": 4,
+    "sentence": "ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν",
+    "valid": true,
+    "word": "ἡρώων,",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "them",
+    "noul": 0.78,
+    "sent_id": 4,
+    "sentence": "ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν",
+    "valid": true,
+    "word": "αὐτοὺς",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "accusative",
+      "gender": "masculine",
+      "number": "plural",
+      "person": "third"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.75,
+    "sent_id": 4,
+    "sentence": "ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν",
+    "valid": true,
+    "word": "δὲ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "spoils",
+    "noul": 0.74,
+    "sent_id": 4,
+    "sentence": "ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν",
+    "valid": true,
+    "word": "ἑλώρια",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "made",
+    "noul": 0.74,
+    "sent_id": 4,
+    "sentence": "ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν",
+    "valid": true,
+    "word": "τεῦχε",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "imperative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "for dogs",
+    "noul": 0.73,
+    "sent_id": 4,
+    "sentence": "ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν",
+    "valid": true,
+    "word": "κύνεσσιν",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "dative",
+      "gender": "feminine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "for birds",
+    "noul": 0.73,
+    "sent_id": 5,
+    "sentence": "οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,",
+    "valid": true,
+    "word": "οἰωνοῖσί",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "dative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.73,
+    "sent_id": 5,
+    "sentence": "οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,",
+    "valid": true,
+    "word": "τε",
+    "morphology": {
+      "part_of_speech": "particle"
+    }
+  },
+  {
+    "gloss": "all",
+    "noul": 0.74,
+    "sent_id": 5,
+    "sentence": "οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,",
+    "valid": true,
+    "word": "πᾶσι,",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "dative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "of Zeus",
+    "noul": 0.73,
+    "sent_id": 5,
+    "sentence": "οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,",
+    "valid": true,
+    "word": "Διὸς",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.76,
+    "sent_id": 5,
+    "sentence": "οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,",
+    "valid": true,
+    "word": "δʼ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "was being fulfilled",
+    "noul": 0.76,
+    "sent_id": 5,
+    "sentence": "οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,",
+    "valid": true,
+    "word": "ἐτελείετο",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "imperfect",
+      "mood": "indicative",
+      "voice": "passive",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "plan",
+    "noul": 0.75,
+    "sent_id": 5,
+    "sentence": "οἰωνοῖσί τε πᾶσι, Διὸς δʼ ἐτελείετο βουλή,",
+    "valid": true,
+    "word": "βουλή,",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "genitive",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "from",
+    "noul": 0.74,
+    "sent_id": 6,
+    "sentence": "ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε",
+    "valid": true,
+    "word": "ἐξ",
+    "morphology": {
+      "part_of_speech": "adposition"
+    }
+  },
+  {
+    "gloss": "which",
+    "noul": 0.74,
+    "sent_id": 6,
+    "sentence": "ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε",
+    "valid": true,
+    "word": "οὗ",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "genitive"
+    }
+  },
+  {
+    "gloss": "indeed",
+    "noul": 0.75,
+    "sent_id": 6,
+    "sentence": "ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε",
+    "valid": true,
+    "word": "δὴ",
+    "morphology": {
+      "part_of_speech": "particle"
+    }
+  },
+  {
+    "gloss": "the",
+    "noul": 0.73,
+    "sent_id": 6,
+    "sentence": "ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε",
+    "valid": true,
+    "word": "τὰ",
+    "morphology": {
+      "part_of_speech": "determiner",
+      "case": "nominative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "first",
+    "noul": 0.74,
+    "sent_id": 6,
+    "sentence": "ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε",
+    "valid": true,
+    "word": "πρῶτα",
+    "morphology": {
+      "part_of_speech": "adverb",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural",
+      "degree": "superlative"
+    }
+  },
+  {
+    "gloss": "they two stood apart",
+    "noul": 0.73,
+    "sent_id": 6,
+    "sentence": "ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε",
+    "valid": true,
+    "word": "διαστήτην",
+    "morphology": {
+      "part_of_speech": "verb",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "plural",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "indicative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "having quarreled",
+    "noul": 0.73,
+    "sent_id": 6,
+    "sentence": "ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε",
+    "valid": true,
+    "word": "ἐρίσαντε",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "plural",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "indicative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "son of Atreus",
+    "noul": 0.73,
+    "sent_id": 7,
+    "sentence": "Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.",
+    "valid": true,
+    "word": "Ἀτρεΐδης",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.75,
+    "sent_id": 7,
+    "sentence": "Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.",
+    "valid": true,
+    "word": "τε",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "lord",
+    "noul": 0.76,
+    "sent_id": 7,
+    "sentence": "Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.",
+    "valid": true,
+    "word": "ἄναξ",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "of men",
+    "noul": 0.77,
+    "sent_id": 7,
+    "sentence": "Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.",
+    "valid": true,
+    "word": "ἀνδρῶν",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.77,
+    "sent_id": 7,
+    "sentence": "Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.",
+    "valid": true,
+    "word": "καὶ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "brilliant",
+    "noul": 0.76,
+    "sent_id": 7,
+    "sentence": "Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.",
+    "valid": true,
+    "word": "δῖος",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "Achilles",
+    "noul": 0.75,
+    "sent_id": 7,
+    "sentence": "Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.",
+    "valid": true,
+    "word": "Ἀχιλλεύς.",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "who",
+    "noul": 0.77,
+    "sent_id": 8,
+    "sentence": "τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;",
+    "valid": true,
+    "word": "τίς",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "nominative",
+      "gender": "common",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.76,
+    "sent_id": 8,
+    "sentence": "τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;",
+    "valid": true,
+    "word": "τʼ",
+    "morphology": {
+      "part_of_speech": "particle"
+    }
+  },
+  {
+    "gloss": "then",
+    "noul": 0.76,
+    "sent_id": 8,
+    "sentence": "τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;",
+    "valid": true,
+    "word": "ἄρ",
+    "morphology": {
+      "part_of_speech": "particle"
+    }
+  },
+  {
+    "gloss": "them two",
+    "noul": 0.76,
+    "sent_id": 8,
+    "sentence": "τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;",
+    "valid": true,
+    "word": "σφωε",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "accusative",
+      "gender": "common",
+      "number": "dual",
+      "person": "third"
+    }
+  },
+  {
+    "gloss": "of gods",
+    "noul": 0.76,
+    "sent_id": 8,
+    "sentence": "τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;",
+    "valid": true,
+    "word": "θεῶν",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "genitive",
+      "gender": "common",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "in strife",
+    "noul": 0.76,
+    "sent_id": 8,
+    "sentence": "τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;",
+    "valid": true,
+    "word": "ἔριδι",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "dative",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "brought together",
+    "noul": 0.75,
+    "sent_id": 8,
+    "sentence": "τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;",
+    "valid": true,
+    "word": "ξυνέηκε",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "perfect",
+      "mood": "indicative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "to fight",
+    "noul": 0.75,
+    "sent_id": 8,
+    "sentence": "τίς τʼ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;",
+    "valid": true,
+    "word": "μάχεσθαι;",
+    "morphology": {
+      "part_of_speech": "verb",
+      "tense": "present",
+      "voice": "middle",
+      "verb_form": "infinitive"
+    }
+  },
+  {
+    "gloss": "of Leto",
+    "noul": 0.74,
+    "sent_id": 9,
+    "sentence": "Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς",
+    "valid": true,
+    "word": "Λητοῦς",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "genitive",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.75,
+    "sent_id": 9,
+    "sentence": "Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς",
+    "valid": true,
+    "word": "καὶ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "of Zeus",
+    "noul": 0.73,
+    "sent_id": 9,
+    "sentence": "Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς",
+    "valid": true,
+    "word": "Διὸς",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "son",
+    "noul": 0.73,
+    "sent_id": 9,
+    "sentence": "Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς",
+    "valid": true,
+    "word": "υἱός·",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "he",
+    "noul": 0.73,
+    "sent_id": 9,
+    "sentence": "Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς",
+    "valid": true,
+    "word": "ὃ",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular",
+      "person": "third"
+    }
+  },
+  {
+    "gloss": "for",
+    "noul": 0.72,
+    "sent_id": 9,
+    "sentence": "Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς",
+    "valid": true,
+    "word": "γὰρ",
+    "morphology": {
+      "part_of_speech": "particle"
+    }
+  },
+  {
+    "gloss": "at the king",
+    "noul": 0.72,
+    "sent_id": 9,
+    "sentence": "Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς",
+    "valid": true,
+    "word": "βασιλῆϊ",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "dative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "having been angered",
+    "noul": 0.72,
+    "sent_id": 9,
+    "sentence": "Λητοῦς καὶ Διὸς υἱός· ὃ γὰρ βασιλῆϊ χολωθεὶς",
+    "valid": true,
+    "word": "χολωθεὶς",
+    "morphology": {
+      "part_of_speech": "verb",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular",
+      "tense": "aorist",
+      "voice": "middle",
+      "verb_form": "participle"
+    }
+  },
+  {
+    "gloss": "plague",
+    "noul": 0.74,
+    "sent_id": 10,
+    "sentence": "νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,",
+    "valid": true,
+    "word": "νοῦσον",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "through",
+    "noul": 0.73,
+    "sent_id": 10,
+    "sentence": "νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,",
+    "valid": true,
+    "word": "ἀνὰ",
+    "morphology": {
+      "part_of_speech": "adposition"
+    }
+  },
+  {
+    "gloss": "army",
+    "noul": 0.73,
+    "sent_id": 10,
+    "sentence": "νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,",
+    "valid": true,
+    "word": "στρατὸν",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "roused",
+    "noul": 0.73,
+    "sent_id": 10,
+    "sentence": "νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,",
+    "valid": true,
+    "word": "ὄρσε",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "indicative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "evil",
+    "noul": 0.74,
+    "sent_id": 10,
+    "sentence": "νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,",
+    "valid": true,
+    "word": "κακήν,",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "singular",
+      "degree": "positive"
+    }
+  },
+  {
+    "gloss": "were being destroyed",
+    "noul": 0.73,
+    "sent_id": 10,
+    "sentence": "νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,",
+    "valid": true,
+    "word": "ὀλέκοντο",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "plural",
+      "person": "third",
+      "tense": "imperfect",
+      "mood": "indicative",
+      "voice": "passive",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.73,
+    "sent_id": 10,
+    "sentence": "νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,",
+    "valid": true,
+    "word": "δὲ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "troops",
+    "noul": 0.73,
+    "sent_id": 10,
+    "sentence": "νοῦσον ἀνὰ στρατὸν ὄρσε κακήν, ὀλέκοντο δὲ λαοί,",
+    "valid": true,
+    "word": "λαοί,",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "because",
+    "noul": 0.73,
+    "sent_id": 11,
+    "sentence": "οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα",
+    "valid": true,
+    "word": "οὕνεκα",
+    "morphology": {
+      "part_of_speech": "subordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "the",
+    "noul": 0.73,
+    "sent_id": 11,
+    "sentence": "οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα",
+    "valid": true,
+    "word": "τὸν",
+    "morphology": {
+      "part_of_speech": "determiner",
+      "case": "accusative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "Chryses",
+    "noul": 0.74,
+    "sent_id": 11,
+    "sentence": "οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα",
+    "valid": true,
+    "word": "Χρύσην",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "accusative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "dishonored",
+    "noul": 0.72,
+    "sent_id": 11,
+    "sentence": "οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα",
+    "valid": true,
+    "word": "ἠτίμασεν",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "indicative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "priest",
+    "noul": 0.74,
+    "sent_id": 11,
+    "sentence": "οὕνεκα τὸν Χρύσην ἠτίμασεν ἀρητῆρα",
+    "valid": true,
+    "word": "ἀρητῆρα",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "son of Atreus",
+    "noul": 0.72,
+    "sent_id": 12,
+    "sentence": "Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν",
+    "valid": true,
+    "word": "Ἀτρεΐδης·",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "he",
+    "noul": 0.74,
+    "sent_id": 12,
+    "sentence": "Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν",
+    "valid": true,
+    "word": "ὃ",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "for",
+    "noul": 0.73,
+    "sent_id": 12,
+    "sentence": "Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν",
+    "valid": true,
+    "word": "γὰρ",
+    "morphology": {
+      "part_of_speech": "particle"
+    }
+  },
+  {
+    "gloss": "came",
+    "noul": 0.73,
+    "sent_id": 12,
+    "sentence": "Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν",
+    "valid": true,
+    "word": "ἦλθε",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "indicative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "swift",
+    "noul": 0.73,
+    "sent_id": 12,
+    "sentence": "Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν",
+    "valid": true,
+    "word": "θοὰς",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "plural",
+      "degree": "positive"
+    }
+  },
+  {
+    "gloss": "to",
+    "noul": 0.72,
+    "sent_id": 12,
+    "sentence": "Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν",
+    "valid": true,
+    "word": "ἐπὶ",
+    "morphology": {
+      "part_of_speech": "adposition",
+      "case": "accusative"
+    }
+  },
+  {
+    "gloss": "ships",
+    "noul": 0.72,
+    "sent_id": 12,
+    "sentence": "Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν",
+    "valid": true,
+    "word": "νῆας",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "of the Achaeans",
+    "noul": 0.73,
+    "sent_id": 12,
+    "sentence": "Ἀτρεΐδης· ὃ γὰρ ἦλθε θοὰς ἐπὶ νῆας Ἀχαιῶν",
+    "valid": true,
+    "word": "Ἀχαιῶν",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "about to ransom",
+    "noul": 0.73,
+    "sent_id": 13,
+    "sentence": "λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,",
+    "valid": true,
+    "word": "λυσόμενός",
+    "morphology": {
+      "part_of_speech": "verb",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular",
+      "tense": "future",
+      "voice": "middle",
+      "verb_form": "participle"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.74,
+    "sent_id": 13,
+    "sentence": "λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,",
+    "valid": true,
+    "word": "τε",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "daughter",
+    "noul": 0.73,
+    "sent_id": 13,
+    "sentence": "λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,",
+    "valid": true,
+    "word": "θύγατρα",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "carrying",
+    "noul": 0.73,
+    "sent_id": 13,
+    "sentence": "λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,",
+    "valid": true,
+    "word": "φέρων",
+    "morphology": {
+      "part_of_speech": "verb",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular",
+      "person": "third",
+      "tense": "present",
+      "voice": "active",
+      "verb_form": "participle"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.71,
+    "sent_id": 13,
+    "sentence": "λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,",
+    "valid": true,
+    "word": "τʼ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "countless",
+    "noul": 0.72,
+    "sent_id": 13,
+    "sentence": "λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,",
+    "valid": true,
+    "word": "ἀπερείσιʼ",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "ransoms",
+    "noul": 0.71,
+    "sent_id": 13,
+    "sentence": "λυσόμενός τε θύγατρα φέρων τʼ ἀπερείσιʼ ἄποινα,",
+    "valid": true,
+    "word": "ἄποινα,",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "garlands",
+    "noul": 0.74,
+    "sent_id": 14,
+    "sentence": "στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος",
+    "valid": true,
+    "word": "στέμματʼ",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "holding",
+    "noul": 0.73,
+    "sent_id": 14,
+    "sentence": "στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος",
+    "valid": true,
+    "word": "ἔχων",
+    "morphology": {
+      "part_of_speech": "verb",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "singular",
+      "tense": "present",
+      "voice": "active",
+      "verb_form": "participle"
+    }
+  },
+  {
+    "gloss": "in",
+    "noul": 0.74,
+    "sent_id": 14,
+    "sentence": "στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος",
+    "valid": true,
+    "word": "ἐν",
+    "morphology": {
+      "part_of_speech": "adposition"
+    }
+  },
+  {
+    "gloss": "hands",
+    "noul": 0.74,
+    "sent_id": 14,
+    "sentence": "στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος",
+    "valid": true,
+    "word": "χερσὶν",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "dative",
+      "gender": "feminine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "of the far-shooter",
+    "noul": 0.74,
+    "sent_id": 14,
+    "sentence": "στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος",
+    "valid": true,
+    "word": "ἑκηβόλου",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "genitive",
+      "gender": "common",
+      "number": "singular",
+      "verb_form": "verbal_adjective"
+    }
+  },
+  {
+    "gloss": "Apollo",
+    "noul": 0.72,
+    "sent_id": 14,
+    "sentence": "στέμματʼ ἔχων ἐν χερσὶν ἑκηβόλου Ἀπόλλωνος",
+    "valid": true,
+    "word": "Ἀπόλλωνος",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "golden",
+    "noul": 0.74,
+    "sent_id": 15,
+    "sentence": "χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,",
+    "valid": true,
+    "word": "χρυσέῳ",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "dative",
+      "gender": "neuter",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "upon",
+    "noul": 0.73,
+    "sent_id": 15,
+    "sentence": "χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,",
+    "valid": true,
+    "word": "ἀνὰ",
+    "morphology": {
+      "part_of_speech": "adposition"
+    }
+  },
+  {
+    "gloss": "scepter",
+    "noul": 0.75,
+    "sent_id": 15,
+    "sentence": "χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,",
+    "valid": true,
+    "word": "σκήπτρῳ,",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "dative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.74,
+    "sent_id": 15,
+    "sentence": "χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,",
+    "valid": true,
+    "word": "καὶ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "was beseeching",
+    "noul": 0.74,
+    "sent_id": 15,
+    "sentence": "χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,",
+    "valid": true,
+    "word": "λίσσετο",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "singular",
+      "person": "third",
+      "tense": "imperfect",
+      "mood": "indicative",
+      "voice": "middle",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "all",
+    "noul": 0.74,
+    "sent_id": 15,
+    "sentence": "χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,",
+    "valid": true,
+    "word": "πάντας",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "Achaeans",
+    "noul": 0.73,
+    "sent_id": 15,
+    "sentence": "χρυσέῳ ἀνὰ σκήπτρῳ, καὶ λίσσετο πάντας Ἀχαιούς,",
+    "valid": true,
+    "word": "Ἀχαιούς,",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "sons of Atreus",
+    "noul": 0.73,
+    "sent_id": 16,
+    "sentence": "Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·",
+    "valid": true,
+    "word": "Ἀτρεΐδα",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "dual"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.73,
+    "sent_id": 16,
+    "sentence": "Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·",
+    "valid": true,
+    "word": "δὲ",
+    "morphology": {
+      "part_of_speech": "particle"
+    }
+  },
+  {
+    "gloss": "especially",
+    "noul": 0.73,
+    "sent_id": 16,
+    "sentence": "Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·",
+    "valid": true,
+    "word": "μάλιστα",
+    "morphology": {
+      "part_of_speech": "adverb",
+      "degree": "superlative"
+    }
+  },
+  {
+    "gloss": "two",
+    "noul": 0.74,
+    "sent_id": 16,
+    "sentence": "Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·",
+    "valid": true,
+    "word": "δύω,",
+    "morphology": {
+      "part_of_speech": "numeral",
+      "case": "vocative",
+      "number": "dual"
+    }
+  },
+  {
+    "gloss": "marshals",
+    "noul": 0.73,
+    "sent_id": 16,
+    "sentence": "Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·",
+    "valid": true,
+    "word": "κοσμήτορε",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "vocative",
+      "gender": "masculine",
+      "number": "dual",
+      "person": "second"
+    }
+  },
+  {
+    "gloss": "of the troops",
+    "noul": 0.73,
+    "sent_id": 16,
+    "sentence": "Ἀτρεΐδα δὲ μάλιστα δύω, κοσμήτορε λαῶν·",
+    "valid": true,
+    "word": "λαῶν·",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "genitive",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "sons of Atreus",
+    "noul": 0.73,
+    "sent_id": 17,
+    "sentence": "Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,",
+    "valid": true,
+    "word": "Ἀτρεΐδαι",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.73,
+    "sent_id": 17,
+    "sentence": "Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,",
+    "valid": true,
+    "word": "τε",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.73,
+    "sent_id": 17,
+    "sentence": "Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,",
+    "valid": true,
+    "word": "καὶ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "other",
+    "noul": 0.72,
+    "sent_id": 17,
+    "sentence": "Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,",
+    "valid": true,
+    "word": "ἄλλοι",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "well-greaved",
+    "noul": 0.73,
+    "sent_id": 17,
+    "sentence": "Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,",
+    "valid": true,
+    "word": "ἐϋκνήμιδες",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "Achaeans",
+    "noul": 0.72,
+    "sent_id": 17,
+    "sentence": "Ἀτρεΐδαι τε καὶ ἄλλοι ἐϋκνήμιδες Ἀχαιοί,",
+    "valid": true,
+    "word": "Ἀχαιοί,",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "vocative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "to you",
+    "noul": 0.73,
+    "sent_id": 18,
+    "sentence": "ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες",
+    "valid": true,
+    "word": "ὑμῖν",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "dative",
+      "number": "plural",
+      "person": "second"
+    }
+  },
+  {
+    "gloss": "indeed",
+    "noul": 0.74,
+    "sent_id": 18,
+    "sentence": "ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες",
+    "valid": true,
+    "word": "μὲν",
+    "morphology": {
+      "part_of_speech": "particle"
+    }
+  },
+  {
+    "gloss": "gods",
+    "noul": 0.73,
+    "sent_id": 18,
+    "sentence": "ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες",
+    "valid": true,
+    "word": "θεοὶ",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "nominative",
+      "gender": "masculine",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "may grant",
+    "noul": 0.74,
+    "sent_id": 18,
+    "sentence": "ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες",
+    "valid": true,
+    "word": "δοῖεν",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "plural",
+      "person": "third",
+      "tense": "aorist",
+      "mood": "optative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "Olympian",
+    "noul": 0.73,
+    "sent_id": 18,
+    "sentence": "ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες",
+    "valid": true,
+    "word": "Ὀλύμπια",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "dwellings",
+    "noul": 0.73,
+    "sent_id": 18,
+    "sentence": "ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες",
+    "valid": true,
+    "word": "δώματʼ",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "having",
+    "noul": 0.72,
+    "sent_id": 18,
+    "sentence": "ὑμῖν μὲν θεοὶ δοῖεν Ὀλύμπια δώματʼ ἔχοντες",
+    "valid": true,
+    "word": "ἔχοντες",
+    "morphology": {
+      "part_of_speech": "verb",
+      "gender": "masculine",
+      "number": "plural",
+      "tense": "present",
+      "voice": "active",
+      "verb_form": "participle"
+    }
+  },
+  {
+    "gloss": "to sack",
+    "noul": 0.74,
+    "sent_id": 19,
+    "sentence": "ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·",
+    "valid": true,
+    "word": "ἐκπέρσαι",
+    "morphology": {
+      "part_of_speech": "verb",
+      "tense": "aorist",
+      "voice": "active",
+      "verb_form": "infinitive"
+    }
+  },
+  {
+    "gloss": "of Priam",
+    "noul": 0.73,
+    "sent_id": 19,
+    "sentence": "ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·",
+    "valid": true,
+    "word": "Πριάμοιο",
+    "morphology": {
+      "part_of_speech": "proper_noun",
+      "case": "genitive",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "city",
+    "noul": 0.73,
+    "sent_id": 19,
+    "sentence": "ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·",
+    "valid": true,
+    "word": "πόλιν,",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "well",
+    "noul": 0.75,
+    "sent_id": 19,
+    "sentence": "ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·",
+    "valid": true,
+    "word": "εὖ",
+    "morphology": {
+      "part_of_speech": "adverb"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.74,
+    "sent_id": 19,
+    "sentence": "ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·",
+    "valid": true,
+    "word": "δʼ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "homeward",
+    "noul": 0.73,
+    "sent_id": 19,
+    "sentence": "ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·",
+    "valid": true,
+    "word": "οἴκαδʼ",
+    "morphology": {
+      "part_of_speech": "adverb"
+    }
+  },
+  {
+    "gloss": "to return",
+    "noul": 0.74,
+    "sent_id": 19,
+    "sentence": "ἐκπέρσαι Πριάμοιο πόλιν, εὖ δʼ οἴκαδʼ ἱκέσθαι·",
+    "valid": true,
+    "word": "ἱκέσθαι·",
+    "morphology": {
+      "part_of_speech": "verb",
+      "tense": "aorist",
+      "voice": "middle",
+      "verb_form": "infinitive"
+    }
+  },
+  {
+    "gloss": "daughter",
+    "noul": 0.73,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "παῖδα",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "masculine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.73,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "δʼ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "for me",
+    "noul": 0.73,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "ἐμοὶ",
+    "morphology": {
+      "part_of_speech": "pronoun",
+      "case": "dative",
+      "number": "singular",
+      "person": "first"
+    }
+  },
+  {
+    "gloss": "release",
+    "noul": 0.72,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "λύσαιτε",
+    "morphology": {
+      "part_of_speech": "verb",
+      "number": "plural",
+      "person": "second",
+      "tense": "aorist",
+      "mood": "imperative",
+      "voice": "active",
+      "verb_form": "finite"
+    }
+  },
+  {
+    "gloss": "dear",
+    "noul": 0.73,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "φίλην,",
+    "morphology": {
+      "part_of_speech": "adjective",
+      "case": "accusative",
+      "gender": "feminine",
+      "number": "singular"
+    }
+  },
+  {
+    "gloss": "the",
+    "noul": 0.73,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "τὰ",
+    "morphology": {
+      "part_of_speech": "determiner",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "and",
+    "noul": 0.73,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "δʼ",
+    "morphology": {
+      "part_of_speech": "coordinating_conjunction"
+    }
+  },
+  {
+    "gloss": "ransom",
+    "noul": 0.74,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "ἄποινα",
+    "morphology": {
+      "part_of_speech": "noun",
+      "case": "accusative",
+      "gender": "neuter",
+      "number": "plural"
+    }
+  },
+  {
+    "gloss": "to accept",
+    "noul": 0.73,
+    "sent_id": 20,
+    "sentence": "παῖδα δʼ ἐμοὶ λύσαιτε φίλην, τὰ δʼ ἄποινα δέχεσθαι,",
+    "valid": true,
+    "word": "δέχεσθαι,",
+    "morphology": {
+      "part_of_speech": "verb",
+      "tense": "present",
+      "voice": "middle",
+      "verb_form": "infinitive"
+    }
+  }
+]

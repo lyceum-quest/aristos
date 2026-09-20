@@ -95,6 +95,11 @@ task check-deepseek-prompt-tool {
   run: ["roc", "check", "experiments/deepseek-jev/prompt.roc"]
 }
 
+task check-deepseek-morph-tool {
+  environment: "dev"
+  run: ["roc", "check", "experiments/deepseek-jev/morph.roc"]
+}
+
 task check-deepseek-jev-validator-tool {
   environment: "dev"
   run: ["roc", "check", "experiments/deepseek-jev/jev.roc"]

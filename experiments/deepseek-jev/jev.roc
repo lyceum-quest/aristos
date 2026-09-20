@@ -3,8 +3,8 @@ import cli.Cmd
 import cli.Env
 import cli.OsStr
 import cli.Path
-Item : { gloss : Str, sent_id : U64, sentence : Str, word : Str }
-Marked : { gloss : Str, noul : Dec, sent_id : U64, sentence : Str, valid : Bool, word : Str }
+Item : { gloss : Str, morphology : Dict(Str, Str), sent_id : U64, sentence : Str, word : Str }
+Marked : { gloss : Str, morphology : Dict(Str, Str), noul : Dec, sent_id : U64, sentence : Str, valid : Bool, word : Str }
 Question : { criteria : { false : Str, true : Str }, instructions : Str, type : Str }
 Answer : { noul : Dec, type : Str }
 JevResponse : { answers : Dict(Str, Answer), model : Str, usage : { input_tokens : U64, output_tokens : U64 } }
@@ -42,7 +42,7 @@ mark! = |items, index, answers, found| match items {
 	[item, .. as rest] => {
 		answer = Dict.get(answers, "token_${U64.to_str(index + 1)}") ? |_| MissingJevAnswer(index + 1)
 		_ = (if answer.type != "noul" or answer.noul < 0 or answer.noul > 1 Err(InvalidJevAnswer(index + 1)) else Ok({}))?
-		next = { gloss: item.gloss, noul: answer.noul, sent_id: item.sent_id, sentence: item.sentence, valid: answer.noul >= 0.5, word: item.word }
+		next = { gloss: item.gloss, morphology: item.morphology, noul: answer.noul, sent_id: item.sent_id, sentence: item.sentence, valid: answer.noul >= 0.5, word: item.word }
 		mark!(rest, index + 1, answers, List.append(found, next))
 	}
 }
