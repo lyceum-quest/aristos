@@ -1,0 +1,24 @@
+{
+  "model": "deepseek/deepseek-v4-flash-0731",
+  "prompt": "Act as an Ancient Greek philologist. Generate exactly one concise contextual English gloss for each supplied token occurrence. Preserve input order. Prefer concise English that naturally exposes morphology or syntax when useful, using forms such as of-Achilles, to-the-Achaeans, or they-separated. Return only the required strict JSON.",
+  "batch_size": 64,
+  "request": {
+    "temperature": 0,
+    "top_p": 1,
+    "top_k": 0,
+    "seed": 1,
+    "max_tokens": 4096,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "allow_fallbacks": false,
+      "only": ["sail-research"],
+      "require_parameters": true
+    }
+  }
+}

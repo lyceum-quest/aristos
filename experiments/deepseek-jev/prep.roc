@@ -11,7 +11,9 @@ main! = |args|
 			input = OsStr.display(input_arg)
 			source = Path.read_utf8!(Path.utf8(input))?
 			lines = Str.split_on(Str.trim_end(source), "\n")
-			rows = rows_for(lines, 1, [])
+			first_sent_id : U64
+			first_sent_id = 1
+			rows = rows_for(lines, first_sent_id, [])
 			output = if Str.ends_with(input, ".txt") Str.replace_last(input, ".txt", ".json") else "${input}.json"
 			json = Json.to_str_try(rows)?
 			_ = Path.write_utf8!(Path.utf8(output), "${json}\n")?
