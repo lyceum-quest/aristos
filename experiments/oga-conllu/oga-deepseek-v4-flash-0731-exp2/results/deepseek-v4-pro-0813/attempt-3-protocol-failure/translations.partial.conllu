@@ -1,0 +1,14 @@
+# sentence_id = 1
+# translation_lang = en
+# prose_translation = From my grandfather Verus I learned good morals and the government of my temper.
+# literal_translation = From [my] grandfather Verus: the good-character and not-anger.
+1	Παρὰ	παρά	r	r--------	_	9	AuxP	_	t_1
+2	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_2
+3	πάππου	πάππης	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_3
+4	Οὐήρου	οὐήρους	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_4
+5	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_5
+6	καλόηθες	χαρίεις	a	a-s---nn-	Case=n|Gender=n|Number=s	7	SBJ	_	t_6
+7	καὶ	καί	c	c--------	_	9	COORD	_	t_7
+8	ἀόργητον	ἀόργητος	a	a-s---nn-	Case=n|Gender=n|Number=s	7	SBJ	_	t_8
+9	[0]	[0]	-	---------	_	0	PRED	_	e_1
+10	.	.	u	u--------	_	9	AuxK	_	t_9

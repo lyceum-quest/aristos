@@ -1,0 +1,9 @@
+{
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "temperature": 0,
+  "max_tokens": 1024,
+  "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
+  "prompt": "Act as an Ancient Greek philologist. These blocks occur in sequence at the opening of Book 1 of Marcus Aurelius' Meditations: lessons from his grandfather Verus, the reputation and memory of his father, his mother, a continuation beginning ἔτι δὲ of the lesson from his mother, and his great-grandfather. They form an elliptical first-person list; the repeated governing idea [I learned] is absent. Translate the supplied block from its Greek FORM values. Rows with MISC beginning e_ represent omitted structure and are not Greek words. Return exactly two tab-separated lines and nothing else: PROSE followed by a complete, accurate, idiomatic English sentence; then LITERAL followed by a close but intelligible rendering that exposes material Greek order, morphology, syntax, and ellipsis. In PROSE, use Marcus' first-person perspective and restore 'From my ... I learned ...' when that is the frame. For the continuation beginning ἔτι δὲ, restore his mother naturally rather than treating the block as an isolated assertion. In LITERAL, preserve the Greek's list-like nominal and infinitival structure without producing ungrammatical token substitution; a colon after a source phrase may represent the omitted governing idea. Put genuinely supplied possessives or arguments in square brackets, but do not add bracketed generic nouns after clear substantivized adjectives. Preserve every overt lexical contribution and translate idioms accurately. Do not render a Greek aorist infinitive as English perfect merely because it is aorist. Do not join separate Greek tokens with hyphens. Do not use tabs or newlines inside either translation. Return no CoNLL-U rows, JSON, Markdown, or explanation."
+}
