@@ -1,10 +1,27 @@
 {
   "api_key_env": "PPQ_API_KEY",
-  "base_url": "https://api.ppq.ai/v1",
+  "endpoint": "https://api.ppq.ai/v1/chat/completions",
   "model": "deepseek/deepseek-v4-flash-0731",
-  "temperature": 0,
-  "max_tokens": 65536,
   "threshold": 0.5,
   "output_path": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/improved-output.conllu",
-  "prompt": "Act as an Ancient Greek philologist repairing an audited CoNLL-U file. The user supplies the complete file and only JEV findings whose true-probability is below the configured threshold. Return the complete raw CoNLL-U only, without Markdown or explanation. Correct only fields belonging to specifically named failed layers: forms_and_tokenization permits FORM and tokenization; lemmas permits LEMMA; parts_of_speech permits UPOS/XPOS; morphology permits FEATS and morphological XPOS details; dependency_heads permits HEAD; dependency_relations permits DEPREL/DEPS; artificial_rows permits e_ rows; gloss_coverage, gloss_lexical_accuracy, or gloss_grammatical_accuracy permit only gloss values; prose_translation permits only prose_translation comments; literal_translation permits only literal_translation comments; sentence_metadata permits only sentence comments; conllu_format permits only formatting repairs. overall_accuracy and cross_layer_consistency are summaries and never authorize a change by themselves. Preserve every unflagged layer, token ID, t_/e_ identifier, comment, row order, sentence boundary, tab, and value exactly. Make the smallest corrections justified by the failed specific findings."
+  "request": {
+    "temperature": 1,
+    "top_p": 1,
+    "top_k": 0,
+    "seed": 1,
+    "max_tokens": 8192,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "reasoning": {
+      "enabled": false,
+      "exclude": true
+    },
+    "include_reasoning": false,
+    "provider": {
+      "only": ["OpenInference"],
+      "require_parameters": true,
+      "allow_fallbacks": false
+    }
+  },
+  "prompt": "Act as an Ancient Greek philologist applying a narrowly bounded audit repair. The user supplies one complete CoNLL-U sentence and only field-specific JEV findings below the configured acceptance threshold. Return only the required JSON line patch. Each change must contain the exact failed finding key, the exact complete old source line, and the exact complete corrected replacement line. Change only the field authorized by that finding: lemma permits LEMMA; pos permits UPOS/XPOS; morphology permits morphological XPOS details/FEATS; head permits HEAD; deprel permits DEPREL/DEPS; gloss_lexical or gloss_grammar permits only the gloss value in MISC; prose_accuracy or prose_fluency permits only prose_translation; literal_accuracy or literal_structure permits only literal_translation; metadata permits only sentence metadata. Preserve IDs, FORM, t_/e_ identifiers, unflagged columns, comments, order, tabs, and all other bytes. Do not add or remove lines. If several changes affect one row, emit them in executable order so each old_line equals the preceding result. Return an empty changes array when no justified correction can be made."
 }

@@ -4,139 +4,73 @@
   "model": "jev-1.13.0",
   "output_path": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/audit.json",
   "state": {
-    "task": "Audit every present annotation layer in the supplied Ancient Greek CoNLL-U. Judge the file itself; do not propose replacements.",
+    "task": "Audit each named field of each target row using the complete Ancient Greek sentence block as context. Judge only the field named by each question and do not propose replacements.",
     "language": "Ancient Greek",
-    "format": "OGA ten-column CoNLL-U with sentence translations and contextual glosses when present",
-    "policy": "A true answer requires all relevant entries to be acceptable. Missing expected gloss or translation data counts as false. Artificial e_ rows are annotation context, not source tokens."
+    "format": "OGA ten-column CoNLL-U with sentence translations and contextual glosses",
+    "policy": "True means the exact targeted field is acceptable in context. Artificial e_ rows represent omitted structure and are not source tokens."
   },
-  "questions": {
-    "conllu_format": {
+  "token_questions": {
+    "lemma": {
       "type": "noul",
-      "instructions": "Is the file structurally valid ten-column CoNLL-U with intact sentence boundaries, integer token IDs, and well-formed fields?",
-      "criteria": {
-        "true": "True if every token row and sentence block is structurally valid.",
-        "false": "False if any row, ID, column, separator, or sentence boundary is malformed."
-      }
+      "instructions": "Is this row's LEMMA the correct dictionary headword and lexical identity for its FORM in this sentence?",
+      "criteria": { "true": "The lemma and lexical identity are acceptable.", "false": "The lemma, headword, or proper-name identity is wrong." }
     },
-    "forms_and_tokenization": {
+    "pos": {
       "type": "noul",
-      "instructions": "Are the Greek FORM values, punctuation tokens, token boundaries, and token order accurate for the passage?",
-      "criteria": {
-        "true": "True if the represented Greek text is accurately tokenized and ordered.",
-        "false": "False if any form, punctuation mark, split, merge, omission, duplication, or ordering is wrong."
-      }
-    },
-    "lemmas": {
-      "type": "noul",
-      "instructions": "Is every LEMMA the correct dictionary headword and lexical identity for its FORM in context?",
-      "criteria": {
-        "true": "True if all lemmas and lexical identities are acceptable.",
-        "false": "False if any lemma, proper-name identity, or dictionary headword is wrong."
-      }
-    },
-    "parts_of_speech": {
-      "type": "noul",
-      "instructions": "Are all UPOS-like and XPOS values accurate for each token in context?",
-      "criteria": {
-        "true": "True if every part-of-speech classification is acceptable.",
-        "false": "False if any token is assigned an incorrect lexical or contextual category."
-      }
+      "instructions": "Are this row's UPOS-like and XPOS part-of-speech classifications correct in this sentence?",
+      "criteria": { "true": "Both classifications are acceptable for this occurrence.", "false": "Either classification assigns the wrong lexical or contextual category." }
     },
     "morphology": {
       "type": "noul",
-      "instructions": "Are every token's morphological tag and FEATS values accurate and mutually consistent with its Greek form and context?",
-      "criteria": {
-        "true": "True if case, gender, number, person, tense, mood, voice, degree, and other present features are all correct.",
-        "false": "False if any present feature is wrong, contradictory, or materially incomplete."
-      }
+      "instructions": "Are this row's morphological XPOS details and FEATS values accurate and mutually consistent with its FORM and context?",
+      "criteria": { "true": "All applicable inflectional features are correct; underscore is correct when none apply.", "false": "Any case, gender, number, person, tense, mood, voice, degree, or other feature is wrong or contradictory." }
     },
-    "dependency_heads": {
+    "head": {
       "type": "noul",
-      "instructions": "Does every HEAD value attach its token to the correct syntactic governor, with an appropriate root and coherent dependency tree?",
-      "criteria": {
-        "true": "True if all heads and roots are syntactically defensible.",
-        "false": "False if any attachment, root, cycle, or disconnected structure is wrong."
-      }
+      "instructions": "Does this row's HEAD identify the correct syntactic governor in the supplied sentence?",
+      "criteria": { "true": "The attachment or root choice is syntactically defensible.", "false": "The token is attached to the wrong governor or incorrectly made root." }
     },
-    "dependency_relations": {
+    "deprel": {
       "type": "noul",
-      "instructions": "Is every DEPREL label an accurate description of the token's relation to its recorded HEAD?",
-      "criteria": {
-        "true": "True if every relation label matches the syntax and its head.",
-        "false": "False if any relation is mislabeled or incompatible with its attachment."
-      }
+      "instructions": "Does this row's DEPREL accurately describe its relation to the recorded HEAD?",
+      "criteria": { "true": "The relation label matches the token's syntax and governor.", "false": "The relation is mislabeled or incompatible with its attachment." }
     },
-    "artificial_rows": {
+    "gloss_lexical": {
       "type": "noul",
-      "instructions": "Are all artificial e_ ellipsis rows justified, correctly placed, and correctly connected without being treated as source words?",
-      "criteria": {
-        "true": "True if all artificial rows accurately represent necessary omitted structure, or if none are present.",
-        "false": "False if any artificial row is unjustified, misplaced, malformed, or treated as an overt token."
-      }
+      "instructions": "Is this row's MISC gloss the correct concise contextual lexical sense? For punctuation it must be the punctuation character; an e_ row must have no gloss.",
+      "criteria": { "true": "The gloss selects the correct contextual sense or correctly follows the punctuation/artificial-row rule.", "false": "The gloss is absent, selects a wrong sense or referent, adds unsupported meaning, or violates the punctuation/artificial-row rule." }
     },
-    "gloss_coverage": {
+    "gloss_grammar": {
       "type": "noul",
-      "instructions": "Does every real t_ token, including punctuation, have exactly one nonempty gloss while every artificial e_ row remains unglossed?",
-      "criteria": {
-        "true": "True if gloss coverage follows this rule exactly.",
-        "false": "False if a real token lacks a gloss, has multiple glosses, or an artificial row is glossed."
-      }
+      "instructions": "Does this row's MISC gloss accurately express the token's relevant inflectional and syntactic contribution without absorbing another token's meaning?",
+      "criteria": { "true": "The gloss concisely preserves every materially relevant grammatical contribution.", "false": "The gloss misstates or omits material grammar, or includes meaning belonging to another token." }
+    }
+  },
+  "sentence_questions": {
+    "prose_accuracy": {
+      "type": "noul",
+      "instructions": "Does prose_translation preserve the complete propositional meaning, names, relations, and discourse force of this sentence without unsupported additions?",
+      "criteria": { "true": "The prose translation is semantically complete and accurate.", "false": "It contains a mistranslation, omission, unsupported addition, or incorrect name or relation." }
     },
-    "gloss_lexical_accuracy": {
+    "prose_fluency": {
       "type": "noul",
-      "instructions": "Does every gloss convey the correct contextual lexical sense of its exact Greek token rather than an unrelated or merely possible dictionary sense?",
-      "criteria": {
-        "true": "True if all contextual senses and proper-name identifications are acceptable.",
-        "false": "False if any gloss selects a wrong sense, referent, definition, or unsupported meaning."
-      }
+      "instructions": "Is prose_translation idiomatic, grammatical English appropriate for a natural prose rendering?",
+      "criteria": { "true": "The English is natural and grammatical without sacrificing meaning.", "false": "The English is materially awkward, ungrammatical, or unclear." }
     },
-    "gloss_grammatical_accuracy": {
+    "literal_accuracy": {
       "type": "noul",
-      "instructions": "Does every gloss accurately express the token's relevant inflectional and syntactic contribution without absorbing meaning belonging to another token?",
-      "criteria": {
-        "true": "True if all glosses preserve relevant case, number, person, tense, mood, voice, and syntactic force concisely.",
-        "false": "False if any gloss misstates grammar, omits a material contribution, or includes another token's meaning."
-      }
+      "instructions": "Does literal_translation preserve every material lexical contribution of this sentence?",
+      "criteria": { "true": "The literal translation is lexically complete and accurate.", "false": "It mistranslates, omits, or adds a material lexical contribution." }
     },
-    "prose_translation": {
+    "literal_structure": {
       "type": "noul",
-      "instructions": "Is every prose_translation complete, semantically accurate, idiomatic English with correct names, relations, and discourse force?",
-      "criteria": {
-        "true": "True if all prose translations preserve the passage's meaning without material omission or addition.",
-        "false": "False if any prose translation mistranslates, omits, adds, or distorts material meaning."
-      }
+      "instructions": "Does literal_translation expose the material Greek order, morphology, and syntactic structure while remaining intelligible?",
+      "criteria": { "true": "The rendering faithfully exposes the relevant Greek structure and grammar.", "false": "It obscures or misrepresents material order, morphology, syntax, or alignment." }
     },
-    "literal_translation": {
+    "metadata": {
       "type": "noul",
-      "instructions": "Is every literal_translation accurate, complete, and close enough to Greek order and morphology to expose the source structure?",
-      "criteria": {
-        "true": "True if all literal translations preserve lexical contributions and material Greek structure while remaining intelligible.",
-        "false": "False if any literal translation distorts meaning, structure, morphology, alignment, or completeness."
-      }
-    },
-    "sentence_metadata": {
-      "type": "noul",
-      "instructions": "Are sentence IDs, translation language markers, and sentence-level comments complete, correctly placed, and consistent with their token blocks?",
-      "criteria": {
-        "true": "True if all sentence metadata is complete and accurately scoped.",
-        "false": "False if any required comment is missing, duplicated, misplaced, or inconsistent."
-      }
-    },
-    "cross_layer_consistency": {
-      "type": "noul",
-      "instructions": "Are forms, lemmas, morphology, dependencies, glosses, and translations mutually consistent across the whole file?",
-      "criteria": {
-        "true": "True if no annotation or translation layer materially contradicts another.",
-        "false": "False if any layer conflict reveals an analysis or translation error."
-      }
-    },
-    "overall_accuracy": {
-      "type": "noul",
-      "instructions": "Is the complete annotated file accurate enough for expert philological review without a known material correction?",
-      "criteria": {
-        "true": "True only if every present structural, morphological, syntactic, lexical, gloss, and translation layer is acceptable.",
-        "false": "False if any material correction is needed anywhere in the file."
-      }
+      "instructions": "Are sentence_id, translation_lang, and translation comments present once, correctly placed, and consistent with this sentence block?",
+      "criteria": { "true": "All sentence metadata is complete and accurately scoped.", "false": "A required comment is missing, duplicated, misplaced, or inconsistent." }
     }
   }
 }
