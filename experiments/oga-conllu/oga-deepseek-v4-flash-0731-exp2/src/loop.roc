@@ -8,9 +8,10 @@ scratch = "${root}/outputs"
 Steps : { audit : Bool, gloss : Bool, improve : Bool, translate : Bool }
 main! = |args| match List.map(List.drop_first(args, 1), OsStr.display) {
 	[input] => run!(input, all_steps, 0)
+	[input, "reset"] => reset!(input)
 	[input, steps] => run!(input, parse_steps!(steps)?, 0)
 	[input, steps, batch_size] => run!(input, parse_steps!(steps)?, U64.from_str(batch_size)?)
-	_ => Err(Usage("loop.roc <file.conllu> [translate,gloss,audit,improve|all] [batch-size]"))
+	_ => Err(Usage("loop.roc <file.conllu> [translate,gloss,audit,improve|all|reset] [batch-size]"))
 }
 all_steps : Steps
 all_steps = { audit: Bool.True, gloss: Bool.True, improve: Bool.True, translate: Bool.True }
@@ -37,11 +38,7 @@ run! = |input, steps, batch_size| {
 	source = Str.replace_each(Path.read_utf8!(Path.utf8(input))?, "\r\n", "\n")
 	blocks = blocks_from(source)
 	_ = (if List.is_empty(blocks) { Err(EmptyInput) } else { Ok({}) })?
-	file_name = match List.last(Str.split_on(input, "/")) { Ok(name) => name, Err(_) => "input.conllu" }
-	legacy_dir = "${scratch}/loop"
-	legacy_snapshot = "${legacy_dir}/source.conllu"
-	use_legacy = if Path.exists!(Path.utf8(legacy_snapshot))? { Path.read_utf8!(Path.utf8(legacy_snapshot))? == "${Str.trim(source)}\n" } else { Bool.False }
-	loop_dir = if use_legacy { legacy_dir } else { "${legacy_dir}/${file_name}" }
+	loop_dir = loop_dir_for!(input, source)?
 	_ = Path.create_all!(Path.utf8(loop_dir))?
 	snapshot_path = "${loop_dir}/source.conllu"
 	_ = (if Path.exists!(Path.utf8(snapshot_path))? {
@@ -59,6 +56,25 @@ run! = |input, steps, batch_size| {
 	_ = Stdout.line!("loaded ${U64.to_str(List.len(blocks))} sentences; checkpoints: translate ${U64.to_str(List.len(translated))}, gloss ${U64.to_str(List.len(glossed))}, audit ${U64.to_str(List.len(audits))}, improve ${U64.to_str(List.len(improved))}")?
 	completed = process!(blocks, translated, glossed, audits, improved, resolutions, 1, steps, batch_size != 0, batch_size, loop_dir)?
 	Stdout.line!("checkpointed ${U64.to_str(completed)} new sentence(s)")
+}
+reset! = |input| {
+	source = Str.replace_each(Path.read_utf8!(Path.utf8(input))?, "\r\n", "\n")
+	loop_dir = loop_dir_for!(input, source)?
+	snapshot_path = "${loop_dir}/source.conllu"
+	if Path.exists!(Path.utf8(snapshot_path))? {
+		_ = (if Path.read_utf8!(Path.utf8(snapshot_path))? == "${Str.trim(source)}\n" { Ok({}) } else { Err(SourceChanged) })?
+		_ = Path.delete_all!(Path.utf8(loop_dir))?
+		Stdout.line!("reset checkpoints for ${input}")
+	} else {
+		Stdout.line!("no checkpoints to reset for ${input}")
+	}
+}
+loop_dir_for! = |input, source| {
+	file_name = match List.last(Str.split_on(input, "/")) { Ok(name) => name, Err(_) => "input.conllu" }
+	legacy_dir = "${scratch}/loop"
+	legacy_snapshot = "${legacy_dir}/source.conllu"
+	use_legacy = if Path.exists!(Path.utf8(legacy_snapshot))? { Path.read_utf8!(Path.utf8(legacy_snapshot))? == "${Str.trim(source)}\n" } else { Bool.False }
+	Ok(if use_legacy { legacy_dir } else { "${legacy_dir}/${file_name}" })
 }
 validate_counts! = |source_count, translated, glossed, audits, improved, resolutions| {
 	within_source = List.len(translated) <= source_count and List.len(glossed) <= source_count and List.len(audits) <= source_count and List.len(improved) <= source_count
@@ -162,6 +178,12 @@ run_roc_attempt! = |script, args, attempts| {
 	command_args = List.concat(["180", "roc", script], args)
 	match Cmd.new_str("timeout").args_str(command_args).exec_output!() {
 		Ok(_) => Ok({})
+		Err(NonZeroExitCode(failure)) => if non_retryable_response(failure.stderr_utf8_lossy) or attempts <= 1 {
+			Err(NonZeroExitCode(failure))
+		} else {
+			_ = Stdout.line!("retrying ${script}; ${U64.to_str(attempts - 1)} attempts remain")?
+			run_roc_attempt!(script, args, attempts - 1)
+		}
 		Err(error) => if attempts > 1 {
 			_ = Stdout.line!("retrying ${script}; ${U64.to_str(attempts - 1)} attempts remain")?
 			run_roc_attempt!(script, args, attempts - 1)
@@ -170,6 +192,7 @@ run_roc_attempt! = |script, args, attempts| {
 		}
 	}
 }
+non_retryable_response = |stderr| List.any(["InvalidGlossLine", "InvalidGloss(", "CopiedGreekForm", "MissingGloss", "UnknownGlossIds"], |name| Str.contains(stderr, name))
 read_blocks! = |path| if Path.exists!(Path.utf8(path))? { Ok(blocks_from(Path.read_utf8!(Path.utf8(path))?)) } else { Ok([]) }
 read_lines! = |path| if Path.exists!(Path.utf8(path))? { Ok(List.keep_if(Str.split_on(Str.trim(Path.read_utf8!(Path.utf8(path))?), "\n"), |line| Str.trim(line) != "")) } else { Ok([]) }
 blocks_from = |text| List.keep_if(Str.split_on(Str.trim(text), "\n\n"), |block| Str.trim(block) != "")

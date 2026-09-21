@@ -1,0 +1,114 @@
+# sentence_id = 1
+# translation_lang = en
+# prose_translation = From my grandfather Verus I learned good character and freedom from anger.
+# literal_translation = From [my] grandfather Verus: good character and freedom from anger.
+1	Παρὰ	παρά	r	r--------	_	9	AuxP	_	t_1|gloss=from
+2	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_2|gloss=the
+3	πάππου	πάππης	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_3|gloss=grandfather
+4	Οὐήρου	οὐήρους	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_4|gloss=Verus
+5	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_5|gloss=the
+6	καλόηθες	χαρίεις	a	a-s---nn-	Case=n|Gender=n|Number=s	7	SBJ	_	t_6|gloss=good-character
+7	καὶ	καί	c	c--------	_	9	COORD	_	t_7|gloss=and
+8	ἀόργητον	ἀόργητος	a	a-s---nn-	Case=n|Gender=n|Number=s	7	SBJ	_	t_8|gloss=freedom-from-anger
+9	[0]	[0]	-	---------	_	0	PRED	_	e_1
+10	.	.	u	u--------	_	9	AuxK	_	t_9|gloss=.
+
+# sentence_id = 2
+# translation_lang = en
+# prose_translation = From my father's reputation and what I remembered of him, I learned modesty and manliness.
+# literal_translation = From the reputation and memory concerning the one who begot [me]: modesty and manliness.
+1	Παρὰ	παρά	r	r--------	_	14	AuxP	_	t_10|gloss=from
+2	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	3	ATR	_	t_11|gloss=the
+3	δόξης	δόξα	n	n-s---fg-	Case=g|Gender=f|Number=s	4	ADV	_	t_12|gloss=reputation
+4	καὶ	καί	c	c--------	_	1	COORD	_	t_13|gloss=and
+5	μνήμης	μνήμη	n	n-s---fg-	Case=g|Gender=f|Number=s	4	ADV	_	t_14|gloss=memory
+6	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	4	ATR	_	t_15|gloss=the
+7	περὶ	περί	r	r--------	_	4	AuxP	_	t_16|gloss=concerning
+8	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_17|gloss=the-one-who
+9	γεννήσαντος	γεννάω	v	v-sapamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	7	ATR	_	t_18|gloss=begot-[me]
+10	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	12	ATR	_	t_19|gloss=the
+11	αἰδῆμον	αἰδήμων	a	a-s---na-	Case=a|Gender=n|Number=s	12	SBJ	_	t_20|gloss=modesty
+12	καὶ	καί	c	c--------	_	14	COORD	_	t_21|gloss=and
+13	ἀρρενικόν	ἀρρενικός	a	a-s---na-	Case=a|Gender=n|Number=s	12	SBJ	_	t_22|gloss=manliness
+14	[0]	[0]	-	---------	_	0	PRED	_	e_2
+15	.	.	u	u--------	_	14	AuxK	_	t_23|gloss=.
+
+# sentence_id = 3
+# translation_lang = en
+# prose_translation = From my mother I learned piety, generosity, and to refrain not only from wrongdoing but even from entertaining such a thought.
+# literal_translation = From [my] mother: piety, generosity, and abstinence not only from doing wrong, but also from coming to a thought of that kind.
+1	Παρὰ	παρά	r	r--------	_	22	AuxP	_	t_24|gloss=from
+2	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	3	ATR	_	t_25|gloss=the
+3	μητρὸς	μήτηρ	n	n-s---fg-	Case=g|Gender=f|Number=s	1	ADV	_	t_26|gloss=mother
+4	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	8	ATR	_	t_27|gloss=the
+5	θεοσεβὲς	θεοσεβής	a	a-s---na-	Case=a|Gender=n|Number=s	8	SBJ	_	t_28|gloss=piety
+6	καὶ	καί	c	c--------	_	8	AuxY	_	t_29|gloss=and
+7	μεταδοτικὸν	μεταδοτικός	a	a-s---na-	Case=a|Gender=n|Number=s	8	SBJ	_	t_30|gloss=generosity
+8	καὶ	καί	c	c--------	_	22	COORD	_	t_31|gloss=and
+9	ἀφεκτικὸν	ἀφεκτικός	a	a-s---na-	Case=a|Gender=n|Number=s	8	SBJ	_	t_32|gloss=abstinence
+10	οὐ	οὐ	d	d--------	_	11	AuxZ	_	t_33|gloss=not
+11	μόνον	μόνος	a	a-s---na-	Case=a|Gender=n|Number=s	13	AuxZ	_	t_34|gloss=only
+12	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	13	ATR	_	t_35|gloss=from
+13	κακοποιεῖν	κακοποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	15	ADV	_	t_36|gloss=doing-wrong
+14	,	,	u	u--------	_	22	AuxX	_	t_37|gloss=,
+15	ἀλλὰ	ἀλλά	c	c--------	_	8	COORD	_	t_38|gloss=but
+16	καὶ	καί	d	d--------	_	20	AuxZ	_	t_39|gloss=even
+17	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	20	ATR	_	t_40|gloss=from
+18	ἐπὶ	ἐπί	r	r--------	_	20	AuxP	_	t_41|gloss=to
+19	ἐννοίας	ἔννοια	n	n-s---fg-	Case=g|Gender=f|Number=s	18	PNOM	_	t_42|gloss=a-thought
+20	γίνεσθαι	γίγνομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	15	ADV	_	t_43|gloss=coming
+21	τοιαύτης	τοιοῦτος	a	a-s---fg-	Case=g|Gender=f|Number=s	19	ATR	_	t_44|gloss=of-that-kind
+22	[0]	[0]	-	---------	_	0	PRED	_	e_3
+23	·	·	u	u--------	_	22	AuxK	_	t_45|gloss=·
+
+# sentence_id = 4
+# translation_lang = en
+# prose_translation = She also taught me simplicity in my way of life, far removed from the lifestyle of the rich.
+# literal_translation = Further, simplicity with regard to [one's] way of life, and [being] far from the lifestyle of the rich.
+1	ἔτι	ἔτι	d	d--------	_	13	ADV	_	t_46|gloss=further
+2	δὲ	δέ	d	d--------	_	13	AuxY	_	t_47|gloss=and
+3	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_48|gloss=the
+4	λιτὸν	λιτός	a	a-s---nn-	Case=n|Gender=n|Number=s	13	SBJ	_	t_49|gloss=simplicity
+5	κατὰ	κατά	r	r--------	_	8	AuxP	_	t_50|gloss=with-regard-to
+6	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	7	ATR	_	t_51|gloss=the
+7	δίαιταν	δίαιτα	n	n-s---fa-	Case=a|Gender=f|Number=s	5	ADV	_	t_52|gloss=way-of-life
+8	καὶ	καί	c	c--------	_	13	COORD	_	t_53|gloss=and
+9	πόρρω	πρόσω	r	r--------	_	8	AuxP	_	t_54|gloss=far-from
+10	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_55|gloss=the
+11	πλουσιακῆς	πλουσιακός	a	a-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_56|gloss=wealthy
+12	διαγωγῆς	διαγωγή	n	n-s---fg-	Case=g|Gender=f|Number=s	9	ADV	_	t_57|gloss=lifestyle
+13	[0]	[0]	-	---------	_	0	PRED	_	e_4
+14	.	.	u	u--------	_	13	AuxK	_	t_58|gloss=.
+
+# sentence_id = 5
+# translation_lang = en
+# prose_translation = From my great-grandfather I learned not to attend public lecture courses, to employ good teachers at home, and to recognize that one must spend lavishly on such things.
+# literal_translation = From [my] great-grandfather: not to attend public lecture-courses, to make use of good teachers at home, and to know that on such things one must spend unstintingly.
+1	Παρὰ	παρά	r	r--------	_	27	AuxP	_	t_59|gloss=from
+2	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_60|gloss=the
+3	προπάππου	πρόπαππος	a	a-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_61|gloss=great-grandfather
+4	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	9	ATR	_	t_62|gloss=the-[lesson]
+5	μὴ	μή	d	d--------	_	9	AuxZ	_	t_63|gloss=not
+6	εἰς	εἰς	r	r--------	_	9	AuxP	_	t_64|gloss=to
+7	δημοσίας	δημόσιος	a	a-p---fa-	Case=a|Gender=f|Number=p	8	ATR	_	t_65|gloss=public
+8	διατριβὰς	διατριβή	n	n-p---fa-	Case=a|Gender=f|Number=p	6	OBJ	_	t_66|gloss=lecture-courses
+9	φοιτῆσαι	φοιτάω	v	v--ana---	Mood=n|Tense=a|Voice=a	17	SBJ	_	t_67|gloss=to-attend
+10	καὶ	καί	d	d--------	_	17	AuxY	_	t_68|gloss=and
+11	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	16	ATR	_	t_69|gloss=the-[lesson]
+12	ἀγαθοῖς	ἀγαθός	a	a-p---md-	Case=d|Gender=m|Number=p	13	ATR	_	t_70|gloss=good
+13	διδασκάλοις	διδάσκαλος	n	n-p---md-	Case=d|Gender=m|Number=p	16	OBJ	_	t_71|gloss=teachers
+14	κατʼ	κατά	r	r--------	_	16	AuxP	_	t_72|gloss=at
+15	οἶκον	οἶκος	n	n-s---ma-	Case=a|Gender=m|Number=s	14	ADV	_	t_73|gloss=home
+16	χρήσασθαι	χράω2	v	v--anm---	Mood=n|Tense=a|Voice=m	17	SBJ	_	t_74|gloss=to-make-use-of
+17	καὶ	καί	c	c--------	_	1	COORD	_	t_75|gloss=and
+18	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	19	ATR	_	t_76|gloss=the-[lesson]
+19	γνῶναι	γιγνώσκω	v	v--ana---	Mood=n|Tense=a|Voice=a	17	ADV	_	t_77|gloss=to-know
+20	ὅτι	ὅτι	c	c--------	_	19	AuxC	_	t_78|gloss=that
+21	εἰς	εἰς	r	r--------	_	26	AuxP	_	t_79|gloss=on
+22	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	23	ATR	_	t_80|gloss=the
+23	τοιαῦτα	τοιοῦτος	p	p-p---na-	Case=a|Gender=n|Number=p	21	ADV	_	t_81|gloss=such-things
+24	δεῖ	δεῖ	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	20	OBJ	_	t_82|gloss=one-must
+25	ἐκτενῶς	ἐκτενής	d	d--------	_	26	ADV	_	t_83|gloss=unstintingly
+26	ἀναλίσκειν	ἀναλίσκω	v	v--pna---	Mood=n|Tense=p|Voice=a	24	SBJ	_	t_84|gloss=to-spend
+27	[0]	[0]	-	---------	_	0	PRED	_	e_5
+28	.	.	u	u--------	_	27	AuxK	_	t_85|gloss=.
