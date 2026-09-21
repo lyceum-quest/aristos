@@ -53,6 +53,15 @@ task improve {
   ]
 }
 
+task check-improve {
+  environment: "dev"
+  run: [
+    "roc",
+    "check",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/improve.roc"
+  ]
+}
+
 task lint {
   environment: "dev"
   run: ["roc", "scripts/lint.roc"]

@@ -1,11 +1,12 @@
 {
   "api_key_env": "PPQ_API_KEY",
   "endpoint": "https://api.ppq.ai/v1/chat/completions",
-  "model": "deepseek/deepseek-v4-flash-0731",
+  "model": "deepseek/deepseek-v4-pro-0813",
   "threshold": 0.5,
   "output_path": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/improved-output.conllu",
+  "resolutions_path": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/improve-resolutions.json",
   "request": {
-    "temperature": 1,
+    "temperature": 0,
     "top_p": 1,
     "top_k": 0,
     "seed": 1,
@@ -18,10 +19,10 @@
     },
     "include_reasoning": false,
     "provider": {
-      "only": ["OpenInference"],
+      "only": ["DeepInfra"],
       "require_parameters": true,
       "allow_fallbacks": false
     }
   },
-  "prompt": "Act as an Ancient Greek philologist applying a narrowly bounded audit repair. The user supplies one complete CoNLL-U sentence and only field-specific JEV findings below the configured acceptance threshold. Return only the required JSON line patch. Each change must contain the exact failed finding key, the exact complete old source line, and the exact complete corrected replacement line. Change only the field authorized by that finding: lemma permits LEMMA; pos permits the coupled UPOS/XPOS/FEATS analysis; morphology permits morphological XPOS details/FEATS; head or deprel permits the coupled HEAD/DEPREL/DEPS analysis; gloss_lexical or gloss_grammar permits only the gloss value in MISC; prose_accuracy or prose_fluency permits only prose_translation; literal_accuracy or literal_structure permits only literal_translation; metadata permits only sentence metadata. Preserve IDs, FORM, t_/e_ identifiers, unflagged columns, comments, order, tabs, and all other bytes. Do not add or remove lines. If several changes affect one row, emit them in executable order so each old_line equals the preceding result. Return an empty changes array when no justified correction can be made."
+  "prompt": "Act as an Ancient Greek philologist resolving a narrowly bounded audit. The user supplies one complete CoNLL-U sentence and only field-specific JEV findings below the configured acceptance threshold. Return exactly one resolution for every supplied finding. Use action patch when the finding is valid: include the exact complete old source line, the exact complete corrected replacement line, and a concise reason. Use action reject only when the existing field is defensible or the audit finding is mistaken: set old_line and new_line to empty strings and give a concise reason. Do not omit findings, invent findings, or return duplicate findings. A patch may change only the field authorized by that finding: lemma permits LEMMA; pos permits the coupled UPOS/XPOS/FEATS analysis; morphology permits morphological XPOS details/FEATS; head or deprel permits the coupled HEAD/DEPREL/DEPS analysis; gloss_lexical or gloss_grammar permits only the gloss value in MISC; prose_accuracy or prose_fluency permits only prose_translation; literal_accuracy or literal_structure permits only literal_translation; metadata permits only sentence metadata. Preserve IDs, FORM, t_/e_ identifiers, unflagged columns, comments, order, tabs, and all other bytes. Do not add or remove lines. If several patches affect one row, emit them in executable order so each old_line equals the preceding result."
 }
