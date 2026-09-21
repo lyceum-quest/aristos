@@ -3,7 +3,7 @@
   "base_url": "https://api.ppq.ai/v1",
   "model": "deepseek/deepseek-v4-flash-0731",
   "temperature": 0,
-  "max_tokens": 65536,
+  "max_tokens": 2048,
   "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
-  "prompt": "You are given one or more blank-line-separated Ancient Greek CoNLL-U sentence blocks with no English glosses. Return raw CoNLL-U only, with no Markdown fence or explanation. Copy every input comment, row, tab, field, sentence boundary, and sentence order exactly. For every token row, append |gloss= to its existing MISC value followed by one concise contextual English gloss. Generate each gloss from the Greek form and supplied linguistic context without lexical gloss candidates. Use hyphens instead of spaces inside a multiword gloss. Gloss punctuation with that punctuation character. Preserve artificial ellipsis rows whose MISC value begins e_ exactly and do not gloss them. Change nothing else."
+  "prompt": "Generate one concise contextual English gloss for every token row in the supplied Ancient Greek CoNLL-U sentence. Return exactly one tab-separated line per token, in input order: the token ID, a tab, and its gloss. Generate each gloss from the Greek form and supplied linguistic context without lexical gloss candidates. Use hyphens instead of spaces inside a multiword gloss. Gloss punctuation with that punctuation character. Do not use tabs or newlines inside a gloss. Do not return CoNLL-U rows, JSON, Markdown, or explanation."
 }

@@ -5,7 +5,8 @@ import cli.Stdout
 main! = |args| match List.drop_first(args, 1) {
 	[source_arg, output_arg] => {
 		source = Str.replace_each(Path.read_utf8!(Path.utf8(OsStr.display(source_arg)))?, "\r\n", "\n")
-		blocks = List.keep_if(Str.split_on(Str.trim(source), "\n\n"), |block| Str.starts_with(block, "# sent_id = lxx/genesis01_"))
+		chapter_blocks = List.keep_if(Str.split_on(Str.trim(source), "\n\n"), |block| Str.starts_with(block, "# sent_id = lxx/genesis01_"))
+		blocks = take_through_verse_20!(chapter_blocks, [])?
 		if List.is_empty(blocks) {
 			Err(MissingGenesisChapterOne)
 		} else {
@@ -16,6 +17,13 @@ main! = |args| match List.drop_first(args, 1) {
 		}
 	}
 	_ => Err(Usage("prepare-genesis-sample.roc <source.conllu> <output.conllu>"))
+}
+take_through_verse_20! = |blocks, found| match blocks {
+	[] => Err(MissingGenesisVerse20)
+	[block, .. as rest] => {
+		next = List.append(found, block)
+		if Str.starts_with(block, "# sent_id = lxx/genesis01_v20\n") { Ok(next) } else { take_through_verse_20!(rest, next) }
+	}
 }
 strip_block = |block| Str.join_with(List.map(Str.split_on(block, "\n"), strip_line), "\n")
 strip_line = |line| if Str.starts_with(line, "#") { line } else match Str.split_on(line, "\t") {

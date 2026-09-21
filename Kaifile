@@ -20,7 +20,7 @@ task prepare-genesis-sample {
     "roc",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/prepare-genesis-sample.roc",
     "../conllu/PTNK/not-to-release/ready/genesis.conllu",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/genesis-01.no-gloss.conllu"
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/genesis-01.1-20.no-gloss.conllu"
   ]
 }
 
@@ -30,7 +30,7 @@ task prep {
   run: [
     "roc",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/prep.roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/genesis-01.no-gloss.conllu"
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/genesis-01.1-20.no-gloss.conllu"
   ]
 }
 
@@ -59,6 +59,42 @@ task improve {
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/improve.roc",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/gloss-output.conllu",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/audit.json"
+  ]
+}
+
+task conllu-loop {
+  environment: "dev"
+  run: [
+    "roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/loop.roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/genesis-01.1-20.no-gloss.conllu"
+  ]
+}
+
+task check-loop {
+  environment: "dev"
+  run: [
+    "roc",
+    "check",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/loop.roc"
+  ]
+}
+
+task check-prep {
+  environment: "dev"
+  run: [
+    "roc",
+    "check",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/prep.roc"
+  ]
+}
+
+task check-gloss {
+  environment: "dev"
+  run: [
+    "roc",
+    "check",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc"
   ]
 }
 
@@ -135,10 +171,7 @@ task provision {
 workflow conllu {
   steps: [
     "run prepare-genesis-sample",
-    "run prep",
-    "run gloss",
-    "run audit",
-    "run improve"
+    "run conllu-loop"
   ]
 }
 
