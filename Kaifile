@@ -8,7 +8,7 @@ environment dev {
     "git",
     "gnugrep",
     "openssh",
-    "rocpkgs.nightly",
+    "rocpkgs.nightly-2026-09-19-d025939",
     "rsync"
   ]
   overlays: ["github:roc-lang/roc-overlay"]
@@ -72,6 +72,17 @@ task conllu-loop {
   ]
 }
 
+task meditations-loop {
+  environment: "dev"
+  run: [
+    "roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/loop.roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/tlg0562.tlg001.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+    "translate,gloss,audit",
+    "5"
+  ]
+}
+
 task check-loop {
   environment: "dev"
   run: [
@@ -103,8 +114,9 @@ task check-audit {
   environment: "dev"
   run: [
     "roc",
-    "check",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/audit.roc"
+    "build",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/audit.roc",
+    "--output=/tmp/aristos-check-audit"
   ]
 }
 
@@ -183,6 +195,10 @@ workflow conllu {
     "run prepare-genesis-sample",
     "run conllu-loop"
   ]
+}
+
+workflow meditations {
+  steps: ["run meditations-loop"]
 }
 
 workflow release {
