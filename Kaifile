@@ -25,11 +25,11 @@ task prepare-genesis-sample {
 }
 
 # These experiment tasks make paid API calls.
-task prep {
+task translate {
   environment: "dev"
   run: [
     "roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/prep.roc",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/translate.roc",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/genesis-01.1-20.no-gloss.conllu"
   ]
 }
@@ -67,7 +67,8 @@ task conllu-loop {
   run: [
     "roc",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/loop.roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/genesis-01.1-20.no-gloss.conllu"
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/genesis-01.1-20.no-gloss.conllu",
+    "translate,gloss,audit"
   ]
 }
 
@@ -80,12 +81,12 @@ task check-loop {
   ]
 }
 
-task check-prep {
+task check-translate {
   environment: "dev"
   run: [
     "roc",
     "check",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/prep.roc"
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/translate.roc"
   ]
 }
 
@@ -95,6 +96,15 @@ task check-gloss {
     "roc",
     "check",
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc"
+  ]
+}
+
+task check-audit {
+  environment: "dev"
+  run: [
+    "roc",
+    "check",
+    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/audit.roc"
   ]
 }
 

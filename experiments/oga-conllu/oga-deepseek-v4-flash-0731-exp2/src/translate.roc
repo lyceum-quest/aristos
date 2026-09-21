@@ -11,11 +11,11 @@ Translation : { literal_translation : Str, prose_translation : Str }
 main! = |args| match List.drop_first(args, 1) {
 	[input] => run!(OsStr.display(input), 0)
 	[input, count] => run!(OsStr.display(input), U64.from_str(OsStr.display(count))?)
-	_ => Err(Usage("prep.roc <file.conllu> [sentence-count]"))
+	_ => Err(Usage("translate.roc <file.conllu> [sentence-count]"))
 }
 run! = |input, count| {
 	config : Config
-	config = Json.parse(Path.read_utf8!(Path.utf8("experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/config/prep.config.json"))?)?
+	config = Json.parse(Path.read_utf8!(Path.utf8("experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/config/translate.config.json"))?)?
 	source = Str.replace_each(Path.read_utf8!(Path.utf8(input))?, "\r\n", "\n")
 	blocks = List.keep_if(Str.split_on(Str.trim(source), "\n\n"), |block| Str.trim(block) != "")
 	selected_blocks = if count == 0 blocks else take(blocks, count, [])
@@ -36,13 +36,14 @@ complete! = |blocks, config, key, index, found| match blocks {
 		body = Json.to_str_try({ include_reasoning: Bool.False, max_tokens: config.max_tokens, messages: [{ content: config.prompt, role: "system" }, { content: block, role: "user" }], model: config.model, reasoning: { enabled: Bool.False, exclude: Bool.True }, temperature: config.temperature })?
 		response = Http.send!(Request.from_method(POST).with_uri("${config.base_url}/chat/completions").add_header("Authorization", "Bearer ${key}").add_header("Content-Type", "application/json").with_body(Str.to_utf8(body)))?
 		raw_response = Str.from_utf8(Response.body(response))?
-		_ = Path.write_utf8!(Path.utf8("${config.output_dir}/prep-api-response.json"), raw_response)?
+		_ = Path.write_utf8!(Path.utf8("${config.output_dir}/translate-api-response.json"), raw_response)?
 		reply : Completion
 		reply = Json.parse(raw_response)?
 		content = match reply.choices { [choice] => Ok(Str.trim(choice.message.content)), _ => Err(InvalidResponse) }?
-		_ = Path.write_utf8!(Path.utf8("${config.output_dir}/prep-response.txt"), "${content}\n")?
+		_ = Path.write_utf8!(Path.utf8("${config.output_dir}/translate-response.txt"), "${content}\n")?
 		translation = parse_translation!(content, index)?
 		completed = add_translations(block, translation, index)
+		_ = Stdout.line!("translated sentence ${U64.to_str(index)}")?
 		complete!(rest, config, key, index + 1, List.append(found, completed))
 	}
 }
@@ -61,8 +62,13 @@ take = |items, count, found| if count == 0 found else match items { [] => found,
 single_line = |text| Str.trim(text) != "" and !Str.contains(text, "\n") and !Str.contains(text, "\r")
 add_translations = |block, translations, index| {
 	metadata = ["# sentence_id = ${U64.to_str(index)}", "# translation_lang = en", "# prose_translation = ${Str.trim(translations.prose_translation)}", "# literal_translation = ${Str.trim(translations.literal_translation)}"]
-	match Str.split_on(block, "\n") {
-		[first, .. as rest] => Str.join_with(List.concat([first], List.concat(metadata, rest)), "\n")
-		[] => Str.join_with(metadata, "\n")
+	insert_metadata(Str.split_on(block, "\n"), metadata, [])
+}
+insert_metadata = |lines, metadata, comments| match lines {
+	[] => Str.join_with(List.concat(comments, metadata), "\n")
+	[line, .. as rest] => if Str.starts_with(line, "#") {
+		insert_metadata(rest, metadata, List.append(comments, line))
+	} else {
+		Str.join_with(List.concat(comments, List.concat(metadata, lines)), "\n")
 	}
 }

@@ -2,6 +2,7 @@ app [main!] { cli: platform "https://github.com/roc-lang/basic-cli/releases/down
 import cli.Cmd
 import cli.OsStr
 import cli.Path
+import cli.Stdout
 Question : { criteria : { false : Str, true : Str }, instructions : Str, type : Str }
 AuditItem : { questions : Dict(Str, Question), response : { answers : Dict(Str, { noul : Dec, type : Str }) }, sentence : Str }
 Resolution : { action : Str, finding : Str, new_line : Str, old_line : Str, reason : Str }
@@ -45,6 +46,7 @@ improve! = |audits, config, key, found, resolved| match audits {
 			reply = Json.parse(Path.read_utf8!(Path.utf8("/tmp/aristos-oga-improve-response.json"))?)?
 			patch : { resolutions : List(Resolution) }
 			patch = match reply.choices { [choice] => if choice.finish_reason != "stop" Err(IncompleteCompletion(choice.finish_reason)) else match choice.message.content { Ok(content) => Json.parse(content), Err(Missing) => Err(MissingCompletionContent) }, _ => Err(InvalidResponse) }?
+			_ = Stdout.line!("improvement API call returned")?
 			next_resolved = List.concat(resolved, patch.resolutions)
 			_ = Path.write_utf8!(Path.utf8(config.resolutions_path), "${Json.to_str_try({ resolutions: next_resolved, status: "proposed" })?}\n")?
 			_ = validate_resolutions!(patch.resolutions, answers, Dict.empty())?

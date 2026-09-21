@@ -2,6 +2,7 @@ app [main!] { cli: platform "https://github.com/roc-lang/basic-cli/releases/down
 import cli.Cmd
 import cli.OsStr
 import cli.Path
+import cli.Stdout
 Question : { criteria : { false : Str, true : Str }, instructions : Str, type : Str }
 Answer : { noul : Dec, type : Str }
 Response : { answers : Dict(Str, Answer), model : Str, usage : { input_tokens : U64, output_tokens : U64 } }
@@ -35,6 +36,7 @@ audit! = |sentences, config, key, index, found| match sentences {
 		reply : Response
 		reply = Json.parse(Path.read_utf8!(Path.utf8(response_path))?)?
 		_ = (if reply.model != config.model or Dict.len(reply.answers) != Dict.len(questions) Err(InvalidJevResponse(index)) else Ok({}))?
+		_ = Stdout.line!("audited sentence ${U64.to_str(index)}")?
 		audit!(rest, config, key, index + 1, List.append(found, { questions, response: reply, sentence, sentence_index: index }))
 	}
 }

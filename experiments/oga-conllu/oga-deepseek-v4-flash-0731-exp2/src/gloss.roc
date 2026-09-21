@@ -41,6 +41,7 @@ complete! = |blocks, config, key, index, found| match blocks {
 		items = parse_glosses!(Str.split_on(content, "\n"), index, [])?
 		glosses = gloss_dict!(items, Dict.empty(), index)?
 		completed = apply_glosses!(Str.split_on(block, "\n"), glosses, index, [])?
+		_ = Stdout.line!("glossed sentence ${U64.to_str(index)}")?
 		complete!(rest, config, key, index + 1, List.append(found, Str.join_with(completed, "\n")))
 	}
 }
