@@ -6,8 +6,8 @@
   "state": {
     "task": "Audit each named field of each target row using the complete Ancient Greek sentence block as context. Judge only the field named by each question and do not propose replacements.",
     "language": "Ancient Greek",
-    "format": "OGA ten-column CoNLL-U with sentence translations and contextual glosses",
-    "policy": "True means the exact targeted field is acceptable in context. Artificial e_ rows represent omitted structure and are not source tokens."
+    "format": "Ten-column Ancient Greek CoNLL-U with sentence translations and lowercase contextual gloss values in MISC",
+    "policy": "True means the exact targeted field is acceptable in context. Lowercase gloss is the generated contextual gloss. Artificial e_ rows represent omitted structure and are not source tokens."
   },
   "token_questions": {
     "lemma": {
@@ -37,12 +37,12 @@
     },
     "gloss_lexical": {
       "type": "noul",
-      "instructions": "Is this row's MISC gloss the correct concise contextual lexical sense? For punctuation it must be the punctuation character; an e_ row must have no gloss.",
+      "instructions": "Is this row's lowercase MISC gloss the correct concise contextual lexical sense? For punctuation the lowercase gloss must be the punctuation character; an e_ row must have no lowercase gloss.",
       "criteria": { "true": "The gloss selects the correct contextual sense or correctly follows the punctuation/artificial-row rule.", "false": "The gloss is absent, selects a wrong sense or referent, adds unsupported meaning, or violates the punctuation/artificial-row rule." }
     },
     "gloss_grammar": {
       "type": "noul",
-      "instructions": "Does this row's MISC gloss accurately express the token's relevant inflectional and syntactic contribution without absorbing another token's meaning?",
+      "instructions": "Does this row's lowercase MISC gloss accurately express the token's relevant inflectional and syntactic contribution without absorbing another token's meaning?",
       "criteria": { "true": "The gloss concisely preserves every materially relevant grammatical contribution.", "false": "The gloss misstates or omits material grammar, or includes meaning belonging to another token." }
     }
   },
