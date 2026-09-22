@@ -27,7 +27,7 @@ Claude Sonnet 5's catalog token rates are 51.5% higher for input and 152.5% high
 ## Interpretation and next comparison
 
 - Claude structured attempt 3 agrees on **73/85** real-token glosses, including six punctuation matches; excluding punctuation gives **67/79 (84.8%)**. Artificial rows are excluded and remain unglossed.
-- Its prompt explicitly supplies several gold answers and token divisions. This is tuned, answer-bearing calibration on five blocks, not held-out accuracy. Do not use it to predict unseen-passage quality or select a production winner.
+- Its prompt explicitly supplies several gold answers and token divisions. This is tuned, answer-bearing calibration on five blocks, not held-out accuracy. Sonnet is now the user-selected pipeline, but this score does not establish unseen-passage quality.
 - Several of the 12 disagreements are defensible alternatives; others lose morphology or contextual relations. Prose generally preserves meaning, while literal translations retain substantial structural and idiomatic defects. See the [direct comparison](../../../../conllu/generated/claude-sonnet-5/structured-attempt-3/REVIEW.md).
 - The table reports catalog token prices, not observed run spend or cost per accepted field. Unequal prompts, response lengths, failures, and retries prevent deriving those metrics from price ratios and exact matches alone.
 - No additional paid attempt was made for this review. Claude's three structured attempts are exhausted; preserve earlier failures as well, rather than resetting the budget again. Future authorized comparisons should use a frozen shared prompt without target answers and untouched passages with separate gold.
