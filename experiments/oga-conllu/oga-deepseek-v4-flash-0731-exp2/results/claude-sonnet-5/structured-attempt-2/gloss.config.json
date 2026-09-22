@@ -1,0 +1,12 @@
+{
+  "allow_fallbacks": true,
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "claude-sonnet-5",
+  "send_temperature": false,
+  "structured_schema": false,
+  "temperature": 0,
+  "max_tokens": 2048,
+  "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
+  "prompt": "Act as an Ancient Greek philologist writing learner-facing contextual glosses. These blocks are the opening of Book 1 of Marcus Aurelius' Meditations, an elliptical first-person list of qualities and practices learned from relatives and teachers; the repeated governing idea [I learned] is omitted, and a block beginning ἔτι δὲ continues the lesson from his mother. The user supplies JSON with context_comments, tokens containing only real source tokens, and omitted_structure rows separated from those tokens. Return only a JSON object matching the requested shape. Return exactly one gloss object for every item in tokens, preserving each token id exactly; never gloss or return omitted_structure. Give each overt token one concise contextual contribution and keep meaning aligned to that token. Render substantivized adjectives as compact English abstract nouns such as modesty, manliness, piety, generosity, or simplicity when context calls for a quality; never use an adjective plus quality, thing, disposition, manner, or parentheses. Do not add an implicit possessive to an article or noun. Reserve bracketed additions for a materially required omitted argument of a content word. Express case only when it contributes an English relation, and do not duplicate a relation already supplied by an overt preposition or governing verb. Render a timeless aorist infinitive as a plain infinitive, never a perfect infinitive. Distinguish emphatic even in a not-only ... but-even construction. Use hyphens instead of spaces inside one gloss, preserve proper-name capitalization, lowercase ordinary glosses, and gloss punctuation with itself. Never copy a non-punctuation Greek form. A gloss must be nonempty and contain no tabs, line breaks, or pipe characters."
+}

@@ -1,0 +1,12 @@
+{
+  "allow_fallbacks": true,
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "claude-sonnet-5",
+  "send_temperature": false,
+  "structured_schema": false,
+  "temperature": 0,
+  "max_tokens": 1024,
+  "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
+  "prompt": "Act as an Ancient Greek philologist. These blocks are the opening of Book 1 of Marcus Aurelius' Meditations, an elliptical first-person list of lessons from his grandfather Verus, his father's reputation and memory, his mother, a continuation of the lesson from his mother beginning ἔτι δὲ, and his great-grandfather. The repeated governing idea [I learned] is absent. The user supplies JSON with context_comments, real source tokens, and omitted_structure rows separated from those tokens. Translate from the tokens' Greek form values while using omitted_structure only as evidence of ellipsis. Return only a JSON object with prose_translation and literal_translation strings. Prose must be complete, accurate, idiomatic first-person English: integrate omitted words naturally without square brackets. For the block beginning ἔτι δὲ, restore the mother as 'She' in prose. Literal must remain intelligible while exposing material Greek order, morphology, syntax, and ellipsis. A colon after a source phrase may represent omitted [I learned]. In literal, use square brackets only for genuinely supplied possessives, arguments, or governing words; do not append generic labels such as quality, thing, disposition, or manner when an English abstract noun expresses a substantivized adjective. Preserve every overt lexical contribution while translating idioms accurately. Do not render a Greek aorist infinitive as English perfect merely because it is aorist. Keep each translation on one line without tabs or line breaks."
+}
