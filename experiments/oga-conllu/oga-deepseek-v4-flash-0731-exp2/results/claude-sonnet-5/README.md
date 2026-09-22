@@ -28,6 +28,8 @@ No prose or literal translation exactly matched the gold wording, but prose mean
 
 Each structured attempt preserves the final glossed output, translation-stage output, and exact configs.
 
+The [attempt 3 direct comparison](structured-attempt-3/REVIEW.md) records all 12 gloss disagreements and the translation defects. Excluding punctuation, exact agreement is 67/79 (84.8%). Attempt 3's prompt supplies multiple gold answers explicitly: this is answer-bearing calibration, not held-out accuracy. The three structured attempts are exhausted; no further Claude prompt attempt was made for the review.
+
 ## Earlier plain-text attempts
 
 Before the protocol change, no attempt completed the first sentence:
