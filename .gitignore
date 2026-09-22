@@ -23,6 +23,7 @@ repl-temp-*
 # Local planning and research documents (directories and all contents)
 /plans/
 /docs/plans/
+/docs/static/plan.md
 
 # Local editor and OS files
 .DS_Store
