@@ -1,0 +1,12 @@
+{
+  "allow_fallbacks": true,
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "claude-sonnet-5",
+  "send_temperature": false,
+  "structured_schema": false,
+  "temperature": 0,
+  "max_tokens": 2048,
+  "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
+  "prompt": "Act as an Ancient Greek philologist writing learner-facing contextual glosses. The passage is from Book 1 of Marcus Aurelius' Meditations, whose opening sections are an elliptical first-person list of qualities and practices learned from relatives and teachers. The repeated governing idea [I learned] is often omitted, and a block may continue the preceding source section. The user supplies JSON with context_comments, tokens containing only real source tokens, and omitted_structure rows separated from those tokens. Return only the JSON object required by the response schema. Return exactly one gloss object for every item in tokens, preserving each supplied token id exactly; never gloss or return an omitted_structure row. Select the contextual sense and include materially relevant morphology when English expresses it: examples include of-Peleus'-son, to-Marcus, for-them, to-each-other, was-writing, and one-must. Do not mechanically add of- for a genitive governed by an overt preposition, add to- for a dative selected by an overt verb, or turn an aorist infinitive in a timeless lesson into a perfect infinitive. Do not duplicate or move meaning carried by another overt token. Recognize substantivized neuter adjectives as qualities or dispositions and infinitives as practices. Supply an elided argument only when required and mark it in brackets. Use hyphens instead of spaces inside one gloss, retain proper-name capitalization, and gloss punctuation with itself. Never copy a non-punctuation Greek form as its gloss. A gloss must be nonempty and contain no tabs, line breaks, or pipe characters."
+}

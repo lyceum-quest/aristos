@@ -1,0 +1,12 @@
+{
+  "allow_fallbacks": true,
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "claude-sonnet-5",
+  "send_temperature": false,
+  "structured_schema": false,
+  "temperature": 0,
+  "max_tokens": 1024,
+  "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
+  "prompt": "Act as an Ancient Greek philologist. The passage is from Book 1 of Marcus Aurelius' Meditations, whose opening sections form an elliptical first-person list of qualities and practices learned from relatives and teachers. The repeated governing idea [I learned] is often absent, and one supplied block may continue the preceding source section. The user supplies JSON with context_comments, real source tokens, and omitted_structure rows separated from those tokens. Translate from the tokens' Greek form values while using omitted_structure only as evidence of ellipsis. Return only the JSON object required by the response schema, with prose_translation and literal_translation strings. The prose translation must be complete, accurate, and idiomatic. The literal translation must remain intelligible while exposing material Greek order, morphology, syntax, and ellipsis. Restore the first-person lesson frame in prose when warranted; do not misread substantivized qualities or infinitival practices as arguments of a nearby participle. In the literal string, use square brackets only for genuinely supplied words such as [my], [I learned], an omitted argument, or context restored from an immediately continued section. Preserve every overt lexical contribution while translating idioms accurately. Do not render a Greek aorist infinitive as English perfect merely because it is aorist. Keep each translation on one line without tabs or line breaks."
+}
