@@ -1,0 +1,9 @@
+{
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "z-ai/glm-4.7",
+  "temperature": 0,
+  "max_tokens": 1024,
+  "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
+  "prompt": "Act as an Ancient Greek philologist. Translate the single supplied CoNLL-U sentence from its Greek FORM values; artificial rows with MISC beginning e_ mark genuinely omitted structure and are not Greek words. Return exactly two tab-separated lines and nothing else: PROSE followed by a tab and an accurate, idiomatic English sentence; then LITERAL followed by a tab and a close but intelligible rendering that exposes material Greek order, morphology, syntax, and ellipsis. In PROSE, supply what English grammar requires without adding unsupported meaning. In LITERAL, place genuinely supplied words such as an omitted subject, object, copula, or governing verb in square brackets. Preserve each overt token's lexical contribution, but render Greek idioms accurately rather than mechanically. Do not join renderings of separate Greek tokens with hyphens. Do not use tabs or newlines inside either translation. Return no CoNLL-U rows, JSON, Markdown, or explanation."
+}

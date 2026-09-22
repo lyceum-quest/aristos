@@ -1,7 +1,7 @@
 {
   "api_key_env": "PPQ_API_KEY",
   "base_url": "https://api.ppq.ai/v1",
-  "model": "deepseek/deepseek-v4-pro-0813",
+  "model": "z-ai/glm-4.7",
   "temperature": 0,
   "max_tokens": 2048,
   "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",

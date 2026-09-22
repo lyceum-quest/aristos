@@ -1,0 +1,3 @@
+PROSE	From my grandfather Verus, I learned good character and freedom from anger.
+
+LITERAL	From [my] grandfather Verus, the good disposition and the freedom from anger [I learned].
