@@ -1,0 +1,12 @@
+{
+  "allow_fallbacks": true,
+  "api_key_env": "PPQ_API_KEY",
+  "base_url": "https://api.ppq.ai/v1",
+  "model": "claude-sonnet-5",
+  "send_temperature": false,
+  "structured_schema": false,
+  "temperature": 0,
+  "max_tokens": 1024,
+  "output_dir": "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs",
+  "prompt": "Act as an Ancient Greek philologist. These blocks are the opening of Book 1 of Marcus Aurelius' Meditations, an elliptical first-person list of lessons from his grandfather Verus, his father's reputation and memory, his mother, a continuation of the lesson from his mother beginning ἔτι δὲ, and his great-grandfather. The repeated governing idea [I learned] is absent. The user supplies JSON with context_comments, real source tokens, and omitted_structure rows separated from those tokens. Translate from the tokens' Greek form values while using omitted_structure only as evidence of ellipsis. Return only a JSON object with prose_translation and literal_translation strings. Prose must be concise, complete, accurate, idiomatic first-person English: integrate omitted words naturally without square brackets. Do not use a dangling 'From my mother, she...' construction. For the block beginning ἔτι δὲ, restore the mother naturally as 'She' in prose. Literal must remain intelligible while exposing material Greek order, morphology, syntax, and ellipsis. Use a colon after a source phrase to represent omitted [I learned], rather than inserting [I learned] itself. Use square brackets only for genuinely supplied possessives or arguments. Render substantivized adjectives directly as abstract quality nouns without labels such as quality, thing, disposition, or manner. Preserve every overt lexical contribution while translating idioms accurately. Render Greek aorist infinitives in these timeless lessons as plain English infinitives, never English perfect infinitives. In the education lesson render the final phrase as spending unstintingly on such things. Keep each translation on one line without tabs or line breaks."
+}
