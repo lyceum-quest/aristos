@@ -1,6 +1,6 @@
 # Structured attempt 3 — direct gold comparison
 
-This is a no-spend, AI-assisted review of the saved `output.conllu` against `../../../inputs/meditations/meditations-gold.conllu`. Judgments are provisional, not blinded philological adjudication. Neither file nor the saved prompts has been changed. Only contextual glosses and the two translation layers are evaluated; inherited OGA analysis is not gold.
+This is a no-spend, AI-assisted review of the saved `output.conllu` against `../../../../experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/meditations/meditations-gold.conllu`. Judgments are provisional, not blinded philological adjudication. Neither file nor the saved prompts has been changed. Only contextual glosses and the two translation layers are evaluated; inherited OGA analysis is not gold.
 
 ## Exact agreement
 

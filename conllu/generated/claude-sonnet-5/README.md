@@ -2,7 +2,7 @@
 
 Model: `claude-sonnet-5`
 
-Dataset: the first five CoNLL-U blocks in `../../inputs/meditations/meditations-gold.conllu`.
+Dataset: the first five CoNLL-U blocks in `../../../experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/meditations/meditations-gold.conllu`.
 
 ## Structured rerun
 
