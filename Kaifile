@@ -9,7 +9,8 @@ environment dev {
     "gnugrep",
     "openssh",
     "rocpkgs.nightly-2026-09-19-d025939",
-    "rsync"
+    "rsync",
+    "sqlite"
   ]
   overlays: ["github:roc-lang/roc-overlay"]
 }
@@ -24,6 +25,23 @@ task meditations-loop {
     "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/meditations/tlg0562.tlg001.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
     "5"
   ]
+}
+
+# Export SQL by default. Config example: scripts/lyceum-import.example.json.
+# LYCEUM_IMPORT_CONFIG selects the config; LYCEUM_IMPORT_APPLY=1 backs up and writes.
+task import-lyceum {
+  environment: "dev"
+  run: ["roc", "scripts/import-lyceum.roc"]
+}
+
+task format-lyceum-import {
+  environment: "dev"
+  run: ["roc", "fmt", "scripts/import-lyceum.roc", "scripts/LyceumConllu.roc", "scripts/LyceumImportSql.roc"]
+}
+
+task check-lyceum-import {
+  environment: "dev"
+  run: ["roc", "check", "scripts/import-lyceum.roc"]
 }
 
 task check-loop {
