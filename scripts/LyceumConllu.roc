@@ -1,7 +1,8 @@
 LyceumConllu :: [].{
 
 	Passage : { sentence_id : Str, reference : Str }
-	Verse : { reference : Str, greek : Str, prose : Str, words : List(Word) }
+	Verse : { reference : Str, greek : Str, prose : Str, words : List(Word), sentences : List(Sentence) }
+	Sentence : { sentence_id : Str, greek : Str, prose : Str, literal : Str, word_start : U64, word_end : U64 }
 	Word : { form : Str, lemma : Str, pos : Str, morphology : Str, gloss : Str, transliteration : Str }
 
 	parse : Str, Str -> Try(List(Verse), [InvalidConllu(Str), ..])
@@ -89,6 +90,7 @@ LyceumConllu :: [].{
 								greek: "${Str.trim(prior.greek)} ${Str.trim(verse.greek)}",
 								prose: "${Str.trim(prior.prose)} ${Str.trim(verse.prose)}",
 								words: List.concat(prior.words, verse.words),
+								sentences: List.concat(prior.sentences, List.map(verse.sentences, |sentence| { ..sentence, word_start: sentence.word_start + List.len(prior.words), word_end: sentence.word_end + List.len(prior.words) })),
 							},
 						),
 					)
@@ -132,7 +134,10 @@ LyceumConllu :: [].{
 		} else if text != "" and Str.replace_each(text, " ", "") != Str.replace_each(state.greek, " ", "") {
 			Err(InvalidConllu("Greek text does not match token forms: ${final_reference}"))
 		} else {
-			Ok({ reference: final_reference, prose, greek: if text == "" state.greek else text, words: state.words })
+			greek = if text == "" state.greek else text
+			sentence_id = field(comments, ["sentence_id", "sent_id"], "sentence ID")?
+			literal = field(comments, ["literal_translation", "text_en_literal"], "literal translation")?
+			Ok({ reference: final_reference, prose, greek, words: state.words, sentences: [{ sentence_id, greek, prose, literal, word_start: 0, word_end: List.len(state.words) }] })
 		}
 	}
 

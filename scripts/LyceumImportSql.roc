@@ -19,6 +19,7 @@ LyceumImportSql :: [].{
 			\\CREATE TEMP TABLE _import_target(work_urn TEXT, greek_urn TEXT, english_urn TEXT, marker TEXT, generator TEXT);
 			\\CREATE TEMP TABLE _import_verses(reference TEXT PRIMARY KEY, greek TEXT NOT NULL, prose TEXT NOT NULL);
 			\\CREATE TEMP TABLE _import_words(reference TEXT, word_index INTEGER, greek TEXT, lemma TEXT, pos TEXT, morphology TEXT, gloss TEXT, transliteration TEXT, PRIMARY KEY(reference, word_index));
+			\\CREATE TEMP TABLE _import_sentences(reference TEXT, ordinal INTEGER, sentence_id TEXT, greek TEXT, prose TEXT, literal TEXT, word_start INTEGER, word_end INTEGER, PRIMARY KEY(reference, ordinal));
 		catalog =
 			\\INSERT INTO curated.authors(id, urn, name)
 			\\SELECT a.id, a.urn, a.name FROM main.authors a JOIN main.works w ON w.author_id=a.id JOIN _import_target t ON t.work_urn=w.urn
@@ -54,6 +55,8 @@ LyceumImportSql :: [].{
 				"INSERT INTO _import_target VALUES(${quote(config.work_urn)},${quote(greek_urn)},${quote(english_urn)},${quote(marker)},${quote(config.generator)});",
 				Str.join_with(List.map(verses, verse_sql), "\n"),
 				catalog_sql,
+				sentence_schema("main"),
+				sentence_schema("curated"),
 				import_into("main", target.replace),
 				import_into("curated", target.replace),
 				validate_import("main", target.replace),
@@ -66,8 +69,29 @@ LyceumImportSql :: [].{
 
 	verse_sql = |verse| {
 		row = "INSERT INTO _import_verses VALUES(${quote(verse.reference)},${quote(verse.greek)},${quote(verse.prose)});"
-		"${row}\n${words_sql(verse.words, verse.reference, 0)}"
+		"${row}\n${words_sql(verse.words, verse.reference, 0)}\n${sentences_sql(verse.sentences, verse.reference, 1)}"
 	}
+
+	sentences_sql = |sentences, reference, ordinal| match sentences {
+		[] => ""
+		[sentence, .. as rest] => {
+			values = Str.join_with(List.map([sentence.sentence_id, sentence.greek, sentence.prose, sentence.literal], quote), ",")
+			row = "INSERT INTO _import_sentences VALUES(${quote(reference)},${U64.to_str(ordinal)},${values},${U64.to_str(sentence.word_start)},${U64.to_str(sentence.word_end)});"
+			"${row}\n${sentences_sql(rest, reference, ordinal + 1)}"
+		}
+	}
+
+	sentence_schema = |db| {
+		body =
+			\\CREATE TABLE IF NOT EXISTS DB.aligned_sentences(
+			\\ source_urn TEXT NOT NULL, translation_urn TEXT NOT NULL, reference TEXT NOT NULL,
+			\\ ordinal INTEGER NOT NULL CHECK(ordinal>0), sentence_id TEXT NOT NULL,
+			\\ greek TEXT NOT NULL, prose TEXT NOT NULL, literal TEXT NOT NULL,
+			\\ word_start INTEGER NOT NULL CHECK(word_start>=0), word_end INTEGER NOT NULL CHECK(word_end>=word_start),
+			\\ PRIMARY KEY(source_urn,reference,ordinal));
+		Str.replace_each(body, "DB.", "${db}.")
+	}
+
 	words_sql = |words, reference, index| match words {
 		[] => ""
 		[word, .. as rest] => {
@@ -133,6 +157,10 @@ LyceumImportSql :: [].{
 		# Full replacement is explicit; the default retains unmentioned references.
 		scope = if replace "1" else "reference IN(SELECT reference FROM _import_verses)"
 		body =
+			\\DELETE FROM DB.aligned_sentences WHERE source_urn=(SELECT greek_urn FROM _import_target) AND SCOPE;
+			\\INSERT INTO DB.aligned_sentences(source_urn,translation_urn,reference,ordinal,sentence_id,greek,prose,literal,word_start,word_end)
+			\\SELECT t.greek_urn,t.english_urn,s.reference,s.ordinal,s.sentence_id,s.greek,s.prose,s.literal,s.word_start,s.word_end
+			\\FROM _import_sentences s CROSS JOIN _import_target t;
 			\\DELETE FROM DB.aligned_words WHERE segment_id IN(
 			\\ SELECT s.id FROM DB.aligned_segments s JOIN _import_target t ON s.source_urn=t.greek_urn WHERE SCOPE
 			\\);
@@ -166,6 +194,8 @@ LyceumImportSql :: [].{
 			\\ WHERE s.source_urn=t.greek_urn AND SCOPE)=(SELECT COUNT(*) FROM _import_verses)
 			\\AND (SELECT COUNT(*) FROM DB.aligned_words w JOIN DB.aligned_segments s ON s.id=w.segment_id CROSS JOIN _import_target t
 			\\ WHERE s.source_urn=t.greek_urn AND SCOPE)=(SELECT COUNT(*) FROM _import_words)
+			\\AND (SELECT COUNT(*) FROM DB.aligned_sentences s CROSS JOIN _import_target t
+			\\ WHERE s.source_urn=t.greek_urn AND SCOPE)=(SELECT COUNT(*) FROM _import_sentences)
 		guard("${db}_import_counts", Str.replace_each(Str.replace_each(condition, "DB.", "${db}."), "SCOPE", scope))
 	}
 
