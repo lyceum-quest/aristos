@@ -68,6 +68,63 @@ task check-lyceum-import {
   run: ["roc", "check", "scripts/import-lyceum.roc"]
 }
 
+# Lyceum is a separate Go reader; use its pinned development environment.
+task check-lyceum-reader {
+  environment: "dev"
+  run: ["nix", "develop", "../lyceum/website-private", "--command", "go", "-C", "../lyceum/website-private", "test", "./cmd/...", "./internal/..."]
+}
+
+task audit-lyceum-reader {
+  environment: "dev"
+  run: ["nix", "develop", "../lyceum/website-private", "--command", "go", "-C", "../lyceum/website-private", "test", "-tags", "slow", "./cmd/server", "-run", "TestFeaturedInterlinearAudit|TestAesopPerry1", "-v"]
+}
+
+task format-lyceum-reader {
+  environment: "dev"
+  run: ["nix", "develop", "../lyceum/website-private", "--command", "gofmt", "-w", "../lyceum/website-private/internal/models/word.go", "../lyceum/website-private/internal/db/texts.go", "../lyceum/website-private/internal/db/sentences.go", "../lyceum/website-private/cmd/server/main.go", "../lyceum/website-private/cmd/server/interlinear_audit_test.go"]
+}
+
+task refresh-lyceum-reader-support {
+  environment: "dev"
+  run: ["nix", "develop", "../lyceum/website-private", "--command", "go", "-C", "../lyceum/website-private", "run", "./scripts/generate_reader_support_matrix"]
+}
+
+task serve-lyceum-reader {
+  environment: "dev"
+  run: ["nix", "develop", "../lyceum/website-private", "--command", "go", "-C", "../lyceum/website-private", "run", "./cmd/server"]
+}
+
+task build-lyceum-reader {
+  environment: "dev"
+  run: ["nix", "develop", "../lyceum/website-private", "--command", "go", "-C", "../lyceum/website-private", "build", "-o", ".tmp/sentence-reader", "./cmd/server"]
+}
+
+task check-lyceum-reader-browser {
+  environment: "dev"
+  run: ["nix", "develop", "../lyceum/website-private", "--command", "env", "TEST_LOCAL=1", "npm", "--prefix", "../lyceum/website-private", "test", "--", "--workers=2", "--reporter=line", "--retries=0"]
+}
+
+task refresh-lyceum-reader-screenshots {
+  environment: "dev"
+  run: ["nix", "develop", "../lyceum/website-private", "--command", "env", "TEST_LOCAL=1", "npm", "--prefix", "../lyceum/website-private", "test", "--", "screenshots.spec.ts", "--update-snapshots", "--workers=2", "--reporter=line", "--retries=0"]
+}
+
+# Reader-only override and rollback; no NixOS switch or changes to other services.
+task deploy-lyceum-reader-staging {
+  environment: "dev"
+  run: ["roc", "scripts/deploy-lyceum-reader.roc", "staging"]
+}
+
+task check-lyceum-reader-deploy {
+  environment: "dev"
+  run: ["roc", "check", "scripts/deploy-lyceum-reader.roc"]
+}
+
+task format-lyceum-reader-deploy {
+  environment: "dev"
+  run: ["roc", "fmt", "scripts/deploy-lyceum-reader.roc"]
+}
+
 task check-loop {
   environment: "dev"
   run: [
