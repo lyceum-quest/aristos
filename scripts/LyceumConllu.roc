@@ -1,42 +1,127 @@
 LyceumConllu :: [].{
 
+	Passage : { sentence_id : Str, reference : Str }
 	Verse : { reference : Str, greek : Str, prose : Str, words : List(Word) }
 	Word : { form : Str, lemma : Str, pos : Str, morphology : Str, gloss : Str, transliteration : Str }
 
 	parse : Str, Str -> Try(List(Verse), [InvalidConllu(Str), ..])
-	parse = |source, work_urn| {
+	parse = |source, work_urn| parse_with_references(source, work_urn, [])
+
+	parse_with_references : Str, Str, List(Passage) -> Try(List(Verse), [InvalidConllu(Str), ..])
+	parse_with_references = |source, work_urn, passages| {
+		remaining = validate_passages(passages, work_urn, [])?
 		lines = Str.split_on(Str.replace_each(source, "\r\n", "\n"), "\n")
-		verses = parse_lines(lines, [], [], work_urn)?
-		if List.is_empty(verses) Err(InvalidConllu("empty input")) else Ok(verses)
+		state = parse_lines(lines, [], { verses: [], remaining, mapped: !List.is_empty(passages) }, work_urn)?
+		match state.remaining {
+			[unused, ..] => Err(InvalidConllu("unused passage mapping: ${unused.sentence_id}"))
+			[] => if List.is_empty(state.verses) Err(InvalidConllu("empty input")) else Ok(reverse_verses(state.verses, []))
+		}
 	}
 
-	parse_lines = |lines, block, verses, work_urn|
-		match lines {
-			[] => finish_block(block, verses, work_urn)
-			[line, .. as rest] =>
-				if Str.trim(line) == "" {
-					next = finish_block(block, verses, work_urn)?
-					parse_lines(rest, [], next, work_urn)
+	validate_passages = |passages, work_urn, validated|
+		match passages {
+			[] => Ok(validated)
+			[passage, .. as rest] => {
+				sentence_id = clean_required(passage.sentence_id, "mapping sentence ID")?
+				reference = canonical_reference(clean_required(passage.reference, "mapping reference")?, work_urn)?
+				if List.any(validated, |prior| prior.sentence_id == sentence_id) {
+					Err(InvalidConllu("duplicate mapping sentence ID: ${sentence_id}"))
 				} else {
-					parse_lines(rest, List.append(block, line), verses, work_urn)
+					validate_passages(rest, work_urn, List.prepend(validated, { sentence_id, reference }))
 				}
-			}
-
-	finish_block = |block, verses, work_urn|
-		if List.is_empty(block) {
-			Ok(verses)
-		} else {
-			verse = parse_block(block, work_urn)?
-			if List.any(verses, |prior| prior.reference == verse.reference) {
-				Err(InvalidConllu("duplicate verse block: ${verse.reference}"))
-			} else {
-				Ok(List.append(verses, verse))
 			}
 		}
 
-	parse_block = |lines, work_urn| {
-		comments = List.map(List.keep_if(lines, |line| Str.starts_with(line, "#")), |line| Str.replace_first(line, "#", ""))
-		reference = canonical_reference(field(comments, ["ref", "reference", "citation"], "reference")?, work_urn)?
+	clean_required = |value, label|
+		if has_control(Str.to_utf8(value)) {
+			Err(InvalidConllu("control character in ${label}"))
+		} else {
+			required(Str.trim(value), label)
+		}
+
+	parse_lines = |lines, block, state, work_urn|
+		match lines {
+			[] => finish_block(block, state, work_urn)
+			[line, .. as rest] =>
+				if Str.trim(line) == "" {
+					next = finish_block(block, state, work_urn)?
+					parse_lines(rest, [], next, work_urn)
+				} else {
+					parse_lines(rest, List.append(block, line), state, work_urn)
+				}
+			}
+
+	finish_block = |block, state, work_urn|
+		if List.is_empty(block) {
+			Ok(state)
+		} else {
+			comments = List.map(List.keep_if(block, |line| Str.starts_with(line, "#")), |line| Str.replace_first(line, "#", ""))
+			mapping = (
+				if state.mapped {
+					sentence_id = required(field(comments, ["sentence_id", "sent_id"], "sentence ID")?, "sentence ID")?
+					take_passage(state.remaining, sentence_id)
+				} else {
+					Ok({ reference: "", remaining: state.remaining })
+				}
+			)?
+			verse = parse_block(block, comments, work_urn, mapping.reference)?
+			verses = add_verse(state.verses, verse, state.mapped)?
+			Ok({ ..state, verses, remaining: mapping.remaining })
+		}
+
+	# Consuming each mapping rejects repeated source IDs as well as unmapped blocks.
+	take_passage = |passages, sentence_id|
+		match List.keep_if(passages, |passage| passage.sentence_id == sentence_id) {
+			[passage] => Ok({ reference: passage.reference, remaining: List.keep_if(passages, |entry| entry.sentence_id != sentence_id) })
+			_ => Err(InvalidConllu("missing or already used passage mapping: ${sentence_id}"))
+		}
+
+	# Verses are reversed during parsing, so only the head can be merged.
+	add_verse = |verses, verse, mapped|
+		match verses {
+			[prior, .. as rest] =>
+				if mapped and prior.reference == verse.reference {
+					Ok(
+						List.prepend(
+							rest,
+							{
+								..prior,
+								greek: "${Str.trim(prior.greek)} ${Str.trim(verse.greek)}",
+								prose: "${Str.trim(prior.prose)} ${Str.trim(verse.prose)}",
+								words: List.concat(prior.words, verse.words),
+							},
+						),
+					)
+				} else {
+					add_distinct_verse(verses, verse)
+				}
+			[] => Ok([verse])
+		}
+
+	reverse_verses = |verses, ordered|
+		match verses {
+			[] => ordered
+			[verse, .. as rest] => reverse_verses(rest, List.prepend(ordered, verse))
+		}
+
+	add_distinct_verse = |verses, verse|
+		if List.any(verses, |prior| prior.reference == verse.reference) {
+			Err(InvalidConllu("duplicate verse block: ${verse.reference}"))
+		} else {
+			Ok(List.prepend(verses, verse))
+		}
+
+	parse_block = |lines, comments, work_urn, mapped_reference| {
+		comment_reference = canonical_reference(field(comments, ["ref", "reference", "citation"], "reference")?, work_urn)?
+		reference = (
+			if mapped_reference == "" {
+				Ok(comment_reference)
+			} else if comment_reference == "" or comment_reference == mapped_reference {
+				Ok(mapped_reference)
+			} else {
+				Err(InvalidConllu("conflicting verse references: ${comment_reference} / ${mapped_reference}"))
+			}
+		)?
 		prose = required(field(comments, ["prose_translation", "text_en"], "prose translation")?, "prose translation")?
 		text = field(comments, ["text"], "Greek text")?
 		rows = List.keep_if(lines, |line| !Str.starts_with(line, "#"))

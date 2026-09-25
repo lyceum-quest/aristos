@@ -2,6 +2,7 @@ app [main!] { cli: platform "https://github.com/roc-lang/basic-cli/releases/down
 
 import cli.Cmd
 import cli.Env
+import cli.OsStr
 import cli.Path
 import cli.Stdout
 import LyceumConllu
@@ -11,7 +12,7 @@ main! = |_args| {
 	config_path = Env.var_str!("LYCEUM_IMPORT_CONFIG") ? |_| MissingConfig("set LYCEUM_IMPORT_CONFIG to an import JSON config; LYCEUM_IMPORT_APPLY=1 opts into database writes")
 	config : LyceumImportSql.Config
 	config = Json.parse(Path.read_utf8!(Path.utf8(config_path))?)?
-	_ = validate_config(config)?
+	target = validate_config(config)?
 	input = absolute!(config.input)?
 	texts_db = absolute!(config.texts_db)?
 	editions_db = absolute!(config.editions_db)?
@@ -24,41 +25,55 @@ main! = |_args| {
 		}
 	)?
 	resolved = { ..config, input, texts_db, editions_db, sql_output }
-	verses = LyceumConllu.parse(Path.read_utf8!(Path.utf8(input))?, config.work_urn)?
-	mode = match Env.var_str!("LYCEUM_IMPORT_APPLY") {
-		Ok(value) => value
-		Err(_) => "0"
+	references = match config.references {
+		Ok(values) => values
+		Err(Missing) => []
 	}
+	verses = LyceumConllu.parse_with_references(Path.read_utf8!(Path.utf8(input))?, config.work_urn, references)?
+	apply = switch!("LYCEUM_IMPORT_APPLY", "0")?
+	backup = switch!("LYCEUM_IMPORT_BACKUP", "1")?
+	_ = Path.write_utf8!(Path.utf8(sql_output), "${LyceumImportSql.build(resolved, verses, target)}\n")?
+	_ = Stdout.line!("wrote ${sql_output}: ${U64.to_str(List.len(verses))} verse(s)")?
 	_ = (
-		if mode == "0" or mode == "1" {
-			Ok({})
+		if target.replace {
+			Stdout.line!("FULL REPLACEMENT: ${target.greek_urn} + ${target.english_urn}; unmentioned passages will be removed from both databases")
 		} else {
-			Err(InvalidApplyMode)
+			Ok({})
 		}
 	)?
-	_ = Path.write_utf8!(Path.utf8(sql_output), "${LyceumImportSql.build(resolved, verses)}\n")?
-	_ = Stdout.line!("wrote ${sql_output}: ${U64.to_str(List.len(verses))} verse(s)")?
-	edition_code = "${Str.replace_first(config.work_urn, "urn:cts:greekLit:", "")}.${config.edition_slug}"
+	edition_code = Str.replace_first(target.greek_urn, "urn:cts:greekLit:", "")
+	translation_code = Str.replace_first(target.english_urn, "urn:cts:greekLit:", "")
 	# An explicit translation override avoids the reader choosing an older English edition.
-	_ = Stdout.line!("reader path after import/deployment: /read/${edition_code}-grc1?layout=row&trans=${edition_code}-versified-eng1")?
-	if mode == "1" {
-		_ = backup!(texts_db)?
+	_ = Stdout.line!("reader path after import/deployment: /read/${edition_code}?layout=row&trans=${translation_code}")?
+	if apply {
+		_ = check_database!(texts_db)?
+		editions_exist = Path.exists!(Path.utf8(editions_db))?
 		_ = (
-			if Path.exists!(Path.utf8(editions_db))? {
-				backup!(editions_db)
+			if editions_exist {
+				check_database!(editions_db)
+			} else if target.replace {
+				Err(MissingDatabase(editions_db))
 			} else {
 				Ok({})
 			}
 		)?
+		_ = (
+			if backup {
+				_ = backup!(texts_db)?
+				if editions_exist backup!(editions_db) else Ok({})
+			} else {
+				Stdout.line!("backups explicitly disabled by LYCEUM_IMPORT_BACKUP=0")
+			}
+		)?
 		_ = Cmd.new_str("sqlite3").args_str(["-bail", texts_db, ".read ${dot_quote(sql_output)}"]).exec_cmd!()?
-		Stdout.line!("imported generated editions into texts.db and editions.db; existing source editions were not changed")
+		Stdout.line!(if target.replace "replaced the selected editions in texts.db and editions.db; existing IDs and URLs preserved" else "imported generated editions into texts.db and editions.db; existing source editions were not changed")
 	} else {
-		Stdout.line!("export only; no database writes. Set LYCEUM_IMPORT_APPLY=1 to back up and apply.")
+		Stdout.line!("export only; no database writes. Set LYCEUM_IMPORT_APPLY=1 to apply; backups default on (LYCEUM_IMPORT_BACKUP=0 disables them).")
 	}
 }
 
 validate_config = |config| {
-	fields = [config.input, config.texts_db, config.editions_db, config.sql_output, config.work_urn, config.edition_slug, config.generator]
+	fields = [config.input, config.texts_db, config.editions_db, config.sql_output, config.work_urn, config.generator]
 	work_code = Str.replace_first(config.work_urn, "urn:cts:greekLit:", "")
 	if List.any(fields, |value| Str.trim(value) == "" or List.any(Str.to_utf8(value), |byte| byte < 32 or byte == 127)) {
 		Err(InvalidConfig("fields must be nonempty and contain no control characters"))
@@ -66,10 +81,42 @@ validate_config = |config| {
 		Err(InvalidConfig("use explicit texts.db and editions.db paths and a .sql output"))
 	} else if !Str.starts_with(config.work_urn, "urn:cts:greekLit:") or List.len(Str.split_on(config.work_urn, ":")) != 4 or List.len(Str.split_on(work_code, ".")) != 2 or List.any(Str.split_on(work_code, "."), |part| part == "") or !List.all(Str.to_utf8(work_code), |byte| slug_byte(byte) or byte == 46 or (byte >= 65 and byte <= 90)) {
 		Err(InvalidConfig("work_urn must identify a Greek CTS work, not an edition or passage"))
-	} else if !Str.starts_with(config.edition_slug, "aristos-") or !List.all(Str.to_utf8(config.edition_slug), slug_byte) {
-		Err(InvalidConfig("edition_slug must start aristos- and use lowercase ASCII letters, digits, or hyphens"))
 	} else {
-		Ok({})
+		match (config.edition_slug, config.replace_editions) {
+			(Ok(slug), Err(Missing)) => {
+				if !Str.starts_with(slug, "aristos-") or !List.all(Str.to_utf8(slug), slug_byte) {
+					Err(InvalidConfig("edition_slug must start aristos- and use lowercase ASCII letters, digits, or hyphens"))
+				} else {
+					Ok({ greek_urn: "${config.work_urn}.${slug}-grc1", english_urn: "${config.work_urn}.${slug}-versified-eng1", replace: Bool.False })
+				}
+			}
+			(Err(Missing), Ok(editions)) => {
+				if editions.greek_urn == editions.english_urn or !List.all([editions.greek_urn, editions.english_urn], |urn| valid_edition_urn(urn, config.work_urn)) {
+					Err(InvalidConfig("replace_editions must name two distinct edition URNs belonging to work_urn"))
+				} else {
+					Ok({ greek_urn: editions.greek_urn, english_urn: editions.english_urn, replace: Bool.True })
+				}
+			}
+			_ => Err(InvalidConfig("specify exactly one of edition_slug or replace_editions"))
+		}
+	}
+}
+
+valid_edition_urn = |urn, work_urn| {
+	prefix = "${work_urn}."
+	suffix = Str.replace_first(urn, prefix, "")
+	Str.starts_with(urn, prefix) and suffix != "" and List.all(Str.to_utf8(suffix), |byte| slug_byte(byte) or (byte >= 65 and byte <= 90) or byte == 95)
+}
+
+switch! = |name, default| {
+	value = match Env.var_str!(OsStr.from_str(name)) {
+		Ok(found) => found
+		Err(_) => default
+	}
+	match value {
+		"0" => Ok(Bool.False)
+		"1" => Ok(Bool.True)
+		_ => Err(InvalidConfig("${name} must be 0 or 1"))
 	}
 }
 
@@ -82,7 +129,7 @@ absolute! = |path| {
 
 dot_quote = |path| "\"${Str.replace_each(Str.replace_each(path, "\\", "\\\\"), "\"", "\\\"")}\""
 
-backup! = |path| {
+check_database! = |path| {
 	_ = (
 		if Path.exists!(Path.utf8(path))? {
 			Ok({})
@@ -91,13 +138,14 @@ backup! = |path| {
 		}
 	)?
 	journal = Cmd.new_str("sqlite3").args_str(["-readonly", path, "PRAGMA journal_mode;"]).exec_output!()?
-	_ = (
-		if List.contains(["delete", "truncate", "persist"], Str.trim(journal.stdout_utf8)) {
-			Ok({})
-		} else {
-			Err(UnsupportedJournalMode(path, journal.stdout_utf8))
-		}
-	)?
+	if List.contains(["delete", "truncate", "persist"], Str.trim(journal.stdout_utf8)) {
+		Ok({})
+	} else {
+		Err(UnsupportedJournalMode(path, journal.stdout_utf8))
+	}
+}
+
+backup! = |path| {
 	stamp = Cmd.new_str("date").args_str(["+%s-%N"]).exec_output!()?
 	backup = "${path}.before-aristos-${Str.trim(stamp.stdout_utf8)}"
 	_ = (
