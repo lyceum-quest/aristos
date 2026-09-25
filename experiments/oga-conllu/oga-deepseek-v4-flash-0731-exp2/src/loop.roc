@@ -18,15 +18,29 @@ run! = |input, count| {
 	_ = (if List.is_empty(blocks) { Err(EmptyInput) } else { Ok({}) })?
 	_ = Path.create_all!(Path.utf8(result_dir))?
 	_ = Path.create_all!(Path.utf8(scratch))?
-	_ = bind_file!("${result_dir}/source.conllu", "${Str.join_with(blocks, "\n\n")}\n")?
 	_ = bind_config!("translate")?
 	_ = bind_config!("gloss")?
 	translated = read_blocks!("${result_dir}/translations.conllu")?
 	glossed = read_blocks!("${result_dir}/output.conllu")?
 	_ = (if List.len(translated) > List.len(blocks) or List.len(glossed) > List.len(translated) { Err(InconsistentCheckpoint) } else { Ok({}) })?
+	_ = bind_source!(blocks, List.len(translated))?
 	_ = Stdout.line!("selected ${U64.to_str(List.len(blocks))} sentences; checkpoints: translate ${U64.to_str(List.len(translated))}, gloss ${U64.to_str(List.len(glossed))}")?
 	completed = process!(blocks, translated, glossed, 1)?
 	Stdout.line!("checkpointed ${U64.to_str(completed)} new sentence(s); result: ${result_dir}/output.conllu")
+}
+bind_source! = |blocks, translated_count| {
+	path = "${result_dir}/source.conllu"
+	content = "${Str.join_with(blocks, "\n\n")}\n"
+	if Path.exists!(Path.utf8(path))? {
+		saved = read_blocks!(path)?
+		if List.len(saved) < translated_count or saved != take(blocks, List.len(saved), []) {
+			Err(CheckpointInputChanged(path))
+		} else {
+			Path.write_utf8!(Path.utf8(path), content)
+		}
+	} else {
+		bind_file!(path, content)
+	}
 }
 bind_config! = |stage| {
 	text = Path.read_utf8!(Path.utf8("${root}/config/${stage}.config.json"))?
