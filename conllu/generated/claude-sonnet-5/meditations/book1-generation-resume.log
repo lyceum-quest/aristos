@@ -1,0 +1,9 @@
+Started: 2026-09-25T08:58:49-04:00
+workflow: run meditations-loop
+wrote: .kai/flake.nix
+selected 119 sentences; checkpoints: translate 80, gloss 79
+Program exited with error: NonZeroExitCode({ command: "Cmd({ program: OsStr.utf8(\"timeout\"), args: [OsStr.utf8(\"180\"), OsStr.utf8(\"roc\"), OsStr.utf8(\"experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc\"), OsStr.utf8(\"experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/outputs/current.conllu\")], envs: [], clear_envs: False })", exit_code: 1, stderr_utf8_lossy: "Program exited with error: UnknownGlossIds(1)
+", stdout_utf8_lossy: "" })
+elapsed_seconds=9.045
+Finished: 2026-09-25T08:58:58-04:00
+exit_status=1

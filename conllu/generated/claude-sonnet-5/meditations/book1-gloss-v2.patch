@@ -1,0 +1,21 @@
+diff --git a/experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc b/experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc
+index ed40abf..ae918c5 100644
+--- a/experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc
++++ b/experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc
+@@ -36,8 +36,15 @@ complete! = |blocks, config, key, index, found| match blocks {
+ 	[] => Ok(found)
+ 	[block, .. as rest] => {
+ 		input = semantic_input!(block, index)?
+-		context = Json.to_str_try(input)?
+ 		token_ids = List.map(input.tokens, |row| row.id)
++		# Synthetic rows remain in the source, but are not gloss request targets or context.
++		context = Json.to_str_try({
++			request_protocol: "real-tokens-only-v2",
++			context_comments: input.context_comments,
++			tokens: input.tokens,
++			allowed_token_ids: token_ids,
++			output_contract: "Return a JSON object with a glosses array of {id, gloss} objects. Return exactly one object for each allowed_token_ids entry, including punctuation. The IDs are strings and may have gaps. Do not fill gaps or return any other IDs. Only tokens listed here may receive glosses.",
++		})?
+ 		item_schema = { additionalProperties: Bool.False, properties: { gloss: { minLength: 1, type: "string" }, id: { enum: token_ids, type: "string" } }, required: ["id", "gloss"], type: "object" }
+ 		schema = { additionalProperties: Bool.False, properties: { glosses: { items: item_schema, maxItems: List.len(token_ids), minItems: List.len(token_ids), type: "array" } }, required: ["glosses"], type: "object" }
+ 		body = if config.structured_schema {

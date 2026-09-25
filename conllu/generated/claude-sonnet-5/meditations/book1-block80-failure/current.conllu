@@ -1,0 +1,28 @@
+# sentence_id = 80
+# translation_lang = en
+# prose_translation = Besides this, she also had genuine esteem for those who truly practice philosophy, while toward the others she was neither reproachful toward those who did not, nor did she easily let herself be led astray by them.
+# literal_translation = In addition to these things: also the esteeming [disposition] of those truly philosophizing, but toward the others: not reproachful, nor indeed easily-led-astray by them.
+1	πρὸς	πρός	r	r--------	_	22	AuxP	_	t_1249
+2	τούτοις	οὗτος	p	p-p---nd-	Case=d|Gender=n|Number=p	1	ADV	_	t_1250
+3	δὲ	δέ	d	d--------	_	22	AuxY	_	t_1251
+4	καὶ	καί	d	d--------	_	6	AuxZ	_	t_1252
+5	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_1253
+6	τιμητικὸν	τιμητικός	a	a-s---nn-	Case=n|Gender=n|Number=s	22	SBJ	_	t_1254
+7	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	9	ATR	_	t_1255
+8	ἀληθῶς	ἀληθής	d	d--------	_	9	ADV	_	t_1256
+9	φιλοσοφούντων	φιλοσοφέω	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	6	ATR	_	t_1257
+10	,	,	u	u--------	_	0	AuxX	_	t_1258
+11	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	13	ATR	_	t_1259
+12	δὲ	δέ	d	d--------	_	10	COORD	_	t_1260
+13	ἄλλοις	ἄλλος	p	p-p---md-	Case=d|Gender=m|Number=p	17	ADV	_	t_1261
+14	οὐκ	οὐ	d	d--------	_	23	AuxZ	_	t_1262
+15	ἐξονειδιστικὸν	ἐξονειδιστικός	a	a-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_1263
+16	οὐ	οὐ	d	d--------	_	17	AuxY	_	t_1264
+17	δὲ	δέ	c	c--------	_	23	COORD	_	t_1265
+18	μὴν	μήν	d	d--------	_	19	AuxZ	_	t_1266
+19	εὐπαράγωγον	εὐπαράγωγος	a	a-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_1267
+20	ὑπʼ	ὑπό	r	r--------	_	23	AuxP	_	t_1268
+21	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	20	OBJ	_	t_1269
+22	[0]	[0]	-	---------	_	12	PRED	_	e_85
+23	[1]	[1]	-	---------	_	12	PRED	_	e_86
+24	·	·	u	u--------	_	10	AuxK	_	t_1270

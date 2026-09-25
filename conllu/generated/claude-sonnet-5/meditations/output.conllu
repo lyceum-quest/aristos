@@ -116,3 +116,2841 @@
 26	ἀναλίσκειν	ἀναλίσκω	v	v--pna---	Mood=n|Tense=p|Voice=a	24	SBJ	_	t_84|gloss=to-be-spending
 27	[0]	[0]	-	---------	_	0	PRED	_	e_5
 28	.	.	u	u--------	_	27	AuxK	_	t_85|gloss=.
+
+
+# sentence_id = 6
+# translation_lang = en
+# prose_translation = From my tutor, I learned not to become a devoted partisan of the Greens or the Blues at the races, nor a supporter of the Parmularius or Scutarius gladiators in the arena.
+# literal_translation = From the tutor: not to become either a Prasian partisan, or a Venetian partisan, or a Palmularius supporter, or a Scutarius [supporter].
+1	Παρὰ	παρά	r	r--------	_	17	AuxP	_	t_86|gloss=from
+2	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_87|gloss=the
+3	τροφέως	τροφεύς	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_88|gloss=tutor
+4	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	16	ATR	_	t_89|gloss=the-[lesson]
+5	μή	μή	d	d--------	_	6	AuxY	_	t_90|gloss=not
+6	τε	τε	c	c--------	_	12	AuxY	_	t_91|gloss=either
+7	Πρασιανὸς	πρασιανός	n	n-s---mn-	Case=n|Gender=m|Number=s	12	PNOM	_	t_92|gloss=a-Greens-partisan
+8	μή	μή	d	d--------	_	12	AuxY	_	t_93|gloss=nor
+9	τε	τε	d	d--------	_	12	AuxY	_	t_94|gloss=even
+10	Βενετιανὸς	βενετιανὸς	n	n-s---mn-	Case=n|Gender=m|Number=s	12	PNOM	_	t_95|gloss=a-Blues-partisan
+11	μή	μή	d	d--------	_	12	AuxY	_	t_96|gloss=nor
+12	τε	τε	c	c--------	_	16	COORD	_	t_97|gloss=even
+13	Παλμουλάριος	παλμουλάριος	n	n-s---mn-	Case=n|Gender=m|Number=s	14	PNOM	_	t_98|gloss=a-Parmularius-supporter
+14	ἢ	ἤ1	c	c--------	_	16	COORD	_	t_99|gloss=or
+15	Σκουτάριος	σκουτάριος	n	n-s---mn-	Case=n|Gender=m|Number=s	14	PNOM	_	t_100|gloss=a-Scutarius-supporter
+16	γενέσθαι	γίγνομαι	v	v--anm---	Mood=n|Tense=a|Voice=m	17	SBJ	_	t_101|gloss=to-become
+17	[0]	[0]	-	---------	_	0	PRED	_	e_6
+18	·	·	u	u--------	_	17	AuxK	_	t_102|gloss=·
+
+
+# sentence_id = 7
+# translation_lang = en
+# prose_translation = I learned also to endure toil and to need little.
+# literal_translation = And the toil-enduring: and content-with-little :
+1	καὶ	καί	c	c--------	_	6	AuxY	_	t_103|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_104|gloss=the
+3	φερέπονον	φερέπονος	a	a-s---nn-	Case=n|Gender=n|Number=s	4	SBJ	_	t_105|gloss=toil-enduring
+4	καὶ	καί	c	c--------	_	6	COORD	_	t_106|gloss=and
+5	ὀλιγοδεές	ὀλιγοδεής	a	a-s---nn-	Case=n|Gender=n|Number=s	4	PNOM	_	t_107|gloss=content-with-little
+6	[0]	[0]	-	---------	_	0	PRED	_	e_7
+7	·	·	u	u--------	_	6	AuxK	_	t_108|gloss=·
+
+
+# sentence_id = 8
+# translation_lang = en
+# prose_translation = And to be self-sufficient in action and free from meddling in others' affairs.
+# literal_translation = And the self-working and unmeddlesome:
+1	καὶ	καί	c	c--------	_	6	AuxY	_	t_109|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_110|gloss=the
+3	αὐτουργικὸν	αὐτουργικός	a	a-s---nn-	Case=n|Gender=n|Number=s	4	SBJ	_	t_111|gloss=self-sufficiency
+4	καὶ	καί	c	c--------	_	6	COORD	_	t_112|gloss=and
+5	ἀπολύπραγμον	ἀπολυπρώταρχος	a	a-s---nn-	Case=n|Gender=n|Number=s	4	PNOM	_	t_113|gloss=unmeddlesomeness
+6	[0]	[0]	-	---------	_	0	PRED	_	e_8
+7	·	·	u	u--------	_	6	AuxK	_	t_114|gloss=·
+
+
+# sentence_id = 9
+# translation_lang = en
+# prose_translation = And also being slow to accept slander.
+# literal_translation = And the being-slow-to-accept of slander: [I learned].
+1	καὶ	καί	d	d--------	_	5	AuxY	_	t_115|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_116|gloss=the
+3	δυσπρόσδεκτον	δυσπρόσδεκτος	a	a-s---nn-	Case=n|Gender=n|Number=s	5	SBJ	_	t_117|gloss=slowness-to-accept
+4	διαβολῆς	διαβολή	n	n-s---fg-	Case=g|Gender=f|Number=s	3	ATR	_	t_118|gloss=of-slander
+5	[0]	[0]	-	---------	_	0	PRED	_	e_9
+6	.	.	u	u--------	_	5	AuxK	_	t_119|gloss=.
+
+
+# sentence_id = 10
+# translation_lang = en
+# prose_translation = From Diognetus: not to waste my enthusiasm on trifles.
+# literal_translation = From Diognetus: the not-wasting-zeal-on-vain-things:
+1	Παρὰ	παρά	r	r--------	_	5	AuxP	_	t_120|gloss=from
+2	Διογνήτου	διόγνητος	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_121|gloss=Diognetus
+3	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_122|gloss=the
+4	ἀκενόσπουδον	ἀκενόσπουδος	n	n-s---nn-	Case=n|Gender=n|Number=s	5	SBJ	_	t_123|gloss=not-wasting-zeal-on-vain-things
+5	[0]	[0]	-	---------	_	0	PRED	_	e_10
+6	·	·	u	u--------	_	5	AuxK	_	t_124|gloss=·
+
+
+# sentence_id = 11
+# translation_lang = en
+# prose_translation = And also skepticism toward the claims of miracle-workers and charlatans about incantations, the exorcism of spirits, and other things of that sort.
+# literal_translation = And also the being-skeptical toward the things told by miracle-workers and charlatans concerning incantations and concerning the exorcism of spirits and of the things thus spoken of:
+1	καὶ	καί	c	c--------	_	20	AuxY	_	t_125|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_126|gloss=the
+3	ἀπιστητικὸν	ἀπίστητικός	a	a-s---na-	Case=a|Gender=n|Number=s	20	SBJ	_	t_127|gloss=being-skeptical
+4	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	3	ATR	_	t_128|gloss=the-[things]
+5	ὑπὸ	ὑπό	r	r--------	_	16	AuxP	_	t_129|gloss=by
+6	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	7	ATR	_	t_130|gloss=the
+7	τερατευομένων	τερατεύομαι	v	v-pppeng-	Case=g|Gender=n|Mood=p|Number=p|Tense=p|Voice=e	8	OBJ	_	t_131|gloss=miracle-working
+8	καὶ	καί	c	c--------	_	5	COORD	_	t_132|gloss=and
+9	γοήτων	γόης	a	a-p---ng-	Case=g|Gender=m|Number=p	8	ATR	_	t_133|gloss=charlatans
+10	περὶ	περί	r	r--------	_	16	AuxP	_	t_134|gloss=concerning
+11	ἐπῳδῶν	ἐπῳδή	n	n-p---ng-	Case=g|Gender=n|Number=p	10	ADV	_	t_135|gloss=incantations
+12	καὶ	καί	c	c--------	_	16	AuxY	_	t_136|gloss=and
+13	περὶ	περί	r	r--------	_	16	AuxP	_	t_137|gloss=concerning
+14	δαιμόνων	δαίμων	n	n-p---mg-	Case=g|Gender=m|Number=p	15	ATR	_	t_138|gloss=spirits
+15	ἀποπομπῆς	ἀποπομπή	n	n-s---fg-	Case=g|Gender=f|Number=s	16	ADV	_	t_139|gloss=exorcism
+16	καὶ	καί	c	c--------	_	20	COORD	_	t_140|gloss=and
+17	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	19	ATR	_	t_141|gloss=the
+18	τοιούτων	τοιοῦτος	p	p-p---ng-	Case=g|Gender=n|Number=p	19	ATR	_	t_142|gloss=of-that-kind
+19	λεγομένοις	λέγω3	v	v-pppend-	Case=d|Gender=n|Mood=p|Number=p|Tense=p|Voice=e	16	OBJ	_	t_143|gloss=things-told
+20	[0]	[0]	-	---------	_	0	PRED	_	e_11
+21	·	·	u	u--------	_	20	AuxK	_	t_144|gloss=·
+
+
+# sentence_id = 12
+# translation_lang = en
+# prose_translation = Also not to keep quails for fighting, nor to be excitedly absorbed in such pursuits.
+# literal_translation = And the not to keep-quails: nor about such things to have been excited.
+1	καὶ	καί	c	c--------	_	11	AuxY	_	t_145|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_146|gloss=the
+3	μὴ	μή	d	d--------	_	4	AuxZ	_	t_147|gloss=not
+4	ὀρτυγοτροφεῖν	ὀρτυγοτροφέω	v	v--pna---	Mood=n|Tense=p|Voice=a	6	OBJ	_	t_148|gloss=to-keep-quails-for-fighting
+5	μη	μη	d	d--------	_	6	AuxY	_	t_149|gloss=nor
+6	δὲ	δέ	c	c--------	_	11	COORD	_	t_150|gloss=also
+7	περὶ	περί	r	r--------	_	10	AuxP	_	t_151|gloss=about
+8	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	9	ATR	_	t_152|gloss=the
+9	τοιαῦτα	τοιοῦτος	p	p-p---na-	Case=a|Gender=n|Number=p	7	ADV	_	t_153|gloss=of-that-kind
+10	ἐπτοῆσθαι	πτοέω	v	v--pne---	Mood=n|Tense=p|Voice=e	6	OBJ	_	t_154|gloss=to-be-excited
+11	[0]	[0]	-	---------	_	0	PRED	_	e_12
+12	·	·	u	u--------	_	11	AuxK	_	t_155|gloss=.
+
+
+# sentence_id = 13
+# translation_lang = en
+# prose_translation = I learned also to tolerate frankness of speech.
+# literal_translation = And the enduring of frankness-of-speech:
+1	καὶ	καί	d	d--------	_	5	AuxY	_	t_156|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_157|gloss=the-[enduring]
+3	ἀνέχεσθαι	ἀνέχω	v	v--pne---	Mood=n|Tense=p|Voice=e	5	SBJ	_	t_158|gloss=to-endure
+4	παρρησίας	παρρησία	n	n-s---fg-	Case=g|Gender=f|Number=s	3	OBJ	_	t_159|gloss=of-frankness-of-speech
+5	[0]	[0]	-	---------	_	0	PRED	_	e_13
+6	·	·	u	u--------	_	5	AuxK	_	t_160|gloss=·
+
+
+# sentence_id = 14
+# translation_lang = en
+# prose_translation = I learned to become devoted to philosophy, and to hear first the lectures of Baccheius, and then those of Tandasis and Marcianus.
+# literal_translation = And the to-become-devoted to-philosophy: and the to-hear first indeed of-Baccheius, then also of-Tandasis and of-Marcianus:
+1	καὶ	καί	c	c--------	_	16	AuxY	_	t_161|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_162|gloss=the
+3	οἰκειωθῆναι	οἰκειόω	v	v--anp---	Mood=n|Tense=a|Voice=p	5	SBJ	_	t_163|gloss=to-become-devoted
+4	φιλοσοφίᾳ	φιλοσοφία	n	n-s---fd-	Case=d|Gender=f|Number=s	3	OBJ	_	t_164|gloss=to-philosophy
+5	καὶ	καί	c	c--------	_	16	COORD	_	t_165|gloss=and
+6	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	7	ATR	_	t_166|gloss=the
+7	ἀκοῦσαι	ἀκούω	v	v--ana---	Mood=n|Tense=a|Voice=a	5	SBJ	_	t_167|gloss=to-attend
+8	πρῶτον	πρῶτος	d	d-------s	Case=a|Gender=n|Number=s	17	ADV	_	t_168|gloss=first
+9	μὲν	μέν	d	d--------	_	7	AuxY	_	t_169|gloss=indeed
+10	Βακχείου	βάκχειος	n	n-s---mg-	Case=g|Gender=m|Number=s	17	OBJ	_	t_170|gloss=the-lecture-courses-of-Baccheius
+11	,	,	u	u--------	_	16	AuxX	_	t_171|gloss=,
+12	εἶτα	εἶτα	d	d--------	_	16	COORD	_	t_172|gloss=then
+13	Τανδάσιδος	τανδάης	n	n-s---fg-	Case=g|Gender=f|Number=s	14	OBJ	_	t_173|gloss=the-lecture-courses-of-Tandasis
+14	καὶ	καί	c	c--------	_	17	COORD	_	t_174|gloss=and
+15	Μαρκιανοῦ	μαρκιανός	n	n-s---mg-	Case=g|Gender=m|Number=s	14	OBJ	_	t_175|gloss=the-lecture-courses-of-Marcianus
+16	[0]	[0]	-	---------	_	0	PRED	_	e_14
+17	[1]	[1]	-	---------	_	12	OBJ	_	e_15
+18	[2]	[2]	-	---------	_	12	OBJ	_	e_16
+19	·	·	u	u--------	_	16	AuxK	_	t_176|gloss=·
+
+
+# sentence_id = 15
+# translation_lang = en
+# prose_translation = I also learned to write dialogues in my youth.
+# literal_translation = And also the to-write dialogues in childhood:
+1	καὶ	καί	c	c--------	_	7	AuxY	_	t_177|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_178|gloss=the
+3	γράψαι	γράφω	v	v--ana---	Mood=n|Tense=a|Voice=a	7	OBJ	_	t_179|gloss=to-write
+4	διαλόγους	διάλογος	n	n-p---ma-	Case=a|Gender=m|Number=p	3	OBJ	_	t_180|gloss=dialogues
+5	ἐν	ἐν	r	r--------	_	3	AuxP	_	t_181|gloss=in
+6	παιδί	παῖς	n	n-s---cd-	Case=d|Gender=c|Number=s	5	ADV	_	t_182|gloss=childhood
+7	[0]	[0]	-	---------	_	0	PRED	_	e_17
+8	·	·	u	u--------	_	7	AuxK	_	t_183|gloss=·
+
+
+# sentence_id = 16
+# translation_lang = en
+# prose_translation = Not to long for a camp-bed, a pallet-skin, or any of the other things that belong to the Greek discipline of education.
+# literal_translation = And: not to desire the camp-bed-frame and the pallet-skin, and as many such things as belong to the Greek training.
+1	καὶ	καί	c	c--------	_	14	AuxY	_	t_184|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_185|gloss=the
+3	σκίμποδος	κλινοποδίον	n	n-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_186|gloss=camp-bed-frame
+4	καὶ	καί	c	c--------	_	7	AuxY	_	t_187|gloss=and
+5	δορᾶς	δορά	n	n-s---fg-	Case=g|Gender=f|Number=s	7	OBJ	_	t_188|gloss=pallet-skin
+6	ἐπιθυμῆσαι	ἐπιθυμέω	v	v--ana---	Mood=n|Tense=a|Voice=a	14	OBJ	_	t_189|gloss=to-desire
+7	καὶ	καί	c	c--------	_	6	COORD	_	t_190|gloss=and
+8	ὅσα	ὅσος	p	p-p---nn-	Case=n|Gender=n|Number=p	9	ATR	_	t_191|gloss=as-many-as
+9	τοιαῦτα	τοιοῦτος	p	p-p---nn-	Case=n|Gender=n|Number=p	13	SBJ	_	t_192|gloss=of-that-kind
+10	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_193|gloss=the
+11	Ἑλληνικῆς	ἑλληνικός	a	a-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_194|gloss=greek
+12	ἀγωγῆς	ἀγωγή	n	n-s---fg-	Case=g|Gender=f|Number=s	9	ATR	_	t_195|gloss=training
+13	ἐχόμενα	ἔχω	v	v-pppenn-	Case=n|Gender=n|Mood=p|Number=p|Tense=p|Voice=e	7	OBJ	_	t_196|gloss=belong
+14	[0]	[0]	-	---------	_	0	PRED	_	e_18
+15	.	.	u	u--------	_	14	AuxK	_	t_197|gloss=.
+
+
+# sentence_id = 17
+# translation_lang = en
+# prose_translation = From Rusticus: to grasp the impression that my character needed correction and treatment.
+# literal_translation = From Rusticus: the to-take an-impression of-the needing of-correction and of-treatment of-the character.
+1	Παρὰ	παρά	r	r--------	_	13	AuxP	_	t_198|gloss=from
+2	Ῥουστίκου	ῥουστίκος	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_199|gloss=Rusticus
+3	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_200|gloss=the
+4	λαβεῖν	λαμβάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	13	SBJ	_	t_201|gloss=to-take
+5	φαντασίαν	φαντασία	n	n-s---fa-	Case=a|Gender=f|Number=s	4	OBJ	_	t_202|gloss=an-impression
+6	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	7	ATR	_	t_203|gloss=of-the
+7	χρῄζειν	χρῄζω	v	v--pna---	Mood=n|Tense=p|Voice=a	5	ATR	_	t_204|gloss=needing
+8	διορθώσεως	διόρθωσις	n	n-s---fg-	Case=g|Gender=f|Number=s	9	ATR	_	t_205|gloss=of-correction
+9	καὶ	καί	c	c--------	_	5	COORD	_	t_206|gloss=and
+10	θεραπείας	θεραπεία	n	n-s---fg-	Case=g|Gender=f|Number=s	9	ATR	_	t_207|gloss=of-treatment
+11	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	12	ATR	_	t_208|gloss=of-the
+12	ἤθους	ἦθος	n	n-s---ng-	Case=g|Gender=n|Number=s	9	ATR	_	t_209|gloss=character
+13	[0]	[0]	-	---------	_	0	PRED	_	e_19
+14	·	·	u	u--------	_	13	AuxK	_	t_210|gloss=·
+
+
+# sentence_id = 18
+# translation_lang = en
+# prose_translation = Not to turn aside into a sophist's zeal for rivalry, not to write treatises on abstract doctrines, not to deliver little exhortatory speeches, and not to make a showy display of oneself as an ascetic or a man of action, in a manner obsessed with impressing others.
+# literal_translation = And the not to be turned aside into zeal sophistic: nor the to write-treatises concerning theorems, nor exhortatory little-discourses to discourse, nor phantasy-struck-ly the ascetic-man or the practical-man to display-oneself:
+1	καὶ	καί	c	c--------	_	31	AuxY	_	t_211|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	4	ATR	_	t_212|gloss=the
+3	μὴ	μή	d	d--------	_	4	AuxZ	_	t_213|gloss=not
+4	ἐκτραπῆναι	ἐκτρέπω	v	v--anp---	Mood=n|Tense=a|Voice=p	10	OBJ	_	t_214|gloss=to-be-turned-aside
+5	εἰς	εἰς	r	r--------	_	4	AuxP	_	t_215|gloss=into
+6	ζῆλον	ζῆλος	n	n-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_216|gloss=a-rivalry
+7	σοφιστικόν	σοφιστικός	a	a-s---ma-	Case=a|Gender=n|Number=s	6	ATR	_	t_217|gloss=sophistic
+8	,	,	u	u--------	_	31	AuxX	_	t_218|gloss=,
+9	μη	μη	d	d--------	_	10	AuxY	_	t_219|gloss=nor
+10	δὲ	δέ	c	c--------	_	22	COORD	_	t_220|gloss=and
+11	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	12	ATR	_	t_221|gloss=the
+12	συγγράφειν	συγγράφω	v	v--pna---	Mood=n|Tense=p|Voice=a	10	OBJ	_	t_222|gloss=to-write-treatises
+13	περὶ	περί	r	r--------	_	12	AuxP	_	t_223|gloss=concerning
+14	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	15	ATR	_	t_224|gloss=the
+15	θεωρημάτων	θεώρημα	n	n-p---ng-	Case=g|Gender=n|Number=p	13	ADV	_	t_225|gloss=theorems
+16	,	,	u	u--------	_	31	AuxX	_	t_226|gloss=,
+17	ἢ	ἤ1	c	c--------	_	22	AuxY	_	t_227|gloss=or
+18	προτρεπτικὰ	προτρεπτικός	a	a-p---na-	Case=a|Gender=n|Number=p	19	ATR	_	t_228|gloss=exhortatory
+19	λογάρια	λογάριον	n	n-p---na-	Case=a|Gender=n|Number=p	20	OBJ	_	t_229|gloss=little-discourses
+20	διαλέγεσθαι	διαλέγω	v	v--pne---	Mood=n|Tense=p|Voice=e	22	OBJ	_	t_230|gloss=to-deliver
+21	,	,	u	u--------	_	31	AuxX	_	t_231|gloss=,
+22	ἢ	ἤ1	c	c--------	_	31	COORD	_	t_232|gloss=or
+23	φαντασιοπλήκτως	φαντασιόπληκτος	d	d--------	_	30	ADV	_	t_233|gloss=in-a-fantasy-struck-manner
+24	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	25	ATR	_	t_234|gloss=the
+25	ἀσκητικὸν	ἀσκητικός	a	a-s---ma-	Case=a|Gender=m|Number=s	26	OBJ	_	t_235|gloss=ascetic
+26	ἢ	ἤ1	c	c--------	_	30	COORD	_	t_236|gloss=or
+27	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	28	ATR	_	t_237|gloss=the
+28	ἐνεργητικὸν	ἐνεργητικὸς	a	a-s---ma-	Case=a|Gender=m|Number=s	26	OBJ	_	t_238|gloss=practical
+29	ἄνδρα	ἀνήρ	n	n-s---ma-	Case=a|Gender=m|Number=s	26	OBJ	_	t_239|gloss=man
+30	ἐπιδείκνυσθαι	ἐπιδείκνυμι	v	v--pne---	Mood=n|Tense=p|Voice=e	22	OBJ	_	t_240|gloss=to-display-oneself
+31	[0]	[0]	-	---------	_	0	PRED	_	e_20
+32	·	·	u	u--------	_	31	AuxK	_	t_241|gloss=·
+
+
+# sentence_id = 19
+# translation_lang = en
+# prose_translation = And to abstain from rhetoric, poetry, and elegant wordplay.
+# literal_translation = And the to-abstain-from: of rhetoric and of poetry and of elegant-wordplay.
+1	καὶ	καί	c	c--------	_	9	AuxY	_	t_242|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_243|gloss=the
+3	ἀποστῆναι	ἀφεστήξω	v	v--ana---	Mood=n|Tense=a|Voice=a	9	OBJ	_	t_244|gloss=to-abstain
+4	ῥητορικῆς	ῥητορικός	a	a-s---fg-	Case=g|Gender=f|Number=s	7	OBJ	_	t_245|gloss=from-rhetoric
+5	καὶ	καί	c	c--------	_	7	AuxY	_	t_246|gloss=and
+6	ποιητικῆς	ποιητικός	a	a-s---fg-	Case=g|Gender=f|Number=s	7	OBJ	_	t_247|gloss=from-poetry
+7	καὶ	καί	c	c--------	_	3	COORD	_	t_248|gloss=and
+8	ἀστειολογίας	ἀστειολογία	n	n-s---fg-	Case=g|Gender=f|Number=s	7	OBJ	_	t_249|gloss=from-elegant-wordplay
+9	[0]	[0]	-	---------	_	0	PRED	_	e_21
+10	·	·	u	u--------	_	9	AuxK	_	t_250|gloss=.
+
+
+# sentence_id = 20
+# translation_lang = en
+# prose_translation = Also not to walk about at home dressed in formal attire, nor to do things of that sort.
+# literal_translation = And: not-at-home to-walk-about in-formal-attire according-to house, and-not: such-things to-do.
+1	καὶ	καί	c	c--------	_	14	AuxY	_	t_251|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	8	ATR	_	t_252|gloss=the
+3	μὴ	μή	d	d--------	_	8	AuxZ	_	t_253|gloss=not
+4	ἐν	ἐν	r	r--------	_	8	AuxP	_	t_254|gloss=in
+5	στολῇ	στολή	n	n-s---fd-	Case=d|Gender=f|Number=s	4	ADV	_	t_255|gloss=formal-attire
+6	κατʼ	κατά	r	r--------	_	8	AuxP	_	t_256|gloss=according-to
+7	οἶκον	οἶκος	n	n-s---ma-	Case=a|Gender=m|Number=s	6	ADV	_	t_257|gloss=house
+8	περιπατεῖν	περιπατέω	v	v--pna---	Mood=n|Tense=p|Voice=a	10	SBJ	_	t_258|gloss=to-walk-about
+9	μη	μη	d	d--------	_	10	AuxY	_	t_259|gloss=not
+10	δὲ	δέ	c	c--------	_	14	COORD	_	t_260|gloss=and
+11	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	12	ATR	_	t_261|gloss=the
+12	τοιαῦτα	τοιοῦτος	p	p-p---na-	Case=a|Gender=n|Number=p	13	OBJ	_	t_262|gloss=of-that-kind
+13	ποιεῖν	ποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	10	SBJ	_	t_263|gloss=to-do
+14	[0]	[0]	-	---------	_	0	PRED	_	e_22
+15	·	·	u	u--------	_	14	AuxK	_	t_264|gloss=.
+
+
+# sentence_id = 21
+# translation_lang = en
+# prose_translation = I also learned to write letters in a simple, unaffected style, like the one he himself wrote to my mother from Sinuessa.
+# literal_translation = And also the letters simply to write: [I learned], such as that written by him himself to my mother from Sinuessa:
+1	καὶ	καί	c	c--------	_	19	AuxY	_	t_265|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_266|gloss=the
+3	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	4	ATR	_	t_267|gloss=the
+4	ἐπιστόλια	ἐπιστόλιον	n	n-p---na-	Case=a|Gender=n|Number=p	6	OBJ	_	t_268|gloss=letters
+5	ἀφελῶς	ἀφελής	d	d--------	_	6	ADV	_	t_269|gloss=simply
+6	γράφειν	γράφω	v	v--pna---	Mood=n|Tense=p|Voice=a	19	SBJ	_	t_270|gloss=to-write
+7	,	,	u	u--------	_	19	AuxX	_	t_271|gloss=,
+8	οἷον	οἷος	p	p-s---na-	Case=a|Gender=n|Number=s	6	AuxC	_	t_272|gloss=such-as
+9	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	18	SBJ	_	t_273|gloss=the-[letter]
+10	ὑπʼ	ὑπό	r	r--------	_	9	AuxP	_	t_274|gloss=by
+11	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	12	ATR	_	t_275|gloss=himself
+12	τούτου	οὗτος	p	p-s---ng-	Case=g|Gender=m|Number=s	10	OBJ	_	t_276|gloss=this-man
+13	ἀπὸ	ἀπό	r	r--------	_	18	AuxP	_	t_277|gloss=from
+14	Σινοέσσης	σινόεις	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ADV	_	t_278|gloss=Sinuessa
+15	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	16	ATR	_	t_279|gloss=the
+16	μητρί	μήτηρ	n	n-s---fd-	Case=d|Gender=f|Number=s	14	APOS	_	t_280|gloss=mother
+17	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	16	ATR	_	t_281|gloss=my
+18	γραφέν	γράφω	v	v-sappna-	Case=a|Gender=n|Mood=p|Number=s|Tense=a|Voice=p	6	ADV	_	t_282|gloss=written
+19	[0]	[0]	-	---------	_	0	PRED	_	e_23
+20	·	·	u	u--------	_	19	AuxK	_	t_283|gloss=·
+
+
+# sentence_id = 22
+# translation_lang = en
+# prose_translation = I also learned to be easily appeased and quickly reconciled toward those who had lost their temper with me or wronged me, as soon as they themselves were willing to return to friendly terms.
+# literal_translation = And also the [disposition] toward those having grown angry and having erred: to be disposed easily-recalled and easily-reconciled, whenever they themselves should wish most quickly to return.
+1	καὶ	καί	c	c--------	_	19	AuxY	_	t_284|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	18	ATR	_	t_285|gloss=the
+3	πρὸς	πρός	r	r--------	_	18	AuxP	_	t_286|gloss=toward
+4	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	6	ATR	_	t_287|gloss=those
+5	χαλεπήναντας	χαλεπαίνω	v	v-papama-	Case=a|Gender=m|Mood=p|Number=p|Tense=a|Voice=a	6	ADV	_	t_288|gloss=having-grown-angry
+6	καὶ	καί	c	c--------	_	3	COORD	_	t_289|gloss=and
+7	πλημμελήσαντας	ἁμαρτάνω	v	v-papama-	Case=a|Gender=m|Mood=p|Number=p|Tense=a|Voice=a	6	OBJ	_	t_290|gloss=having-erred
+8	εὐανακλήτως	εὐανάκλητος	d	d--------	_	9	ADV	_	t_291|gloss=easily-recalled
+9	καὶ	καί	c	c--------	_	18	COORD	_	t_292|gloss=and
+10	εὐδιαλλάκτως	εὐδιαλλάκτως	d	d--------	_	9	ADV	_	t_293|gloss=easily-reconciled
+11	,	,	u	u--------	_	19	AuxX	_	t_294|gloss=,
+12	ἐπειδὰν	ἐπειδάν	c	c--------	_	18	AuxC	_	t_295|gloss=whenever
+13	τάχιστα	ταχύς	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	16	ADV	_	t_296|gloss=most-quickly
+14	αὐτοὶ	αὐτός	p	p-p---mn-	Case=n|Gender=m|Number=p	16	SBJ	_	t_297|gloss=they-themselves
+15	ἐπανελθεῖν	ἐπανέρχομαι	v	v--ana---	Mood=n|Tense=a|Voice=a	16	OBJ	_	t_298|gloss=to-return
+16	ἐθελήσωσι	ἐθέλω	v	v3pasa---	Mood=s|Number=p|Person=3|Tense=a|Voice=a	12	ADV	_	t_299|gloss=should-wish
+17	,	,	u	u--------	_	19	AuxX	_	t_300|gloss=,
+18	διακεῖσθαι	διάκειμαι	v	v--pne---	Mood=n|Tense=p|Voice=e	19	SBJ	_	t_301|gloss=to-be-disposed
+19	[0]	[0]	-	---------	_	0	PRED	_	e_24
+20	·	·	u	u--------	_	19	AuxK	_	t_302|gloss=·
+
+
+# sentence_id = 23
+# translation_lang = en
+# prose_translation = To read carefully and not be satisfied with a superficial, general grasp of a subject, nor to give quick assent to those who talk glibly around a matter.
+# literal_translation = And the reading accurately: and the not being satisfied while considering-around wholly, nor to those talking-around quickly to assent-together.
+1	καὶ	καί	c	c--------	_	16	AuxY	_	t_303|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	4	ATR	_	t_304|gloss=the
+3	ἀκριβῶς	ἀκριβής	d	d--------	_	4	ADV	_	t_305|gloss=accurately
+4	ἀναγινώσκειν	ἀναγιγνώσκω	v	v--pna---	Mood=n|Tense=p|Voice=a	5	OBJ	_	t_306|gloss=to-read
+5	καὶ	καί	c	c--------	_	11	AuxY	_	t_307|gloss=and
+6	μὴ	μή	d	d--------	_	7	AuxZ	_	t_308|gloss=not
+7	ἀρκεῖσθαι	ἀρκέω	v	v--pne---	Mood=n|Tense=p|Voice=e	11	OBJ	_	t_309|gloss=to-be-satisfied
+8	περινοοῦντα	περινοέω	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	15	ADV	_	t_310|gloss=considering-around
+9	ὁλοσχερῶς	ὁλοσχερής	d	d--------	_	8	ADV	_	t_311|gloss=wholly
+10	μη	μη	d	d--------	_	11	AuxY	_	t_312|gloss=not
+11	δὲ	δέ	c	c--------	_	16	COORD	_	t_313|gloss=but
+12	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	13	ATR	_	t_314|gloss=to-those
+13	περιλαλοῦσι	περιλαλέω	v	v-pppamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	15	OBJ	_	t_315|gloss=talking-around
+14	ταχέως	ταχύς	d	d--------	_	15	ADV	_	t_316|gloss=quickly
+15	συγκατατίθεσθαι	συγκατατίθημι	v	v--pne---	Mood=n|Tense=p|Voice=e	11	OBJ	_	t_317|gloss=to-assent
+16	[0]	[0]	-	---------	_	0	PRED	_	e_25
+17	·	·	u	u--------	_	16	AuxK	_	t_318|gloss=.
+
+
+# sentence_id = 24
+# translation_lang = en
+# prose_translation = And to encounter the notes on Epictetus, copies of which he shared with me from his own household.
+# literal_translation = And the to-encounter [to] the Epictetean notes: of-which from-his-own-house he-shared [with me].
+1	καὶ	καί	d	d--------	_	11	AuxY	_	t_319|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_320|gloss=the
+3	ἐντυχεῖν	ἐντυγχάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	11	OBJ	_	t_321|gloss=to-encounter
+4	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	6	ATR	_	t_322|gloss=the
+5	Ἐπικτητείοις	ἐπικτήτειος	a	a-p---nd-	Case=d|Gender=n|Number=p	6	ATR	_	t_323|gloss=Epictetean
+6	ὑπομνήμασιν	ὑπόμνημα	n	n-p---nd-	Case=d|Gender=n|Number=p	3	OBJ	_	t_324|gloss=notes
+7	,	,	u	u--------	_	11	AuxX	_	t_325|gloss=,
+8	ὧν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	10	OBJ	_	t_326|gloss=of-which
+9	οἴκοθεν	οἴκοθεν	d	d--------	_	10	ADV	_	t_327|gloss=from-his-own-house
+10	μετέδωκεν	μεταδίδωμι	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	6	ATR	_	t_328|gloss=he-shared[-with-me]
+11	[0]	[0]	-	---------	_	0	PRED	_	e_26
+12	.	.	u	u--------	_	11	AuxK	_	t_329|gloss=.
+
+
+# sentence_id = 25
+# translation_lang = en
+# prose_translation = From Apollonius: to be free and unwaveringly steadfast, never looking to anything else, even for a moment, except to reason.
+# literal_translation = From Apollonius: [I learned] freedom and unwaveringly [to be] unrisked-to-chance, and to look to nothing else, not for a little, or [else] with a view to reason.
+1	Παρὰ	παρά	r	r--------	_	21	AuxP	_	t_330|gloss=from
+2	Ἀπολλωνίου	ἀπολλώνιος	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_331|gloss=Apollonius
+3	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	5	ATR	_	t_332|gloss=the-[freedom]
+4	ἐλεύθερον	ἐλεύθερος	a	a-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_333|gloss=freedom
+5	καὶ	καί	c	c--------	_	12	COORD	_	t_334|gloss=and
+6	ἀναμφιβόλως	ἀναμφιβόλως	d	d--------	_	5	ADV	_	t_335|gloss=unwaveringly
+7	ἀκύβευτον	ἀκύβευτος	a	a-s---na-	Case=a|Gender=n|Number=s	12	OBJ	_	t_336|gloss=unrisked-to-chance
+8	καὶ	καί	d	d--------	_	12	AuxZ	_	t_337|gloss=even
+9	πρὸς	πρός	r	r--------	_	14	AuxP	_	t_338|gloss=to
+10	μηδὲν	μηδείς	p	p-s---na-	Case=a|Gender=n|Number=s	9	OBJ	_	t_339|gloss=nothing
+11	ἄλλο	ἄλλος	a	a-s---na-	Case=a|Gender=n|Number=s	10	ATR	_	t_340|gloss=else
+12	ἀποβλέπειν	ἀποβλέπω	v	v--pna---	Mood=n|Tense=p|Voice=a	21	SBJ	_	t_341|gloss=to-look
+13	μη	μη	d	d--------	_	17	AuxZ	_	t_342|gloss=not
+14	δὲ	δέ	c	c--------	_	12	COORD	_	t_343|gloss=and
+15	ἐπʼ	ἐπί	r	r--------	_	14	AuxP	_	t_344|gloss=for
+16	ὀλίγον	ὀλίγος	a	a-s---na-	Case=a|Gender=n|Number=s	15	ADV	_	t_345|gloss=a-little
+17	ἢ	ἤ1	c	c--------	_	14	COORD	_	t_346|gloss=or
+18	πρὸς	πρός	r	r--------	_	17	AuxP	_	t_347|gloss=with-a-view-to
+19	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	20	ATR	_	t_348|gloss=the
+20	λόγον	λόγος	n	n-s---ma-	Case=a|Gender=m|Number=s	18	ADV	_	t_349|gloss=reason
+21	[0]	[0]	-	---------	_	0	PRED	_	e_27
+22	·	·	u	u--------	_	21	AuxK	_	t_350|gloss=·
+
+
+# sentence_id = 26
+# translation_lang = en
+# prose_translation = She taught me to remain always the same, in sharp pains, in the loss of a child, and in long illnesses.
+# literal_translation = And the [being] always alike: in pains sharp ones, in loss of a child, in long illnesses:
+1	καὶ	καί	c	c--------	_	0	COORD	_	t_351|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	4	ATR	_	t_352|gloss=the
+3	ἀεὶ	ἀεί	d	d--------	_	4	ADV	_	t_353|gloss=always
+4	ὅμοιον	ὅμοιος	a	a-s---na-	Case=a|Gender=n|Number=s	17	PNOM	_	t_354|gloss=alike
+5	,	,	u	u--------	_	13	AuxX	_	t_355|gloss=,
+6	ἐν	ἐν	r	r--------	_	13	AuxP	_	t_356|gloss=in
+7	ἀλγηδόσιν	ἀλγηδών	n	n-p---fd-	Case=d|Gender=f|Number=p	6	ADV	_	t_357|gloss=pains
+8	ὀξείαις	ὀξύς2	a	a-p---fd-	Case=d|Gender=f|Number=p	7	ATR	_	t_358|gloss=sharp
+9	,	,	u	u--------	_	1	AuxX	_	t_359|gloss=,
+10	ἐν	ἐν	r	r--------	_	13	AuxP	_	t_360|gloss=in
+11	ἀποβολῇ	ἀποβολή	n	n-s---fd-	Case=d|Gender=f|Number=s	10	ADV	_	t_361|gloss=loss
+12	τέκνου	τέκνον	n	n-s---ng-	Case=g|Gender=n|Number=s	11	ATR	_	t_362|gloss=of-a-child
+13	,	,	u	u--------	_	17	COORD	_	t_363|gloss=,
+14	ἐν	ἐν	r	r--------	_	13	AuxP	_	t_364|gloss=in
+15	μακραῖς	μακρός	a	a-p---fd-	Case=d|Gender=f|Number=p	16	ATR	_	t_365|gloss=long
+16	νόσοις	νόσος	n	n-p---fd-	Case=d|Gender=f|Number=p	14	ADV	_	t_366|gloss=illnesses
+17	[0]	[0]	-	---------	_	1	PRED	_	e_28
+18	·	·	u	u--------	_	1	AuxK	_	t_367|gloss=·
+
+
+# sentence_id = 27
+# translation_lang = en
+# prose_translation = And to see clearly from a living example that the same person can be both extremely intense and relaxed.
+# literal_translation = And to see plainly, on the basis of a living example: that the very same [man] is able to be most vehement and relaxed.
+1	καὶ	καί	c	c--------	_	16	AuxY	_	t_368|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	OBJ	_	t_369|gloss=the-[matter]
+3	ἐπὶ	ἐπί	r	r--------	_	2	AuxP	_	t_370|gloss=on
+4	παραδείγματος	παράδειγμα	n	n-s---ng-	Case=g|Gender=n|Number=s	3	ATR	_	t_371|gloss=a-living-example
+5	ζῶντος	ζάω	v	v-sppang-	Case=g|Gender=n|Mood=p|Number=s|Tense=p|Voice=a	6	ADV	_	t_372|gloss=living
+6	ἰδεῖν	εἶδον	v	v--ana---	Mood=n|Tense=a|Voice=a	16	SBJ	_	t_373|gloss=to-see
+7	ἐναργῶς	ἐναργής	d	d--------	_	6	ADV	_	t_374|gloss=plainly
+8	ὅτι	ὅτι	c	c--------	_	6	AuxC	_	t_375|gloss=that
+9	δύναται	δύναμαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	8	OBJ	_	t_376|gloss=is-able
+10	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	11	ATR	_	t_377|gloss=the
+11	αὐτὸς	αὐτός	p	p-s---mn-	Case=n|Gender=m|Number=s	9	SBJ	_	t_378|gloss=same-man
+12	σφοδρότατος	σφοδρός	a	a-s---mns	Case=n|Degree=s|Gender=m|Number=s	14	PNOM	_	t_379|gloss=most-vehement
+13	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	9	OBJ	_	t_380|gloss=to-be
+14	καὶ	καί	c	c--------	_	13	COORD	_	t_381|gloss=and
+15	ἀνειμένος	ἀνίημι	a	v-srpemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=r|Voice=e	14	PNOM	_	t_382|gloss=relaxed
+16	[0]	[0]	-	---------	_	0	PRED	_	e_29
+17	·	·	u	u--------	_	16	AuxK	_	t_383|gloss=·
+
+
+# sentence_id = 28
+# translation_lang = en
+# prose_translation = Also not to be irritable when giving explanations.
+# literal_translation = And the [quality] in explanations: not irritable being.
+1	καὶ	καί	c	c--------	_	8	AuxY	_	t_384|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	8	SBJ	_	t_385|gloss=the-[quality]
+3	ἐν	ἐν	r	r--------	_	2	AuxP	_	t_386|gloss=in
+4	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	5	ATR	_	t_387|gloss=the
+5	ἐξηγήσεσι	ἐξήγησις	n	n-p---fd-	Case=d|Gender=f|Number=p	3	ATR	_	t_388|gloss=explanations
+6	μὴ	μή	d	d--------	_	7	AuxZ	_	t_389|gloss=not
+7	δυσχεραντικόν	δυσχεραντικός	a	a-s---nn-	Case=n|Gender=n|Number=s	8	PNOM	_	t_390|gloss=irritable
+8	[0]	[0]	-	---------	_	0	PRED	_	e_30
+9	·	·	u	u--------	_	8	AuxK	_	t_391|gloss=·
+
+
+# sentence_id = 29
+# translation_lang = en
+# prose_translation = And to have seen a man who clearly considered himself least among all his own excellences, and who counted as nothing his experience and skill in transmitting his theoretical knowledge to others.
+# literal_translation = And to see a man clearly deeming [himself] least of his own excellences: experience and skill in transmitting theorems.
+1	καὶ	καί	c	c--------	_	22	AuxY	_	t_392|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_393|gloss=the
+3	ἰδεῖν	εἶδον	v	v--ana---	Mood=n|Tense=a|Voice=a	10	OBJ	_	t_394|gloss=to-see
+4	ἄνθρωπον	ἄνθρωπος	n	n-s---ma-	Case=a|Gender=m|Number=s	3	SBJ	_	t_395|gloss=a-man
+5	σαφῶς	σαφής	d	d--------	_	3	ADV	_	t_396|gloss=clearly
+6	ἐλάχιστον	ἐλαχύς	a	a-s---mas	Case=a|Degree=s|Gender=m|Number=s	10	OCOMP	_	t_397|gloss=least
+7	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	9	ATR	_	t_398|gloss=of-the
+8	ἑαυτοῦ	ἑαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_399|gloss=his-own
+9	καλῶν	καλός	n	n-p---fg-	Case=g|Gender=n|Number=p	6	ADV	_	t_400|gloss=excellences
+10	ἡγούμενον	ἡγέομαι	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	22	OBJ	_	t_401|gloss=deeming-[himself]
+11	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	12	ATR	_	t_402|gloss=the
+12	ἐμπειρίαν	ἐμπειρία	n	n-s---fa-	Case=a|Gender=f|Number=s	13	SBJ	_	t_403|gloss=experience
+13	καὶ	καί	c	c--------	_	10	COORD	_	t_404|gloss=and
+14	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	15	ATR	_	t_405|gloss=the
+15	ἐντρέχειαν	ἐντρέχεια	n	n-s---fa-	Case=a|Gender=f|Number=s	13	SBJ	_	t_406|gloss=skill
+16	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	15	ATR	_	t_407|gloss=the
+17	περὶ	περί	r	r--------	_	15	AuxP	_	t_408|gloss=in
+18	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	19	ATR	_	t_409|gloss=the
+19	παραδιδόναι	παραδίδωμι	v	v--pna---	Mood=n|Tense=p|Voice=a	17	ATR	_	t_410|gloss=transmitting
+20	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	21	ATR	_	t_411|gloss=the
+21	θεωρήματα	θεώρημα	n	n-p---na-	Case=a|Gender=n|Number=p	19	OBJ	_	t_412|gloss=theorems
+22	[0]	[0]	-	---------	_	0	PRED	_	e_31
+23	·	·	u	u--------	_	22	AuxK	_	t_413|gloss=·
+
+
+# sentence_id = 30
+# translation_lang = en
+# prose_translation = I also learned how one ought to accept apparent favors from friends, neither being overcome by them so as to compromise oneself, nor passing them by unfeelingly and ungraciously.
+# literal_translation = And the to learn: how it is necessary to receive the seeming favors from friends: neither being overcome on account of these things, nor insensibly passing [them] by.
+1	καὶ	καί	c	c--------	_	22	AuxY	_	t_414|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=a|Gender=n|Number=s	3	ATR	_	t_415|gloss=the-[learning]
+3	μαθεῖν	μανθάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	22	SBJ	_	t_416|gloss=to-learn
+4	πῶς	πῶς	d	d--------	_	5	ADV	_	t_417|gloss=how
+5	δεῖ	δεῖ	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	3	OBJ	_	t_418|gloss=it-is-necessary
+6	λαμβάνειν	λαμβάνω	v	v--pna---	Mood=n|Tense=p|Voice=a	5	SBJ	_	t_419|gloss=to-receive
+7	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	9	ATR	_	t_420|gloss=the
+8	δοκούσας	δοκέω	v	v-pppafa-	Case=a|Gender=f|Mood=p|Number=p|Tense=p|Voice=a	9	ATR	_	t_421|gloss=seeming
+9	χάριτας	χάρις	n	n-p---fa-	Case=a|Gender=f|Number=p	6	OBJ	_	t_422|gloss=favors
+10	παρὰ	παρά	r	r--------	_	6	AuxP	_	t_423|gloss=from
+11	φίλων	φίλος	a	a-p---mg-	Case=g|Gender=m|Number=p	10	ADV	_	t_424|gloss=friends
+12	,	,	u	u--------	_	22	AuxX	_	t_425|gloss=,
+13	μή	μή	d	d--------	_	14	AuxY	_	t_426|gloss=not
+14	τε	τε	c	c--------	_	19	AuxY	_	t_427|gloss=both
+15	ἐξηττώμενον	ἐξαττάομαι	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	19	ADV	_	t_428|gloss=being-overcome
+16	διὰ	διά	r	r--------	_	15	AuxP	_	t_429|gloss=on-account-of
+17	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	16	ADV	_	t_430|gloss=these-things
+18	μή	μή	d	d--------	_	21	AuxZ	_	t_431|gloss=not
+19	τε	τε	c	c--------	_	3	COORD	_	t_432|gloss=and
+20	ἀναισθήτως	ἀναίσθητος	d	d--------	_	21	ADV	_	t_433|gloss=insensibly
+21	παραπέμποντα	παραπέμποντος	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	19	ADV	_	t_434|gloss=passing-[them]-by
+22	[0]	[0]	-	---------	_	0	PRED	_	e_32
+23	.	.	u	u--------	_	22	AuxK	_	t_435|gloss=.
+
+
+# sentence_id = 31
+# translation_lang = en
+# prose_translation = From Sextus: kindliness.
+# literal_translation = From Sextus: the kindly [disposition] —
+1	Παρὰ	παρά	r	r--------	_	5	AuxP	_	t_436|gloss=from
+2	Σέξτου	σέξτος	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_437|gloss=Sextus
+3	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	4	ATR	_	t_438|gloss=the
+4	εὐμενές	εὐμενής	a	a-s---na-	Case=a|Gender=n|Number=s	5	SBJ	_	t_439|gloss=kindliness
+5	[0]	[0]	-	---------	_	0	PRED	_	e_33
+6	·	·	u	u--------	_	5	AuxK	_	t_440|gloss=·
+
+
+# sentence_id = 32
+# translation_lang = en
+# prose_translation = I also learned the example set by a household governed by a father's rule.
+# literal_translation = And the example of the household being-ruled-by-the-father:
+1	καὶ	καί	d	d--------	_	8	AuxY	_	t_441|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_442|gloss=the
+3	παράδειγμα	παράδειγμα	n	n-s---nn-	Case=n|Gender=n|Number=s	8	SBJ	_	t_443|gloss=example
+4	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	5	ATR	_	t_444|gloss=of-the
+5	οἴκου	οἶκος	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_445|gloss=household
+6	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	5	ATR	_	t_446|gloss=the
+7	πατρονομουμένου	πατρονομέω	v	v-sppemg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	5	ATR	_	t_447|gloss=being-ruled-by-a-father
+8	[0]	[0]	-	---------	_	0	PRED	_	e_34
+9	·	·	u	u--------	_	8	AuxK	_	t_448|gloss=·
+
+
+# sentence_id = 33
+# translation_lang = en
+# prose_translation = And to grasp the concept of living according to nature.
+# literal_translation = And the concept of the according-to-nature living:
+1	καὶ	καί	d	d--------	_	8	AuxY	_	t_449|gloss=and
+2	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	3	ATR	_	t_450|gloss=the
+3	ἔννοιαν	ἔννοια	n	n-s---fa-	Case=a|Gender=f|Number=s	8	OBJ	_	t_451|gloss=a-thought
+4	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	7	ATR	_	t_452|gloss=of-the
+5	κατὰ	κατά	r	r--------	_	7	AuxP	_	t_453|gloss=according-to
+6	φύσιν	φύσις	n	n-s---fa-	Case=a|Gender=f|Number=s	5	ADV	_	t_454|gloss=nature
+7	ζῆν	ζάω	v	v--pna---	Mood=n|Tense=p|Voice=a	3	ATR	_	t_455|gloss=living
+8	[0]	[0]	-	---------	_	0	PRED	_	e_35
+9	·	·	u	u--------	_	8	AuxK	_	t_456|gloss=·
+
+
+# sentence_id = 34
+# translation_lang = en
+# prose_translation = From my great-grandfather: to cultivate dignity without artifice.
+# literal_translation = And the dignified [character] unaffectedly:
+1	καὶ	καί	c	c--------	_	5	AuxY	_	t_457|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_458|gloss=the
+3	σεμνὸν	σεμνός	a	a-s---nn-	Case=n|Gender=n|Number=s	5	SBJ	_	t_459|gloss=dignity
+4	ἀπλάστως	ἄπλατος	d	d--------	_	5	ADV	_	t_460|gloss=unaffectedly
+5	[0]	[0]	-	---------	_	0	PRED	_	e_36
+6	·	·	u	u--------	_	5	AuxK	_	t_461|gloss=·
+
+
+# sentence_id = 35
+# translation_lang = en
+# prose_translation = And also the ability to size up friends with real perceptiveness, and to do so with genuine care for their welfare.
+# literal_translation = And the perceptive [faculty] of friends, caringly:
+1	καὶ	καί	c	c--------	_	7	AuxY	_	t_462|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_463|gloss=the
+3	στοχαστικὸν	στοχαστικός	a	a-s---na-	Case=a|Gender=n|Number=s	7	SBJ	_	t_464|gloss=perceptiveness
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	5	ATR	_	t_465|gloss=of-the
+5	φίλων	φίλος	a	a-p---mg-	Case=g|Gender=m|Number=p	3	ATR	_	t_466|gloss=friends
+6	κηδεμονικῶς	κηδεμονικός	d	d--------	_	7	ADV	_	t_467|gloss=caringly
+7	[0]	[0]	-	---------	_	0	PRED	_	e_37
+8	·	·	u	u--------	_	7	AuxK	_	t_468|gloss=·
+
+
+# sentence_id = 36
+# translation_lang = en
+# prose_translation = Also to tolerate ordinary people, even when they think they have no insight at all.
+# literal_translation = And also the tolerant [disposition] toward laymen, and the unobserving [disposition], of those thinking [themselves to have insight]: [I learned].
+1	καὶ	καί	c	c--------	_	10	AuxY	_	t_469|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_470|gloss=the
+3	ἀνεκτικὸν	ἀνεκτικός	a	a-s---na-	Case=a|Gender=n|Number=s	6	OBJ	_	t_471|gloss=tolerance
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	5	ATR	_	t_472|gloss=of-the
+5	ἰδιωτῶν	ἰδιώτης	n	n-p---mg-	Case=g|Gender=m|Number=p	9	SBJ	_	t_473|gloss=laymen
+6	καὶ	καί	c	c--------	_	10	COORD	_	t_474|gloss=and
+7	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	8	ATR	_	t_475|gloss=the
+8	ἀθεώρητον	ἀθεώρητος	a	a-s---na-	Case=a|Gender=n|Number=s	6	OBJ	_	t_476|gloss=unobservant-disregard
+9	οἰομένων	οἴομαι	v	v-pppemg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	10	ADV	_	t_477|gloss=of-those-thinking-[they-have-insight]
+10	[0]	[0]	-	---------	_	0	PRED	_	e_38
+11	·	·	u	u--------	_	10	AuxK	_	t_478|gloss=·
+
+
+# sentence_id = 37
+# translation_lang = en
+# prose_translation = Also his gracious manner toward everyone, so agreeable that his company was more pleasant than any flattery, and yet at the same time most respected by those very people in his presence at that time.
+# literal_translation = And also the toward-all-men agreeableness: so-that on-the-one-hand than-all-flattery [it was] more-pleasant for-the-intercourse of-him to be, on-the-other-hand most-respected to-those-same-men in-his-presence at-that-very-time to be:
+1	καὶ	καί	d	d--------	_	27	AuxY	_	t_479|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=a|Gender=n|Number=s	5	ATR	_	t_480|gloss=the
+3	πρὸς	πρός	r	r--------	_	5	AuxP	_	t_481|gloss=toward
+4	πάντας	πᾶς	a	a-p---ma-	Case=a|Gender=m|Number=p	3	ATR	_	t_482|gloss=all-men
+5	εὐάρμοστον	εὐάρμοστος	a	a-s---na-	Case=a|Gender=n|Number=s	27	SBJ	_	t_483|gloss=agreeableness
+6	,	,	u	u--------	_	27	AuxX	_	t_484|gloss=,
+7	ὥστε	ὥστε	c	c--------	_	27	AuxC	_	t_485|gloss=so-that
+8	κολακείας	κολακεία	n	n-s---fg-	Case=g|Gender=f|Number=s	11	ADV	_	t_486|gloss=flattery
+9	μὲν	μέν	d	d--------	_	12	AuxY	_	t_487|gloss=on-the-one-hand
+10	πάσης	πᾶς	a	a-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_488|gloss=all
+11	προσηνεστέραν	προσηνής	a	a-s---fac	Case=a|Degree=c|Gender=f|Number=s	12	PNOM	_	t_489|gloss=more-pleasant
+12	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	18	ADV	_	t_490|gloss=to-be
+13	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	14	ATR	_	t_491|gloss=the
+14	ὁμιλίαν	ὁμιλία	n	n-s---fa-	Case=a|Gender=f|Number=s	12	SBJ	_	t_492|gloss=company
+15	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	14	ATR	_	t_493|gloss=his
+16	,	,	u	u--------	_	27	AuxX	_	t_494|gloss=,
+17	αἰδεσιμώτατον	αἰδέσιμος	a	a-s---nas	Case=a|Degree=s|Gender=n|Number=s	26	PNOM	_	t_495|gloss=most-respected
+18	δὲ	δέ	c	c--------	_	7	COORD	_	t_496|gloss=on-the-other-hand
+19	αὐτοῖς	αὐτός	a	a-p---md-	Case=d|Gender=m|Number=p	20	ATR	_	t_497|gloss=same
+20	ἐκείνοις	ἐκεῖνος	p	p-p---md-	Case=d|Gender=m|Number=p	17	ADV	_	t_498|gloss=to-those
+21	παρʼ	παρά	r	r--------	_	26	AuxP	_	t_499|gloss=in
+22	αὐτὸν	αὐτός	a	a-s---ma-	Case=a|Gender=m|Number=s	25	ATR	_	t_500|gloss=his
+23	ἐκεῖνον	ἐκεῖνος	a	a-s---ma-	Case=a|Gender=m|Number=s	25	ATR	_	t_501|gloss=that
+24	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	25	ATR	_	t_502|gloss=the
+25	καιρὸν	καιρός	n	n-s---ma-	Case=a|Gender=m|Number=s	21	ADV	_	t_503|gloss=presence
+26	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	18	ADV	_	t_504|gloss=to-be
+27	[0]	[0]	-	---------	_	0	PRED	_	e_39
+28	·	·	u	u--------	_	27	AuxK	_	t_505|gloss=·
+
+
+# sentence_id = 38
+# translation_lang = en
+# prose_translation = She taught me to grasp things comprehensively and methodically, and to be resourceful in discovering and ordering the principles necessary for life.
+# literal_translation = And also: the [being] comprehensively and by method [and] discovery-capable and ordering-capable of the necessary principles for life:
+1	καὶ	καί	d	d--------	_	15	AuxY	_	t_506|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	8	ATR	_	t_507|gloss=the
+3	καταληπτικῶς	καταληπτικός	d	d--------	_	4	ADV	_	t_508|gloss=comprehensively
+4	καὶ	καί	c	c--------	_	8	AuxY	_	t_509|gloss=and
+5	ὁδῷ	ὁδός	n	n-s---fd-	Case=d|Gender=f|Number=s	4	ADV	_	t_510|gloss=by-method
+6	ἐξευρετικόν	ἐφευρετικός	a	a-s---nn-	Case=n|Gender=n|Number=s	8	SBJ	_	t_511|gloss=discovery-capable
+7	τε	τε	d	d--------	_	8	AuxY	_	t_512|gloss=both
+8	καὶ	καί	c	c--------	_	15	COORD	_	t_513|gloss=and
+9	τακτικὸν	τακτικός	a	a-s---nn-	Case=n|Gender=n|Number=s	8	SBJ	_	t_514|gloss=ordering-capable
+10	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	14	ATR	_	t_515|gloss=the
+11	εἰς	εἰς	r	r--------	_	13	AuxP	_	t_516|gloss=for
+12	βίον	βίος	n	n-s---ma-	Case=a|Gender=m|Number=s	11	ADV	_	t_517|gloss=life
+13	ἀναγκαίων	ἀναγκαῖος	a	a-p---ng-	Case=g|Gender=n|Number=p	14	ATR	_	t_518|gloss=necessary
+14	δογμάτων	δόγμα	n	n-p---ng-	Case=g|Gender=n|Number=p	9	ATR	_	t_519|gloss=principles
+15	[0]	[0]	-	---------	_	0	PRED	_	e_40
+16	·	·	u	u--------	_	15	AuxK	_	t_520|gloss=:
+
+
+# sentence_id = 39
+# translation_lang = en
+# prose_translation = And also never to display anger or any other passion, but at once to be utterly free from passion and yet full of tender affection.
+# literal_translation = And also the not ever to display an expression of anger or of some other passion: but at the same time to be most free-from-passion, and at the same time most full-of-tender-affection:
+1	καὶ	καί	c	c--------	_	23	AuxY	_	t_521|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	12	ATR	_	t_522|gloss=the
+3	μη	μη	d	d--------	_	12	AuxZ	_	t_523|gloss=not
+4	δὲ	δέ	c	c--------	_	3	AuxY	_	t_524|gloss=then
+5	ἔμφασίν	ἔμφασις	n	n-s---fa-	Case=a|Gender=f|Number=s	12	OBJ	_	t_525|gloss=an-expression
+6	ποτε	ποτέ	d	d--------	_	12	ADV	_	t_526|gloss=ever
+7	ὀργῆς	ὀργή	n	n-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_527|gloss=of-anger
+8	ἢ	ἤ1	c	c--------	_	5	COORD	_	t_528|gloss=or
+9	ἄλλου	ἄλλος	p	p-s---ng-	Case=g|Gender=n|Number=s	11	ATR	_	t_529|gloss=of-some-other
+10	τινὸς	τις	p	p-s---ng-	Case=g|Gender=n|Number=s	11	ATR	_	t_530|gloss=other
+11	πάθους	πάθος	n	n-s---ng-	Case=g|Gender=n|Number=s	8	ATR	_	t_531|gloss=passion
+12	παρασχεῖν	παρέχω	v	v--ana---	Mood=n|Tense=a|Voice=a	14	OBJ	_	t_532|gloss=to-display
+13	,	,	u	u--------	_	23	AuxX	_	t_533|gloss=,
+14	ἀλλὰ	ἀλλά	c	c--------	_	23	COORD	_	t_534|gloss=but
+15	ἅμα	ἅμα	d	d--------	_	21	ADV	_	t_535|gloss=at-the-same-time
+16	μὲν	μέν	d	d--------	_	18	AuxY	_	t_536|gloss=indeed
+17	ἀπαθέστατον	ἀπαθής	a	a-s---nas	Case=a|Degree=s|Gender=n|Number=s	21	PNOM	_	t_537|gloss=most-free-from-passion
+18	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	14	OBJ	_	t_538|gloss=to-be
+19	,	,	u	u--------	_	23	AuxX	_	t_539|gloss=,
+20	ἅμα	ἅμα	d	d--------	_	18	ADV	_	t_540|gloss=at-the-same-time
+21	δὲ	δέ	d	d--------	_	18	COORD	_	t_541|gloss=and
+22	φιλοστοργότατον	φιλόστοργος	a	a-s---nas	Case=a|Degree=s|Gender=n|Number=s	18	PNOM	_	t_542|gloss=most-full-of-tender-affection
+23	[0]	[0]	-	---------	_	0	PRED	_	e_41
+24	·	·	u	u--------	_	23	AuxK	_	t_543|gloss=·
+
+
+# sentence_id = 40
+# translation_lang = en
+# prose_translation = I learned to be well-spoken without ostentation, and to be widely learned without display.
+# literal_translation = And the well-spoken quality unostentatiously, and the widely-learned quality without display:
+1	καὶ	καί	c	c--------	_	5	AuxY	_	t_544|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_545|gloss=the
+3	εὔφημον	εὔφημος	a	a-s---nn-	Case=n|Gender=n|Number=s	5	SBJ	_	t_546|gloss=well-spokenness
+4	ἀψοφητὶ	ἀψοφητί	d	d--------	_	9	ADV	_	t_547|gloss=unostentatiously
+5	καὶ	καί	c	c--------	_	9	COORD	_	t_548|gloss=and
+6	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	7	ATR	_	t_549|gloss=the
+7	πολυμαθὲς	πολυμαθής	a	a-s---nn-	Case=n|Gender=n|Number=s	5	SBJ	_	t_550|gloss=wide-learnedness
+8	ἀνεπιφάντως	ἀνεπίφαντος	d	d--------	_	9	ADV	_	t_551|gloss=without-display
+9	[0]	[0]	-	---------	_	0	PRED	_	e_42
+10	.	.	u	u--------	_	9	AuxK	_	t_552|gloss=.
+
+
+# sentence_id = 41
+# translation_lang = en
+# prose_translation = From Alexander the grammarian: to avoid faultfinding, and not to rebuke abusively those who uttered some barbarism, solecism, or ill-sounding phrase, but skillfully to bring forward, in the manner of an answer, a corroborating testimony, or a joint consideration of the very matter itself, only that particular expression which ought to have been used, and to do so not about the word itself, but through some other such tactful indirect reminder.
+# literal_translation = From Alexander the grammarian: the not-being-faultfound and the not reproachfully to lay hold of [those who] brought forward something barbarous or solecistic or ill-sounding, but skillfully to bring forward that very thing only which it was needful to have been said, in the manner of an answer or a joint-testifying or a joint-consideration concerning the very matter itself, not concerning the word, or through some other such tactful side-reminder.
+1	Παρὰ	παρά	r	r--------	_	54	AuxP	_	t_553|gloss=from
+2	Ἀλεξάνδρου	ἀλέξανδρος	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_554|gloss=Alexander
+3	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	2	ATR	_	t_555|gloss=the
+4	γραμματικοῦ	γραμματικός	a	a-s---mg-	Case=g|Gender=m|Number=s	2	ATR	_	t_556|gloss=grammarian
+5	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_557|gloss=the
+6	ἀνεπίπληκτον	ἀνεπίπληκτος	a	a-s---na-	Case=a|Gender=n|Number=s	7	SBJ	_	t_558|gloss=not-being-faultfound
+7	καὶ	καί	c	c--------	_	21	COORD	_	t_559|gloss=and
+8	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	11	ATR	_	t_560|gloss=the
+9	μὴ	μή	d	d--------	_	10	AuxZ	_	t_561|gloss=not
+10	ὀνειδιστικῶς	ὀνειδιστικός	d	d--------	_	11	ADV	_	t_562|gloss=reproachfully
+11	ἐπιλαμβάνεσθαι	ἐπιλαμβάνω	v	v--pne---	Mood=n|Tense=p|Voice=e	21	SBJ	_	t_563|gloss=to-lay-hold-of
+12	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	19	ATR	_	t_564|gloss=those-who
+13	βάρβαρον	βάρβαρος	a	a-s---na-	Case=a|Gender=n|Number=s	17	ATR	_	t_565|gloss=barbarous
+14	ἢ	ἤ1	c	c--------	_	17	AuxY	_	t_566|gloss=or
+15	σόλοικόν	σόλοικος	a	a-s---na-	Case=a|Gender=n|Number=s	17	ATR	_	t_567|gloss=solecistic
+16	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	19	OBJ	_	t_568|gloss=something
+17	ἢ	ἤ1	c	c--------	_	19	COORD	_	t_569|gloss=or
+18	ἀπηχὲς	ἀπηχής	a	a-s---na-	Case=a|Gender=n|Number=s	17	ATR	_	t_570|gloss=ill-sounding
+19	προενεγκαμένων	προφέρω	v	v-papmmg-	Case=g|Gender=m|Mood=p|Number=p|Tense=a|Voice=m	11	OBJ	_	t_571|gloss=brought-forward
+20	,	,	u	u--------	_	54	AuxX	_	t_572|gloss=,
+21	ἀλλʼ	ἀλλά	c	c--------	_	54	COORD	_	t_573|gloss=but
+22	ἐπιδεξίως	ἐπιδέξιος	d	d--------	_	29	ADV	_	t_574|gloss=skillfully
+23	αὐτὸ	αὐτός	p	p-s---na-	Case=a|Gender=n|Number=s	25	ATR	_	t_575|gloss=that-very-thing
+24	μόνον	μόνος	a	a-s---na-	Case=a|Gender=n|Number=s	25	ATV	_	t_576|gloss=only
+25	ἐκεῖνο	ἐκεῖνος	p	p-s---na-	Case=a|Gender=n|Number=s	29	SBJ	_	t_577|gloss=that
+26	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	28	SBJ	_	t_578|gloss=which
+27	ἔδει	δεῖ	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	25	ATR	_	t_579|gloss=was-needful
+28	εἰρῆσθαι	ἐρῶ	v	v--rne---	Mood=n|Tense=r|Voice=e	27	SBJ	_	t_580|gloss=to-have-been-said
+29	προφέρεσθαι	προφέρω	v	v--pne---	Mood=n|Tense=p|Voice=e	54	SBJ	_	t_581|gloss=to-bring-forward
+30	ἐν	ἐν	r	r--------	_	29	AuxP	_	t_582|gloss=in
+31	τρόπῳ	τρόπος	n	n-s---md-	Case=d|Gender=m|Number=s	30	ADV	_	t_583|gloss=manner
+32	ἀποκρίσεως	ἀπόκρισις	n	n-s---fg-	Case=g|Gender=f|Number=s	35	ATR	_	t_584|gloss=of-an-answer
+33	ἢ	ἤ1	c	c--------	_	35	AuxY	_	t_585|gloss=or
+34	συνεπιμαρτυρήσεως	συνεπιμαρτυρία	n	n-s---fg-	Case=g|Gender=f|Number=s	35	ATR	_	t_586|gloss=of-a-joint-testifying
+35	ἢ	ἤ1	c	c--------	_	31	COORD	_	t_587|gloss=or
+36	συνδιαλήψεως	συνδιάλειψις	n	n-s---fg-	Case=g|Gender=f|Number=s	35	ATR	_	t_588|gloss=of-a-joint-consideration
+37	περὶ	περί	r	r--------	_	35	AuxP	_	t_589|gloss=concerning
+38	αὐτοῦ	αὐτός	a	a-s---ng-	Case=g|Gender=n|Number=s	40	ATR	_	t_590|gloss=very
+39	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	40	ATR	_	t_591|gloss=the
+40	πράγματος	πρᾶγμα	n	n-s---ng-	Case=g|Gender=n|Number=s	37	ATR	_	t_592|gloss=matter
+41	,	,	u	u--------	_	54	AuxX	_	t_593|gloss=,
+42	οὐχὶ	οὐ	d	d--------	_	45	AuxZ	_	t_594|gloss=not
+43	περὶ	περί	r	r--------	_	47	AuxP	_	t_595|gloss=concerning
+44	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	45	ATR	_	t_596|gloss=the
+45	ῥήματος	ῥῆμα	n	n-s---ng-	Case=g|Gender=n|Number=s	43	ADV	_	t_597|gloss=word
+46	,	,	u	u--------	_	54	AuxX	_	t_598|gloss=,
+47	ἢ	ἤ1	c	c--------	_	29	COORD	_	t_599|gloss=or
+48	διʼ	διά	r	r--------	_	47	AuxP	_	t_600|gloss=through
+49	ἑτέρας	ἕτερος	a	a-s---fg-	Case=g|Gender=f|Number=s	53	ATR	_	t_601|gloss=some-other
+50	τινὸς	τις	p	p-s---cg-	Case=g|Gender=c|Number=s	53	ATR	_	t_602|gloss=some
+51	τοιαύτης	τοιοῦτος	p	p-s---fg-	Case=g|Gender=f|Number=s	53	ATR	_	t_603|gloss=of-that-kind
+52	ἐμμελοῦς	ἐμμελής	a	a-s---fg-	Case=g|Gender=f|Number=s	53	ATR	_	t_604|gloss=tactful
+53	παρυπομνήσεως	παρυπομνησις	n	n-s---fg-	Case=g|Gender=f|Number=s	48	ADV	_	t_605|gloss=side-reminder
+54	[0]	[0]	-	---------	_	0	PRED	_	e_43
+55	.	.	u	u--------	_	54	AuxK	_	t_606|gloss=.
+
+
+# sentence_id = 42
+# translation_lang = en
+# prose_translation = From Fronto: to take note of the sort of envy, duplicity, and hypocrisy that characterize a tyrant, and that, as a general rule, those among us who are called well-born are somehow rather lacking in natural affection.
+# literal_translation = From Fronto: the to-take-note-of what-sort-of the tyrannical envy and duplicity and hypocrisy [is], and that, as for the most part, those so-called among us well-born-men are somehow rather-lacking-in-affection.
+1	Παρὰ	παρά	r	r--------	_	27	AuxP	_	t_607|gloss=from
+2	Φρόντωνος	φρόντις	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_608|gloss=Fronto
+3	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	4	ATR	_	t_609|gloss=the-[thing]
+4	ἐπιστῆσαι	ἐφίστημι	v	v--ana---	Mood=n|Tense=a|Voice=a	14	ADV	_	t_610|gloss=to-take-note
+5	οἵα	οἷος	p	p-s---fn-	Case=a|Gender=n|Number=p	11	PNOM	_	t_611|gloss=what-sort
+6	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	8	ATR	_	t_612|gloss=the
+7	τυραννικὴ	τυραννικός	a	a-s---fn-	Case=n|Gender=f|Number=s	8	ATR	_	t_613|gloss=tyrannical
+8	βασκανία	βασκανία	n	n-s---fn-	Case=n|Gender=f|Number=s	11	SBJ	_	t_614|gloss=envy
+9	καὶ	καί	d	d--------	_	11	AuxY	_	t_615|gloss=and
+10	ποικιλία	ποικιλία	n	n-s---fn-	Case=n|Gender=f|Number=s	11	SBJ	_	t_616|gloss=duplicity
+11	καὶ	καί	c	c--------	_	27	COORD	_	t_617|gloss=and
+12	ὑπόκρισις	ὑπόκρισις	n	n-s---fn-	Case=n|Gender=f|Number=s	11	SBJ	_	t_618|gloss=hypocrisy
+13	,	,	u	u--------	_	27	AuxX	_	t_619|gloss=,
+14	καὶ	καί	c	c--------	_	27	COORD	_	t_620|gloss=and
+15	ὅτι	ὅτι	c	c--------	_	14	AuxC	_	t_621|gloss=that
+16	ὡς	ὡς	d	d--------	_	17	AuxZ	_	t_622|gloss=as
+17	ἐπίπαν	ἐπίπαν	d	d--------	_	26	ADV	_	t_623|gloss=for-the-most-part
+18	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	19	ATR	_	t_624|gloss=the
+19	καλούμενοι	καλέω	v	v-pfpmmn-	Case=n|Gender=m|Mood=p|Number=p|Tense=f|Voice=m	26	SBJ	_	t_625|gloss=called
+20	οὗτοι	οὗτος	a	a-p---mn-	Case=n|Gender=m|Number=p	19	ATR	_	t_626|gloss=these
+21	παρʼ	παρά	r	r--------	_	19	AuxP	_	t_627|gloss=among
+22	ἡμῖν	ἐγώ	p	p1p---md-	Case=d|Gender=m|Number=p|Person=1	21	ADV	_	t_628|gloss=us
+23	εὐπατρίδαι	εὐπατρίδης	n	n-p---mn-	Case=n|Gender=m|Number=p	26	PNOM	_	t_629|gloss=well-born-men
+24	ἀστοργότεροί	ἄστοργος	a	a-p---mnc	Case=n|Degree=c|Gender=m|Number=p	26	PNOM	_	t_630|gloss=rather-lacking-in-affection
+25	πως	πως	d	d--------	_	26	ADV	_	t_631|gloss=somehow
+26	εἰσί	εἰμί	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	15	OBJ	_	t_632|gloss=are
+27	[0]	[0]	-	---------	_	0	PRED	_	e_44
+28	.	.	u	u--------	_	27	AuxK	_	t_633|gloss=.
+
+
+# sentence_id = 43
+# translation_lang = en
+# prose_translation = From Alexander the Platonist: not often, nor without necessity, to say to someone or write in a letter that I am too busy, and not to use this way of continually excusing oneself from the duties owed by one's relations toward those one lives with, by pleading the pressing business that surrounds one.
+# literal_translation = From Alexander the Platonist: the not often nor without necessity to say to someone or in a letter to write that busy I-am, and not through this manner continually to excuse-oneself-from the according-to-the relations toward those living-with fitting-duties, putting-forward-as-excuse the surrounding affairs.
+1	Παρὰ	παρά	r	r--------	_	44	AuxP	_	t_634|gloss=from
+2	Ἀλεξάνδρου	ἀλέξανδρος	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_635|gloss=Alexander
+3	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	2	ATR	_	t_636|gloss=the
+4	Πλατωνικοῦ	πλατωνικός	a	a-s---mg-	Case=g|Gender=m|Number=s	2	ATR	_	t_637|gloss=Platonist
+5	τὸ	ὁ	l	l-s---nn-	Case=a|Gender=n|Number=s	24	ATR	_	t_638|gloss=the-[lesson]
+6	μὴ	μή	d	d--------	_	12	AuxZ	_	t_639|gloss=not
+7	πολλάκις	πολλάκις	d	d--------	_	12	ADV	_	t_640|gloss=often
+8	μη	μη	d	d--------	_	12	AuxZ	_	t_641|gloss=nor
+9	δὲ	δέ	d	d--------	_	15	AuxY	_	t_642|gloss=and
+10	χωρὶς	χωρίς	r	r--------	_	12	AuxP	_	t_643|gloss=without
+11	ἀνάγκης	ἀνάγκη	n	n-s---fg-	Case=g|Gender=f|Number=s	10	ADV	_	t_644|gloss=necessity
+12	λέγειν	λέγω3	v	v--pna---	Mood=n|Tense=p|Voice=a	24	SBJ	_	t_645|gloss=to-say
+13	πρός	πρός	r	r--------	_	12	AuxP	_	t_646|gloss=to
+14	τινα	τις	p	p-s---ma-	Case=a|Gender=m|Number=s	13	OBJ	_	t_647|gloss=someone
+15	ἢ	ἤ1	c	c--------	_	12	COORD	_	t_648|gloss=or
+16	ἐν	ἐν	r	r--------	_	15	AuxP	_	t_649|gloss=in
+17	ἐπιστολῇ	ἐπιστολή	n	n-s---fd-	Case=d|Gender=f|Number=s	16	ADV	_	t_650|gloss=a-letter
+18	γράφειν	γράφω	v	v--pna---	Mood=n|Tense=p|Voice=a	15	SBJ	_	t_651|gloss=to-write
+19	ὅτι	ὅτι	c	c--------	_	18	AuxC	_	t_652|gloss=that
+20	ἄσχολός	ἄσχολος	a	a-s---mn-	Case=n|Gender=m|Number=s	21	PNOM	_	t_653|gloss=busy
+21	εἰμι	εἰμί	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	19	OBJ	_	t_654|gloss=i-am
+22	,	,	u	u--------	_	44	AuxX	_	t_655|gloss=,
+23	μη	μη	d	d--------	_	30	AuxZ	_	t_656|gloss=not
+24	δὲ	δέ	c	c--------	_	44	COORD	_	t_657|gloss=and
+25	διὰ	διά	r	r--------	_	30	AuxP	_	t_658|gloss=through
+26	τούτου	οὗτος	a	a-s---mg-	Case=g|Gender=m|Number=s	28	ATR	_	t_659|gloss=this
+27	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	28	ATR	_	t_660|gloss=the
+28	τρόπου	τρόπος	n	n-s---mg-	Case=g|Gender=m|Number=s	25	ADV	_	t_661|gloss=manner
+29	συνεχῶς	συνεχής	d	d--------	_	30	ADV	_	t_662|gloss=continually
+30	παραιτεῖσθαι	παραιτέομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	24	SBJ	_	t_663|gloss=to-excuse-oneself-from
+31	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	38	ATR	_	t_664|gloss=the
+32	κατὰ	κατά	r	r--------	_	38	AuxP	_	t_665|gloss=with-regard-to
+33	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	37	ATR	_	t_666|gloss=the
+34	πρὸς	πρός	r	r--------	_	38	AuxP	_	t_667|gloss=toward
+35	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	36	ATR	_	t_668|gloss=those
+36	συμβιοῦντας	συνοικέω	v	v-pppama-	Case=a|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	34	ADV	_	t_669|gloss=living-with
+37	σχέσεις	σχέσις	n	n-p---fa-	Case=a|Gender=f|Number=p	34	ADV	_	t_670|gloss=relations
+38	καθήκοντα	καθήκω	v	v-pppana-	Case=a|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	30	OBJ	_	t_671|gloss=fitting-duties
+39	,	,	u	u--------	_	44	AuxX	_	t_672|gloss=,
+40	προβαλλόμενον	προβάλλω	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	30	ADV	_	t_673|gloss=putting-forward-as-excuse
+41	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	43	ATR	_	t_674|gloss=the
+42	περιεστῶτα	περιίστημι	v	v-prpana-	Case=a|Gender=n|Mood=p|Number=p|Tense=r|Voice=a	43	ATR	_	t_675|gloss=surrounding
+43	πράγματα	πρᾶγμα	n	n-p---na-	Case=a|Gender=n|Number=p	40	OBJ	_	t_676|gloss=affairs
+44	[0]	[0]	-	---------	_	0	PRED	_	e_45
+45	.	.	u	u--------	_	44	AuxK	_	t_677|gloss=.
+
+
+# sentence_id = 44
+# translation_lang = en
+# prose_translation = From Catulus: not to regard a friend's complaint lightly, even if he happens to complain unreasonably, but to try to restore him to his usual footing.
+# literal_translation = From Catulus: not carelessly to hold [it] when a friend complains of something, even if he should happen complaining unreasonably, but to try to restore [him] to the accustomed [footing].
+1	Παρὰ	παρά	r	r--------	_	23	AuxP	_	t_678|gloss=from
+2	Κατούλου	κατούλου	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_679|gloss=Catulus
+3	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_680|gloss=the-[holding]
+4	μὴ	μή	d	d--------	_	6	AuxZ	_	t_681|gloss=not
+5	ὀλιγώρως	ὀλίγωρος	d	d--------	_	6	ADV	_	t_682|gloss=carelessly
+6	ἔχειν	ἔχω	v	v--pna---	Mood=n|Tense=p|Voice=a	17	OBJ	_	t_683|gloss=to-hold
+7	φίλου	φίλος	n	n-s---mg-	Case=g|Gender=m|Number=s	8	SBJ	_	t_684|gloss=of-a-friend
+8	αἰτιωμένου	αἰτιάομαι	v	v-sppemg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	6	ADV	_	t_685|gloss=complaining
+9	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	8	OBJ	_	t_686|gloss=about-something
+10	,	,	u	u--------	_	23	AuxX	_	t_687|gloss=,
+11	κ	καί	d	d--------	_	13	AuxZ	_	t_688|gloss=even
+12	ἂν	ἄν	c	c--------	_	6	AuxC	_	t_689|gloss=if
+13	τύχῃ	τύχη	v	v3sasa---	Mood=s|Number=s|Person=3|Tense=a|Voice=a	12	ADV	_	t_690|gloss=he-should-happen
+14	ἀλόγως	ἄλογος	d	d--------	_	15	ADV	_	t_691|gloss=unreasonably
+15	αἰτιώμενος	αἰτιάομαι	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	13	ADV	_	t_692|gloss=complaining
+16	,	,	u	u--------	_	23	AuxX	_	t_693|gloss=,
+17	ἀλλὰ	ἀλλά	c	c--------	_	23	COORD	_	t_694|gloss=but
+18	πειρᾶσθαι	πειράω	v	v--pne---	Mood=n|Tense=p|Voice=e	17	OBJ	_	t_695|gloss=to-try
+19	ἀποκαθιστάναι	ἀποκαθίστημι	v	v--pna---	Mood=n|Tense=p|Voice=a	18	OBJ	_	t_696|gloss=to-restore
+20	ἐπὶ	ἐπί	r	r--------	_	19	AuxP	_	t_697|gloss=to
+21	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	22	ATR	_	t_698|gloss=the-[footing]
+22	σύνηθες	συνήθης	a	a-s---na-	Case=a|Gender=n|Number=s	20	OBJ	_	t_699|gloss=accustomed
+23	[0]	[0]	-	---------	_	0	PRED	_	e_46
+24	·	·	u	u--------	_	23	AuxK	_	t_700|gloss=·
+
+
+# sentence_id = 45
+# translation_lang = en
+# prose_translation = And to speak favorably and warmly about my teachers, as in the anecdotes recorded about Domitius and Athenodotus.
+# literal_translation = And the [speaking] favorably concerning [my] teachers, ardently: [I learned], such as [were] the things being recorded concerning Domitius and Athenodotus.
+1	καὶ	καί	d	d--------	_	16	AuxY	_	t_701|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	7	ATR	_	t_702|gloss=the
+3	περὶ	περί	r	r--------	_	7	AuxP	_	t_703|gloss=concerning
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	5	ATR	_	t_704|gloss=the
+5	διδασκάλων	διδάσκαλος	n	n-p---mg-	Case=g|Gender=m|Number=p	3	ATR	_	t_705|gloss=teachers
+6	ἐκθύμως	ἔκθυμος	d	d--------	_	7	ADV	_	t_706|gloss=ardently
+7	εὔφημον	εὔφημος	a	a-s---nn-	Case=n|Gender=n|Number=s	16	SBJ	_	t_707|gloss=favorable-speaking
+8	,	,	u	u--------	_	16	AuxX	_	t_708|gloss=,
+9	οἷα	οἷος	a	a-p---na-	Case=n|Gender=n|Number=p	17	PNOM	_	t_709|gloss=such-as
+10	τὰ	ὁ	l	l-p---nn-	Case=n|Gender=n|Number=p	15	ATR	_	t_710|gloss=the
+11	περὶ	περί	r	r--------	_	15	AuxP	_	t_711|gloss=concerning
+12	Δομιτίου	δομίτιος	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ADV	_	t_712|gloss=Domitius
+13	καὶ	καί	c	c--------	_	11	COORD	_	t_713|gloss=and
+14	Ἀθηνοδότου	ἀθηνόδωρος	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ADV	_	t_714|gloss=Athenodotus
+15	ἀπομνημονευόμενα	ἀπομνημονεύω	v	v-pppenn-	Case=n|Gender=n|Mood=p|Number=p|Tense=p|Voice=e	17	SBJ	_	t_715|gloss=being-recorded
+16	[0]	[0]	-	---------	_	0	PRED	_	e_47
+17	[1]	[1]	-	---------	_	16	ADV	_	e_48
+18	·	·	u	u--------	_	16	AuxK	_	t_716|gloss=·
+
+
+# sentence_id = 46
+# translation_lang = en
+# prose_translation = She also taught me a truly loving disposition toward her children.
+# literal_translation = And the [disposition] concerning the children truly loving [to be]:
+1	καὶ	καί	c	c--------	_	8	AuxY	_	t_717|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	8	SBJ	_	t_718|gloss=the-[disposition]
+3	περὶ	περί	r	r--------	_	2	AuxP	_	t_719|gloss=concerning
+4	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	5	ATR	_	t_720|gloss=the
+5	τέκνα	τέκνον	n	n-p---na-	Case=a|Gender=n|Number=p	3	ATR	_	t_721|gloss=children
+6	ἀληθινῶς	ἀληθινός	d	d--------	_	8	ADV	_	t_722|gloss=truly
+7	ἀγαπητικόν	ἀγαπητικός	a	a-s---nn-	Case=n|Gender=n|Number=s	8	PNOM	_	t_723|gloss=loving
+8	[0]	[0]	-	---------	_	0	PRED	_	e_49
+9	.	.	u	u--------	_	8	AuxK	_	t_724|gloss=.
+
+
+# sentence_id = 47
+# translation_lang = en
+# prose_translation = From my brother Severus: love of family, love of truth, and love of justice.
+# literal_translation = From my brother Severus: the love-of-family and love-of-truth and love-of-justice.
+1	Παρὰ	παρά	r	r--------	_	12	AuxP	_	t_725|gloss=from
+2	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_726|gloss=the
+3	ἀδελφοῦ	ἀδελφός	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_727|gloss=brother
+4	μου	ἐγώ	p	p-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_728|gloss=my
+5	Σεουήρου	σεουήρου	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_729|gloss=Severus
+6	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	7	ATR	_	t_730|gloss=the
+7	φιλοίκειον	φιλοίκειον	a	a-s---nn-	Case=n|Gender=n|Number=s	10	SBJ	_	t_731|gloss=love-of-family
+8	καὶ	καί	c	c--------	_	10	AuxY	_	t_732|gloss=and
+9	φιλάληθες	φιλάληθες	a	a-s---nn-	Case=n|Gender=n|Number=s	10	SBJ	_	t_733|gloss=love-of-truth
+10	καὶ	καί	c	c--------	_	12	COORD	_	t_734|gloss=and
+11	φιλοδίκαιον	φιλοδίκαιος	a	a-s---nn-	Case=n|Gender=n|Number=s	10	PNOM	_	t_735|gloss=love-of-justice
+12	[0]	[0]	-	---------	_	0	PRED	_	e_50
+13	·	·	u	u--------	_	12	AuxK	_	t_736|gloss=·
+
+
+# sentence_id = 48
+# translation_lang = en
+# prose_translation = Through him I learned to come to know Thrasea, Helvidius, Cato, Dio, and Brutus, and to form a conception of a constitution based on equality and equal freedom of speech, and of a kingship that values above all else the freedom of the governed.
+# literal_translation = And also, through him himself: to come to know Thrasea, Helvidius, Cato, Dio, and Brutus, and to take a conception of a constitution based on equality, and of equal freedom of speech, administered according to equality, and of a kingship valuing, of all things most, the freedom of those being ruled.
+1	καὶ	καί	d	d--------	_	16	AuxY	_	t_737|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	5	ATR	_	t_738|gloss=the-[knowing]
+3	διʼ	διά	r	r--------	_	5	AuxP	_	t_739|gloss=through
+4	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	3	ADV	_	t_740|gloss=him
+5	γνῶναι	γιγνώσκω	v	v--ana---	Mood=n|Tense=a|Voice=a	16	OBJ	_	t_741|gloss=to-come-to-know
+6	Θρασέαν	θρασύς	n	n-s---ma-	Case=a|Gender=m|Number=s	13	OBJ	_	t_742|gloss=Thrasea
+7	,	,	u	u--------	_	0	AuxX	_	t_743|gloss=,
+8	Ἑλβίδιον	ἑλβίδιον	n	n-s---ma-	Case=a|Gender=m|Number=s	13	OBJ	_	t_744|gloss=Helvidius
+9	,	,	u	u--------	_	7	AuxX	_	t_745|gloss=,
+10	Κάτωνα	κάτων	n	n-s---ma-	Case=a|Gender=m|Number=s	13	OBJ	_	t_746|gloss=Cato
+11	,	,	u	u--------	_	7	AuxX	_	t_747|gloss=,
+12	Δίωνα	δίων	n	n-s---ma-	Case=a|Gender=m|Number=s	13	OBJ	_	t_748|gloss=Dio
+13	,	,	u	u--------	_	5	COORD	_	t_749|gloss=,
+14	Βροῦτον	βροῦτος	n	n-s---ma-	Case=a|Gender=m|Number=s	13	OBJ	_	t_750|gloss=Brutus
+15	,	,	u	u--------	_	7	AuxX	_	t_751|gloss=,
+16	καὶ	καί	c	c--------	_	7	COORD	_	t_752|gloss=and
+17	φαντασίαν	φαντασία	n	n-s---fa-	Case=a|Gender=f|Number=s	18	OBJ	_	t_753|gloss=a-thought
+18	λαβεῖν	λαμβάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	16	PRED	_	t_754|gloss=to-take
+19	πολιτείας	πολιτεία	n	n-s---fg-	Case=g|Gender=f|Number=s	17	ATR	_	t_755|gloss=of-a-constitution
+20	ἰσονόμου	ἰσόνομος	a	a-s---fg-	Case=g|Gender=f|Number=s	19	ATR	_	t_756|gloss=based-on-equality
+21	,	,	u	u--------	_	7	AuxX	_	t_757|gloss=,
+22	κατʼ	κατά	r	r--------	_	26	AuxP	_	t_758|gloss=according-to
+23	ἰσότητα	ἰσότης	n	n-s---fa-	Case=a|Gender=f|Number=s	24	ADV	_	t_759|gloss=equality
+24	καὶ	καί	c	c--------	_	22	COORD	_	t_760|gloss=and
+25	ἰσηγορίαν	ἰσηγορία	n	n-s---fa-	Case=a|Gender=f|Number=s	24	ADV	_	t_761|gloss=equal-freedom-of-speech
+26	διοικουμένης	διοικέω	v	v-sppefg-	Case=g|Gender=f|Mood=p|Number=s|Tense=p|Voice=e	28	ATR	_	t_762|gloss=administered
+27	,	,	u	u--------	_	7	AuxX	_	t_763|gloss=,
+28	καὶ	καί	c	c--------	_	18	COORD	_	t_764|gloss=and
+29	βασιλείας	βασίλεια	n	n-s---fg-	Case=g|Gender=f|Number=s	30	SBJ	_	t_765|gloss=of-a-kingship
+30	τιμώσης	τιμάω	v	v-sppafg-	Case=g|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	28	ATR	_	t_766|gloss=valuing
+31	πάντων	πᾶς	a	a-p---mg-	Case=g|Gender=m|Number=p	34	ATR	_	t_767|gloss=of-all-things
+32	μάλιστα	μάλιστα	d	d--------	_	30	ADV	_	t_768|gloss=most
+33	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	34	ATR	_	t_769|gloss=the
+34	ἐλευθερίαν	ἐλευθερία	n	n-s---fa-	Case=a|Gender=f|Number=s	30	OBJ	_	t_770|gloss=freedom
+35	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	36	ATR	_	t_771|gloss=of-those
+36	ἀρχομένων	ἄρχω	v	v-pppemg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	34	ATR	_	t_772|gloss=being-ruled
+37	·	·	u	u--------	_	7	AuxK	_	t_773|gloss=·
+
+
+# sentence_id = 49
+# translation_lang = en
+# prose_translation = She also taught me the evenness and steadfastness she maintained in honoring others.
+# literal_translation = And still further from the same [woman]: the evenness and steadfastness in the honor [she showed]:
+1	καὶ	καί	c	c--------	_	14	AuxY	_	t_774|gloss=and
+2	ἔτι	ἔτι	d	d--------	_	14	ADV	_	t_775|gloss=further
+3	παρὰ	παρά	r	r--------	_	14	AuxP	_	t_776|gloss=from
+4	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	5	ATR	_	t_777|gloss=the
+5	αὐτοῦ	αὐτός	p	p-s---ng-	Case=g|Gender=n|Number=s	3	ADV	_	t_778|gloss=same
+6	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	8	ATR	_	t_779|gloss=the
+7	ὁμαλὲς	ὁμαλής	a	a-s---nn-	Case=n|Gender=n|Number=s	8	SBJ	_	t_780|gloss=evenness
+8	καὶ	καί	c	c--------	_	14	COORD	_	t_781|gloss=and
+9	ὁμότονον	ὁμότονος	a	a-s---nn-	Case=n|Gender=n|Number=s	8	SBJ	_	t_782|gloss=steadfastness
+10	ἐν	ἐν	r	r--------	_	14	AuxP	_	t_783|gloss=in
+11	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	12	ATR	_	t_784|gloss=the
+12	τιμῇ	τιμή	n	n-s---fd-	Case=d|Gender=f|Number=s	10	ADV	_	t_785|gloss=honor
+13	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_786|gloss=[she-showed]
+14	[0]	[0]	-	---------	_	0	PRED	_	e_51
+15	·	·	u	u--------	_	14	AuxK	_	t_787|gloss=·
+
+
+# sentence_id = 50
+# translation_lang = en
+# prose_translation = From her too I learned to be ready to do good, to give generously, to hope for the best, and to trust confidently that I was loved by my friends.
+# literal_translation = And: the beneficence, and the generosity, and the good hope, and the trustfulness concerning being loved by [my] friends: earnestly.
+1	καὶ	καί	c	c--------	_	20	AuxY	_	t_788|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_789|gloss=the
+3	εὐποιητικὸν	εὐποιητικός	a	a-s---na-	Case=a|Gender=n|Number=s	11	OBJ	_	t_790|gloss=beneficence
+4	καὶ	καί	c	c--------	_	11	AuxY	_	t_791|gloss=and
+5	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_792|gloss=the
+6	εὐμετάδοτον	εὐμετάδοτος	a	a-s---na-	Case=a|Gender=n|Number=s	11	OBJ	_	t_793|gloss=generosity
+7	ἐκτενῶς	ἐκτενής	d	d--------	_	20	ADV	_	t_794|gloss=earnestly
+8	καὶ	καί	c	c--------	_	11	AuxY	_	t_795|gloss=and
+9	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	10	ATR	_	t_796|gloss=the
+10	εὔελπι	εὔελπις	n	n-s---na-	Case=a|Gender=n|Number=s	11	SBJ	_	t_797|gloss=good-hope
+11	καὶ	καί	c	c--------	_	20	COORD	_	t_798|gloss=and
+12	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	13	ATR	_	t_799|gloss=the
+13	πιστευτικὸν	πιστευτικός	a	a-s---na-	Case=a|Gender=n|Number=s	11	OBJ	_	t_800|gloss=trustfulness
+14	περὶ	περί	r	r--------	_	20	AuxP	_	t_801|gloss=concerning
+15	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	19	ATR	_	t_802|gloss=the
+16	ὑπὸ	ὑπό	r	r--------	_	19	AuxP	_	t_803|gloss=by
+17	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	18	ATR	_	t_804|gloss=the
+18	φίλων	φίλος	a	a-p---mg-	Case=n|Gender=m|Number=s	16	OBJ	_	t_805|gloss=friends
+19	φιλεῖσθαι	φιλέω	v	v--pne---	Mood=n|Tense=p|Voice=e	14	ADV	_	t_806|gloss=being-loved
+20	[0]	[0]	-	---------	_	0	PRED	_	e_52
+21	·	·	u	u--------	_	20	AuxK	_	t_807|gloss=.
+
+
+# sentence_id = 51
+# translation_lang = en
+# prose_translation = And I learned to be open and undisguised toward those who happened to fall under his censure.
+# literal_translation = And the being-undisguised toward those happening [to be] under condemnation by him:
+1	καὶ	καί	c	c--------	_	10	AuxY	_	t_808|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_809|gloss=the
+3	ἀνεπίκρυπτον	ἀνεπίκρυπτος	a	a-s---na-	Case=a|Gender=n|Number=s	10	OBJ	_	t_810|gloss=undisguised
+4	πρὸς	πρός	r	r--------	_	10	AuxP	_	t_811|gloss=toward
+5	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	9	ATR	_	t_812|gloss=those
+6	καταγνώσεως	κατάγνωσις	n	n-s---fg-	Case=g|Gender=f|Number=s	9	OBJ	_	t_813|gloss=condemnation
+7	ὑπʼ	ὑπό	r	r--------	_	9	AuxP	_	t_814|gloss=by
+8	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	7	OBJ	_	t_815|gloss=him
+9	τυγχάνοντας	τυγχάνω	v	v-pppama-	Case=a|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	4	OBJ	_	t_816|gloss=happening
+10	[0]	[0]	-	---------	_	0	PRED	_	e_53
+11	·	·	u	u--------	_	10	AuxK	_	t_817|gloss=·
+
+
+# sentence_id = 52
+# translation_lang = en
+# prose_translation = I also learned not to need to guess at what my friends wanted or did not want, but to make it plain to them myself.
+# literal_translation = And the not to need conjecture the friends of him about the what he wants or what not he wants, but plain to be: [I learned].
+1	καὶ	καί	c	c--------	_	21	AuxY	_	t_818|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_819|gloss=the
+3	μὴ	μή	d	d--------	_	4	AuxZ	_	t_820|gloss=not
+4	δεῖσθαι	δέω2	v	v--pne---	Mood=n|Tense=p|Voice=e	20	SBJ	_	t_821|gloss=to-need
+5	στοχασμοῦ	στοχασμός	n	n-s---mg-	Case=g|Gender=m|Number=s	4	OBJ	_	t_822|gloss=of-conjecture
+6	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	7	ATR	_	t_823|gloss=the
+7	φίλους	φίλος	a	a-p---ma-	Case=a|Gender=m|Number=p	4	OBJ	_	t_824|gloss=friends
+8	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	7	ATR	_	t_825|gloss=his
+9	περὶ	περί	r	r--------	_	4	AuxP	_	t_826|gloss=about
+10	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	13	ATR	_	t_827|gloss=the
+11	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	12	OBJ	_	t_828|gloss=what
+12	θέλει	ἐθέλω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	13	OBJ	_	t_829|gloss=he-wants
+13	ἢ	ἤ1	c	c--------	_	9	COORD	_	t_830|gloss=or
+14	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	16	OBJ	_	t_831|gloss=what
+15	οὐ	οὐ	d	d--------	_	16	AuxZ	_	t_832|gloss=not
+16	θέλει	ἐθέλω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	13	OBJ	_	t_833|gloss=he-wants
+17	,	,	u	u--------	_	21	AuxX	_	t_834|gloss=,
+18	ἀλλὰ	ἀλλά	c	c--------	_	20	COORD	_	t_835|gloss=but
+19	δῆλον	δῆλος	a	a-s---nn-	Case=n|Gender=n|Number=s	20	PNOM	_	t_836|gloss=plain
+20	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	21	OBJ	_	t_837|gloss=to-be
+21	[0]	[0]	-	---------	_	0	PRED	_	e_54
+22	.	.	u	u--------	_	21	AuxK	_	t_838|gloss=.
+
+
+# sentence_id = 53
+# translation_lang = en
+# prose_translation = From Maximus: to master oneself and in nothing to be swayed this way and that.
+# literal_translation = From Maximus: the mastering of oneself: and according to nothing to be swayed-about.
+1	Παρὰ	παρά	r	r--------	_	11	AuxP	_	t_839|gloss=from
+2	Μαξίμου	μάξιμος	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_840|gloss=Maximus
+3	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_841|gloss=the
+4	κρατεῖν	κρατέω	v	v--pna---	Mood=n|Tense=p|Voice=a	6	SBJ	_	t_842|gloss=mastering
+5	ἑαυτοῦ	ἑαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	4	OBJ	_	t_843|gloss=of-oneself
+6	καὶ	καί	c	c--------	_	11	COORD	_	t_844|gloss=and
+7	κατὰ	κατά	r	r--------	_	10	AuxP	_	t_845|gloss=according-to
+8	μηδὲν	μηδείς	p	p-s---na-	Case=a|Gender=n|Number=s	7	ADV	_	t_846|gloss=nothing
+9	περίφορον	περίφορος	a	a-s---ma-	Case=a|Gender=n|Number=s	10	PNOM	_	t_847|gloss=swayed-about
+10	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	6	SBJ	_	t_848|gloss=to-be
+11	[0]	[0]	-	---------	_	0	PRED	_	e_55
+12	·	·	u	u--------	_	11	AuxK	_	t_849|gloss=·
+
+
+# sentence_id = 54
+# translation_lang = en
+# prose_translation = And to remain good-humored both in other circumstances and in illness.
+# literal_translation = And the good-humor: in both the other circumstances and in illnesses.
+1	καὶ	καί	c	c--------	_	13	AuxY	_	t_850|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_851|gloss=the
+3	εὔθυμον	εὔθυμος	a	a-s---nn-	Case=n|Gender=n|Number=s	13	SBJ	_	t_852|gloss=good-humor
+4	ἔν	ἐν	r	r--------	_	9	AuxP	_	t_853|gloss=in
+5	τε	τε	d	d--------	_	9	AuxY	_	t_854|gloss=both
+6	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	8	ATR	_	t_855|gloss=the
+7	ἄλλαις	ἄλλος	p	p-p---fd-	Case=d|Gender=f|Number=p	8	ATR	_	t_856|gloss=other
+8	περιστάσεσι	περίστασις	n	n-p---fd-	Case=d|Gender=f|Number=p	4	ADV	_	t_857|gloss=circumstances
+9	καὶ	καί	c	c--------	_	13	COORD	_	t_858|gloss=and
+10	ἐν	ἐν	r	r--------	_	9	AuxP	_	t_859|gloss=in
+11	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	12	ATR	_	t_860|gloss=the
+12	νόσοις	νόσος	n	n-p---fd-	Case=d|Gender=f|Number=p	10	ADV	_	t_861|gloss=illnesses
+13	[0]	[0]	-	---------	_	0	PRED	_	e_56
+14	·	·	u	u--------	_	13	AuxK	_	t_862|gloss=·
+
+
+# sentence_id = 55
+# translation_lang = en
+# prose_translation = And also the even temper of his character, and gentleness combined with dignity.
+# literal_translation = And also the: the even-temperedness of character, and gentle and dignified [it was]:
+1	καὶ	καί	c	c--------	_	10	AuxY	_	t_863|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_864|gloss=the
+3	εὔκρατον	εὔκρατος	a	a-s---nn-	Case=n|Gender=n|Number=s	8	PNOM	_	t_865|gloss=even-temperedness
+4	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	5	ATR	_	t_866|gloss=the
+5	ἤθους	ἦθος	n	n-s---ng-	Case=g|Gender=n|Number=s	3	ADV	_	t_867|gloss=of-character
+6	καὶ	καί	c	c--------	_	8	AuxY	_	t_868|gloss=and
+7	μειλίχιον	μειλίχιος	a	a-s---nn-	Case=n|Gender=n|Number=s	8	PNOM	_	t_869|gloss=gentle
+8	καὶ	καί	c	c--------	_	10	COORD	_	t_870|gloss=and
+9	γεραρόν	γεραρός	a	a-s---nn-	Case=n|Gender=n|Number=s	8	PNOM	_	t_871|gloss=dignified
+10	[0]	[0]	-	---------	_	0	PRED	_	e_57
+11	·	·	u	u--------	_	10	AuxK	_	t_872|gloss=·
+
+
+# sentence_id = 56
+# translation_lang = en
+# prose_translation = And I learned the ability to work through the tasks before me without complaint.
+# literal_translation = And the [ability] not complainingly effective of the things lying-before [me]:
+1	καὶ	καί	d	d--------	_	8	AuxY	_	t_873|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	5	ATR	_	t_874|gloss=the-[ability]
+3	οὐ	οὐ	d	d--------	_	4	AuxZ	_	t_875|gloss=not
+4	σχετλίως	σχέτλιος	d	d--------	_	5	ADV	_	t_876|gloss=complainingly
+5	κατεργαστικὸν	κατεργαστικός	a	a-s---nn-	Case=n|Gender=n|Number=s	8	SBJ	_	t_877|gloss=effective
+6	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	7	ATR	_	t_878|gloss=of-the
+7	προκειμένων	πρόκειμαι	v	v-pppeng-	Case=g|Gender=n|Mood=p|Number=p|Tense=p|Voice=e	5	ATR	_	t_879|gloss=lying-before
+8	[0]	[0]	-	---------	_	0	PRED	_	e_58
+9	·	·	u	u--------	_	8	AuxK	_	t_880|gloss=·
+
+
+# sentence_id = 57
+# translation_lang = en
+# prose_translation = Also to make everyone believe that he really thinks what he says, and that in whatever he does, he does it with good intent.
+# literal_translation = And: everyone to believe him about the things he might say, that so he thinks, and about the things he might do, that not badly he does [them].
+1	καὶ	καί	c	c--------	_	21	AuxY	_	t_881|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	5	ATR	_	t_882|gloss=the-[belief]
+3	πάντας	πᾶς	a	a-p---ma-	Case=a|Gender=m|Number=p	5	SBJ	_	t_883|gloss=everyone
+4	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	5	OBJ	_	t_884|gloss=him
+5	πιστεύειν	πιστεύω	v	v--pna---	Mood=n|Tense=p|Voice=a	21	SBJ	_	t_885|gloss=to-believe
+6	περὶ	περί	r	r--------	_	8	AuxP	_	t_886|gloss=about
+7	ὧν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	6	ADV	_	t_887|gloss=the-things
+8	λέγοι	λέγω3	v	v3spoa---	Mood=o|Number=s|Person=3|Tense=p|Voice=a	13	OBJ	_	t_888|gloss=he-might-say
+9	ὅτι	ὅτι	c	c--------	_	13	AuxC	_	t_889|gloss=that
+10	οὕτως	οὕτως	d	d--------	_	11	ADV	_	t_890|gloss=so
+11	φρονεῖ	φρονέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	9	OBJ	_	t_891|gloss=he-thinks
+12	,	,	u	u--------	_	21	AuxX	_	t_892|gloss=,
+13	καὶ	καί	c	c--------	_	5	COORD	_	t_893|gloss=and
+14	περὶ	περί	r	r--------	_	16	AuxP	_	t_894|gloss=about
+15	ὧν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	14	ADV	_	t_895|gloss=the-things
+16	πράττοι	πράσσω	v	v3spoa---	Mood=o|Number=s|Person=3|Tense=p|Voice=a	13	OBJ	_	t_896|gloss=he-might-do
+17	ὅτι	ὅτι	c	c--------	_	13	AuxC	_	t_897|gloss=that
+18	οὐ	οὐ	d	d--------	_	19	AuxZ	_	t_898|gloss=not
+19	κακῶς	κακός	d	d--------	_	20	ADV	_	t_899|gloss=badly
+20	πράττει	πράσσω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	17	OBJ	_	t_900|gloss=he-does
+21	[0]	[0]	-	---------	_	0	PRED	_	e_59
+22	.	.	u	u--------	_	21	AuxK	_	t_901|gloss=.
+
+
+# sentence_id = 58
+# translation_lang = en
+# prose_translation = From him I also learned to be free from wonder and free from consternation, and never to be in a hurry about anything, or hesitant, or at a loss, or downcast and forcedly grinning, or, on the other hand, prone to anger or suspicious.
+# literal_translation = And the free-from-wonder and free-from-consternation: and nowhere hurrying, or hesitating, or being at a loss, or downcast, or having grinned-forcedly, or again being angered, or being suspicious:
+1	καὶ	καί	c	c--------	_	23	AuxY	_	t_902|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_903|gloss=the
+3	ἀθαύμαστον	ἀθαύμαστος	a	a-s---na-	Case=a|Gender=n|Number=s	6	OBJ	_	t_904|gloss=freedom-from-wonder
+4	καὶ	καί	c	c--------	_	6	AuxY	_	t_905|gloss=and
+5	ἀνέκπληκτον	ἀνέκπληκτος	a	a-s---na-	Case=a|Gender=n|Number=s	6	OBJ	_	t_906|gloss=freedom-from-consternation
+6	καὶ	καί	c	c--------	_	23	COORD	_	t_907|gloss=and
+7	μηδαμοῦ	μηδαμοῦ	d	d--------	_	8	ADV	_	t_908|gloss=nowhere
+8	ἐπειγόμενον	ἐπείγω	v	v-sppena-	Case=a|Gender=n|Mood=p|Number=s|Tense=p|Voice=e	6	ADV	_	t_909|gloss=hurrying
+9	ἢ	ἤ1	c	c--------	_	21	AuxY	_	t_910|gloss=or
+10	ὀκνοῦν	ὀκνέω	v	v-sppann-	Case=n|Gender=n|Mood=p|Number=s|Tense=p|Voice=a	21	ADV	_	t_911|gloss=hesitating
+11	ἢ	ἤ1	c	c--------	_	21	AuxY	_	t_912|gloss=or
+12	ἀμηχανοῦν	ἀμηχανέω	v	v--pna---	Case=a|Gender=n|Mood=p|Number=s|Tense=p|Voice=a	15	OBJ	_	t_913|gloss=being-at-a-loss
+13	ἢ	ἤ1	c	c--------	_	21	AuxY	_	t_914|gloss=or
+14	κατηφὲς	κατηφής	a	a-s---na-	Case=a|Gender=n|Number=s	15	ADV	_	t_915|gloss=downcast
+15	ἢ	ἤ1	c	c--------	_	21	AuxY	_	t_916|gloss=or
+16	προσσεσηρός	προσσήρω	v	v-srpana-	Case=a|Gender=n|Mood=p|Number=s|Tense=r|Voice=a	15	ADV	_	t_917|gloss=having-grinned-forcedly
+17	,	,	u	u--------	_	23	AuxX	_	t_918|gloss=,
+18	ἢ	ἤ1	c	c--------	_	21	AuxY	_	t_919|gloss=or
+19	πάλιν	πάλιν	d	d--------	_	21	ADV	_	t_920|gloss=again
+20	θυμούμενον	θυμόω	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	21	ADV	_	t_921|gloss=growing-angry
+21	ἢ	ἤ1	c	c--------	_	6	COORD	_	t_922|gloss=or
+22	ὑφορώμενον	ὑφοράω	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	21	ADV	_	t_923|gloss=being-suspicious
+23	[0]	[0]	-	---------	_	0	PRED	_	e_60
+24	·	·	u	u--------	_	23	AuxK	_	t_924|gloss=·
+
+
+# sentence_id = 59
+# translation_lang = en
+# prose_translation = Also her beneficence, her readiness to forgive, and her freedom from falsehood.
+# literal_translation = And the beneficent, and the forgiving, and the truthless (freedom-from-falsehood):
+1	καὶ	καί	c	c--------	_	7	AuxY	_	t_925|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_926|gloss=the
+3	εὐεργετικὸν	εὐεργετικός	a	a-s---na-	Case=a|Gender=n|Number=s	7	SBJ	_	t_927|gloss=beneficence
+4	καὶ	καί	c	c--------	_	7	AuxY	_	t_928|gloss=and
+5	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_929|gloss=the
+6	συγγνωμονικὸν	συγγνωμονικός	a	a-s---na-	Case=a|Gender=n|Number=s	7	SBJ	_	t_930|gloss=readiness-to-forgive
+7	καὶ	καί	c	c--------	_	10	COORD	_	t_931|gloss=and
+8	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	9	ATR	_	t_932|gloss=the
+9	ἀψευδές	ἀψευδής	a	a-s---na-	Case=n|Gender=n|Number=s	7	SBJ	_	t_933|gloss=freedom-from-falsehood
+10	[0]	[0]	-	---------	_	0	PRED	_	e_61
+11	·	·	u	u--------	_	10	AuxK	_	t_934|gloss=:
+
+
+# sentence_id = 60
+# translation_lang = en
+# prose_translation = I learned to give the impression of a character that was naturally unbent rather than one merely corrected.
+# literal_translation = And [I learned]: to provide an impression of [character] unbent rather than [one] being corrected.
+1	καὶ	καί	c	c--------	_	9	AuxY	_	t_935|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_936|gloss=the
+3	ἀδιαστρόφου	ἀδιάστροφος	a	a-s---ng-	Case=g|Gender=n|Number=s	4	ADV	_	t_937|gloss=of-unbent
+4	μᾶλλον	μᾶλλον	d	d-------c	Degree=c	8	ADV	_	t_938|gloss=rather
+5	ἢ	ἤ1	c	c--------	_	4	AuxC	_	t_939|gloss=than
+6	διορθουμένου	διορθόω	v	v-sppemg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	5	ADV	_	t_940|gloss=being-corrected
+7	φαντασίαν	φαντασία	n	n-s---fa-	Case=a|Gender=f|Number=s	8	OBJ	_	t_941|gloss=an-impression
+8	παρέχειν	παρέχω	v	v--pna---	Mood=n|Tense=p|Voice=a	9	OBJ	_	t_942|gloss=to-provide
+9	[0]	[0]	-	---------	_	0	PRED	_	e_62
+10	·	·	u	u--------	_	9	AuxK	_	t_943|gloss=·
+
+
+# sentence_id = 61
+# translation_lang = en
+# prose_translation = He would never have thought himself despised by anyone, nor would he have endured supposing anyone to be better than himself.
+# literal_translation = And that not even would he have thought ever to be despised by him: nor would he have endured to suppose someone better than himself [to be].
+1	καὶ	καί	d	d--------	_	13	AuxY	_	t_944|gloss=and
+2	ὅτι	ὅτι	d	d--------	_	13	AuxY	_	t_945|gloss=that
+3	οὔ	οὐ	d	d--------	_	5	AuxZ	_	t_946|gloss=not
+4	τε	τε	d	d--------	_	13	AuxY	_	t_947|gloss=indeed
+5	ᾠήθη	οἴομαι	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	13	PRED	_	t_948|gloss=would-have-thought
+6	ἄν	ἄν	d	d--------	_	5	AuxY	_	t_949|gloss=ever
+7	ποτέ	ποτέ	d	d--------	_	9	ADV	_	t_950|gloss=at-any-time
+8	τις	τις	p	p-s---cn-	Case=n|Gender=c|Number=s	5	SBJ	_	t_951|gloss=someone
+9	ὑπερορᾶσθαι	ὑπεροράω	v	v--pne---	Mood=n|Tense=p|Voice=e	5	OBJ	_	t_952|gloss=to-be-despised
+10	ὑπʼ	ὑπό	r	r--------	_	9	AuxP	_	t_953|gloss=by
+11	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	10	OBJ	_	t_954|gloss=him
+12	οὔ	οὐ	d	d--------	_	14	AuxZ	_	t_955|gloss=nor
+13	τε	τε	c	c--------	_	0	COORD	_	t_956|gloss=and
+14	ὑπέμεινεν	ὑπομένω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	13	PRED	_	t_957|gloss=would-have-endured
+15	ἂν	ἄν	d	d--------	_	14	AuxY	_	t_958|gloss=ever
+16	κρείττονα	κρείσσων	a	a-s---mac	Case=a|Degree=c|Gender=m|Number=s	19	OBJ	_	t_959|gloss=better
+17	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	16	ADV	_	t_960|gloss=than-himself
+18	αὑτὸν	ἑαυτοῦ	p	p-s---ma-	Case=a|Gender=m|Number=s	19	OBJ	_	t_961|gloss=himself
+19	ὑπολαβεῖν	ὑπολαμβάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	14	OBJ	_	t_962|gloss=to-suppose
+20	·	·	u	u--------	_	13	AuxK	_	t_963|gloss=.
+
+
+# sentence_id = 62
+# translation_lang = en
+# prose_translation = And also to be graciously witty.
+# literal_translation = And also the to-be-graciously-witty:
+1	καὶ	καί	d	d--------	_	4	AuxY	_	t_964|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_965|gloss=the
+3	εὐχαριεντίζεσθαι	εὐχαριέντίζω	v	v--pne---	Mood=n|Tense=p|Voice=e	4	OBJ	_	t_966|gloss=to-be-graciously-witty
+4	[0]	[0]	-	---------	_	0	PRED	_	e_63
+5	.	.	u	u--------	_	4	AuxK	_	t_967|gloss=.
+
+
+# sentence_id = 63
+# translation_lang = en
+# prose_translation = From my father's memory I learned gentleness, and to remain unshaken and steadfast in decisions that have been carefully examined.
+# literal_translation = From the father['s reputation]: the gentle and the steadfast, unshakably abiding by things judged after careful examination.
+1	Παρὰ	παρά	r	r--------	_	13	AuxP	_	t_968|gloss=from
+2	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_969|gloss=the
+3	πατρὸς	πατήρ	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_970|gloss=father
+4	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_971|gloss=the
+5	ἥμερον	ἥμερος	a	a-s---nn-	Case=n|Gender=n|Number=s	6	SBJ	_	t_972|gloss=gentleness
+6	καὶ	καί	c	c--------	_	13	COORD	_	t_973|gloss=and
+7	μενετικὸν	μενετικός	a	a-s---nn-	Case=n|Gender=n|Number=s	6	SBJ	_	t_974|gloss=steadfastness
+8	ἀσαλεύτως	ἀσάλευτος	d	d--------	_	13	ADV	_	t_975|gloss=unshakably
+9	ἐπὶ	ἐπί	r	r--------	_	13	AuxP	_	t_976|gloss=to
+10	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	12	ATR	_	t_977|gloss=the
+11	ἐξητασμένως	ἐξητασμένως	d	d--------	_	12	ADV	_	t_978|gloss=after-careful-examination
+12	κριθέντων	κρίνω	v	v-pappng-	Case=g|Gender=n|Mood=p|Number=p|Tense=a|Voice=p	9	ADV	_	t_979|gloss=things-judged
+13	[0]	[0]	-	---------	_	0	PRED	_	e_64
+14	·	·	u	u--------	_	13	AuxK	_	t_980|gloss=·
+
+
+# sentence_id = 64
+# translation_lang = en
+# prose_translation = And freedom from vanity regarding the things that seem to be honors.
+# literal_translation = And the being-free-from-vanity regarding the seeming honors:
+1	καὶ	καί	d	d--------	_	3	AuxZ	_	t_981|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_982|gloss=the
+3	ἀκενόδοξον	ἀκενόδοξος	a	a-s---na-	Case=a|Gender=n|Number=s	8	SBJ	_	t_983|gloss=freedom-from-vanity
+4	περὶ	περί	r	r--------	_	8	AuxP	_	t_984|gloss=regarding
+5	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	7	ATR	_	t_985|gloss=the
+6	δοκούσας	δοκέω	v	v-pppafa-	Case=a|Gender=f|Mood=p|Number=p|Tense=p|Voice=a	7	ATR	_	t_986|gloss=seeming
+7	τιμάς	τιμή	n	n-p---fa-	Case=a|Gender=f|Number=p	4	ADV	_	t_987|gloss=honors
+8	[0]	[0]	-	---------	_	0	PRED	_	e_65
+9	·	·	u	u--------	_	8	AuxK	_	t_988|gloss=·
+
+
+# sentence_id = 65
+# translation_lang = en
+# prose_translation = Also to be industrious and persistent.
+# literal_translation = And the industrious and persistent:
+1	καὶ	καί	c	c--------	_	6	AuxY	_	t_989|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_990|gloss=the
+3	φιλόπονον	φιλόπονος	a	a-s---nn-	Case=n|Gender=n|Number=s	4	SBJ	_	t_991|gloss=industriousness
+4	καὶ	καί	c	c--------	_	6	COORD	_	t_992|gloss=and
+5	ἐνδελεχές	ἐνδελεχής	a	a-s---nn-	Case=n|Gender=n|Number=s	4	PNOM	_	t_993|gloss=persistence
+6	[0]	[0]	-	---------	_	0	PRED	_	e_66
+7	·	·	u	u--------	_	6	AuxK	_	t_994|gloss=·
+
+
+# sentence_id = 66
+# translation_lang = en
+# prose_translation = And also a readiness to listen to anyone who had some contribution of public benefit to bring forward.
+# literal_translation = And also the readiness-to-listen of-those-having something of-public-benefit to-bring-forward:
+1	καὶ	καί	c	c--------	_	9	AuxY	_	t_995|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_996|gloss=the
+3	ἀκουστικὸν	ἀκουστικός	a	a-s---na-	Case=a|Gender=n|Number=s	8	OBJ	_	t_997|gloss=readiness-to-listen
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	5	ATR	_	t_998|gloss=of-those
+5	ἐχόντων	ἔχω	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	3	ATR	_	t_999|gloss=having
+6	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_1000|gloss=something
+7	κοινωφελὲς	κοινωφελής	a	a-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_1001|gloss=of-public-benefit
+8	εἰσφέρειν	εἰσφέρω	v	v--pna---	Mood=n|Tense=p|Voice=a	9	OBJ	_	t_1002|gloss=to-bring-forward
+9	[0]	[0]	-	---------	_	0	PRED	_	e_67
+10	·	·	u	u--------	_	9	AuxK	_	t_1003|gloss=·
+
+
+# sentence_id = 67
+# translation_lang = en
+# prose_translation = And to distribute to each according to merit without ever swerving from it.
+# literal_translation = And the unswervingly according-to-merit apportioning to each:
+1	καὶ	καί	c	c--------	_	9	AuxY	_	t_1004|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	7	ATR	_	t_1005|gloss=the
+3	ἀπαρατρέπτως	ἀπαρατράπτος	d	d--------	_	9	ADV	_	t_1006|gloss=unswervingly
+4	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	3	ATR	_	t_1007|gloss=of-the
+5	κατʼ	κατά	r	r--------	_	3	AuxP	_	t_1008|gloss=according-to
+6	ἀξίαν	ἀξία	n	n-s---fa-	Case=a|Gender=f|Number=s	5	ADV	_	t_1009|gloss=merit
+7	ἀπονεμητικὸν	ἀπονεμητικός	a	a-s---nn-	Case=n|Gender=n|Number=s	9	SBJ	_	t_1010|gloss=apportioning
+8	ἑκάστῳ	ἕκαστος	a	a-s---nd-	Case=d|Gender=n|Number=s	9	ADV	_	t_1011|gloss=to-each
+9	[0]	[0]	-	---------	_	0	PRED	_	e_68
+10	·	·	u	u--------	_	9	AuxK	_	t_1012|gloss=·
+
+
+# sentence_id = 68
+# translation_lang = en
+# prose_translation = She also taught me the skill of knowing where there is need for tension and where for relaxation.
+# literal_translation = And the being-skilled where indeed [there is] need of tension: [I learned], and where [there is need] of relaxation: [I learned].
+1	καὶ	καί	c	c--------	_	12	AuxY	_	t_1013|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_1014|gloss=the-[skill]
+3	ἔμπειρον	ἔμπειρος	a	a-s---nn-	Case=n|Gender=n|Number=s	12	ADV	_	t_1015|gloss=skilled
+4	ποῦ	ποῦ	d	d--------	_	6	ATR	_	t_1016|gloss=where
+5	μὲν	μέν	d	d--------	_	10	AuxY	_	t_1017|gloss=on-one-hand
+6	χρεία	χρεία	n	n-s---fn-	Case=n|Gender=f|Number=s	13	SBJ	_	t_1018|gloss=need
+7	ἐντάσεως	ἐντάσιος	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ATR	_	t_1019|gloss=of-tension
+8	,	,	u	u--------	_	12	AuxX	_	t_1020|gloss=,
+9	ποῦ	ποῦ	d	d--------	_	13	ADV	_	t_1021|gloss=where
+10	δὲ	δέ	d	d--------	_	12	COORD	_	t_1022|gloss=and-on-the-other
+11	ἀνέσεως	ἄνεσις	n	n-s---fg-	Case=g|Gender=f|Number=s	9	ATR	_	t_1023|gloss=of-relaxation
+12	[0]	[0]	-	---------	_	0	PRED	_	e_69
+13	[1]	[1]	-	---------	_	10	PRED	_	e_70
+14	·	·	u	u--------	_	12	AuxK	_	t_1024|gloss=·
+
+
+# sentence_id = 69
+# translation_lang = en
+# prose_translation = And to stop the passions for boys.
+# literal_translation = And the to-stop: the things concerning the loves of the [boys]·
+1	καὶ	καί	c	c--------	_	9	AuxY	_	t_1025|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_1026|gloss=the
+3	παῦσαι	παύω	v	v--ana---	Mood=n|Tense=a|Voice=a	9	OBJ	_	t_1027|gloss=to-stop
+4	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	3	OBJ	_	t_1028|gloss=the
+5	περὶ	περί	r	r--------	_	4	AuxP	_	t_1029|gloss=concerning
+6	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	7	ATR	_	t_1030|gloss=the
+7	ἔρωτας	ἔρως	n	n-p---ma-	Case=a|Gender=m|Number=p	5	ATR	_	t_1031|gloss=loves
+8	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	3	OBJ	_	t_1032|gloss=of-the-[boys]
+9	[0]	[0]	-	---------	_	0	PRED	_	e_71
+10	·	·	u	u--------	_	9	AuxK	_	t_1033|gloss=·
+
+
+# sentence_id = 70
+# translation_lang = en
+# prose_translation = From Rufus, I learned to spend unstintingly on such things as the education of the young.
+# literal_translation = Of young men [education]: spending unstintingly on such things.
+1	μειρακίων	μειράκιον	n	n-p---ng-	Case=g|Gender=n|Number=p	2	OBJ	_	t_1034|gloss=of-young-men
+2	[0]	[0]	-	---------	_	0	PRED	_	e_72
+3	·	·	u	u--------	_	2	AuxK	_	t_1035|gloss=·
+
+
+# sentence_id = 71
+# translation_lang = en
+# prose_translation = And also community of mind: not to insist that one's friends must always dine with one or invariably travel abroad together, but that toward those who are left behind for some pressing need one's disposition should always remain the same as before.
+# literal_translation = And community-of-mind: and the having-been-granted to friends, not indeed to dine-together with him always, nor to travel-abroad-together, [to be] compulsory, but always the same [him] to be regarded by those left-behind on account of some need.
+1	καὶ	καί	c	c--------	_	30	AuxY	_	t_1036|gloss=and
+2	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	3	ATR	_	t_1037|gloss=the
+3	κοινονοημοσύνη	κοινονοημοσύνη	n	n-s---fn-	Case=n|Gender=f|Number=s	4	SBJ	_	t_1038|gloss=community-of-mind
+4	καὶ	καί	c	c--------	_	20	AuxY	_	t_1039|gloss=and
+5	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	15	ATR	_	t_1040|gloss=the-[having-been-granted]
+6	ἐφεῖσθαι	ἐφίημι	v	v--rne---	Mood=n|Tense=r|Voice=e	15	SBJ	_	t_1041|gloss=having-been-granted
+7	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	8	ATR	_	t_1042|gloss=the
+8	φίλοις	φίλος	a	a-p---md-	Case=d|Gender=m|Number=p	6	OBJ	_	t_1043|gloss=to-friends
+9	μή	μή	d	d--------	_	10	AuxY	_	t_1044|gloss=not
+10	τε	τε	c	c--------	_	15	AuxY	_	t_1045|gloss=indeed
+11	συνδειπνεῖν	συνδειπνέω	v	v--pna---	Mood=n|Tense=p|Voice=a	15	SBJ	_	t_1046|gloss=to-dine-together
+12	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	11	OBJ	_	t_1047|gloss=with-him
+13	πάντως	πάντως	d	d--------	_	11	ADV	_	t_1048|gloss=always
+14	μή	μή	d	d--------	_	15	AuxY	_	t_1049|gloss=nor
+15	τε	τε	c	c--------	_	20	COORD	_	t_1050|gloss=and
+16	συναποδημεῖν	συναποδημέω	v	v--pna---	Mood=n|Tense=p|Voice=a	15	SBJ	_	t_1051|gloss=to-travel-abroad-together
+17	ἐπάναγκες	ἐπανάγκης	a	a-s---nn-	Case=n|Gender=n|Number=s	30	PNOM	_	t_1052|gloss=compulsory
+18	,	,	u	u--------	_	30	AuxX	_	t_1053|gloss=,
+19	ἀεὶ	ἀεί	d	d--------	_	23	ADV	_	t_1054|gloss=always
+20	δὲ	δέ	d	d--------	_	30	COORD	_	t_1055|gloss=but
+21	ὅμοιον	ὅμοιος	a	a-s---nn-	Case=n|Gender=n|Number=s	20	PNOM	_	t_1056|gloss=the-same
+22	αὐτὸν	αὐτός	p	p-s---ma-	Case=a|Gender=m|Number=s	23	SBJ	_	t_1057|gloss=him
+23	καταλαμβάνεσθαι	καταλαμβάνω	v	v--pne---	Mood=n|Tense=p|Voice=e	20	SBJ	_	t_1058|gloss=to-be-regarded
+24	ὑπὸ	ὑπό	r	r--------	_	23	AuxP	_	t_1059|gloss=by
+25	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	29	ATR	_	t_1060|gloss=those
+26	διὰ	διά	r	r--------	_	29	AuxP	_	t_1061|gloss=on-account-of
+27	χρείας	χρεία	n	n-s---fg-	Case=g|Gender=f|Number=s	26	ADV	_	t_1062|gloss=need
+28	τινὰς	τις	p	p-p---ca-	Case=a|Gender=c|Number=p	29	ATR	_	t_1063|gloss=some
+29	ἀπολειφθέντων	ἀπολιμπάνω	v	v-pappmg-	Case=g|Gender=m|Mood=p|Number=p|Tense=a|Voice=p	24	OBJ	_	t_1064|gloss=left-behind
+30	[0]	[0]	-	---------	_	0	PRED	_	e_73
+31	·	·	u	u--------	_	30	AuxK	_	t_1065|gloss=·
+
+
+# sentence_id = 72
+# translation_lang = en
+# prose_translation = Also to be exact and persistent in inquiry when giving counsel, and not to abandon an investigation prematurely, content with the impressions that first present themselves.
+# literal_translation = And the being-searching exactly in the counsels and persistent: not the to-stand-off-before of the investigation, having been satisfied with the ready-at-hand impressions.
+1	καὶ	καί	c	c--------	_	22	AuxY	_	t_1066|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_1067|gloss=the
+3	ζητητικὸν	ζητητικός	a	a-s---nn-	Case=n|Gender=n|Number=s	11	SBJ	_	t_1068|gloss=being-inquiring
+4	ἀκριβῶς	ἀκριβής	d	d--------	_	22	ADV	_	t_1069|gloss=exactly
+5	ἐν	ἐν	r	r--------	_	22	AuxP	_	t_1070|gloss=in
+6	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	7	ATR	_	t_1071|gloss=the
+7	συμβουλίοις	συμβουλίον	n	n-p---nd-	Case=d|Gender=n|Number=p	5	ADV	_	t_1072|gloss=counsels
+8	καὶ	καί	c	c--------	_	22	COORD	_	t_1073|gloss=and
+9	ἐπίμονον	ἐπίμονος	a	a-s---nn-	Case=n|Gender=n|Number=s	8	PNOM	_	t_1074|gloss=persistent
+10	,	,	u	u--------	_	22	AuxX	_	t_1075|gloss=,
+11	ἀλλʼ	ἀλλά	c	c--------	_	22	COORD	_	t_1076|gloss=but
+12	οὐ	οὐ	d	d--------	_	14	AuxZ	_	t_1077|gloss=not
+13	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	14	ATR	_	t_1078|gloss=the
+14	προαπέστη	προαφίστημι	v	v3sria---	Case=n|Gender=n|Number=s	11	SBJ	_	t_1079|gloss=standing-off-too-soon
+15	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	16	ATR	_	t_1080|gloss=the
+16	ἐρεύνης	ἔρευνα	n	n-s---fg-	Case=g|Gender=f|Number=s	14	OBJ	_	t_1081|gloss=from-investigation
+17	,	,	u	u--------	_	22	AuxX	_	t_1082|gloss=,
+18	ἀρκεσθεὶς	ἀρκέω	v	v-sappmn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=p	14	ADV	_	t_1083|gloss=having-been-satisfied
+19	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	21	ATR	_	t_1084|gloss=the
+20	προχείροις	πρόχειρος	a	a-p---fd-	Case=d|Gender=f|Number=p	21	ATR	_	t_1085|gloss=ready-at-hand
+21	φαντασίαις	φαντασία	n	n-p---fd-	Case=d|Gender=f|Number=p	18	OBJ	_	t_1086|gloss=impressions
+22	[0]	[0]	-	---------	_	0	PRED	_	e_74
+23	·	·	u	u--------	_	22	AuxK	_	t_1087|gloss=·
+
+
+# sentence_id = 73
+# translation_lang = en
+# prose_translation = And to maintain steadfast loyalty toward friends, never becoming fickle or fanatically attached.
+# literal_translation = And the maintaining [of loyalty] of friends: and nowhere fickle nor frantic [to become].
+1	καὶ	καί	c	c--------	_	12	AuxY	_	t_1088|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_1089|gloss=the
+3	διατηρητικὸν	διατηρητικός	a	a-s---na-	Case=a|Gender=n|Number=s	6	OBJ	_	t_1090|gloss=maintaining
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	5	ATR	_	t_1091|gloss=of-the
+5	φίλων	φίλος	a	a-p---mg-	Case=g|Gender=m|Number=p	3	ATR	_	t_1092|gloss=friends
+6	καὶ	καί	c	c--------	_	12	COORD	_	t_1093|gloss=and
+7	μηδαμοῦ	μηδαμοῦ	d	d--------	_	8	ADV	_	t_1094|gloss=nowhere
+8	ἁψίκορον	ἁψίκορος	a	a-s---na-	Case=a|Gender=n|Number=s	10	OCOMP	_	t_1095|gloss=fickle
+9	μη	μη	d	d--------	_	10	AuxY	_	t_1096|gloss=not
+10	δὲ	δέ	c	c--------	_	6	COORD	_	t_1097|gloss=but
+11	ἐπιμανές	ἐπιμανής	a	a-s---na-	Case=a|Gender=n|Number=s	10	ATR	_	t_1098|gloss=frantic
+12	[0]	[0]	-	---------	_	0	PRED	_	e_75
+13	·	·	u	u--------	_	12	AuxK	_	t_1099|gloss=·
+
+
+# sentence_id = 74
+# translation_lang = en
+# prose_translation = She also taught me self-sufficiency in everything, and cheerfulness.
+# literal_translation = And self-sufficiency in everything, and cheerfulness:
+1	καὶ	καί	c	c--------	_	9	AuxY	_	t_1100|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_1101|gloss=the-[quality]
+3	αὔταρκες	αὐτάρκης	a	a-s---nn-	Case=n|Gender=n|Number=s	6	SBJ	_	t_1102|gloss=self-sufficiency
+4	ἐν	ἐν	r	r--------	_	9	AuxP	_	t_1103|gloss=in
+5	παντὶ	πᾶς	a	a-s---nd-	Case=d|Gender=n|Number=s	4	ADV	_	t_1104|gloss=everything
+6	καὶ	καί	c	c--------	_	9	COORD	_	t_1105|gloss=and
+7	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	8	ATR	_	t_1106|gloss=the-[quality]
+8	φαιδρόν	φαιδρός	a	a-s---nn-	Case=n|Gender=n|Number=s	6	SBJ	_	t_1107|gloss=cheerfulness
+9	[0]	[0]	-	---------	_	0	PRED	_	e_76
+10	·	·	u	u--------	_	9	AuxK	_	t_1108|gloss=·
+
+
+# sentence_id = 75
+# translation_lang = en
+# prose_translation = I learned to plan far ahead and to make provision even for the smallest matters, without theatrical fuss.
+# literal_translation = And: the from-far-off foreseeing, and of-the-least-things the-forearranging, without-tragic-display [to be].
+1	καὶ	καί	c	c--------	_	10	AuxY	_	t_1109|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_1110|gloss=the
+3	πόρρωθεν	πρόσωθεν	d	d--------	_	4	ADV	_	t_1111|gloss=from-far-off
+4	προνοητικὸν	προνοητικός	a	a-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_1112|gloss=foreseeing
+5	καὶ	καί	c	c--------	_	10	COORD	_	t_1113|gloss=and
+6	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	7	ATR	_	t_1114|gloss=the
+7	ἐλαχίστων	ἐλάχιστος	a	a-p---ngs	Case=g|Degree=s|Gender=n|Number=p	8	OBJ	_	t_1115|gloss=of-the-least-things
+8	προδιοικητικὸν	προδιοικικός	a	a-s---na-	Case=a|Gender=n|Number=s	5	SBJ	_	t_1116|gloss=forearranging
+9	ἀτραγῴδως	ἀδιήγητος	d	d--------	_	10	OBJ	_	t_1117|gloss=without-tragic-display
+10	[0]	[0]	-	---------	_	0	PRED	_	e_77
+11	·	·	u	u--------	_	10	AuxK	_	t_1118|gloss=·
+
+
+# sentence_id = 76
+# translation_lang = en
+# prose_translation = She also taught me to suppress popular acclaim and all flattery directed at oneself, and to be ever watchful over the necessities of rule, and to be a careful steward of expenditure, spending unstintingly on such things, and to endure the blame incurred for such carefulness.
+# literal_translation = And: the suppressed [suppression] of the acclamations and of all flattery directed upon him[self], and: the ever watchful-of-necessities [disposition] for the rule, and: steward-like of the provision, and: enduring of the blame-incurring over such things:
+1	καὶ	καί	c	c--------	_	31	AuxY	_	t_1119|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	10	ATR	_	t_1120|gloss=the
+3	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	4	ATR	_	t_1121|gloss=the
+4	ἐπιβοήσεις	ἐπιβοάω	n	n-p---fa-	Case=a|Gender=f|Number=p	5	OBJ	_	t_1122|gloss=acclamations
+5	καὶ	καί	c	c--------	_	10	COORD	_	t_1123|gloss=and
+6	πᾶσαν	πᾶς	a	a-s---fa-	Case=a|Gender=f|Number=s	7	ATR	_	t_1124|gloss=all
+7	κολακείαν	κολακεία	n	n-s---fa-	Case=a|Gender=f|Number=s	5	OBJ	_	t_1125|gloss=flattery
+8	ἐπʼ	ἐπί	r	r--------	_	10	AuxP	_	t_1126|gloss=upon
+9	αὐτοῦ	αὐτός	p	p-s---ng-	Case=g|Gender=n|Number=s	8	ADV	_	t_1127|gloss=himself
+10	συσταλῆναν	συστέλλω	a	a-s---fa-	Case=a|Gender=n|Number=s	23	SBJ	_	t_1128|gloss=suppression
+11	καὶ	καί	c	c--------	_	23	AuxY	_	t_1129|gloss=and
+12	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	13	ATR	_	t_1130|gloss=the
+13	φυλακτικὸν	φυλακτικός	a	a-s---na-	Case=a|Gender=n|Number=s	23	OBJ	_	t_1131|gloss=watchfulness
+14	ἀεὶ	ἀεί	d	d--------	_	13	ADV	_	t_1132|gloss=ever
+15	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	16	ATR	_	t_1133|gloss=the
+16	ἀναγκαίων	ἀναγκαῖος	a	a-p---ng-	Case=g|Gender=n|Number=p	13	ATR	_	t_1134|gloss=of-necessities
+17	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	18	ATR	_	t_1135|gloss=the
+18	ἀρχῇ	ἀρχή	n	n-s---fd-	Case=d|Gender=f|Number=s	13	ADV	_	t_1136|gloss=for-rule
+19	καὶ	καί	c	c--------	_	23	AuxY	_	t_1137|gloss=and
+20	ταμιευτικὸν	ταμιευτικός	a	a-s---na-	Case=a|Gender=n|Number=s	23	OCOMP	_	t_1138|gloss=stewardship
+21	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	22	ATR	_	t_1139|gloss=the
+22	χορηγίας	χορηγία	n	n-s---fg-	Case=g|Gender=f|Number=s	20	ATR	_	t_1140|gloss=of-provision
+23	καὶ	καί	c	c--------	_	31	COORD	_	t_1141|gloss=and
+24	ὑπομενετικὸν	ὑπομενετικός	a	a-s---na-	Case=a|Gender=n|Number=s	23	OBJ	_	t_1142|gloss=endurance
+25	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	30	ATR	_	t_1143|gloss=the
+26	ἐπὶ	ἐπί	r	r--------	_	30	AuxP	_	t_1144|gloss=over
+27	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	29	ATR	_	t_1145|gloss=the
+28	τοιούτων	τοιοῦτος	p	p-p---ng-	Case=g|Gender=n|Number=p	29	ATR	_	t_1146|gloss=of-that-kind
+29	τινῶν	τις	p	p-p---ng-	Case=g|Gender=n|Number=p	26	ATR	_	t_1147|gloss=certain
+30	καταιτιάσεως	καταιτίασις	n	n-s---fg-	Case=g|Gender=f|Number=s	24	OBJ	_	t_1148|gloss=blame-incurring
+31	[0]	[0]	-	---------	_	0	PRED	_	e_78
+32	·	·	u	u--------	_	31	AuxK	_	t_1149|gloss=:
+
+
+# sentence_id = 77
+# translation_lang = en
+# prose_translation = She also taught me not to be superstitious about the gods nor, in dealings with people, to court popularity, curry favor, or please the crowd, but rather to be sober-minded in all things, steady, free from vulgarity, and not given to novelty for its own sake.
+# literal_translation = And : not indeed superstitious concerning gods, nor indeed [to be] popularity-seeking or fawning or crowd-pleasing concerning people : but sobriety in all things [I learned], and steadfast and nowhere lacking-in-taste [I learned], nor yet innovation-loving [I learned]:
+1	καὶ	καί	c	c--------	_	30	AuxY	_	t_1150|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	30	ATR	_	t_1151|gloss=the-[not-being-superstitious]
+3	μή	μή	d	d--------	_	4	AuxY	_	t_1152|gloss=not
+4	τε	τε	c	c--------	_	9	AuxY	_	t_1153|gloss=indeed
+5	περὶ	περί	r	r--------	_	9	AuxP	_	t_1154|gloss=concerning
+6	θεοὺς	θεός	n	n-p---ma-	Case=a|Gender=m|Number=p	5	ADV	_	t_1155|gloss=gods
+7	δεισίδαιμον	δεισιδαίμων	v	v--pna---	Case=n|Gender=n|Number=s	18	SBJ	_	t_1156|gloss=superstition
+8	μή	μή	d	d--------	_	15	AuxY	_	t_1157|gloss=not
+9	τε	τε	c	c--------	_	7	COORD	_	t_1158|gloss=indeed
+10	περὶ	περί	r	r--------	_	9	AuxP	_	t_1159|gloss=concerning
+11	ἀνθρώπους	ἄνθρωπος	n	n-p---ma-	Case=a|Gender=m|Number=p	10	ADV	_	t_1160|gloss=people
+12	δημοκοπικὸν	δημοκοπικός	a	a-s---nn-	Case=n|Gender=n|Number=s	15	PNOM	_	t_1161|gloss=popularity-seeking
+13	ἢ	ἤ1	c	c--------	_	15	AuxY	_	t_1162|gloss=or
+14	ἀρεσκευτικὸν	ἀρεσκευτικός	a	a-s---nn-	Case=n|Gender=n|Number=s	15	PNOM	_	t_1163|gloss=fawning
+15	ἢ	ἤ1	c	c--------	_	18	COORD	_	t_1164|gloss=or
+16	ὀχλοχαρές	ὀχλοχαρής	a	a-s---nn-	Case=n|Gender=n|Number=s	15	PNOM	_	t_1165|gloss=crowd-pleasing
+17	,	,	u	u--------	_	30	AuxX	_	t_1166|gloss=,
+18	ἀλλὰ	ἀλλά	c	c--------	_	32	COORD	_	t_1167|gloss=but
+19	νῆφον	νῆφος	n	n-s---fa-	Case=a|Gender=f|Number=s	24	OBJ	_	t_1168|gloss=sobriety
+20	ἐν	ἐν	r	r--------	_	31	AuxP	_	t_1169|gloss=in
+21	πᾶσι	πᾶς	a	a-p---nd-	Case=d|Gender=n|Number=p	20	ADV	_	t_1170|gloss=all-things
+22	καὶ	καί	c	c--------	_	24	AuxY	_	t_1171|gloss=and
+23	βέβαιον	βέβαιος	a	a-s---fa-	Case=a|Gender=m|Number=s	28	PNOM	_	t_1172|gloss=steadfastness
+24	καὶ	καί	c	c--------	_	28	AuxY	_	t_1173|gloss=and
+25	μηδαμοῦ	μηδαμοῦ	d	d--------	_	26	ADV	_	t_1174|gloss=nowhere
+26	ἀπειρόκαλον	ἀπειρόκαλος	a	a-s---ma-	Case=a|Gender=m|Number=s	28	PNOM	_	t_1175|gloss=lacking-in-taste
+27	μη	μη	d	d--------	_	29	AuxZ	_	t_1176|gloss=not
+28	δὲ	δέ	c	c--------	_	32	COORD	_	t_1177|gloss=yet
+29	καινοτόμον	καινοτόμος	a	a-s---ma-	Case=a|Gender=m|Number=s	28	PNOM	_	t_1178|gloss=innovation-loving
+30	[0]	[0]	-	---------	_	0	PRED	_	e_79
+31	[1]	[1]	-	---------	_	30	PRED	_	e_80
+32	[2]	[2]	-	---------	_	30	PRED	_	e_81
+33	·	·	u	u--------	_	30	AuxK	_	t_1179|gloss=:
+
+
+# sentence_id = 78
+# translation_lang = en
+# prose_translation = She also taught me that the abundance which fortune supplies to those who possess the means for an easy life is something to use without vanity and yet without hesitation, so that when such things are present one handles them naturally and unaffectedly, and when they are absent one has no need of them—spending unstintingly on such things.
+# literal_translation = And this too: the [thing] which fortune furnishes to those bringing [something] toward easiness of life, of which things fortune supplied abundance: [I learned]: to be a disposition apt-to-use [it], at once without vanity and without hesitation, so-that, while [such things] are present, to touch [them] unaffectedly, and, while [they] are absent, not to be in need [of them].
+1	καὶ	καί	d	d--------	_	32	AuxY	_	t_1180|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	8	ATR	_	t_1181|gloss=the
+3	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	7	ATR	_	t_1182|gloss=to-those
+4	εἰς	εἰς	r	r--------	_	7	AuxP	_	t_1183|gloss=toward
+5	εὐμάρειαν	εὐμάρεια	n	n-s---fa-	Case=a|Gender=f|Number=s	4	OBJ	_	t_1184|gloss=easiness-of-life
+6	βίου	βίος	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_1185|gloss=of-life
+7	φέρουσί	φέρω	v	v-pppamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	32	OBJ	_	t_1186|gloss=bringing
+8	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	32	OBJ	_	t_1187|gloss=something
+9	,	,	u	u--------	_	32	AuxX	_	t_1188|gloss=,
+10	ὧν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	14	ATR	_	t_1189|gloss=of-which
+11	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	12	ATR	_	t_1190|gloss=the
+12	τύχη	τύχη	n	n-s---fn-	Case=n|Gender=f|Number=s	13	SBJ	_	t_1191|gloss=fortune
+13	παρεῖχε	παρέχω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	8	ATR	_	t_1192|gloss=furnished
+14	δαψίλειαν	δαψίλεια	n	n-s---fa-	Case=a|Gender=f|Number=s	13	OBJ	_	t_1193|gloss=abundance
+15	,	,	u	u--------	_	32	AuxX	_	t_1194|gloss=,
+16	χρηστικὸν	χρηστικός	a	a-s---nn-	Case=n|Gender=n|Number=s	32	PNOM	_	t_1195|gloss=apt-to-use
+17	ἀτύφως	ἀτύφως	d	d--------	_	19	ADV	_	t_1196|gloss=without-vanity
+18	ἅμα	ἅμα	d	d--------	_	19	ADV	_	t_1197|gloss=at-once
+19	καὶ	καί	c	c--------	_	32	COORD	_	t_1198|gloss=and
+20	ἀπροφασίστως	ἀπροφάσιστος	d	d--------	_	19	ADV	_	t_1199|gloss=without-hesitation
+21	,	,	u	u--------	_	32	AuxX	_	t_1200|gloss=,
+22	ὥστε	ὥστε	c	c--------	_	32	AuxC	_	t_1201|gloss=so-that
+23	παρόντων	πάρειμι1	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	26	ADV	_	t_1202|gloss=being-present
+24	μὲν	μέν	d	d--------	_	29	AuxY	_	t_1203|gloss=on-the-one-hand
+25	ἀνεπιτηδεύτως	ἀνεπιτήδειος	d	d--------	_	26	ADV	_	t_1204|gloss=unaffectedly
+26	ἅπτεσθαι	ἅπτω	v	v--pne---	Mood=n|Tense=p|Voice=e	29	ADV	_	t_1205|gloss=to-touch
+27	,	,	u	u--------	_	32	AuxX	_	t_1206|gloss=,
+28	ἀπόντων	ἄπειμι1	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	29	ADV	_	t_1207|gloss=being-absent
+29	δὲ	δέ	c	c--------	_	22	COORD	_	t_1208|gloss=and-on-the-other
+30	μὴ	μή	d	d--------	_	31	AuxZ	_	t_1209|gloss=not
+31	δεῖσθαι	δέω2	v	v--pne---	Mood=n|Tense=p|Voice=e	29	ADV	_	t_1210|gloss=to-be-in-need
+32	[0]	[0]	-	---------	_	0	PRED	_	e_82
+33	·	·	u	u--------	_	32	AuxK	_	t_1211|gloss=·
+
+
+# sentence_id = 79
+# translation_lang = en
+# prose_translation = And also that no one could ever call him a sophist, a home-bred slave, or a pedant, but rather a mature man, a complete one, immune to flattery, and capable of managing both his own affairs and those of others.
+# literal_translation = And also the [thing], not, however, would anyone say: not indeed that a sophist, not indeed that a home-bred slave, not indeed that a pedant, but that a man ripe, complete, unflattered, being able to manage both his own affairs and [those] of others: [I learned].
+1	καὶ	καί	d	d--------	_	37	AuxY	_	t_1212|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	7	ATR	_	t_1213|gloss=the
+3	μη	μη	d	d--------	_	7	AuxZ	_	t_1214|gloss=not
+4	δὲ	δέ	d	d--------	_	3	AuxY	_	t_1215|gloss=but
+5	ἄν	ἄν	d	d--------	_	7	AuxY	_	t_1216|gloss=ever
+6	τινα	τις	p	p-s---ma-	Case=a|Gender=m|Number=s	7	SBJ	_	t_1217|gloss=anyone
+7	εἰπεῖν	εἶπον	v	v--ana---	Mood=n|Tense=a|Voice=a	37	SBJ	_	t_1218|gloss=say
+8	μή	μή	d	d--------	_	11	AuxZ	_	t_1219|gloss=not
+9	τε	τε	d	d--------	_	17	AuxY	_	t_1220|gloss=indeed
+10	ὅτι	ὅτι	c	c--------	_	17	AuxC	_	t_1221|gloss=that
+11	σοφιστὴς	σοφιστής	n	n-s---mn-	Case=n|Gender=m|Number=s	38	PNOM	_	t_1222|gloss=sophist
+12	μή	μή	d	d--------	_	15	AuxZ	_	t_1223|gloss=not
+13	τε	τε	d	d--------	_	17	AuxY	_	t_1224|gloss=indeed
+14	ὅτι	ὅτι	c	c--------	_	17	AuxC	_	t_1225|gloss=that
+15	οὐερνάκλος	οὐερνάκλος	a	a-s---mn-	Case=n|Gender=m|Number=s	38	PNOM	_	t_1226|gloss=home-bred-slave
+16	μή	μή	d	d--------	_	38	AuxZ	_	t_1227|gloss=not
+17	τε	τε	c	c--------	_	7	COORD	_	t_1228|gloss=nor
+18	ὅτι	ὅτι	c	c--------	_	17	AuxC	_	t_1229|gloss=that
+19	σχολαστικός	σχολαστικός	a	a-s---mn-	Case=n|Gender=m|Number=s	38	PNOM	_	t_1230|gloss=pedant
+20	,	,	u	u--------	_	37	AuxX	_	t_1231|gloss=,
+21	ἀλλʼ	ἀλλά	c	c--------	_	7	COORD	_	t_1232|gloss=but
+22	ὅτι	ὅτι	c	c--------	_	17	AuxC	_	t_1233|gloss=that
+23	ἀνὴρ	ἀνήρ	n	n-s---mn-	Case=n|Gender=m|Number=s	38	PNOM	_	t_1234|gloss=man
+24	πέπειρος	πέπειρος	a	a-s---mn-	Case=n|Gender=m|Number=s	27	ATR	_	t_1235|gloss=ripe
+25	,	,	u	u--------	_	37	AuxX	_	t_1236|gloss=,
+26	τέλειος	τέλειος	a	a-s---mn-	Case=n|Gender=m|Number=s	27	ATR	_	t_1237|gloss=complete
+27	,	,	u	u--------	_	23	COORD	_	t_1238|gloss=,
+28	ἀκολάκευτος	ἀκολάκευτος	a	a-s---mn-	Case=n|Gender=m|Number=s	27	ATR	_	t_1239|gloss=unflattered
+29	,	,	u	u--------	_	37	AuxX	_	t_1240|gloss=,
+30	προεστάναι	προίστημι	v	v--rna---	Mood=n|Tense=r|Voice=a	31	OBJ	_	t_1241|gloss=to-manage
+31	δυνάμενος	δύναμαι	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	37	ADV	_	t_1242|gloss=being-able
+32	καὶ	καί	d	d--------	_	35	AuxY	_	t_1243|gloss=both
+33	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	35	ATR	_	t_1244|gloss=the
+34	ἑαυτοῦ	ἑαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	35	ATR	_	t_1245|gloss=own
+35	καὶ	καί	c	c--------	_	30	COORD	_	t_1246|gloss=and
+36	ἄλλων	ἄλλος	p	p-p---mg-	Case=g|Gender=m|Number=p	35	ATR	_	t_1247|gloss=of-others
+37	[0]	[0]	-	---------	_	0	PRED	_	e_83
+38	[1]	[1]	-	---------	_	18	OBJ	_	e_84
+39	.	.	u	u--------	_	37	AuxK	_	t_1248|gloss=.
+
+
+# sentence_id = 80
+# translation_lang = en
+# prose_translation = Besides this, she also had genuine esteem for those who truly practice philosophy, while toward the others she was neither reproachful toward those who did not, nor did she easily let herself be led astray by them.
+# literal_translation = In addition to these things: also the esteeming [disposition] of those truly philosophizing, but toward the others: not reproachful, nor indeed easily-led-astray by them.
+1	πρὸς	πρός	r	r--------	_	22	AuxP	_	t_1249|gloss=toward
+2	τούτοις	οὗτος	p	p-p---nd-	Case=d|Gender=n|Number=p	1	ADV	_	t_1250|gloss=these-things
+3	δὲ	δέ	d	d--------	_	22	AuxY	_	t_1251|gloss=and
+4	καὶ	καί	d	d--------	_	6	AuxZ	_	t_1252|gloss=even
+5	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_1253|gloss=the
+6	τιμητικὸν	τιμητικός	a	a-s---nn-	Case=n|Gender=n|Number=s	22	SBJ	_	t_1254|gloss=esteem
+7	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	9	ATR	_	t_1255|gloss=of-those
+8	ἀληθῶς	ἀληθής	d	d--------	_	9	ADV	_	t_1256|gloss=truly
+9	φιλοσοφούντων	φιλοσοφέω	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	6	ATR	_	t_1257|gloss=philosophizing
+10	,	,	u	u--------	_	0	AuxX	_	t_1258|gloss=,
+11	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	13	ATR	_	t_1259|gloss=toward-those
+12	δὲ	δέ	d	d--------	_	10	COORD	_	t_1260|gloss=but
+13	ἄλλοις	ἄλλος	p	p-p---md-	Case=d|Gender=m|Number=p	17	ADV	_	t_1261|gloss=others
+14	οὐκ	οὐ	d	d--------	_	23	AuxZ	_	t_1262|gloss=not
+15	ἐξονειδιστικὸν	ἐξονειδιστικός	a	a-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_1263|gloss=reproachful
+16	οὐ	οὐ	d	d--------	_	17	AuxY	_	t_1264|gloss=nor
+17	δὲ	δέ	c	c--------	_	23	COORD	_	t_1265|gloss=indeed
+18	μὴν	μήν	d	d--------	_	19	AuxZ	_	t_1266|gloss=even
+19	εὐπαράγωγον	εὐπαράγωγος	a	a-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_1267|gloss=easily-led-astray
+20	ὑπʼ	ὑπό	r	r--------	_	23	AuxP	_	t_1268|gloss=by
+21	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	20	OBJ	_	t_1269|gloss=them
+22	[0]	[0]	-	---------	_	12	PRED	_	e_85
+23	[1]	[1]	-	---------	_	12	PRED	_	e_86
+24	·	·	u	u--------	_	10	AuxK	_	t_1270|gloss=·
+
+
+# sentence_id = 81
+# translation_lang = en
+# prose_translation = She also taught me sociability and graciousness, without excess.
+# literal_translation = Still moreover the sociable and gracious, not excessively:
+1	ἔτι	ἔτι	d	d--------	_	9	ADV	_	t_1271|gloss=further
+2	δὲ	δέ	d	d--------	_	9	AuxY	_	t_1272|gloss=then
+3	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_1273|gloss=the-[quality]
+4	εὐόμιλον	εὐόμιλος	a	a-s---nn-	Case=n|Gender=n|Number=s	5	SBJ	_	t_1274|gloss=sociability
+5	καὶ	καί	c	c--------	_	9	COORD	_	t_1275|gloss=and
+6	εὔχαρι	εὔχαρις	n	n-s---nn-	_	5	ADV	_	t_1276|gloss=graciousness
+7	οὐ	οὐ	d	d--------	_	8	AuxZ	_	t_1277|gloss=not
+8	κατακόρως	κατάκορος	d	d--------	_	9	ADV	_	t_1278|gloss=excessively
+9	[0]	[0]	-	---------	_	0	PRED	_	e_87
+10	·	·	u	u--------	_	9	AuxK	_	t_1279|gloss=·
+
+
+# sentence_id = 82
+# translation_lang = en
+# prose_translation = And to care for one's own body in due measure, neither as one overly fond of life nor out of vanity, yet not carelessly either, but so attentive to it that through such personal care one had very little need of medicine, of drugs, or of external applications.
+# literal_translation = And [I learned]: the caring-for of [one's] own body, in due measure—neither as if someone were fond-of-life, nor for the sake of adornment, nor yet carelessly—but so as: through [one's] own attentiveness, to have need of very few things of medicine, or of drugs and of poultices, from outside.
+1	καὶ	καί	c	c--------	_	39	AuxY	_	t_1280|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	6	ATR	_	t_1281|gloss=the
+3	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	5	ATR	_	t_1282|gloss=of-the
+4	ἰδίου	ἴδιος	a	a-s---ng-	Case=g|Gender=n|Number=s	5	ATR	_	t_1283|gloss=own
+5	σώματος	σῶμα	n	n-s---ng-	Case=g|Gender=n|Number=s	6	ATR	_	t_1284|gloss=body
+6	ἐπιμελητικὸν	ἐπιμελητικός	a	a-s---nn-	Case=a|Gender=n|Number=s	39	SBJ	_	t_1285|gloss=caring-for
+7	ἐμμέτρως	ἔμμετρος	d	d--------	_	39	ADV	_	t_1286|gloss=in-due-measure
+8	,	,	u	u--------	_	39	AuxX	_	t_1287|gloss=,
+9	οὔ	οὐ	d	d--------	_	10	AuxY	_	t_1288|gloss=not
+10	τε	τε	c	c--------	_	20	AuxY	_	t_1289|gloss=both
+11	ὡς	ὡς	c	c--------	_	20	AuxC	_	t_1290|gloss=as
+12	ἄν	ἄν	d	d--------	_	40	AuxY	_	t_1291|gloss=would
+13	τις	τις	p	p-s---cn-	Case=n|Gender=c|Number=s	40	SBJ	_	t_1292|gloss=someone
+14	φιλόζωος	φιλόζωος	a	a-s---mn-	Case=n|Gender=m|Number=s	13	ATR	_	t_1293|gloss=fond-of-life
+15	οὔ	οὐ	d	d--------	_	20	AuxY	_	t_1294|gloss=not
+16	τε	τε	c	c--------	_	20	AuxY	_	t_1295|gloss=and
+17	πρὸς	πρός	r	r--------	_	20	AuxP	_	t_1296|gloss=for
+18	καλλωπισμὸν	καλλωπισμός	n	n-s---ma-	Case=a|Gender=m|Number=s	17	ADV	_	t_1297|gloss=adornment
+19	οὔ	οὐ	d	d--------	_	20	AuxY	_	t_1298|gloss=not
+20	τε	τε	c	c--------	_	40	COORD	_	t_1299|gloss=and
+21	μὴν	μήν	d	d--------	_	22	AuxZ	_	t_1300|gloss=indeed
+22	ὀλιγώρως	ὀλίγωρος	d	d--------	_	20	ADV	_	t_1301|gloss=carelessly
+23	,	,	u	u--------	_	39	AuxX	_	t_1302|gloss=,
+24	ἀλλʼ	ἀλλά	c	c--------	_	39	COORD	_	t_1303|gloss=but
+25	ὥστε	ὥστε	c	c--------	_	24	AuxC	_	t_1304|gloss=so-that
+26	διὰ	διά	r	r--------	_	33	AuxP	_	t_1305|gloss=through
+27	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	29	ATR	_	t_1306|gloss=the
+28	ἰδίαν	ἴδιος	a	a-s---fa-	Case=a|Gender=f|Number=s	29	ATR	_	t_1307|gloss=own
+29	προσοχὴν	προσοχή	n	n-s---fa-	Case=a|Gender=f|Number=s	26	ADV	_	t_1308|gloss=attentiveness
+30	εἰς	εἰς	r	r--------	_	33	AuxP	_	t_1309|gloss=for
+31	ὀλίγιστα	ὀλίγος	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	30	ADV	_	t_1310|gloss=very-few
+32	ἰατρικῆς	ἰατρικός	a	a-s---fg-	Case=g|Gender=f|Number=s	31	ATR	_	t_1311|gloss=of-medicine
+33	χρῄζειν	χρῄζω	v	v--pna---	Mood=n|Tense=p|Voice=a	25	ADV	_	t_1312|gloss=to-have-need
+34	ἢ	ἤ1	c	c--------	_	31	AuxC	_	t_1313|gloss=or
+35	φαρμάκων	φάρμακον	n	n-p---ng-	Case=g|Gender=n|Number=p	36	ADV	_	t_1314|gloss=of-drugs
+36	καὶ	καί	c	c--------	_	38	COORD	_	t_1315|gloss=and
+37	ἐπιθεμάτων	ἐπίθεμα	n	n-p---ng-	Case=g|Gender=n|Number=p	36	ADV	_	t_1316|gloss=of-poultices
+38	ἐκτός	ἐκτός	d	d--------	_	34	AuxP	_	t_1317|gloss=from-outside
+39	[0]	[0]	-	---------	_	0	PRED	_	e_88
+40	[1]	[1]	-	---------	_	25	ADV	_	e_89
+41	·	·	u	u--------	_	39	AuxK	_	t_1318|gloss=·
+
+
+# sentence_id = 83
+# translation_lang = en
+# prose_translation = Above all, I learned the readiness to yield without envy to those who possess some special ability, such as skill in expression, or knowledge derived from the study of law, of custom, or of other matters, and to join eagerly in promoting them, so that each of these men might win esteem according to his own particular merits.
+# literal_translation = Especially however: the yielding-without-envy to-those-possessing some ability, such-as the expressive [ability] or that from-study of-laws or of-customs or of-other certain matters, and [I learned] the being-eager-along-with-them, in-order-that each [of them] according to their own merits might-be-well-esteemed.
+1	μάλιστα	μάλιστα	d	d-------s	Degree=s	37	ADV	_	t_1319|gloss=especially
+2	δὲ	δέ	d	d--------	_	37	AuxY	_	t_1320|gloss=and
+3	τὸ	ὁ	l	l-s---nn-	Case=a|Gender=n|Number=s	4	ATR	_	t_1321|gloss=the
+4	παραχωρητικὸν	παραχωρητικός	a	a-s---na-	Case=a|Gender=n|Number=s	26	SBJ	_	t_1322|gloss=yielding-without-envy
+5	ἀβασκάνως	ἀβασκάνω	d	d--------	_	9	ADV	_	t_1323|gloss=without-envy
+6	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	9	ATR	_	t_1324|gloss=to-those
+7	δύναμίν	δύναμις	n	n-s---fa-	Case=a|Gender=f|Number=s	9	OBJ	_	t_1325|gloss=ability
+8	τινα	τις	a	a-s---fa-	Case=a|Gender=n|Number=p	7	ATR	_	t_1326|gloss=some
+9	κεκτημένοις	κτάομαι	v	v-prpemd-	Case=d|Gender=m|Mood=p|Number=p|Tense=r|Voice=e	37	ADV	_	t_1327|gloss=possessing
+10	,	,	u	u--------	_	37	AuxX	_	t_1328|gloss=,
+11	οἷον	οἷος	p	p-s---na-	Case=a|Gender=n|Number=s	26	AuxC	_	t_1329|gloss=such-as
+12	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	13	ATR	_	t_1330|gloss=the
+13	φραστικὴν	φραστικός	a	a-s---fa-	Case=a|Gender=f|Number=s	14	OBJ	_	t_1331|gloss=expressive
+14	ἢ	ἤ1	c	c--------	_	26	COORD	_	t_1332|gloss=or
+15	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	14	ATR	_	t_1333|gloss=the
+16	ἐξ	ἐκ	r	r--------	_	15	AuxP	_	t_1334|gloss=from
+17	ἱστορίας	ἱστορία	n	n-s---fg-	Case=g|Gender=f|Number=s	16	ATR	_	t_1335|gloss=study
+18	νόμων	νόμος	n	n-p---mg-	Case=g|Gender=m|Number=p	21	ATR	_	t_1336|gloss=of-laws
+19	ἢ	ἤ1	c	c--------	_	21	AuxY	_	t_1337|gloss=or
+20	ἐθῶν	ἔθος	n	n-p---ng-	Case=g|Gender=n|Number=p	21	ATR	_	t_1338|gloss=of-customs
+21	ἢ	ἤ1	c	c--------	_	17	COORD	_	t_1339|gloss=or
+22	ἄλλων	ἄλλος	a	a-p---ng-	Case=g|Gender=n|Number=p	24	ATR	_	t_1340|gloss=other
+23	τινῶν	τις	a	a-p---ng-	Case=g|Gender=n|Number=p	24	ATR	_	t_1341|gloss=certain
+24	πραγμάτων	πρᾶγμα	n	n-p---ng-	Case=g|Gender=n|Number=p	21	ATR	_	t_1342|gloss=matters
+25	,	,	u	u--------	_	37	AuxX	_	t_1343|gloss=,
+26	καὶ	καί	c	c--------	_	37	COORD	_	t_1344|gloss=and
+27	συσπουδαστικὸν	συσπουδαστικός	a	a-s---na-	Case=n|Gender=n|Number=s	26	PNOM	_	t_1345|gloss=being-eager-along-with
+28	αὐτοῖς	αὐτός	p	p-p---nd-	Case=d|Gender=m|Number=p	27	ADV	_	t_1346|gloss=them
+29	,	,	u	u--------	_	37	AuxX	_	t_1347|gloss=,
+30	ἵνα	ἵνα	c	c--------	_	37	AuxC	_	t_1348|gloss=so-that
+31	ἕκαστοι	ἕκαστος	a	a-p---mn-	Case=n|Gender=m|Number=p	36	SBJ	_	t_1349|gloss=each
+32	κατὰ	κατά	r	r--------	_	36	AuxP	_	t_1350|gloss=according-to
+33	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	35	ATR	_	t_1351|gloss=the
+34	ἴδια	ἴδιος	a	a-p---na-	Case=a|Gender=n|Number=p	35	ATR	_	t_1352|gloss=own
+35	προτερήματα	προτέρημα	n	n-p---na-	Case=a|Gender=n|Number=p	32	ADV	_	t_1353|gloss=merits
+36	εὐδοκιμῶσι	εὐδοκιμέω	v	v3ppsa---	Mood=s|Number=p|Person=3|Tense=p|Voice=a	30	ADV	_	t_1354|gloss=might-be-well-esteemed
+37	[0]	[0]	-	---------	_	0	PRED	_	e_90
+38	[1]	[1]	-	---------	_	37	SBJ	_	e_91
+39	·	·	u	u--------	_	37	AuxK	_	t_1355|gloss=·
+
+
+# sentence_id = 84
+# translation_lang = en
+# prose_translation = To do everything in accordance with ancestral custom, yet without making a show of cultivating that very custom, but simply guarding ancestral ways.
+# literal_translation = All things: according to the ancestral doing, but not this same thing practicing to appear, that is, the ancestral things to guard.
+1	πάντα	πᾶς	a	a-p---na-	Case=a|Gender=n|Number=p	6	OBJ	_	t_1356|gloss=all-things
+2	δὲ	δέ	d	d--------	_	13	AuxY	_	t_1357|gloss=but
+3	κατὰ	κατά	r	r--------	_	6	AuxP	_	t_1358|gloss=according-to
+4	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	5	ATR	_	t_1359|gloss=the
+5	πάτρια	πάτριος	a	a-p---na-	Case=a|Gender=n|Number=p	3	ADV	_	t_1360|gloss=ancestral
+6	πράσσων	πράσσω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	13	ADV	_	t_1361|gloss=doing
+7	,	,	u	u--------	_	13	AuxX	_	t_1362|gloss=,
+8	οὐ	οὐ	d	d--------	_	12	AuxZ	_	t_1363|gloss=not
+9	δὲ	δέ	d	d--------	_	8	AuxY	_	t_1364|gloss=yet
+10	αὐτὸ	αὐτός	a	a-s---na-	Case=a|Gender=n|Number=s	11	ATR	_	t_1365|gloss=same
+11	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	14	SBJ	_	t_1366|gloss=this
+12	ἐπιτηδεύων	ἐπιτηδεύω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	13	PNOM	_	t_1367|gloss=cultivating
+13	φαίνεσθαι	φαίνω	v	v--pne---	Mood=n|Tense=p|Voice=e	0	PRED	_	t_1368|gloss=to-appear
+14	,	,	u	u--------	_	13	APOS	_	t_1369|gloss=,
+15	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	18	ATR	_	t_1370|gloss=the-[thing]
+16	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	17	ATR	_	t_1371|gloss=the
+17	πάτρια	πάτριος	a	a-p---na-	Case=a|Gender=n|Number=p	18	OBJ	_	t_1372|gloss=ancestral
+18	φυλάσσειν	φυλάσσω	v	v--pna---	Mood=n|Tense=p|Voice=a	14	OBJ	_	t_1373|gloss=to-guard
+19	.	.	u	u--------	_	13	AuxK	_	t_1374|gloss=.
+
+
+# sentence_id = 85
+# translation_lang = en
+# prose_translation = She also taught me not to be easily shaken or given to flitting about, but to be steadfast, dwelling on the same places and the same activities.
+# literal_translation = Still further: not to be easily-moved and given-to-flitting, but even in places and in the same affairs to be given-to-abiding:
+1	ἔτι	ἔτι	d	d--------	_	17	ADV	_	t_1375|gloss=further
+2	δὲ	δέ	d	d--------	_	17	AuxY	_	t_1376|gloss=then
+3	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	18	ATR	_	t_1377|gloss=the-[lesson]
+4	μὴ	μή	d	d--------	_	5	AuxZ	_	t_1378|gloss=not
+5	εὐμετακίνητον	εὐμετακίνητος	a	a-s---nn-	Case=n|Gender=n|Number=s	6	PNOM	_	t_1379|gloss=easily-moved
+6	καὶ	καί	c	c--------	_	18	COORD	_	t_1380|gloss=and
+7	ῥιπταστικόν	ῥιπταστικός	a	a-s---nn-	Case=n|Gender=n|Number=s	6	PNOM	_	t_1381|gloss=given-to-flitting
+8	,	,	u	u--------	_	17	AuxX	_	t_1382|gloss=,
+9	ἀλλὰ	ἀλλά	c	c--------	_	18	COORD	_	t_1383|gloss=but
+10	καὶ	καί	d	d--------	_	12	AuxZ	_	t_1384|gloss=even
+11	τόποις	τόπος	n	n-p---md-	Case=d|Gender=m|Number=p	12	ADV	_	t_1385|gloss=in-places
+12	καὶ	καί	c	c--------	_	16	COORD	_	t_1386|gloss=and
+13	πράγμασι	πρᾶγμα	n	n-p---nd-	Case=d|Gender=n|Number=p	12	OBJ	_	t_1387|gloss=in-affairs
+14	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	13	ATR	_	t_1388|gloss=the
+15	αὐτοῖς	αὐτός	a	a-p---md-	Case=d|Gender=m|Number=p	13	ATR	_	t_1389|gloss=same
+16	ἐνδιατριπτικόν	ἐνδιατριπτικός	a	a-s---nn-	Case=n|Gender=n|Number=s	9	PNOM	_	t_1390|gloss=given-to-abiding
+17	[0]	[0]	-	---------	_	0	PRED	_	e_92
+18	[1]	[1]	-	---------	_	17	PRED	_	e_93
+19	·	·	u	u--------	_	17	AuxK	_	t_1391|gloss=·
+
+
+# sentence_id = 86
+# translation_lang = en
+# prose_translation = She also taught me that, right after her headache attacks subsided, she would be fresh and vigorous again at once, ready for her accustomed tasks.
+# literal_translation = And the [being] fresh immediately and vigorous after the attacks of headache with a view to the accustomed works: [I learned].
+1	καὶ	καί	d	d--------	_	16	AuxY	_	t_1392|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	8	ATR	_	t_1393|gloss=the-[being]
+3	μετὰ	μετά	r	r--------	_	8	AuxP	_	t_1394|gloss=after
+4	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	5	ATR	_	t_1395|gloss=the
+5	παροξυσμοὺς	παροξυσμός	n	n-p---ma-	Case=a|Gender=m|Number=p	3	ATR	_	t_1396|gloss=attacks
+6	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	7	ATR	_	t_1397|gloss=of-the
+7	κεφαλαλγίας	κεφαλαλγία	n	n-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_1398|gloss=headache
+8	νεαρὸν	νεαρός	a	a-s---na-	Case=a|Gender=n|Number=s	16	SBJ	_	t_1399|gloss=fresh
+9	εὐθὺς	εὐθύς2	d	d--------	_	10	ADV	_	t_1400|gloss=immediately
+10	καὶ	καί	c	c--------	_	8	COORD	_	t_1401|gloss=and
+11	ἀκμαῖον	ἀκμαῖος	a	a-s---na-	Case=a|Gender=n|Number=s	10	PNOM	_	t_1402|gloss=vigorous
+12	πρὸς	πρός	r	r--------	_	11	AuxP	_	t_1403|gloss=with-a-view-to
+13	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	15	ATR	_	t_1404|gloss=the
+14	συνήθη	συνήθης	a	a-p---na-	Case=a|Gender=n|Number=p	15	ATR	_	t_1405|gloss=accustomed
+15	ἔργα	ἔργον	n	n-p---na-	Case=a|Gender=n|Number=p	12	ADV	_	t_1406|gloss=works
+16	[0]	[0]	-	---------	_	0	PRED	_	e_94
+17	·	·	u	u--------	_	16	AuxK	_	t_1407|gloss=·
+
+
+# sentence_id = 87
+# translation_lang = en
+# prose_translation = I also learned that he did not have many secrets, but very few and very rare, and these only concerning public affairs.
+# literal_translation = And [I learned] the not to be to-him many the secret-things, but very-few and very-rarest, and these only concerning the common [affairs]:
+1	καὶ	καί	d	d--------	_	20	AuxY	_	t_1408|gloss=and
+2	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	4	ATR	_	t_1409|gloss=the
+3	μὴ	μή	d	d--------	_	8	AuxZ	_	t_1410|gloss=not
+4	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	20	SBJ	_	t_1411|gloss=to-be
+5	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	8	ATR	_	t_1412|gloss=to-him
+6	πολλὰ	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	10	SBJ	_	t_1413|gloss=many
+7	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	8	ATR	_	t_1414|gloss=the
+8	ἀπόρρητα	ἀπόρρητος	a	a-p---na-	Case=a|Gender=n|Number=p	10	SBJ	_	t_1415|gloss=secret-things
+9	,	,	u	u--------	_	20	AuxX	_	t_1416|gloss=,
+10	ἀλλʼ	ἀλλά	c	c--------	_	4	COORD	_	t_1417|gloss=but
+11	ὀλίγιστα	ὀλίγος	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	12	SBJ	_	t_1418|gloss=very-few
+12	καὶ	καί	c	c--------	_	10	COORD	_	t_1419|gloss=and
+13	σπανιώτατα	σπάνιος	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	12	PNOM	_	t_1420|gloss=very-rare
+14	καὶ	καί	c	c--------	_	15	AuxZ	_	t_1421|gloss=and
+15	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	4	SBJ	_	t_1422|gloss=these
+16	ὑπὲρ	ὑπέρ	r	r--------	_	4	AuxP	_	t_1423|gloss=concerning
+17	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	19	ATR	_	t_1424|gloss=the
+18	κοινῶν	κοινός	a	a-p---ng-	Case=g|Gender=n|Number=p	19	ATR	_	t_1425|gloss=common
+19	μόνων	μόνος	a	a-p---ng-	Case=g|Gender=n|Number=p	16	ADV	_	t_1426|gloss=only
+20	[0]	[0]	-	---------	_	0	PRED	_	e_95
+21	·	·	u	u--------	_	20	AuxK	_	t_1427|gloss=·
+
+
+# sentence_id = 88
+# translation_lang = en
+# prose_translation = And I learned soundness of mind and a sense of measure both in the completion of theoretical studies and in the arrangement and distribution of practical affairs, and in such things generally: the mark of a man who has looked directly at the very thing that needs to be done, not toward the reputation that comes from what has been done.
+# literal_translation = And the sound-minded and measured [quality], both in of-theories completion and of-works arrangements and distributions and in such things: which is of-a-man having-looked-directly toward the very thing needing to-be-done, not toward the reputation upon the things-having-been-done.
+1	καὶ	καί	c	c--------	_	36	AuxY	_	t_1428|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_1429|gloss=the-[quality]
+3	ἔμφρον	ἔμφρων	a	a-s---nn-	Case=n|Gender=n|Number=s	4	SBJ	_	t_1430|gloss=sound-minded
+4	καὶ	καί	c	c--------	_	36	COORD	_	t_1431|gloss=and
+5	μεμετρημένον	μετρέω	v	v-srpenn-	Case=n|Gender=n|Mood=p|Number=s|Tense=r|Voice=e	4	ATR	_	t_1432|gloss=measured
+6	ἔν	ἐν	r	r--------	_	4	AuxP	_	t_1433|gloss=in
+7	τε	τε	c	c--------	_	15	AuxY	_	t_1434|gloss=both
+8	θεωριῶν	θεωρία	n	n-p---fg-	Case=g|Gender=f|Number=p	9	ATR	_	t_1435|gloss=of-theories
+9	ἐπιτελέσει	ἐπιτελέω	n	n-s---fd-	Case=d|Gender=f|Number=s	15	ADV	_	t_1436|gloss=completion
+10	καὶ	καί	c	c--------	_	15	AuxY	_	t_1437|gloss=and
+11	ἔργων	ἔργον	n	n-p---ng-	Case=g|Gender=n|Number=p	12	ATR	_	t_1438|gloss=of-works
+12	κατασκευαῖς	κατασκευή	n	n-p---fd-	Case=d|Gender=f|Number=p	15	ADV	_	t_1439|gloss=arrangements
+13	καὶ	καί	c	c--------	_	15	AuxY	_	t_1440|gloss=and
+14	διανομαῖς	διανομή	n	n-p---fd-	Case=d|Gender=f|Number=p	15	ADV	_	t_1441|gloss=distributions
+15	καὶ	καί	c	c--------	_	6	COORD	_	t_1442|gloss=and
+16	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	17	ATR	_	t_1443|gloss=the
+17	τοιούτοις	τοιοῦτος	p	p-p---nd-	Case=d|Gender=n|Number=p	15	ADV	_	t_1444|gloss=such-things
+18	,	,	u	u--------	_	36	AuxX	_	t_1445|gloss=,
+19	ὅ	ὅς	p	p-s---nn-	Case=n|Gender=n|Number=s	20	SBJ	_	t_1446|gloss=which
+20	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	17	ATR	_	t_1447|gloss=is
+21	ἀνθρώπου	ἄνθρωπος	n	n-s---mg-	Case=g|Gender=m|Number=s	27	SBJ	_	t_1448|gloss=of-a-man
+22	πρὸς	πρός	r	r--------	_	27	AuxP	_	t_1449|gloss=toward
+23	αὐτὸ	αὐτός	p	p-s---na-	Case=a|Gender=n|Number=s	25	ATR	_	t_1450|gloss=very
+24	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	25	ATR	_	t_1451|gloss=the
+25	δέον	δεῖ	v	v-sppana-	Case=a|Gender=n|Mood=p|Number=s|Tense=p|Voice=a	22	ADV	_	t_1452|gloss=needing
+26	πραχθῆναι	πράσσω	v	v--anp---	Mood=n|Tense=a|Voice=p	22	ADV	_	t_1453|gloss=to-be-done
+27	δεδορκότος	δέρκομαι	v	v-srpamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=r|Voice=a	20	ADV	_	t_1454|gloss=having-looked-directly
+28	,	,	u	u--------	_	27	COORD	_	t_1455|gloss=,
+29	οὐ	οὐ	d	d--------	_	35	AuxZ	_	t_1456|gloss=not
+30	πρὸς	πρός	r	r--------	_	28	AuxP	_	t_1457|gloss=toward
+31	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	35	ATR	_	t_1458|gloss=the
+32	ἐπὶ	ἐπί	r	r--------	_	35	AuxP	_	t_1459|gloss=upon
+33	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	34	ATR	_	t_1460|gloss=the
+34	πραχθεῖσιν	πράσσω	v	v-pappnd-	Case=d|Gender=n|Mood=p|Number=p|Tense=a|Voice=p	32	ATR	_	t_1461|gloss=things-having-been-done
+35	εὐδοξίαν	εὐδοξία	n	n-s---fa-	Case=a|Gender=f|Number=s	30	ADV	_	t_1462|gloss=reputation
+36	[0]	[0]	-	---------	_	0	PRED	_	e_96
+37	.	.	u	u--------	_	36	AuxK	_	t_1463|gloss=.
+
+
+# sentence_id = 89
+# translation_lang = en
+# prose_translation = Not to bathe at unseasonable hours; not to be fond of building; not to be fastidious about food, or about the weave and color of clothing, or about the beauty of slaves' bodies.
+# literal_translation = Not untimely a bather: not fond-of-building, not concerning the foods a deviser: not concerning garments' weaves and colors [concerned]: not concerning bodies' beauty [concerned].
+1	οὐκ	οὐ	d	d--------	_	2	AuxZ	_	t_1464|gloss=not
+2	ἀωρὶ	ἀωρί	d	d--------	_	20	PNOM	_	t_1465|gloss=at-unseasonable-hours
+3	λούστης	λούστος	v	v2saia---	Case=n|Gender=m|Number=s	0	PRED	_	t_1466|gloss=a-bather
+4	,	,	u	u--------	_	3	AuxX	_	t_1467|gloss=,
+5	οὐχὶ	οὐ	d	d--------	_	6	AuxZ	_	t_1468|gloss=not
+6	φιλοικοδόμος	φιλοικοδόμος	a	a-s---mn-	Case=n|Gender=m|Number=s	7	PNOM	_	t_1469|gloss=fond-of-building
+7	,	,	u	u--------	_	3	COORD	_	t_1470|gloss=,
+8	οὐ	οὐ	d	d--------	_	12	AuxZ	_	t_1471|gloss=not
+9	περὶ	περί	r	r--------	_	20	AuxP	_	t_1472|gloss=about
+10	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	11	ATR	_	t_1473|gloss=the
+11	ἐδωδὰς	ἐδωδή	n	n-p---fa-	Case=a|Gender=f|Number=p	9	ADV	_	t_1474|gloss=foods
+12	ἐπινοητής	ἐπινοητής	v	v-sppemn-	Case=n|Gender=m|Number=s	7	PNOM	_	t_1475|gloss=a-deviser
+13	,	,	u	u--------	_	3	AuxX	_	t_1476|gloss=,
+14	οὐ	οὐ	d	d--------	_	17	AuxZ	_	t_1477|gloss=not
+15	περὶ	περί	r	r--------	_	20	AuxP	_	t_1478|gloss=about
+16	ἐσθήτων	ἐσθής	n	n-p---fg-	Case=g|Gender=f|Number=p	18	ATR	_	t_1479|gloss=of-garments
+17	ὑφὰς	ὑφή	n	n-p---fa-	Case=a|Gender=f|Number=p	18	ADV	_	t_1480|gloss=weaves
+18	καὶ	καί	c	c--------	_	15	COORD	_	t_1481|gloss=and
+19	χρόας	χροιά	n	n-p---ma-	Case=a|Gender=m|Number=p	18	ADV	_	t_1482|gloss=colors
+20	,	,	u	u--------	_	12	COORD	_	t_1483|gloss=,
+21	οὐ	οὐ	d	d--------	_	24	AuxZ	_	t_1484|gloss=not
+22	περὶ	περί	r	r--------	_	20	AuxP	_	t_1485|gloss=about
+23	σωμάτων	σῶμα	n	n-p---ng-	Case=g|Gender=n|Number=p	24	ATR	_	t_1486|gloss=of-bodies
+24	ὥρας	ὥρα	n	n-p---fa-	Case=a|Gender=f|Number=p	22	ADV	_	t_1487|gloss=beauty
+25	.	.	u	u--------	_	3	AuxK	_	t_1488|gloss=.
+
+
+# sentence_id = 90
+# translation_lang = en
+# prose_translation = I learned about the toga from Lorium, the robe that leads up from the lower villa.
+# literal_translation = the from-Lorium robe leading-up from the lower villa:
+1	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	4	ATR	_	t_1489|gloss=the
+2	ἀπὸ	ἀπό	r	r--------	_	4	AuxP	_	t_1490|gloss=from
+3	Λωρίου	λωρίῳ	n	n-s---mg-	Case=g|Gender=m|Number=s	2	ATR	_	t_1491|gloss=Lorium
+4	στολὴ	στολή	n	n-s---fn-	Case=n|Gender=f|Number=s	10	SBJ	_	t_1492|gloss=robe
+5	ἀνάγουσα	ἀνάγω	v	v-sppafn-	Case=n|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	4	ATR	_	t_1493|gloss=leading-up
+6	ἀπὸ	ἀπό	r	r--------	_	5	AuxP	_	t_1494|gloss=from
+7	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	9	ATR	_	t_1495|gloss=the
+8	κάτω	κάτω	d	d--------	_	9	ATR	_	t_1496|gloss=lower
+9	ἐπαύλεως	ἔπαυλις	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ADV	_	t_1497|gloss=villa
+10	[0]	[0]	-	---------	_	0	PRED	_	e_97
+11	·	·	u	u--------	_	10	AuxK	_	t_1498|gloss=·
+
+
+# sentence_id = 91
+# translation_lang = en
+# prose_translation = To wear a simple tunic at my house in Lanuvium, for the most part.
+# literal_translation = Tunic at Lanuvium, the many [times]: [I learned].
+1	χιτὼν	χιτών	n	n-s---mn-	Case=n|Gender=m|Number=s	6	SBJ	_	t_1499|gloss=a-simple-tunic
+2	ἐν	ἐν	r	r--------	_	6	AuxP	_	t_1500|gloss=at
+3	Λανουβίῳ	λανούβιον	n	n-s---md-	Case=d|Gender=m|Number=s	2	ADV	_	t_1501|gloss=Lanuvium
+4	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	5	ATR	_	t_1502|gloss=the
+5	πολλά	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	6	ADV	_	t_1503|gloss=many-times
+6	[0]	[0]	-	---------	_	0	PRED	_	e_98
+7	·	·	u	u--------	_	6	AuxK	_	t_1504|gloss=·
+
+
+# sentence_id = 92
+# translation_lang = en
+# prose_translation = How he behaved toward the man who begged off from lending his cloak at Tusculum, and how every such manner naturally behaves.
+# literal_translation = How he made use, toward the one begging off the cloak at Tusculum, and every such manner [likewise makes use]:
+1	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	2	ATR	_	t_1505|gloss=the
+2	φελώνῃ	φελώνη	n	n-s---md-	Case=d|Gender=m|Number=s	7	OBJ	_	t_1506|gloss=cloak
+3	ἐν	ἐν	r	r--------	_	5	AuxP	_	t_1507|gloss=at
+4	Τούσκλοις	τόνκλον	n	n-p---md-	Case=d|Gender=m|Number=p	3	ADV	_	t_1508|gloss=Tusculum
+5	παραιτουμένῳ	παραιτέομαι	v	v-sppemd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	2	ATR	_	t_1509|gloss=begging-off
+6	ὡς	ὡς	d	d--------	_	7	AuxC	_	t_1510|gloss=as
+7	ἐχρήσατο	χράω2	v	v3saim---	Mood=i|Number=s|Person=3|Tense=a|Voice=m	13	ADV	_	t_1511|gloss=he-made-use
+8	καὶ	καί	d	d--------	_	12	AuxZ	_	t_1512|gloss=and
+9	πᾶς	πᾶς	a	a-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_1513|gloss=every
+10	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_1514|gloss=the
+11	τοιοῦτος	τοιοῦτος	a	a-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_1515|gloss=of-that-kind
+12	τρόπος	τρόπος	n	n-s---mn-	Case=n|Gender=m|Number=s	7	SBJ	_	t_1516|gloss=manner
+13	[0]	[0]	-	---------	_	0	PRED	_	e_99
+14	.	.	u	u--------	_	13	AuxK	_	t_1517|gloss=.
+
+
+# sentence_id = 93
+# translation_lang = en
+# prose_translation = Nothing harsh, nothing implacable, nothing violent: so that one could never once say of her anything of the sort.
+# literal_translation = Nothing harsh: nor indeed implacable: nor violent: so-that one-might ever say [of her] anything-of-the-sort.
+1	οὐδὲν	οὐδείς	p	p-s---na-	Case=a|Gender=n|Number=s	0	PRED	_	t_1518|gloss=nothing
+2	ἀπηνὲς	ἀπηνής	a	a-s---na-	Case=a|Gender=n|Number=s	11	ATR	_	t_1519|gloss=harsh
+3	οὐ	οὐ	d	d--------	_	6	AuxZ	_	t_1520|gloss=not
+4	δὲ	δέ	d	d--------	_	11	AuxY	_	t_1521|gloss=and
+5	μὴν	μήν	d	d--------	_	11	AuxZ	_	t_1522|gloss=indeed
+6	ἀδυσώπητον	ἀδυσώπητος	a	a-s---na-	Case=a|Gender=n|Number=s	8	ATR	_	t_1523|gloss=implacable
+7	οὐ	οὐ	d	d--------	_	9	AuxZ	_	t_1524|gloss=not
+8	δὲ	δέ	c	c--------	_	11	AuxY	_	t_1525|gloss=nor
+9	λάβρον	λάβρος	a	a-s---na-	Case=a|Gender=n|Number=s	11	ATR	_	t_1526|gloss=violent
+10	οὐ	οὐ	d	d--------	_	15	AuxZ	_	t_1527|gloss=not
+11	δὲ	δέ	c	c--------	_	1	COORD	_	t_1528|gloss=but
+12	ὥστʼ	ὥστε	c	c--------	_	11	AuxC	_	t_1529|gloss=so-that
+13	ἄν	ἄν	d	d--------	_	15	AuxY	_	t_1530|gloss=ever
+14	τινα	τις	p	p-s---ma-	Case=a|Gender=m|Number=s	15	SBJ	_	t_1531|gloss=anyone
+15	εἰπεῖν	εἶπον	v	v--ana---	Mood=n|Tense=a|Voice=a	12	ADV	_	t_1532|gloss=say
+16	ποτε	ποτέ	d	d--------	_	15	ADV	_	t_1533|gloss=once
+17	·	·	u	u--------	_	5	AuxK	_	t_1534|gloss=·
+
+
+# sentence_id = 94
+# translation_lang = en
+# prose_translation = To persist to the point of sweat.
+# literal_translation = Until sweat:
+1	ἕως	ἕως	r	r--------	_	3	AuxC	_	t_1535|gloss=until
+2	ἱδρῶτος	ἱδρώς	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_1536|gloss=sweat
+3	[0]	[0]	-	---------	_	0	PRED	_	e_100
+4	·	·	u	u--------	_	3	AuxK	_	t_1537|gloss=·
+
+
+# sentence_id = 95
+# translation_lang = en
+# prose_translation = She taught me that all things are to be reckoned as having their allotted places, as though at leisure, without disturbance, in good order, vigorously, and in harmony with one another.
+# literal_translation = But all things having-been-allotted: to be reckoned, as at leisure, undisturbedly, in orderly-fashion, vigorously, and harmoniously with themselves.
+1	ἀλλὰ	ἀλλά	d	d--------	_	4	AuxY	_	t_1538|gloss=but
+2	πάντα	πᾶς	a	a-p---na-	Case=a|Gender=n|Number=p	4	SBJ	_	t_1539|gloss=all-things
+3	διειλημμένα	διαλαγχάνω	v	v-prpena-	Case=a|Gender=n|Mood=p|Number=p|Tense=r|Voice=e	4	ADV	_	t_1540|gloss=having-been-allotted
+4	λελογίσθαι	λογίζομαι	v	v--rne---	Mood=n|Tense=r|Voice=e	17	OBJ	_	t_1541|gloss=to-be-reckoned
+5	ὡς	ὡς	c	c--------	_	3	AuxC	_	t_1542|gloss=as
+6	ἐπὶ	ἐπί	r	r--------	_	14	AuxP	_	t_1543|gloss=at
+7	σχολῆς	σχολή	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ADV	_	t_1544|gloss=leisure
+8	,	,	u	u--------	_	17	AuxX	_	t_1545|gloss=,
+9	ἀταράχως	ἀταράχως	d	d--------	_	14	ADV	_	t_1546|gloss=undisturbedly
+10	,	,	u	u--------	_	17	AuxX	_	t_1547|gloss=,
+11	τεταγμένως	τεταγμένος	d	d--------	_	14	ADV	_	t_1548|gloss=in-orderly-fashion
+12	,	,	u	u--------	_	17	AuxX	_	t_1549|gloss=,
+13	ἐρρωμένως	ἐρρωμένος	d	d--------	_	14	ADV	_	t_1550|gloss=vigorously
+14	,	,	u	u--------	_	4	COORD	_	t_1551|gloss=,
+15	συμφώνως	σύμφωνος	d	d--------	_	14	ADV	_	t_1552|gloss=harmoniously
+16	ἑαυτοῖς	ἑαυτοῦ	p	p-p---nd-	Case=d|Gender=n|Number=p	15	ADV	_	t_1553|gloss=with-themselves
+17	[0]	[0]	-	---------	_	0	PRED	_	e_101
+18	.	.	u	u--------	_	17	AuxK	_	t_1554|gloss=.
+
+
+# sentence_id = 96
+# translation_lang = en
+# prose_translation = It would suit him, as is remembered of Socrates, that he was able both to abstain from and to enjoy such things as most people, in relation to their abstinences, are weakly disposed, and in relation to their enjoyments, are self-indulgently disposed.
+# literal_translation = It would fit him: the [thing] concerning Socrates being remembered, that he was able both to abstain and to enjoy of these things, of which the many, in relation to the abstinences, weakly, and in relation to the enjoyments, indulgently, are disposed.
+1	ἐφαρμόσειε	ἐφαρμόσω	v	v3saoa---	Mood=o|Number=s|Person=3|Tense=a|Voice=a	0	PRED	_	t_1555|gloss=would-suit
+2	δʼ	δέ	d	d--------	_	1	AuxY	_	t_1556|gloss=and
+3	ἂν	ἄν	d	d--------	_	1	AuxY	_	t_1557|gloss=would
+4	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	1	OBJ	_	t_1558|gloss=him
+5	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	9	ATR	_	t_1559|gloss=the-[thing]
+6	περὶ	περί	r	r--------	_	9	AuxP	_	t_1560|gloss=concerning
+7	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_1561|gloss=the
+8	Σωκράτους	σωκράτης	n	n-s---mg-	Case=g|Gender=m|Number=s	6	ATR	_	t_1562|gloss=Socrates
+9	μνημονευόμενον	μνημονεύω	v	v-sppenn-	Case=n|Gender=n|Mood=p|Number=s|Tense=p|Voice=e	1	SBJ	_	t_1563|gloss=being-remembered
+10	,	,	u	u--------	_	1	APOS	_	t_1564|gloss=,
+11	ὅτι	ὅτι	c	c--------	_	10	AuxC	_	t_1565|gloss=that
+12	καὶ	καί	d	d--------	_	14	AuxY	_	t_1566|gloss=both
+13	ἀπέχεσθαι	ἀπέχω	v	v--pne---	Mood=n|Tense=p|Voice=e	14	OBJ	_	t_1567|gloss=to-abstain
+14	καὶ	καί	c	c--------	_	16	COORD	_	t_1568|gloss=and
+15	ἀπολαύειν	ἀπολαύω	v	v--pna---	Mood=n|Tense=p|Voice=a	14	OBJ	_	t_1569|gloss=to-enjoy
+16	ἐδύνατο	δύναμαι	v	v3siie---	Mood=i|Number=s|Person=3|Tense=i|Voice=e	11	OBJ	_	t_1570|gloss=was-able
+17	τούτων	οὗτος	p	p-p---mg-	Case=g|Gender=m|Number=p	14	OBJ	_	t_1571|gloss=of-these-things
+18	,	,	u	u--------	_	1	AuxX	_	t_1572|gloss=,
+19	ὧν	ὅς	p	p-p---mg-	Case=g|Gender=m|Number=p	21	ATR	_	t_1573|gloss=of-which
+20	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	21	ATR	_	t_1574|gloss=the
+21	πολλοὶ	πολύς	a	a-p---mn-	Case=n|Gender=m|Number=p	32	SBJ	_	t_1575|gloss=many
+22	πρός	πρός	r	r--------	_	27	AuxP	_	t_1576|gloss=in-relation-to
+23	τε	τε	c	c--------	_	27	AuxY	_	t_1577|gloss=both
+24	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	25	ATR	_	t_1578|gloss=the
+25	ἀποχὰς	ἀποχή	n	n-p---fa-	Case=a|Gender=f|Number=p	22	ADV	_	t_1579|gloss=abstinences
+26	ἀσθενῶς	ἀσθενής	d	d--------	_	27	ADV	_	t_1580|gloss=weakly
+27	καὶ	καί	c	c--------	_	32	COORD	_	t_1581|gloss=and
+28	πρὸς	πρός	r	r--------	_	27	AuxP	_	t_1582|gloss=in-relation-to
+29	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	30	ATR	_	t_1583|gloss=the
+30	ἀπολαύσεις	ἀπόλαυσις	n	n-p---fa-	Case=a|Gender=f|Number=p	28	ADV	_	t_1584|gloss=enjoyments
+31	ἐνδοτικῶς	ἐνδοτικός	d	d--------	_	32	ADV	_	t_1585|gloss=indulgently
+32	ἔχουσι	ἔχω	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	17	ATR	_	t_1586|gloss=are-disposed
+33	.	.	u	u--------	_	1	AuxK	_	t_1587|gloss=.
+
+
+# sentence_id = 97
+# translation_lang = en
+# prose_translation = To be strong and to endure, and to be sober in both fortune alike, is the mark of a man who possesses a soul at once sound and unconquered: such as [his] was in the illness of Maximus.
+# literal_translation = The [it] to be strong and to endure, and to be sober in each of the two [fortunes] alike, is [the mark] of a man having a soul sound and unconquered: such as in the illness, the [illness] of Maximus:
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_1588|gloss=the-[act]
+2	δὲ	δέ	d	d--------	_	10	AuxY	_	t_1589|gloss=and
+3	ἰσχύειν	ἰσχύω	v	v--pna---	Mood=n|Tense=p|Voice=a	6	SBJ	_	t_1590|gloss=to-be-strong
+4	καὶ	καί	d	d--------	_	6	AuxY	_	t_1591|gloss=and
+5	ἐγκαρτερεῖν	ἐγκαρτερέω	v	v--pna---	Mood=n|Tense=p|Voice=a	6	SBJ	_	t_1592|gloss=to-endure
+6	καὶ	καί	c	c--------	_	10	COORD	_	t_1593|gloss=and
+7	ἐννήφειν	ἐννοέω	v	v--pna---	Mood=n|Tense=p|Voice=a	6	SBJ	_	t_1594|gloss=to-be-sober
+8	ἑκατέρῳ	ἑκάτερος	a	a-s---md-	Case=d|Gender=m|Number=s	10	ADV	_	t_1595|gloss=in-each-alike
+9	ἀνδρός	ἀνήρ	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ATR	_	t_1596|gloss=of-a-man
+10	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_1597|gloss=is
+11	ἄρτιον	ἄρτιος	a	a-s---nn-	Case=n|Gender=n|Number=s	12	PNOM	_	t_1598|gloss=sound
+12	καὶ	καί	c	c--------	_	10	COORD	_	t_1599|gloss=and
+13	ἀήττητον	ἀήσσητος	a	a-s---fa-	Case=a|Gender=f|Number=s	12	PNOM	_	t_1600|gloss=unconquered
+14	ψυχὴν	ψυχή	n	n-s---fa-	Case=a|Gender=f|Number=s	15	OBJ	_	t_1601|gloss=a-soul
+15	ἔχοντος	ἔχω	v	v-sppamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	9	ATR	_	t_1602|gloss=possessing
+16	,	,	u	u--------	_	10	AuxX	_	t_1603|gloss=:
+17	οἷον	οἷος	a	a-s---na-	Case=a|Gender=n|Number=s	23	ADV	_	t_1604|gloss=such-as
+18	ἐν	ἐν	r	r--------	_	23	AuxP	_	t_1605|gloss=in
+19	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	20	ATR	_	t_1606|gloss=the
+20	νόσῳ	νόσος	n	n-s---fd-	Case=d|Gender=f|Number=s	18	ADV	_	t_1607|gloss=illness
+21	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	20	ATR	_	t_1608|gloss=the-[illness]
+22	Μαξίμου	μάξιμος	n	n-s---mg-	Case=g|Gender=m|Number=s	20	ATR	_	t_1609|gloss=of-Maximus
+23	[0]	[0]	-	---------	_	9	ATR	_	e_102
+24	.	.	u	u--------	_	10	AuxK	_	t_1610|gloss=.
+
+
+# sentence_id = 98
+# translation_lang = en
+# prose_translation = From the gods I have had the blessing of good grandfathers, good parents, a good sister, good teachers, good household members, good kinsmen and friends—almost everything good.
+# literal_translation = From the gods: to have good grandfathers, good parents, a good sister, good teachers, good household-members, kinsmen, friends—almost all [of them] good.
+1	Παρὰ	παρά	r	r--------	_	26	AuxP	_	t_1611|gloss=from
+2	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	3	ATR	_	t_1612|gloss=the
+3	θεῶν	θεός	n	n-p---mg-	Case=g|Gender=m|Number=p	1	ExD	_	t_1613|gloss=gods
+4	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	26	ATR	_	t_1614|gloss=the
+5	ἀγαθοὺς	ἀγαθός	a	a-p---ma-	Case=a|Gender=m|Number=p	6	ATR	_	t_1615|gloss=good
+6	πάππους	πάππης	n	n-p---ma-	Case=a|Gender=m|Number=p	21	OBJ	_	t_1616|gloss=grandfathers
+7	,	,	u	u--------	_	26	AuxX	_	t_1617|gloss=,
+8	ἀγαθοὺς	ἀγαθός	a	a-p---ma-	Case=a|Gender=m|Number=p	9	ATR	_	t_1618|gloss=good
+9	γονέας	γονεύς	n	n-p---ma-	Case=a|Gender=m|Number=p	21	OBJ	_	t_1619|gloss=parents
+10	,	,	u	u--------	_	26	AuxX	_	t_1620|gloss=,
+11	ἀγαθὴν	ἀγαθός	a	a-s---fa-	Case=a|Gender=f|Number=s	12	ATR	_	t_1621|gloss=good
+12	ἀδελφήν	ἀδελφή	n	n-s---fa-	Case=a|Gender=f|Number=s	21	OBJ	_	t_1622|gloss=sister
+13	,	,	u	u--------	_	26	AuxX	_	t_1623|gloss=,
+14	ἀγαθοὺς	ἀγαθός	a	a-p---ma-	Case=a|Gender=m|Number=p	15	ATR	_	t_1624|gloss=good
+15	διδασκάλους	διδάσκαλος	n	n-p---ma-	Case=a|Gender=m|Number=p	21	OBJ	_	t_1625|gloss=teachers
+16	,	,	u	u--------	_	26	AuxX	_	t_1626|gloss=,
+17	ἀγαθοὺς	ἀγαθός	a	a-p---ma-	Case=a|Gender=m|Number=p	18	ATR	_	t_1627|gloss=good
+18	οἰκείους	οἰκεῖος	a	a-p---ma-	Case=a|Gender=m|Number=p	21	OBJ	_	t_1628|gloss=household-members
+19	,	,	u	u--------	_	26	AuxX	_	t_1629|gloss=,
+20	συγγενεῖς	συγγενής	a	a-p---ma-	Case=a|Gender=m|Number=p	21	OBJ	_	t_1630|gloss=kinsmen
+21	,	,	u	u--------	_	25	APOS	_	t_1631|gloss=,
+22	φίλους	φίλος	a	a-p---ma-	Case=a|Gender=m|Number=p	21	OBJ	_	t_1632|gloss=friends
+23	σχεδὸν	σχεδόν	d	d--------	_	24	ADV	_	t_1633|gloss=almost
+24	ἅπαντας	ἅπας	a	a-p---ma-	Case=a|Gender=m|Number=p	21	ATR	_	t_1634|gloss=all
+25	ἔχειν	ἔχω	v	v--pna---	Mood=n|Tense=p|Voice=a	26	SBJ	_	t_1635|gloss=to-have
+26	[0]	[0]	-	---------	_	0	PRED	_	e_103
+27	·	·	u	u--------	_	26	AuxK	_	t_1636|gloss=·
+
+
+# sentence_id = 99
+# translation_lang = en
+# prose_translation = And that you fell before none of them into any wrongdoing, although you had such a disposition that, given the chance, you might well have done something of that sort.
+# literal_translation = And that: concerning none of them did you fall-before to-commit-wrong anything, although having such a disposition, from which, if it chanced, even might I have done something of-that-sort.
+1	καὶ	καί	d	d--------	_	6	AuxY	_	t_1637|gloss=and
+2	ὅτι	ὅτι	d	d--------	_	6	AuxY	_	t_1638|gloss=that
+3	περὶ	περί	r	r--------	_	7	AuxP	_	t_1639|gloss=concerning
+4	οὐδένα	οὐδείς	p	p-s---ma-	Case=a|Gender=m|Number=s	3	ADV	_	t_1640|gloss=none
+5	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	4	ATR	_	t_1641|gloss=of-them
+6	προέπεσον	προπίπτω	v	v2sama---	Mood=m|Number=s|Person=2|Tense=a|Voice=a	0	PRED	_	t_1642|gloss=did-you-fall-before
+7	πλημμελῆσαί	πλημμελέω	v	v--ana---	Mood=n|Tense=a|Voice=a	6	OBJ	_	t_1643|gloss=to-doing-wrong
+8	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_1644|gloss=anything
+9	,	,	u	u--------	_	6	AuxX	_	t_1645|gloss=,
+10	καίτοι	καίτοι	d	d--------	_	12	AuxZ	_	t_1646|gloss=although
+11	διάθεσιν	διάθεσις	n	n-s---fa-	Case=a|Gender=f|Number=s	12	OBJ	_	t_1647|gloss=disposition
+12	ἔχων	ἔχω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	6	ADV	_	t_1648|gloss=having
+13	τοιαύτην	τοιοῦτος	a	a-s---fa-	Case=a|Gender=f|Number=s	11	ATR	_	t_1649|gloss=of-that-kind
+14	,	,	u	u--------	_	6	AuxX	_	t_1650|gloss=,
+15	ἀφʼ	ἀπό	r	r--------	_	19	AuxP	_	t_1651|gloss=from
+16	ἧς	ὅς	p	p-s---fg-	Case=g|Gender=f|Number=s	15	ADV	_	t_1652|gloss=which
+17	,	,	u	u--------	_	6	AuxX	_	t_1653|gloss=,
+18	εἰ	εἰ	c	c--------	_	23	AuxC	_	t_1654|gloss=if
+19	ἔτυχε	τυγχάνω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	18	ADV	_	t_1655|gloss=it-chanced
+20	,	,	u	u--------	_	6	AuxX	_	t_1656|gloss=,
+21	κ	καί	d	d--------	_	23	AuxZ	_	t_1657|gloss=even
+22	ἂν	ἄν	d	d--------	_	23	AuxY	_	t_1658|gloss=would
+23	ἔπραξά	πράσσω	v	v1saia---	Mood=i|Number=s|Person=1|Tense=a|Voice=a	11	ATR	_	t_1659|gloss=i-have-done
+24	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	23	OBJ	_	t_1660|gloss=something
+25	τοιοῦτο	τοιοῦτος	a	a-s---na-	Case=a|Gender=n|Number=s	24	ATR	_	t_1661|gloss=of-that-kind
+26	·	·	u	u--------	_	6	AuxK	_	t_1662|gloss=·
+
+
+# sentence_id = 100
+# translation_lang = en
+# prose_translation = From the gods: their kindness was such that no confluence of circumstances ever arose that would have exposed me to reproach.
+# literal_translation = Of the gods: [I learned] the kindness [was] this, that no confluence of affairs came to be, which was going to expose me to reproach.
+1	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	2	ATR	_	t_1663|gloss=of-the
+2	θεῶν	θεός	n	n-p---mg-	Case=g|Gender=m|Number=p	4	ATR	_	t_1664|gloss=gods
+3	δὲ	δέ	d	d--------	_	15	AuxY	_	t_1665|gloss=and
+4	εὐποιία	εὐποιία	n	n-s---fn-	Case=n|Gender=f|Number=s	15	PNOM	_	t_1666|gloss=kindness
+5	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	9	ATR	_	t_1667|gloss=that
+6	μηδεμίαν	μηδείς	a	a-s---fa-	Case=a|Gender=f|Number=s	7	ATR	_	t_1668|gloss=no
+7	συνδρομὴν	συνδρομή	n	n-s---fa-	Case=a|Gender=f|Number=s	9	SBJ	_	t_1669|gloss=confluence
+8	πραγμάτων	πρᾶγμα	n	n-p---ng-	Case=g|Gender=n|Number=p	7	ATR	_	t_1670|gloss=of-affairs
+9	γενέσθαι	γίγνομαι	v	v--anm---	Mood=n|Tense=a|Voice=m	15	SBJ	_	t_1671|gloss=coming
+10	,	,	u	u--------	_	15	AuxX	_	t_1672|gloss=,
+11	ἥτις	ὅστις	p	p-s---fn-	Case=n|Gender=f|Number=s	12	SBJ	_	t_1673|gloss=which
+12	ἔμελλέ	μέλλω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	7	ATR	_	t_1674|gloss=was-going
+13	με	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	14	OBJ	_	t_1675|gloss=me
+14	ἐλέγξειν	ἐλέγχω	v	v--fna---	Mood=n|Tense=f|Voice=a	12	OBJ	_	t_1676|gloss=to-expose
+15	[0]	[0]	-	---------	_	0	PRED	_	e_104
+16	.	.	u	u--------	_	15	AuxK	_	t_1677|gloss=.
+
+
+# sentence_id = 101
+# translation_lang = en
+# prose_translation = I learned not to be brought up too long in my grandfather's household with his mistress, to preserve my youthful purity, and not to hasten into manhood before the proper time, but even to delay it a while longer.
+# literal_translation = And: the not to-be-brought-up further with the mistress of the grandfather, and the youth to-preserve, and the not before due-time to-be-made-a-man, but still even further to-take-hold of the time.
+1	καὶ	καί	c	c--------	_	30	AuxY	_	t_1678|gloss=and
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_1679|gloss=the
+3	μὴ	μή	d	d--------	_	6	AuxZ	_	t_1680|gloss=not
+4	ἐπὶ	ἐπί	r	r--------	_	6	AuxP	_	t_1681|gloss=to
+5	πλέον	πλέος	a	a-s---nac	Case=a|Degree=c|Gender=n|Number=s	4	ADV	_	t_1682|gloss=further
+6	τραφῆναι	τρέφω	v	v--anp---	Mood=n|Tense=a|Voice=p	17	SBJ	_	t_1683|gloss=to-be-brought-up
+7	παρὰ	παρά	r	r--------	_	6	AuxP	_	t_1684|gloss=with
+8	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	9	ATR	_	t_1685|gloss=the
+9	παλλακῇ	παλλακή	n	n-s---fd-	Case=d|Gender=f|Number=s	7	ADV	_	t_1686|gloss=mistress
+10	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_1687|gloss=of-the
+11	πάππου	πάππης	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_1688|gloss=grandfather
+12	καὶ	καί	d	d--------	_	17	AuxY	_	t_1689|gloss=and
+13	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	16	ATR	_	t_1690|gloss=the
+14	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	15	ATR	_	t_1691|gloss=the
+15	ὥραν	ὥρα	n	n-s---fa-	Case=a|Gender=f|Number=s	16	OBJ	_	t_1692|gloss=youth
+16	διασῶσαι	διασῴζω	v	v--ana---	Mood=n|Tense=a|Voice=a	17	SBJ	_	t_1693|gloss=to-preserve
+17	καὶ	καί	c	c--------	_	24	COORD	_	t_1694|gloss=and
+18	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	22	ATR	_	t_1695|gloss=the
+19	μὴ	μή	d	d--------	_	22	AuxZ	_	t_1696|gloss=not
+20	πρὸ	πρό	r	r--------	_	22	AuxP	_	t_1697|gloss=before
+21	ὥρας	ὥρα	n	n-s---fg-	Case=g|Gender=f|Number=s	20	ADV	_	t_1698|gloss=due-time
+22	ἀνδρωθῆναι	ἀνδρόω	v	v--anp---	Mood=n|Tense=a|Voice=p	24	OBJ	_	t_1699|gloss=to-be-made-a-man
+23	,	,	u	u--------	_	30	AuxX	_	t_1700|gloss=,
+24	ἀλλʼ	ἀλλά	c	c--------	_	30	COORD	_	t_1701|gloss=but
+25	ἔτι	ἔτι	d	d--------	_	27	ADV	_	t_1702|gloss=still
+26	καὶ	καί	d	d--------	_	27	AuxZ	_	t_1703|gloss=even
+27	ἐπιλαβεῖν	ἐπιλαμβάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	24	OBJ	_	t_1704|gloss=to-take-hold
+28	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	29	ATR	_	t_1705|gloss=of-the
+29	χρόνου	χρόνος	n	n-s---mg-	Case=g|Gender=m|Number=s	27	OBJ	_	t_1706|gloss=time
+30	[0]	[0]	-	---------	_	0	PRED	_	e_105
+31	.	.	u	u--------	_	30	AuxK	_	t_1707|gloss=.
+
+
+# sentence_id = 102
+# translation_lang = en
+# prose_translation = Not to be subjected to a ruler and a father who was bound to strip away all my vanity and to bring me to the realization that it is possible to live in a court without needing a bodyguard, or elaborate robes, lamps, statues, and the like display, but that it is possible for one to reduce oneself very nearly to the condition of a private citizen, without thereby becoming meaner or more remiss in the duties which a ruler must perform for the common good with authority befitting his office.
+# literal_translation = To be subjected to a ruler and to a father: who was about to strip away all the vanity of me, and to bring [me] into the realization that it is possible, while living in a court, not to need bodyguards, nor conspicuous garments, nor such lamps and statues and the like ostentation, but it is permitted to contract oneself very nearly to a private citizen, and not on this account to hold oneself more lowly or more remiss with a view to the things which must be done, on behalf of the common interests, in a manner befitting a leader.
+1	τὸ	ὁ	l	l-s---na-	Case=n|Gender=n|Number=s	5	ATR	_	t_1708|gloss=the
+2	ἄρχοντι	ἄρχων	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	3	OBJ	_	t_1709|gloss=to-a-ruler
+3	καὶ	καί	c	c--------	_	5	COORD	_	t_1710|gloss=and
+4	πατρὶ	πατήρ	n	n-s---md-	Case=d|Gender=m|Number=s	3	OBJ	_	t_1711|gloss=to-a-father
+5	ὑποταχθῆναι	ὑποτάσσω	v	v--anp---	Mood=n|Tense=a|Voice=p	67	OBJ	_	t_1712|gloss=to-be-subjected
+6	,	,	u	u--------	_	0	AuxX	_	t_1713|gloss=,
+7	ὃς	ὅς	p	p-s---mn-	Case=n|Gender=m|Number=s	8	SBJ	_	t_1714|gloss=who
+8	ἔμελλε	μέλλω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	3	ATR	_	t_1715|gloss=was-about
+9	πάντα	πᾶς	a	a-s---ma-	Case=a|Gender=m|Number=s	11	ATR	_	t_1716|gloss=all
+10	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	11	ATR	_	t_1717|gloss=the
+11	τῦφον	τῦφος	n	n-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_1718|gloss=vanity
+12	ἀφαιρήσειν	ἀφαιρέω	v	v--fna---	Mood=n|Tense=f|Voice=a	14	OBJ	_	t_1719|gloss=to-strip-away
+13	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_1720|gloss=of-me
+14	καὶ	καί	c	c--------	_	8	COORD	_	t_1721|gloss=and
+15	εἰς	εἰς	r	r--------	_	17	AuxP	_	t_1722|gloss=into
+16	ἔννοιαν	ἔννοια	n	n-s---fa-	Case=a|Gender=f|Number=s	15	ADV	_	t_1723|gloss=a-thought
+17	ἄξειν	ἄγω	v	v--fna---	Mood=n|Tense=f|Voice=a	14	OBJ	_	t_1724|gloss=to-bring
+18	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	17	ATR	_	t_1725|gloss=the
+19	ὅτι	ὅτι	c	c--------	_	16	AuxC	_	t_1726|gloss=that
+20	δυνατόν	δυνατός	a	a-s---nn-	Case=n|Gender=n|Number=s	21	PNOM	_	t_1727|gloss=possible
+21	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	19	OBJ	_	t_1728|gloss=it-is
+22	ἐν	ἐν	r	r--------	_	24	AuxP	_	t_1729|gloss=in
+23	αὐλῇ	αὐλή	n	n-s---fd-	Case=d|Gender=f|Number=s	22	ADV	_	t_1730|gloss=a-court
+24	βιοῦντα	βιόω	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	28	ADV	_	t_1731|gloss=living
+25	μή	μή	d	d--------	_	27	AuxZ	_	t_1732|gloss=not
+26	τε	τε	d	d--------	_	25	AuxY	_	t_1733|gloss=indeed
+27	δορυφορήσεων	δορυφορία	n	n-p---fg-	Case=g|Gender=f|Number=p	30	OBJ	_	t_1734|gloss=of-bodyguards
+28	χρῄζειν	χρῄζω	v	v--pna---	Mood=n|Tense=p|Voice=a	21	SBJ	_	t_1735|gloss=to-need
+29	μή	μή	d	d--------	_	31	AuxZ	_	t_1736|gloss=not
+30	τε	τε	d	d--------	_	40	AuxY	_	t_1737|gloss=nor
+31	ἐσθήτων	ἐσθής	n	n-p---fg-	Case=g|Gender=f|Number=p	40	ATR	_	t_1738|gloss=of-garments
+32	σημειωδῶν	σημειώδης	a	a-p---fg-	Case=g|Gender=f|Number=p	31	ATR	_	t_1739|gloss=conspicuous
+33	μή	μή	d	d--------	_	37	AuxZ	_	t_1740|gloss=not
+34	τε	τε	d	d--------	_	40	AuxY	_	t_1741|gloss=nor
+35	λαμπάδων	λαμπάς	n	n-p---fg-	Case=g|Gender=f|Number=p	40	ATR	_	t_1742|gloss=of-lamps
+36	καὶ	καί	d	d--------	_	40	AuxY	_	t_1743|gloss=and
+37	ἀνδριάντων	ἀνδριάς	n	n-p---mg-	Case=g|Gender=m|Number=p	40	ATR	_	t_1744|gloss=of-statues
+38	τοιῶνδέ	τοιόσδε	a	a-p---mg-	Case=g|Gender=m|Number=p	37	ATR	_	t_1745|gloss=of-that-kind
+39	τινων	τις	p	p-p---mg-	Case=g|Gender=m|Number=p	40	ATR	_	t_1746|gloss=certain
+40	καὶ	καί	c	c--------	_	47	COORD	_	t_1747|gloss=and
+41	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	43	ATR	_	t_1748|gloss=of-the
+42	ὁμοίου	ὅμοιος	a	a-s---mg-	Case=g|Gender=m|Number=s	43	ATR	_	t_1749|gloss=similar
+43	κόμπου	κόμπος	n	n-s---mg-	Case=g|Gender=m|Number=s	40	ATR	_	t_1750|gloss=display
+44	,	,	u	u--------	_	6	AuxX	_	t_1751|gloss=,
+45	ἀλλʼ	ἀλλά	c	c--------	_	6	COORD	_	t_1752|gloss=but
+46	ἔξεστιν	ἔξεστι	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	45	PRED	_	t_1753|gloss=it-is-permitted
+47	ἐγγυτάτω	ἐγγύς	d	d-------c	_	49	ADV	_	t_1754|gloss=very-nearly
+48	ἰδιώτου	ἰδιώτης	n	n-s---mg-	Case=g|Gender=m|Number=s	47	ADV	_	t_1755|gloss=to-a-private-citizen
+49	συστέλλειν	συστέλλω	v	v--pna---	Mood=n|Tense=p|Voice=a	51	SBJ	_	t_1756|gloss=to-reduce
+50	ἑαυτὸν	ἑαυτοῦ	p	p-s---ma-	Case=a|Gender=m|Number=s	49	OBJ	_	t_1757|gloss=oneself
+51	καὶ	καί	c	c--------	_	46	COORD	_	t_1758|gloss=and
+52	μὴ	μή	d	d--------	_	58	AuxZ	_	t_1759|gloss=not
+53	διὰ	διά	r	r--------	_	58	AuxP	_	t_1760|gloss=on-account-of
+54	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	53	ADV	_	t_1761|gloss=this
+55	ταπεινότερον	ταπεινός	a	a-s---nac	Case=a|Degree=c|Gender=n|Number=s	56	ADV	_	t_1762|gloss=more-lowly
+56	ἢ	ἤ1	c	c--------	_	58	COORD	_	t_1763|gloss=or
+57	ῥᾳθυμότερον	ῥᾴθυμος	a	a-s---nac	Case=a|Degree=c|Gender=n|Number=s	56	ADV	_	t_1764|gloss=more-remiss
+58	ἔχειν	ἔχω	v	v--pna---	Mood=n|Tense=p|Voice=a	51	OBJ	_	t_1765|gloss=to-hold
+59	πρὸς	πρός	r	r--------	_	58	AuxP	_	t_1766|gloss=with-a-view-to
+60	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	65	ATR	_	t_1767|gloss=the
+61	ὑπὲρ	ὑπέρ	r	r--------	_	65	AuxP	_	t_1768|gloss=on-behalf-of
+62	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	63	ATR	_	t_1769|gloss=the
+63	κοινῶν	κοινός	a	a-p---ng-	Case=g|Gender=n|Number=p	61	ADV	_	t_1770|gloss=common-interests
+64	ἡγεμονικῶς	ἡγεμονικῶς	d	d--------	_	65	ADV	_	t_1771|gloss=in-a-manner-befitting-a-leader
+65	πραχθῆναι	πράσσω	v	v--anp---	Mood=n|Tense=a|Voice=p	59	ADV	_	t_1772|gloss=to-be-done
+66	δέοντα	δέω2	v	v-pppana-	Case=a|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	59	ADV	_	t_1773|gloss=things-which-must
+67	[0]	[0]	-	---------	_	45	PRED	_	e_106
+68	.	.	u	u--------	_	6	AuxK	_	t_1774|gloss=.
+
+
+# sentence_id = 103
+# translation_lang = en
+# prose_translation = To have such a brother, one able through his character to rouse me to care for myself, and at the same time to delight me with the honor and affection he showed me.
+# literal_translation = To chance upon (τυχεῖν) such a brother: one being able (δυναμένου), on the one hand (μὲν), through character to rouse (ἐπεγεῖραί) me toward care of myself; and at the same time (ἅμα δὲ) also with honor and with affection delighting (εὐφραίνοντός) me.
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_1775|gloss=the
+2	ἀδελφοῦ	ἀδελφός	n	n-s---mg-	Case=g|Gender=m|Number=s	4	OBJ	_	t_1776|gloss=brother
+3	τοιούτου	τοιοῦτος	p	p-s---mg-	Case=g|Gender=m|Number=s	2	ATR	_	t_1777|gloss=of-that-kind
+4	τυχεῖν	τυγχάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	24	SBJ	_	t_1778|gloss=to-chance-upon
+5	,	,	u	u--------	_	24	AuxX	_	t_1779|gloss=,
+6	δυναμένου	δύναμαι	v	v-sppemg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	17	ADV	_	t_1780|gloss=being-able
+7	μὲν	μέν	d	d--------	_	17	AuxY	_	t_1781|gloss=on-the-one-hand
+8	διὰ	διά	r	r--------	_	10	AuxP	_	t_1782|gloss=through
+9	ἤθους	ἦθος	n	n-s---ng-	Case=g|Gender=n|Number=s	8	ADV	_	t_1783|gloss=character
+10	ἐπεγεῖραί	ἐπεγείρω	v	v--ana---	Mood=n|Tense=a|Voice=a	6	OBJ	_	t_1784|gloss=to-rouse
+11	με	ἐγώ	p	p1s---ca-	Case=a|Gender=c|Number=s|Person=1	10	OBJ	_	t_1785|gloss=me
+12	πρὸς	πρός	r	r--------	_	10	AuxP	_	t_1786|gloss=toward
+13	ἐπιμέλειαν	ἐπιμέλεια	n	n-s---fa-	Case=a|Gender=f|Number=s	12	OBJ	_	t_1787|gloss=care
+14	ἐμαυτοῦ	ἐμαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	13	ATR	_	t_1788|gloss=of-myself
+15	,	,	u	u--------	_	24	AuxX	_	t_1789|gloss=,
+16	ἅμα	ἅμα	d	d--------	_	22	ADV	_	t_1790|gloss=at-the-same-time
+17	δὲ	δέ	c	c--------	_	24	COORD	_	t_1791|gloss=and
+18	καὶ	καί	d	d--------	_	20	AuxY	_	t_1792|gloss=even
+19	τιμῇ	τιμή	n	n-s---fd-	Case=d|Gender=f|Number=s	20	ADV	_	t_1793|gloss=with-honor
+20	καὶ	καί	c	c--------	_	22	COORD	_	t_1794|gloss=and
+21	στοργῇ	στοργή	n	n-s---fd-	Case=d|Gender=f|Number=s	20	ADV	_	t_1795|gloss=with-affection
+22	εὐφραίνοντός	εὐφραίνω	v	v-sppamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	17	ADV	_	t_1796|gloss=delighting
+23	με	ἐγώ	p	p1s---ca-	Case=a|Gender=c|Number=s|Person=1	22	OBJ	_	t_1797|gloss=me
+24	[0]	[0]	-	---------	_	0	PRED	_	e_107
+25	·	·	u	u--------	_	24	AuxK	_	t_1798|gloss=·
+
+
+# sentence_id = 104
+# translation_lang = en
+# prose_translation = To keep my children from being born without natural gifts, and from being deformed in body.
+# literal_translation = That the children to me not to become without natural gifts, nor as to the little body [ones] distorted:
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_1799|gloss=the
+2	παιδία	παιδίον	n	n-p---na-	Case=a|Gender=n|Number=p	6	SBJ	_	t_1800|gloss=children
+3	μοι	ἐγώ	p	p1s---cd-	Case=d|Gender=c|Number=s|Person=1	6	ADV	_	t_1801|gloss=to-me
+4	ἀφυῆ	ἀφυής	a	a-p---na-	Case=a|Gender=n|Number=p	6	PNOM	_	t_1802|gloss=without-natural-gifts
+5	μὴ	μή	d	d--------	_	6	AuxZ	_	t_1803|gloss=not
+6	γενέσθαι	γίγνομαι	v	v--anm---	Mood=n|Tense=a|Voice=m	13	SBJ	_	t_1804|gloss=coming
+7	μη	μη	d	d--------	_	6	AuxZ	_	t_1805|gloss=nor
+8	δὲ	δέ	c	c--------	_	7	AuxY	_	t_1806|gloss=and
+9	κατὰ	κατά	r	r--------	_	12	AuxP	_	t_1807|gloss=with-regard-to
+10	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	11	ATR	_	t_1808|gloss=the
+11	σωμάτιον	σωμάτιον	n	n-s---na-	Case=a|Gender=n|Number=s	9	ADV	_	t_1809|gloss=little-body
+12	διάστροφα	διάστροφος	n	n-s---fa-	Case=a|Gender=f|Number=s	8	SBJ	_	t_1810|gloss=distorted
+13	[0]	[0]	-	---------	_	0	PRED	_	e_108
+14	.	.	u	u--------	_	13	AuxK	_	t_1811|gloss=.
+
+
+# sentence_id = 105
+# translation_lang = en
+# prose_translation = Not to make further progress in rhetoric, poetry, and the other pursuits, in which I might perhaps have become absorbed, if I had perceived myself advancing easily in them.
+# literal_translation = The not-further-me-to-have-advanced in rhetoric and in poetic and in the other pursuits: in which perhaps I might have been held fast, if I perceived myself proceeding well.
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_1812|gloss=the
+2	μὴ	μή	d	d--------	_	6	AuxZ	_	t_1813|gloss=not
+3	ἐπὶ	ἐπί	r	r--------	_	6	AuxP	_	t_1814|gloss=to
+4	πλέον	πλέος	a	a-s---nac	Case=a|Degree=c|Gender=n|Number=s	3	ADV	_	t_1815|gloss=further
+5	με	ἐγώ	p	p1s---ca-	Case=a|Gender=c|Number=s|Person=1	6	SBJ	_	t_1816|gloss=me
+6	προκόψαι	προκόπτω	v	v--ana---	Mood=n|Tense=a|Voice=a	27	SBJ	_	t_1817|gloss=having-advanced
+7	ἐν	ἐν	r	r--------	_	6	AuxP	_	t_1818|gloss=in
+8	ῥητορικῇ	ῥητορικός	a	a-s---fd-	Case=d|Gender=f|Number=s	9	ADV	_	t_1819|gloss=rhetoric
+9	καὶ	καί	c	c--------	_	7	COORD	_	t_1820|gloss=and
+10	ποιητικῇ	ποιητικός	a	a-s---fd-	Case=d|Gender=f|Number=s	9	ADV	_	t_1821|gloss=poetics
+11	καὶ	καί	c	c--------	_	6	COORD	_	t_1822|gloss=and
+12	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	14	ATR	_	t_1823|gloss=the
+13	ἄλλοις	ἄλλος	a	a-p---nd-	Case=d|Gender=n|Number=p	14	ATR	_	t_1824|gloss=other
+14	ἐπιτηδεύμασιν	ἐπιτήδευμα	n	n-p---nd-	Case=d|Gender=n|Number=p	11	ADV	_	t_1825|gloss=pursuits
+15	,	,	u	u--------	_	27	AuxX	_	t_1826|gloss=,
+16	ἐν	ἐν	r	r--------	_	20	AuxP	_	t_1827|gloss=in
+17	οἷς	ὅς	p	p-p---nd-	Case=d|Gender=n|Number=p	16	ADV	_	t_1828|gloss=which
+18	ἴσως	ἴσως	d	d--------	_	20	ADV	_	t_1829|gloss=perhaps
+19	ἂν	ἄν	d	d--------	_	20	AuxY	_	t_1830|gloss=would
+20	κατεσχέθην	κατέχω	v	v1saip---	Mood=i|Number=s|Person=1|Tense=a|Voice=p	14	ATR	_	t_1831|gloss=i-might-have-been-held-fast
+21	,	,	u	u--------	_	27	AuxX	_	t_1832|gloss=,
+22	εἰ	εἰ	c	c--------	_	20	AuxC	_	t_1833|gloss=if
+23	ᾐσθόμην	αἰσθάνομαι	v	v1saim---	Mood=i|Number=s|Person=1|Tense=a|Voice=m	22	ADV	_	t_1834|gloss=i-perceived
+24	ἐμαυτὸν	ἐμαυτοῦ	p	p-s---ma-	Case=a|Gender=m|Number=s	26	SBJ	_	t_1835|gloss=myself
+25	εὐόδως	εὔδρομος	d	d--------	_	26	ADV	_	t_1836|gloss=easily
+26	προιόντα	πρόειμι1	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	23	OBJ	_	t_1837|gloss=advancing
+27	[0]	[0]	-	---------	_	0	PRED	_	e_109
+28	.	.	u	u--------	_	27	AuxK	_	t_1838|gloss=.
+
+
+# sentence_id = 106
+# translation_lang = en
+# prose_translation = Not to outrun my tutors but to establish them in honor, and not to postpone doing this in the hope, entertained by the young, that I would do it later.
+# literal_translation = The to-outrun: the tutors, and in honor to-establish [them], of-whom indeed they-seemed to-me to-desire [it], and not to-postpone [it], in-hope of-my, since [we] were-still young, later doing this-same very-thing:
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	2	ATR	_	t_1839|gloss=the
+2	φθάσαι	φθάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	15	OBJ	_	t_1840|gloss=to-outrun
+3	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	4	ATR	_	t_1841|gloss=the
+4	τροφέας	τροφεύς	n	n-p---ma-	Case=a|Gender=m|Number=p	2	OBJ	_	t_1842|gloss=tutors
+5	ἐν	ἐν	r	r--------	_	7	AuxP	_	t_1843|gloss=in
+6	ἀξιώματι	ἀξίωμα	n	n-s---nd-	Case=d|Gender=n|Number=s	5	ADV	_	t_1844|gloss=honor
+7	καταστῆσαι	καθίστημι	v	v--ana---	Mood=n|Tense=a|Voice=a	15	OBJ	_	t_1845|gloss=to-establish
+8	,	,	u	u--------	_	11	AuxX	_	t_1846|gloss=,
+9	οὗ	ὅς	p	p-s---ng-	Case=g|Gender=n|Number=s	13	OBJ	_	t_1847|gloss=which
+10	δὴ	δή	d	d--------	_	11	AuxY	_	t_1848|gloss=indeed
+11	ἐδόκουν	δοκέω	v	v3piia---	Mood=i|Number=p|Person=3|Tense=i|Voice=a	6	ATR	_	t_1849|gloss=they-seemed
+12	μοι	ἐγώ	p	p-s---md-	Case=d|Gender=m|Number=s	11	OBJ	_	t_1850|gloss=to-me
+13	ἐπιθυμεῖν	ἐπιθυμέω	v	v--pna---	Mood=n|Tense=p|Voice=a	11	OBJ	_	t_1851|gloss=to-desire
+14	,	,	u	u--------	_	11	AuxX	_	t_1852|gloss=,
+15	καὶ	καί	c	c--------	_	0	COORD	_	t_1853|gloss=and
+16	μὴ	μή	d	d--------	_	17	AuxZ	_	t_1854|gloss=not
+17	ἀναβαλέσθαι	ἀναβάλλω	v	v--anm---	Mood=n|Tense=a|Voice=m	15	ATR	_	t_1855|gloss=to-postpone
+18	ἐλπίδι	ἐλπίς	n	n-s---fd-	Case=d|Gender=f|Number=s	17	ADV	_	t_1856|gloss=in-hope
+19	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	29	ATR	_	t_1857|gloss=of
+20	με	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	17	SBJ	_	t_1858|gloss=me
+21	,	,	u	u--------	_	15	AuxX	_	t_1859|gloss=,
+22	ἐπεὶ	ἐπεί	c	c--------	_	17	AuxC	_	t_1860|gloss=since
+23	νέοι	νέος	a	a-p---mn-	Case=n|Gender=m|Number=p	25	PNOM	_	t_1861|gloss=young
+24	ἔτι	ἔτι	d	d--------	_	25	ADV	_	t_1862|gloss=still
+25	ἦσαν	εἰμί	v	v3piia---	Mood=i|Number=p|Person=3|Tense=i|Voice=a	22	ADV	_	t_1863|gloss=we-were
+26	,	,	u	u--------	_	25	AuxX	_	t_1864|gloss=,
+27	ὕστερον	ὕστερος	a	a-s---na-	Case=a|Gender=n|Number=s	29	ADV	_	t_1865|gloss=later
+28	αὐτὸ	αὐτός	p	p-s---na-	Case=a|Gender=n|Number=s	29	OBJ	_	t_1866|gloss=this-same-thing
+29	πράξειν	πράσσω	v	v--fna---	Mood=n|Tense=f|Voice=a	18	ATR	_	t_1867|gloss=doing
+30	.	.	u	u--------	_	15	AuxK	_	t_1868|gloss=.
+
+
+# sentence_id = 107
+# translation_lang = en
+# prose_translation = Through them I came to know Apollonius, Rusticus, and Maximus.
+# literal_translation = The to-know [I learned]: Apollonius, Rusticus, and Maximus.
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	2	ATR	_	t_1869|gloss=the-[lesson]
+2	γνῶναι	γιγνώσκω	v	v--ana---	Mood=n|Tense=a|Voice=a	8	OBJ	_	t_1870|gloss=to-know
+3	Ἀπολλώνιον	ἀπολλώνιος	n	n-s---ma-	Case=a|Gender=m|Number=s	6	SBJ	_	t_1871|gloss=Apollonius
+4	,	,	u	u--------	_	8	AuxX	_	t_1872|gloss=,
+5	Ῥούστικον	ῥούστικος	n	n-s---ma-	Case=a|Gender=m|Number=s	6	OBJ	_	t_1873|gloss=Rusticus
+6	,	,	u	u--------	_	2	COORD	_	t_1874|gloss=and
+7	Μάξιμον	μάξιμος	n	n-s---ma-	Case=a|Gender=m|Number=s	6	OBJ	_	t_1875|gloss=Maximus
+8	[0]	[0]	-	---------	_	0	PRED	_	e_110
+9	.	.	u	u--------	_	8	AuxK	_	t_1876|gloss=.
+
+
+# sentence_id = 108
+# translation_lang = en
+# prose_translation = I learned to form a vivid and frequent picture of what a life lived according to nature is like, so that, as far as depends on the gods and on the communications, dispensations, and inspirations that come from them, nothing should any longer prevent me from living in accordance with nature; and I learned that I fell short of this still, through my own fault and through not heeding the reminders—almost the very instructions—coming from the gods.
+# literal_translation = The to-be-imagined concerning the according-to-nature of-life clearly and often: such as someone is, so that, as-much-as depends on the gods and on the from-there dispensations and cooperations and inspirations, nothing to-hinder me from-now living according to nature; and to-fall-short still of-this through my own fault and through the not diligently-keeping the from-the-gods remindings and almost teachings:
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	2	ATR	_	t_1877|gloss=the-[to-be-imagined]
+2	φαντασθῆναι	φαντάζω	v	v--anp---	Mood=n|Tense=a|Voice=p	59	SBJ	_	t_1878|gloss=to-be-imagined
+3	περὶ	περί	r	r--------	_	2	AuxP	_	t_1879|gloss=concerning
+4	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	7	ATR	_	t_1880|gloss=the
+5	κατὰ	κατά	r	r--------	_	7	AuxP	_	t_1881|gloss=according-to
+6	φύσιν	φύσις	n	n-s---fa-	Case=a|Gender=f|Number=s	5	ATR	_	t_1882|gloss=nature
+7	βίου	βίος	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ADV	_	t_1883|gloss=of-life
+8	ἐναργῶς	ἐναργής	d	d--------	_	9	ADV	_	t_1884|gloss=clearly
+9	καὶ	καί	c	c--------	_	2	COORD	_	t_1885|gloss=and
+10	πολλάκις	πολλάκις	d	d--------	_	9	ADV	_	t_1886|gloss=often
+11	οἷός	οἷος	p	p-s---mn-	Case=n|Gender=m|Number=s	13	PNOM	_	t_1887|gloss=such-as
+12	τίς	τις	p	p-s---mn-	Case=n|Gender=m|Number=s	13	SBJ	_	t_1888|gloss=someone
+13	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	2	OBJ	_	t_1889|gloss=is
+14	,	,	u	u--------	_	59	AuxX	_	t_1890|gloss=,
+15	ὥστε	ὥστε	c	c--------	_	2	AuxC	_	t_1891|gloss=so-that
+16	,	,	u	u--------	_	59	AuxX	_	t_1892|gloss=,
+17	ὅσον	ὅσος	a	a-s---na-	Case=a|Gender=n|Number=s	27	AuxZ	_	t_1893|gloss=as-much-as
+18	ἐπὶ	ἐπί	r	r--------	_	31	AuxP	_	t_1894|gloss=to
+19	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	20	ATR	_	t_1895|gloss=the
+20	θεοῖς	θεός	n	n-p---md-	Case=d|Gender=m|Number=p	27	ADV	_	t_1896|gloss=gods
+21	καὶ	καί	d	d--------	_	27	AuxY	_	t_1897|gloss=and
+22	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	24	ATR	_	t_1898|gloss=the
+23	ἐκεῖθεν	ἐκεῖθεν	d	d--------	_	24	ATR	_	t_1899|gloss=from-there
+24	διαδόσεσι	μετάδοσις	n	n-p---fd-	Case=d|Gender=f|Number=p	27	ADV	_	t_1900|gloss=dispensations
+25	καὶ	καί	d	d--------	_	27	AuxY	_	t_1901|gloss=and
+26	συλλήψεσι	σύλληψις	n	n-p---fd-	Case=d|Gender=f|Number=p	27	ADV	_	t_1902|gloss=cooperations
+27	καὶ	καί	c	c--------	_	18	COORD	_	t_1903|gloss=and
+28	ἐπιπνοίαις	ἐπίπνοια	n	n-p---fd-	Case=d|Gender=f|Number=p	27	ADV	_	t_1904|gloss=inspirations
+29	,	,	u	u--------	_	59	AuxX	_	t_1905|gloss=,
+30	μηδὲν	μηδείς	p	p-s---na-	Case=a|Gender=n|Number=s	31	ADV	_	t_1906|gloss=nothing
+31	κωλύειν	κωλύω	v	v--pna---	Mood=n|Tense=p|Voice=a	39	ADV	_	t_1907|gloss=hinder
+32	ἤδη	ἤδη	d	d--------	_	31	ADV	_	t_1908|gloss=now
+33	κατὰ	κατά	r	r--------	_	35	AuxP	_	t_1909|gloss=according-to
+34	φύσιν	φύσις	n	n-s---fa-	Case=a|Gender=f|Number=s	33	ADV	_	t_1910|gloss=nature
+35	ζῆν	ζάω	v	v--pna---	Mood=n|Tense=p|Voice=a	31	OBJ	_	t_1911|gloss=live
+36	με	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	31	SBJ	_	t_1912|gloss=me
+37	,	,	u	u--------	_	59	AuxX	_	t_1913|gloss=,
+38	ἀπολείπεσθαι	ἀπολιμπάνω	v	v--pne---	Mood=n|Tense=p|Voice=e	39	ADV	_	t_1914|gloss=to-fall-short
+39	δὲ	δέ	c	c--------	_	15	COORD	_	t_1915|gloss=and
+40	ἔτι	ἔτι	d	d--------	_	38	ADV	_	t_1916|gloss=still
+41	τούτου	οὗτος	p	p-s---ng-	Case=g|Gender=n|Number=s	38	OBJ	_	t_1917|gloss=of-this
+42	παρὰ	παρά	r	r--------	_	46	AuxP	_	t_1918|gloss=through
+43	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	45	ATR	_	t_1919|gloss=the
+44	ἐμὴν	ἐμός	a	a-s---fa-	Case=a|Gender=f|Number=s	45	ATR	_	t_1920|gloss=my-own
+45	αἰτίαν	αἰτία	n	n-s---fa-	Case=a|Gender=f|Number=s	42	ADV	_	t_1921|gloss=fault
+46	καὶ	καί	c	c--------	_	38	COORD	_	t_1922|gloss=and
+47	παρὰ	παρά	r	r--------	_	46	AuxP	_	t_1923|gloss=through
+48	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	50	ATR	_	t_1924|gloss=the
+49	μὴ	μή	d	d--------	_	50	AuxZ	_	t_1925|gloss=not
+50	διατηρεῖν	διατηρέω	v	v--pna---	Mood=n|Tense=p|Voice=a	47	ADV	_	t_1926|gloss=diligently-keeping
+51	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	55	ATR	_	t_1927|gloss=the
+52	ἐκ	ἐκ	r	r--------	_	55	AuxP	_	t_1928|gloss=from
+53	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	54	ATR	_	t_1929|gloss=the
+54	θεῶν	θεός	n	n-p---mg-	Case=g|Gender=m|Number=p	52	ATR	_	t_1930|gloss=gods
+55	ὑπομνήσεις	ὑπόμνησις	n	n-p---fa-	Case=a|Gender=f|Number=p	56	OBJ	_	t_1931|gloss=remindings
+56	καὶ	καί	c	c--------	_	50	COORD	_	t_1932|gloss=and
+57	μονονουχὶ	μονονουχί	d	d--------	_	58	ADV	_	t_1933|gloss=almost
+58	διδασκαλίας	διδασκαλία	n	n-p---fa-	Case=a|Gender=f|Number=p	56	OBJ	_	t_1934|gloss=teachings
+59	[0]	[0]	-	---------	_	0	PRED	_	e_111
+60	·	·	u	u--------	_	59	AuxK	_	t_1935|gloss=·
+
+
+# sentence_id = 109
+# translation_lang = en
+# prose_translation = To endure so much, my body holding out for so long in such a life.
+# literal_translation = The to-hold-out for-me: the body to-such-an-extent, in such a life:
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	2	ATR	_	t_1936|gloss=the
+2	ἀντισχεῖν	ἀντέχω	v	v--ana---	Mood=n|Tense=a|Voice=a	11	SBJ	_	t_1937|gloss=to-hold-out
+3	μοι	ἐγώ	p	p1s---cd-	Case=d|Gender=c|Number=s|Person=1	2	OBJ	_	t_1938|gloss=for-me
+4	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	5	ATR	_	t_1939|gloss=the
+5	σῶμα	σῶμα	n	n-s---na-	Case=a|Gender=n|Number=s	2	SBJ	_	t_1940|gloss=body
+6	ἐπὶ	ἐπί	r	r--------	_	2	AuxP	_	t_1941|gloss=to
+7	τοσοῦτον	τοσοῦτος	p	p-s---na-	Case=a|Gender=n|Number=s	6	ADV	_	t_1942|gloss=such-an-extent
+8	ἐν	ἐν	r	r--------	_	2	AuxP	_	t_1943|gloss=in
+9	τοιούτῳ	τοιοῦτος	a	a-s---md-	Case=d|Gender=m|Number=s	10	ATR	_	t_1944|gloss=such
+10	βίῳ	βίος	n	n-s---md-	Case=d|Gender=m|Number=s	8	ADV	_	t_1945|gloss=a-life
+11	[0]	[0]	-	---------	_	0	PRED	_	e_112
+12	·	·	u	u--------	_	11	AuxK	_	t_1946|gloss=·
+
+
+# sentence_id = 110
+# translation_lang = en
+# prose_translation = Not to have touched Benedicta or Theodotus, but even later, when caught up in erotic passions, to recover soundness of mind.
+# literal_translation = The not-both to-have-touched of-Benedicta and of-Theodotus: but also later, in erotic passions having come to be, to be sound.
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	5	ATR	_	t_1947|gloss=the
+2	μή	μή	d	d--------	_	4	AuxZ	_	t_1948|gloss=not
+3	τε	τε	d	d--------	_	7	AuxY	_	t_1949|gloss=both
+4	Βενεδίκτης	βενεδικής	n	n-s---fg-	Case=g|Gender=f|Number=s	7	OBJ	_	t_1950|gloss=of-Benedicta
+5	ἅψασθαι	ἅπτω	v	v--anm---	Mood=n|Tense=a|Voice=m	10	OBJ	_	t_1951|gloss=to-have-touched
+6	μή	μή	d	d--------	_	8	AuxZ	_	t_1952|gloss=not
+7	τε	τε	c	c--------	_	5	COORD	_	t_1953|gloss=and
+8	Θεοδότου	θεόδοτος	n	n-s---mg-	Case=g|Gender=m|Number=s	7	OBJ	_	t_1954|gloss=of-Theodotus
+9	,	,	u	u--------	_	18	AuxX	_	t_1955|gloss=,
+10	ἀλλὰ	ἀλλά	c	c--------	_	18	COORD	_	t_1956|gloss=but
+11	καὶ	καί	d	d--------	_	12	AuxZ	_	t_1957|gloss=even
+12	ὕστερον	ὕστερος	a	a-s---na-	Case=a|Gender=n|Number=s	17	ADV	_	t_1958|gloss=later
+13	ἐν	ἐν	r	r--------	_	16	AuxP	_	t_1959|gloss=in
+14	ἐρωτικοῖς	ἐρωτικός	a	a-p---nd-	Case=d|Gender=n|Number=p	15	ATR	_	t_1960|gloss=erotic
+15	πάθεσι	πάθος	n	n-p---nd-	Case=d|Gender=n|Number=p	13	PNOM	_	t_1961|gloss=passions
+16	γενόμενον	γίγνομαι	v	v-sapmma-	Case=a|Gender=m|Mood=p|Number=s|Tense=a|Voice=m	17	ADV	_	t_1962|gloss=having come to be
+17	ὑγιᾶναι	ὑγιαίνω	v	v--pna---	Mood=n|Tense=p|Voice=a	10	OBJ	_	t_1963|gloss=to be sound
+18	[0]	[0]	-	---------	_	0	PRED	_	e_113
+19	·	·	u	u--------	_	18	AuxK	_	t_1964|gloss=·
+
+
+# sentence_id = 111
+# translation_lang = en
+# prose_translation = Even when angry with Rusticus, I learned never to go so far as to do anything for which I would afterward be sorry.
+# literal_translation = To have become angry oftentimes at Rusticus, to do nothing more, in respect of that in which I might afterward have changed my mind: [I learned].
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	2	ATR	_	t_1965|gloss=the-[becoming]
+2	χαλεπήναντα	χαλεπαίνω	v	v-sapama-	Case=a|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	7	ADV	_	t_1966|gloss=having-become-angry
+3	πολλάκις	πολλάκις	d	d--------	_	7	ADV	_	t_1967|gloss=oftentimes
+4	Ῥουστίκῳ	ῥουστίκος	n	n-s---md-	Case=d|Gender=m|Number=s	7	OBJ	_	t_1968|gloss=at-Rusticus
+5	μηδὲν	μηδείς	p	p-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_1969|gloss=nothing
+6	πλέον	πλέος	a	a-s---nac	Case=a|Degree=c|Gender=n|Number=s	5	ATR	_	t_1970|gloss=more
+7	πρᾶξαι	πράσσω	v	v--ana---	Mood=n|Tense=a|Voice=a	13	SBJ	_	t_1971|gloss=to-do
+8	,	,	u	u--------	_	13	AuxX	_	t_1972|gloss=,
+9	ἐφʼ	ἐπί	r	r--------	_	12	AuxP	_	t_1973|gloss=to
+10	ᾧ	ὅς	p	p-s---nd-	Case=d|Gender=n|Number=s	9	ADV	_	t_1974|gloss=that-in-which
+11	ἂν	ἄν	d	d--------	_	12	AuxY	_	t_1975|gloss=ever
+12	μετέγνων	μεταγιγνώσκω	v	v1saia---	Mood=i|Number=s|Person=1|Tense=a|Voice=a	7	OBJ	_	t_1976|gloss=i-might-have-changed-my-mind
+13	[0]	[0]	-	---------	_	0	PRED	_	e_114
+14	·	·	u	u--------	_	13	AuxK	_	t_1977|gloss=·
+
+
+# sentence_id = 112
+# translation_lang = en
+# prose_translation = That though she was destined to die young, she nevertheless chose to spend her last years living with me.
+# literal_translation = The: about-to (die young, having-borne her) nevertheless to dwell with me the last years: [I learned].
+1	τὸ	ὁ	l	l-s---na-	Case=n|Gender=n|Number=s	2	ATR	_	t_1978|gloss=the
+2	μέλλουσαν	μέλλω	v	v-sppafa-	Case=a|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	8	ADV	_	t_1979|gloss=about-to
+3	νέαν	νέος	a	a-s---fa-	Case=a|Gender=f|Number=s	4	OBJ	_	t_1980|gloss=young
+4	τελευτᾶν	τελευτάω	v	v--pna---	Mood=n|Tense=p|Voice=a	8	OBJ	_	t_1981|gloss=die
+5	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	6	ATR	_	t_1982|gloss=the
+6	τεκοῦσαν	τίκτω	v	v-sapafa-	Case=a|Gender=f|Mood=p|Number=s|Tense=a|Voice=a	8	OBJ	_	t_1983|gloss=having-borne-her
+7	ὅμως	ὅμως	d	d--------	_	8	AuxY	_	t_1984|gloss=nevertheless
+8	οἰκῆσαι	οἰκέω	v	v--ana---	Mood=n|Tense=a|Voice=a	14	OBJ	_	t_1985|gloss=to-dwell
+9	μετʼ	μετά	r	r--------	_	8	AuxP	_	t_1986|gloss=with
+10	ἐμοῦ	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	9	ADV	_	t_1987|gloss=me
+11	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	13	ATR	_	t_1988|gloss=the
+12	τελευταῖα	τελευταῖος	a	a-p---na-	Case=a|Gender=n|Number=p	13	ATR	_	t_1989|gloss=last
+13	ἔτη	ἔτος	n	n-p---na-	Case=a|Gender=n|Number=p	8	ADV	_	t_1990|gloss=years
+14	[0]	[0]	-	---------	_	0	PRED	_	e_115
+15	.	.	u	u--------	_	14	AuxK	_	t_1991|gloss=.
+
+
+# sentence_id = 113
+# translation_lang = en
+# prose_translation = As often as I wished to help someone in financial need, or in want of anything else, I never had to hear that I had no money from which to give it; and I never had to fall into the same need myself, so as to have to receive from another.
+# literal_translation = The [fact] that, as often as I wished to help someone being-poor or in want of some other thing, never did I hear: that there is not to me money, from which it might come about; and: that the same to-me need similar, as from another, to receive-a-share, not to fall-together.
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	4	ATR	_	t_1992|gloss=the-[fact]
+2	ὁσάκις	ὁσάκις	d	d--------	_	4	AuxC	_	t_1993|gloss=as-often-as
+3	ἐβουλήθην	βούλομαι	v	v1saip---	Mood=i|Number=s|Person=1|Tense=a|Voice=p	14	ADV	_	t_1994|gloss=I-wished
+4	ἐπικουρῆσαί	ἐπικουρέω	v	v--ana---	Mood=n|Tense=a|Voice=a	3	OBJ	_	t_1995|gloss=to-help
+5	τινι	τις	p	p-s---cd-	Case=d|Gender=c|Number=s	4	OBJ	_	t_1996|gloss=someone
+6	πενομένῳ	πλουτέω	v	v-sppemd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	7	ATR	_	t_1997|gloss=being-poor
+7	ἢ	ἤ1	c	c--------	_	5	COORD	_	t_1998|gloss=or
+8	εἰς	εἰς	r	r--------	_	11	AuxP	_	t_1999|gloss=in
+9	ἄλλο	ἄλλος	p	p-s---na-	Case=a|Gender=n|Number=s	10	ATR	_	t_2000|gloss=other
+10	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	8	ADV	_	t_2001|gloss=something
+11	χρῄζοντι	χρῄζω	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	7	ATR	_	t_2002|gloss=being-in-want
+12	,	,	u	u--------	_	40	AuxX	_	t_2003|gloss=,
+13	μηδέποτε	μηδέποτε	d	d--------	_	14	ADV	_	t_2004|gloss=never
+14	ἀκοῦσαί	ἀκούω	v	v--ana---	Mood=n|Tense=a|Voice=a	26	OBJ	_	t_2005|gloss=did-I-hear
+15	με	ἐγώ	p	p-s---ma-	Case=a|Gender=m|Number=s|Person=1	14	SBJ	_	t_2006|gloss=I
+16	,	,	u	u--------	_	40	AuxX	_	t_2007|gloss=,
+17	ὅτι	ὅτι	c	c--------	_	14	AuxC	_	t_2008|gloss=that
+18	οὐκ	οὐ	d	d--------	_	19	AuxZ	_	t_2009|gloss=not
+19	ἔστι	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	17	OBJ	_	t_2010|gloss=there-is
+20	μοι	ἐγώ	p	p1s---cd-	Case=d|Gender=m|Number=s|Person=1	19	PNOM	_	t_2011|gloss=to-me
+21	χρήματα	χρῆμα	n	n-p---nn-	Case=n|Gender=n|Number=p	19	SBJ	_	t_2012|gloss=money
+22	,	,	u	u--------	_	40	AuxX	_	t_2013|gloss=,
+23	ὅθεν	ὅθεν	d	d--------	_	24	ADV	_	t_2014|gloss=from-which
+24	γένηται	γίγνομαι	v	v3sasm---	Mood=s|Number=s|Person=3|Tense=a|Voice=m	19	ADV	_	t_2015|gloss=it-might-come
+25	,	,	u	u--------	_	40	AuxX	_	t_2016|gloss=,
+26	καὶ	καί	c	c--------	_	40	COORD	_	t_2017|gloss=and
+27	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	39	ATR	_	t_2018|gloss=the-[fact]
+28	αὐτῷ	αὐτός	a	a-s---md-	Case=d|Gender=m|Number=s	29	ATR	_	t_2019|gloss=same
+29	ἐμοὶ	ἐγώ	p	p-s---md-	Case=d|Gender=m|Number=s	39	OBJ	_	t_2020|gloss=to-me
+30	χρείαν	χρεία	n	n-s---fa-	Case=a|Gender=f|Number=s	36	OBJ	_	t_2021|gloss=need
+31	ὁμοίαν	ὅμοιος	a	a-s---fa-	Case=a|Gender=f|Number=s	30	ATR	_	t_2022|gloss=similar
+32	,	,	u	u--------	_	40	AuxX	_	t_2023|gloss=,
+33	ὡς	ὡς	d	d--------	_	35	AuxZ	_	t_2024|gloss=as
+34	παρʼ	παρά	r	r--------	_	36	AuxP	_	t_2025|gloss=from
+35	ἑτέρου	ἕτερος	a	a-s---mg-	Case=g|Gender=m|Number=s	34	ADV	_	t_2026|gloss=another
+36	μεταλαβεῖν	μεταλαμβάνω	v	v--ana---	Mood=n|Tense=a|Voice=a	39	ADV	_	t_2027|gloss=to-receive-a-share
+37	,	,	u	u--------	_	40	AuxX	_	t_2028|gloss=,
+38	μὴ	μή	d	d--------	_	39	AuxZ	_	t_2029|gloss=not
+39	συμπεσεῖν	συμπίτνω	v	v--ana---	Mood=n|Tense=a|Voice=a	26	OBJ	_	t_2030|gloss=to-fall-together
+40	[0]	[0]	-	---------	_	0	PRED	_	e_116
+41	·	·	u	u--------	_	40	AuxK	_	t_2031|gloss=·
+
+
+# sentence_id = 114
+# translation_lang = en
+# prose_translation = She taught me that a man's wife could be so submissive, so affectionate, and so unpretentious.
+# literal_translation = That the wife could be such: so submissive on the one hand, and so affectionate, and so unpretentious:
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	5	ATR	_	t_2032|gloss=the
+2	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	3	ATR	_	t_2033|gloss=the
+3	γυναῖκα	γυνή	n	n-s---fa-	Case=a|Gender=f|Number=s	5	SBJ	_	t_2034|gloss=wife
+4	τοιαύτην	τοιοῦτος	a	a-s---fa-	Case=a|Gender=f|Number=s	5	PNOM	_	t_2035|gloss=of-that-kind
+5	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	18	SBJ	_	t_2036|gloss=coming
+6	,	,	u	u--------	_	18	AuxX	_	t_2037|gloss=,
+7	οὑτωσὶ	οὑτωσί	d	d--------	_	18	ADV	_	t_2038|gloss=so
+8	μὲν	μέν	d	d--------	_	16	AuxY	_	t_2039|gloss=on-the-one-hand
+9	πειθήνιον	πειθήνιος	a	a-s---nn-	Case=n|Gender=n|Number=s	16	PNOM	_	t_2040|gloss=submissive
+10	,	,	u	u--------	_	18	AuxX	_	t_2041|gloss=,
+11	οὕτω	οὕτως	d	d--------	_	19	ADV	_	t_2042|gloss=so
+12	δὲ	δέ	d	d--------	_	16	AuxY	_	t_2043|gloss=and
+13	φιλόστοργον	φιλόστοργος	a	a-s---fa-	Case=a|Gender=f|Number=s	16	PNOM	_	t_2044|gloss=affectionate
+14	,	,	u	u--------	_	18	AuxX	_	t_2045|gloss=,
+15	οὕτω	οὕτως	d	d--------	_	17	ADV	_	t_2046|gloss=so
+16	δὲ	δέ	d	d--------	_	18	COORD	_	t_2047|gloss=and
+17	ἀφελῆ	ἀφελής	a	a-s---fa-	Case=a|Gender=f|Number=s	16	PNOM	_	t_2048|gloss=unpretentiousness
+18	[0]	[0]	-	---------	_	0	PRED	_	e_117
+19	[1]	[1]	-	---------	_	16	PRED	_	e_118
+20	·	·	u	u--------	_	18	AuxK	_	t_2049|gloss=·
+
+
+# sentence_id = 115
+# translation_lang = en
+# prose_translation = I learned to be free with resources for the tutors my children would need, spending unstintingly on such things.
+# literal_translation = the: to be well-supplied [with] proper tutors for the children:
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	7	ATR	_	t_2050|gloss=the-[being-well-supplied]
+2	ἐπιτηδείων	ἐπιτήδειος	a	a-p---ng-	Case=g|Gender=n|Number=p	3	ATR	_	t_2051|gloss=proper
+3	τροφέων	τροφεύς	n	n-p---ng-	Case=g|Gender=n|Number=p	7	OBJ	_	t_2052|gloss=with-tutors
+4	εἰς	εἰς	r	r--------	_	7	AuxP	_	t_2053|gloss=for
+5	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	6	ATR	_	t_2054|gloss=the
+6	παιδία	παιδίον	n	n-p---na-	Case=a|Gender=n|Number=p	4	OBJ	_	t_2055|gloss=children
+7	εὐπορῆσαι	εὐπορέω	v	v--ana---	Mood=n|Tense=a|Voice=a	8	OBJ	_	t_2056|gloss=to-be-well-supplied
+8	[0]	[0]	-	---------	_	0	PRED	_	e_119
+9	.	.	u	u--------	_	8	AuxK	_	t_2057|gloss=.
+
+
+# sentence_id = 116
+# translation_lang = en
+# prose_translation = That through dreams remedies were given, among others, both against spitting blood and against dizziness, and also, at Caieta, an oracle telling how you would be treated, just as you were treated:
+# literal_translation = The through dreams: that helps were given, both other things and, so as not to spit blood and not to feel dizzy; and of this also, in Caieta, [an oracle telling] just as you will treat [yourself]:
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	5	ATR	_	t_2058|gloss=the
+2	διʼ	διά	r	r--------	_	5	AuxP	_	t_2059|gloss=through
+3	ὀνειράτων	ὄνειρος	n	n-p---ng-	Case=g|Gender=n|Number=p	2	ADV	_	t_2060|gloss=dreams
+4	βοηθήματα	βοήθημα	n	n-p---na-	Case=a|Gender=n|Number=p	5	SBJ	_	t_2061|gloss=remedies
+5	δοθῆναι	δίδωμι	v	v--anp---	Mood=n|Tense=a|Voice=p	23	SBJ	_	t_2062|gloss=were-given
+6	ἄλλα	ἄλλος	p	p-p---na-	Case=a|Gender=n|Number=p	4	ATR	_	t_2063|gloss=other
+7	τε	τε	c	c--------	_	8	AuxY	_	t_2064|gloss=both
+8	καὶ	καί	c	c--------	_	5	COORD	_	t_2065|gloss=and
+9	ὡς	ὡς	c	c--------	_	24	AuxC	_	t_2066|gloss=so-as
+10	μὴ	μή	d	d--------	_	11	AuxZ	_	t_2067|gloss=not
+11	πτύειν	πτύω	v	v--pna---	Mood=n|Tense=p|Voice=a	13	SBJ	_	t_2068|gloss=to-spit
+12	αἷμα	αἷμα	n	n-s---na-	Case=a|Gender=n|Number=s	11	OBJ	_	t_2069|gloss=blood
+13	καὶ	καί	c	c--------	_	9	COORD	_	t_2070|gloss=and
+14	μὴ	μή	d	d--------	_	15	AuxZ	_	t_2071|gloss=not
+15	ἰλιγγιᾶν	ἰλιγγιάω	v	v--pna---	Mood=n|Tense=p|Voice=a	13	SBJ	_	t_2072|gloss=to-feel-dizzy
+16	,	,	u	u--------	_	23	AuxX	_	t_2073|gloss=,
+17	καὶ	καί	c	c--------	_	23	COORD	_	t_2074|gloss=and
+18	τούτου	οὗτος	p	p-s---ng-	Case=g|Gender=n|Number=s	22	OBJ	_	t_2075|gloss=of-this
+19	ἐν	ἐν	r	r--------	_	24	AuxP	_	t_2076|gloss=at
+20	Καιήτῃ	καίητη	n	n-s---fd-	Case=d|Gender=f|Number=s	19	ADV	_	t_2077|gloss=Caieta
+21	ὥσπερ	ὥσπερ	c	c--------	_	24	AuxC	_	t_2078|gloss=just-as
+22	χρήσῃ	χράω2	v	v2sfim---	Mood=i|Number=s|Person=2|Tense=f|Voice=m	21	ADV	_	t_2079|gloss=you-will-treat-yourself
+23	[0]	[0]	-	---------	_	0	PRED	_	e_120
+24	[1]	[1]	-	---------	_	17	PRED	_	e_121
+25	·	·	u	u--------	_	23	AuxK	_	t_2080|gloss=·
+
+
+# sentence_id = 117
+# translation_lang = en
+# prose_translation = That when I conceived a desire for philosophy, I did not fall into the hands of some sophist, nor waste my time writing treatises, working out syllogisms, or occupying myself with speculations about the heavens.
+# literal_translation = The [fact] how I desired philosophy, not to fall into some sophist, and not to sit down to the composing [of treatises], or to analyzing syllogisms, or to being occupied about the meteorological [matters]:
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	12	ATR	_	t_2081|gloss=the-[fact]
+2	ὅπως	ὅπως	c	c--------	_	12	AuxC	_	t_2082|gloss=how
+3	ἐπεθύμησα	ἐπιθυμέω	v	v1saia---	Mood=i|Number=s|Person=1|Tense=a|Voice=a	2	ADV	_	t_2083|gloss=i-desired
+4	φιλοσοφίας	φιλοσοφία	n	n-s---fg-	Case=g|Gender=f|Number=s	3	OBJ	_	t_2084|gloss=philosophy
+5	,	,	u	u--------	_	25	AuxX	_	t_2085|gloss=,
+6	μὴ	μή	d	d--------	_	7	AuxZ	_	t_2086|gloss=not
+7	ἐμπεσεῖν	ἐμπίτνω	v	v--ana---	Mood=n|Tense=a|Voice=a	12	PRED	_	t_2087|gloss=to-fall
+8	εἴς	εἰς	r	r--------	_	7	AuxP	_	t_2088|gloss=into
+9	τινα	τις	p	p-s---ma-	Case=a|Gender=c|Number=s	10	ATR	_	t_2089|gloss=some
+10	σοφιστὴν	σοφιστής	n	n-s---ma-	Case=a|Gender=m|Number=s	8	OBJ	_	t_2090|gloss=sophist
+11	μη	μη	d	d--------	_	13	AuxZ	_	t_2091|gloss=not
+12	δὲ	δέ	c	c--------	_	25	COORD	_	t_2092|gloss=and
+13	ἀποκαθίσαι	ἀποκαθίζω	v	v--ana---	Mood=n|Tense=a|Voice=a	12	OBJ	_	t_2093|gloss=to-sit-down
+14	ἐπὶ	ἐπί	r	r--------	_	13	AuxP	_	t_2094|gloss=to
+15	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	16	ATR	_	t_2095|gloss=the-[task]
+16	συγγράφειν	συγγράφω	v	v--pna---	Mood=n|Tense=p|Voice=a	14	ADV	_	t_2096|gloss=composing-treatises
+17	ἢ	ἤ1	c	c--------	_	20	AuxY	_	t_2097|gloss=or
+18	συλλογισμοὺς	συλλογισμός	n	n-p---ma-	Case=a|Gender=m|Number=p	19	OBJ	_	t_2098|gloss=syllogisms
+19	ἀναλύειν	ἀναλύω	v	v--pna---	Mood=n|Tense=p|Voice=a	20	OBJ	_	t_2099|gloss=analyzing
+20	ἢ	ἤ1	c	c--------	_	14	COORD	_	t_2100|gloss=or
+21	περὶ	περί	r	r--------	_	24	AuxP	_	t_2101|gloss=about
+22	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	23	ATR	_	t_2102|gloss=the
+23	μετεωρολογικὰ	μετεωρολογικός	a	a-p---na-	Case=a|Gender=n|Number=p	21	ADV	_	t_2103|gloss=meteorological-matters
+24	καταγίνεσθαι	καταγίγνομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	20	OBJ	_	t_2104|gloss=occupying-myself
+25	[0]	[0]	-	---------	_	0	PRED	_	e_122
+26	.	.	u	u--------	_	25	AuxK	_	t_2105|gloss=.
+
+
+# sentence_id = 118
+# translation_lang = en
+# prose_translation = For all these things require the gods' help and fortune's favor as well.
+# literal_translation = For all these things: they require gods helping and fortune.
+1	πάντα	πᾶς	a	a-p---na-	Case=a|Gender=n|Number=p	3	ATR	_	t_2106|gloss=all
+2	γὰρ	γάρ	g	g--------	_	8	AuxY	_	t_2107|gloss=for
+3	ταῦτα	οὗτος	a	a-p---na-	Case=a|Gender=n|Number=p	4	OBJ	_	t_2108|gloss=these-things
+4	ʽθεῶν	θεός	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	8	ADV	_	t_2109|gloss=of-gods
+5	βοηθῶν	βοηθέω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	8	ADV	_	t_2110|gloss=helping
+6	καὶ	καί	c	c--------	_	8	COORD	_	t_2111|gloss=and
+7	τύχης	τύχη	n	n-s---fg-	Case=g|Gender=f|Number=s	8	OBJ	_	t_2112|gloss=of-fortune
+8	δεῖται	δέω	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_2113|gloss=require
+9	.	.	u	u--------	_	8	AuxK	_	t_2114|gloss=.
+
+
+# sentence_id = 119
+# translation_lang = en
+# prose_translation = Written among the Quadi, on the river Granua.
+# literal_translation = The [things written]: among the Quadi, at the Granua.
+1	ʼ	ʼ	u	u--------	_	2	AuxG	_	t_2115|gloss='
+2	Τὰ	ὁ	p	p-p---na-	Case=a|Gender=n|Number=p	0	PRED	_	t_2116|gloss=the-[things-written]
+3	ἐν	ἐν	r	r--------	_	2	AuxP	_	t_2117|gloss=among
+4	Κουάδοις	κουάδας	n	n-p---md-	Case=d|Gender=m|Number=p	3	ADV	_	t_2118|gloss=Quadi
+5	πρὸς	πρός	r	r--------	_	2	AuxP	_	t_2119|gloss=at
+6	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	7	ATR	_	t_2120|gloss=the
+7	Γρανούᾳ	γρανούα	n	n-s---md-	Case=d|Gender=m|Number=s	5	ADV	_	t_2121|gloss=Granua
+8	.	.	u	u--------	_	1	AuxK	_	t_2122|gloss=.

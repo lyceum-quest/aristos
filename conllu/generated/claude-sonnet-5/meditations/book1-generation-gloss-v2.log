@@ -1,0 +1,90 @@
+Started: 2026-09-25T09:15:00-04:00
+Gloss request protocol: real-tokens-only-v2, beginning at sentence 80; completed sentences 1-79 retained. Translation request unchanged.
+6efe5e76587fddf120fe4cf12a7a6ca76d6c39dbed623e005597ca6c762adaf8  experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc
+workflow: run meditations-loop
+wrote: .kai/flake.nix
+selected 119 sentences; checkpoints: translate 80, gloss 79
+sentence 80: gloss returned and checkpointed
+sentence 81: translate returned and checkpointed
+sentence 81: gloss returned and checkpointed
+sentence 82: translate returned and checkpointed
+sentence 82: gloss returned and checkpointed
+sentence 83: translate returned and checkpointed
+sentence 83: gloss returned and checkpointed
+sentence 84: translate returned and checkpointed
+sentence 84: gloss returned and checkpointed
+sentence 85: translate returned and checkpointed
+sentence 85: gloss returned and checkpointed
+sentence 86: translate returned and checkpointed
+sentence 86: gloss returned and checkpointed
+sentence 87: translate returned and checkpointed
+sentence 87: gloss returned and checkpointed
+sentence 88: translate returned and checkpointed
+sentence 88: gloss returned and checkpointed
+sentence 89: translate returned and checkpointed
+sentence 89: gloss returned and checkpointed
+retrying experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/translate.roc; 2 attempts remain
+sentence 90: translate returned and checkpointed
+sentence 90: gloss returned and checkpointed
+sentence 91: translate returned and checkpointed
+sentence 91: gloss returned and checkpointed
+sentence 92: translate returned and checkpointed
+sentence 92: gloss returned and checkpointed
+sentence 93: translate returned and checkpointed
+sentence 93: gloss returned and checkpointed
+sentence 94: translate returned and checkpointed
+sentence 94: gloss returned and checkpointed
+sentence 95: translate returned and checkpointed
+sentence 95: gloss returned and checkpointed
+sentence 96: translate returned and checkpointed
+sentence 96: gloss returned and checkpointed
+sentence 97: translate returned and checkpointed
+sentence 97: gloss returned and checkpointed
+sentence 98: translate returned and checkpointed
+sentence 98: gloss returned and checkpointed
+sentence 99: translate returned and checkpointed
+sentence 99: gloss returned and checkpointed
+sentence 100: translate returned and checkpointed
+sentence 100: gloss returned and checkpointed
+sentence 101: translate returned and checkpointed
+sentence 101: gloss returned and checkpointed
+sentence 102: translate returned and checkpointed
+sentence 102: gloss returned and checkpointed
+sentence 103: translate returned and checkpointed
+sentence 103: gloss returned and checkpointed
+sentence 104: translate returned and checkpointed
+sentence 104: gloss returned and checkpointed
+sentence 105: translate returned and checkpointed
+sentence 105: gloss returned and checkpointed
+sentence 106: translate returned and checkpointed
+sentence 106: gloss returned and checkpointed
+sentence 107: translate returned and checkpointed
+sentence 107: gloss returned and checkpointed
+sentence 108: translate returned and checkpointed
+sentence 108: gloss returned and checkpointed
+sentence 109: translate returned and checkpointed
+sentence 109: gloss returned and checkpointed
+sentence 110: translate returned and checkpointed
+sentence 110: gloss returned and checkpointed
+sentence 111: translate returned and checkpointed
+sentence 111: gloss returned and checkpointed
+sentence 112: translate returned and checkpointed
+sentence 112: gloss returned and checkpointed
+sentence 113: translate returned and checkpointed
+sentence 113: gloss returned and checkpointed
+sentence 114: translate returned and checkpointed
+sentence 114: gloss returned and checkpointed
+sentence 115: translate returned and checkpointed
+sentence 115: gloss returned and checkpointed
+sentence 116: translate returned and checkpointed
+sentence 116: gloss returned and checkpointed
+sentence 117: translate returned and checkpointed
+sentence 117: gloss returned and checkpointed
+sentence 118: translate returned and checkpointed
+sentence 118: gloss returned and checkpointed
+sentence 119: translate returned and checkpointed
+sentence 119: gloss returned and checkpointed
+checkpointed 40 new sentence(s); result: conllu/generated/claude-sonnet-5/meditations/output.conllu
+elapsed_seconds=456.104
+Finished: 2026-09-25T09:22:36-04:00
+exit_status=0
