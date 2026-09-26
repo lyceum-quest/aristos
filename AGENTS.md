@@ -5,6 +5,7 @@
 - Read [`docs/rules.md`](./docs/rules.md) for development rules.
 - Read [`DEPLOYMENT.md`](./DEPLOYMENT.md) before changing deployment behavior.
 - Read the relevant plan documents under `docs/plans/` before changing a planned feature.
+- The Aristos web app is served at <https://aristos.blu.cx> from this development machine, not from a deploy target. `aristos-preview.service` runs `elm-live` in this repository on `127.0.0.1:8092` (recompiling `elm.js` when `src/` changes and serving the repository root, including `preload/`), and the system Caddy (`/etc/caddy/caddy_config`, `*.blu.cx`) proxies `aristos.blu.cx` to it. Source edits are live immediately; data changes appear after `kai run preload`. `aristos.lyceum.quest` is down and no longer the Aristos site.
 - The local Opera Graeca Adnotata v0.2.0 corpus is installed at `../OGA/opera_graeca_adnotata_v0.2.0` relative to this repository; its CoNLL-U files are under `workspace/conllu/`.
 - When a Roc or Elm toolchain bug is discovered:
   1. Check whether it has been fixed upstream.

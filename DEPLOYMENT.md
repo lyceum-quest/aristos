@@ -1,8 +1,14 @@
 # Aristos deployment
 
-Production preview: <https://aristos.lyceum.quest>
+Live preview: <https://aristos.blu.cx>, served from the development machine by
+`aristos-preview.service` (`elm-live` on `127.0.0.1:8092` in the repository
+root) behind the machine's system Caddy. It needs no deployment: source edits
+recompile automatically and `kai run preload` refreshes its data.
 
-Aristos is deployed to the same NixOS host as `conllu.lyceum.quest`, but its
+The remainder of this document describes the earlier static deployment to
+`aristos.lyceum.quest`, which is currently down.
+
+Aristos was deployed to the same NixOS host as `conllu.lyceum.quest`, but its
 static files and serving process are isolated:
 
 - `/var/www/aristos` contains the release bundle;
