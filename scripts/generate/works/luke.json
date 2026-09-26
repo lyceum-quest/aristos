@@ -1,0 +1,23 @@
+{
+  "input": "../OGA/opera_graeca_adnotata_v0.2.0/workspace/conllu/tlg0031.tlg003.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+  "source": {
+    "corpus": "Opera Graeca Adnotata v0.2.0",
+    "work": "Gospel of Luke",
+    "edition": "Westcott and Hort, The New Testament in the Original Greek (1881), via Perseus canonical-greekLit tlg0031.tlg003.perseus-grc2",
+    "license": "CC BY-SA 4.0"
+  },
+  "model": "claude-sonnet-5",
+  "base_url": "https://api.ppq.ai/v1",
+  "api_key_env": "PPQ_API_KEY",
+  "allow_fallbacks": true,
+  "send_temperature": false,
+  "structured_schema": false,
+  "temperature": 0,
+  "translate": {
+    "max_tokens": 1024
+  },
+  "gloss": {
+    "max_tokens": 2048
+  },
+  "context": "These blocks come from the Gospel of Luke in the Westcott-Hort Greek New Testament: Koine Greek narrative prose with reported speech. Some opening words are printed in capitals in this edition; interpret them by meaning. Render Semitic idioms such as καὶ ἐγένετο, ἰδού, and ἀποκριθεὶς εἶπεν accurately: keep their form in literal translations and glosses, and render them naturally in prose. Do not harmonize with other Gospels or reproduce the wording of a particular English Bible."
+}
