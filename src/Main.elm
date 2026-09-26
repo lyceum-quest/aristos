@@ -776,10 +776,14 @@ handleFetchedCorpus entry result model =
                         )
 
                 Err problem ->
-                    ( { model | notice = Just ("Corpus could not be parsed: " ++ problem) }, Cmd.none )
+                    ( { model | openWhenLoaded = False, notice = Just (entry.title ++ " could not be parsed: " ++ problem) }, Cmd.none )
 
         Err _ ->
-            ( model, Cmd.none )
+            if model.requestedWork == Just entry.id then
+                ( { model | openWhenLoaded = False, notice = Just (entry.title ++ " could not be downloaded. Try again.") }, Cmd.none )
+
+            else
+                ( model, Cmd.none )
 
 
 handleStorageResponse : Decode.Value -> Model -> Model

@@ -90,21 +90,30 @@ parse source raw =
 
 parseLines : ParseState -> List String -> Result String ParseState
 parseLines state lines =
+    -- Direct self-calls keep this tail-recursive; recursing inside Result.andThen overflows the stack on large corpora.
     case lines of
         [] ->
             Ok state
 
         line :: rest ->
             if String.isEmpty line then
-                finishSentence state
-                    |> Result.andThen (\next -> parseLines next rest)
+                case finishSentence state of
+                    Ok next ->
+                        parseLines next rest
+
+                    Err problem ->
+                        Err problem
 
             else if String.startsWith "#" line then
                 parseLines { state | metadata = insertMetadata line state.metadata } rest
 
             else
-                parseRow line
-                    |> Result.andThen (\row -> parseLines { state | rows = row :: state.rows } rest)
+                case parseRow line of
+                    Ok row ->
+                        parseLines { state | rows = row :: state.rows } rest
+
+                    Err problem ->
+                        Err problem
 
 
 insertMetadata : String -> Dict String String -> Dict String String
