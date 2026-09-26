@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: https://github.com/actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: https://github.com/cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v31
 
       - name: Deploy
         env:

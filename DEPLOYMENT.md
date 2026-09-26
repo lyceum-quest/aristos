@@ -32,8 +32,9 @@ REMOTE_DIR=/var/www/aristos
 
 The workflow builds an optimized Elm release, synchronizes the static bundle,
 and verifies Aristos plus the existing Conllu and Lyceum endpoints. Pushes and
-merges to `master` run the same workflow through `.gitea/workflows/deploy.yml`.
-Configure the repository action secret `DEPLOY_SSH_KEY` with an unencrypted SSH
+merges to `master` run the same workflow through GitHub Actions
+(`.github/workflows/deploy.yml`).
+Configure the GitHub repository secret `DEPLOY_SSH_KEY` with an unencrypted SSH
 private key authorized for `root@144.202.31.40`.
 
 ## Provision infrastructure
