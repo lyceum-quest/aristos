@@ -10,6 +10,7 @@
   1. Check whether it has been fixed upstream.
   2. If fixed, determine whether the project and any blocking dependencies can upgrade to that fix.
   3. If no viable upgrade exists, propose a workaround. Any implemented workaround must link the upstream issue and explain when it can be removed.
+- Record every Roc issue found (compiler bug, platform defect, or missing capability) in the sister repository `../roc-issues`, following the "Adding a repro" format in its `README.md`: bugs get a self-contained `bugs/BUG-XXX-*` directory with a pinned `flake.nix`/`flake.lock`, `README.md`, and `repro.sh`; missing capabilities go under its Improvements section. If `../roc-issues` is absent, clone `https://github.com/thebrandonlucas/roc-issues` there first.
 
 ## Language boundary
 
