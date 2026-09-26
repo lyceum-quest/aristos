@@ -28,3 +28,6 @@ repl-temp-*
 # Local editor and OS files
 .DS_Store
 *~
+
+# Per-work scratch files from scripts/generate/loop.roc
+conllu/generated/*/.scratch/

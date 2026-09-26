@@ -15,17 +15,15 @@ environment dev {
   overlays: ["github:roc-lang/roc-overlay"]
 }
 
-# Sonnet-only generation; missing sentences make paid PPQ calls.
-# Book 1 is the first 119 blocks, including the closing location note.
-# Resume completed sentences; Book 2 begins at source token t_2123.
-task meditations-loop {
+# kai run generate -- <work> <config.json> <sentence-count|all>
+# e.g. kai run generate -- luke scripts/generate/works/luke.json 4
+# Translates and glosses into conllu/generated/<work>-<model>/, resuming its
+# checkpoints; missing sentences make paid API calls. Meditations Book 1 is 119.
+# SIGINT is ignored so Ctrl-C stops the current stage and the loop reports;
+# see ../roc-issues/improvements/IMPROVEMENT-002-basic-cli-sigint-handling.
+task generate {
   environment: "dev"
-  run: [
-    "roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/loop.roc",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/inputs/meditations/tlg0562.tlg001.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
-    "119"
-  ]
+  run: ["env", "--ignore-signal=INT", "roc", "scripts/generate/loop.roc"]
 }
 
 # Export SQL by default. Configs: scripts/lyceum-{import,replace}.example.json.
@@ -130,7 +128,7 @@ task check-loop {
   run: [
     "roc",
     "check",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/loop.roc"
+    "scripts/generate/loop.roc"
   ]
 }
 
@@ -139,7 +137,7 @@ task check-translate {
   run: [
     "roc",
     "check",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/translate.roc"
+    "scripts/generate/translate.roc"
   ]
 }
 
@@ -148,7 +146,7 @@ task check-gloss {
   run: [
     "roc",
     "check",
-    "experiments/oga-conllu/oga-deepseek-v4-flash-0731-exp2/src/gloss.roc"
+    "scripts/generate/gloss.roc"
   ]
 }
 
@@ -213,10 +211,6 @@ task publish {
 task provision {
   environment: "dev"
   run: ["roc", "scripts/deploy.roc", "infrastructure"]
-}
-
-workflow meditations {
-  steps: ["run meditations-loop"]
 }
 
 workflow release {
