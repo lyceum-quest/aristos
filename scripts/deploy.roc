@@ -124,7 +124,9 @@ verify_remote! = |target| {
 	bundle = remote_get!(target, "http://127.0.0.1:8092/elm.js")?
 	bridge = remote_get!(target, "http://127.0.0.1:8092/browser-bridge.js")?
 	manifest = remote_get!(target, "http://127.0.0.1:8092/preload/corpora.json")?
-	corpus = remote_get!(target, "http://127.0.0.1:8092/preload/corpora/anabasis.conllu")?
+	expected = local_manifest!({})?
+	first_corpus = first_corpus_path(expected) ?? "corpora/missing.conllu"
+	corpus = remote_get!(target, "http://127.0.0.1:8092/preload/${first_corpus}")?
 
 	if Bool.not(Str.contains(index, "browser-bridge.js")) {
 		exit_with_message!(1, "Remote index verification failed.")
@@ -132,12 +134,24 @@ verify_remote! = |target| {
 		exit_with_message!(1, "Remote Elm bundle verification failed.")
 	} else if Bool.not(Str.contains(bridge, "storageRequest")) {
 		exit_with_message!(1, "Remote bridge verification failed.")
-	} else if Bool.not(Str.contains(manifest, "anabasis")) {
+	} else if Str.trim(manifest) != Str.trim(expected) {
 		exit_with_message!(1, "Remote manifest verification failed.")
-	} else if Bool.not(Str.contains(corpus, "sentence_id")) {
+	} else if Bool.not(Str.contains(corpus, "# sentence_id = ") or Str.contains(corpus, "# sent_id = ")) {
 		exit_with_message!(1, "Remote corpus verification failed.")
 	} else {
 		Ok({})
+	}
+}
+
+# Deploy checks compare against the manifest just built, so they hold for whichever corpora preload found.
+local_manifest! = |{}| Path.read_utf8!("dist/preload/corpora.json")
+
+first_corpus_path = |manifest| {
+	parsed : Try({ corpora : List({ path : Str }) }, _)
+	parsed = Json.parse(manifest)
+	match parsed {
+		Ok({ corpora: [first, ..] }) => Ok(first.path)
+		_ => Err(EmptyManifest)
 	}
 }
 
@@ -171,10 +185,11 @@ require_contains! = |url, expected| {
 }
 
 wait_for_public! = |attempts| {
+	expected = local_manifest!({}) ?? ""
 	public_ready = Cmd.new_str("curl")
 		.args_str(["--fail", "--silent", "--show-error", "https://aristos.lyceum.quest/preload/corpora.json"])
 		.exec_output!()
-		.map_ok(|output| Str.contains(output.stdout_utf8, "anabasis"))
+		.map_ok(|output| expected != "" and Str.trim(output.stdout_utf8) == Str.trim(expected))
 		?? Bool.False
 
 	if public_ready {

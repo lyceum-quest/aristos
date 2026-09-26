@@ -12,7 +12,7 @@ main! = |args| {
 	match outcome {
 		Ok({}) => Ok({})
 		Err(Usage) => {
-			Stderr.line!("usage: build-corpus-preload <output-dir> <corpus-id> <source.conllu> [<corpus-id> <source.conllu> ...]")?
+			Stderr.line!("usage: build-corpus-preload <output-dir> (<generated-dir> | <corpus-id> <source.conllu> [<corpus-id> <source.conllu> ...])")?
 			Stderr.line!("Invalid preload arguments.")?
 			Err(Exit(2))
 		}
@@ -30,29 +30,73 @@ main! = |args| {
 
 build_preload! = |args|
 	match args {
-		[output_dir_arg, id, path, .. as rest] => {
-			output_dir = Path.from_os_str(output_dir_arg)
-			corpus_args = List.prepend(List.prepend(rest, path), id)
-			specs = parse_specs(corpus_args)?
-			assets = prepare_assets!(specs)?
-
-			if output_dir.exists!()? {
-				output_dir.delete_all!()?
-			} else {
-				{}
-			}
-
-			corpora_dir = output_dir.join("corpora")
-			corpora_dir.create_all!()?
-			write_assets!(assets, corpora_dir)?
-			manifest = "{\"version\":1,\"corpora\":[${Str.join_with(assets.map(asset_json), ",")}]}\n"
-			output_dir.join("corpora.json").write_utf8!(manifest)?
-			Stdout.line!("wrote ${output_dir.display()}: ${assets.len().to_str()} corpus asset(s)")?
-			Ok({})
-		}
-
+		[output_dir_arg, generated_arg] => write_preload!(Path.from_os_str(output_dir_arg), discover_specs!(Path.from_os_str(generated_arg))?)
+		[output_dir_arg, id, path, .. as rest] => write_preload!(Path.from_os_str(output_dir_arg), parse_specs(List.prepend(List.prepend(rest, path), id))?)
 		_ => Err(Usage)
 	}
+
+# Every <work>-<model>/ folder written by scripts/generate/loop.roc becomes the corpus <work>, in work order.
+discover_specs! = |generated_dir| {
+	specs = discover_folders!(generated_dir.list!()?, [])?
+	if List.is_empty(specs) {
+		Err(NoGeneratedCorpora)
+	} else {
+		Ok(List.sort_with(specs, |a, b| compare_str(a.id, b.id)))
+	}
+}
+
+discover_folders! = |entries, found|
+	match entries {
+		[] => Ok(found)
+		[entry, .. as rest] => {
+			output = entry.join("output.conllu")
+			config = entry.join("config.json")
+			if output.exists!()? and config.exists!()? {
+				settings : { model : Str }
+				settings = Json.parse(config.read_utf8!()?)?
+				folder = folder_name(entry)
+				suffix = "-${Str.replace_each(settings.model, "/", "-")}"
+				id = if Str.ends_with(folder, suffix) and folder != suffix { Str.replace_last(folder, suffix, "") } else { folder }
+				if invalid_id(id) or List.any(found, |spec| spec.id == id) {
+					Err(InvalidCorpus(entry, "duplicate or invalid generated corpus id ${id}"))
+				} else {
+					discover_folders!(rest, List.append(found, { id, path: output }))
+				}
+			} else {
+				discover_folders!(rest, found)
+			}
+		}
+	}
+
+folder_name = |path| List.last(Str.split_on(path.display(), "/")) ?? path.display()
+
+compare_str = |a, b| compare_bytes(Str.to_utf8(a), Str.to_utf8(b))
+
+compare_bytes = |a, b|
+	match (a, b) {
+		([], []) => Same
+		([], _) => Before
+		(_, []) => After
+		([x, .. as xs], [y, .. as ys]) => if x < y Before else if x > y After else compare_bytes(xs, ys)
+	}
+
+write_preload! = |output_dir, specs| {
+	assets = prepare_assets!(specs)?
+
+	if output_dir.exists!()? {
+		output_dir.delete_all!()?
+	} else {
+		{}
+	}
+
+	corpora_dir = output_dir.join("corpora")
+	corpora_dir.create_all!()?
+	write_assets!(assets, corpora_dir)?
+	manifest = "{\"version\":1,\"corpora\":[${Str.join_with(assets.map(asset_json), ",")}]}\n"
+	output_dir.join("corpora.json").write_utf8!(manifest)?
+	Stdout.line!("wrote ${output_dir.display()}: ${assets.len().to_str()} corpus asset(s)")?
+	Ok({})
+}
 
 parse_specs = |args|
 	match args {
@@ -82,15 +126,17 @@ prepare_assets! = |specs|
 			match validate_corpus(content) {
 				Err(problem) => Err(InvalidCorpus(spec.path, problem))
 				Ok(valid_stats) => {
+					sidecar = sidecar_source!(spec.path)
 					source = {
-						name: metadata_or(content, "project", metadata_or(content, "source", spec.id)),
+						name: metadata_or(content, "project", metadata_or(content, "source", or_else(sidecar.corpus, spec.id))),
 						url: metadata_value(content, "source_url"),
 						commit: metadata_value(content, "source_revision"),
-						license: metadata_value(content, "license"),
-						edition: metadata_value(content, "source_edition"),
+						license: metadata_or(content, "license", sidecar.license),
+						edition: metadata_or(content, "source_edition", sidecar.edition),
 					}
+					title = or_else(sidecar.work, metadata_or(content, "source", spec.id))
 					remaining = prepare_assets!(rest)?
-					Ok(List.prepend(remaining, { id: spec.id, content, source, stats: valid_stats }))
+					Ok(List.prepend(remaining, { id: spec.id, title, content, source, stats: valid_stats }))
 				}
 			}
 		}
@@ -263,10 +309,30 @@ metadata_or = |content, key, fallback| {
 	}
 }
 
+# Generated corpora (scripts/generate/loop.roc) carry no file-level metadata; their folder's config.json has a source record.
+SidecarSource : { corpus : Str, work : Str, edition : Str, license : Str }
+sidecar_source! = |path| {
+	empty = { corpus: "", work: "", edition: "", license: "" }
+	config = Path.utf8("${Str.join_with(List.drop_last(Str.split_on(path.display(), "/"), 1), "/")}/config.json")
+	match config.read_utf8!() {
+		Ok(text) => {
+			parsed : Try({ source : SidecarSource }, _)
+			parsed = Json.parse(text)
+			match parsed {
+				Ok(record) => record.source
+				Err(_) => empty
+			}
+		}
+		Err(_) => empty
+	}
+}
+
+or_else = |value, fallback| if value == "" fallback else value
+
 asset_json = |asset| {
 	source = asset.source
 	asset_path = "corpora/${asset.id}.conllu"
-	"{\"id\":${json_string(asset.id)},\"path\":${json_string(asset_path)},\"sentenceCount\":${asset.stats.sentence_count.to_str()},\"tokenCount\":${asset.stats.token_count.to_str()},\"source\":{\"name\":${json_string(source.name)},\"url\":${json_string(source.url)},\"commit\":${json_string(source.commit)},\"license\":${json_string(source.license)},\"edition\":${json_string(source.edition)}}}"
+	"{\"id\":${json_string(asset.id)},\"title\":${json_string(asset.title)},\"path\":${json_string(asset_path)},\"sentenceCount\":${asset.stats.sentence_count.to_str()},\"tokenCount\":${asset.stats.token_count.to_str()},\"source\":{\"name\":${json_string(source.name)},\"url\":${json_string(source.url)},\"commit\":${json_string(source.commit)},\"license\":${json_string(source.license)},\"edition\":${json_string(source.edition)}}}"
 }
 
 json_string = |value| {

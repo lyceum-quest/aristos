@@ -160,17 +160,11 @@ task check-lint-tool {
   run: ["roc", "check", "scripts/lint.roc"]
 }
 
+# Bundles every conllu/generated/<work>-<model>/ folder with output.conllu and
+# config.json as corpus <work>, including partially generated works.
 task preload {
   environment: "dev"
-  run: [
-    "roc",
-    "scripts/build-corpus-preload.roc",
-    "preload",
-    "meditations",
-    "conllu/generated/meditations-claude-sonnet-5/output.conllu",
-    "anabasis",
-    "conllu/xenophon/anabasis/book-01-first-sentence.tb.conllu"
-  ]
+  run: ["roc", "scripts/build-corpus-preload.roc", "preload", "conllu/generated"]
 }
 
 task check-preload-tool {
