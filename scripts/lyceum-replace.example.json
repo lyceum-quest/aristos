@@ -1,5 +1,5 @@
 {
-  "input": "conllu/generated/claude-sonnet-5/meditations/output.conllu",
+  "input": "conllu/generated/meditations-claude-sonnet-5/output.conllu",
   "texts_db": "../lyceum/website-private/data/texts.db",
   "editions_db": "../lyceum/website-private/data/editions.db",
   "sql_output": "/tmp/aristos-lyceum-replace.sql",
