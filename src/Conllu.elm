@@ -193,7 +193,13 @@ finishSentence state =
                     , rows = []
                     , sentences =
                         { id = normalizedId
-                        , chapter = chapterFromReference reference
+                        , chapter =
+                            -- A sentence number is not a citation; corpora without references form one division.
+                            if reference == sentenceId then
+                                1
+
+                            else
+                                chapterFromReference reference
                         , verse = if String.isEmpty reference then sentenceId else reference
                         , text = metadataOr "text" reconstructed state.metadata
                         , literalTranslation = firstMetadata state.metadata [ "text_en_literal", "literal_translation" ]

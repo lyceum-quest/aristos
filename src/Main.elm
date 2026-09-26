@@ -109,8 +109,22 @@ type alias Manifest =
 
 type alias ManifestEntry =
     { id : String
+    , title : String
     , path : String
+    , sentenceCount : Int
+    , tokenCount : Int
     , source : CorpusSource
+    }
+
+
+type alias Coverage =
+    { tokens : Int
+    , glossed : Int
+    , morphology : Int
+    , sentences : Int
+    , dependencies : Int
+    , literal : Int
+    , prose : Int
     }
 
 
@@ -144,6 +158,10 @@ type alias Model =
     , corpusLoadedFromNetwork : Bool
     , legacyManifestEntry : Maybe ManifestEntry
     , legacyCorpusRaw : Maybe String
+    , library : List ManifestEntry
+    , activeEntry : Maybe ManifestEntry
+    , requestedWork : Maybe String
+    , openWhenLoaded : Bool
     }
 
 
@@ -156,6 +174,7 @@ type Msg
     | PreviousSentence
     | NextSentence
     | JumpToChapter String
+    | OpenWork ManifestEntry
     | SelectToken Int
     | SelectPreset Preset
     | SelectScope SettingScope
@@ -227,6 +246,10 @@ init _ =
     , corpusLoadedFromNetwork = False
     , legacyManifestEntry = Nothing
     , legacyCorpusRaw = Nothing
+    , library = []
+    , activeEntry = Nothing
+    , requestedWork = Nothing
+    , openWhenLoaded = False
     }
     , Cmd.batch
         [ fetchManifest
@@ -279,9 +302,13 @@ manifestDecoder =
 
 manifestEntryDecoder : Decode.Decoder ManifestEntry
 manifestEntryDecoder =
-    Decode.map3 ManifestEntry
+    -- Title and counts default so entries cached by earlier builds still decode.
+    Decode.map6 ManifestEntry
         (Decode.field "id" Decode.string)
+        (Decode.oneOf [ Decode.field "title" Decode.string, Decode.field "id" Decode.string ])
         (Decode.field "path" Decode.string)
+        (Decode.oneOf [ Decode.field "sentenceCount" Decode.int, Decode.succeed 0 ])
+        (Decode.oneOf [ Decode.field "tokenCount" Decode.int, Decode.succeed 0 ])
         (Decode.field "source" corpusSourceDecoder)
 
 
@@ -303,17 +330,17 @@ cachedCorpusDecoder =
 fallbackCorpus : Corpus
 fallbackCorpus =
     { source =
-        { name = "Lyceum Digital Library"
-        , url = "https://github.com/lyceum-quest/conllu-viz"
+        { name = ""
+        , url = ""
         , commit = ""
-        , license = "CC BY-SA 4.0"
-        , edition = "GLAux (Greek Language Automated XML)"
+        , license = ""
+        , edition = ""
         }
     , sentences =
         [ { id = "missing"
           , chapter = 1
-          , verse = "1.1.1"
-          , text = "No Anabasis data loaded."
+          , verse = "1"
+          , text = "No corpus loaded."
           , literalTranslation = ""
           , proseTranslation = ""
           , tokens = []
@@ -387,7 +414,16 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         GotManifest result ->
-            ( model, commandForManifest result )
+            handleManifest result model
+
+        OpenWork entry ->
+            if model.corpusReady && Maybe.map .id model.activeEntry == Just entry.id then
+                ( { model | screen = WorkspaceScreen, notice = Nothing }, Cmd.none )
+
+            else
+                ( { model | requestedWork = Just entry.id, openWhenLoaded = True, notice = Just ("Loading " ++ entry.title ++ "…") }
+                , fetchCorpus entry
+                )
 
         GotCorpus entry result ->
             handleFetchedCorpus entry result model
@@ -575,10 +611,10 @@ updateInteraction msg model =
         FinishPassage ->
             if model.sentenceIndex < List.length model.corpus.sentences - 1 then
                 moveToSentence (model.sentenceIndex + 1) model
-                    |> withNotice "Passage reread recorded. The next Anabasis passage is ready."
+                    |> withNotice ("Passage reread recorded. The next " ++ workTitle model ++ " passage is ready.")
 
             else
-                { model | screen = LibraryScreen, notice = Just "Anabasis reread recorded. You reached the end of the bundled text." }
+                { model | screen = LibraryScreen, notice = Just (workTitle model ++ " reread recorded. You reached the end of the bundled text.") }
 
         ShowNotice notice ->
             { model | notice = Just notice }
@@ -600,6 +636,9 @@ updateInteraction msg model =
             { model | elapsedSeconds = model.elapsedSeconds + 1 }
 
         GotManifest _ ->
+            model
+
+        OpenWork _ ->
             model
 
         GotCorpus _ _ ->
@@ -659,21 +698,24 @@ fetchManifest =
         }
 
 
-commandForManifest : Result Http.Error Manifest -> Cmd Msg
-commandForManifest result =
+handleManifest : Result Http.Error Manifest -> Model -> ( Model, Cmd Msg )
+handleManifest result model =
     case result of
         Ok manifest ->
             if manifest.version /= 1 then
-                Cmd.none
+                ( model, Cmd.none )
 
             else
-                manifest.corpora
-                    |> List.head
-                    |> Maybe.map fetchCorpus
-                    |> Maybe.withDefault Cmd.none
+                -- The first entry loads by default unless a work was already requested.
+                case ( model.requestedWork, List.head manifest.corpora ) of
+                    ( Nothing, Just first ) ->
+                        ( { model | library = manifest.corpora, requestedWork = Just first.id }, fetchCorpus first )
+
+                    _ ->
+                        ( { model | library = manifest.corpora }, Cmd.none )
 
         Err _ ->
-            Cmd.none
+            ( model, Cmd.none )
 
 
 fetchCorpus : ManifestEntry -> Cmd Msg
@@ -695,39 +737,43 @@ handleFetchedCorpus entry result model =
         Ok raw ->
             case Conllu.parse entry.source raw of
                 Ok corpus ->
-                    ( installCorpus True corpus model
-                    , Cmd.batch
-                        [ storagePut "cache-corpus" "metadata"
-                            (Encode.object
-                                [ ( "key", Encode.string "cached-corpus" )
-                                , ( "value"
-                                  , Encode.object
-                                        [ ( "entry", encodeManifestEntry entry )
-                                        , ( "raw", Encode.string raw )
-                                        ]
-                                  )
-                                ]
-                            )
-                        , storagePut "cache-manifest" "metadata"
-                            (Encode.object
-                                [ ( "key", Encode.string "preload-manifest" )
-                                , ( "value"
-                                  , Encode.object
-                                        [ ( "version", Encode.int 1 )
-                                        , ( "corpora", Encode.list encodeManifestEntry [ entry ] )
-                                        ]
-                                  )
-                                ]
-                            )
-                        , storagePut "cache-raw-corpus" "corpora"
-                            (Encode.object
-                                [ ( "id", Encode.string entry.id )
-                                , ( "path", Encode.string entry.path )
-                                , ( "content", Encode.string raw )
-                                ]
-                            )
-                        ]
-                    )
+                    if model.requestedWork /= Just entry.id then
+                        ( model, Cmd.none )
+
+                    else
+                        ( installCorpus True entry corpus model
+                        , Cmd.batch
+                            [ storagePut "cache-corpus" "metadata"
+                                (Encode.object
+                                    [ ( "key", Encode.string "cached-corpus" )
+                                    , ( "value"
+                                      , Encode.object
+                                            [ ( "entry", encodeManifestEntry entry )
+                                            , ( "raw", Encode.string raw )
+                                            ]
+                                      )
+                                    ]
+                                )
+                            , storagePut "cache-manifest" "metadata"
+                                (Encode.object
+                                    [ ( "key", Encode.string "preload-manifest" )
+                                    , ( "value"
+                                      , Encode.object
+                                            [ ( "version", Encode.int 1 )
+                                            , ( "corpora", Encode.list encodeManifestEntry [ entry ] )
+                                            ]
+                                      )
+                                    ]
+                                )
+                            , storagePut "cache-raw-corpus" "corpora"
+                                (Encode.object
+                                    [ ( "id", Encode.string entry.id )
+                                    , ( "path", Encode.string entry.path )
+                                    , ( "content", Encode.string raw )
+                                    ]
+                                )
+                            ]
+                        )
 
                 Err problem ->
                     ( { model | notice = Just ("Corpus could not be parsed: " ++ problem) }, Cmd.none )
@@ -791,21 +837,32 @@ useCachedCorpus : ManifestEntry -> String -> Model -> Model
 useCachedCorpus entry raw model =
     case Conllu.parse entry.source raw of
         Ok corpus ->
-            installCorpus False corpus model
+            installCorpus False entry corpus model
 
         Err _ ->
             model
 
 
-installCorpus : Bool -> Corpus -> Model -> Model
-installCorpus loadedFromNetwork corpus model =
+installCorpus : Bool -> ManifestEntry -> Corpus -> Model -> Model
+installCorpus loadedFromNetwork entry corpus model =
     { model
         | screen =
-            if model.corpusReady then
+            if model.openWhenLoaded then
+                WorkspaceScreen
+
+            else if model.corpusReady then
                 LibraryScreen
 
             else
                 model.screen
+        , notice =
+            if model.openWhenLoaded then
+                Nothing
+
+            else
+                model.notice
+        , openWhenLoaded = False
+        , activeEntry = Just entry
         , corpus = corpus
         , corpusReady = True
         , corpusLoadedFromNetwork = model.corpusLoadedFromNetwork || loadedFromNetwork
@@ -865,7 +922,10 @@ encodeManifestEntry : ManifestEntry -> Encode.Value
 encodeManifestEntry entry =
     Encode.object
         [ ( "id", Encode.string entry.id )
+        , ( "title", Encode.string entry.title )
         , ( "path", Encode.string entry.path )
+        , ( "sentenceCount", Encode.int entry.sentenceCount )
+        , ( "tokenCount", Encode.int entry.tokenCount )
         , ( "source", encodeCorpusSource entry.source )
         ]
 
@@ -1173,55 +1233,71 @@ viewLibrary model =
                 , p [ class "lead" ] [ text "Read freely, or compose only the form, syntax, and translation tools useful for this session." ]
                 ]
             , div [ class "library-summary" ]
-                [ span [ class "summary-value" ] [ text "1" ]
-                , span [] [ text "Anabasis section" ]
+                [ span [ class "summary-value" ] [ text (String.fromInt (List.length model.library)) ]
+                , span [] [ text (plural (List.length model.library) "work" "works") ]
                 , span [ class "summary-divider" ] []
-                , span [ class "summary-value" ] [ text (String.fromInt (List.length model.corpus.sentences)) ]
-                , span [] [ text "imported sentence" ]
+                , span [ class "summary-value" ] [ text (String.fromInt (List.sum (List.map .sentenceCount model.library))) ]
+                , span [] [ text "imported sentences" ]
                 ]
             ]
         , section [ class "pack-list", attribute "aria-label" "Content packs" ]
-            [ viewFeaturedPack model
-            , viewPackCard "Γένεσις" "Genesis · Complete" "Septuagint · Biblical Greek" "Corpus retained outside this build" "Not bundled in this build" "Available later"
-            , viewPackCard "Ἰλιάς" "Iliad · Book 1" "Homeric · Poetry" "UI fixture removed" "Not bundled in this build" "Coming later"
-            ]
+            (if List.isEmpty model.library then
+                [ p [ class "muted" ] [ text "Loading the library…" ] ]
+
+             else
+                List.map (viewWorkCard model) model.library
+            )
         ]
 
 
-viewFeaturedPack : Model -> Html Msg
-viewFeaturedPack model =
-    section [ class "pack-card featured-pack" ]
-        [ div [ class "pack-accent", attribute "aria-hidden" "true" ] [ text "Ξ" ]
-        , div [ class "pack-body" ]
+viewWorkCard : Model -> ManifestEntry -> Html Msg
+viewWorkCard model entry =
+    let
+        isActive =
+            model.corpusReady && Maybe.map .id model.activeEntry == Just entry.id
+
+        isLoading =
+            model.openWhenLoaded && model.requestedWork == Just entry.id
+
+        coverage =
+            corpusCoverage model.corpus
+
+        details =
+            [ entry.source.name, entry.source.license ]
+                |> List.filter (not << String.isEmpty)
+                |> String.join " · "
+    in
+    section [ classList [ ( "pack-card", True ), ( "featured-pack", isActive ) ] ]
+        [ div [ class "pack-body" ]
             [ div [ class "pack-heading" ]
                 [ div []
-                    [ p [ class "pack-language" ] [ text "Classical Attic · Prose" ]
-                    , h2 [] [ text "Anabasis · Book 1" ]
-                    , p [ class "greek-subtitle" ] [ text "Ξενοφῶντος Ἀνάβασις" ]
+                    [ p [ class "pack-language" ] [ text details ]
+                    , h2 [] [ text entry.title ]
+                    , p [ class "greek-subtitle" ] [ text entry.source.edition ]
                     ]
-                , span [ class "availability good" ] [ text "Bundled · one sentence" ]
+                , span [ class "availability good" ] [ text "Bundled" ]
                 ]
-            , p [ class "pack-description" ] [ text "The opening sentence, imported directly from the smaller Lyceum CoNLL-U fixture." ]
-            , div [ class "capability-strip" ]
-                [ capabilityPill True "Glosses 12/12"
-                , capabilityPill True "Morphology 7/12"
-                , capabilityPill True "Dependencies 1/1"
-                , capabilityPill True "Translations 1/1"
-                ]
+            , if isActive then
+                div [ class "capability-strip" ]
+                    [ capabilityPill (coverage.glossed > 0) ("Glosses " ++ fraction coverage.glossed coverage.tokens)
+                    , capabilityPill (coverage.morphology > 0) ("Morphology " ++ fraction coverage.morphology coverage.tokens)
+                    , capabilityPill (coverage.dependencies > 0) ("Dependencies " ++ fraction coverage.dependencies coverage.sentences)
+                    , capabilityPill (coverage.prose > 0) ("Translations " ++ fraction coverage.prose coverage.sentences)
+                    ]
+
+              else
+                text ""
             , div [ class "pack-footer" ]
-                [ div [ class "pack-progress" ]
-                    [ div [ class "progress-track" ] [ span [ class "progress-fill" ] [] ]
-                    , span [] [ text (String.fromInt (List.length model.corpus.sentences) ++ " sentence · 15 tokens · " ++ model.corpus.source.license) ]
-                    ]
+                [ span [ class "muted" ] [ text (String.fromInt entry.sentenceCount ++ " " ++ plural entry.sentenceCount "sentence" "sentences" ++ " · " ++ String.fromInt entry.tokenCount ++ " tokens") ]
                 , div [ class "button-row" ]
                     [ button [ class "secondary-button", type_ "button", onClick ShowSettings ] [ text "Configure" ]
-                    , button [ class "primary-button", type_ "button", disabled (not model.corpusReady), onClick ShowWorkspace ]
+                    , button [ class "primary-button", type_ "button", disabled isLoading, onClick (OpenWork entry) ]
                         [ text
-                            (if model.corpusReady then
-                                "Start Anabasis →"
+                            (if isLoading then
+                                "Loading…"
 
                              else
-                                "Loading corpus…"
+                                "Read →"
                             )
                         ]
                     ]
@@ -1230,26 +1306,44 @@ viewFeaturedPack model =
         ]
 
 
-viewPackCard : String -> String -> String -> String -> String -> String -> Html Msg
-viewPackCard greekTitle englishTitle genre coverage limitation progress =
-    section [ class "pack-card compact-pack" ]
-        [ div [ class "pack-heading" ]
-            [ div []
-                [ p [ class "pack-language" ] [ text genre ]
-                , h2 [] [ text englishTitle ]
-                , p [ class "greek-subtitle" ] [ text greekTitle ]
-                ]
-            , span [ class "availability" ] [ text "Not bundled" ]
-            ]
-        , div [ class "compact-capabilities" ]
-            [ span [] [ text coverage ]
-            , span [ class "limited-capability" ] [ text limitation ]
-            ]
-        , div [ class "pack-footer" ]
-            [ span [ class "muted" ] [ text progress ]
-            , button [ class "text-button", type_ "button", onClick (ShowNotice (englishTitle ++ " is not bundled in this real-data build.")) ] [ text "Unavailable" ]
-            ]
-        ]
+corpusCoverage : Corpus -> Coverage
+corpusCoverage corpus =
+    let
+        tokens =
+            List.concatMap .tokens corpus.sentences
+
+        countSentences predicate =
+            List.length (List.filter predicate corpus.sentences)
+    in
+    { tokens = List.length tokens
+    , glossed = List.length (List.filter (\token -> not (String.isEmpty token.gloss)) tokens)
+    , morphology = List.length (List.filter (\token -> not (String.isEmpty token.morphology.summary)) tokens)
+    , sentences = List.length corpus.sentences
+    , dependencies = countSentences (\sentence -> List.any (\token -> token.head == 0) sentence.tokens)
+    , literal = countSentences (\sentence -> not (String.isEmpty sentence.literalTranslation))
+    , prose = countSentences (\sentence -> not (String.isEmpty sentence.proseTranslation))
+    }
+
+
+fraction : Int -> Int -> String
+fraction part whole =
+    String.fromInt part ++ "/" ++ String.fromInt whole
+
+
+plural : Int -> String -> String -> String
+plural count singular pluralForm =
+    if count == 1 then
+        singular
+
+    else
+        pluralForm
+
+
+workTitle : Model -> String
+workTitle model =
+    model.activeEntry
+        |> Maybe.map .title
+        |> Maybe.withDefault model.corpus.source.name
 
 
 capabilityPill : Bool -> String -> Html Msg
@@ -1262,10 +1356,17 @@ capabilityPill available label =
 
 viewSettings : Model -> Html Msg
 viewSettings model =
+    let
+        coverage =
+            corpusCoverage model.corpus
+
+        provenance =
+            model.corpus.source.name
+    in
     main_ [ class "page settings-page" ]
         [ section [ class "settings-intro" ]
             [ div []
-                [ p [ class "eyebrow" ] [ text "Anabasis · Book 1" ]
+                [ p [ class "eyebrow" ] [ text (workTitle model) ]
                 , h1 [] [ text "Compose your reading workspace" ]
                 , p [ class "lead" ] [ text "A preset is only a starting point. Greek remains available even when every learning module is off." ]
                 ]
@@ -1295,12 +1396,12 @@ viewSettings model =
                 , span [ class "coverage-key" ] [ text (model.corpus.source.name ++ " · imported CoNLL-U") ]
                 ]
             , viewRequiredModule
-            , viewModuleSetting model GlossModule "Enter contextual glosses" "Recall a sense for every glossed word, then compare with the imported gloss." "12 of 12 words" "Lyceum · imported"
-            , viewModuleSetting model MorphologyModule "Analyze morphology" "Choose applicable features for selected forms; no free-text label matching." "7 of 12 words" "Lyceum · imported"
-            , viewModuleSetting model DependencyModule "Build dependency relationships" "Find the root and attach one core argument. Full trees remain optional." "1 of 1 sentences" "Lyceum · imported reference"
-            , viewModuleSetting model LiteralModule "Draft a literal translation" "Expose structure and supplied relationships in your own words." "1 of 1 sentences" "Lyceum · aligned reference"
-            , viewModuleSetting model ProseModule "Draft a prose translation" "State the understood proposition naturally and retain it for later comparison." "1 of 1 sentences" "Lyceum · aligned reference"
-            , viewUnavailableModule "Curated gist check" "No curated prompts in this edition" "0 of 1 sentences"
+            , viewModuleSetting model GlossModule "Enter contextual glosses" "Recall a sense for every glossed word, then compare with the imported gloss." (String.fromInt coverage.glossed ++ " of " ++ String.fromInt coverage.tokens ++ " words") (provenance ++ " · imported")
+            , viewModuleSetting model MorphologyModule "Analyze morphology" "Choose applicable features for selected forms; no free-text label matching." (String.fromInt coverage.morphology ++ " of " ++ String.fromInt coverage.tokens ++ " words") (provenance ++ " · imported")
+            , viewModuleSetting model DependencyModule "Build dependency relationships" "Find the root and attach one core argument. Full trees remain optional." (String.fromInt coverage.dependencies ++ " of " ++ String.fromInt coverage.sentences ++ " sentences") (provenance ++ " · imported reference")
+            , viewModuleSetting model LiteralModule "Draft a literal translation" "Expose structure and supplied relationships in your own words." (String.fromInt coverage.literal ++ " of " ++ String.fromInt coverage.sentences ++ " sentences") (provenance ++ " · aligned reference")
+            , viewModuleSetting model ProseModule "Draft a prose translation" "State the understood proposition naturally and retain it for later comparison." (String.fromInt coverage.prose ++ " of " ++ String.fromInt coverage.sentences ++ " sentences") (provenance ++ " · aligned reference")
+            , viewUnavailableModule "Curated gist check" "No curated prompts in this edition" ("0 of " ++ String.fromInt coverage.sentences ++ " sentences")
             , viewUnavailableModule "Reconstruct word order" "Activity generator not included in this prototype" "Capability pending"
             ]
         , footer [ class "settings-footer" ]
@@ -1440,7 +1541,7 @@ viewWorkspace model =
             [ div [ class "context-title" ]
                 [ button [ class "icon-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Back to library" ] [ text "←" ]
                 , div []
-                    [ span [ class "context-work" ] [ text "Xenophon · Anabasis" ]
+                    [ span [ class "context-work" ] [ text (workTitle model) ]
                     , span [ class "context-division" ] [ text (sentenceReference sentence ++ " · Passage " ++ String.fromInt (model.sentenceIndex + 1) ++ " of " ++ String.fromInt (List.length model.corpus.sentences)) ]
                     ]
                 ]
@@ -1862,7 +1963,7 @@ viewDependencyDraft model =
                 ]
             , selectValueField "Relation" model.draft.dependencyRelation UpdateDependencyRelation relationChoices
             ]
-        , p [ class "field-note" ] [ text "Answers store token IDs and relations—not screen coordinates. Lyceum dependencies are attributed references, not unquestionable truth." ]
+        , p [ class "field-note" ] [ text "Answers store token IDs and relations—not screen coordinates. Imported dependencies are attributed references, not unquestionable truth." ]
         , viewRevealedReference model ("Imported edge: " ++ target.form ++ " → " ++ rootOrHeadForm sentence target ++ " · " ++ String.toUpper target.relation)
         ]
 
@@ -2098,7 +2199,7 @@ viewModuleComparison model moduleId =
                     rootOrHeadForm sentence target
             in
             div [ class "comparison-stack" ]
-                [ comparisonBanner (String.fromInt matches ++ " of 3 fields match") "Task-scoped result · imported Lyceum reference"
+                [ comparisonBanner (String.fromInt matches ++ " of 3 fields match") "Task-scoped result · imported reference"
                 , viewMiniTree model True
                 , featureComparison "Root" (tokenFormForValue sentence model.draft.dependencyRoot) root.form (model.draft.dependencyRoot == rootId)
                 , featureComparison "Core edge" (target.form ++ " → " ++ submittedHead) (target.form ++ " → " ++ referenceHead) (model.draft.dependencyHead == headId)
@@ -2164,7 +2265,7 @@ viewTranslationComparison mine reference labelText =
                     ]
                 ]
             , div []
-                [ span [ class "compare-label" ] [ text "Lyceum reference" ]
+                [ span [ class "compare-label" ] [ text "Reference" ]
                 , p [] [ text reference ]
                 ]
             ]
@@ -2272,7 +2373,7 @@ viewHistory model =
             [ aside [ class "history-filter" ]
                 [ p [ class "rail-label" ] [ text "Showing" ]
                 , button [ class "filter-button is-active", type_ "button" ] [ text "This passage", span [] [ text (String.fromInt model.attemptCount) ] ]
-                , button [ class "filter-button", type_ "button", onClick (ShowNotice "Cross-passage history arrives with persistent attempt storage.") ] [ text "All Anabasis", span [] [ text "—" ] ]
+                , button [ class "filter-button", type_ "button", onClick (ShowNotice "Cross-passage history arrives with persistent attempt storage.") ] [ text ("All " ++ workTitle model), span [] [ text "—" ] ]
                 , div [ class "privacy-note" ]
                     [ strongText "In-memory prototype"
                     , p [] [ text "Refreshing the page clears attempts in this release." ]
@@ -2361,7 +2462,7 @@ viewAttemptComparison model =
         , section [ class "comparison-section" ]
             [ div [ class "comparison-section-heading" ]
                 [ p [ class "eyebrow" ] [ text "Morphology response" ]
-                , span [ class "neutral-badge" ] [ text "Same Lyceum reference version" ]
+                , span [ class "neutral-badge" ] [ text "Same reference version" ]
                 ]
             , div [ class "condition-table" ]
                 [ conditionRow "Case" previous.morphCase model.draft.morphCase
@@ -2423,7 +2524,7 @@ fallbackSentence =
             { id = "missing"
             , chapter = 1
             , verse = "1.1.1"
-            , text = "No Anabasis data loaded."
+            , text = "No corpus loaded."
             , literalTranslation = ""
             , proseTranslation = ""
             , tokens = []
@@ -2432,7 +2533,7 @@ fallbackSentence =
 
 sentenceReference : Sentence -> String
 sentenceReference sentence =
-    "Anabasis " ++ String.replace "-" "–" sentence.verse
+    "§ " ++ String.replace "-" "–" sentence.verse
 
 
 getAt : Int -> List a -> Maybe a
