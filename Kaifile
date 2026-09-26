@@ -197,11 +197,6 @@ task bundle {
   run: ["roc", "scripts/build-release.roc"]
 }
 
-task publish {
-  environment: "dev"
-  run: ["roc", "scripts/deploy.roc"]
-}
-
 task provision {
   environment: "dev"
   run: ["roc", "scripts/deploy.roc", "infrastructure"]
@@ -217,14 +212,5 @@ workflow release {
     "run preload",
     "run check-browser-boundary",
     "run bundle"
-  ]
-}
-
-workflow deploy {
-  steps: [
-    "run preload",
-    "run check-browser-boundary",
-    "run bundle",
-    "run publish"
   ]
 }

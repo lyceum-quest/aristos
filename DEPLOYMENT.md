@@ -23,22 +23,11 @@ allowing the existing public Caddy instance to remain the sole owner of ports
 
 ## Deploy
 
-Run the Kai workflow:
-
-```sh
-kai workflow deploy
-```
-
-Defaults:
-
-```text
-TARGET_HOST=lyceum-staging
-REMOTE_DIR=/var/www/aristos
-```
-
-The workflow builds an optimized Elm release, synchronizes the static bundle,
-and verifies Aristos plus the existing Conllu and Lyceum endpoints. Pushes no
-longer trigger it: the CI workflow was removed while that host is down.
+The `deploy` workflow, `publish` task, and CI workflow were removed while
+that host is down. `roc scripts/deploy.roc` still publishes `dist/` to it
+(defaults `TARGET_HOST=lyceum-staging`, `REMOTE_DIR=/var/www/aristos`) and
+verifies Aristos plus the existing Conllu and Lyceum endpoints, should the
+host return.
 
 ## Provision infrastructure
 
