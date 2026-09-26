@@ -99,7 +99,7 @@
 4	ἀμφότεροι	ἀμφότερος	a	a-p---mn-	Case=n|Gender=m|Number=p	1	SBJ	_	t_82|gloss=both
 5	ἐναντίον	ἐναντίον	r	r--------	_	1	AuxP	_	t_83|gloss=before
 6	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	7	ATR	_	t_84|gloss=the
-7	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	5	ADV	_	t_85|gloss=god
+7	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	5	ADV	_	t_85|gloss=God
 8	,	,	u	u--------	_	1	AuxX	_	t_86|gloss=,
 9	πορευόμενοι	πορεύω	v	v-pppemn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	1	ADV	_	t_87|gloss=walking
 10	ἐν	ἐν	r	r--------	_	9	AuxP	_	t_88|gloss=in
@@ -109,7 +109,7 @@
 14	καὶ	καί	c	c--------	_	10	COORD	_	t_92|gloss=and
 15	δικαιώμασιν	δικαίωμα	n	n-p---nd-	Case=d|Gender=n|Number=p	14	ADV	_	t_93|gloss=ordinances
 16	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	17	ATR	_	t_94|gloss=the
-17	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_95|gloss=lord
+17	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_95|gloss=Lord
 18	ἄμεμπτοι	ἄμεμπτος	a	a-p---mn-	Case=n|Gender=m|Number=p	4	ATV	_	t_96|gloss=blameless
 19	.	.	u	u--------	_	1	AuxK	_	t_97|gloss=.
 
@@ -161,7 +161,7 @@
 12	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_132|gloss=his
 13	ἔναντι	ἔναντι	r	r--------	_	21	AuxP	_	t_133|gloss=before
 14	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_134|gloss=the
-15	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ADV	_	t_135|gloss=god
+15	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ADV	_	t_135|gloss=God
 16	κατὰ	κατά	r	r--------	_	21	AuxP	_	t_136|gloss=according-to
 17	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	18	ATR	_	t_137|gloss=the
 18	ἔθος	ἔθος	n	n-s---na-	Case=a|Gender=n|Number=s	16	ADV	_	t_138|gloss=custom
@@ -175,7 +175,7 @@
 26	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	27	ATR	_	t_146|gloss=the
 27	ναὸν	ναός	n	n-s---ma-	Case=a|Gender=m|Number=s	25	OBJ	_	t_147|gloss=temple
 28	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	29	ATR	_	t_148|gloss=of-the
-29	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	27	ATR	_	t_149|gloss=lord
+29	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	27	ATR	_	t_149|gloss=Lord
 30	,	,	u	u--------	_	23	AuxX	_	t_150|gloss=,
 31	καὶ	καί	c	c--------	_	2	COORD	_	t_151|gloss=and
 32	πᾶν	πᾶς	a	a-s---nn-	Case=n|Gender=n|Number=s	34	ATR	_	t_152|gloss=all
@@ -419,7 +419,7 @@
 11	παρεστηκὼς	παρίστημι	v	v-srpamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=r|Voice=a	7	ATR	_	t_335|gloss=standing
 12	ἐνώπιον	ἐνώπιον	r	r--------	_	11	AuxP	_	t_336|gloss=before
 13	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	14	ATR	_	t_337|gloss=the
-14	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ADV	_	t_338|gloss=god
+14	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ADV	_	t_338|gloss=God
 15	,	,	u	u--------	_	0	AuxX	_	t_339|gloss=,
 16	καὶ	καί	c	c--------	_	15	COORD	_	t_340|gloss=and
 17	ἀπεστάλην	ἀποστέλλω	v	v1saip---	Mood=i|Number=s|Person=1|Tense=a|Voice=p	16	PRED	_	t_341|gloss=i-was-sent
@@ -656,7 +656,7 @@
 8	κεχαριτωμένη	κεχαριτάομαι	v	v-srpefn-	Case=n|Gender=f|Mood=p|Number=s|Tense=r|Voice=e	14	ADV	_	t_517|gloss=favored-one
 9	,	,	u	u--------	_	5	AuxX	_	t_518|gloss=,
 10	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	11	ATR	_	t_519|gloss=the
-11	κύριος	κύριος	n	n-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_520|gloss=lord
+11	κύριος	κύριος	n	n-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_520|gloss=Lord
 12	μετὰ	μετά	r	r--------	_	14	AuxP	_	t_521|gloss=with
 13	σοῦ	σύ	p	p2s---cg-	Case=g|Gender=c|Number=s|Person=2	12	ADV	_	t_522|gloss=you
 14	[0]	[0]	-	---------	_	5	OBJ	_	e_4
@@ -743,9 +743,9 @@
 9	καὶ	καί	d	d--------	_	32	AuxY	_	t_579|gloss=and
 10	δώσει	δίδωμι	v	v3sfia---	Mood=i|Number=s|Person=3|Tense=f|Voice=a	32	PRED	_	t_580|gloss=will-give
 11	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	10	OBJ	_	t_581|gloss=to-him
-12	Κύριος	κύριος	n	n-s---mn-	Case=n|Gender=m|Number=s	10	SBJ	_	t_582|gloss=lord
+12	Κύριος	κύριος	n	n-s---mn-	Case=n|Gender=m|Number=s	10	SBJ	_	t_582|gloss=Lord
 13	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_583|gloss=the
-14	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_584|gloss=god
+14	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_584|gloss=God
 15	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	16	ATR	_	t_585|gloss=the
 16	θρόνον	θρόνος	n	n-s---ma-	Case=a|Gender=m|Number=s	10	OBJ	_	t_586|gloss=throne
 17	Δαυεὶδ	δαυείδ	n	n-s---ma-	Case=a|Gender=m|Number=s	16	ATR	_	t_587|gloss=of-david
@@ -830,7 +830,7 @@
 6	κληθήσεται	καλέω	v	v3sfip---	Mood=i|Number=s|Person=3|Tense=f|Voice=p	0	PRED	_	t_648|gloss=will-be-called
 7	,	,	u	u--------	_	6	AuxX	_	t_649|gloss=,
 8	υἱὸς	υἱός	n	n-s---mn-	Case=n|Gender=m|Number=s	6	ExD	_	t_650|gloss=son
-9	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_651|gloss=of-god
+9	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_651|gloss=of-God
 10	·	·	u	u--------	_	6	AuxK	_	t_652|gloss=·
 
 
@@ -873,7 +873,7 @@
 3	ἀδυνατήσει	ἀδυνατέω	v	v3sfia---	Mood=i|Number=s|Person=3|Tense=f|Voice=a	1	OBJ	_	t_679|gloss=will-be-impossible
 4	παρὰ	παρά	r	r--------	_	3	AuxP	_	t_680|gloss=from-beside
 5	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	6	ATR	_	t_681|gloss=the
-6	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ADV	_	t_682|gloss=god
+6	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ADV	_	t_682|gloss=God
 7	πᾶν	πᾶς	a	a-s---nn-	Case=n|Gender=n|Number=s	8	ATR	_	t_683|gloss=every
 8	ῥῆμα	ῥῆμα	n	n-s---nn-	Case=n|Gender=n|Number=s	3	SBJ	_	t_684|gloss=word
 9	[0]	[0]	-	---------	_	0	PRED	_	e_5
@@ -1020,7 +1020,7 @@
 7	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	8	ATR	_	t_787|gloss=the
 8	μήτηρ	μήτηρ	n	n-s---fn-	Case=n|Gender=f|Number=s	6	SBJ	_	t_788|gloss=mother
 9	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	10	ATR	_	t_789|gloss=the
-10	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_790|gloss=lord
+10	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_790|gloss=Lord
 11	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	10	ATR	_	t_791|gloss=of-me
 12	πρὸς	πρός	r	r--------	_	6	AuxP	_	t_792|gloss=to
 13	ἐμέ	ἐγώ	p	p1s---ca-	Case=a|Gender=c|Number=s|Person=1	12	OBJ	_	t_793|gloss=me
@@ -1090,7 +1090,7 @@
 6	ψυχή	ψυχή	n	n-s---fn-	Case=n|Gender=f|Number=s	3	APOS	_	t_837|gloss=soul
 7	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	6	ATR	_	t_838|gloss=of-me
 8	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	9	ATR	_	t_839|gloss=the
-9	κύριον	κύριος	n	n-s---ma-	Case=a|Gender=m|Number=s	2	OBJ	_	t_840|gloss=lord
+9	κύριον	κύριος	n	n-s---ma-	Case=a|Gender=m|Number=s	2	OBJ	_	t_840|gloss=Lord
 10	,	,	u	u--------	_	9	AuxX	_	t_841|gloss=,
 11	καὶ	καί	c	c--------	_	1	COORD	_	t_842|gloss=and
 12	ἠγαλλίασεν	ἀγαλλίζω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	11	PRED	_	t_843|gloss=rejoiced
@@ -1099,7 +1099,7 @@
 15	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	14	ATR	_	t_846|gloss=of-me
 16	ἐπὶ	ἐπί	r	r--------	_	12	AuxP	_	t_847|gloss=upon
 17	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	18	ATR	_	t_848|gloss=the
-18	θεῷ	θεός	n	n-s---md-	Case=d|Gender=m|Number=s	16	ADV	_	t_849|gloss=god
+18	θεῷ	θεός	n	n-s---md-	Case=d|Gender=m|Number=s	16	ADV	_	t_849|gloss=God
 19	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	20	ATR	_	t_850|gloss=the
 20	σωτῆρί	σωτήρ	n	n-s---md-	Case=d|Gender=m|Number=s	18	ATR	_	t_851|gloss=savior
 21	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	20	ATR	_	t_852|gloss=of-me
@@ -1524,9 +1524,9 @@
 10	ἐπροφήτευσεν	προφητεύω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	9	PRED	_	t_1156|gloss=prophesied
 11	λέγων	λέγω3	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	10	ADV	_	t_1157|gloss=saying
 12	Εὐλογητὸς	εὐλογητός	n	n-s---mn-	Case=n|Gender=m|Number=s	10	SBJ	_	t_1158|gloss=blessed
-13	Κύριος	κύριος	n	n-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_1159|gloss=lord
+13	Κύριος	κύριος	n	n-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_1159|gloss=Lord
 14	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	13	ATR	_	t_1160|gloss=the
-15	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_1161|gloss=god
+15	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	12	ATR	_	t_1161|gloss=God
 16	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	17	ATR	_	t_1162|gloss=of-the
 17	Ἰσραήλ	ἰσραήλ	n	n-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_1163|gloss=Israel
 18	,	,	u	u--------	_	9	AuxX	_	t_1164|gloss=,
@@ -1634,7 +1634,7 @@
 11	προπορεύσῃ	προπορεύω	v	v2sfim---	Mood=i|Number=s|Person=2|Tense=f|Voice=m	1	PRED	_	t_1260|gloss=you-will-go-before
 12	γὰρ	γάρ	d	d--------	_	11	AuxY	_	t_1261|gloss=for
 13	ἐνώπιον	ἐνώπιον	d	d--------	_	15	ADV	_	t_1262|gloss=before
-14	Κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ADV	_	t_1263|gloss=[the]-lord's
+14	Κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ADV	_	t_1263|gloss=[the]-Lord's
 15	ἑτοιμάσαι	ἑτοιμάζω	v	v--ana---	Mood=n|Tense=a|Voice=a	11	OBJ	_	t_1264|gloss=to-prepare
 16	ὁδοὺς	ὁδός	n	n-p---fa-	Case=a|Gender=f|Number=p	15	OBJ	_	t_1265|gloss=ways
 17	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	16	ATR	_	t_1266|gloss=his
@@ -1654,7 +1654,7 @@
 31	διὰ	διά	r	r--------	_	20	AuxP	_	t_1280|gloss=through
 32	σπλάγχνα	σπλάγχνον	n	n-p---na-	Case=a|Gender=n|Number=p	31	ADV	_	t_1281|gloss=tender-mercies
 33	ἐλέους	ἔλεος	n	n-s---ng-	Case=g|Gender=n|Number=s	32	ATR	_	t_1282|gloss=of-mercy
-34	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	33	ATR	_	t_1283|gloss=of-god
+34	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	33	ATR	_	t_1283|gloss=of-God
 35	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	33	ATR	_	t_1284|gloss=our
 36	,	,	u	u--------	_	1	AuxX	_	t_1285|gloss=,
 37	ἐν	ἐν	r	r--------	_	39	AuxP	_	t_1286|gloss=in
