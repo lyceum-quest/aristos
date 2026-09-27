@@ -172,6 +172,18 @@ task check-preload-tool {
   run: ["roc", "check", "scripts/build-corpus-preload.roc"]
 }
 
+# kai run cite -- <oga-input.conllu> <model>
+# Prints the citation preload derives from data/oga/urn_cts.xml; fails if it would be incomplete.
+task cite {
+  environment: "dev"
+  run: ["roc", "scripts/cite.roc"]
+}
+
+task check-cite-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/cite.roc"]
+}
+
 task check-release-tool {
   environment: "dev"
   run: ["roc", "check", "scripts/build-release.roc"]
@@ -205,6 +217,7 @@ task provision {
 workflow release {
   steps: [
     "run check-preload-tool",
+    "run check-cite-tool",
     "run check-release-tool",
     "run check-browser-boundary-tool",
     "run check-deploy-tool",
