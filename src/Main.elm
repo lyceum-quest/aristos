@@ -7,7 +7,7 @@ import Browser.Navigation as Nav
 import Conllu
 import Dict exposing (Dict)
 import Html exposing (Html, a, article, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
-import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, target, type_, value)
+import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, style, target, type_, value)
 import Html.Events exposing (on, onClick, onInput, stopPropagationOn)
 import Http
 import Json.Decode as Decode
@@ -63,6 +63,16 @@ type alias ModuleSettings =
 type PopupTab
     = WordTab
     | SentenceTab
+
+
+{-| Where the desktop word popup sits relative to its word, measured once it has rendered. Phones show it as a
+bottom sheet instead, so this is ignored there.
+-}
+type alias PopupPlacement =
+    { above : Bool
+    , shift : Float
+    , maxHeight : Float
+    }
 
 
 type alias Corpus =
@@ -126,6 +136,7 @@ type alias Model =
     , attempts : List Study.Attempt
     , popupWord : Maybe Int
     , popupTab : PopupTab
+    , popupPlacement : Maybe PopupPlacement
     , historyOpen : Bool
     , historyAttempt : Maybe Int
     , zone : Time.Zone
@@ -176,6 +187,8 @@ type Msg
     | OpenWordPopup Int
     | ClosePopup
     | SetPopupTab PopupTab
+    | PopupMeasured (Result Dom.Error PopupPlacement)
+    | PopupResized
     | OpenHistory
     | CloseHistory
     | SelectHistoryAttempt Int
@@ -234,6 +247,7 @@ init _ url key =
                 , attempts = []
                 , popupWord = Nothing
                 , popupTab = WordTab
+                , popupPlacement = Nothing
                 , historyOpen = False
                 , historyAttempt = Nothing
                 , zone = Time.utc
@@ -331,6 +345,11 @@ subscriptions model =
 
           else
             Sub.none
+        , if model.popupWord /= Nothing && model.screen == WorkspaceScreen then
+            Browser.Events.onResize (\_ _ -> PopupResized)
+
+          else
+            Sub.none
         ]
 
 
@@ -343,15 +362,119 @@ update msg model =
         ( updated, cmd ) =
             updateModel msg model
 
-        ( next, loadCmd ) =
+        ( followed, loadCmd ) =
             followPassage model updated
+
+        ( next, placeCmd ) =
+            followPopup (isPopupResize msg) model followed
 
         replace =
             isUrlChange msg
                 || (model.screen == ReaderScreen && next.screen == ReaderScreen)
                 || (basePath model == basePath next)
     in
-    syncUrl replace next (Cmd.batch [ cmd, loadCmd, saveDraft model next ])
+    syncUrl replace next (Cmd.batch [ cmd, loadCmd, placeCmd, saveDraft model next ])
+
+
+{-| A newly shown popup (another word, tab, or page) renders hidden in its natural place below the word, is measured,
+and then shown where it fits.
+-}
+followPopup : Bool -> Model -> Model -> ( Model, Cmd Msg )
+followPopup resized previous next =
+    case next.popupWord of
+        Just tokenId ->
+            if resized || previous.popupWord /= next.popupWord || previous.popupTab /= next.popupTab || previous.screen /= next.screen then
+                ( { next | popupPlacement = Nothing }, measurePopup tokenId )
+
+            else
+                ( next, Cmd.none )
+
+        Nothing ->
+            ( { next | popupPlacement = Nothing }, Cmd.none )
+
+
+popupElementId : String
+popupElementId =
+    "word-popup"
+
+
+tokenElementId : Int -> String
+tokenElementId tokenId =
+    "study-token-" ++ String.fromInt tokenId
+
+
+{-| Opens below the word unless it fits better above, never taller than the room between the sticky header and the
+fixed footer, and shifted sideways to stay inside the viewport.
+-}
+measurePopup : Int -> Cmd Msg
+measurePopup tokenId =
+    let
+        heightOf elementId =
+            Dom.getElement elementId
+                |> Task.map (\found -> found.element.height)
+                |> Task.onError (\_ -> Task.succeed 0)
+
+        margin =
+            12
+    in
+    Task.map4
+        (\word popup headerHeight footerHeight ->
+            let
+                viewport =
+                    popup.viewport
+
+                spaceBelow =
+                    viewport.y + viewport.height - footerHeight - margin - (word.element.y + word.element.height + 8)
+
+                spaceAbove =
+                    word.element.y - 8 - (viewport.y + headerHeight + margin)
+
+                above =
+                    popup.element.height > spaceBelow && spaceAbove > spaceBelow
+
+                right =
+                    word.element.x + popup.element.width
+
+                leftShift =
+                    min 0 (viewport.x + viewport.width - margin - right)
+            in
+            { above = above
+            , shift = max leftShift (viewport.x + margin - word.element.x)
+            , maxHeight =
+                max 160
+                    (if above then
+                        spaceAbove
+
+                     else
+                        spaceBelow
+                    )
+            }
+        )
+        (Dom.getElement (tokenElementId tokenId))
+        (Dom.getElement popupElementId)
+        (heightOf appHeaderId)
+        (heightOf studyFooterId)
+        |> Task.attempt PopupMeasured
+
+
+appHeaderId : String
+appHeaderId =
+    "app-header"
+
+
+studyFooterId : String
+studyFooterId =
+    "study-footer"
+
+
+isPopupResize : Msg -> Bool
+isPopupResize msg =
+    case msg of
+        PopupResized ->
+            True
+
+        _ ->
+            False
 
 
 isUrlChange : Msg -> Bool
@@ -586,6 +709,12 @@ updateModel msg model =
 
         SetPopupTab tab ->
             ( { model | popupTab = tab }, Cmd.none )
+
+        PopupMeasured result ->
+            ( { model | popupPlacement = Just (Result.withDefault { above = False, shift = 0, maxHeight = 0 } result) }, Cmd.none )
+
+        PopupResized ->
+            ( model, Cmd.none )
 
         OpenHistory ->
             ( { model | historyOpen = True, historyAttempt = Nothing, popupWord = Nothing, activeModule = Nothing }, Cmd.none )
@@ -1769,7 +1898,7 @@ isPunctuation form =
 
 viewAppHeader : Model -> Html Msg
 viewAppHeader model =
-    header [ class "app-header" ]
+    header [ id appHeaderId, class "app-header" ]
         [ button [ class "brand-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Aristos library" ]
             [ span [ class "brand-mark", attribute "aria-hidden" "true" ] [ text "Α" ]
             , span [ class "brand-word" ] [ text "Aristos" ]
@@ -2597,7 +2726,7 @@ viewStudyToken model position token =
 
           else
             text " "
-        , span [ class "study-token-wrap" ]
+        , span [ id (tokenElementId token.id), class "study-token-wrap" ]
             [ button
                 [ classList
                     [ ( "study-token", True )
@@ -2617,6 +2746,12 @@ viewStudyToken model position token =
                 ]
                 [ text token.form ]
             , if open then
+                -- The backdrop only shows on phones, where the popup is a sheet over the footer and navigation.
+                span [ class "popup-backdrop", onClick ClosePopup, attribute "aria-hidden" "true" ] []
+
+              else
+                text ""
+            , if open then
                 viewWordPopup model token
 
               else
@@ -2627,7 +2762,34 @@ viewStudyToken model position token =
 
 viewWordPopup : Model -> CorpusToken -> Html Msg
 viewWordPopup model token =
-    div [ class "word-popup", attribute "role" "dialog", attribute "lang" "en", stopPropagationOn "click" (Decode.succeed ( NoOp, True )) ]
+    let
+        placement =
+            Maybe.withDefault { above = False, shift = 0, maxHeight = 0 } model.popupPlacement
+
+        -- Custom properties need a style attribute; Elm's `style` cannot set them.
+        placementStyle =
+            "--popup-shift: "
+                ++ String.fromFloat placement.shift
+                ++ "px;"
+                ++ (if placement.maxHeight > 0 then
+                        " --popup-max-height: " ++ String.fromFloat placement.maxHeight ++ "px;"
+
+                    else
+                        ""
+                   )
+    in
+    div
+        [ id popupElementId
+        , classList
+            [ ( "word-popup", True )
+            , ( "is-above", placement.above )
+            , ( "is-measuring", model.popupPlacement == Nothing )
+            ]
+        , attribute "style" placementStyle
+        , attribute "role" "dialog"
+        , attribute "lang" "en"
+        , stopPropagationOn "click" (Decode.succeed ( NoOp, True ))
+        ]
         [ div [ class "popup-tabs" ]
             [ popupTabButton model WordTab "Word"
             , popupTabButton model SentenceTab "Sentence"
@@ -2975,7 +3137,7 @@ viewStudyFooter model =
         marked =
             List.length (List.filter (\item -> item.mark /= Nothing) items)
     in
-    footer [ class "workspace-footer" ]
+    footer [ id studyFooterId, class "workspace-footer" ]
         (if model.historyOpen then
             [ span [] []
             , div [ class "checkpoint-copy" ]
