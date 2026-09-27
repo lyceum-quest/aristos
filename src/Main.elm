@@ -1804,9 +1804,6 @@ viewWorkCard model entry =
         isLoading =
             model.pendingRoute /= Nothing && model.requestedWork == Just entry.id
 
-        coverage =
-            corpusCoverage model.corpus
-
         details =
             [ entry.source.name, entry.source.license ]
                 |> List.filter (not << String.isEmpty)
@@ -1822,16 +1819,6 @@ viewWorkCard model entry =
                     ]
                 , span [ class "availability good" ] [ text "Bundled" ]
                 ]
-            , if isActive then
-                div [ class "capability-strip" ]
-                    [ capabilityPill (coverage.glossed > 0) ("Glosses " ++ fraction coverage.glossed coverage.tokens)
-                    , capabilityPill (coverage.morphology > 0) ("Morphology " ++ fraction coverage.morphology coverage.tokens)
-                    , capabilityPill (coverage.dependencies > 0) ("Dependencies " ++ fraction coverage.dependencies coverage.sentences)
-                    , capabilityPill (coverage.prose > 0) ("Translations " ++ fraction coverage.prose coverage.sentences)
-                    ]
-
-              else
-                text ""
             , div [ class "pack-footer" ]
                 [ span [ class "muted" ] [ text (String.fromInt entry.sentenceCount ++ " " ++ plural entry.sentenceCount "sentence" "sentences" ++ " · " ++ String.fromInt entry.tokenCount ++ " tokens") ]
                 , div [ class "button-row" ]
@@ -1889,14 +1876,6 @@ workTitle model =
     model.activeEntry
         |> Maybe.map .title
         |> Maybe.withDefault model.corpus.source.name
-
-
-capabilityPill : Bool -> String -> Html Msg
-capabilityPill available label =
-    span [ classList [ ( "capability-pill", True ), ( "is-limited", not available ) ] ]
-        [ span [ class "capability-dot", attribute "aria-hidden" "true" ] []
-        , text label
-        ]
 
 
 viewPresetCard : Preset -> Preset -> String -> String -> String -> Html Msg
