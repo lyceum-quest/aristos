@@ -1,0 +1,23 @@
+{
+  "input": "../OGA/opera_graeca_adnotata_v0.2.0/workspace/conllu/tlg0031.tlg021.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+  "source": {
+    "corpus": "Opera Graeca Adnotata v0.2.0",
+    "work": "First Epistle of Peter",
+    "edition": "Westcott and Hort, The New Testament in the Original Greek (1881), via Perseus canonical-greekLit tlg0031.tlg021.perseus-grc2",
+    "license": "CC BY-SA 4.0"
+  },
+  "model": "claude-sonnet-5",
+  "base_url": "https://api.ppq.ai/v1",
+  "api_key_env": "PPQ_API_KEY",
+  "allow_fallbacks": true,
+  "send_temperature": false,
+  "structured_schema": false,
+  "temperature": 0,
+  "translate": {
+    "max_tokens": 1024
+  },
+  "gloss": {
+    "max_tokens": 2048
+  },
+  "context": "These blocks come from the First Epistle of Peter in the Westcott-Hort Greek New Testament: a Koine Greek letter of exhortation to Christians scattered through Asia Minor, with long participial and relative-clause periods and frequent quotation of and allusion to the Septuagint. Some opening words are printed in capitals in this edition; interpret them by meaning. Keep the structure of long periods visible in literal translations, and divide them naturally in prose without losing any clause. Do not reproduce the wording of a particular English Bible."
+}
