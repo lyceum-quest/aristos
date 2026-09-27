@@ -3451,3 +3451,34 @@ p {
     width: auto;
   }
 }
+
+/* Source attribution (src/Sources.elm) */
+
+.sources-line {
+  margin: 10px 0 0;
+  color: var(--faint);
+  font-size: 0.62rem;
+  line-height: 1.5;
+}
+
+.sources-label {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sources-line a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 2px;
+}
+
+.sources-line a:hover {
+  color: var(--muted);
+}
+
+.reader-end .sources-line {
+  margin-top: 14px;
+  text-align: center;
+}
