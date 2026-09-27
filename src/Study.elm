@@ -4,6 +4,7 @@ module Study exposing
     , Item
     , ItemKind(..)
     , Stats
+    , Tally
     , WordStat
     , attemptDecoder
     , draftDecoder
@@ -12,9 +13,12 @@ module Study exposing
     , encodeDraft
     , isWordToken
     , literalKey
+    , missed
     , missedLastTime
+    , passageAttempts
     , proseKey
     , stats
+    , tally
     , wordKey
     )
 
@@ -133,19 +137,47 @@ isWordToken token =
 -}
 missedLastTime : String -> Int -> List Attempt -> Dict String String
 missedLastTime work passage attempts =
-    attempts
-        |> List.filter (\attempt -> attempt.work == work && attempt.passage == passage)
-        |> List.sortBy .finishedAt
-        |> List.reverse
+    passageAttempts work passage attempts
         |> List.head
         |> Maybe.map
             (\attempt ->
-                attempt.items
-                    |> List.filter (\item -> item.mark == Just False)
+                missed attempt
                     |> List.map (\item -> ( item.key, item.guess ))
                     |> Dict.fromList
             )
         |> Maybe.withDefault Dict.empty
+
+
+{-| Finished attempts at one passage, newest first.
+-}
+passageAttempts : String -> Int -> List Attempt -> List Attempt
+passageAttempts work passage attempts =
+    attempts
+        |> List.filter (\attempt -> attempt.work == work && attempt.passage == passage)
+        |> List.sortBy (\attempt -> negate attempt.finishedAt)
+
+
+{-| Items the learner marked wrong.
+-}
+missed : Attempt -> List Item
+missed attempt =
+    List.filter (\item -> item.mark == Just False) attempt.items
+
+
+type alias Tally =
+    { right : Int
+    , wrong : Int
+    , unmarked : Int
+    }
+
+
+tally : Attempt -> Tally
+tally attempt =
+    let
+        count mark =
+            List.length (List.filter (\item -> item.mark == mark) attempt.items)
+    in
+    { right = count (Just True), wrong = count (Just False), unmarked = count Nothing }
 
 
 stats : List Attempt -> Stats

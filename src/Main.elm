@@ -126,6 +126,9 @@ type alias Model =
     , attempts : List Study.Attempt
     , popupWord : Maybe Int
     , popupTab : PopupTab
+    , historyOpen : Bool
+    , historyAttempt : Maybe Int
+    , zone : Time.Zone
     , routeQuery : Dict String String
     , clock : Int
     , confirmClear : Bool
@@ -173,6 +176,10 @@ type Msg
     | OpenWordPopup Int
     | ClosePopup
     | SetPopupTab PopupTab
+    | OpenHistory
+    | CloseHistory
+    | SelectHistoryAttempt Int
+    | GotZone Time.Zone
     | StudyGloss Int String
     | StudyLiteral String
     | StudyProse String
@@ -227,6 +234,9 @@ init _ url key =
                 , attempts = []
                 , popupWord = Nothing
                 , popupTab = WordTab
+                , historyOpen = False
+                , historyAttempt = Nothing
+                , zone = Time.utc
                 , routeQuery = Route.query url
                 , clock = 0
                 , confirmClear = False
@@ -253,6 +263,7 @@ init _ url key =
         [ fetchManifest
         , routeCmd
         , Task.perform Tick Time.now
+        , Task.perform GotZone Time.here
         , storageGet "theme" "metadata" "theme"
         , storageGet "positions" "metadata" "positions"
         , storageGetAll "attempts" "progress"
@@ -576,6 +587,27 @@ updateModel msg model =
         SetPopupTab tab ->
             ( { model | popupTab = tab }, Cmd.none )
 
+        OpenHistory ->
+            ( { model | historyOpen = True, historyAttempt = Nothing, popupWord = Nothing, activeModule = Nothing }, Cmd.none )
+
+        CloseHistory ->
+            ( { model | historyOpen = False, historyAttempt = Nothing }, Cmd.none )
+
+        SelectHistoryAttempt finishedAt ->
+            ( { model
+                | historyAttempt =
+                    if model.historyAttempt == Just finishedAt then
+                        Nothing
+
+                    else
+                        Just finishedAt
+              }
+            , Cmd.none
+            )
+
+        GotZone zone ->
+            ( { model | zone = zone }, Cmd.none )
+
         StudyGloss tokenId gloss ->
             ( editStudy (\draft -> { draft | glosses = Dict.insert tokenId gloss draft.glosses }) model, Cmd.none )
 
@@ -868,6 +900,8 @@ applyQuery model =
             else
                 WordTab
         , activeModule = Dict.get "tool" query |> Maybe.andThen moduleFromKey
+        , historyOpen = Dict.get "history" query == Just "1"
+        , historyAttempt = Dict.get "attempt" query |> Maybe.andThen String.toInt
     }
 
 
@@ -887,6 +921,12 @@ queryFor model =
                                 Nothing
                         )
                 , model.activeModule |> Maybe.map (\moduleId -> "tool=" ++ moduleKey moduleId)
+                , if model.historyOpen then
+                    Just "history=1"
+
+                  else
+                    Nothing
+                , model.historyAttempt |> Maybe.map (\finishedAt -> "attempt=" ++ String.fromInt finishedAt)
                 ]
     in
     if List.isEmpty pairs then
@@ -1059,6 +1099,8 @@ moveToSentence sentenceIndex model =
             | screen = WorkspaceScreen
             , sentenceIndex = sentenceIndex
             , popupWord = Nothing
+            , historyOpen = False
+            , historyAttempt = Nothing
             , notice = Nothing
         }
 
@@ -1296,7 +1338,10 @@ handleShortcut key model =
             updateModel (ReaderStep -1) model
 
         ( WorkspaceScreen, "Escape" ) ->
-            if model.popupWord /= Nothing then
+            if model.historyOpen then
+                ( { model | historyOpen = False, historyAttempt = Nothing }, Cmd.none )
+
+            else if model.popupWord /= Nothing then
                 ( { model | popupWord = Nothing }, Cmd.none )
 
             else
@@ -2152,7 +2197,7 @@ viewWorkspace model =
             List.length model.corpus.sentences
 
         showTool =
-            not model.study.submitted && model.activeModule /= Nothing
+            not model.study.submitted && not model.historyOpen && model.activeModule /= Nothing
     in
     main_ [ class "workspace-page" ]
         [ div [ class "work-context-bar" ]
@@ -2175,7 +2220,10 @@ viewWorkspace model =
                 ]
             ]
         , div [ classList [ ( "workspace-grid", True ), ( "has-workbench", showTool ) ] ]
-            [ if model.study.submitted then
+            [ if model.historyOpen then
+                viewHistory model
+
+              else if model.study.submitted then
                 viewGrading model
 
               else
@@ -2190,6 +2238,320 @@ viewWorkspace model =
         ]
 
 
+currentAttempts : Model -> List Study.Attempt
+currentAttempts model =
+    case model.activeEntry of
+        Just entry ->
+            Study.passageAttempts entry.id (model.sentenceIndex + 1) model.attempts
+
+        Nothing ->
+            []
+
+
+{-| The way into the passage's history; absent until the passage has been graded once.
+-}
+viewHistoryLink : Model -> Html Msg
+viewHistoryLink model =
+    let
+        count =
+            List.length (currentAttempts model)
+    in
+    if count == 0 then
+        text ""
+
+    else
+        button [ class "history-link", type_ "button", onClick OpenHistory ]
+            [ text (String.fromInt count ++ " past " ++ plural count "attempt" "attempts" ++ " →") ]
+
+
+{-| Every finished attempt at the passage, newest first, each compared with the one before it.
+-}
+viewHistory : Model -> Html Msg
+viewHistory model =
+    let
+        attempts =
+            currentAttempts model
+
+        olderOf =
+            List.drop 1 (List.map Just attempts) ++ [ Nothing ]
+
+        oldestFirst =
+            List.reverse attempts
+
+        missedEveryTime =
+            if List.length attempts < 2 then
+                []
+
+            else
+                attempts
+                    |> List.head
+                    |> Maybe.map Study.missed
+                    |> Maybe.withDefault []
+                    |> List.filter (\item -> List.all (\attempt -> List.any (\other -> other.key == item.key) (Study.missed attempt)) attempts)
+    in
+    section [ class "reading-stage history-stage" ]
+        [ div [ class "history-heading" ]
+            [ div []
+                [ p [ class "eyebrow" ] [ text ("Passage " ++ String.fromInt (model.sentenceIndex + 1) ++ " · " ++ sentenceReference (currentSentence model)) ]
+                , h2 [] [ text "Past attempts" ]
+                ]
+            , button [ class "secondary-button", type_ "button", onClick CloseHistory ] [ text "← Back to current attempt" ]
+            ]
+        , if List.isEmpty attempts then
+            p [ class "muted" ] [ text "No past attempts at this passage yet." ]
+
+          else
+            text ""
+        , if List.length attempts < 2 then
+            text ""
+
+          else
+            div [ class "history-trend" ]
+                [ p []
+                    [ span [ class "muted" ] [ text "Right, oldest to newest: " ]
+                    , strongText (oldestFirst |> List.map (Study.tally >> .right >> String.fromInt) |> String.join " → ")
+                    ]
+                , p []
+                    [ span [ class "muted" ] [ text "Wrong, oldest to newest: " ]
+                    , strongText (oldestFirst |> List.map (Study.tally >> .wrong >> String.fromInt) |> String.join " → ")
+                    ]
+                , if List.isEmpty missedEveryTime then
+                    text ""
+
+                  else
+                    p [] [ span [ class "muted" ] [ text "Missed every time: " ], viewItemChips False missedEveryTime ]
+                ]
+        , Html.ol [ class "history-list" ] (List.map2 (viewHistoryEntry model) attempts olderOf)
+        ]
+
+
+viewHistoryEntry : Model -> Study.Attempt -> Maybe Study.Attempt -> Html Msg
+viewHistoryEntry model attempt older =
+    let
+        counts =
+            Study.tally attempt
+
+        missed =
+            Study.missed attempt
+
+        selected =
+            model.historyAttempt == Just attempt.finishedAt
+
+        change label now before =
+            if now == before then
+                Nothing
+
+            else if now > before then
+                Just ("+" ++ String.fromInt (now - before) ++ " " ++ label)
+
+            else
+                Just ("−" ++ String.fromInt (before - now) ++ " " ++ label)
+
+        missedKeys =
+            List.map .key missed
+    in
+    Html.li [ classList [ ( "history-entry", True ), ( "is-selected", selected ) ] ]
+        [ button [ class "history-summary", type_ "button", onClick (SelectHistoryAttempt attempt.finishedAt), attribute "aria-expanded" (boolString selected) ]
+            [ span [ class "history-date" ] [ text (formatDate model.zone attempt.finishedAt) ]
+            , span [ class "history-counts" ]
+                [ span [ class "count-right" ] [ text (String.fromInt counts.right ++ " right") ]
+                , span [ class "count-wrong" ] [ text (String.fromInt counts.wrong ++ " wrong") ]
+                , if counts.unmarked == 0 then
+                    text ""
+
+                  else
+                    span [ class "muted" ] [ text (String.fromInt counts.unmarked ++ " unmarked") ]
+                ]
+            , case older of
+                Just previous ->
+                    let
+                        before =
+                            Study.tally previous
+                    in
+                    span [ class "history-change" ]
+                        [ text
+                            (case List.filterMap identity [ change "right" counts.right before.right, change "wrong" counts.wrong before.wrong ] of
+                                [] ->
+                                    "Same as the attempt before"
+
+                                changes ->
+                                    String.join ", " changes ++ " since the attempt before"
+                            )
+                        ]
+
+                Nothing ->
+                    span [ class "history-change" ] [ text "First attempt" ]
+            ]
+        , div [ class "history-missed" ]
+            (if List.isEmpty missed then
+                [ span [ class "muted" ] [ text "Nothing marked wrong." ] ]
+
+             else
+                [ span [ class "muted" ] [ text "Missed: " ], viewItemChips False missed ]
+            )
+        , case older of
+            Just previous ->
+                let
+                    previousMissed =
+                        Study.missed previous
+
+                    newlyMissed =
+                        List.filter (\item -> not (List.any (\other -> other.key == item.key) previousMissed)) missed
+
+                    recovered =
+                        List.filter (\item -> not (List.member item.key missedKeys)) previousMissed
+                in
+                div [ class "history-missed" ]
+                    [ if List.isEmpty newlyMissed then
+                        text ""
+
+                      else
+                        span [] [ span [ class "muted" ] [ text "Newly missed: " ], viewItemChips False newlyMissed ]
+                    , if List.isEmpty recovered then
+                        text ""
+
+                      else
+                        span [] [ span [ class "muted" ] [ text "No longer missed: " ], viewItemChips True recovered ]
+                    ]
+
+            Nothing ->
+                text ""
+        , if selected then
+            div [ class "history-detail" ] (List.map viewHistoryItem attempt.items)
+
+          else
+            text ""
+        ]
+
+
+viewItemChips : Bool -> List Study.Item -> Html Msg
+viewItemChips recovered items =
+    span [ classList [ ( "history-chips", True ), ( "is-recovered", recovered ) ] ] (List.map (\item -> span [ class "history-chip", attribute "lang" (itemLang item) ] [ text (itemLabel item) ]) items)
+
+
+viewHistoryItem : Study.Item -> Html Msg
+viewHistoryItem item =
+    div [ classList [ ( "history-item", True ), ( "is-right", item.mark == Just True ), ( "is-wrong", item.mark == Just False ) ] ]
+        [ span [ class "history-item-label", attribute "lang" (itemLang item) ] [ text (itemLabel item) ]
+        , span [ class "interlinear-reference" ]
+            [ text
+                (if item.kind == Study.WordItem then
+                    displayGloss item.reference
+
+                 else
+                    item.reference
+                )
+            ]
+        , span [ classList [ ( "interlinear-guess", True ), ( "is-empty", String.isEmpty (String.trim item.guess) ) ] ]
+            [ text
+                (if String.isEmpty (String.trim item.guess) then
+                    "—"
+
+                 else
+                    item.guess
+                )
+            ]
+        , span [ class "history-mark" ]
+            [ text
+                (case item.mark of
+                    Just True ->
+                        "✓ right"
+
+                    Just False ->
+                        "✗ wrong"
+
+                    Nothing ->
+                        "unmarked"
+                )
+            , if item.revealedEarly then
+                span [ class "item-note" ] [ text "revealed" ]
+
+              else
+                text ""
+            ]
+        ]
+
+
+itemLabel : Study.Item -> String
+itemLabel item =
+    case item.kind of
+        Study.WordItem ->
+            item.form
+
+        Study.LiteralItem ->
+            "Literal translation"
+
+        Study.ProseItem ->
+            "Prose translation"
+
+
+itemLang : Study.Item -> String
+itemLang item =
+    if item.kind == Study.WordItem then
+        "grc"
+
+    else
+        "en"
+
+
+formatDate : Time.Zone -> Int -> String
+formatDate zone millis =
+    let
+        time =
+            Time.millisToPosix millis
+
+        twoDigits number =
+            String.padLeft 2 '0' (String.fromInt number)
+
+        month =
+            case Time.toMonth zone time of
+                Time.Jan ->
+                    "Jan"
+
+                Time.Feb ->
+                    "Feb"
+
+                Time.Mar ->
+                    "Mar"
+
+                Time.Apr ->
+                    "Apr"
+
+                Time.May ->
+                    "May"
+
+                Time.Jun ->
+                    "Jun"
+
+                Time.Jul ->
+                    "Jul"
+
+                Time.Aug ->
+                    "Aug"
+
+                Time.Sep ->
+                    "Sep"
+
+                Time.Oct ->
+                    "Oct"
+
+                Time.Nov ->
+                    "Nov"
+
+                Time.Dec ->
+                    "Dec"
+    in
+    String.fromInt (Time.toDay zone time)
+        ++ " "
+        ++ month
+        ++ " "
+        ++ String.fromInt (Time.toYear zone time)
+        ++ ", "
+        ++ twoDigits (Time.toHour zone time)
+        ++ ":"
+        ++ twoDigits (Time.toMinute zone time)
+
+
 viewStudyStage : Model -> Html Msg
 viewStudyStage model =
     let
@@ -2197,7 +2559,8 @@ viewStudyStage model =
             currentSentence model
     in
     section [ class "reading-stage" ]
-        [ p [ class "reading-instruction" ]
+        [ viewHistoryLink model
+        , p [ class "reading-instruction" ]
             [ text "Tap a word to gloss it. "
             , span [] [ text "Answers stay hidden until you reveal them or submit." ]
             ]
@@ -2476,7 +2839,8 @@ viewGrading model =
             List.filter (\item -> item.kind /= Study.WordItem) items
     in
     section [ class "reading-stage grading-stage" ]
-        [ p [ class "reading-instruction" ]
+        [ viewHistoryLink model
+        , p [ class "reading-instruction" ]
             [ text "Compare each answer with the reference and mark it yourself. "
             , span [] [ text "Different wording can still be right." ]
             ]
@@ -2612,7 +2976,16 @@ viewStudyFooter model =
             List.length (List.filter (\item -> item.mark /= Nothing) items)
     in
     footer [ class "workspace-footer" ]
-        (if model.study.submitted then
+        (if model.historyOpen then
+            [ span [] []
+            , div [ class "checkpoint-copy" ]
+                [ strongText "Reviewing past attempts"
+                , span [] [ text "Your current work on this passage is kept." ]
+                ]
+            , button [ class "checkpoint-button", type_ "button", onClick CloseHistory ] [ text "Back to current attempt →" ]
+            ]
+
+         else if model.study.submitted then
             [ button [ class "footer-side-button", type_ "button", onClick ReopenStudy ] [ text "← Keep working" ]
             , div [ class "checkpoint-copy" ]
                 [ strongText (String.fromInt marked ++ " of " ++ String.fromInt (List.length items) ++ " marked")
