@@ -337,7 +337,7 @@ process_units! = |job, config_text, cost| {
 	_ = bind_unit_config!(job.out, unit_config)?
 	glossed = read_blocks!("${job.out}/output.conllu")?
 	translated = read_blocks!("${job.out}/translations.conllu")?
-	contexts = List.map2(glossed, pad(translated, List.len(glossed)), |block, translation| { block, tokens: block_tokens(block), greek: greek_text(block), prose: comment_value(translation, "prose_translation") })
+	contexts = List.map2(glossed, pad(translated, List.len(glossed)), |block, translation| { block, tokens: block_tokens(block), greek: greek_text(block), prose: comment_value(translation, "prose_translation"), literal: comment_value(translation, "literal_translation") })
 	done = read_unit_refs!(job.out)?
 	units!(job, job.wanted, 1, done, contexts, cost)
 }
@@ -348,8 +348,8 @@ units! = |job, passages, index, done, contexts, cost| match passages {
 		units!(job, rest, index + 1, done, contexts, cost)
 	} else {
 		owners = List.keep_if(contexts, |context| List.any(passage.tokens, |token| List.contains(context.tokens, token)))
-		rows = List.join(List.map(owners, |context| List.keep_if(Str.split_on(context.block, "\n"), |line| !Str.starts_with(line, "#") and List.contains(passage.tokens, row_token(line)))))
-		comments = List.concat(["# passage = ${passage.label}"], List.join(List.map(owners, |context| ["# context_sentence_greek = ${context.greek}", "# context_sentence_translation = ${context.prose}"])))
+		rows = List.join(List.map(owners, |context| List.map(List.keep_if(Str.split_on(context.block, "\n"), |line| !Str.starts_with(line, "#") and List.contains(passage.tokens, row_token(line))), ungloss)))
+		comments = List.concat(["# passage = ${passage.label}"], List.join(List.map(owners, |context| ["# context_sentence_greek = ${context.greek}", "# context_sentence_translation = ${context.prose}", "# context_sentence_literal_translation = ${context.literal}"])))
 		current = "${job.out}/.scratch/current.conllu"
 		_ = Path.write_utf8!(Path.utf8(current), "${Str.join_with(List.concat(comments, rows), "\n")}\n")?
 		step = { index, done: index - 1, total: job.requested, label: "passage ${passage.label}" }
@@ -401,4 +401,13 @@ comment_value = |block, key| {
 		[line, ..] => Str.replace_first(line, prefix, "")
 		[] => ""
 	}
+}
+# Passage rows go to the translator without their glosses, as sentence rows do before glossing; seeing the
+# hyphenated glosses made the model copy their style into literal translations.
+ungloss = |line| match Str.split_on(line, "\t") {
+	[id, form, lemma, upos, xpos, feats, head, deprel, deps, misc] => {
+		kept = List.keep_if(Str.split_on(misc, "|"), |field| !Str.starts_with(field, "gloss="))
+		Str.join_with([id, form, lemma, upos, xpos, feats, head, deprel, deps, Str.join_with(kept, "|")], "\t")
+	}
+	_ => line
 }
