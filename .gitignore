@@ -31,3 +31,6 @@ repl-temp-*
 
 # Per-work scratch files from scripts/generate/loop.roc
 conllu/generated/*/.scratch/
+
+# Generated Elm test fixtures (devtools/generate-fsrs-fixtures.roc)
+/tests/FsrsFixtures.elm

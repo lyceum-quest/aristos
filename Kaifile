@@ -5,6 +5,7 @@ environment dev {
     "curl",
     "elmPackages.elm",
     "elmPackages.elm-live",
+    "elmPackages.elm-test",
     "git",
     "gnugrep",
     "openssh",
@@ -158,6 +159,30 @@ task lint {
 task check-lint-tool {
   environment: "dev"
   run: ["roc", "check", "scripts/lint.roc"]
+}
+
+# Embeds tests/fixtures/fsrs/*.json in the generated tests/FsrsFixtures.elm.
+task generate-fsrs-fixtures {
+  environment: "dev"
+  run: ["roc", "devtools/generate-fsrs-fixtures.roc"]
+}
+
+task check-fsrs-fixtures-tool {
+  environment: "dev"
+  run: ["roc", "check", "devtools/generate-fsrs-fixtures.roc"]
+}
+
+# Runs the Elm tests (the FSRS port against ts-fsrs and fsrs-rs fixtures).
+task test-elm {
+  environment: "dev"
+  run: ["elm-test"]
+}
+
+workflow test-fsrs {
+  steps: [
+    "run generate-fsrs-fixtures",
+    "run test-elm"
+  ]
 }
 
 # Bundles every conllu/generated/<work>-<model>/ folder with output.conllu and
