@@ -27,6 +27,7 @@ type alias Sentence =
     , literalTranslation : String
     , proseTranslation : String
     , tokens : List CorpusToken
+    , placeholders : List CorpusToken
     }
 
 
@@ -161,10 +162,11 @@ finishSentence state =
         Ok { state | rows = [] }
 
     else
-        rows
-            |> tokensFromRows
+        Result.map2 Tuple.pair
+            (rows |> List.filter (not << isPlaceholder) |> tokensFromRows)
+            (rows |> List.filter isPlaceholder |> tokensFromRows)
             |> Result.map
-                (\tokens ->
+                (\( tokens, placeholders ) ->
                     let
                         sentenceId =
                             firstMetadata state.metadata [ "sent_id", "sentence_id" ]
@@ -214,10 +216,19 @@ finishSentence state =
                         , literalTranslation = firstMetadata state.metadata [ "text_en_literal", "literal_translation" ]
                         , proseTranslation = firstMetadata state.metadata [ "text_en", "prose_translation" ]
                         , tokens = tokens
+                        , placeholders = placeholders
                         }
                             :: state.sentences
                     }
                 )
+
+
+{-| OGA adds rows for elided or implied words (forms like `[0]`, MISC starting `e_`). They are kept apart from the
+visible tokens so no view shows, glosses, counts, or grades them, and spacing is computed as if they were absent.
+-}
+isPlaceholder : Row -> Bool
+isPlaceholder row =
+    String.startsWith "e_" row.misc
 
 
 tokensFromRows : List Row -> Result String (List CorpusToken)
