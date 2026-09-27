@@ -15,6 +15,7 @@ import Json.Encode as Encode
 import Process
 import Route exposing (Route)
 import Set exposing (Set)
+import Sources
 import Study
 import Task
 import Time
@@ -122,6 +123,7 @@ type alias ManifestEntry =
     , sentenceCount : Int
     , tokenCount : Int
     , source : CorpusSource
+    , citation : Maybe Sources.Citation
     }
 
 
@@ -1435,14 +1437,15 @@ manifestDecoder =
 
 manifestEntryDecoder : Decode.Decoder ManifestEntry
 manifestEntryDecoder =
-    -- Title and counts default so entries cached by earlier builds still decode.
-    Decode.map6 ManifestEntry
+    -- Title, counts, and citation default so entries cached by earlier builds still decode.
+    Decode.map7 ManifestEntry
         (Decode.field "id" Decode.string)
         (Decode.oneOf [ Decode.field "title" Decode.string, Decode.field "id" Decode.string ])
         (Decode.field "path" Decode.string)
         (Decode.oneOf [ Decode.field "sentenceCount" Decode.int, Decode.succeed 0 ])
         (Decode.oneOf [ Decode.field "tokenCount" Decode.int, Decode.succeed 0 ])
         (Decode.field "source" corpusSourceDecoder)
+        (Decode.oneOf [ Decode.field "citation" (Decode.map Just Sources.decoder), Decode.succeed Nothing ])
 
 
 storageResponseDecoder : Decode.Decoder StorageResponse
@@ -1920,6 +1923,7 @@ encodeManifestEntry entry =
         , ( "sentenceCount", Encode.int entry.sentenceCount )
         , ( "tokenCount", Encode.int entry.tokenCount )
         , ( "source", encodeCorpusSource entry.source )
+        , ( "citation", entry.citation |> Maybe.map Sources.encode |> Maybe.withDefault Encode.null )
         ]
 
 
@@ -1965,7 +1969,7 @@ viewReader model =
         , div [ id readerScrollId, class "reader-scroll", on "scroll" (Decode.succeed ReaderScrolled) ]
             [ article ([ class "reader-text", attribute "lang" "grc" ] ++ swipeAttributes model (model.sentenceIndex == 0) (model.sentenceIndex >= total - 1))
                 (List.indexedMap (viewReaderSentence model) model.corpus.sentences)
-            , p [ class "reader-end" ] [ text ("End of " ++ workTitle model ++ " in this edition.") ]
+            , div [ class "reader-end" ] [ text ("End of " ++ workTitle model ++ " in this edition."), activeSources model ]
             ]
         ]
 
@@ -2144,6 +2148,7 @@ viewWorkCard model entry =
                     ]
                 , span [ class "availability good" ] [ text "Bundled" ]
                 ]
+            , Sources.view entry.citation
             , div [ class "pack-footer" ]
                 [ span [ class "muted" ] [ text (String.fromInt entry.sentenceCount ++ " " ++ plural entry.sentenceCount "sentence" "sentences" ++ " · " ++ String.fromInt entry.tokenCount ++ " tokens") ]
                 , div [ class "button-row" ]
@@ -2194,6 +2199,11 @@ plural count singular pluralForm =
 
     else
         pluralForm
+
+
+activeSources : Model -> Html Msg
+activeSources model =
+    Sources.view (Maybe.andThen .citation model.activeEntry)
 
 
 workTitle : Model -> String
@@ -2860,6 +2870,7 @@ viewStudyStage model =
             [ span [] [ text model.corpus.source.edition ]
             , span [] [ text (String.fromInt (List.length (List.filter Study.isWordToken sentence.tokens)) ++ " words") ]
             ]
+        , activeSources model
         , viewToolTray model
         ]
 
