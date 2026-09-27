@@ -3084,8 +3084,11 @@ p {
   position: absolute;
   z-index: 20;
   top: calc(100% + 8px);
-  left: 0;
+  left: var(--popup-shift, 0px);
   width: min(360px, 86vw);
+  max-height: var(--popup-max-height, none);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 12px;
   border: 1px solid var(--line-strong);
   border-radius: 10px;
@@ -3096,6 +3099,22 @@ p {
   font-size: 0.9rem;
   line-height: 1.4;
   white-space: normal;
+}
+
+.word-popup.is-above {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+.popup-backdrop {
+  display: none;
+}
+
+@media (min-width: 721px) {
+  /* Rendered once in its natural place to be measured, then shown where it fits. */
+  .word-popup.is-measuring {
+    visibility: hidden;
+  }
 }
 
 .popup-tabs {
@@ -3442,13 +3461,29 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .word-popup {
+  /* A bottom sheet over the checkpoint footer and the navigation bar, as tall as the visible viewport allows. */
+  .word-popup,
+  .word-popup.is-above {
     position: fixed;
+    z-index: 70;
     top: auto;
-    right: 8px;
-    bottom: 84px;
-    left: 8px;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: auto;
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    padding: 14px 14px calc(16px + env(safe-area-inset-bottom));
+    border-width: 1px 0 0;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .popup-backdrop {
+    position: fixed;
+    z-index: 65;
+    inset: 0;
+    display: block;
+    background: rgb(0 0 0 / 38%);
   }
 }
 
