@@ -260,9 +260,9 @@ init _ url key =
                 , corpus = fallbackCorpus
                 , sentenceIndex = 0
                 , selectedTokenId = Nothing
-                , preset = IntensivePreset
+                , preset = AssistedPreset
                 , scope = SessionScope
-                , settings = intensiveSettings
+                , settings = assistedSettings
                 , activeModule = Nothing
                 , phase = Drafting
                 , draft = emptyDraft
@@ -467,7 +467,7 @@ intensiveSettings : ModuleSettings
 intensiveSettings =
     { gloss = Suggested
     , morphology = Suggested
-    , dependency = Suggested
+    , dependency = ModuleOff
     , literal = Suggested
     , prose = Suggested
     }
@@ -1605,7 +1605,7 @@ settingsForPreset preset current =
 
 firstEnabled : ModuleSettings -> Maybe ModuleId
 firstEnabled settings =
-    [ GlossModule, MorphologyModule, DependencyModule, LiteralModule, ProseModule ]
+    [ GlossModule, MorphologyModule, LiteralModule, ProseModule ]
         |> List.filter (\moduleId -> moduleMode moduleId settings /= ModuleOff)
         |> List.head
 
@@ -1845,10 +1845,17 @@ viewAppHeader model =
             , span [ class "brand-word" ] [ text "Aristos" ]
             ]
         , nav [ class "global-nav", attribute "aria-label" "Primary navigation" ]
-            [ navButton "Library" ShowLibrary (model.screen == LibraryScreen)
-            , navButton "Workspace" ShowWorkspace (model.screen == WorkspaceScreen)
-            , navButton "History" ShowHistory (model.screen == HistoryScreen || model.screen == AttemptComparisonScreen)
-            ]
+            (navButton "Library" ShowLibrary (model.screen == LibraryScreen)
+                :: (case model.activeEntry of
+                        Just entry ->
+                            [ navButton "Read" (Navigate (Route.Reader entry.id (Just (model.sentenceIndex + 1)))) False
+                            , navButton "Study" ShowWorkspace (List.member model.screen [ WorkspaceScreen, SettingsScreen, HistoryScreen, AttemptComparisonScreen ])
+                            ]
+
+                        Nothing ->
+                            []
+                   )
+            )
         , div [ class "header-actions" ]
             [ button
                 [ class "theme-button"
@@ -1876,10 +1883,6 @@ viewAppHeader model =
                             "Dark"
                         )
                     ]
-                ]
-            , button [ class "settings-button", type_ "button", onClick ShowSettings ]
-                [ span [ attribute "aria-hidden" "true" ] [ text "⚙" ]
-                , span [ class "settings-label" ] [ text "Modules" ]
                 ]
             ]
         ]
@@ -2022,52 +2025,26 @@ viewSettings model =
             model.corpus.source.name
     in
     main_ [ class "page settings-page" ]
-        [ section [ class "settings-intro" ]
+        [ section [ class "settings-intro compact-intro" ]
             [ div []
                 [ p [ class "eyebrow" ] [ text (workTitle model) ]
-                , h1 [] [ text "Compose your reading workspace" ]
-                , p [ class "lead" ] [ text "A preset is only a starting point. Greek remains available even when every learning module is off." ]
+                , h1 [] [ text "Study tools" ]
                 ]
-            , button [ class "primary-button open-workspace-button", type_ "button", onClick ShowWorkspace ] [ text "Open workspace →" ]
+            , button [ class "primary-button open-workspace-button", type_ "button", onClick ShowWorkspace ] [ text "Back to study →" ]
             ]
         , section [ class "setting-block" ]
-            [ div [ class "setting-heading" ]
-                [ div []
-                    [ p [ class "eyebrow" ] [ text "Start with a preset" ]
-                    , h2 [] [ text "How intensively do you want to read?" ]
-                    ]
-                , viewScopeControl model.scope
-                ]
-            , div [ class "preset-grid" ]
-                [ viewPresetCard model.preset ReadPreset "Read" "Greek first, with word help available only when needed." "≈ 4 min / passage"
-                , viewPresetCard model.preset AssistedPreset "Assisted" "Selective help and a light comparison prompt." "≈ 8 min / passage"
-                , viewPresetCard model.preset IntensivePreset "Intensive" "Forms, structure, and both translation drafts." "≈ 18 min / passage"
-                , viewPresetCard model.preset CustomPreset "Custom" "Your explicit module and cadence choices." "Variable"
+            [ div [ class "preset-grid" ]
+                [ viewPresetCard model.preset ReadPreset "Read" "Word help only when you ask." "≈ 4 min / passage"
+                , viewPresetCard model.preset AssistedPreset "Assisted" "Glosses, forms on request, and a prose draft to check your understanding." "≈ 8 min / passage"
+                , viewPresetCard model.preset IntensivePreset "Intensive" "Glosses, forms, and both translation drafts." "≈ 15 min / passage"
+                , viewPresetCard model.preset CustomPreset "Custom" "Your own choice of tools." "Variable"
                 ]
             ]
         , section [ class "module-settings" ]
-            [ div [ class "module-section-heading" ]
-                [ div []
-                    [ p [ class "eyebrow" ] [ text "Workspace modules" ]
-                    , h2 [] [ text "Available from this content pack" ]
-                    ]
-                , span [ class "coverage-key" ] [ text (model.corpus.source.name ++ " · imported CoNLL-U") ]
-                ]
-            , viewRequiredModule
-            , viewModuleSetting model GlossModule "Enter contextual glosses" "Recall a sense for every glossed word, then compare with the imported gloss." (String.fromInt coverage.glossed ++ " of " ++ String.fromInt coverage.tokens ++ " words") (provenance ++ " · imported")
-            , viewModuleSetting model MorphologyModule "Analyze morphology" "Choose applicable features for selected forms; no free-text label matching." (String.fromInt coverage.morphology ++ " of " ++ String.fromInt coverage.tokens ++ " words") (provenance ++ " · imported")
-            , viewModuleSetting model DependencyModule "Build dependency relationships" "Find the root and attach one core argument. Full trees remain optional." (String.fromInt coverage.dependencies ++ " of " ++ String.fromInt coverage.sentences ++ " sentences") (provenance ++ " · imported reference")
-            , viewModuleSetting model LiteralModule "Draft a literal translation" "Expose structure and supplied relationships in your own words." (String.fromInt coverage.literal ++ " of " ++ String.fromInt coverage.sentences ++ " sentences") (provenance ++ " · aligned reference")
-            , viewModuleSetting model ProseModule "Draft a prose translation" "State the understood proposition naturally and retain it for later comparison." (String.fromInt coverage.prose ++ " of " ++ String.fromInt coverage.sentences ++ " sentences") (provenance ++ " · aligned reference")
-            , viewUnavailableModule "Curated gist check" "No curated prompts in this edition" ("0 of " ++ String.fromInt coverage.sentences ++ " sentences")
-            , viewUnavailableModule "Reconstruct word order" "Activity generator not included in this prototype" "Capability pending"
-            ]
-        , footer [ class "settings-footer" ]
-            [ div []
-                [ strongText (scopeLabel model.scope)
-                , span [ class "muted" ] [ text " · Changes are explicit and reversible." ]
-                ]
-            , button [ class "primary-button", type_ "button", onClick ShowWorkspace ] [ text "Use this workspace" ]
+            [ viewModuleSetting model GlossModule "Contextual glosses" "Recall each word's sense in this sentence, then compare with the imported gloss." (String.fromInt coverage.glossed ++ " of " ++ String.fromInt coverage.tokens ++ " words") (provenance ++ " · imported")
+            , viewModuleSetting model MorphologyModule "Morphology" "Choose the features of a selected form, checked feature by feature." (String.fromInt coverage.morphology ++ " of " ++ String.fromInt coverage.tokens ++ " words") (provenance ++ " · imported")
+            , viewModuleSetting model LiteralModule "Literal translation" "Expose the structure in your own words, then compare." (String.fromInt coverage.literal ++ " of " ++ String.fromInt coverage.sentences ++ " sentences") (provenance ++ " · aligned reference")
+            , viewModuleSetting model ProseModule "Prose translation" "State the meaning naturally, then compare." (String.fromInt coverage.prose ++ " of " ++ String.fromInt coverage.sentences ++ " sentences") (provenance ++ " · aligned reference")
             ]
         ]
 
@@ -2158,16 +2135,6 @@ viewModuleSetting model moduleId title description coverage provenance =
             , p [] [ text description ]
             , span [ class "provenance" ] [ text provenance ]
             ]
-        , button
-            [ classList [ ( "module-mode", True ), ( "is-off", not enabled ) ]
-            , type_ "button"
-            , disabled (not enabled)
-            , onClick (CycleModuleMode moduleId)
-            , attribute "aria-label" ("Change cadence for " ++ title)
-            ]
-            [ text (modeLabel mode)
-            , span [ attribute "aria-hidden" "true" ] [ text " ↻" ]
-            ]
         ]
 
 
@@ -2193,6 +2160,9 @@ viewWorkspace model =
     let
         sentence =
             currentSentence model
+
+        showWorkbench =
+            model.phase /= Rereading && model.activeModule /= Nothing
     in
     main_ [ class "workspace-page" ]
         [ div [ class "work-context-bar" ]
@@ -2200,7 +2170,6 @@ viewWorkspace model =
                 [ button [ class "icon-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Back to library" ] [ text "←" ]
                 , div []
                     [ span [ class "context-work" ] [ text (workTitle model) ]
-                    , span [ class "context-division" ] [ text (sentenceReference sentence ++ " · Passage " ++ String.fromInt (model.sentenceIndex + 1) ++ " of " ++ String.fromInt (List.length model.corpus.sentences)) ]
                     ]
                 ]
             , div [ class "context-actions" ]
@@ -2215,19 +2184,15 @@ viewWorkspace model =
                         ]
                     , button [ class "icon-button", type_ "button", onClick NextSentence, disabled (model.sentenceIndex >= List.length model.corpus.sentences - 1), attribute "aria-label" "Next passage (→ or j)" ] [ text "›" ]
                     ]
-                , button [ class "text-button", type_ "button", onClick (Navigate (Route.Reader (Maybe.map .id model.activeEntry |> Maybe.withDefault "") (Just (model.sentenceIndex + 1)))) ] [ text "Read" ]
-                , span [ class "autosave-status" ] [ span [ class "save-dot" ] [], text "Draft saved" ]
-                , button [ class "text-button", type_ "button", onClick ShowHistory ] [ text "History · ", text (String.fromInt model.attemptCount) ]
                 ]
             ]
-        , div [ classList [ ( "workspace-grid", True ), ( "is-rereading", model.phase == Rereading ) ] ]
-            [ viewSourceRail model
-            , viewReadingStage model
-            , if model.phase == Rereading then
-                text ""
+        , div [ classList [ ( "workspace-grid", True ), ( "has-workbench", showWorkbench ) ] ]
+            [ viewReadingStage model
+            , if showWorkbench then
+                viewWorkbench model
 
               else
-                viewWorkbench model
+                text ""
             ]
         , viewWorkspaceFooter model
         ]
@@ -2279,15 +2244,7 @@ viewReadingStage model =
             currentSentence model
     in
     section [ class "reading-stage" ]
-        [ div [ class "passage-heading" ]
-            [ div []
-                [ p [ class "eyebrow" ] [ text (phaseEyebrow model.phase) ]
-                , h1 [] [ text (sentenceReference sentence) ]
-                ]
-            , span [ classList [ ( "phase-badge", True ), ( "is-compared", model.phase == Compared ), ( "is-reread", model.phase == Rereading ) ] ]
-                [ text (phaseLabel model.phase) ]
-            ]
-        , if model.phase == Rereading then
+        [ if model.phase == Rereading then
             div [ class "reread-instruction" ]
                 [ span [ class "reread-icon", attribute "aria-hidden" "true" ] [ text "↻" ]
                 , div []
@@ -2298,8 +2255,8 @@ viewReadingStage model =
 
           else
             p [ class "reading-instruction" ]
-                [ text "Read the whole sentence before opening a tool. "
-                , span [] [ text "Attempt first; references remain hidden until submission." ]
+                [ text "Read the sentence first. "
+                , span [] [ text "References stay hidden until you submit." ]
                 ]
         , viewGreekPassage model
         , div [ class "source-line" ]
@@ -2363,20 +2320,17 @@ viewActivityTray model =
     in
     section [ class "activity-area" ]
         [ div [ class "activity-heading" ]
-            [ div []
-                [ p [ class "eyebrow" ] [ text "Activity tray" ]
-                , h2 [] [ text "Your tools for this passage" ]
-                ]
-            , span [ class "tray-help" ] [ text "One opens at a time" ]
+            [ p [ class "eyebrow" ] [ text "Tools" ]
+            , button [ class "text-button", type_ "button", onClick ShowSettings ] [ text "Choose tools" ]
             ]
         , if List.isEmpty modules then
             div [ class "read-only-state" ]
                 [ span [ class "read-only-mark", attribute "aria-hidden" "true" ] [ text "α" ]
                 , div []
                     [ strongText "Read-only session"
-                    , p [] [ text "No exercise interrupts this passage. Add a module only if it serves your reading." ]
+                    , p [] [ text "No tools are on. Add one only if it serves your reading." ]
                     ]
-                , button [ class "secondary-button", type_ "button", onClick ShowSettings ] [ text "Add modules" ]
+                , button [ class "secondary-button", type_ "button", onClick ShowSettings ] [ text "Choose tools" ]
                 ]
 
           else
@@ -3019,7 +2973,7 @@ viewHistory model =
                                 "This browser session"
                                 (presetLabel model.preset)
                                 (if attemptNumber == model.attemptCount then "Current checkpoint" else "Parent attempt")
-                                (String.fromInt (List.length (enabledModules model.settings)) ++ " modules · " ++ if model.referenceRevealed then "assisted" else "unassisted")
+                                (String.fromInt (List.length (enabledModules model.settings)) ++ " tools · " ++ if model.referenceRevealed then "assisted" else "unassisted")
                                 (attemptNumber == model.attemptCount)
                         )
     in
@@ -3412,7 +3366,7 @@ blankToken =
 
 enabledModules : ModuleSettings -> List ModuleId
 enabledModules settings =
-    [ GlossModule, MorphologyModule, DependencyModule, LiteralModule, ProseModule ]
+    [ GlossModule, MorphologyModule, LiteralModule, ProseModule ]
         |> List.filter (\moduleId -> moduleMode moduleId settings /= ModuleOff)
 
 
@@ -3659,7 +3613,7 @@ checkpointTitle model =
                     "Revision of attempt 0" ++ String.fromInt parent
 
                 Nothing ->
-                    "One checkpoint · " ++ String.fromInt (List.length (enabledModules model.settings)) ++ " modules"
+                    "One checkpoint · " ++ String.fromInt (List.length (enabledModules model.settings)) ++ " tools"
 
         Compared ->
             "Attempt 0" ++ String.fromInt model.attemptCount ++ " is immutable"
