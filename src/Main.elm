@@ -16,6 +16,8 @@ import Process
 import Route exposing (Route)
 import Set exposing (Set)
 import Sources
+import Fsrs
+import Review
 import Study
 import Task
 import Time
@@ -180,6 +182,10 @@ type alias Model =
     , readerGloss : Maybe ( Int, Int )
     , readerRevealed : Set Int
     , scrollGeneration : Int
+    , reviews : Dict String Review.Entry
+    , newPerDay : Int
+    , queueMode : Bool
+    , queueDone : Bool
     }
 
 
@@ -224,8 +230,11 @@ type Msg
     | SubmitStudy
     | ReopenStudy
     | MarkItem String Bool
-    | FinishGrading
-    | GradingFinished Time.Posix
+    | FinishGrading Fsrs.Rating
+    | StudyToday ManifestEntry
+    | ContinueReading
+    | SetNewPerDay String
+    | GradingFinished Fsrs.Rating Time.Posix
     | ClearSavedData
     | ConfirmClearSavedData
     | CancelClearSavedData
@@ -295,6 +304,10 @@ init _ url key =
                 , readerGloss = Nothing
                 , readerRevealed = Set.empty
                 , scrollGeneration = 0
+                , reviews = Dict.empty
+                , newPerDay = Review.newPerDayDefault
+                , queueMode = False
+                , queueDone = False
                 }
     in
     ( model
@@ -305,6 +318,7 @@ init _ url key =
         , Task.perform GotZone Time.here
         , storageGet "theme" "metadata" "theme"
         , storageGet "positions" "metadata" "positions"
+        , storageGet "review-settings" "metadata" "review-settings"
         , storageGetAll "attempts" "progress"
         , storageGet "cached-corpus" "metadata" "cached-corpus"
         , storageGet "legacy-manifest" "metadata" "preload-manifest"
@@ -582,7 +596,7 @@ updateModel msg model =
         JumpToPassage passage ->
             case String.toInt passage of
                 Just number ->
-                    ( moveToSentence (number - 1) model, Cmd.none )
+                    ( moveToSentence (number - 1) (browsing model), Cmd.none )
 
                 Nothing ->
                     ( model, Cmd.none )
@@ -682,10 +696,10 @@ updateModel msg model =
             ( { model | screen = SettingsScreen, notice = Nothing, popupWord = Nothing, confirmClear = False }, Cmd.none )
 
         PreviousSentence ->
-            ( moveToSentence (model.sentenceIndex - 1) model, Cmd.none )
+            ( moveToSentence (model.sentenceIndex - 1) (browsing model), Cmd.none )
 
         NextSentence ->
-            ( moveToSentence (model.sentenceIndex + 1) model, Cmd.none )
+            ( moveToSentence (model.sentenceIndex + 1) (browsing model), Cmd.none )
 
         SelectPreset preset ->
             ( { model | preset = preset, settings = settingsForPreset preset model.settings, activeModule = Nothing }, Cmd.none )
@@ -772,7 +786,7 @@ updateModel msg model =
                             updateModel (ReaderStep delta) settled
 
                         else
-                            ( moveToSentence (model.sentenceIndex + delta) settled, Cmd.none )
+                            ( moveToSentence (model.sentenceIndex + delta) (browsing settled), Cmd.none )
 
                     else
                         ( settled, Cmd.none )
@@ -841,18 +855,77 @@ updateModel msg model =
             in
             ( { model | study = { study | marks = marks } }, Cmd.none )
 
-        FinishGrading ->
-            ( model, Task.perform GradingFinished Time.now )
+        FinishGrading rating ->
+            ( model, Task.perform (GradingFinished rating) Time.now )
 
-        GradingFinished time ->
-            case buildAttempt (Time.posixToMillis time) model of
-                Just attempt ->
-                    ( { model
-                        | attempts = attempt :: model.attempts
-                        , study = Study.emptyDraft
-                        , notice = Just "Attempt saved. Your marks count toward your stats."
+        GradingFinished rating time ->
+            let
+                now =
+                    Time.posixToMillis time
+            in
+            case ( buildAttempt now model, model.activeEntry ) of
+                ( Just attempt, Just entry ) ->
+                    let
+                        passage =
+                            model.sentenceIndex + 1
+
+                        scheduled =
+                            Review.schedule now rating entry.id passage model.reviews
+
+                        recorded =
+                            { model
+                                | attempts = attempt :: model.attempts
+                                , reviews =
+                                    scheduled
+                                        |> Maybe.map (\review -> Dict.insert (Review.entryKey entry.id passage) review model.reviews)
+                                        |> Maybe.withDefault model.reviews
+                                , study = Study.emptyDraft
+                                , clock = now
+                            }
+
+                        advanced =
+                            advance recorded
+                    in
+                    ( { advanced
+                        | notice =
+                            scheduled
+                                |> Maybe.map (\review -> "Saved. Passage " ++ String.fromInt passage ++ " comes back in " ++ Review.intervalLabel now review.card.due ++ ".")
                       }
-                    , storagePut "save-attempt" "progress" (Study.encodeAttempt attempt)
+                    , Cmd.batch
+                        [ storagePut "save-attempt" "progress" (Study.encodeAttempt attempt)
+                        , scheduled |> Maybe.map (Review.encodeEntry >> storagePut "save-card" "progress") |> Maybe.withDefault Cmd.none
+                        , draftKey model
+                            |> Maybe.map (\key -> storagePut "save-draft" "metadata" (Encode.object [ ( "key", Encode.string key ), ( "value", Study.encodeDraft Study.emptyDraft ) ]))
+                            |> Maybe.withDefault Cmd.none
+                        ]
+                    )
+
+                _ ->
+                    ( model, Cmd.none )
+
+        StudyToday entry ->
+            let
+                today =
+                    Review.queue model.clock model.newPerDay entry.id entry.sentenceCount model.reviews
+
+                first =
+                    List.head (today.due ++ today.new)
+
+                passage =
+                    first |> Maybe.withDefault (Dict.get entry.id model.positions |> Maybe.withDefault 1)
+            in
+            ( { model | queueMode = True, queueDone = first == Nothing }
+            , Nav.pushUrl model.key (Route.toPath (Route.Study entry.id passage) ++ "?queue=1")
+            )
+
+        ContinueReading ->
+            ( moveToSentence (model.sentenceIndex + 1) (browsing model), Cmd.none )
+
+        SetNewPerDay value ->
+            case String.toInt value of
+                Just newPerDay ->
+                    ( { model | newPerDay = newPerDay }
+                    , storagePut "save-review-settings" "metadata" (Encode.object [ ( "key", Encode.string "review-settings" ), ( "value", Encode.object [ ( "newPerDay", Encode.int newPerDay ) ] ) ])
                     )
 
                 Nothing ->
@@ -867,6 +940,7 @@ updateModel msg model =
         ConfirmClearSavedData ->
             ( { model
                 | attempts = []
+                , reviews = Dict.empty
                 , study = Study.emptyDraft
                 , positions = Dict.empty
                 , confirmClear = False
@@ -1095,6 +1169,7 @@ applyQuery model =
         , activeModule = Dict.get "tool" query |> Maybe.andThen moduleFromKey
         , historyOpen = Dict.get "history" query == Just "1"
         , historyAttempt = Dict.get "attempt" query |> Maybe.andThen String.toInt
+        , queueMode = Dict.get "queue" query == Just "1"
     }
 
 
@@ -1120,6 +1195,11 @@ queryFor model =
                   else
                     Nothing
                 , model.historyAttempt |> Maybe.map (\finishedAt -> "attempt=" ++ String.fromInt finishedAt)
+                , if model.queueMode then
+                    Just "queue=1"
+
+                  else
+                    Nothing
                 ]
     in
     if List.isEmpty pairs then
@@ -1207,9 +1287,26 @@ handleStorageResponse value model =
                     model
 
             else if response.id == "attempts" then
+                -- The progress store holds both finished attempts and review cards.
                 case Decode.decodeValue (Decode.list (Decode.oneOf [ Decode.map Just Study.attemptDecoder, Decode.succeed Nothing ])) response.value of
                     Ok attempts ->
-                        { model | attempts = List.filterMap identity attempts }
+                        { model
+                            | attempts = List.filterMap identity attempts
+                            , reviews =
+                                Decode.decodeValue (Decode.list (Decode.oneOf [ Decode.map Just Review.entryDecoder, Decode.succeed Nothing ])) response.value
+                                    |> Result.withDefault []
+                                    |> List.filterMap identity
+                                    |> List.map (\entry -> ( Review.entryKey entry.work entry.passage, entry ))
+                                    |> Dict.fromList
+                        }
+
+                    Err _ ->
+                        model
+
+            else if response.id == "review-settings" then
+                case Decode.decodeValue (Decode.at [ "value", "newPerDay" ] Decode.int) response.value of
+                    Ok newPerDay ->
+                        { model | newPerDay = newPerDay }
 
                     Err _ ->
                         model
@@ -1280,6 +1377,38 @@ installCorpus loadedFromNetwork entry corpus model =
         , readerGloss = Nothing
         , readerRevealed = Set.empty
     }
+
+
+{-| Choosing a passage by hand leaves today's review queue.
+-}
+browsing : Model -> Model
+browsing model =
+    { model | queueMode = False, queueDone = False }
+
+
+{-| After a graded passage: the next sentence in today's queue, or in text order when browsing.
+-}
+advance : Model -> Model
+advance model =
+    if model.queueMode then
+        case todayQueue model |> Maybe.andThen (\today -> List.head (today.due ++ today.new)) of
+            Just passage ->
+                moveToSentence (passage - 1) { model | queueDone = False }
+
+            Nothing ->
+                { model | queueDone = True, popupWord = Nothing, activeModule = Nothing }
+
+    else if model.sentenceIndex < List.length model.corpus.sentences - 1 then
+        moveToSentence (model.sentenceIndex + 1) model
+
+    else
+        model
+
+
+todayQueue : Model -> Maybe Review.Queue
+todayQueue model =
+    model.activeEntry
+        |> Maybe.map (\entry -> Review.queue model.clock model.newPerDay entry.id (List.length model.corpus.sentences) model.reviews)
 
 
 moveToSentence : Int -> Model -> Model
@@ -1508,16 +1637,16 @@ handleShortcut : String -> Model -> ( Model, Cmd Msg )
 handleShortcut key model =
     case ( model.screen, key ) of
         ( WorkspaceScreen, "ArrowLeft" ) ->
-            ( moveToSentence (model.sentenceIndex - 1) model, Cmd.none )
+            ( moveToSentence (model.sentenceIndex - 1) (browsing model), Cmd.none )
 
         ( WorkspaceScreen, "k" ) ->
-            ( moveToSentence (model.sentenceIndex - 1) model, Cmd.none )
+            ( moveToSentence (model.sentenceIndex - 1) (browsing model), Cmd.none )
 
         ( WorkspaceScreen, "ArrowRight" ) ->
-            ( moveToSentence (model.sentenceIndex + 1) model, Cmd.none )
+            ( moveToSentence (model.sentenceIndex + 1) (browsing model), Cmd.none )
 
         ( WorkspaceScreen, "j" ) ->
-            ( moveToSentence (model.sentenceIndex + 1) model, Cmd.none )
+            ( moveToSentence (model.sentenceIndex + 1) (browsing model), Cmd.none )
 
         ( ReaderScreen, "j" ) ->
             updateModel (ReaderStep 1) model
@@ -2062,7 +2191,7 @@ viewAppHeader model =
                 :: (case model.activeEntry of
                         Just entry ->
                             [ navButton "Read" (Navigate (Route.Reader entry.id (Just (model.sentenceIndex + 1)))) False
-                            , navButton "Study" ShowWorkspace (List.member model.screen [ WorkspaceScreen, SettingsScreen ])
+                            , navButton "Study" (StudyToday entry) (List.member model.screen [ WorkspaceScreen, SettingsScreen ])
                             ]
 
                         Nothing ->
@@ -2137,6 +2266,9 @@ viewWorkCard model entry =
             [ entry.source.name, entry.source.license ]
                 |> List.filter (not << String.isEmpty)
                 |> String.join " · "
+
+        today =
+            Review.queue model.clock model.newPerDay entry.id entry.sentenceCount model.reviews
     in
     section [ classList [ ( "pack-card", True ), ( "featured-pack", isActive ) ] ]
         [ div [ class "pack-body" ]
@@ -2150,16 +2282,22 @@ viewWorkCard model entry =
                 ]
             , Sources.view entry.citation
             , div [ class "pack-footer" ]
-                [ span [ class "muted" ] [ text (String.fromInt entry.sentenceCount ++ " " ++ plural entry.sentenceCount "sentence" "sentences" ++ " · " ++ String.fromInt entry.tokenCount ++ " tokens") ]
+                [ div [ class "pack-counts" ]
+                    [ span [ class "queue-counts" ]
+                        [ strongText (String.fromInt (List.length today.due) ++ " due")
+                        , text (" · " ++ String.fromInt (List.length today.new) ++ " new today")
+                        ]
+                    , span [ class "muted" ] [ text (String.fromInt entry.sentenceCount ++ " " ++ plural entry.sentenceCount "sentence" "sentences" ++ " · " ++ String.fromInt entry.tokenCount ++ " tokens") ]
+                    ]
                 , div [ class "button-row" ]
-                    [ button [ class "secondary-button", type_ "button", disabled isLoading, onClick (Navigate (Route.WorkLanding entry.id)) ] [ text "Study" ]
-                    , button [ class "primary-button", type_ "button", disabled isLoading, onClick (Navigate (Route.Reader entry.id Nothing)) ]
+                    [ button [ class "secondary-button", type_ "button", disabled isLoading, onClick (Navigate (Route.Reader entry.id Nothing)) ] [ text "Read" ]
+                    , button [ class "primary-button", type_ "button", disabled isLoading, onClick (StudyToday entry) ]
                         [ text
                             (if isLoading then
                                 "Loading…"
 
                              else
-                                "Read →"
+                                "Study today →"
                             )
                         ]
                     ]
@@ -2422,7 +2560,16 @@ viewProgress model =
             Study.stats model.attempts
     in
     section [ class "progress-settings" ]
-        [ div [ class "progress-heading" ]
+        [ label [ class "new-per-day" ]
+            [ span [] [ text "New passages per day" ]
+            , select [ onInput SetNewPerDay ]
+                (List.map
+                    (\count -> option [ value (String.fromInt count), selected (count == model.newPerDay) ] [ text (String.fromInt count) ])
+                    [ 3, 5, 10, 15, 20, 30 ]
+                )
+            , span [ class "muted" ] [ text "Reviews that are due are never capped." ]
+            ]
+        , div [ class "progress-heading" ]
             [ h2 [] [ text "Your progress" ]
             , span [ class "muted" ] [ text "Saved only in this browser." ]
             ]
@@ -2494,6 +2641,7 @@ viewWorkspace model =
                 [ button [ class "icon-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Back to library" ] [ text "←" ]
                 , div [] [ span [ class "context-work" ] [ text (workTitle model) ] ]
                 ]
+            , viewQueueStatus model
             , div [ class "context-actions" ]
                 [ div [ class "passage-nav" ]
                     [ button [ class "icon-button", type_ "button", onClick PreviousSentence, disabled (model.sentenceIndex == 0), attribute "aria-label" "Previous passage (← or k)" ] [ text "‹" ]
@@ -2509,7 +2657,10 @@ viewWorkspace model =
                 ]
             ]
         , div [ classList [ ( "workspace-grid", True ), ( "has-workbench", showTool ) ] ]
-            [ if model.historyOpen then
+            [ if model.queueDone then
+                viewQueueDone model
+
+              else if model.historyOpen then
                 viewHistory model
 
               else if model.study.submitted then
@@ -2523,7 +2674,11 @@ viewWorkspace model =
               else
                 text ""
             ]
-        , viewStudyFooter model
+        , if model.queueDone then
+            text ""
+
+          else
+            viewStudyFooter model
         ]
 
 
@@ -3300,6 +3455,131 @@ groupWords tokens =
         |> List.reverse
 
 
+{-| In today's queue: whether this passage is a review or new, and how many passages remain.
+-}
+viewQueueStatus : Model -> Html Msg
+viewQueueStatus model =
+    case ( model.queueMode && not model.queueDone, todayQueue model ) of
+        ( True, Just today ) ->
+            let
+                current =
+                    model.sentenceIndex + 1
+
+                kind =
+                    if List.member current today.due then
+                        "Review"
+
+                    else
+                        "New"
+            in
+            span [ class "queue-status" ]
+                [ span [ class "queue-kind" ] [ text kind ]
+                , text (String.fromInt (List.length today.due + List.length today.new) ++ " left today")
+                ]
+
+        _ ->
+            text ""
+
+
+viewQueueDone : Model -> Html Msg
+viewQueueDone model =
+    let
+        work =
+            model.activeEntry |> Maybe.map .id |> Maybe.withDefault ""
+
+        today =
+            List.filter (\attempt -> attempt.work == work && attempt.finishedAt >= Review.startOfDay model.clock) model.attempts
+
+        summary =
+            Study.stats today
+
+        nextDue =
+            Review.dueLater model.clock work model.reviews
+
+        -- Short relearning steps fall due while this panel is open.
+        dueNow =
+            todayQueue model |> Maybe.map (.due >> List.length) |> Maybe.withDefault 0
+    in
+    section [ class "reading-stage queue-done" ]
+        [ p [ class "eyebrow" ] [ text (workTitle model) ]
+        , h2 [] [ text "Done for today" ]
+        , p []
+            [ text
+                (String.fromInt (List.length today)
+                    ++ plural (List.length today) " passage" " passages"
+                    ++ " graded today"
+                    ++ (if summary.judged > 0 then
+                            ", " ++ percent summary.right summary.judged ++ " of marked answers right."
+
+                        else
+                            "."
+                       )
+                )
+            ]
+        , p [ class "muted" ]
+            [ text
+                (case ( dueNow, nextDue ) of
+                    ( 0, Just due ) ->
+                        "Next review due in " ++ Review.intervalLabel model.clock due ++ ". New passages: up to " ++ String.fromInt model.newPerDay ++ " a day."
+
+                    ( 0, Nothing ) ->
+                        "No reviews scheduled yet. New passages: up to " ++ String.fromInt model.newPerDay ++ " a day."
+
+                    _ ->
+                        String.fromInt dueNow ++ plural dueNow " review is" " reviews are" ++ " due now."
+                )
+            ]
+        , div [ class "button-row" ]
+            (List.filterMap identity
+                [ if dueNow > 0 then
+                    model.activeEntry |> Maybe.map (\entry -> button [ class "primary-button", type_ "button", onClick (StudyToday entry) ] [ text "Review now →" ])
+
+                  else
+                    Nothing
+                , Just (button [ class "secondary-button", type_ "button", onClick ContinueReading ] [ text "Keep going in order" ])
+                , Just (button [ class "secondary-button", type_ "button", onClick ShowLibrary ] [ text "Back to library" ])
+                ]
+            )
+        ]
+
+
+{-| Finishing is choosing a rating: FSRS schedules the passage and the next one opens. Each button shows when the
+passage would come back with that rating.
+-}
+viewRatingButtons : Model -> List Study.Item -> Html Msg
+viewRatingButtons model items =
+    let
+        suggested =
+            Review.suggestRating items
+
+        card =
+            model.activeEntry
+                |> Maybe.andThen (\entry -> Dict.get (Review.entryKey entry.id (model.sentenceIndex + 1)) model.reviews)
+                |> Maybe.map .card
+                |> Maybe.withDefault (Fsrs.newCard model.clock)
+
+        outcomes =
+            Review.scheduler |> Maybe.andThen (\fsrs -> Fsrs.preview fsrs model.clock card |> Result.toMaybe)
+
+        ratingButton rating label pick =
+            button
+                [ classList [ ( "rating-button", True ), ( "is-suggested", rating == suggested ) ]
+                , type_ "button"
+                , onClick (FinishGrading rating)
+                ]
+                [ strongText label
+                , span [ class "rating-interval" ]
+                    [ text (outcomes |> Maybe.map (\all -> Review.intervalLabel model.clock (pick all).card.due) |> Maybe.withDefault "") ]
+                ]
+    in
+    div [ class "rating-buttons" ]
+        [ ratingButton Fsrs.Again "Again" .again
+        , ratingButton Fsrs.Hard "Hard" .hard
+        , ratingButton Fsrs.Good "Good" .good
+        , ratingButton Fsrs.Easy "Easy" .easy
+        ]
+
+
 viewStudyFooter : Model -> Html Msg
 viewStudyFooter model =
     let
@@ -3323,9 +3603,9 @@ viewStudyFooter model =
             [ button [ class "footer-side-button", type_ "button", onClick ReopenStudy ] [ text "← Keep working" ]
             , div [ class "checkpoint-copy" ]
                 [ strongText (String.fromInt marked ++ " of " ++ String.fromInt (List.length items) ++ " marked")
-                , span [] [ text "Unmarked answers are saved without a judgement." ]
+                , span [] [ text "How well did you know it? The suggestion follows your marks." ]
                 ]
-            , button [ class "checkpoint-button", type_ "button", onClick FinishGrading ] [ text "Finish grading →" ]
+            , viewRatingButtons model items
             ]
 
          else

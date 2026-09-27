@@ -3723,3 +3723,92 @@ p {
   margin-top: 14px;
   text-align: center;
 }
+
+/* Today's review queue */
+.rating-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.rating-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 64px;
+  padding: 7px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--ink);
+  background: none;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.rating-button.is-suggested {
+  border-color: var(--teal);
+  color: var(--accent-ink);
+  background: var(--teal);
+}
+
+.rating-interval {
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+.queue-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.queue-kind {
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--teal-dark);
+  background: var(--teal-soft);
+  font-weight: 600;
+}
+
+.pack-counts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.queue-counts {
+  color: var(--teal-dark);
+  font-size: 0.9rem;
+}
+
+.queue-done h2 {
+  margin: 4px 0 12px;
+  font-family: var(--greek);
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.queue-done .button-row {
+  margin-top: 18px;
+}
+
+.new-per-day {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 720px) {
+  .rating-buttons {
+    width: 100%;
+  }
+
+  .rating-button {
+    flex: 1;
+    min-width: 0;
+  }
+}
