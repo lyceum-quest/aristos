@@ -3675,3 +3675,20 @@ p {
     grid-column: 2;
   }
 }
+
+/* Swiping between passages on touch screens: the browser keeps vertical scrolling and pinch zoom, the passage
+   follows the finger sideways, and springs back when released. */
+.is-swipeable {
+  touch-action: pan-y pinch-zoom;
+  transition: transform 0.2s ease;
+}
+
+.is-swipeable.is-swiping {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-swipeable {
+    transition: none;
+  }
+}

@@ -75,6 +75,24 @@ type alias PopupPlacement =
     }
 
 
+{-| A touch on the passage. It becomes a horizontal swipe only when it first moves mostly sideways soon after it
+starts, so vertical scrolling and long-press text selection are left to the browser.
+-}
+type alias Swipe =
+    { startX : Float
+    , startY : Float
+    , startTime : Float
+    , dx : Float
+    , axis : SwipeAxis
+    }
+
+
+type SwipeAxis
+    = Undecided
+    | Horizontal
+    | Vertical
+
+
 type alias Corpus =
     Conllu.Corpus
 
@@ -137,6 +155,7 @@ type alias Model =
     , popupWord : Maybe Int
     , popupTab : PopupTab
     , popupPlacement : Maybe PopupPlacement
+    , swipe : Maybe Swipe
     , historyOpen : Bool
     , historyAttempt : Maybe Int
     , zone : Time.Zone
@@ -189,6 +208,9 @@ type Msg
     | SetPopupTab PopupTab
     | PopupMeasured (Result Dom.Error PopupPlacement)
     | PopupResized
+    | SwipeStart Float Float Float
+    | SwipeMove Float Float Float
+    | SwipeEnd
     | OpenHistory
     | CloseHistory
     | SelectHistoryAttempt Int
@@ -248,6 +270,7 @@ init _ url key =
                 , popupWord = Nothing
                 , popupTab = WordTab
                 , popupPlacement = Nothing
+                , swipe = Nothing
                 , historyOpen = False
                 , historyAttempt = Nothing
                 , zone = Time.utc
@@ -720,6 +743,40 @@ updateModel msg model =
 
         PopupResized ->
             ( model, Cmd.none )
+
+        SwipeStart x y time ->
+            ( { model | swipe = Just { startX = x, startY = y, startTime = time, dx = 0, axis = Undecided } }, Cmd.none )
+
+        SwipeMove x y time ->
+            ( { model | swipe = Maybe.map (followSwipe x y time) model.swipe }, Cmd.none )
+
+        SwipeEnd ->
+            let
+                settled =
+                    { model | swipe = Nothing }
+            in
+            case model.swipe of
+                Just swipe ->
+                    if swipe.axis == Horizontal && abs swipe.dx > swipeThreshold then
+                        let
+                            delta =
+                                if swipe.dx < 0 then
+                                    1
+
+                                else
+                                    -1
+                        in
+                        if model.screen == ReaderScreen then
+                            updateModel (ReaderStep delta) settled
+
+                        else
+                            ( moveToSentence (model.sentenceIndex + delta) settled, Cmd.none )
+
+                    else
+                        ( settled, Cmd.none )
+
+                Nothing ->
+                    ( settled, Cmd.none )
 
         OpenHistory ->
             ( { model | historyOpen = True, historyAttempt = Nothing, popupWord = Nothing, activeModule = Nothing }, Cmd.none )
@@ -1548,6 +1605,94 @@ savePosition model =
 
 
 
+-- SWIPING
+
+
+swipeThreshold : Float
+swipeThreshold =
+    60
+
+
+followSwipe : Float -> Float -> Float -> Swipe -> Swipe
+followSwipe x y time swipe =
+    let
+        dx =
+            x - swipe.startX
+
+        dy =
+            y - swipe.startY
+    in
+    case swipe.axis of
+        Undecided ->
+            if max (abs dx) (abs dy) < 10 then
+                swipe
+
+            else if time - swipe.startTime > 500 || abs dx < abs dy * 1.2 then
+                -- A slow start is a long press selecting text; a steep one is a scroll.
+                { swipe | axis = Vertical }
+
+            else
+                { swipe | axis = Horizontal, dx = dx }
+
+        Horizontal ->
+            { swipe | dx = dx }
+
+        Vertical ->
+            swipe
+
+
+{-| Touch handlers and the finger-following offset for a swipeable passage. `atStart` and `atEnd` damp the offset
+when there is no passage in that direction.
+-}
+swipeAttributes : Model -> Bool -> Bool -> List (Html.Attribute Msg)
+swipeAttributes model atStart atEnd =
+    let
+        touchAt field =
+            Decode.at [ "touches", "0", field ] Decode.float
+
+        single toMsg =
+            Decode.at [ "touches", "length" ] Decode.int
+                |> Decode.andThen
+                    (\count ->
+                        if count == 1 then
+                            Decode.map3 toMsg (touchAt "clientX") (touchAt "clientY") (Decode.field "timeStamp" Decode.float)
+
+                        else
+                            Decode.succeed SwipeEnd
+                    )
+
+        offset =
+            case model.swipe of
+                Just swipe ->
+                    if swipe.axis == Horizontal then
+                        if (swipe.dx > 0 && atStart) || (swipe.dx < 0 && atEnd) then
+                            swipe.dx * 0.12
+
+                        else
+                            swipe.dx * 0.4
+
+                    else
+                        0
+
+                Nothing ->
+                    0
+    in
+    [ class "is-swipeable"
+    , classList [ ( "is-swiping", offset /= 0 ) ]
+    , on "touchstart" (single SwipeStart)
+    , on "touchmove" (single SwipeMove)
+    , on "touchend" (Decode.succeed SwipeEnd)
+    , on "touchcancel" (Decode.succeed SwipeEnd)
+    ]
+        ++ (if offset == 0 then
+                []
+
+            else
+                [ style "transform" ("translateX(" ++ String.fromFloat offset ++ "px)") ]
+           )
+
+
+
 -- READER SCROLLING
 
 
@@ -1818,7 +1963,7 @@ viewReader model =
                 ]
             ]
         , div [ id readerScrollId, class "reader-scroll", on "scroll" (Decode.succeed ReaderScrolled) ]
-            [ article [ class "reader-text", attribute "lang" "grc" ]
+            [ article ([ class "reader-text", attribute "lang" "grc" ] ++ swipeAttributes model (model.sentenceIndex == 0) (model.sentenceIndex >= total - 1))
                 (List.indexedMap (viewReaderSentence model) model.corpus.sentences)
             , p [ class "reader-end" ] [ text ("End of " ++ workTitle model ++ " in this edition.") ]
             ]
@@ -2686,6 +2831,17 @@ formatDate zone millis =
         ++ twoDigits (Time.toMinute zone time)
 
 
+{-| Swiping is off while a word popup is open, so gestures inside it (or on its backdrop) never change passage.
+-}
+passageSwipe : Model -> List (Html.Attribute Msg)
+passageSwipe model =
+    if model.popupWord == Nothing then
+        swipeAttributes model (model.sentenceIndex == 0) (model.sentenceIndex >= List.length model.corpus.sentences - 1)
+
+    else
+        []
+
+
 viewStudyStage : Model -> Html Msg
 viewStudyStage model =
     let
@@ -2698,7 +2854,7 @@ viewStudyStage model =
             [ text "Tap a word to gloss it. "
             , span [] [ text "Answers stay hidden until you reveal them or submit." ]
             ]
-        , div [ class "greek-passage study-passage", attribute "lang" "grc" ]
+        , div ([ class "greek-passage study-passage", attribute "lang" "grc" ] ++ passageSwipe model)
             (List.concat (List.indexedMap (viewStudyToken model) sentence.tokens))
         , div [ class "source-line" ]
             [ span [] [ text model.corpus.source.edition ]
