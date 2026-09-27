@@ -37,7 +37,7 @@ main! = |_args| {
 		fail!("index.html contains inline JavaScript")
 	} else if List.len(Str.split_on(index, "<script")) != 3 {
 		fail!("index.html must contain exactly two external script elements")
-	} else if !Str.contains(index, "<script src=\"elm.js\"></script>") or !Str.contains(index, "<script src=\"browser-bridge.js\"></script>") {
+	} else if !Str.contains(index, "<script src=\"/elm.js\"></script>") or !Str.contains(index, "<script src=\"/browser-bridge.js\"></script>") {
 		fail!("index.html must load only the generated Elm bundle and browser bridge")
 	} else {
 		Stdout.line!("browser boundary OK: one ${List.len(Str.to_utf8(bridge)).to_str()}-byte bridge")

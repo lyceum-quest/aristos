@@ -1,15 +1,23 @@
 port module Main exposing (main)
 
 import Browser
+import Browser.Dom as Dom
+import Browser.Events
+import Browser.Navigation as Nav
 import Conllu
 import Dict exposing (Dict)
-import Html exposing (Html, a, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
+import Html exposing (Html, a, article, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
 import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, target, type_, value)
-import Html.Events exposing (onClick, onInput)
+import Html.Events exposing (on, onClick, onInput)
 import Http
 import Json.Decode as Decode
 import Json.Encode as Encode
+import Process
+import Route exposing (Route)
+import Set exposing (Set)
+import Task
 import Time
+import Url exposing (Url)
 
 
 type Screen
@@ -18,6 +26,7 @@ type Screen
     | SettingsScreen
     | HistoryScreen
     | AttemptComparisonScreen
+    | ReaderScreen
 
 
 type Preset
@@ -161,7 +170,14 @@ type alias Model =
     , library : List ManifestEntry
     , activeEntry : Maybe ManifestEntry
     , requestedWork : Maybe String
-    , openWhenLoaded : Bool
+    , pendingRoute : Maybe Route
+    , key : Nav.Key
+    , currentPath : String
+    , drafts : Dict Int Draft
+    , positions : Dict String Int
+    , readerGloss : Maybe ( Int, Int )
+    , readerRevealed : Set Int
+    , scrollGeneration : Int
     }
 
 
@@ -174,7 +190,18 @@ type Msg
     | PreviousSentence
     | NextSentence
     | JumpToChapter String
-    | OpenWork ManifestEntry
+    | JumpToPassage String
+    | Navigate Route
+    | UrlRequested Browser.UrlRequest
+    | UrlChanged Url
+    | KeyPressed String String
+    | ReaderTokenTapped Int Int
+    | ReaderToggleTranslation Int
+    | ReaderStep Int
+    | ReaderScrolled
+    | ReaderSettled Int
+    | ReaderMeasured (Result Dom.Error ( Dom.Element, List Dom.Element ))
+    | NoOp
     | SelectToken Int
     | SelectPreset Preset
     | SelectScope SettingScope
@@ -214,51 +241,88 @@ port storageResponse : (Decode.Value -> msg) -> Sub msg
 
 main : Program Decode.Value Model Msg
 main =
-    Browser.element
+    Browser.application
         { init = init
         , update = update
         , subscriptions = subscriptions
-        , view = view
+        , view = \model -> { title = documentTitle model, body = [ view model ] }
+        , onUrlRequest = UrlRequested
+        , onUrlChange = UrlChanged
         }
 
 
-init : Decode.Value -> ( Model, Cmd Msg )
-init _ =
-    ( { screen = LibraryScreen
-    , corpus = fallbackCorpus
-    , sentenceIndex = 0
-    , selectedTokenId = Nothing
-    , preset = IntensivePreset
-    , scope = SessionScope
-    , settings = intensiveSettings
-    , activeModule = Nothing
-    , phase = Drafting
-    , draft = emptyDraft
-    , previousDraft = Nothing
-    , skippedModules = []
-    , referenceRevealed = False
-    , revisionParent = Nothing
-    , attemptCount = 0
-    , elapsedSeconds = 0
-    , notice = Nothing
-    , theme = DarkTheme
-    , corpusReady = False
-    , corpusLoadedFromNetwork = False
-    , legacyManifestEntry = Nothing
-    , legacyCorpusRaw = Nothing
-    , library = []
-    , activeEntry = Nothing
-    , requestedWork = Nothing
-    , openWhenLoaded = False
-    }
+init : Decode.Value -> Url -> Nav.Key -> ( Model, Cmd Msg )
+init _ url key =
+    let
+        ( model, routeCmd ) =
+            applyRoute (Route.fromUrl url |> Maybe.withDefault Route.Library)
+                { screen = LibraryScreen
+                , corpus = fallbackCorpus
+                , sentenceIndex = 0
+                , selectedTokenId = Nothing
+                , preset = IntensivePreset
+                , scope = SessionScope
+                , settings = intensiveSettings
+                , activeModule = Nothing
+                , phase = Drafting
+                , draft = emptyDraft
+                , previousDraft = Nothing
+                , skippedModules = []
+                , referenceRevealed = False
+                , revisionParent = Nothing
+                , attemptCount = 0
+                , elapsedSeconds = 0
+                , notice = Nothing
+                , theme = DarkTheme
+                , corpusReady = False
+                , corpusLoadedFromNetwork = False
+                , legacyManifestEntry = Nothing
+                , legacyCorpusRaw = Nothing
+                , library = []
+                , activeEntry = Nothing
+                , requestedWork = Nothing
+                , pendingRoute = Nothing
+                , key = key
+                , currentPath = urlPath url
+                , drafts = Dict.empty
+                , positions = Dict.empty
+                , readerGloss = Nothing
+                , readerRevealed = Set.empty
+                , scrollGeneration = 0
+                }
+    in
+    ( model
     , Cmd.batch
         [ fetchManifest
+        , routeCmd
         , storageGet "theme" "metadata" "theme"
+        , storageGet "positions" "metadata" "positions"
         , storageGet "cached-corpus" "metadata" "cached-corpus"
         , storageGet "legacy-manifest" "metadata" "preload-manifest"
         , storageGet "legacy-corpus" "corpora" "anabasis"
         ]
     )
+
+
+documentTitle : Model -> String
+documentTitle model =
+    case ( model.screen, model.activeEntry ) of
+        ( LibraryScreen, _ ) ->
+            "Aristos · Greek reading workspace"
+
+        ( SettingsScreen, _ ) ->
+            "Modules · Aristos"
+
+        ( _, Just entry ) ->
+            entry.title ++ " " ++ String.fromInt (model.sentenceIndex + 1) ++ " · Aristos"
+
+        ( _, Nothing ) ->
+            "Aristos"
+
+
+urlPath : Url -> String
+urlPath url =
+    url.path ++ (url.fragment |> Maybe.map (\fragment -> "#" ++ fragment) |> Maybe.withDefault "")
 
 
 emptyDraft : Draft
@@ -407,32 +471,425 @@ subscriptions model =
 
           else
             Sub.none
+        , if model.screen == WorkspaceScreen || model.screen == ReaderScreen then
+            Browser.Events.onKeyDown keyDecoder
+
+          else
+            Sub.none
         ]
+
+
+{-| Shortcuts ignore modified keys; the handler also ignores keys typed into form fields.
+-}
+keyDecoder : Decode.Decoder Msg
+keyDecoder =
+    Decode.map4
+        (\key tag ctrl meta -> ( key, tag, ctrl || meta ))
+        (Decode.field "key" Decode.string)
+        (Decode.oneOf [ Decode.at [ "target", "tagName" ] Decode.string, Decode.succeed "" ])
+        (Decode.field "ctrlKey" Decode.bool)
+        (Decode.field "metaKey" Decode.bool)
+        |> Decode.andThen
+            (\( key, tag, modified ) ->
+                if modified then
+                    Decode.fail "modified key"
+
+                else
+                    Decode.succeed (KeyPressed key tag)
+            )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
+    let
+        ( next, cmd ) =
+            updateModel msg model
+    in
+    syncUrl (isUrlChange msg || (model.screen == ReaderScreen && next.screen == ReaderScreen)) next cmd
+
+
+isUrlChange : Msg -> Bool
+isUrlChange msg =
+    case msg of
+        UrlChanged _ ->
+            True
+
+        _ ->
+            False
+
+
+updateModel : Msg -> Model -> ( Model, Cmd Msg )
+updateModel msg model =
     case msg of
         GotManifest result ->
             handleManifest result model
-
-        OpenWork entry ->
-            if model.corpusReady && Maybe.map .id model.activeEntry == Just entry.id then
-                ( { model | screen = WorkspaceScreen, notice = Nothing }, Cmd.none )
-
-            else
-                ( { model | requestedWork = Just entry.id, openWhenLoaded = True, notice = Just ("Loading " ++ entry.title ++ "…") }
-                , fetchCorpus entry
-                )
 
         GotCorpus entry result ->
             handleFetchedCorpus entry result model
 
         GotStorage value ->
-            ( handleStorageResponse value model, Cmd.none )
+            showPending (handleStorageResponse value model)
+
+        Navigate route ->
+            ( model, Nav.pushUrl model.key (Route.toPath route) )
+
+        UrlRequested (Browser.Internal url) ->
+            ( model, Nav.pushUrl model.key (Url.toString url) )
+
+        UrlRequested (Browser.External href) ->
+            ( model, Nav.load href )
+
+        UrlChanged url ->
+            if urlPath url == model.currentPath then
+                ( model, Cmd.none )
+
+            else
+                applyRoute (Route.fromUrl url |> Maybe.withDefault Route.Library) { model | currentPath = urlPath url }
+
+        JumpToPassage passage ->
+            case String.toInt passage of
+                Just number ->
+                    ( moveToSentence (number - 1) model, Cmd.none )
+
+                Nothing ->
+                    ( model, Cmd.none )
+
+        KeyPressed key tag ->
+            if List.member tag [ "INPUT", "TEXTAREA", "SELECT" ] then
+                ( model, Cmd.none )
+
+            else
+                handleShortcut key model
+
+        ReaderTokenTapped sentenceIndex tokenId ->
+            ( { model
+                | readerGloss =
+                    if model.readerGloss == Just ( sentenceIndex, tokenId ) then
+                        Nothing
+
+                    else
+                        Just ( sentenceIndex, tokenId )
+                , sentenceIndex = sentenceIndex
+              }
+            , Cmd.none
+            )
+
+        ReaderToggleTranslation sentenceIndex ->
+            ( { model
+                | readerRevealed =
+                    if Set.member sentenceIndex model.readerRevealed then
+                        Set.remove sentenceIndex model.readerRevealed
+
+                    else
+                        Set.insert sentenceIndex model.readerRevealed
+                , sentenceIndex = sentenceIndex
+              }
+            , Cmd.none
+            )
+
+        ReaderStep delta ->
+            let
+                target =
+                    clamp 0 (List.length model.corpus.sentences - 1) (model.sentenceIndex + delta)
+            in
+            ( { model | sentenceIndex = target, readerGloss = Nothing }, scrollToSentence target )
+
+        ReaderScrolled ->
+            let
+                generation =
+                    model.scrollGeneration + 1
+            in
+            ( { model | scrollGeneration = generation }
+            , Process.sleep 200 |> Task.perform (\_ -> ReaderSettled generation)
+            )
+
+        ReaderSettled generation ->
+            if generation /= model.scrollGeneration then
+                ( model, Cmd.none )
+
+            else
+                ( model, measureReader model )
+
+        ReaderMeasured (Ok ( container, sentences )) ->
+            let
+                top =
+                    container.element.y + 72
+
+                current =
+                    sentences
+                        |> List.indexedMap Tuple.pair
+                        |> List.filter (\( _, element ) -> element.element.y + element.element.height > top)
+                        |> List.head
+                        |> Maybe.map Tuple.first
+            in
+            ( { model | sentenceIndex = Maybe.withDefault model.sentenceIndex current }, Cmd.none )
+
+        ReaderMeasured (Err _) ->
+            ( model, Cmd.none )
+
+        NoOp ->
+            ( model, Cmd.none )
 
         _ ->
             updateInteraction msg model
+
+
+handleShortcut : String -> Model -> ( Model, Cmd Msg )
+handleShortcut key model =
+    case ( model.screen, key ) of
+        ( WorkspaceScreen, "ArrowLeft" ) ->
+            ( moveToSentence (model.sentenceIndex - 1) model, Cmd.none )
+
+        ( WorkspaceScreen, "k" ) ->
+            ( moveToSentence (model.sentenceIndex - 1) model, Cmd.none )
+
+        ( WorkspaceScreen, "ArrowRight" ) ->
+            ( moveToSentence (model.sentenceIndex + 1) model, Cmd.none )
+
+        ( WorkspaceScreen, "j" ) ->
+            ( moveToSentence (model.sentenceIndex + 1) model, Cmd.none )
+
+        ( ReaderScreen, "j" ) ->
+            updateModel (ReaderStep 1) model
+
+        ( ReaderScreen, "ArrowRight" ) ->
+            updateModel (ReaderStep 1) model
+
+        ( ReaderScreen, "k" ) ->
+            updateModel (ReaderStep -1) model
+
+        ( ReaderScreen, "ArrowLeft" ) ->
+            updateModel (ReaderStep -1) model
+
+        ( ReaderScreen, "Escape" ) ->
+            if model.readerGloss /= Nothing then
+                ( { model | readerGloss = Nothing }, Cmd.none )
+
+            else
+                ( { model | screen = WorkspaceScreen }, Cmd.none )
+
+        _ ->
+            ( model, Cmd.none )
+
+
+
+-- ROUTING
+
+
+{-| Shows a route whose work is loaded, or records it and loads the work first.
+-}
+applyRoute : Route -> Model -> ( Model, Cmd Msg )
+applyRoute route model =
+    case route of
+        Route.Library ->
+            ( { model | screen = LibraryScreen, pendingRoute = Nothing }, Cmd.none )
+
+        Route.Settings ->
+            ( { model | screen = SettingsScreen, pendingRoute = Nothing }, Cmd.none )
+
+        Route.WorkLanding work ->
+            ( model, Nav.replaceUrl model.key (Route.toPath (Route.Study work (Dict.get work model.positions |> Maybe.withDefault 1))) )
+
+        _ ->
+            case routeWork route of
+                Just work ->
+                    if model.corpusReady && Maybe.map .id model.activeEntry == Just work then
+                        showRoute route model
+
+                    else
+                        requestWork work route model
+
+                Nothing ->
+                    ( model, Cmd.none )
+
+
+routeWork : Route -> Maybe String
+routeWork route =
+    case route of
+        Route.Study work _ ->
+            Just work
+
+        Route.Reader work _ ->
+            Just work
+
+        Route.History work _ ->
+            Just work
+
+        Route.Comparison work _ ->
+            Just work
+
+        _ ->
+            Nothing
+
+
+requestWork : String -> Route -> Model -> ( Model, Cmd Msg )
+requestWork work route model =
+    let
+        waiting =
+            { model | requestedWork = Just work, pendingRoute = Just route }
+    in
+    if List.isEmpty model.library then
+        -- handleManifest resumes this request once the library arrives.
+        ( waiting, Cmd.none )
+
+    else
+        case List.filter (\entry -> entry.id == work) model.library of
+            entry :: _ ->
+                ( { waiting | notice = Just ("Loading " ++ entry.title ++ "…") }, fetchCorpus entry )
+
+            [] ->
+                ( { model | screen = LibraryScreen, pendingRoute = Nothing, notice = Just ("No work named “" ++ work ++ "” is bundled.") }, Cmd.none )
+
+
+showRoute : Route -> Model -> ( Model, Cmd Msg )
+showRoute route model =
+    let
+        settled =
+            { model | pendingRoute = Nothing }
+
+        clampIndex passage =
+            clamp 0 (List.length model.corpus.sentences - 1) (passage - 1)
+
+        at passage screen =
+            let
+                index =
+                    clampIndex passage
+
+                moved =
+                    if index == settled.sentenceIndex then
+                        settled
+
+                    else
+                        moveToSentence index settled
+            in
+            ( { moved | screen = screen }, Cmd.none )
+    in
+    case route of
+        Route.Study _ passage ->
+            at passage WorkspaceScreen
+
+        Route.History _ passage ->
+            at passage HistoryScreen
+
+        Route.Comparison _ passage ->
+            at passage AttemptComparisonScreen
+
+        Route.Reader work passage ->
+            let
+                index =
+                    clampIndex (passage |> Maybe.withDefault (Dict.get work model.positions |> Maybe.withDefault (model.sentenceIndex + 1)))
+            in
+            ( { settled | screen = ReaderScreen, sentenceIndex = index, readerGloss = Nothing }, scrollToSentence index )
+
+        _ ->
+            ( settled, Cmd.none )
+
+
+{-| The URL follows the model. Reader scrolling and route normalization replace the history entry; other moves push one.
+-}
+syncUrl : Bool -> Model -> Cmd Msg -> ( Model, Cmd Msg )
+syncUrl replace model cmd =
+    case ( model.pendingRoute, pathFor model ) of
+        ( Nothing, Just path ) ->
+            if path == model.currentPath then
+                ( model, cmd )
+
+            else
+                ( { model | currentPath = path }
+                , Cmd.batch
+                    [ cmd
+                    , if replace then
+                        Nav.replaceUrl model.key path
+
+                      else
+                        Nav.pushUrl model.key path
+                    , savePosition model
+                    ]
+                )
+
+        _ ->
+            ( model, cmd )
+
+
+pathFor : Model -> Maybe String
+pathFor model =
+    let
+        passage =
+            model.sentenceIndex + 1
+
+        forWork toRoute =
+            model.activeEntry |> Maybe.map (\entry -> Route.toPath (toRoute entry.id))
+    in
+    case model.screen of
+        LibraryScreen ->
+            Just (Route.toPath Route.Library)
+
+        SettingsScreen ->
+            Just (Route.toPath Route.Settings)
+
+        WorkspaceScreen ->
+            forWork (\work -> Route.Study work passage)
+
+        ReaderScreen ->
+            forWork (\work -> Route.Reader work (Just passage))
+
+        HistoryScreen ->
+            forWork (\work -> Route.History work passage)
+
+        AttemptComparisonScreen ->
+            forWork (\work -> Route.Comparison work passage)
+
+
+savePosition : Model -> Cmd Msg
+savePosition model =
+    case model.activeEntry of
+        Just entry ->
+            if model.screen == WorkspaceScreen || model.screen == ReaderScreen then
+                storagePut "save-positions" "metadata"
+                    (Encode.object
+                        [ ( "key", Encode.string "positions" )
+                        , ( "value", Encode.dict identity Encode.int (Dict.insert entry.id (model.sentenceIndex + 1) model.positions) )
+                        ]
+                    )
+
+            else
+                Cmd.none
+
+        Nothing ->
+            Cmd.none
+
+
+
+-- READER SCROLLING
+
+
+readerScrollId : String
+readerScrollId =
+    "reader-scroll"
+
+
+sentenceElementId : Int -> String
+sentenceElementId index =
+    "passage-" ++ String.fromInt (index + 1)
+
+
+scrollToSentence : Int -> Cmd Msg
+scrollToSentence index =
+    Task.map3
+        (\container viewport sentence -> viewport.viewport.y + sentence.element.y - container.element.y - 24)
+        (Dom.getElement readerScrollId)
+        (Dom.getViewportOf readerScrollId)
+        (Dom.getElement (sentenceElementId index))
+        |> Task.andThen (\y -> Dom.setViewportOf readerScrollId 0 y)
+        |> Task.attempt (\_ -> NoOp)
+
+
+measureReader : Model -> Cmd Msg
+measureReader model =
+    Task.map2 Tuple.pair
+        (Dom.getElement readerScrollId)
+        (model.corpus.sentences |> List.indexedMap (\index _ -> Dom.getElement (sentenceElementId index)) |> Task.sequence)
+        |> Task.attempt ReaderMeasured
 
 
 updateInteraction : Msg -> Model -> ( Model, Cmd Msg )
@@ -638,7 +1095,40 @@ updateInteraction msg model =
         GotManifest _ ->
             model
 
-        OpenWork _ ->
+        JumpToPassage _ ->
+            model
+
+        Navigate _ ->
+            model
+
+        UrlRequested _ ->
+            model
+
+        UrlChanged _ ->
+            model
+
+        KeyPressed _ _ ->
+            model
+
+        ReaderTokenTapped _ _ ->
+            model
+
+        ReaderToggleTranslation _ ->
+            model
+
+        ReaderStep _ ->
+            model
+
+        ReaderScrolled ->
+            model
+
+        ReaderSettled _ ->
+            model
+
+        ReaderMeasured _ ->
+            model
+
+        NoOp ->
             model
 
         GotCorpus _ _ ->
@@ -690,7 +1180,7 @@ fetchManifest =
     Http.request
         { method = "GET"
         , headers = [ Http.header "Cache-Control" "no-cache" ]
-        , url = "preload/corpora.json"
+        , url = "/preload/corpora.json"
         , body = Http.emptyBody
         , expect = Http.expectJson GotManifest manifestDecoder
         , timeout = Nothing
@@ -706,10 +1196,15 @@ handleManifest result model =
                 ( model, Cmd.none )
 
             else
-                -- The first entry loads by default unless a work was already requested.
-                case ( model.requestedWork, List.head manifest.corpora ) of
-                    ( Nothing, Just first ) ->
-                        ( { model | library = manifest.corpora, requestedWork = Just first.id }, fetchCorpus first )
+                -- A work URL opened before the library arrived loads now.
+                case ( model.pendingRoute |> Maybe.andThen routeWork, model.corpusReady ) of
+                    ( Just work, False ) ->
+                        case model.pendingRoute of
+                            Just route ->
+                                requestWork work route { model | library = manifest.corpora }
+
+                            Nothing ->
+                                ( { model | library = manifest.corpora }, Cmd.none )
 
                     _ ->
                         ( { model | library = manifest.corpora }, Cmd.none )
@@ -723,7 +1218,7 @@ fetchCorpus entry =
     Http.request
         { method = "GET"
         , headers = [ Http.header "Cache-Control" "no-cache" ]
-        , url = "preload/" ++ entry.path
+        , url = "/preload/" ++ entry.path
         , body = Http.emptyBody
         , expect = Http.expectString (GotCorpus entry)
         , timeout = Nothing
@@ -741,9 +1236,14 @@ handleFetchedCorpus entry result model =
                         ( model, Cmd.none )
 
                     else
-                        ( installCorpus True entry corpus model
+                        let
+                            ( shown, routeCmd ) =
+                                showPending (installCorpus True entry corpus model)
+                        in
+                        ( shown
                         , Cmd.batch
-                            [ storagePut "cache-corpus" "metadata"
+                            [ routeCmd
+                            , storagePut "cache-corpus" "metadata"
                                 (Encode.object
                                     [ ( "key", Encode.string "cached-corpus" )
                                     , ( "value"
@@ -776,11 +1276,11 @@ handleFetchedCorpus entry result model =
                         )
 
                 Err problem ->
-                    ( { model | openWhenLoaded = False, notice = Just (entry.title ++ " could not be parsed: " ++ problem) }, Cmd.none )
+                    ( { model | pendingRoute = Nothing, notice = Just (entry.title ++ " could not be parsed: " ++ problem) }, Cmd.none )
 
         Err _ ->
             if model.requestedWork == Just entry.id then
-                ( { model | openWhenLoaded = False, notice = Just (entry.title ++ " could not be downloaded. Try again.") }, Cmd.none )
+                ( { model | pendingRoute = Nothing, notice = Just (entry.title ++ " could not be downloaded. Try again.") }, Cmd.none )
 
             else
                 ( model, Cmd.none )
@@ -792,6 +1292,14 @@ handleStorageResponse value model =
         Ok response ->
             if not response.ok then
                 model
+
+            else if response.id == "positions" then
+                case Decode.decodeValue (Decode.field "value" (Decode.dict Decode.int)) response.value of
+                    Ok positions ->
+                        { model | positions = Dict.union model.positions positions }
+
+                    Err _ ->
+                        model
 
             else if response.id == "theme" then
                 case Decode.decodeValue (Decode.field "value" Decode.string) response.value of
@@ -839,33 +1347,18 @@ handleStorageResponse value model =
 
 useCachedCorpus : ManifestEntry -> String -> Model -> Model
 useCachedCorpus entry raw model =
-    case Conllu.parse entry.source raw of
-        Ok corpus ->
+    case ( model.requestedWork == Just entry.id && not model.corpusReady, Conllu.parse entry.source raw ) of
+        ( True, Ok corpus ) ->
             installCorpus False entry corpus model
 
-        Err _ ->
+        _ ->
             model
 
 
 installCorpus : Bool -> ManifestEntry -> Corpus -> Model -> Model
 installCorpus loadedFromNetwork entry corpus model =
     { model
-        | screen =
-            if model.openWhenLoaded then
-                WorkspaceScreen
-
-            else if model.corpusReady then
-                LibraryScreen
-
-            else
-                model.screen
-        , notice =
-            if model.openWhenLoaded then
-                Nothing
-
-            else
-                model.notice
-        , openWhenLoaded = False
+        | notice = Nothing
         , activeEntry = Just entry
         , corpus = corpus
         , corpusReady = True
@@ -875,13 +1368,32 @@ installCorpus loadedFromNetwork entry corpus model =
         , activeModule = Nothing
         , phase = Drafting
         , draft = emptyDraft
+        , drafts = Dict.empty
         , previousDraft = Nothing
         , skippedModules = []
         , referenceRevealed = False
         , revisionParent = Nothing
         , attemptCount = 0
         , elapsedSeconds = 0
+        , readerGloss = Nothing
+        , readerRevealed = Set.empty
     }
+
+
+{-| Shows the route that was waiting for this work to load.
+-}
+showPending : Model -> ( Model, Cmd Msg )
+showPending model =
+    case model.pendingRoute of
+        Just route ->
+            if model.corpusReady && Maybe.map .id model.activeEntry == routeWork route then
+                showRoute route model
+
+            else
+                ( model, Cmd.none )
+
+        Nothing ->
+            ( model, Cmd.none )
 
 
 loadLegacyCache : Model -> Model
@@ -962,13 +1474,23 @@ moveToSentence sentenceIndex model =
         model
 
     else
+        let
+            -- An unsubmitted draft stays with its passage for this visit.
+            drafts =
+                if model.phase == Drafting && model.draft /= emptyDraft then
+                    Dict.insert model.sentenceIndex model.draft model.drafts
+
+                else
+                    Dict.remove model.sentenceIndex model.drafts
+        in
         { model
             | screen = WorkspaceScreen
             , sentenceIndex = sentenceIndex
             , selectedTokenId = Nothing
             , activeModule = Nothing
             , phase = Drafting
-            , draft = emptyDraft
+            , draft = Dict.get sentenceIndex drafts |> Maybe.withDefault emptyDraft
+            , drafts = drafts
             , previousDraft = Nothing
             , skippedModules = []
             , referenceRevealed = False
@@ -1139,9 +1661,14 @@ view model =
             [ ( "app-shell", True )
             , ( "dark-theme", model.theme == DarkTheme )
             , ( "light-theme", model.theme == LightTheme )
+            , ( "is-reading", model.screen == ReaderScreen )
             ]
         ]
-        [ viewAppHeader model
+        [ if model.screen == ReaderScreen then
+            text ""
+
+          else
+            viewAppHeader model
         , case model.notice of
             Just notice ->
                 div [ class "notice", attribute "role" "status" ]
@@ -1166,7 +1693,124 @@ view model =
 
             AttemptComparisonScreen ->
                 viewAttemptComparison model
+
+            ReaderScreen ->
+                viewReader model
         ]
+
+
+viewReader : Model -> Html Msg
+viewReader model =
+    let
+        total =
+            List.length model.corpus.sentences
+    in
+    main_ [ class "reader-page" ]
+        [ header [ class "reader-bar" ]
+            [ button [ class "icon-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Back to library" ] [ text "←" ]
+            , div [ class "reader-bar-title" ]
+                [ span [ class "context-work" ] [ text (workTitle model) ]
+                , span [ class "reader-position" ] [ text (String.fromInt (model.sentenceIndex + 1) ++ " / " ++ String.fromInt total) ]
+                ]
+            , div [ class "reader-bar-actions" ]
+                [ button [ class "icon-button", type_ "button", onClick (ReaderStep -1), disabled (model.sentenceIndex == 0), attribute "aria-label" "Previous passage (k)" ] [ text "‹" ]
+                , button [ class "icon-button", type_ "button", onClick (ReaderStep 1), disabled (model.sentenceIndex >= total - 1), attribute "aria-label" "Next passage (j)" ] [ text "›" ]
+                , button [ class "icon-button", type_ "button", onClick ToggleTheme, attribute "aria-label" (themeActionLabel model.theme) ]
+                    [ text
+                        (if model.theme == DarkTheme then
+                            "☀"
+
+                         else
+                            "☾"
+                        )
+                    ]
+                , button [ class "secondary-button", type_ "button", onClick ShowWorkspace ] [ text "Study this passage" ]
+                ]
+            ]
+        , div [ id readerScrollId, class "reader-scroll", on "scroll" (Decode.succeed ReaderScrolled) ]
+            [ article [ class "reader-text", attribute "lang" "grc" ]
+                (List.indexedMap (viewReaderSentence model) model.corpus.sentences)
+            , p [ class "reader-end" ] [ text ("End of " ++ workTitle model ++ " in this edition.") ]
+            ]
+        ]
+
+
+viewReaderSentence : Model -> Int -> Sentence -> Html Msg
+viewReaderSentence model index sentence =
+    let
+        revealed =
+            Set.member index model.readerRevealed
+    in
+    section
+        [ id (sentenceElementId index)
+        , classList [ ( "reader-sentence", True ), ( "is-current", index == model.sentenceIndex ) ]
+        ]
+        [ button
+            [ classList [ ( "reader-marker", True ), ( "is-open", revealed ) ]
+            , type_ "button"
+            , onClick (ReaderToggleTranslation index)
+            , attribute "aria-label" ("Passage " ++ String.fromInt (index + 1) ++ ": " ++ (if revealed then "hide" else "show") ++ " translation")
+            , attribute "aria-expanded" (boolString revealed)
+            ]
+            [ text (String.fromInt (index + 1)) ]
+        , p [ class "reader-greek" ] (List.concat (List.indexedMap (viewReaderToken model index) sentence.tokens))
+        , if revealed && not (String.isEmpty sentence.proseTranslation) then
+            div [ class "reader-translation", attribute "lang" "en" ]
+                [ p [] [ text sentence.proseTranslation ]
+                , if String.isEmpty sentence.literalTranslation then
+                    text ""
+
+                  else
+                    p [ class "reader-literal" ] [ text sentence.literalTranslation ]
+                ]
+
+          else
+            text ""
+        ]
+
+
+{-| Each token is preceded by a space except the first and punctuation, which the imported spacing does not mark.
+-}
+viewReaderToken : Model -> Int -> Int -> CorpusToken -> List (Html Msg)
+viewReaderToken model sentenceIndex position token =
+    let
+        open =
+            model.readerGloss == Just ( sentenceIndex, token.id )
+
+        spaceBefore =
+            if position == 0 || isPunctuation token.form then
+                text ""
+
+            else
+                text " "
+    in
+    [ spaceBefore
+    , button
+        [ classList [ ( "reader-token", True ), ( "is-open", open ) ]
+        , type_ "button"
+        , onClick (ReaderTokenTapped sentenceIndex token.id)
+        ]
+        [ text token.form
+        , if open then
+            span [ class "reader-gloss", attribute "role" "tooltip", attribute "lang" "en" ]
+                [ text
+                    (if String.isEmpty token.gloss then
+                        "No gloss"
+
+                     else
+                        String.replace "-" " " token.gloss
+                    )
+                ]
+
+          else
+            text ""
+        ]
+    ]
+
+
+isPunctuation : String -> Bool
+isPunctuation form =
+    not (String.isEmpty form) && String.all (\char -> String.contains (String.fromChar char) ".,;:!?·\u{0387}\u{037E})]»”’—–") form
 
 
 viewAppHeader : Model -> Html Msg
@@ -1261,7 +1905,7 @@ viewWorkCard model entry =
             model.corpusReady && Maybe.map .id model.activeEntry == Just entry.id
 
         isLoading =
-            model.openWhenLoaded && model.requestedWork == Just entry.id
+            model.pendingRoute /= Nothing && model.requestedWork == Just entry.id
 
         coverage =
             corpusCoverage model.corpus
@@ -1294,8 +1938,8 @@ viewWorkCard model entry =
             , div [ class "pack-footer" ]
                 [ span [ class "muted" ] [ text (String.fromInt entry.sentenceCount ++ " " ++ plural entry.sentenceCount "sentence" "sentences" ++ " · " ++ String.fromInt entry.tokenCount ++ " tokens") ]
                 , div [ class "button-row" ]
-                    [ button [ class "secondary-button", type_ "button", onClick ShowSettings ] [ text "Configure" ]
-                    , button [ class "primary-button", type_ "button", disabled isLoading, onClick (OpenWork entry) ]
+                    [ button [ class "secondary-button", type_ "button", disabled isLoading, onClick (Navigate (Route.WorkLanding entry.id)) ] [ text "Study" ]
+                    , button [ class "primary-button", type_ "button", disabled isLoading, onClick (Navigate (Route.Reader entry.id Nothing)) ]
                         [ text
                             (if isLoading then
                                 "Loading…"
@@ -1550,13 +2194,18 @@ viewWorkspace model =
                     ]
                 ]
             , div [ class "context-actions" ]
-                [ label [ class "chapter-jump" ]
-                    [ span [] [ text "Book" ]
-                    , select [ value (String.fromInt sentence.chapter), onInput JumpToChapter ]
-                        (corpusChapters model.corpus.sentences
-                            |> List.map (\chapter -> option [ value (String.fromInt chapter), selected (chapter == sentence.chapter) ] [ text (String.fromInt chapter) ])
-                        )
+                [ div [ class "passage-nav" ]
+                    [ button [ class "icon-button", type_ "button", onClick PreviousSentence, disabled (model.sentenceIndex == 0), attribute "aria-label" "Previous passage (← or k)" ] [ text "‹" ]
+                    , label [ class "chapter-jump" ]
+                        [ span [] [ text "Passage" ]
+                        , select [ value (String.fromInt (model.sentenceIndex + 1)), onInput JumpToPassage ]
+                            (List.range 1 (List.length model.corpus.sentences)
+                                |> List.map (\number -> option [ value (String.fromInt number), selected (number == model.sentenceIndex + 1) ] [ text (String.fromInt number ++ " / " ++ String.fromInt (List.length model.corpus.sentences)) ])
+                            )
+                        ]
+                    , button [ class "icon-button", type_ "button", onClick NextSentence, disabled (model.sentenceIndex >= List.length model.corpus.sentences - 1), attribute "aria-label" "Next passage (→ or j)" ] [ text "›" ]
                     ]
+                , button [ class "text-button", type_ "button", onClick (Navigate (Route.Reader (Maybe.map .id model.activeEntry |> Maybe.withDefault "") (Just (model.sentenceIndex + 1)))) ] [ text "Read" ]
                 , span [ class "autosave-status" ] [ span [ class "save-dot" ] [], text "Draft saved" ]
                 , button [ class "text-button", type_ "button", onClick ShowHistory ] [ text "History · ", text (String.fromInt model.attemptCount) ]
                 ]
@@ -1588,7 +2237,7 @@ viewSourceRail model =
     aside [ class "source-rail" ]
         [ div [ class "rail-section" ]
             [ p [ class "rail-label" ] [ text "Source" ]
-            , h2 [] [ text "Ξενοφῶντος Ἀνάβασις" ]
+            , h2 [] [ text (workTitle model) ]
             , p [ class "muted" ] [ text (sentenceReference sentence) ]
             ]
         , div [ class "rail-section" ]
