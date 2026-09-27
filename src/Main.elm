@@ -1244,6 +1244,7 @@ fallbackCorpus =
           , literalTranslation = ""
           , proseTranslation = ""
           , tokens = []
+          , placeholders = []
           }
         ]
     }
@@ -1954,6 +1955,7 @@ fallbackSentence =
             , literalTranslation = ""
             , proseTranslation = ""
             , tokens = []
+            , placeholders = []
             }
 
 

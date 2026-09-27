@@ -288,8 +288,20 @@ attemptDecoder =
                         (Decode.field "sentenceText" Decode.string)
                         (Decode.field "startedAt" Decode.int)
                         (Decode.field "finishedAt" Decode.int)
-                        (Decode.field "items" (Decode.list itemDecoder))
+                        (Decode.field "items" (Decode.list itemDecoder |> Decode.map (List.filter (not << isPlaceholderItem))))
             )
+
+
+{-| Attempts saved before OGA placeholder rows were hidden may hold a graded `[0]`; it is dropped so it is never shown
+or counted.
+-}
+isPlaceholderItem : Item -> Bool
+isPlaceholderItem item =
+    item.kind
+        == WordItem
+        && String.startsWith "[" item.form
+        && String.endsWith "]" item.form
+        && String.all Char.isDigit (String.slice 1 -1 item.form)
 
 
 itemDecoder : Decode.Decoder Item
