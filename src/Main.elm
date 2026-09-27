@@ -178,7 +178,7 @@ type Msg
     | ReaderStep Int
     | ReaderScrolled
     | ReaderSettled Int
-    | ReaderMeasured (Result Dom.Error ( Dom.Element, List Dom.Element ))
+    | ReaderMeasured Int (Result Dom.Error ( Dom.Element, List Dom.Element ))
     | NoOp
     | SelectPreset Preset
     | ToggleModule ModuleId
@@ -600,7 +600,7 @@ updateModel msg model =
                 target =
                     clamp 0 (List.length model.corpus.sentences - 1) (model.sentenceIndex + delta)
             in
-            ( { model | sentenceIndex = target, readerGloss = Nothing }, scrollToSentence target )
+            ( { model | sentenceIndex = target, readerGloss = Nothing, scrollGeneration = model.scrollGeneration + 1 }, scrollToSentence target )
 
         ReaderScrolled ->
             let
@@ -616,23 +616,28 @@ updateModel msg model =
                 ( model, Cmd.none )
 
             else
-                ( model, measureReader model )
+                ( model, measureReader generation model )
 
-        ReaderMeasured (Ok ( container, sentences )) ->
-            let
-                top =
-                    container.element.y + 72
+        ReaderMeasured generation (Ok ( container, sentences )) ->
+            -- Measuring takes a frame per passage; a step or scroll since it began makes the result stale.
+            if generation /= model.scrollGeneration then
+                ( model, Cmd.none )
 
-                current =
-                    sentences
-                        |> List.indexedMap Tuple.pair
-                        |> List.filter (\( _, element ) -> element.element.y + element.element.height > top)
-                        |> List.head
-                        |> Maybe.map Tuple.first
-            in
-            ( { model | sentenceIndex = Maybe.withDefault model.sentenceIndex current }, Cmd.none )
+            else
+                let
+                    top =
+                        container.element.y + 72
 
-        ReaderMeasured (Err _) ->
+                    current =
+                        sentences
+                            |> List.indexedMap Tuple.pair
+                            |> List.filter (\( _, element ) -> element.element.y + element.element.height > top)
+                            |> List.head
+                            |> Maybe.map Tuple.first
+                in
+                ( { model | sentenceIndex = Maybe.withDefault model.sentenceIndex current }, Cmd.none )
+
+        ReaderMeasured _ (Err _) ->
             ( model, Cmd.none )
 
         NoOp ->
@@ -1567,12 +1572,12 @@ scrollToSentence index =
         |> Task.attempt (\_ -> NoOp)
 
 
-measureReader : Model -> Cmd Msg
-measureReader model =
+measureReader : Int -> Model -> Cmd Msg
+measureReader generation model =
     Task.map2 Tuple.pair
         (Dom.getElement readerScrollId)
         (model.corpus.sentences |> List.indexedMap (\index _ -> Dom.getElement (sentenceElementId index)) |> Task.sequence)
-        |> Task.attempt ReaderMeasured
+        |> Task.attempt (ReaderMeasured generation)
 
 
 fetchManifest : Cmd Msg
