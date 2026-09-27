@@ -45,6 +45,7 @@ type alias Draft =
     , submitted : Bool
     , marks : Dict String Bool
     , startedAt : Int
+    , updatedAt : Int
     }
 
 
@@ -106,6 +107,7 @@ emptyDraft =
     , submitted = False
     , marks = Dict.empty
     , startedAt = 0
+    , updatedAt = 0
     }
 
 
@@ -245,12 +247,13 @@ encodeDraft draft =
         , ( "submitted", Encode.bool draft.submitted )
         , ( "marks", Encode.dict identity Encode.bool draft.marks )
         , ( "startedAt", Encode.int draft.startedAt )
+        , ( "updatedAt", Encode.int draft.updatedAt )
         ]
 
 
 draftDecoder : Decode.Decoder Draft
 draftDecoder =
-    Decode.map7 Draft
+    Decode.map8 Draft
         (Decode.field "glosses" (Decode.list (Decode.map2 Tuple.pair (Decode.index 0 Decode.int) (Decode.index 1 Decode.string)) |> Decode.map Dict.fromList))
         (Decode.field "literal" Decode.string)
         (Decode.field "prose" Decode.string)
@@ -258,6 +261,7 @@ draftDecoder =
         (Decode.field "submitted" Decode.bool)
         (Decode.field "marks" (Decode.dict Decode.bool))
         (Decode.field "startedAt" Decode.int)
+        (Decode.oneOf [ Decode.field "updatedAt" Decode.int, Decode.succeed 0 ])
 
 
 encodeAttempt : Attempt -> Encode.Value

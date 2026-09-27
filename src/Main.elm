@@ -832,7 +832,7 @@ updateModel msg model =
                 study =
                     model.study
             in
-            ( { model | study = { study | submitted = True }, popupWord = Nothing, activeModule = Nothing }, Cmd.none )
+            ( { model | study = { study | submitted = True, updatedAt = model.clock }, popupWord = Nothing, activeModule = Nothing }, Cmd.none )
 
         ReopenStudy ->
             let
@@ -853,7 +853,7 @@ updateModel msg model =
                     else
                         Dict.insert key right study.marks
             in
-            ( { model | study = { study | marks = marks } }, Cmd.none )
+            ( { model | study = { study | marks = marks, updatedAt = model.clock } }, Cmd.none )
 
         FinishGrading rating ->
             ( model, Task.perform (GradingFinished rating) Time.now )
@@ -1000,11 +1000,24 @@ editStudy change model =
         { model
             | study =
                 if changed.startedAt == 0 then
-                    { changed | startedAt = model.clock }
+                    { changed | startedAt = model.clock, updatedAt = model.clock }
 
                 else
-                    changed
+                    { changed | updatedAt = model.clock }
         }
+
+
+{-| A saved draft resumes grading only if it was touched in the last 30 minutes (a refresh mid-grading). An older
+submitted draft is an abandoned checkpoint: it reopens for answering with the answers kept and the marks cleared, so
+opening a passage always starts with reading and attempting.
+-}
+resumable : Int -> Study.Draft -> Study.Draft
+resumable now draft =
+    if draft.submitted && now - draft.updatedAt > 30 * 60 * 1000 then
+        { draft | submitted = False, marks = Dict.empty }
+
+    else
+        draft
 
 
 {-| The items of the current passage in grading order: each word (punctuation excluded), then the translations the learner worked on or has enabled.
@@ -1278,7 +1291,7 @@ handleStorageResponse value model =
                 if Just (String.dropLeft 12 response.id) == draftKey model then
                     case Decode.decodeValue (Decode.field "value" Study.draftDecoder) response.value of
                         Ok draft ->
-                            { model | study = draft }
+                            { model | study = resumable model.clock draft }
 
                         Err _ ->
                             model
