@@ -212,7 +212,7 @@ validate_lines = |lines, state|
 				validate_lines(rest, { ..state, has_sentence_id: has_id })
 			} else {
 				match line.split_on("\t") {
-					[id, _, _, _, _, _, head, _, _, _] =>
+					[id, _, _, _, _, _, head, _, _, misc] =>
 						match U64.from_str(id) {
 							Ok(token_id) => {
 								if state.ids.contains(token_id) {
@@ -222,7 +222,8 @@ validate_lines = |lines, state|
 										Ok(head_id) => {
 											next = {
 												..state,
-												token_count: state.token_count + 1,
+												# OGA placeholder rows (MISC `e_…`) are never shown, so they are not counted as tokens.
+												token_count: if misc.starts_with("e_") state.token_count else state.token_count + 1,
 												block_tokens: state.block_tokens + 1,
 												roots: if head_id == 0 {
 													state.roots + 1
