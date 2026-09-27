@@ -12,8 +12,9 @@ import cli.Stdout
 LoopConfig : { input : Str, model : Str }
 # A work config either carries full prompts (used verbatim) or a context paragraph appended to base.json's shared prompts.
 Prompted : { translate : { prompt : Str }, gloss : { prompt : Str } }
-Source : { corpus : Str, work : Str, edition : Str, license : Str }
-WorkConfig : { input : Str, source : Source, model : Str, base_url : Str, api_key_env : Str, allow_fallbacks : Bool, send_temperature : Bool, structured_schema : Bool, temperature : Dec, context : Str, translate : { max_tokens : U64 }, gloss : { max_tokens : U64 } }
+WorkConfig : { input : Str, title : Str, model : Str, base_url : Str, api_key_env : Str, allow_fallbacks : Bool, send_temperature : Bool, structured_schema : Bool, temperature : Dec, context : Str, translate : { max_tokens : U64 }, gloss : { max_tokens : U64 } }
+# Every resolved-config field that determines generated output.
+Pinned : { input : Str, model : Str, base_url : Str, api_key_env : Str, allow_fallbacks : Bool, send_temperature : Bool, structured_schema : Bool, temperature : Dec, translate : { max_tokens : U64, prompt : Str }, gloss : { max_tokens : U64, prompt : Str } }
 BasePrompts : { translate : Str, gloss : Str }
 base_prompts = "scripts/generate/base.json"
 ByokUsage : { usage : { cost : Dec, is_byok : Bool, cost_details : { upstream_inference_cost : Dec } } }
@@ -69,7 +70,7 @@ resolve_config! = |text| {
 			base = Json.parse(Path.read_utf8!(Path.utf8(base_prompts))?)?
 			Json.to_str_try({
 				input: work.input,
-				source: work.source,
+				title: work.title,
 				model: work.model,
 				base_url: work.base_url,
 				api_key_env: work.api_key_env,
@@ -86,14 +87,33 @@ resolve_config! = |text| {
 }
 # The config snapshot pins prompts and model: resuming with an edited config would mix outputs.
 # Stages read this resolved snapshot rather than the work config.
+# Only Pinned fields must match; other fields (the display title, or the hand-written source block that
+# snapshots before deterministic citations carried) are refreshed in the snapshot on resume.
 bind_config! = |out, content| {
 	path = "${out}/config.json"
 	if Path.exists!(Path.utf8(path))? {
-		if Path.read_utf8!(Path.utf8(path))? == content { Ok({}) } else { Err(CheckpointInputChanged(path)) }
+		saved = Path.read_utf8!(Path.utf8(path))?
+		if saved == content {
+			Ok({})
+		} else if same_pinned(saved, content) {
+			Path.write_utf8!(Path.utf8(path), content)
+		} else {
+			Err(CheckpointInputChanged(path))
+		}
 	} else if Path.exists!(Path.utf8("${out}/translations.conllu"))? {
 		Err(MissingCheckpointSnapshot(path))
 	} else {
 		Path.write_utf8!(Path.utf8(path), content)
+	}
+}
+same_pinned = |saved, content| {
+	before : Try(Pinned, _)
+	before = Json.parse(saved)
+	after : Try(Pinned, _)
+	after = Json.parse(content)
+	match (before, after) {
+		(Ok(a), Ok(b)) => a == b
+		_ => Bool.False
 	}
 }
 # The source snapshot may grow with larger requests, but its existing prefix must never change.

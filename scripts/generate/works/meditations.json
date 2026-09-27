@@ -1,11 +1,6 @@
 {
   "input": "../OGA/opera_graeca_adnotata_v0.2.0/workspace/conllu/tlg0562.tlg001.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
-  "source": {
-    "corpus": "Opera Graeca Adnotata v0.2.0",
-    "work": "Marcus Aurelius, Meditations",
-    "edition": "Perseus canonical-greekLit tlg0562.tlg001.perseus-grc2",
-    "license": "CC BY-SA 4.0"
-  },
+  "title": "Marcus Aurelius, Meditations",
   "model": "claude-sonnet-5",
   "base_url": "https://api.ppq.ai/v1",
   "api_key_env": "PPQ_API_KEY",
