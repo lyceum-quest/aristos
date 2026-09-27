@@ -4,6 +4,7 @@ import pf.OsStr
 import pf.Path
 import pf.Stderr
 import pf.Stdout
+import Citation
 
 main! : List(OsStr) => Try({}, _)
 main! = |args| {
@@ -81,7 +82,8 @@ compare_bytes = |a, b|
 	}
 
 write_preload! = |output_dir, specs| {
-	assets = prepare_assets!(specs)?
+	table = Path.utf8(Citation.table_path).read_utf8!()?
+	assets = prepare_assets!(specs, table)?
 
 	if output_dir.exists!()? {
 		output_dir.delete_all!()?
@@ -117,7 +119,7 @@ parse_specs = |args|
 
 invalid_id = |id| id == "" or id.contains("/") or id.contains("\\") or id.contains("..")
 
-prepare_assets! = |specs|
+prepare_assets! = |specs, table|
 	match specs {
 		[] => Ok([])
 		[spec, .. as rest] => {
@@ -126,21 +128,47 @@ prepare_assets! = |specs|
 			match validate_corpus(content) {
 				Err(problem) => Err(InvalidCorpus(spec.path, problem))
 				Ok(valid_stats) => {
-					sidecar = sidecar_source!(spec.path)
+					cited = cite!(spec.path, table)?
+					text = cited.citation.text
 					source = {
-						name: metadata_or(content, "project", metadata_or(content, "source", or_else(sidecar.corpus, spec.id))),
-						url: metadata_value(content, "source_url"),
-						commit: metadata_value(content, "source_revision"),
-						license: metadata_or(content, "license", sidecar.license),
-						edition: metadata_or(content, "source_edition", sidecar.edition),
+						name: "${Citation.annotation_name} ${Citation.annotation_version}",
+						url: text.reader_url,
+						commit: "${text.repository}@${text.snapshot}",
+						license: text.license,
+						edition: text.edition,
 					}
-					title = or_else(sidecar.work, metadata_or(content, "source", spec.id))
-					remaining = prepare_assets!(rest)?
-					Ok(List.prepend(remaining, { id: spec.id, title, content, source, stats: valid_stats }))
+					remaining = prepare_assets!(rest, table)?
+					Ok(List.prepend(remaining, { id: spec.id, title: cited.title, content, source, citation: cited.citation, stats: valid_stats }))
 				}
 			}
 		}
 	}
+
+# Every corpus needs a sibling config.json (written by scripts/generate/loop.roc) naming its OGA input and model.
+# The citation is derived from those alone; a work without a complete citation fails the build.
+cite! = |corpus_path, table| {
+	config_path = Path.utf8("${Str.join_with(List.drop_last(Str.split_on(corpus_path.display(), "/"), 1), "/")}/config.json")
+	text = config_path.read_utf8!() ? |_| InvalidCorpus(corpus_path, "missing ${config_path.display()} naming the work's input and model")
+	settings : Try({ input : Str, model : Str }, _)
+	settings = Json.parse(text)
+	match settings {
+		Err(_) => Err(InvalidCorpus(config_path, "config must name the work's input and model"))
+		Ok(config) =>
+			match Citation.build(table, config.input, config.model, config_path.display()) {
+				Err(problem) => Err(InvalidCorpus(config_path, "incomplete citation: ${Str.inspect(problem)}"))
+				Ok(citation) => {
+					# The display title is the only hand-chosen label; it defaults to the printed edition's title.
+					titled : Try({ title : Str }, _)
+					titled = Json.parse(text)
+					title = match titled {
+						Ok(record) => if record.title == "" citation.text.title else record.title
+						Err(_) => citation.text.title
+					}
+					Ok({ title, citation })
+				}
+			}
+	}
+}
 
 write_assets! = |assets, corpora_dir|
 	match assets {
@@ -291,48 +319,10 @@ valid_non_syntactic_id = |id|
 			}
 		}
 
-metadata_value = |content, key| {
-	prefix = "# ${key} = "
-
-	match content.split_on("\n").keep_if(|line| line.starts_with(prefix)) {
-		[line, ..] => line.replace_first(prefix, "")
-		[] => ""
-	}
-}
-
-metadata_or = |content, key, fallback| {
-	value = metadata_value(content, key)
-	if value == "" {
-		fallback
-	} else {
-		value
-	}
-}
-
-# Generated corpora (scripts/generate/loop.roc) carry no file-level metadata; their folder's config.json has a source record.
-SidecarSource : { corpus : Str, work : Str, edition : Str, license : Str }
-sidecar_source! = |path| {
-	empty = { corpus: "", work: "", edition: "", license: "" }
-	config = Path.utf8("${Str.join_with(List.drop_last(Str.split_on(path.display(), "/"), 1), "/")}/config.json")
-	match config.read_utf8!() {
-		Ok(text) => {
-			parsed : Try({ source : SidecarSource }, _)
-			parsed = Json.parse(text)
-			match parsed {
-				Ok(record) => record.source
-				Err(_) => empty
-			}
-		}
-		Err(_) => empty
-	}
-}
-
-or_else = |value, fallback| if value == "" fallback else value
-
 asset_json = |asset| {
 	source = asset.source
 	asset_path = "corpora/${asset.id}.conllu"
-	"{\"id\":${json_string(asset.id)},\"title\":${json_string(asset.title)},\"path\":${json_string(asset_path)},\"sentenceCount\":${asset.stats.sentence_count.to_str()},\"tokenCount\":${asset.stats.token_count.to_str()},\"source\":{\"name\":${json_string(source.name)},\"url\":${json_string(source.url)},\"commit\":${json_string(source.commit)},\"license\":${json_string(source.license)},\"edition\":${json_string(source.edition)}}}"
+	"{\"id\":${json_string(asset.id)},\"title\":${json_string(asset.title)},\"path\":${json_string(asset_path)},\"sentenceCount\":${asset.stats.sentence_count.to_str()},\"tokenCount\":${asset.stats.token_count.to_str()},\"source\":{\"name\":${json_string(source.name)},\"url\":${json_string(source.url)},\"commit\":${json_string(source.commit)},\"license\":${json_string(source.license)},\"edition\":${json_string(source.edition)}},\"citation\":${Citation.to_json(asset.citation)}}"
 }
 
 json_string = |value| {
