@@ -1,5 +1,6 @@
-module Route exposing (Route(..), fromUrl, toPath)
+module Route exposing (Route(..), fromUrl, query, toPath)
 
+import Dict exposing (Dict)
 import Url exposing (Url)
 import Url.Parser as Parser exposing ((</>), Parser, int, oneOf, s, string, top)
 
@@ -12,15 +13,41 @@ type Route
     | WorkLanding String
     | Study String Int
     | Reader String (Maybe Int)
-    | History String Int
-    | Comparison String Int
 
 
-{-| Routes live in the URL fragment (`/#/luke/5`), so the static server only ever serves `/` and every link or reload works without a server-side fallback.
+{-| Routes live in the URL fragment (`/#/luke/5?word=7`), so the static server only ever serves `/` and every link or reload works without a server-side fallback.
 -}
 fromUrl : Url -> Maybe Route
 fromUrl url =
-    Parser.parse parser { url | path = Maybe.withDefault "/" url.fragment, query = Nothing, fragment = Nothing }
+    Parser.parse parser { url | path = Tuple.first (fragmentParts url), query = Nothing, fragment = Nothing }
+
+
+{-| Page state (open popup, tab, tool) carried in the fragment's query string.
+-}
+query : Url -> Dict String String
+query url =
+    Tuple.second (fragmentParts url)
+        |> String.split "&"
+        |> List.filterMap
+            (\pair ->
+                case String.split "=" pair of
+                    [ key, value ] ->
+                        Maybe.map2 Tuple.pair (Url.percentDecode key) (Url.percentDecode value)
+
+                    _ ->
+                        Nothing
+            )
+        |> Dict.fromList
+
+
+fragmentParts : Url -> ( String, String )
+fragmentParts url =
+    case String.split "?" (Maybe.withDefault "/" url.fragment) of
+        path :: rest ->
+            ( path, String.join "?" rest )
+
+        [] ->
+            ( "/", "" )
 
 
 parser : Parser (Route -> a) a
@@ -30,8 +57,6 @@ parser =
         , Parser.map Settings (s "settings")
         , Parser.map (\work passage -> Reader work (Just passage)) (string </> s "read" </> int)
         , Parser.map (\work -> Reader work Nothing) (string </> s "read")
-        , Parser.map History (string </> int </> s "history")
-        , Parser.map Comparison (string </> int </> s "compare")
         , Parser.map Study (string </> int)
         , Parser.map WorkLanding string
         ]
@@ -55,10 +80,4 @@ toPath route =
 
                 Reader work passage ->
                     "/" ++ work ++ "/read" ++ (passage |> Maybe.map (\number -> "/" ++ String.fromInt number) |> Maybe.withDefault "")
-
-                History work passage ->
-                    "/" ++ work ++ "/" ++ String.fromInt passage ++ "/history"
-
-                Comparison work passage ->
-                    "/" ++ work ++ "/" ++ String.fromInt passage ++ "/compare"
            )

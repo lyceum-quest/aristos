@@ -63,6 +63,18 @@
         return message.value;
       }
 
+      if (message.operation === "getAll") {
+        const transaction = database.transaction(message.store, "readonly");
+        return await requestResult(transaction.objectStore(message.store).getAll());
+      }
+
+      if (message.operation === "clear") {
+        const transaction = database.transaction(message.store, "readwrite");
+        transaction.objectStore(message.store).clear();
+        await transactionResult(transaction);
+        return null;
+      }
+
       throw new Error("Unsupported storage operation");
     } finally {
       database.close();
