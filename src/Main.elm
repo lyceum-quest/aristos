@@ -320,9 +320,20 @@ documentTitle model =
             "Aristos"
 
 
+{-| The route part of a URL in the same form `Route.toPath` produces.
+-}
 urlPath : Url -> String
 urlPath url =
-    url.path ++ (url.fragment |> Maybe.map (\fragment -> "#" ++ fragment) |> Maybe.withDefault "")
+    case url.fragment of
+        Just fragment ->
+            if String.isEmpty fragment then
+                "#/"
+
+            else
+                "#" ++ fragment
+
+        Nothing ->
+            "#/"
 
 
 emptyDraft : Draft
@@ -1237,8 +1248,21 @@ handleFetchedCorpus entry result model =
 
                     else
                         let
+                            -- A fresh download of the work already shown from cache keeps the reader's place.
+                            installed =
+                                if model.corpusReady && Maybe.map .id model.activeEntry == Just entry.id then
+                                    { model
+                                        | corpus = corpus
+                                        , activeEntry = Just entry
+                                        , corpusLoadedFromNetwork = True
+                                        , sentenceIndex = clamp 0 (List.length corpus.sentences - 1) model.sentenceIndex
+                                    }
+
+                                else
+                                    installCorpus True entry corpus model
+
                             ( shown, routeCmd ) =
-                                showPending (installCorpus True entry corpus model)
+                                showPending installed
                         in
                         ( shown
                         , Cmd.batch
@@ -1874,21 +1898,7 @@ navButton label msg isActive =
 viewLibrary : Model -> Html Msg
 viewLibrary model =
     main_ [ class "page library-page" ]
-        [ section [ class "library-hero" ]
-            [ div []
-                [ p [ class "eyebrow" ] [ text "Local Greek library" ]
-                , h1 [] [ text "Choose a text. Build a workspace." ]
-                , p [ class "lead" ] [ text "Read freely, or compose only the form, syntax, and translation tools useful for this session." ]
-                ]
-            , div [ class "library-summary" ]
-                [ span [ class "summary-value" ] [ text (String.fromInt (List.length model.library)) ]
-                , span [] [ text (plural (List.length model.library) "work" "works") ]
-                , span [ class "summary-divider" ] []
-                , span [ class "summary-value" ] [ text (String.fromInt (List.sum (List.map .sentenceCount model.library))) ]
-                , span [] [ text "imported sentences" ]
-                ]
-            ]
-        , section [ class "pack-list", attribute "aria-label" "Content packs" ]
+        [ section [ class "pack-list", attribute "aria-label" "Works" ]
             (if List.isEmpty model.library then
                 [ p [ class "muted" ] [ text "Loading the library…" ] ]
 

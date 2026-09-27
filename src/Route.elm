@@ -16,9 +16,11 @@ type Route
     | Comparison String Int
 
 
+{-| Routes live in the URL fragment (`/#/luke/5`), so the static server only ever serves `/` and every link or reload works without a server-side fallback.
+-}
 fromUrl : Url -> Maybe Route
 fromUrl url =
-    Parser.parse parser url
+    Parser.parse parser { url | path = Maybe.withDefault "/" url.fragment, query = Nothing, fragment = Nothing }
 
 
 parser : Parser (Route -> a) a
@@ -26,7 +28,8 @@ parser =
     oneOf
         [ Parser.map Library top
         , Parser.map Settings (s "settings")
-        , Parser.map (\work fragment -> Reader work (Maybe.andThen String.toInt fragment)) (string </> s "read" </> Parser.fragment identity)
+        , Parser.map (\work passage -> Reader work (Just passage)) (string </> s "read" </> int)
+        , Parser.map (\work -> Reader work Nothing) (string </> s "read")
         , Parser.map History (string </> int </> s "history")
         , Parser.map Comparison (string </> int </> s "compare")
         , Parser.map Study (string </> int)
@@ -36,24 +39,26 @@ parser =
 
 toPath : Route -> String
 toPath route =
-    case route of
-        Library ->
-            "/"
+    "#"
+        ++ (case route of
+                Library ->
+                    "/"
 
-        Settings ->
-            "/settings"
+                Settings ->
+                    "/settings"
 
-        WorkLanding work ->
-            "/" ++ work
+                WorkLanding work ->
+                    "/" ++ work
 
-        Study work passage ->
-            "/" ++ work ++ "/" ++ String.fromInt passage
+                Study work passage ->
+                    "/" ++ work ++ "/" ++ String.fromInt passage
 
-        Reader work passage ->
-            "/" ++ work ++ "/read" ++ (passage |> Maybe.map (\number -> "#" ++ String.fromInt number) |> Maybe.withDefault "")
+                Reader work passage ->
+                    "/" ++ work ++ "/read" ++ (passage |> Maybe.map (\number -> "/" ++ String.fromInt number) |> Maybe.withDefault "")
 
-        History work passage ->
-            "/" ++ work ++ "/" ++ String.fromInt passage ++ "/history"
+                History work passage ->
+                    "/" ++ work ++ "/" ++ String.fromInt passage ++ "/history"
 
-        Comparison work passage ->
-            "/" ++ work ++ "/" ++ String.fromInt passage ++ "/compare"
+                Comparison work passage ->
+                    "/" ++ work ++ "/" ++ String.fromInt passage ++ "/compare"
+           )
