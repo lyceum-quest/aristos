@@ -137,8 +137,9 @@ prepare_assets! = |specs, table|
 						license: text.license,
 						edition: text.edition,
 					}
+					units = units!(spec.path, content)?
 					remaining = prepare_assets!(rest, table)?
-					Ok(List.prepend(remaining, { id: spec.id, title: cited.title, content, source, citation: cited.citation, stats: valid_stats }))
+					Ok(List.prepend(remaining, { id: spec.id, title: cited.title, content, source, citation: cited.citation, stats: valid_stats, units }))
 				}
 			}
 		}
@@ -175,6 +176,7 @@ write_assets! = |assets, corpora_dir|
 		[] => Ok({})
 		[asset, .. as rest] => {
 			corpora_dir.join("${asset.id}.conllu").write_utf8!(asset.content)?
+			corpora_dir.join("${asset.id}.units.json").write_utf8!("[${Str.join_with(asset.units.lines, ",")}]\n")?
 			write_assets!(rest, corpora_dir)
 		}
 	}
@@ -323,7 +325,7 @@ valid_non_syntactic_id = |id|
 asset_json = |asset| {
 	source = asset.source
 	asset_path = "corpora/${asset.id}.conllu"
-	"{\"id\":${json_string(asset.id)},\"title\":${json_string(asset.title)},\"path\":${json_string(asset_path)},\"sentenceCount\":${asset.stats.sentence_count.to_str()},\"tokenCount\":${asset.stats.token_count.to_str()},\"source\":{\"name\":${json_string(source.name)},\"url\":${json_string(source.url)},\"commit\":${json_string(source.commit)},\"license\":${json_string(source.license)},\"edition\":${json_string(source.edition)}},\"citation\":${Citation.to_json(asset.citation)}}"
+	"{\"id\":${json_string(asset.id)},\"title\":${json_string(asset.title)},\"path\":${json_string(asset_path)},\"sentenceCount\":${asset.stats.sentence_count.to_str()},\"unitsPath\":${json_string("corpora/${asset.id}.units.json")},\"passageCount\":${asset.units.refs.len().to_str()},\"passages\":[${Str.join_with(asset.units.refs.map(json_string), ",")}],\"tokenCount\":${asset.stats.token_count.to_str()},\"source\":{\"name\":${json_string(source.name)},\"url\":${json_string(source.url)},\"commit\":${json_string(source.commit)},\"license\":${json_string(source.license)},\"edition\":${json_string(source.edition)}},\"citation\":${Citation.to_json(asset.citation)}}"
 }
 
 json_string = |value| {
@@ -336,3 +338,48 @@ json_string = |value| {
 
 	"\"${escaped}\""
 }
+
+# Canonical passages come from the sibling units.jsonl written by scripts/generate/loop.roc (one JSON object per
+# passage: ref, label, tokens, prose, literal). Every passage token must be a glossed row of the corpus.
+units! = |corpus_path, content| {
+	units_path = Path.utf8("${Str.join_with(List.drop_last(Str.split_on(corpus_path.display(), "/"), 1), "/")}/units.jsonl")
+	text = units_path.read_utf8!() ? |_| InvalidCorpus(corpus_path, "missing ${units_path.display()}; run the generation loop to translate its canonical passages")
+	lines = List.keep_if(List.map(Str.split_on(text, "\n"), Str.trim), |line| line != "")
+	glossed = glossed_tokens(content.split_on("\n"), Dict.empty())
+	check_units!(units_path, lines, glossed, [])
+}
+
+check_units! = |units_path, lines, glossed, refs|
+	match lines {
+		[] => Ok({ lines: lines_of(refs), refs: List.map(refs, |unit| unit.ref) })
+		[line, .. as rest] => {
+			parsed : Try({ ref : Str, tokens : List(Str) }, _)
+			parsed = Json.parse(line)
+			match parsed {
+				Err(_) => Err(InvalidCorpus(units_path, "unreadable passage line: ${line}"))
+				Ok(unit) =>
+					match List.first(List.keep_if(unit.tokens, |token| !Dict.contains(glossed, token))) {
+						Ok(token) => Err(InvalidCorpus(units_path, "passage ${unit.ref} token ${token} is not a glossed corpus token"))
+						Err(_) => check_units!(units_path, rest, glossed, List.append(refs, { ref: unit.ref, line }))
+					}
+			}
+		}
+	}
+
+lines_of = |units| List.map(units, |unit| unit.line)
+
+# `t_N` ids of rows whose MISC carries a gloss.
+glossed_tokens = |lines, found|
+	match lines {
+		[] => found
+		[line, .. as rest] =>
+			match line.split_on("\t") {
+				[_, _, _, _, _, _, _, _, _, misc] =>
+					if misc.contains("gloss=") {
+						glossed_tokens(rest, Dict.insert(found, List.first(misc.split_on("|")) ?? "", {}))
+					} else {
+						glossed_tokens(rest, found)
+					}
+				_ => glossed_tokens(rest, found)
+			}
+	}

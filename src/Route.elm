@@ -2,17 +2,17 @@ module Route exposing (Route(..), fromUrl, query, toPath)
 
 import Dict exposing (Dict)
 import Url exposing (Url)
-import Url.Parser as Parser exposing ((</>), Parser, int, oneOf, s, string, top)
+import Url.Parser as Parser exposing ((</>), Parser, oneOf, s, string, top)
 
 
-{-| Passage numbers are 1-based sentence positions in the work's CoNLL-U file.
+{-| Passages are addressed by their canonical citation, dotted (`1.2` for 1:2, `1.1.1` for a section).
 -}
 type Route
     = Library
     | Settings
     | WorkLanding String
-    | Study String Int
-    | Reader String (Maybe Int)
+    | Study String String
+    | Reader String (Maybe String)
 
 
 {-| Routes live in the URL fragment (`/#/luke/5?word=7`), so the static server only ever serves `/` and every link or reload works without a server-side fallback.
@@ -55,9 +55,9 @@ parser =
     oneOf
         [ Parser.map Library top
         , Parser.map Settings (s "settings")
-        , Parser.map (\work passage -> Reader work (Just passage)) (string </> s "read" </> int)
+        , Parser.map (\work passage -> Reader work (Just passage)) (string </> s "read" </> string)
         , Parser.map (\work -> Reader work Nothing) (string </> s "read")
-        , Parser.map Study (string </> int)
+        , Parser.map Study (string </> string)
         , Parser.map WorkLanding string
         ]
 
@@ -76,8 +76,8 @@ toPath route =
                     "/" ++ work
 
                 Study work passage ->
-                    "/" ++ work ++ "/" ++ String.fromInt passage
+                    "/" ++ work ++ "/" ++ passage
 
                 Reader work passage ->
-                    "/" ++ work ++ "/read" ++ (passage |> Maybe.map (\number -> "/" ++ String.fromInt number) |> Maybe.withDefault "")
+                    "/" ++ work ++ "/read" ++ (passage |> Maybe.map (\ref -> "/" ++ ref) |> Maybe.withDefault "")
            )

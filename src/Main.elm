@@ -10,6 +10,7 @@ import Html exposing (Html, a, article, aside, button, div, footer, h1, h2, h3, 
 import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, style, target, type_, value)
 import Html.Events exposing (on, onClick, onInput, stopPropagationOn)
 import Http
+import Passage
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Process
@@ -126,6 +127,8 @@ type alias ManifestEntry =
     , tokenCount : Int
     , source : CorpusSource
     , citation : Maybe Sources.Citation
+    , unitsPath : String
+    , passages : List String
     }
 
 
@@ -196,6 +199,8 @@ type Msg
     | PreviousSentence
     | NextSentence
     | JumpToPassage String
+    | JumpToCitation String
+    | GoToCitation String
     | Navigate Route
     | UrlRequested Browser.UrlRequest
     | UrlChanged Url
@@ -243,7 +248,7 @@ type Msg
     | ToggleTheme
     | Tick Time.Posix
     | GotManifest (Result Http.Error Manifest)
-    | GotCorpus ManifestEntry (Result Http.Error String)
+    | GotCorpus ManifestEntry (Result Http.Error ( String, String ))
     | GotStorage Decode.Value
 
 
@@ -337,7 +342,7 @@ documentTitle model =
             "Study tools · Aristos"
 
         ( _, Just entry ) ->
-            entry.title ++ " " ++ String.fromInt (model.sentenceIndex + 1) ++ " · Aristos"
+            entry.title ++ " " ++ currentLabel model ++ " · Aristos"
 
         ( _, Nothing ) ->
             "Aristos"
@@ -529,7 +534,7 @@ isUrlChange msg =
 draftKey : Model -> Maybe String
 draftKey model =
     if model.corpusReady then
-        model.activeEntry |> Maybe.map (\entry -> "draft:" ++ entry.id ++ ":" ++ String.fromInt (model.sentenceIndex + 1))
+        model.activeEntry |> Maybe.map (\entry -> "draft:" ++ entry.id ++ ":" ++ currentRef model)
 
     else
         Nothing
@@ -592,6 +597,16 @@ updateModel msg model =
 
             else
                 applyRoute (Route.fromUrl url |> Maybe.withDefault Route.Library) { model | currentPath = urlPath url, routeQuery = Route.query url }
+
+        JumpToCitation prefix ->
+            jumpToCitation prefix model
+
+        GoToCitation typed ->
+            if String.isEmpty (normalizeCitation typed) then
+                ( model, Cmd.none )
+
+            else
+                jumpToCitation (normalizeCitation typed) model
 
         JumpToPassage passage ->
             case String.toInt passage of
@@ -867,7 +882,7 @@ updateModel msg model =
                 ( Just attempt, Just entry ) ->
                     let
                         passage =
-                            model.sentenceIndex + 1
+                            currentRef model
 
                         scheduled =
                             Review.schedule now rating entry.id passage model.reviews
@@ -889,7 +904,7 @@ updateModel msg model =
                     ( { advanced
                         | notice =
                             scheduled
-                                |> Maybe.map (\review -> "Saved. Passage " ++ String.fromInt passage ++ " comes back in " ++ Review.intervalLabel now review.card.due ++ ".")
+                                |> Maybe.map (\review -> "Saved. " ++ workTitle model ++ " " ++ currentLabel model ++ " comes back in " ++ Review.intervalLabel now review.card.due ++ ".")
                       }
                     , Cmd.batch
                         [ storagePut "save-attempt" "progress" (Study.encodeAttempt attempt)
@@ -906,13 +921,14 @@ updateModel msg model =
         StudyToday entry ->
             let
                 today =
-                    Review.queue model.clock model.newPerDay entry.id entry.sentenceCount model.reviews
+                    Review.queue model.clock model.newPerDay entry.id entry.passages model.reviews
 
                 first =
                     List.head (today.due ++ today.new)
 
+                -- With nothing queued, reopen where the learner last was.
                 passage =
-                    first |> Maybe.withDefault (Dict.get entry.id model.positions |> Maybe.withDefault 1)
+                    first |> Maybe.withDefault (savedRef entry model)
             in
             ( { model | queueMode = True, queueDone = first == Nothing }
             , Nav.pushUrl model.key (Route.toPath (Route.Study entry.id passage) ++ "?queue=1")
@@ -1078,9 +1094,9 @@ buildAttempt now model =
                         currentSentence model
 
                     passage =
-                        model.sentenceIndex + 1
+                        currentRef model
                 in
-                { id = "attempt:" ++ entry.id ++ ":" ++ String.fromInt passage ++ ":" ++ String.fromInt now
+                { id = "attempt:" ++ entry.id ++ ":" ++ passage ++ ":" ++ String.fromInt now
                 , work = entry.id
                 , passage = passage
                 , sentenceId = sentence.id
@@ -1113,7 +1129,14 @@ applyRoute route model =
             ( { model | screen = SettingsScreen, pendingRoute = Nothing }, Cmd.none )
 
         Route.WorkLanding work ->
-            ( model, Nav.replaceUrl model.key (Route.toPath (Route.Study work (Dict.get work model.positions |> Maybe.withDefault 1))) )
+            ( model
+            , Nav.replaceUrl model.key
+                (Route.toPath
+                    (Route.Study work
+                        (List.filter (\entry -> entry.id == work) model.library |> List.head |> Maybe.map (\entry -> savedRef entry model) |> Maybe.withDefault "")
+                    )
+                )
+            )
 
         _ ->
             case routeWork route of
@@ -1134,14 +1157,16 @@ showRoute route model =
         settled =
             { model | pendingRoute = Nothing }
 
-        clampIndex passage =
-            clamp 0 (List.length model.corpus.sentences - 1) (passage - 1)
+        -- A citation that is not a passage of this work (e.g. an old bookmark) opens the saved position.
+        indexFor work ref =
+            indexOfRef ref model
+                |> Maybe.withDefault (clamp 0 (List.length model.corpus.sentences - 1) ((Dict.get work model.positions |> Maybe.withDefault 1) - 1))
     in
     case route of
-        Route.Study _ passage ->
+        Route.Study work passage ->
             let
                 index =
-                    clampIndex passage
+                    indexFor work passage
 
                 moved =
                     if index == settled.sentenceIndex then
@@ -1155,7 +1180,7 @@ showRoute route model =
         Route.Reader work passage ->
             let
                 index =
-                    clampIndex (passage |> Maybe.withDefault (Dict.get work model.positions |> Maybe.withDefault (model.sentenceIndex + 1)))
+                    indexFor work (passage |> Maybe.withDefault "")
             in
             ( { settled | screen = ReaderScreen, sentenceIndex = index, readerGloss = Nothing }, scrollToSentence index )
 
@@ -1252,7 +1277,7 @@ basePath : Model -> Maybe String
 basePath model =
     let
         passage =
-            model.sentenceIndex + 1
+            currentRef model
 
         forWork toRoute =
             model.activeEntry |> Maybe.map (\entry -> Route.toPath (toRoute entry.id))
@@ -1345,8 +1370,8 @@ handleStorageResponse value model =
 
             else if response.id == "cached-corpus" && not model.corpusLoadedFromNetwork then
                 case Decode.decodeValue (Decode.field "value" cachedCorpusDecoder) response.value of
-                    Ok ( entry, raw ) ->
-                        useCachedCorpus entry raw model
+                    Ok ( entry, raw, units ) ->
+                        useCachedCorpus entry raw units model
 
                     Err _ ->
                         model
@@ -1392,6 +1417,76 @@ installCorpus loadedFromNetwork entry corpus model =
     }
 
 
+{-| Opens the first passage whose citation starts with `prefix` (`1` = chapter 1, `1.2` = 1:2), in the reader or
+study view, whichever is showing.
+-}
+jumpToCitation : String -> Model -> ( Model, Cmd Msg )
+jumpToCitation prefix model =
+    let
+        wanted =
+            Passage.parts prefix
+
+        target =
+            model.corpus.sentences
+                |> List.indexedMap Tuple.pair
+                |> List.filter (\( _, passage ) -> List.take (List.length wanted) (Passage.parts passage.id) == wanted)
+                |> List.head
+                |> Maybe.map Tuple.first
+    in
+    case target of
+        Just index ->
+            if model.screen == ReaderScreen then
+                ( { model | sentenceIndex = index, readerGloss = Nothing }, scrollToSentence index )
+
+            else
+                ( moveToSentence index (browsing model), Cmd.none )
+
+        Nothing ->
+            ( { model | notice = Just ("No passage " ++ prefix ++ " in " ++ workTitle model ++ ".") }, Cmd.none )
+
+
+{-| `1:2`, `1 2`, or `1,2` typed into the go-to box -> `1.2`.
+-}
+normalizeCitation : String -> String
+normalizeCitation typed =
+    typed
+        |> String.trim
+        |> String.map
+            (\char ->
+                if char == ':' || char == ' ' || char == ',' then
+                    '.'
+
+                else
+                    char
+            )
+        |> String.split "."
+        |> List.filter (not << String.isEmpty)
+        |> String.join "."
+
+
+{-| The current passage's citation (`1.2`), which keys drafts, attempts, review cards, and URLs.
+-}
+currentRef : Model -> String
+currentRef model =
+    (currentSentence model).id
+
+
+{-| The current passage's display citation (`1:2`, `1.1.1`).
+-}
+currentLabel : Model -> String
+currentLabel model =
+    (currentSentence model).verse
+
+
+indexOfRef : String -> Model -> Maybe Int
+indexOfRef ref model =
+    model.corpus.sentences
+        |> List.indexedMap Tuple.pair
+        |> List.filter (\( _, passage ) -> passage.id == ref)
+        |> List.head
+        |> Maybe.map Tuple.first
+
+
 {-| Choosing a passage by hand leaves today's review queue.
 -}
 browsing : Model -> Model
@@ -1406,7 +1501,7 @@ advance model =
     if model.queueMode then
         case todayQueue model |> Maybe.andThen (\today -> List.head (today.due ++ today.new)) of
             Just passage ->
-                moveToSentence (passage - 1) { model | queueDone = False }
+                moveToSentence (indexOfRef passage model |> Maybe.withDefault model.sentenceIndex) { model | queueDone = False }
 
             Nothing ->
                 { model | queueDone = True, popupWord = Nothing, activeModule = Nothing }
@@ -1421,7 +1516,7 @@ advance model =
 todayQueue : Model -> Maybe Review.Queue
 todayQueue model =
     model.activeEntry
-        |> Maybe.map (\entry -> Review.queue model.clock model.newPerDay entry.id (List.length model.corpus.sentences) model.reviews)
+        |> Maybe.map (\entry -> Review.queue model.clock model.newPerDay entry.id (List.map .id model.corpus.sentences) model.reviews)
 
 
 moveToSentence : Int -> Model -> Model
@@ -1579,15 +1674,19 @@ manifestDecoder =
 
 manifestEntryDecoder : Decode.Decoder ManifestEntry
 manifestEntryDecoder =
-    -- Title, counts, and citation default so entries cached by earlier builds still decode.
-    Decode.map7 ManifestEntry
+    -- Title, counts, citation, and passages default so entries cached by earlier builds still decode.
+    Decode.map3 (\entry unitsPath passages -> entry unitsPath passages)
+        (Decode.map7 ManifestEntry
         (Decode.field "id" Decode.string)
         (Decode.oneOf [ Decode.field "title" Decode.string, Decode.field "id" Decode.string ])
         (Decode.field "path" Decode.string)
         (Decode.oneOf [ Decode.field "sentenceCount" Decode.int, Decode.succeed 0 ])
         (Decode.oneOf [ Decode.field "tokenCount" Decode.int, Decode.succeed 0 ])
         (Decode.field "source" corpusSourceDecoder)
-        (Decode.oneOf [ Decode.field "citation" (Decode.map Just Sources.decoder), Decode.succeed Nothing ])
+            (Decode.oneOf [ Decode.field "citation" (Decode.map Just Sources.decoder), Decode.succeed Nothing ])
+        )
+        (Decode.oneOf [ Decode.field "unitsPath" Decode.string, Decode.succeed "" ])
+        (Decode.oneOf [ Decode.field "passages" (Decode.list Decode.string), Decode.succeed [] ])
 
 
 storageResponseDecoder : Decode.Decoder StorageResponse
@@ -1598,11 +1697,12 @@ storageResponseDecoder =
         (Decode.field "value" Decode.value)
 
 
-cachedCorpusDecoder : Decode.Decoder ( ManifestEntry, String )
+cachedCorpusDecoder : Decode.Decoder ( ManifestEntry, String, String )
 cachedCorpusDecoder =
-    Decode.map2 Tuple.pair
+    Decode.map3 (\entry raw units -> ( entry, raw, units ))
         (Decode.field "entry" manifestEntryDecoder)
         (Decode.field "raw" Decode.string)
+        (Decode.oneOf [ Decode.field "units" Decode.string, Decode.succeed "" ])
 
 
 fallbackCorpus : Corpus
@@ -1910,22 +2010,69 @@ handleManifest result model =
 
 fetchCorpus : ManifestEntry -> Cmd Msg
 fetchCorpus entry =
-    Http.request
+    Task.map2 Tuple.pair
+        (fetchText entry.path)
+        (if String.isEmpty entry.unitsPath then
+            Task.succeed ""
+
+         else
+            fetchText entry.unitsPath
+        )
+        |> Task.attempt (GotCorpus entry)
+
+
+fetchText : String -> Task.Task Http.Error String
+fetchText path =
+    Http.task
         { method = "GET"
         , headers = [ Http.header "Cache-Control" "no-cache" ]
-        , url = "/preload/" ++ entry.path
+        , url = "/preload/" ++ path
         , body = Http.emptyBody
-        , expect = Http.expectString (GotCorpus entry)
+        , resolver =
+            Http.stringResolver
+                (\response ->
+                    case response of
+                        Http.GoodStatus_ _ body ->
+                            Ok body
+
+                        Http.BadStatus_ metadata _ ->
+                            Err (Http.BadStatus metadata.statusCode)
+
+                        Http.BadUrl_ url ->
+                            Err (Http.BadUrl url)
+
+                        Http.Timeout_ ->
+                            Err Http.Timeout
+
+                        Http.NetworkError_ ->
+                            Err Http.NetworkError
+                )
         , timeout = Nothing
-        , tracker = Nothing
         }
 
 
-handleFetchedCorpus : ManifestEntry -> Result Http.Error String -> Model -> ( Model, Cmd Msg )
+{-| A work's sentences regrouped into its canonical passages; works without a passages file keep their sentences.
+-}
+parseWork : ManifestEntry -> String -> String -> Result String Corpus
+parseWork entry raw units =
+    Conllu.parse entry.source raw
+        |> Result.andThen
+            (\corpus ->
+                if String.isEmpty units then
+                    Ok corpus
+
+                else
+                    Decode.decodeString Passage.unitsDecoder units
+                        |> Result.mapError Decode.errorToString
+                        |> Result.map (\decoded -> Passage.fromUnits decoded corpus)
+            )
+
+
+handleFetchedCorpus : ManifestEntry -> Result Http.Error ( String, String ) -> Model -> ( Model, Cmd Msg )
 handleFetchedCorpus entry result model =
     case result of
-        Ok raw ->
-            case Conllu.parse entry.source raw of
+        Ok ( raw, units ) ->
+            case parseWork entry raw units of
                 Ok corpus ->
                     if model.requestedWork /= Just entry.id then
                         ( model, Cmd.none )
@@ -1958,6 +2105,7 @@ handleFetchedCorpus entry result model =
                                       , Encode.object
                                             [ ( "entry", encodeManifestEntry entry )
                                             , ( "raw", Encode.string raw )
+                                            , ( "units", Encode.string units )
                                             ]
                                       )
                                     ]
@@ -1994,9 +2142,9 @@ handleFetchedCorpus entry result model =
                 ( model, Cmd.none )
 
 
-useCachedCorpus : ManifestEntry -> String -> Model -> Model
-useCachedCorpus entry raw model =
-    case ( model.requestedWork == Just entry.id && not model.corpusReady, Conllu.parse entry.source raw ) of
+useCachedCorpus : ManifestEntry -> String -> String -> Model -> Model
+useCachedCorpus entry raw units model =
+    case ( model.requestedWork == Just entry.id && not model.corpusReady, parseWork entry raw units ) of
         ( True, Ok corpus ) ->
             installCorpus False entry corpus model
 
@@ -2026,7 +2174,7 @@ loadLegacyCache model =
     else
         case ( model.legacyManifestEntry, model.legacyCorpusRaw ) of
             ( Just entry, Just raw ) ->
-                useCachedCorpus entry raw model
+                useCachedCorpus entry raw "" model
 
             _ ->
                 model
@@ -2066,6 +2214,8 @@ encodeManifestEntry entry =
         , ( "tokenCount", Encode.int entry.tokenCount )
         , ( "source", encodeCorpusSource entry.source )
         , ( "citation", entry.citation |> Maybe.map Sources.encode |> Maybe.withDefault Encode.null )
+        , ( "unitsPath", Encode.string entry.unitsPath )
+        , ( "passages", Encode.list Encode.string entry.passages )
         ]
 
 
@@ -2091,8 +2241,9 @@ viewReader model =
             [ button [ class "icon-button", type_ "button", onClick ShowLibrary, attribute "aria-label" "Back to library" ] [ text "←" ]
             , div [ class "reader-bar-title" ]
                 [ span [ class "context-work" ] [ text (workTitle model) ]
-                , span [ class "reader-position" ] [ text (String.fromInt (model.sentenceIndex + 1) ++ " / " ++ String.fromInt total) ]
+                , span [ class "reader-position" ] [ text (currentLabel model ++ " · " ++ String.fromInt (model.sentenceIndex + 1) ++ " / " ++ String.fromInt total) ]
                 ]
+            , viewCitationPicker model
             , div [ class "reader-bar-actions" ]
                 [ button [ class "icon-button", type_ "button", onClick (ReaderStep -1), disabled (model.sentenceIndex == 0), attribute "aria-label" "Previous passage (k)" ] [ text "‹" ]
                 , button [ class "icon-button", type_ "button", onClick (ReaderStep 1), disabled (model.sentenceIndex >= total - 1), attribute "aria-label" "Next passage (j)" ] [ text "›" ]
@@ -2130,10 +2281,10 @@ viewReaderSentence model index sentence =
             [ classList [ ( "reader-marker", True ), ( "is-open", revealed ) ]
             , type_ "button"
             , onClick (ReaderToggleTranslation index)
-            , attribute "aria-label" ("Passage " ++ String.fromInt (index + 1) ++ ": " ++ (if revealed then "hide" else "show") ++ " translation")
+            , attribute "aria-label" (sentence.verse ++ ": " ++ (if revealed then "hide" else "show") ++ " translation")
             , attribute "aria-expanded" (boolString revealed)
             ]
-            [ text (String.fromInt (index + 1)) ]
+            [ text sentence.verse ]
         , p [ class "reader-greek" ] (List.concat (List.indexedMap (viewReaderToken model index) sentence.tokens))
         , if revealed && not (String.isEmpty sentence.proseTranslation) then
             div [ class "reader-translation", attribute "lang" "en" ]
@@ -2203,7 +2354,7 @@ viewAppHeader model =
             (navButton "Library" ShowLibrary (model.screen == LibraryScreen)
                 :: (case model.activeEntry of
                         Just entry ->
-                            [ navButton "Read" (Navigate (Route.Reader entry.id (Just (model.sentenceIndex + 1)))) False
+                            [ navButton "Read" (Navigate (Route.Reader entry.id (Just (currentRef model)))) False
                             , navButton "Study" (StudyToday entry) (List.member model.screen [ WorkspaceScreen, SettingsScreen ])
                             ]
 
@@ -2281,7 +2432,7 @@ viewWorkCard model entry =
                 |> String.join " · "
 
         today =
-            Review.queue model.clock model.newPerDay entry.id entry.sentenceCount model.reviews
+            Review.queue model.clock model.newPerDay entry.id entry.passages model.reviews
     in
     section [ classList [ ( "pack-card", True ), ( "featured-pack", isActive ) ] ]
         [ div [ class "pack-body" ]
@@ -2300,7 +2451,7 @@ viewWorkCard model entry =
                         [ strongText (String.fromInt (List.length today.due) ++ " due")
                         , text (" · " ++ String.fromInt (List.length today.new) ++ " new today")
                         ]
-                    , span [ class "muted" ] [ text (String.fromInt entry.sentenceCount ++ " " ++ plural entry.sentenceCount "sentence" "sentences" ++ " · " ++ String.fromInt entry.tokenCount ++ " tokens") ]
+                    , span [ class "muted" ] [ text (String.fromInt (List.length entry.passages) ++ " " ++ plural (List.length entry.passages) "passage" "passages" ++ " · " ++ String.fromInt entry.tokenCount ++ " tokens") ]
                     ]
                 , div [ class "button-row" ]
                     [ button [ class "secondary-button", type_ "button", disabled isLoading, onClick (Navigate (Route.Reader entry.id Nothing)) ] [ text "Read" ]
@@ -2446,7 +2597,7 @@ fallbackSentence =
 
 sentenceReference : Sentence -> String
 sentenceReference sentence =
-    "§ " ++ String.replace "-" "–" sentence.verse
+    sentence.verse
 
 
 getAt : Int -> List a -> Maybe a
@@ -2658,13 +2809,7 @@ viewWorkspace model =
             , div [ class "context-actions" ]
                 [ div [ class "passage-nav" ]
                     [ button [ class "icon-button", type_ "button", onClick PreviousSentence, disabled (model.sentenceIndex == 0), attribute "aria-label" "Previous passage (← or k)" ] [ text "‹" ]
-                    , label [ class "chapter-jump" ]
-                        [ span [] [ text "Passage" ]
-                        , select [ value (String.fromInt (model.sentenceIndex + 1)), onInput JumpToPassage ]
-                            (List.range 1 total
-                                |> List.map (\number -> option [ value (String.fromInt number), selected (number == model.sentenceIndex + 1) ] [ text (String.fromInt number ++ " / " ++ String.fromInt total) ])
-                            )
-                        ]
+                    , viewCitationPicker model
                     , button [ class "icon-button", type_ "button", onClick NextSentence, disabled (model.sentenceIndex >= total - 1), attribute "aria-label" "Next passage (→ or j)" ] [ text "›" ]
                     ]
                 ]
@@ -2699,7 +2844,7 @@ currentAttempts : Model -> List Study.Attempt
 currentAttempts model =
     case model.activeEntry of
         Just entry ->
-            Study.passageAttempts entry.id (model.sentenceIndex + 1) model.attempts
+            Study.passageAttempts entry.id (currentRef model) model.attempts
 
         Nothing ->
             []
@@ -2749,7 +2894,7 @@ viewHistory model =
     section [ class "reading-stage history-stage" ]
         [ div [ class "history-heading" ]
             [ div []
-                [ p [ class "eyebrow" ] [ text ("Passage " ++ String.fromInt (model.sentenceIndex + 1) ++ " · " ++ sentenceReference (currentSentence model)) ]
+                [ p [ class "eyebrow" ] [ text (workTitle model ++ " " ++ currentLabel model) ]
                 , h2 [] [ text "Past attempts" ]
                 ]
             , button [ class "secondary-button", type_ "button", onClick CloseHistory ] [ text "← Back to current attempt" ]
@@ -3330,7 +3475,7 @@ viewGrading model =
 
         missed =
             model.activeEntry
-                |> Maybe.map (\entry -> Study.missedLastTime entry.id (model.sentenceIndex + 1) model.attempts)
+                |> Maybe.map (\entry -> Study.missedLastTime entry.id (currentRef model) model.attempts)
                 |> Maybe.withDefault Dict.empty
 
         words =
@@ -3476,7 +3621,7 @@ viewQueueStatus model =
         ( True, Just today ) ->
             let
                 current =
-                    model.sentenceIndex + 1
+                    currentRef model
 
                 kind =
                     if List.member current today.due then
@@ -3567,7 +3712,7 @@ viewRatingButtons model items =
 
         card =
             model.activeEntry
-                |> Maybe.andThen (\entry -> Dict.get (Review.entryKey entry.id (model.sentenceIndex + 1)) model.reviews)
+                |> Maybe.andThen (\entry -> Dict.get (Review.entryKey entry.id (currentRef model)) model.reviews)
                 |> Maybe.map .card
                 |> Maybe.withDefault (Fsrs.newCard model.clock)
 
@@ -3632,3 +3777,60 @@ viewStudyFooter model =
         )
 
 
+
+
+{-| The passage the learner last had open in a work (positions are saved as 1-based passage indexes), or its first.
+-}
+savedRef : ManifestEntry -> Model -> String
+savedRef entry model =
+    Dict.get entry.id model.positions
+        |> Maybe.andThen (\position -> getAt (position - 1) entry.passages)
+        |> Maybe.withDefault (List.head entry.passages |> Maybe.withDefault "1")
+
+
+{-| One select per citation level (Chapter/Verse, Book/Chapter/Section, …) and a go-to box accepting `1:2` or `1.2`.
+-}
+viewCitationPicker : Model -> Html Msg
+viewCitationPicker model =
+    let
+        refs =
+            List.map (.id >> Passage.parts) model.corpus.sentences
+
+        current =
+            Passage.parts (currentRef model)
+
+        names =
+            Passage.levelNames (String.contains ":" (currentLabel model)) (Passage.levels model.corpus.sentences)
+
+        choices level =
+            refs
+                |> List.filter (\parts -> List.take level parts == List.take level current)
+                |> List.filterMap (getAt level)
+                |> List.foldl
+                    (\value found ->
+                        if List.member value found then
+                            found
+
+                        else
+                            found ++ [ value ]
+                    )
+                    []
+
+        levelSelect level name =
+            label [ class "chapter-jump" ]
+                [ span [] [ text name ]
+                , select [ onInput (\value -> JumpToCitation (String.join "." (List.take level current ++ [ value ]))) ]
+                    (List.map (\value -> option [ Html.Attributes.value value, selected (getAt level current == Just value) ] [ text value ]) (choices level))
+                ]
+    in
+    div [ class "citation-picker" ]
+        (List.indexedMap levelSelect names
+            ++ [ input
+                    [ class "citation-go"
+                    , placeholder (if String.contains ":" (currentLabel model) then "Go to 1:2" else "Go to 1.2")
+                    , attribute "aria-label" "Go to citation"
+                    , on "change" (Decode.map GoToCitation (Decode.at [ "target", "value" ] Decode.string))
+                    ]
+                    []
+               ]
+        )

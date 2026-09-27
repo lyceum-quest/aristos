@@ -72,7 +72,7 @@ type alias Item =
 type alias Attempt =
     { id : String
     , work : String
-    , passage : Int
+    , passage : String
     , sentenceId : String
     , sentenceText : String
     , startedAt : Int
@@ -137,7 +137,7 @@ isWordToken token =
 
 {-| Keys the learner marked wrong in their most recent finished attempt at this passage.
 -}
-missedLastTime : String -> Int -> List Attempt -> Dict String String
+missedLastTime : String -> String -> List Attempt -> Dict String String
 missedLastTime work passage attempts =
     passageAttempts work passage attempts
         |> List.head
@@ -152,7 +152,7 @@ missedLastTime work passage attempts =
 
 {-| Finished attempts at one passage, newest first.
 -}
-passageAttempts : String -> Int -> List Attempt -> List Attempt
+passageAttempts : String -> String -> List Attempt -> List Attempt
 passageAttempts work passage attempts =
     attempts
         |> List.filter (\attempt -> attempt.work == work && attempt.passage == passage)
@@ -270,7 +270,7 @@ encodeAttempt attempt =
         [ ( "id", Encode.string attempt.id )
         , ( "type", Encode.string "attempt" )
         , ( "work", Encode.string attempt.work )
-        , ( "passage", Encode.int attempt.passage )
+        , ( "passage", Encode.string attempt.passage )
         , ( "sentenceId", Encode.string attempt.sentenceId )
         , ( "sentenceText", Encode.string attempt.sentenceText )
         , ( "startedAt", Encode.int attempt.startedAt )
@@ -319,7 +319,7 @@ attemptDecoder =
                     Decode.map8 Attempt
                         (Decode.field "id" Decode.string)
                         (Decode.field "work" Decode.string)
-                        (Decode.field "passage" Decode.int)
+                        (Decode.field "passage" Decode.string)
                         (Decode.field "sentenceId" Decode.string)
                         (Decode.field "sentenceText" Decode.string)
                         (Decode.field "startedAt" Decode.int)

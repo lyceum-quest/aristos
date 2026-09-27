@@ -11,15 +11,17 @@ environment dev {
     "openssh",
     "rocpkgs.nightly-2026-09-19-d025939",
     "rsync",
-    "sqlite"
+    "sqlite",
+    "unzip"
   ]
   overlays: ["github:roc-lang/roc-overlay"]
 }
 
-# kai run generate -- <work> <config.json> <sentence-count|all>
-# e.g. kai run generate -- luke scripts/generate/works/luke.json 4
-# Translates and glosses into conllu/generated/<work>-<model>/, resuming its
-# checkpoints; missing sentences make paid API calls. Meditations Book 1 is 119.
+# kai run generate -- <work> <config.json> <passage-count|all>
+# e.g. kai run generate -- 1peter scripts/generate/works/1peter.json 25
+# Glosses sentences and translates canonical passages (verses, sections; see
+# scripts/Passages.roc) into conllu/generated/<work>-<model>/, resuming its
+# checkpoints; missing work makes paid API calls. Meditations Book 1 is 42.
 # SIGINT is ignored so Ctrl-C stops the current stage and the loop reports;
 # see ../roc-issues/improvements/IMPROVEMENT-002-basic-cli-sigint-handling.
 task generate {
@@ -159,6 +161,19 @@ task lint {
 task check-lint-tool {
   environment: "dev"
   run: ["roc", "check", "scripts/lint.roc"]
+}
+
+# kai run vendor-oga-refs -- <opera_graeca_adnotata_v0.2.0.zip> <cts-id>...
+# Vendors OGA's canonical citation layer into data/oga/refs/<cts-id>.tsv, which
+# scripts/Passages.roc uses to group each work into verses or sections.
+task vendor-oga-refs {
+  environment: "dev"
+  run: ["roc", "devtools/vendor-oga-refs.roc"]
+}
+
+task check-passages-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/passages.roc"]
 }
 
 # Embeds tests/fixtures/fsrs/*.json in the generated tests/FsrsFixtures.elm.

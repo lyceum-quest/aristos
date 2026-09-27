@@ -14,10 +14,10 @@ module Review exposing
     , suggestRating
     )
 
-{-| Spaced review of studied sentences with FSRS (see `Fsrs`).
+{-| Spaced review of studied passages with FSRS (see `Fsrs`).
 
-Each sentence of a work becomes a card when its first attempt is graded. A work's queue for today is its due cards
-(most overdue first) followed by sentences not yet studied, in text order, up to a daily limit of new sentences.
+Each passage of a work becomes a card when its first attempt is graded. A work's queue for today is its due cards
+(most overdue first) followed by passages not yet studied, in text order, up to a daily limit of new passages.
 
 -}
 
@@ -28,19 +28,19 @@ import Json.Encode as Encode
 import Study
 
 
-{-| A scheduled sentence. `introducedAt` is when it was first graded, for the daily new-sentence limit.
+{-| A scheduled passage, keyed by its citation. `introducedAt` is when it was first graded, for the daily new limit.
 -}
 type alias Entry =
     { work : String
-    , passage : Int
+    , passage : String
     , card : Fsrs.Card
     , introducedAt : Int
     }
 
 
 type alias Queue =
-    { due : List Int
-    , new : List Int
+    { due : List String
+    , new : List String
     }
 
 
@@ -56,9 +56,9 @@ scheduler =
     Fsrs.scheduler Fsrs.defaultConfig |> Result.toMaybe
 
 
-entryKey : String -> Int -> String
+entryKey : String -> String -> String
 entryKey work passage =
-    "card:" ++ work ++ ":" ++ String.fromInt passage
+    "card:" ++ work ++ ":" ++ passage
 
 
 {-| Days are UTC days, matching how FSRS counts elapsed days.
@@ -68,10 +68,10 @@ startOfDay now =
     now - modBy 86400000 now
 
 
-{-| Today's queue for a work of `sentenceCount` sentences.
+{-| Today's queue for a work whose passages, in text order, are `passages` (citations).
 -}
-queue : Int -> Int -> String -> Int -> Dict String Entry -> Queue
-queue now newPerDay work sentenceCount entries =
+queue : Int -> Int -> String -> List String -> Dict String Entry -> Queue
+queue now newPerDay work passages entries =
     let
         cards =
             entries |> Dict.values |> List.filter (\entry -> entry.work == work)
@@ -91,7 +91,7 @@ queue now newPerDay work sentenceCount entries =
             |> List.sortBy (\entry -> entry.card.due)
             |> List.map .passage
     , new =
-        List.range 1 sentenceCount
+        passages
             |> List.filter (\passage -> not (List.member passage studied))
             |> List.take newSlots
     }
@@ -108,9 +108,9 @@ dueLater now work entries =
         |> List.minimum
 
 
-{-| Reviews a sentence (a new card on its first review) and returns its updated entry.
+{-| Reviews a passage (a new card on its first review) and returns its updated entry.
 -}
-schedule : Int -> Fsrs.Rating -> String -> Int -> Dict String Entry -> Maybe Entry
+schedule : Int -> Fsrs.Rating -> String -> String -> Dict String Entry -> Maybe Entry
 schedule now rating work passage entries =
     let
         existing =
@@ -204,7 +204,7 @@ encodeEntry entry =
         [ ( "id", Encode.string (entryKey entry.work entry.passage) )
         , ( "type", Encode.string "card" )
         , ( "work", Encode.string entry.work )
-        , ( "passage", Encode.int entry.passage )
+        , ( "passage", Encode.string entry.passage )
         , ( "introducedAt", Encode.int entry.introducedAt )
         , ( "fsrs", Encode.string Fsrs.fsrsVersion )
         , ( "card"
@@ -237,7 +237,7 @@ entryDecoder =
                 else
                     Decode.map4 Entry
                         (Decode.field "work" Decode.string)
-                        (Decode.field "passage" Decode.int)
+                        (Decode.field "passage" Decode.string)
                         (Decode.field "card" cardDecoder)
                         (Decode.field "introducedAt" Decode.int)
             )

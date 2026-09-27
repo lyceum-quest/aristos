@@ -33,6 +33,7 @@ type alias Sentence =
 
 type alias CorpusToken =
     { id : Int
+    , tid : String
     , form : String
     , lemma : String
     , upos : String
@@ -257,6 +258,9 @@ tokenFromRow row next =
             in
             Ok
                 { id = tokenId
+                , tid =
+                    -- OGA keys each token by `t_N` in the first MISC field; canonical passages refer to it.
+                    String.split "|" row.misc |> List.head |> Maybe.withDefault "" |> (\first -> if String.startsWith "t_" first then first else "")
                 , form = normalizedField row.form
                 , lemma = normalizedField row.lemma
                 , upos = normalizedField row.upos

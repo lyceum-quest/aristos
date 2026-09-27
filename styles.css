@@ -3812,3 +3812,28 @@ p {
     min-width: 0;
   }
 }
+
+/* Canonical citation picker */
+.citation-picker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.citation-go {
+  width: 7.5rem;
+  padding: 6px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink);
+  background: var(--surface-input);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .citation-go {
+    width: 5.5rem;
+  }
+}
