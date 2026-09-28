@@ -62,12 +62,25 @@ task format-lyceum-data-deploy {
 
 task format-lyceum-import {
   environment: "dev"
-  run: ["roc", "fmt", "scripts/import-lyceum.roc", "scripts/LyceumConllu.roc", "scripts/LyceumImportSql.roc", "scripts/LyceumWebsite.roc", "scripts/lyceum-website.roc"]
+  run: ["roc", "fmt", "scripts/import-lyceum.roc", "scripts/LyceumConllu.roc", "scripts/LyceumImportSql.roc", "scripts/LyceumWebsite.roc", "scripts/lyceum-import-config.roc", "scripts/lyceum-website.roc"]
 }
 
 task check-lyceum-import {
   environment: "dev"
   run: ["roc", "check", "scripts/import-lyceum.roc"]
+}
+
+# kai run lyceum-import-config -- <conllu/generated/work-model> <citation-levels>
+# Writes scripts/lyceum-imports/<work-model>.json, citing each sentence by its first token in
+# data/oga/refs (levels: 2 for Bible chapter.verse and Meditations book.chapter, 1 for Plato pages).
+task lyceum-import-config {
+  environment: "dev"
+  run: ["roc", "scripts/lyceum-import-config.roc"]
+}
+
+task check-lyceum-import-config-tool {
+  environment: "dev"
+  run: ["roc", "check", "scripts/lyceum-import-config.roc"]
 }
 
 task check-lyceum-website-tool {
