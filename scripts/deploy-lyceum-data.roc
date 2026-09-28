@@ -3,11 +3,11 @@ app [main!] { cli: platform "https://github.com/roc-lang/basic-cli/releases/down
 import cli.Cmd
 import cli.Env
 import cli.OsStr
+import cli.Path
 import cli.Sleep
 import cli.Stderr
 import cli.Stdout
-
-source = "../lyceum/website-private/data"
+import LyceumWebsite
 
 data = "/var/lib/lyceum/data"
 
@@ -24,11 +24,12 @@ main! = |args| {
 		}
 		_ => Err(Deploy("Usage: deploy-lyceum-data staging|production"))
 	}?
+	source = "${website_dir!({})?}/data"
 	# Validate the complete pair before even acquiring the remote lock.
-	_ = local_check!(files)?
+	_ = local_check!(source, files)?
 	expected = hashes(run!("sha256sum", paths(source))?)
 	_ = remote!(host, ["mkdir", "--mode=700", "--", lock])?
-	result = deploy_locked!(host, domain, expected)
+	result = deploy_locked!(host, domain, source, expected)
 	unlock = remote!(host, ["rmdir", "--", lock])
 	match (result, unlock) {
 		(Ok(_), Ok(_)) => Stdout.line!("Deployed reader data to https://${domain}/")
@@ -56,7 +57,7 @@ run! = |program, args| {
 # SSH joins arguments into a remote command string: quote every word, not only paths.
 remote! = |host, args| run!("ssh", ["-o", "BatchMode=yes", "-o", "ConnectTimeout=15", host, Str.join_with(args.map(quote), " ")])
 
-local_check! = |remaining| match remaining {
+local_check! = |source, remaining| match remaining {
 	[] => Ok({})
 	[file, .. as rest] => {
 		path = "${source}/${file}"
@@ -64,7 +65,7 @@ local_check! = |remaining| match remaining {
 		_ = local_sidecars!(path, ["-wal", "-shm", "-journal"])?
 		checked = run!("sqlite3", ["-readonly", "-bail", path, "PRAGMA integrity_check; PRAGMA journal_mode;"])?
 		_ = require(List.contains(["ok\ndelete", "ok\ntruncate", "ok\npersist"], checked), "Unsafe SQLite database ${path}: ${checked}")?
-		local_check!(rest)
+		local_check!(source, rest)
 	}
 }
 
@@ -93,7 +94,7 @@ verify! = |host, dir, expected| {
 
 services! = |host, action| remote!(host, ["systemctl", action, "lyceum", "lyceum-admin"])
 
-deploy_locked! = |host, domain, expected| {
+deploy_locked! = |host, domain, source, expected| {
 	baseline = hashes(remote!(host, List.prepend(paths(data), "sha256sum"))?)
 	stage = remote!(host, ["mktemp", "-d", "${data}/.aristos-deploy.XXXXXXXXXX"])?
 	# mktemp's output is used by scp as well as SSH: constrain it to this template.
@@ -104,7 +105,7 @@ deploy_locked! = |host, domain, expected| {
 	_ = Stdout.line!("Retained deployment directory: ${stage}; backup pair: ${backup}")?
 	_ = run!("scp", ["-B", "${source}/texts.db", "${source}/editions.db", "${host}:${incoming}/"])?
 	_ = verify!(host, incoming, expected)?
-	_ = local_check!(files)?
+	_ = local_check!(source, files)?
 	_ = require(hashes(run!("sha256sum", paths(source))?) == expected, "Local databases changed during staging")?
 
 	# Any failure from stop onward may mean services are stopped, even if SSH failed.
@@ -179,4 +180,9 @@ probe! = |host, domain| {
 	_ = remote!(host, ["curl", "--fail", "--silent", "--show-error", "--max-time", "10", "--output", "/dev/null", "http://127.0.0.1:8080/health"])?
 	_ = run!("curl", ["--fail", "--silent", "--show-error", "--max-time", "15", "--output", "/dev/null", "https://${domain}/health"])?
 	Ok({})
+}
+
+website_dir! = |{}| {
+	dir = LyceumWebsite.dir(Env.var_str!(OsStr.from_str(LyceumWebsite.name)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")?
+	if Path.is_dir!(Path.utf8(dir)) ?? Bool.False Ok(dir) else Err(Deploy("${LyceumWebsite.name}=${dir} is not a directory"))
 }

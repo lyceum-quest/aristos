@@ -1,7 +1,5 @@
 {
   "input": "conllu/generated/meditations-claude-sonnet-5/output.conllu",
-  "texts_db": "../lyceum/website-private/data/texts.db",
-  "editions_db": "../lyceum/website-private/data/editions.db",
   "sql_output": "/tmp/aristos-lyceum-replace.sql",
   "work_urn": "urn:cts:greekLit:tlg0562.tlg001",
   "replace_editions": {

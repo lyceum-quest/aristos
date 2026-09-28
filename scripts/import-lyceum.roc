@@ -7,15 +7,18 @@ import cli.Path
 import cli.Stdout
 import LyceumConllu
 import LyceumImportSql
+import LyceumWebsite
 
 main! = |_args| {
 	config_path = Env.var_str!("LYCEUM_IMPORT_CONFIG") ? |_| MissingConfig("set LYCEUM_IMPORT_CONFIG to an import JSON config; LYCEUM_IMPORT_APPLY=1 opts into database writes")
 	config : LyceumImportSql.Config
 	config = Json.parse(Path.read_utf8!(Path.utf8(config_path))?)?
 	target = validate_config(config)?
+	# The databases always come from LYCEUM_WEBSITE_DIR, never from the config.
+	website = website_dir!({})?
 	input = absolute!(config.input)?
-	texts_db = absolute!(config.texts_db)?
-	editions_db = absolute!(config.editions_db)?
+	texts_db = absolute!("${website}/data/texts.db")?
+	editions_db = absolute!("${website}/data/editions.db")?
 	sql_output = absolute!(config.sql_output)?
 	_ = (
 		if input != texts_db and input != editions_db and input != sql_output and texts_db != editions_db and texts_db != sql_output and editions_db != sql_output {
@@ -24,7 +27,7 @@ main! = |_args| {
 			Err(PathsMustBeDistinct)
 		}
 	)?
-	resolved = { ..config, input, texts_db, editions_db, sql_output }
+	resolved = { ..config, input, sql_output }
 	references = match config.references {
 		Ok(values) => values
 		Err(Missing) => []
@@ -32,7 +35,7 @@ main! = |_args| {
 	verses = LyceumConllu.parse_with_references(Path.read_utf8!(Path.utf8(input))?, config.work_urn, references)?
 	apply = switch!("LYCEUM_IMPORT_APPLY", "0")?
 	backup = switch!("LYCEUM_IMPORT_BACKUP", "1")?
-	_ = Path.write_utf8!(Path.utf8(sql_output), "${LyceumImportSql.build(resolved, verses, target)}\n")?
+	_ = Path.write_utf8!(Path.utf8(sql_output), "${LyceumImportSql.build(resolved, editions_db, verses, target)}\n")?
 	_ = Stdout.line!("wrote ${sql_output}: ${U64.to_str(List.len(verses))} verse(s)")?
 	_ = (
 		if target.replace {
@@ -73,12 +76,12 @@ main! = |_args| {
 }
 
 validate_config = |config| {
-	fields = [config.input, config.texts_db, config.editions_db, config.sql_output, config.work_urn, config.generator]
+	fields = [config.input, config.sql_output, config.work_urn, config.generator]
 	work_code = Str.replace_first(config.work_urn, "urn:cts:greekLit:", "")
 	if List.any(fields, |value| Str.trim(value) == "" or List.any(Str.to_utf8(value), |byte| byte < 32 or byte == 127)) {
 		Err(InvalidConfig("fields must be nonempty and contain no control characters"))
-	} else if !Str.ends_with(config.texts_db, "/texts.db") or !Str.ends_with(config.editions_db, "/editions.db") or !Str.ends_with(config.sql_output, ".sql") {
-		Err(InvalidConfig("use explicit texts.db and editions.db paths and a .sql output"))
+	} else if !Str.ends_with(config.sql_output, ".sql") {
+		Err(InvalidConfig("sql_output must be a .sql file"))
 	} else if !Str.starts_with(config.work_urn, "urn:cts:greekLit:") or List.len(Str.split_on(config.work_urn, ":")) != 4 or List.len(Str.split_on(work_code, ".")) != 2 or List.any(Str.split_on(work_code, "."), |part| part == "") or !List.all(Str.to_utf8(work_code), |byte| slug_byte(byte) or byte == 46 or (byte >= 65 and byte <= 90)) {
 		Err(InvalidConfig("work_urn must identify a Greek CTS work, not an edition or passage"))
 	} else {
@@ -157,4 +160,9 @@ backup! = |path| {
 	)?
 	_ = Cmd.new_str("sqlite3").args_str(["-readonly", path, ".backup ${dot_quote(backup)}"]).exec_cmd!()?
 	Stdout.line!("backup: ${backup}")
+}
+
+website_dir! = |{}| {
+	dir = LyceumWebsite.dir(Env.var_str!(OsStr.from_str(LyceumWebsite.name)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")?
+	if Path.is_dir!(Path.utf8(dir)) ?? Bool.False Ok(dir) else Err(MissingWebsiteDir("${LyceumWebsite.name}=${dir} is not a directory"))
 }

@@ -9,6 +9,7 @@ import cli.Path
 import cli.Sleep
 import cli.Stderr
 import cli.Stdout
+import LyceumWebsite
 
 main! : List(OsStr) => Try({}, _)
 main! = |args| {
@@ -17,7 +18,8 @@ main! = |args| {
 	target = Env.var_str!("TARGET_HOST") ?? "lyceum-staging"
 	remote_dir = Env.var_str!("REMOTE_DIR") ?? "/var/www/aristos"
 	deploy_state = Env.var_str!("DEPLOY_STATE") ?? "/var/lib/aristos-deploy"
-	lyceum_source = Env.var_str!("LYCEUM_SOURCE") ?? "/home/blu/src/greek/lyceum/website"
+	# Only provisioning reads the Lyceum website checkout (its flake pins the host).
+	lyceum_source = if provision website_dir!({})? else ""
 	configure_ci_ssh!({})?
 
 	if Bool.not(Path.exists!("dist/preload/corpora.json")?) {
@@ -205,4 +207,9 @@ wait_for_public! = |attempts| {
 exit_with_message! = |code, message| {
 	Stderr.line!(message) ?? {}
 	Err(Exit(code))
+}
+
+website_dir! = |{}| {
+	dir = LyceumWebsite.dir(Env.var_str!(OsStr.from_str(LyceumWebsite.name)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")?
+	if Path.is_dir!(Path.utf8(dir)) ?? Bool.False Ok(dir) else Err(MissingWebsiteDir("${LyceumWebsite.name}=${dir} is not a directory"))
 }
