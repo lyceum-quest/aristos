@@ -1,4 +1,4 @@
-module Passage exposing (Unit, unitsDecoder, fromUnits, levels, levelNames, parts)
+module Passage exposing (Unit, fromUnits, isSplit, levelNames, levels, parts, unitsDecoder)
 
 {-| Canonical passages: a work's text regrouped by its canonical citation (verses, sections, …) rather than by
 syntactic sentence. The preload ships each work's passages (`corpora/<id>.units.json`, written by the Roc pipeline
@@ -74,11 +74,19 @@ fromUnits units corpus =
     { corpus | sentences = List.filterMap passage units }
 
 
-{-| Citation levels of a ref: `1.2` -> ["1", "2"]; a suffix after `~` (a split unit) is not a level.
+{-| Citation levels of a ref: `1.2` -> ["1", "2"]. A unit split at its sentences adds its part number as a level:
+`43~2` (Stephanus page 43, §2) -> ["43", "2"].
 -}
 parts : String -> List String
 parts ref =
-    ref |> String.split "~" |> List.head |> Maybe.withDefault ref |> String.split "."
+    ref |> String.replace "~" "." |> String.split "."
+
+
+{-| Whether the work's canonical units are split into numbered parts (every ref has a `~n`).
+-}
+isSplit : List Conllu.Sentence -> Bool
+isSplit passages =
+    not (List.isEmpty passages) && List.all (.id >> String.contains "~") passages
 
 
 levels : List Conllu.Sentence -> Int
@@ -86,10 +94,25 @@ levels passages =
     passages |> List.head |> Maybe.map (.id >> parts >> List.length) |> Maybe.withDefault 1
 
 
-{-| Names for the picker's selects, by citation depth.
+{-| Names for the picker's selects, by citation depth; split works end with a `§` level.
 -}
-levelNames : Bool -> Int -> List String
-levelNames bible depth =
+levelNames : Bool -> Bool -> Int -> List String
+levelNames bible split depth =
+    if split then
+        (if depth == 2 then
+            [ "Page" ]
+
+         else
+            levelNames bible False (depth - 1)
+        )
+            ++ [ "§" ]
+
+    else
+        unsplitNames bible depth
+
+
+unsplitNames : Bool -> Int -> List String
+unsplitNames bible depth =
     case ( bible, depth ) of
         ( True, 2 ) ->
             [ "Chapter", "Verse" ]

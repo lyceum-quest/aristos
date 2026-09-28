@@ -1,7 +1,8 @@
 # Groups a work's tokens into study passages by its canonical citation (data/oga/refs/<cts-id>.tsv, from OGA's
 # PAULA citation layer). Fully deterministic: the finest canonical unit is the passage, unless the work's mean unit
 # is under 12 tokens (lines of poetry: each sentence becomes a passage, labelled with its citation range) or over
-# 150 tokens (Stephanus pages, long chapters: each unit is split at its sentences, labelled unit §n).
+# 150 tokens (Stephanus pages, long chapters: each unit is split at its sentences, labelled unit §n). In
+# dialogues the sentences are grouped into speaker turns first (see `block_tokens`).
 Passages :: [].{
 
 	Passage : { ref : Str, label : Str, tokens : List(Str) }
@@ -34,29 +35,61 @@ Passages :: [].{
 	build = |cts_id, tsv, blocks| {
 		cited = citations(tsv)
 		separator = label_style(cts_id)
-		tokens = block_tokens(blocks, 0, [])
+		tokens = block_tokens(blocks)
 		located = locate(tokens, cited.refs, [])?
 		Ok(group(located, mode(cited.mean), separator, [], Nothing, Dict.empty()))
 	}
 
-	# (token id, sentence index) for every visible row; OGA placeholder rows (MISC `e_…`) are skipped.
-	block_tokens = |blocks, index, found| match blocks {
+	# (token id, segment) for every visible row; OGA placeholder rows (MISC `e_…`) are skipped. A segment is a
+	# sentence, except in dialogues (works with speaker-label sentences such as `ΣΩ .`), where it is a speaker's turn,
+	# split at a sentence once it reaches `turn_cap` tokens.
+	block_tokens = |blocks| {
+		parsed = List.map(blocks, parse_block)
+		assign(parsed, List.any(parsed, |block| block.label), 0, 0, 0, [])
+	}
+
+	turn_cap = 60
+
+	assign = |parsed, dialogue, index, segment, size, found| match parsed {
 		[] => found
 		[block, .. as rest] => {
-			ids = List.keep_oks(Str.split_on(block, "\n"), |line|
-				if Str.starts_with(line, "#") {
-					Err(Comment)
-				} else {
-					match Str.split_on(line, "\t") {
-						[_, _, _, _, _, _, _, _, _, misc] => {
-							token = List.first(Str.split_on(misc, "|")) ?? ""
-							if Str.starts_with(token, "t_") Ok(token) else Err(Placeholder)
-						}
-						_ => Err(NotARow)
-					}
-				})
-			block_tokens(rest, index + 1, List.concat(found, List.map(ids, |token| { token, sentence: index })))
+			count = List.len(block.tokens)
+			start = if dialogue (block.label or size >= turn_cap) else index != 0
+			next = if start { segment: segment + 1, size: if block.label 0 else count } else { segment, size: size + count }
+			assign(rest, dialogue, index + 1, next.segment, next.size, List.concat(found, List.map(block.tokens, |token| { token, sentence: next.segment })))
 		}
+	}
+
+	parse_block = |block| {
+		rows = List.keep_oks(Str.split_on(block, "\n"), |line|
+			if Str.starts_with(line, "#") {
+				Err(Comment)
+			} else {
+				match Str.split_on(line, "\t") {
+					[_, form, _, _, _, _, _, _, _, misc] => {
+						token = List.first(Str.split_on(misc, "|")) ?? ""
+						if Str.starts_with(token, "t_") Ok({ token, form }) else Err(Placeholder)
+					}
+					_ => Err(NotARow)
+				}
+			})
+		{ tokens: List.map(rows, |row| row.token), label: speaker_label(List.map(rows, |row| row.form)) }
+	}
+
+	# `ΣΩ .`: a sentence of one short word in unaccented Greek capitals and a full stop.
+	speaker_label = |forms| match forms {
+		[name, "."] => {
+			bytes = Str.to_utf8(name)
+			!List.is_empty(bytes) and List.len(bytes) <= 8 and capitals(bytes)
+		}
+		_ => Bool.False
+	}
+
+	# Α–Ω are U+0391–U+03A9: UTF-8 0xCE 0x91–0xA9.
+	capitals = |bytes| match bytes {
+		[] => Bool.True
+		[lead, second, .. as rest] => lead == 0xCE and second >= 0x91 and second <= 0xA9 and capitals(rest)
+		_ => Bool.False
 	}
 
 	locate = |tokens, refs, found| match tokens {

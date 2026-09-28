@@ -1514,7 +1514,7 @@ jumpToCitation prefix model =
             ( { model | notice = Just ("No passage " ++ prefix ++ " in " ++ workTitle model ++ ".") }, Cmd.none )
 
 
-{-| `1:2`, `1 2`, or `1,2` typed into the go-to box -> `1.2`.
+{-| `1:2`, `1 2`, `1,2`, or `43 §2` typed into the go-to box -> `1.2` or `43.2`.
 -}
 normalizeCitation : String -> String
 normalizeCitation typed =
@@ -1522,7 +1522,7 @@ normalizeCitation typed =
         |> String.trim
         |> String.map
             (\char ->
-                if char == ':' || char == ' ' || char == ',' then
+                if char == ':' || char == ' ' || char == ',' || char == '§' then
                     '.'
 
                 else
@@ -3915,7 +3915,7 @@ viewCitationPicker model =
             Passage.parts (currentRef model)
 
         names =
-            Passage.levelNames (String.contains ":" (currentLabel model)) (Passage.levels model.corpus.sentences)
+            Passage.levelNames (String.contains ":" (currentLabel model)) (Passage.isSplit model.corpus.sentences) (Passage.levels model.corpus.sentences)
 
         choices level =
             refs
