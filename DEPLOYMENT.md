@@ -45,3 +45,34 @@ This host-extension flake remains handwritten because the current Kai machine
 model cannot preserve and extend undeclared sibling services. It explicitly
 preserves the deployed Lyceum reader/admin packages and all existing Caddy
 routes. The checkout is `LYCEUM_WEBSITE_DIR` (see `.env.example`).
+
+## Lyceum reader data
+
+Generated works are imported into the Lyceum website's `data/texts.db` and
+`data/editions.db` and deployed to its hosts. Every task that touches the
+website finds its checkout through `LYCEUM_WEBSITE_DIR`, set in the
+environment or in a git-ignored `.env` (copy `.env.example`); nothing falls
+back to a guessed path.
+
+```sh
+cp .env.example .env            # then set LYCEUM_WEBSITE_DIR
+
+# Write an import config for a generated work, citing each sentence by its
+# first token in data/oga/refs; levels is the reader's citation depth.
+kai run lyceum-import-config -- conllu/generated/romans-claude-sonnet-5 2
+
+# Write the SQL only, then apply it (backs up both databases first).
+LYCEUM_IMPORT_CONFIG=scripts/lyceum-imports/romans-claude-sonnet-5.json kai run import-lyceum
+LYCEUM_IMPORT_CONFIG=scripts/lyceum-imports/romans-claude-sonnet-5.json LYCEUM_IMPORT_APPLY=1 kai run import-lyceum
+
+kai run check-lyceum-reader     # the website's Go tests, in its dev shell
+kai run deploy-lyceum-data      # lyceum-staging (demo.lyceum.quest)
+LYCEUM_DEPLOY_PRODUCTION=1 kai run deploy-lyceum-data-prod
+```
+
+Applying needs the website's full `data/texts.db`, which is not in its Git
+repository, and the work and its author must already be in its catalog.
+Configs in `scripts/lyceum-imports/` add an `aristos-<model>` edition;
+`scripts/lyceum-replace.example.json` instead replaces two existing editions
+wholesale. A re-import replaces the passages it names and keeps the rest.
+Deploying uses the `lyceum-staging` and `lyceum-prod` SSH hosts.
