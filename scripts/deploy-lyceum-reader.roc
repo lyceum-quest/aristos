@@ -1,11 +1,13 @@
 app [main!] { cli: platform "https://github.com/roc-lang/basic-cli/releases/download/0.22.2/9zUBxb1LtXYVc4eR4hAtd1WQDwBYDhM6HQdZz1UFCm2m.tar.zst" }
 
 import cli.Cmd
+import cli.Env
 import cli.OsStr
 import cli.Path
 import cli.Sleep
 import cli.Stderr
 import cli.Stdout
+import LyceumWebsite
 
 host = "lyceum-staging"
 
@@ -28,8 +30,9 @@ main! = |args| {
 		[_, "staging"] => Ok({})
 		_ => Err(Deploy("Usage: deploy-lyceum-reader staging (production unsupported)"))
 	}?
+	website = website_dir!({})?
 	# Use the Git flake, never path: (which imports untracked secrets/databases).
-	artifact = run!("nix", ["build", "--no-link", "--print-out-paths", "../lyceum/website-private#default"])?
+	artifact = run!("nix", ["build", "--no-link", "--print-out-paths", "${website}#default"])?
 	_ = require(
 		match Str.split_on(artifact, "/") {
 			["", "nix", "store", name] => name != "" and name != "." and name != ".." and safe_component(name)
@@ -180,4 +183,9 @@ probe! = |{}| {
 	_ = remote!(["curl", "--fail", "--silent", "--show-error", "--max-time", "10", "--output", "/dev/null", "http://127.0.0.1:8080/health"])?
 	_ = run!("curl", ["--fail", "--silent", "--show-error", "--max-time", "15", "--output", "/dev/null", "https://demo.lyceum.quest/health"])?
 	Ok({})
+}
+
+website_dir! = |{}| {
+	dir = LyceumWebsite.dir(Env.var_str!(OsStr.from_str(LyceumWebsite.name)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")?
+	if Path.is_dir!(Path.utf8(dir)) ?? Bool.False Ok(dir) else Err(Deploy("${LyceumWebsite.name}=${dir} is not a directory"))
 }

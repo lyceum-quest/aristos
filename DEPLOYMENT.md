@@ -44,4 +44,4 @@ The Roc deployment CLI assembles the host configuration in
 This host-extension flake remains handwritten because the current Kai machine
 model cannot preserve and extend undeclared sibling services. It explicitly
 preserves the deployed Lyceum reader/admin packages and all existing Caddy
-routes. Override `LYCEUM_SOURCE` if that checkout moves.
+routes. The checkout is `LYCEUM_WEBSITE_DIR` (see `.env.example`).
