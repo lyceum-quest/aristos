@@ -2894,12 +2894,6 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
-.reader-bar-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .reader-scroll {
   flex: 1;
   overflow-y: auto;
@@ -3020,13 +3014,56 @@ p {
 }
 
 @media (max-width: 720px) {
+  /* Two rows: back, title, theme, Study; then ‹ picker › across the full width. */
   .reader-bar {
+    flex-wrap: wrap;
+    gap: 8px 10px;
     opacity: 1;
   }
 
-  .reader-bar .secondary-button {
+  .reader-bar::after {
+    content: "";
+    order: 4;
+    flex-basis: 100%;
+    height: 0;
+    margin-top: -8px;
+  }
+
+  .reader-bar-title {
+    order: 1;
+  }
+
+  .reader-bar-title > span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .reader-bar .reader-theme {
+    order: 2;
+  }
+
+  .reader-bar .reader-study {
+    order: 3;
+    flex-shrink: 0;
     padding: 6px 10px;
     font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .reader-bar .reader-prev {
+    order: 5;
+  }
+
+  .reader-bar .citation-picker {
+    order: 6;
+    flex: 1;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .reader-bar .reader-next {
+    order: 7;
   }
 
   .reader-marker {
@@ -3835,5 +3872,76 @@ p {
 @media (max-width: 720px) {
   .citation-go {
     width: 5.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .wide-only {
+    display: none;
+  }
+
+  /* Study bar: back and title, then ‹ picker › across the full width. */
+  .work-context-bar {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    padding: 8px 12px;
+  }
+
+  .work-context-bar .context-title {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .work-context-bar .context-title > div {
+    min-width: 0;
+  }
+
+  .work-context-bar .context-work {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .work-context-bar .context-actions,
+  .work-context-bar .passage-nav {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .passage-nav .citation-picker {
+    flex: 1;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  /* Picker controls share the row instead of overflowing it. */
+  .citation-picker .chapter-jump {
+    flex: none;
+  }
+
+  .citation-picker .chapter-jump select {
+    padding: 0 18px 0 7px;
+  }
+
+  .citation-picker .citation-go {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 2.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .reader-bar,
+  .work-context-bar {
+    column-gap: 6px;
+  }
+
+  .citation-picker {
+    gap: 4px;
+  }
+
+  .citation-picker .chapter-jump select {
+    padding: 0 14px 0 5px;
   }
 }

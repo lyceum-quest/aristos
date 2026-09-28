@@ -2243,21 +2243,19 @@ viewReader model =
                 [ span [ class "context-work" ] [ text (workTitle model) ]
                 , span [ class "reader-position" ] [ text (currentLabel model ++ " · " ++ String.fromInt (model.sentenceIndex + 1) ++ " / " ++ String.fromInt total) ]
                 ]
+            , button [ class "icon-button reader-prev", type_ "button", onClick (ReaderStep -1), disabled (model.sentenceIndex == 0), attribute "aria-label" "Previous passage (k)" ] [ text "‹" ]
             , viewCitationPicker model
-            , div [ class "reader-bar-actions" ]
-                [ button [ class "icon-button", type_ "button", onClick (ReaderStep -1), disabled (model.sentenceIndex == 0), attribute "aria-label" "Previous passage (k)" ] [ text "‹" ]
-                , button [ class "icon-button", type_ "button", onClick (ReaderStep 1), disabled (model.sentenceIndex >= total - 1), attribute "aria-label" "Next passage (j)" ] [ text "›" ]
-                , button [ class "icon-button", type_ "button", onClick ToggleTheme, attribute "aria-label" (themeActionLabel model.theme) ]
-                    [ text
-                        (if model.theme == DarkTheme then
-                            "☀"
+            , button [ class "icon-button reader-next", type_ "button", onClick (ReaderStep 1), disabled (model.sentenceIndex >= total - 1), attribute "aria-label" "Next passage (j)" ] [ text "›" ]
+            , button [ class "icon-button reader-theme", type_ "button", onClick ToggleTheme, attribute "aria-label" (themeActionLabel model.theme) ]
+                [ text
+                    (if model.theme == DarkTheme then
+                        "☀"
 
-                         else
-                            "☾"
-                        )
-                    ]
-                , button [ class "secondary-button", type_ "button", onClick ShowWorkspace ] [ text "Study this passage" ]
+                     else
+                        "☾"
+                    )
                 ]
+            , button [ class "secondary-button reader-study", type_ "button", onClick ShowWorkspace ] [ text "Study", span [ class "wide-only" ] [ text " this passage" ] ]
             ]
         , div [ id readerScrollId, class "reader-scroll", on "scroll" (Decode.succeed ReaderScrolled) ]
             [ article ([ class "reader-text", attribute "lang" "grc" ] ++ swipeAttributes model (model.sentenceIndex == 0) (model.sentenceIndex >= total - 1))
