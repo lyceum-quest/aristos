@@ -3321,7 +3321,8 @@ p {
   flex-direction: column;
   align-items: flex-start;
   gap: 3px;
-  min-width: 4.5rem;
+  /* Never narrower than its Greek word (min-content wins over max-width); long glosses wrap. */
+  min-width: min-content;
   max-width: 11rem;
   padding: 6px 8px;
   border-radius: 8px;
@@ -3336,6 +3337,7 @@ p {
 .interlinear-greek {
   font-family: var(--greek);
   font-size: 1.45rem;
+  white-space: nowrap;
 }
 
 .interlinear-reference,
@@ -3944,4 +3946,72 @@ p {
   .citation-picker .chapter-jump select {
     padding: 0 14px 0 5px;
   }
+}
+
+/* Reader layers: glosses, morphology, and translation with each passage */
+.reader-layers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px clamp(14px, 3vw, 28px);
+  border-bottom: 1px solid var(--header-line);
+  background: var(--header-bg);
+}
+
+.layer-toggle {
+  min-height: 32px;
+  padding: 4px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.layer-toggle.is-on {
+  border-color: var(--teal-line);
+  color: var(--ink);
+  background: var(--teal-soft);
+}
+
+.reader-interlinear {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.55em 0.9em;
+  padding: 0.2em 0 0.3em;
+}
+
+.reader-word {
+  display: flex;
+  flex-direction: column;
+  min-width: min-content;
+  max-width: 8.5rem;
+  line-height: 1.3;
+}
+
+.reader-word-greek {
+  white-space: nowrap;
+}
+
+.reader-word-gloss,
+.reader-word-morph {
+  min-height: 1.3em;
+  font-family: var(--sans);
+  overflow-wrap: break-word;
+}
+
+.reader-word-gloss {
+  margin-top: 0.2em;
+  color: var(--teal);
+  font-size: 0.8rem;
+}
+
+.reader-word-morph {
+  color: var(--faint);
+  font-size: 0.68rem;
+  letter-spacing: 0.01em;
 }

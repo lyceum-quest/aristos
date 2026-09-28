@@ -10,6 +10,7 @@ import Html exposing (Html, a, article, aside, button, div, footer, h1, h2, h3, 
 import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, style, target, type_, value)
 import Html.Events exposing (on, onClick, onInput, stopPropagationOn)
 import Http
+import Morphology
 import Passage
 import Json.Decode as Decode
 import Json.Encode as Encode
@@ -42,6 +43,21 @@ type Preset
 type Theme
     = DarkTheme
     | LightTheme
+
+
+{-| What the reader shows with each passage, switched from its layer bar and remembered in IndexedDB.
+-}
+type alias ReaderLayers =
+    { glosses : Bool
+    , morphology : Bool
+    , translation : Bool
+    }
+
+
+type ReaderLayer
+    = GlossLayer
+    | MorphologyLayer
+    | TranslationLayer
 
 
 {-| The study tools a passage offers: per-word glosses and the two translations.
@@ -184,6 +200,7 @@ type alias Model =
     , positions : Dict String Int
     , readerGloss : Maybe ( Int, Int )
     , readerRevealed : Set Int
+    , readerLayers : ReaderLayers
     , scrollGeneration : Int
     , reviews : Dict String Review.Entry
     , newPerDay : Int
@@ -207,6 +224,7 @@ type Msg
     | KeyPressed String String
     | ReaderTokenTapped Int Int
     | ReaderToggleTranslation Int
+    | ToggleReaderLayer ReaderLayer
     | ReaderStep Int
     | ReaderScrolled
     | ReaderSettled Int
@@ -309,6 +327,7 @@ init _ url key =
                 , readerGloss = Nothing
                 , readerRevealed = Set.empty
                 , scrollGeneration = 0
+                , readerLayers = { glosses = True, morphology = True, translation = True }
                 , reviews = Dict.empty
                 , newPerDay = Review.newPerDayDefault
                 , queueMode = False
@@ -322,6 +341,7 @@ init _ url key =
         , Task.perform Tick Time.now
         , Task.perform GotZone Time.here
         , storageGet "theme" "metadata" "theme"
+        , storageGet "reader-layers" "metadata" "reader-layers"
         , storageGet "positions" "metadata" "positions"
         , storageGet "review-settings" "metadata" "review-settings"
         , storageGetAll "attempts" "progress"
@@ -634,6 +654,37 @@ updateModel msg model =
                 , sentenceIndex = sentenceIndex
               }
             , Cmd.none
+            )
+
+        ToggleReaderLayer layer ->
+            let
+                current =
+                    model.readerLayers
+
+                layers =
+                    case layer of
+                        GlossLayer ->
+                            { current | glosses = not current.glosses }
+
+                        MorphologyLayer ->
+                            { current | morphology = not current.morphology }
+
+                        TranslationLayer ->
+                            { current | translation = not current.translation }
+            in
+            ( { model | readerLayers = layers, readerGloss = Nothing }
+            , storagePut "reader-layers" "metadata"
+                (Encode.object
+                    [ ( "key", Encode.string "reader-layers" )
+                    , ( "value"
+                      , Encode.object
+                            [ ( "glosses", Encode.bool layers.glosses )
+                            , ( "morphology", Encode.bool layers.morphology )
+                            , ( "translation", Encode.bool layers.translation )
+                            ]
+                      )
+                    ]
+                )
             )
 
         ReaderToggleTranslation sentenceIndex ->
@@ -1366,6 +1417,24 @@ handleStorageResponse value model =
                         { model | theme = DarkTheme }
 
                     _ ->
+                        model
+
+            else if response.id == "reader-layers" then
+                case
+                    Decode.decodeValue
+                        (Decode.field "value"
+                            (Decode.map3 ReaderLayers
+                                (Decode.field "glosses" Decode.bool)
+                                (Decode.field "morphology" Decode.bool)
+                                (Decode.field "translation" Decode.bool)
+                            )
+                        )
+                        response.value
+                of
+                    Ok layers ->
+                        { model | readerLayers = layers }
+
+                    Err _ ->
                         model
 
             else if response.id == "cached-corpus" && not model.corpusLoadedFromNetwork then
@@ -2257,6 +2326,7 @@ viewReader model =
                 ]
             , button [ class "secondary-button reader-study", type_ "button", onClick ShowWorkspace ] [ text "Study", span [ class "wide-only" ] [ text " this passage" ] ]
             ]
+        , viewReaderLayers model.readerLayers
         , div [ id readerScrollId, class "reader-scroll", on "scroll" (Decode.succeed ReaderScrolled) ]
             [ article ([ class "reader-text", attribute "lang" "grc" ] ++ swipeAttributes model (model.sentenceIndex == 0) (model.sentenceIndex >= total - 1))
                 (List.indexedMap (viewReaderSentence model) model.corpus.sentences)
@@ -2268,6 +2338,9 @@ viewReader model =
 viewReaderSentence : Model -> Int -> Sentence -> Html Msg
 viewReaderSentence model index sentence =
     let
+        layers =
+            model.readerLayers
+
         revealed =
             Set.member index model.readerRevealed
     in
@@ -2283,16 +2356,60 @@ viewReaderSentence model index sentence =
             , attribute "aria-expanded" (boolString revealed)
             ]
             [ text sentence.verse ]
-        , p [ class "reader-greek" ] (List.concat (List.indexedMap (viewReaderToken model index) sentence.tokens))
-        , if revealed && not (String.isEmpty sentence.proseTranslation) then
+        , if layers.glosses || layers.morphology then
+            div [ class "reader-interlinear" ] (List.map (viewReaderWord layers) (groupWords sentence.tokens))
+
+          else
+            p [ class "reader-greek" ] (List.concat (List.indexedMap (viewReaderToken model index) sentence.tokens))
+        , if (layers.translation || revealed) && not (String.isEmpty sentence.proseTranslation) then
             div [ class "reader-translation", attribute "lang" "en" ]
                 [ p [] [ text sentence.proseTranslation ]
-                , if String.isEmpty sentence.literalTranslation then
+                , if not revealed || String.isEmpty sentence.literalTranslation then
                     text ""
 
                   else
                     p [ class "reader-literal" ] [ text sentence.literalTranslation ]
                 ]
+
+          else
+            text ""
+        ]
+
+
+{-| Switches for what the reader shows with each passage.
+-}
+viewReaderLayers : ReaderLayers -> Html Msg
+viewReaderLayers layers =
+    let
+        toggle layer label on =
+            button
+                [ classList [ ( "layer-toggle", True ), ( "is-on", on ) ]
+                , type_ "button"
+                , onClick (ToggleReaderLayer layer)
+                , attribute "aria-pressed" (boolString on)
+                ]
+                [ text label ]
+    in
+    div [ class "reader-layers", attribute "role" "group", attribute "aria-label" "Show with the Greek" ]
+        [ toggle GlossLayer "Glosses" layers.glosses
+        , toggle MorphologyLayer "Morphology" layers.morphology
+        , toggle TranslationLayer "Translation" layers.translation
+        ]
+
+
+{-| A word with its following punctuation, and the gloss and morphology beneath it.
+-}
+viewReaderWord : ReaderLayers -> ( CorpusToken, String ) -> Html Msg
+viewReaderWord layers ( token, suffix ) =
+    span [ class "reader-word" ]
+        [ span [ class "reader-word-greek" ] [ text (token.form ++ suffix) ]
+        , if layers.glosses then
+            span [ class "reader-word-gloss", attribute "lang" "en" ] [ text (displayGloss token.gloss) ]
+
+          else
+            text ""
+        , if layers.morphology then
+            span [ class "reader-word-morph", attribute "lang" "en" ] [ text (Morphology.abbreviation token.upos token.morphology.summary) ]
 
           else
             text ""
