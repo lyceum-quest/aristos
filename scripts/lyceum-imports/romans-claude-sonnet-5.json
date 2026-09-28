@@ -1,0 +1,28 @@
+{
+  "input": "conllu/generated/romans-claude-sonnet-5/output.conllu",
+  "sql_output": "/tmp/aristos-lyceum-romans-claude-sonnet-5.sql",
+  "work_urn": "urn:cts:greekLit:tlg0031.tlg006",
+  "edition_slug": "aristos-claude-sonnet-5",
+  "generator": "claude-sonnet-5",
+  "references": [
+    { "sentence_id": "1", "reference": "1.1" },
+    { "sentence_id": "2", "reference": "1.7" },
+    { "sentence_id": "3", "reference": "1.8" },
+    { "sentence_id": "4", "reference": "1.9" },
+    { "sentence_id": "5", "reference": "1.11" },
+    { "sentence_id": "6", "reference": "1.13" },
+    { "sentence_id": "7", "reference": "1.14" },
+    { "sentence_id": "8", "reference": "1.15" },
+    { "sentence_id": "9", "reference": "1.16" },
+    { "sentence_id": "10", "reference": "1.17" },
+    { "sentence_id": "11", "reference": "1.18" },
+    { "sentence_id": "12", "reference": "1.20" },
+    { "sentence_id": "13", "reference": "1.22" },
+    { "sentence_id": "14", "reference": "1.24" },
+    { "sentence_id": "15", "reference": "1.25" },
+    { "sentence_id": "16", "reference": "1.26" },
+    { "sentence_id": "17", "reference": "1.26" },
+    { "sentence_id": "18", "reference": "1.28" },
+    { "sentence_id": "19", "reference": "1.32" }
+  ]
+}
