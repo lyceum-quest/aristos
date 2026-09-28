@@ -1,0 +1,1302 @@
+# sentence_id = 1
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_1
+2	.	.	u	u--------	_	1	AuxK	_	t_2
+
+
+# sentence_id = 2
+# translation_lang = en
+# prose_translation = Why have you come at this hour, Crito?
+# literal_translation = Why at-this-hour have-you-arrived, O Crito?
+1	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	3	ADV	_	t_3
+2	τηνικάδε	τηνικάδε	d	d--------	_	3	ADV	_	t_4
+3	ἀφῖξαι	ἀφικνέομαι	v	v2srie---	Mood=i|Number=s|Person=2|Tense=r|Voice=e	0	PRED	_	t_5
+4	,	,	u	u--------	_	3	AuxX	_	t_6
+5	ὦ	ὦ	i	i--------	_	6	AuxZ	_	t_7
+6	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	3	ExD	_	t_8
+7	;	;	u	u--------	_	3	AuxK	_	t_9
+
+
+# sentence_id = 3
+# translation_lang = en
+# prose_translation = Socrates: Or is it still early?
+# literal_translation = Socrates: Or is-it not still early?
+1	ἢ	ἤ1	d	d--------	_	5	AuxY	_	t_10
+2	οὐ	οὐ	d	d--------	_	5	AuxZ	_	t_11
+3	πρῲ	πρωί	d	d--------	_	5	PNOM	_	t_12
+4	ἔτι	ἔτι	d	d--------	_	5	ADV	_	t_13
+5	ἐστίν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_14
+6	;	;	u	u--------	_	5	AuxK	_	t_15
+
+
+# sentence_id = 4
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_16
+2	.	.	u	u--------	_	1	AuxK	_	t_17
+
+
+# sentence_id = 5
+# translation_lang = en
+# prose_translation = Certainly, indeed.
+# literal_translation = Very much indeed then [it is so].
+1	πάνυ	πάνυ	d	d--------	_	4	ADV	_	t_18
+2	μὲν	μέν	d	d--------	_	3	AuxZ	_	t_19
+3	οὖν	οὖν	d	d--------	_	4	AuxY	_	t_20
+4	[0]	[0]	-	---------	_	0	PRED	_	e_1
+5	.	.	u	u--------	_	4	AuxK	_	t_21
+
+
+# sentence_id = 6
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_22
+2	.	.	u	u--------	_	1	AuxK	_	t_23
+
+
+# sentence_id = 7
+# translation_lang = en
+# prose_translation = Socrates: What time is it, roughly?
+# literal_translation = Socrates: What-time [is it] especially?
+1	πηνίκα	πηνίκα	d	d--------	_	3	ADV	_	t_24
+2	μάλιστα	μάλιστα	d	d--------	_	1	ADV	_	t_25
+3	[0]	[0]	-	---------	_	0	PRED	_	e_2
+4	;	;	u	u--------	_	3	AuxK	_	t_26
+
+
+# sentence_id = 8
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_27
+2	.	.	u	u--------	_	1	AuxK	_	t_28
+
+
+# sentence_id = 9
+# translation_lang = en
+# prose_translation = It is early dawn.
+# literal_translation = [It is] deep dawn.
+1	ὄρθρος	ὄρθρος	n	n-s---mn-	Case=n|Gender=m|Number=s	3	PNOM	_	t_29
+2	βαθύς	βαθύς	a	a-s---mn-	Case=n|Gender=m|Number=s	1	ATR	_	t_30
+3	[0]	[0]	-	---------	_	0	PRED	_	e_3
+4	.	.	u	u--------	_	3	AuxK	_	t_31
+
+
+# sentence_id = 10
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_32
+2	.	.	u	u--------	_	1	AuxK	_	t_33
+
+
+# sentence_id = 11
+# translation_lang = en
+# prose_translation = I'm amazed that the prison guard was willing to listen to you.
+# literal_translation = I marvel how the guard of the prison was willing to give heed to you.
+1	θαυμάζω	θαυμάζω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_34
+2	ὅπως	ὅπως	c	c--------	_	1	AuxC	_	t_35
+3	ἠθέλησέ	ἐθέλω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	2	OBJ	_	t_36
+4	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	9	OBJ	_	t_37
+5	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	8	ATR	_	t_38
+6	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	7	ATR	_	t_39
+7	δεσμωτηρίου	δεσμωτήριον	n	n-s---ng-	Case=g|Gender=n|Number=s	8	ATR	_	t_40
+8	φύλαξ	φύλαξ	n	n-s---mn-	Case=n|Gender=m|Number=s	3	SBJ	_	t_41
+9	ὑπακοῦσαι	ὑπακούω	v	v--ana---	Mood=n|Tense=a|Voice=a	3	OBJ	_	t_42
+10	.	.	u	u--------	_	1	AuxK	_	t_43
+
+
+# sentence_id = 12
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_44
+2	.	.	u	u--------	_	1	AuxK	_	t_45
+
+
+# sentence_id = 13
+# translation_lang = en
+# prose_translation = Crito: He's already familiar to me, Socrates, since he's often come here, and he's been done some good turn by me as well.
+# literal_translation = [He] is already familiar to-me, O Socrates, on-account-of the [fact of] coming-here often, and something too has-been-benefited by me.
+1	συνήθης	συνήθης	a	a-s---mn-	Case=n|Gender=m|Number=s	4	PNOM	_	t_46
+2	ἤδη	ἤδη	d	d--------	_	4	ADV	_	t_47
+3	μοί	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	1	ADV	_	t_48
+4	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	15	PRED	_	t_49
+5	,	,	u	u--------	_	0	AuxX	_	t_50
+6	ὦ	ὦ	i	i--------	_	7	AuxZ	_	t_51
+7	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	15	ExD	_	t_52
+8	,	,	u	u--------	_	5	AuxX	_	t_53
+9	διὰ	διά	r	r--------	_	4	AuxP	_	t_54
+10	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	13	ATR	_	t_55
+11	πολλάκις	πολλάκις	d	d--------	_	13	ADV	_	t_56
+12	δεῦρο	δεῦρο	d	d--------	_	13	ADV	_	t_57
+13	φοιτᾶν	φοιτάω	v	v--pna---	Mood=n|Tense=p|Voice=a	9	ADV	_	t_58
+14	,	,	u	u--------	_	5	AuxX	_	t_59
+15	καί	καί	c	c--------	_	5	COORD	_	t_60
+16	τι	τις	p	p-s---nn-	Case=n|Gender=n|Number=s	18	SBJ	_	t_61
+17	καὶ	καί	d	d--------	_	18	AuxZ	_	t_62
+18	εὐεργέτηται	εὐεργετέω	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	15	PRED	_	t_63
+19	ὑπʼ	ὑπό	r	r--------	_	18	AuxP	_	t_64
+20	ἐμοῦ	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	19	OBJ	_	t_65
+21	.	.	u	u--------	_	5	AuxK	_	t_66
+
+
+# sentence_id = 14
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates.
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_67
+2	.	.	u	u--------	_	1	AuxK	_	t_68
+
+
+# sentence_id = 15
+# translation_lang = en
+# prose_translation = Have you just now arrived, or have you been here a long time?
+# literal_translation = Just now δὲ have-you-come, or long-ago [have you come]?
+1	ἄρτι	ἄρτι	d	d--------	_	4	ADV	_	t_69
+2	δὲ	δέ	g	g--------	_	3	AuxY	_	t_70
+3	ἥκεις	ἥκω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_71
+4	ἢ	ἤ1	c	c--------	_	3	COORD	_	t_72
+5	πάλαι	πάλαι	d	d--------	_	4	ADV	_	t_73
+6	;	;	u	u--------	_	3	AuxK	_	t_74
+
+
+# sentence_id = 16
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_75
+2	.	.	u	u--------	_	1	AuxK	_	t_76
+
+
+# sentence_id = 17
+# translation_lang = en
+# prose_translation = Fairly early, quite a while ago.
+# literal_translation = [It was] fairly early, long ago.
+1	ἐπιεικῶς	ἐπιεικής	d	d--------	_	3	ADV	_	t_77
+2	πάλαι	πάλαι	d	d--------	_	3	ADV	_	t_78
+3	[0]	[0]	-	---------	_	0	PRED	_	e_4
+4	.	.	u	u--------	_	3	AuxK	_	t_79
+
+
+# sentence_id = 18
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates.
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_80
+2	.	.	u	u--------	_	1	AuxK	_	t_81
+
+
+# sentence_id = 19
+# translation_lang = en
+# prose_translation = Then why didn’t you wake me at once, instead of sitting there beside me in silence?
+# literal_translation = Then, how did you not wake me at once, but sit beside [me] in silence?
+1	εἶτα	εἶτα	d	d--------	_	8	AuxY	_	t_82
+2	πῶς	πῶς	d	d--------	_	5	ADV	_	t_83
+3	οὐκ	οὐ	d	d--------	_	4	AuxZ	_	t_84
+4	εὐθὺς	εὐθύς2	d	d--------	_	5	ADV	_	t_85
+5	ἐπήγειράς	ἐπαγείρω	v	v2saia---	Mood=i|Number=s|Person=2|Tense=a|Voice=a	8	PRED	_	t_86
+6	με	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	5	OBJ	_	t_87
+7	,	,	u	u--------	_	0	AuxX	_	t_88
+8	ἀλλὰ	ἀλλά	c	c--------	_	7	COORD	_	t_89
+9	σιγῇ	σιγή	n	n-s---fd-	Case=d|Gender=f|Number=s	10	ADV	_	t_90
+10	παρακάθησαι	παρακάθημαι	v	v2spim---	Mood=i|Number=s|Person=2|Tense=p|Voice=m	8	PRED	_	t_91
+11	;	;	u	u--------	_	7	AuxK	_	t_92
+
+
+# sentence_id = 20
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_93
+2	.	.	u	u--------	_	1	AuxK	_	t_94
+
+
+# sentence_id = 21
+# translation_lang = en
+# prose_translation = Crito: No, by Zeus, Socrates, I myself would not want to be in so much sleeplessness and grief; but indeed I have long been marveling at you, noticing how pleasantly you sleep.
+# literal_translation = Crito: Not, by Zeus, O Socrates, would I myself have wanted to be in so great both sleeplessness and grief, but also of you long since I marvel, perceiving how pleasantly you sleep.
+1	οὐ	οὐ	d	d--------	_	10	AuxZ	_	t_95
+2	μὰ	μά	r	r--------	_	22	AuxP	_	t_96
+3	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	4	ATR	_	t_97
+4	Δία	ζεύς	n	n-d---fn-	Case=n|Gender=f|Number=d	2	ExD	_	t_98
+5	,	,	u	u--------	_	0	AuxX	_	t_99
+6	ὦ	ὦ	i	i--------	_	7	AuxZ	_	t_100
+7	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	22	ExD	_	t_101
+8	,	,	u	u--------	_	5	AuxX	_	t_102
+9	οὐ	οὐ	d	d--------	_	13	AuxZ	_	t_103
+10	δʼ	δέ	c	c--------	_	5	COORD	_	t_104
+11	ἂν	ἄν	d	d--------	_	13	AuxY	_	t_105
+12	αὐτὸς	αὐτός	p	p-s---mn-	Case=n|Gender=m|Number=s	13	ADV	_	t_106
+13	ἤθελον	ἐθέλω	v	v3piia---	Mood=i|Number=p|Person=3|Tense=i|Voice=a	22	PRED	_	t_107
+14	ἐν	ἐν	r	r--------	_	20	AuxP	_	t_108
+15	τοσαύτῃ	τοσοῦτος	a	a-s---fd-	Case=d|Gender=f|Number=s	18	ATR	_	t_109
+16	τε	τε	d	d--------	_	18	AuxY	_	t_110
+17	ἀγρυπνίᾳ	ἀγρυπνία	n	n-p---fn-	Case=n|Gender=f|Number=p	18	PNOM	_	t_111
+18	καὶ	καί	c	c--------	_	14	COORD	_	t_112
+19	λύπῃ	λύπη	n	n-s---fd-	Case=d|Gender=f|Number=s	18	PNOM	_	t_113
+20	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	13	OBJ	_	t_114
+21	,	,	u	u--------	_	5	AuxX	_	t_115
+22	ἀλλὰ	ἀλλά	c	c--------	_	5	COORD	_	t_116
+23	καὶ	καί	d	d--------	_	24	AuxZ	_	t_117
+24	σοῦ	σύ	p	p-s---mg-	Case=g|Gender=m|Number=s	26	OBJ	_	t_118
+25	πάλαι	πάλαι	d	d--------	_	26	ADV	_	t_119
+26	θαυμάζω	θαυμάζω	v	v1spsa---	Mood=s|Number=s|Person=1|Tense=p|Voice=a	22	PRED	_	t_120
+27	αἰσθανόμενος	αἰσθάνομαι	v	v-sppmmn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=m	26	ADV	_	t_121
+28	ὡς	ὡς	c	c--------	_	27	AuxC	_	t_122
+29	ἡδέως	ἡδέως	d	d--------	_	30	ADV	_	t_123
+30	καθεύδεις	καθεύδω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	28	OBJ	_	t_124
+31	·	·	u	u--------	_	5	AuxK	_	t_125
+
+
+# sentence_id = 22
+# translation_lang = en
+# prose_translation = Crito: And I woke you on purpose, so that you might spend the time as pleasantly as possible.
+# literal_translation = Crito: And on-purpose you not I-woke, [wait]—rather: And on-purpose you I-woke, in-order-that as most-pleasantly you-might-pass-the-time.
+1	καὶ	καί	d	d--------	_	5	AuxY	_	t_126
+2	ἐπίτηδές	ἐπίτηδες	d	d--------	_	5	ADV	_	t_127
+3	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	5	OBJ	_	t_128
+4	οὐκ	οὐ	d	d--------	_	5	AuxZ	_	t_129
+5	ἤγειρον	ἀγείρω	v	v1siia---	Mood=i|Number=s|Person=1|Tense=i|Voice=a	0	PRED	_	t_130
+6	ἵνα	ἵνα	c	c--------	_	5	AuxC	_	t_131
+7	ὡς	ὡς	d	d--------	_	8	AuxZ	_	t_132
+8	ἥδιστα	ἡδύς	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	9	ADV	_	t_133
+9	διάγῃς	διάγω	v	v2spsa---	Mood=s|Number=s|Person=2|Tense=p|Voice=a	6	ADV	_	t_134
+10	.	.	u	u--------	_	5	AuxK	_	t_135
+
+
+# sentence_id = 23
+# translation_lang = en
+# prose_translation = Crito: And often before too, in your whole life, I have counted you fortunate for your character, but especially now in the misfortune that has come upon you, seeing how easily and gently you bear it.
+# literal_translation = Crito: And often indeed both before too, in the whole life, I counted-happy you for-the character, but especially in the now standing-by misfortune, [seeing] how easily it and gently you-bear.
+1	καὶ	καί	d	d--------	_	12	AuxY	_	t_136
+2	πολλάκις	πολλάκις	d	d--------	_	12	ADV	_	t_137
+3	μὲν	μέν	d	d--------	_	17	AuxY	_	t_138
+4	δή	δή	d	d--------	_	12	AuxZ	_	t_139
+5	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_140
+6	καὶ	καί	d	d--------	_	7	AuxZ	_	t_141
+7	πρότερον	πρότερος	a	a-s---na-	Case=a|Gender=n|Number=s	12	ADV	_	t_142
+8	ἐν	ἐν	r	r--------	_	17	AuxP	_	t_143
+9	παντὶ	πᾶς	a	a-s---md-	Case=d|Gender=m|Number=s	11	ATR	_	t_144
+10	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	11	ATR	_	t_145
+11	βίῳ	βίος	n	n-s---md-	Case=d|Gender=m|Number=s	8	ADV	_	t_146
+12	ηὐδαιμόνισα	εὐδαιμονίζω	v	v1saia---	Mood=i|Number=s|Person=1|Tense=a|Voice=a	0	PRED	_	t_147
+13	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	14	ATR	_	t_148
+14	τρόπου	τρόπος	n	n-s---mg-	Case=g|Gender=m|Number=s	12	OBJ	_	t_149
+15	,	,	u	u--------	_	12	AuxX	_	t_150
+16	πολὺ	πολύς	a	a-s---na-	Case=a|Gender=n|Number=s	18	ADV	_	t_151
+17	δὲ	δέ	c	c--------	_	12	COORD	_	t_152
+18	μάλιστα	μάλιστα	d	d--------	_	23	AuxZ	_	t_153
+19	ἐν	ἐν	r	r--------	_	17	AuxP	_	t_154
+20	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	23	ATR	_	t_155
+21	νῦν	νῦν	d	d--------	_	22	ADV	_	t_156
+22	παρεστώσῃ	παρίστημι	v	v-srpafd-	Case=d|Gender=f|Mood=p|Number=s|Tense=r|Voice=a	23	ATR	_	t_157
+23	συμφορᾷ	συμφορά	n	n-s---fd-	Case=d|Gender=f|Number=s	19	ADV	_	t_158
+24	,	,	u	u--------	_	12	AuxX	_	t_159
+25	ὡς	ὡς	c	c--------	_	17	AuxC	_	t_160
+26	ῥᾳδίως	ῥᾴδιος	d	d--------	_	28	ADV	_	t_161
+27	αὐτὴν	αὐτός	p	p-s---fa-	Case=a|Gender=f|Number=s	30	OBJ	_	t_162
+28	καὶ	καί	c	c--------	_	30	COORD	_	t_163
+29	πρᾴως	πρᾶος	d	d--------	_	28	ADV	_	t_164
+30	φέρεις	φέρω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	25	ADV	_	t_165
+31	.	.	u	u--------	_	12	AuxK	_	t_166
+
+
+# sentence_id = 24
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_167
+2	.	.	u	u--------	_	1	AuxK	_	t_168
+
+
+# sentence_id = 25
+# translation_lang = en
+# prose_translation = For it would indeed be unseemly, Crito, for a man of my age to fret if he must now die.
+# literal_translation = For indeed it would be, O Crito, unseemly [for one] to be vexed, [being] so old, if it is necessary already to be dying.
+1	καὶ	καί	d	d--------	_	9	AuxY	_	t_169
+2	γὰρ	γάρ	d	d--------	_	9	AuxY	_	t_170
+3	ἄν	ἄν	d	d--------	_	9	AuxY	_	t_171
+4	,	,	u	u--------	_	9	AuxX	_	t_172
+5	ὦ	ὦ	i	i--------	_	6	AuxZ	_	t_173
+6	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	9	ExD	_	t_174
+7	,	,	u	u--------	_	9	AuxX	_	t_175
+8	πλημμελὲς	πλημμελής	a	a-s---nn-	Case=n|Gender=n|Number=s	9	PNOM	_	t_176
+9	εἴη	εἰμί	v	v3spoa---	Mood=o|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_177
+10	ἀγανακτεῖν	ἀγανακτέω	v	v--pna---	Mood=n|Tense=p|Voice=a	9	SBJ	_	t_178
+11	τηλικοῦτον	τηλικοῦτος	p	p-s---ma-	Case=a|Gender=m|Number=s	12	PNOM	_	t_179
+12	ὄντα	εἰμί	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	10	ADV	_	t_180
+13	εἰ	εἰ	c	c--------	_	10	AuxC	_	t_181
+14	δεῖ	δεῖ	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	13	ADV	_	t_182
+15	ἤδη	ἤδη	d	d--------	_	16	ADV	_	t_183
+16	τελευτᾶν	τελευτάω	v	v--pna---	Mood=n|Tense=p|Voice=a	14	SBJ	_	t_184
+17	.	.	u	u--------	_	9	AuxK	_	t_185
+
+
+# sentence_id = 26
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_186
+2	.	.	u	u--------	_	1	AuxK	_	t_187
+
+
+# sentence_id = 27
+# translation_lang = en
+# prose_translation = And others too, Socrates, are caught in such misfortunes at just as great an age, but their age does nothing at all to keep them from being angry at their present fortune.
+# literal_translation = And also others, O Socrates, [being] of such an age, are caught in such misfortunes, but [their] age releases them nothing [i.e. in no way frees them] from not being angry at the present fortune.
+1	καὶ	καί	d	d--------	_	13	AuxY	_	t_188
+2	ἄλλοι	ἄλλος	p	p-p---mn-	Case=n|Gender=m|Number=p	11	SBJ	_	t_189
+3	,	,	u	u--------	_	0	AuxX	_	t_190
+4	ὦ	ὦ	i	i--------	_	5	AuxZ	_	t_191
+5	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	13	ExD	_	t_192
+6	,	,	u	u--------	_	3	AuxX	_	t_193
+7	τηλικοῦτοι	τηλικοῦτος	p	p-p---mn-	Case=n|Gender=m|Number=p	2	ATR	_	t_194
+8	ἐν	ἐν	r	r--------	_	11	AuxP	_	t_195
+9	τοιαύταις	τοιοῦτος	a	a-p---fd-	Case=d|Gender=f|Number=p	10	ATR	_	t_196
+10	συμφοραῖς	συμφορά	n	n-p---fd-	Case=d|Gender=f|Number=p	8	ADV	_	t_197
+11	ἁλίσκονται	ἁλίσκομαι	v	v3ppie---	Mood=i|Number=p|Person=3|Tense=p|Voice=e	13	PRED	_	t_198
+12	,	,	u	u--------	_	3	AuxX	_	t_199
+13	ἀλλʼ	ἀλλά	c	c--------	_	3	COORD	_	t_200
+14	οὐδὲν	οὐδείς	a	a-s---na-	Case=a|Gender=n|Number=s	16	ADV	_	t_201
+15	αὐτοὺς	αὐτός	p	p-p---ma-	Case=a|Gender=m|Number=p	16	OBJ	_	t_202
+16	ἐπιλύεται	ἐπιλύω	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	13	PRED	_	t_203
+17	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	18	ATR	_	t_204
+18	ἡλικία	ἡλικία	n	n-s---fn-	Case=n|Gender=f|Number=s	16	SBJ	_	t_205
+19	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	22	ATR	_	t_206
+20	μὴ	μή	d	d--------	_	22	AuxZ	_	t_207
+21	οὐχὶ	οὐ	d	d--------	_	22	AuxZ	_	t_208
+22	ἀγανακτεῖν	ἀγανακτέω	v	v--pna---	Mood=n|Tense=p|Voice=a	16	OBJ	_	t_209
+23	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	25	ATR	_	t_210
+24	παρούσῃ	πάρειμι1	v	v-sppafd-	Case=d|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	25	ATR	_	t_211
+25	τύχῃ	τύχη	n	n-s---fd-	Case=d|Gender=f|Number=s	22	OBJ	_	t_212
+26	.	.	u	u--------	_	3	AuxK	_	t_213
+
+
+# sentence_id = 28
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_214
+2	.	.	u	u--------	_	1	AuxK	_	t_215
+
+
+# sentence_id = 29
+# translation_lang = en
+# prose_translation = Socrates: That is so.
+# literal_translation = Socrates: These things are [so].
+1	ἔστι	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_216
+2	ταῦτα	οὗτος	a	a-p---nn-	Case=n|Gender=n|Number=p	1	SBJ	_	t_217
+3	.	.	u	u--------	_	1	AuxK	_	t_218
+
+
+# sentence_id = 30
+# translation_lang = en
+# prose_translation = Socrates: But why have you come so early?
+# literal_translation = Socrates: But why then so early have-you-arrived?
+1	ἀλλὰ	ἀλλά	d	d--------	_	6	AuxY	_	t_219
+2	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	6	ADV	_	t_220
+3	δὴ	δή	d	d--------	_	6	AuxY	_	t_221
+4	οὕτω	οὕτως	d	d--------	_	6	ADV	_	t_222
+5	πρῲ	πρωί	d	d--------	_	6	ADV	_	t_223
+6	ἀφῖξαι	ἀφικνέομαι	v	v2srie---	Mood=i|Number=s|Person=2|Tense=r|Voice=e	0	PRED	_	t_224
+7	;	;	u	u--------	_	6	AuxK	_	t_225
+
+
+# sentence_id = 31
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_226
+2	.	.	u	u--------	_	1	AuxK	_	t_227
+
+
+# sentence_id = 32
+# translation_lang = en
+# prose_translation = Crito: [I bring] a message, Socrates, a hard one—not hard for you, as it seems to me, but hard and heavy for me and for all your friends, a message which I think I shall bear as the heaviest burden of all.
+# literal_translation = Crito: [I bring] a message, O Socrates, bearing [it], a hard [message]—not for you, as to me it appears, but for me and for your friends, for all [of them], hard and also heavy—which I, as it seems to me, among the heaviest [things] would bear.
+1	ἀγγελίαν	ἀγγελία	n	n-s---fa-	Case=a|Gender=f|Number=s	6	OBJ	_	t_228
+2	,	,	u	u--------	_	40	AuxX	_	t_229
+3	ὦ	ὦ	i	i--------	_	4	AuxZ	_	t_230
+4	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	40	ExD	_	t_231
+5	,	,	u	u--------	_	40	AuxX	_	t_232
+6	φέρων	φέρω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	40	ADV	_	t_233
+7	χαλεπήν	χαλεπός	a	a-s---fa-	Case=a|Gender=f|Number=s	23	ATR	_	t_234
+8	,	,	u	u--------	_	40	AuxX	_	t_235
+9	οὐ	οὐ	d	d--------	_	10	AuxZ	_	t_236
+10	σοί	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	16	ADV	_	t_237
+11	,	,	u	u--------	_	40	AuxX	_	t_238
+12	ὡς	ὡς	c	c--------	_	6	AuxC	_	t_239
+13	ἐμοὶ	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	14	OBJ	_	t_240
+14	φαίνεται	φαίνω	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	12	ADV	_	t_241
+15	,	,	u	u--------	_	40	AuxX	_	t_242
+16	ἀλλʼ	ἀλλά	c	c--------	_	1	COORD	_	t_243
+17	ἐμοὶ	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	18	ADV	_	t_244
+18	καὶ	καί	c	c--------	_	16	COORD	_	t_245
+19	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	21	ATR	_	t_246
+20	σοῖς	σός	a	a-p---md-	Case=d|Gender=m|Number=p	21	ATR	_	t_247
+21	ἐπιτηδείοις	ἐπιτήδειος	a	a-p---md-	Case=d|Gender=m|Number=p	18	ADV	_	t_248
+22	πᾶσιν	πᾶς	a	a-p---md-	Case=d|Gender=m|Number=p	21	ATR	_	t_249
+23	καὶ	καί	c	c--------	_	1	COORD	_	t_250
+24	χαλεπὴν	χαλεπός	a	a-s---fa-	Case=a|Gender=f|Number=s	23	ATR	_	t_251
+25	καὶ	καί	d	d--------	_	23	AuxY	_	t_252
+26	βαρεῖαν	βαρύς	a	a-s---fa-	Case=a|Gender=f|Number=s	23	ATR	_	t_253
+27	,	,	u	u--------	_	40	AuxX	_	t_254
+28	ἣν	ὅς	p	p-s---fa-	Case=a|Gender=f|Number=s	39	OBJ	_	t_255
+29	ἐγώ	ἐγώ	p	p-s---mn-	Case=n|Gender=m|Number=s	39	SBJ	_	t_256
+30	,	,	u	u--------	_	40	AuxX	_	t_257
+31	ὡς	ὡς	c	c--------	_	39	AuxC	_	t_258
+32	ἐμοὶ	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	33	OBJ	_	t_259
+33	δοκῶ	δοκέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	31	ExD	_	t_260
+34	,	,	u	u--------	_	40	AuxX	_	t_261
+35	ἐν	ἐν	r	r--------	_	39	AuxP	_	t_262
+36	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	35	ADV	_	t_263
+37	βαρύτατʼ	βαρύς	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	39	ADV	_	t_264
+38	ἂν	ἄν	d	d--------	_	39	AuxY	_	t_265
+39	ἐνέγκαιμι	φέρω	v	v1saoa---	Mood=o|Number=s|Person=1|Tense=a|Voice=a	23	ATR	_	t_266
+40	[0]	[0]	-	---------	_	0	PRED	_	e_5
+41	.	.	u	u--------	_	40	AuxK	_	t_267
+
+
+# sentence_id = 33
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates.
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_268
+2	.	.	u	u--------	_	1	AuxK	_	t_269
+
+
+# sentence_id = 34
+# translation_lang = en
+# prose_translation = Socrates: What ever do you mean by this?
+# literal_translation = Socrates: [What is] this, what [thing do you mean]?
+1	τίνα	τις	p	p-s---fa-	Case=a|Gender=f|Number=s	2	ATR	_	t_270
+2	ταύτην	οὗτος	a	a-s---fa-	Case=a|Gender=f|Number=s	3	OBJ	_	t_271
+3	[0]	[0]	-	---------	_	0	PRED	_	e_6
+4	;	;	u	u--------	_	3	AuxK	_	t_272
+
+
+# sentence_id = 35
+# translation_lang = en
+# prose_translation = Or has the ship arrived from Delos, when it arrives I am supposed to be dead?
+# literal_translation = Or [has] the ship arrived from Delos, upon the arrival of which it is-necessary [for] me to have-died?
+1	ἢ	ἤ1	d	d--------	_	4	AuxY	_	t_273
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_274
+3	πλοῖον	πλοῖον	n	n-s---nn-	Case=n|Gender=n|Number=s	4	SBJ	_	t_275
+4	ἀφῖκται	ἀφικνέομαι	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	0	PRED	_	t_276
+5	ἐκ	ἐκ	r	r--------	_	4	AuxP	_	t_277
+6	Δήλου	δῆλος	n	n-s---fg-	Case=g|Gender=f|Number=s	5	OBJ	_	t_278
+7	,	,	u	u--------	_	4	AuxX	_	t_279
+8	οὗ	ὅς	p	p-s---ng-	Case=g|Gender=n|Number=s	10	SBJ	_	t_280
+9	δεῖ	δεῖ	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	3	ATR	_	t_281
+10	ἀφικομένου	ἀφικνέομαι	v	v-sapmmg-	Case=g|Gender=m|Mood=p|Number=s|Tense=a|Voice=m	9	ADV	_	t_282
+11	τεθνάναι	θνήσκω	v	v--rna---	Mood=n|Tense=r|Voice=a	9	SBJ	_	t_283
+12	με	ἐγώ	p	p-s---ma-	Case=a|Gender=m|Number=s	11	SBJ	_	t_284
+13	;	;	u	u--------	_	4	AuxK	_	t_285
+
+
+# sentence_id = 36
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_286
+2	.	.	u	u--------	_	1	AuxK	_	t_287
+
+
+# sentence_id = 37
+# translation_lang = en
+# prose_translation = It certainly hasn't arrived yet, but it seems to me it will come today, judging from what some people report who have arrived from Sunium and left it there.
+# literal_translation = Surely-not indeed has-it-arrived, but it-seems to-me on-the-one-hand it-will-come today from-the-things-which they-report, [some] having-arrived from Sunium and having-left it there.
+1	οὔτοι	οὔτοι	d	d--------	_	3	AuxZ	_	t_288
+2	δὴ	δή	d	d--------	_	5	AuxY	_	t_289
+3	ἀφῖκται	ἀφικνέομαι	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	5	PRED	_	t_290
+4	,	,	u	u--------	_	0	AuxX	_	t_291
+5	ἀλλὰ	ἀλλά	c	c--------	_	4	COORD	_	t_292
+6	δοκεῖν	δοκέω	v	v--pna---	Mood=n|Tense=p|Voice=a	9	SBJ	_	t_293
+7	μέν	μέν	d	d--------	_	9	AuxY	_	t_294
+8	μοι	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	9	OBJ	_	t_295
+9	ἥξει	ἥκω	v	v3sfia---	Mood=i|Number=s|Person=3|Tense=f|Voice=a	5	PRED	_	t_296
+10	τήμερον	σήμερον	d	d--------	_	9	ADV	_	t_297
+11	ἐξ	ἐκ	r	r--------	_	13	AuxP	_	t_298
+12	ὧν	ὅς	p	p-p---mg-	Case=g|Gender=m|Number=p	11	ADV	_	t_299
+13	ἀπαγγέλλουσιν	ἀπαγγέλλω	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	6	OBJ	_	t_300
+14	ἥκοντές	ἥκω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	18	ADV	_	t_301
+15	τινες	τις	p	p-p---mn-	Case=n|Gender=m|Number=p	13	SBJ	_	t_302
+16	ἀπὸ	ἀπό	r	r--------	_	14	AuxP	_	t_303
+17	Σουνίου	σούνιον	n	n-s---ng-	Case=g|Gender=n|Number=s	16	ADV	_	t_304
+18	καὶ	καί	c	c--------	_	13	COORD	_	t_305
+19	καταλιπόντες	καταλιμπάνω	v	v-papamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=a|Voice=a	18	ADV	_	t_306
+20	ἐκεῖ	ἐκεῖ	d	d--------	_	19	ADV	_	t_307
+21	αὐτό	αὐτός	p	p-s---na-	Case=a|Gender=n|Number=s	19	OBJ	_	t_308
+22	.	.	u	u--------	_	4	AuxK	_	t_309
+
+
+# sentence_id = 38
+# translation_lang = en
+# prose_translation = Well, it's clear from this that it will arrive today, and so it's necessary, Socrates, that tomorrow you will end your life.
+# literal_translation = [It is] clear, then, from these things that [the ship] will arrive today, and there is necessity, indeed, that into tomorrow it will be, O Socrates, for you to end [your] life.
+1	δῆλον	δῆλος	a	a-s---nn-	Case=n|Gender=n|Number=s	23	PNOM	_	t_310
+2	οὖν	οὖν	d	d--------	_	9	AuxY	_	t_311
+3	ἐκ	ἐκ	r	r--------	_	23	AuxP	_	t_312
+4	τούτων	οὗτος	p	p-p---ng-	Case=g|Gender=n|Number=p	3	ADV	_	t_313
+5	ὅτι	ὅτι	c	c--------	_	23	AuxC	_	t_314
+6	ἥξει	ἥκω	v	v3sfia---	Mood=i|Number=s|Person=3|Tense=f|Voice=a	5	SBJ	_	t_315
+7	τήμερον	σήμερον	d	d--------	_	6	ADV	_	t_316
+8	,	,	u	u--------	_	0	AuxX	_	t_317
+9	καὶ	καί	c	c--------	_	8	COORD	_	t_318
+10	ἀνάγκη	ἀνάγκη	n	n-s---fn-	Case=n|Gender=f|Number=s	14	PNOM	_	t_319
+11	δὴ	δή	d	d--------	_	14	AuxY	_	t_320
+12	εἰς	εἰς	r	r--------	_	14	AuxP	_	t_321
+13	αὔριον	αὔριον	d	d--------	_	12	ADV	_	t_322
+14	ἔσται	εἰμί	v	v3sfim---	Mood=i|Number=s|Person=3|Tense=f|Voice=m	9	PRED	_	t_323
+15	,	,	u	u--------	_	8	AuxX	_	t_324
+16	ὦ	ὦ	i	i--------	_	17	AuxZ	_	t_325
+17	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	14	ExD	_	t_326
+18	,	,	u	u--------	_	8	AuxX	_	t_327
+19	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	20	ATR	_	t_328
+20	βίον	βίος	n	n-s---ma-	Case=a|Gender=m|Number=s	22	OBJ	_	t_329
+21	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	22	SBJ	_	t_330
+22	τελευτᾶν	τελευτάω	v	v-sppana-	Mood=n|Tense=p|Voice=a	14	SBJ	_	t_331
+23	[0]	[0]	-	---------	_	9	PRED	_	e_7
+24	.	.	u	u--------	_	8	AuxK	_	t_332
+
+
+# sentence_id = 39
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_333
+2	.	.	u	u--------	_	1	AuxK	_	t_334
+
+
+# sentence_id = 40
+# translation_lang = en
+# prose_translation = Well then, Crito, for good fortune, let it be so, if this is pleasing to the gods in this way.
+# literal_translation = But, O Crito, with good fortune, if in this way [it is] pleasing to the gods, let it be so in this way.
+1	ἀλλʼ	ἀλλά	d	d--------	_	16	AuxY	_	t_335
+2	,	,	u	u--------	_	16	AuxX	_	t_336
+3	ὦ	ὦ	i	i--------	_	4	AuxZ	_	t_337
+4	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	16	ExD	_	t_338
+5	,	,	u	u--------	_	16	AuxX	_	t_339
+6	τύχῃ	τύχη	n	n-s---fd-	Case=d|Gender=f|Number=s	16	ADV	_	t_340
+7	ἀγαθῇ	ἀγαθός	a	a-s---fd-	Case=d|Gender=f|Number=s	6	ATR	_	t_341
+8	,	,	u	u--------	_	16	AuxX	_	t_342
+9	εἰ	εἰ	c	c--------	_	16	AuxC	_	t_343
+10	ταύτῃ	οὗτος	p	p-s---fd-	Case=d|Gender=f|Number=s	17	ADV	_	t_344
+11	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	12	ATR	_	t_345
+12	θεοῖς	θεός	n	n-p---md-	Case=d|Gender=m|Number=p	13	ADV	_	t_346
+13	φίλον	φίλος	a	a-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_347
+14	,	,	u	u--------	_	16	AuxX	_	t_348
+15	ταύτῃ	οὗτος	a	a-s---fd-	Case=d|Gender=f|Number=s	6	ATR	_	t_349
+16	ἔστω	εἰμί	v	v3spma---	Mood=m|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_350
+17	[0]	[0]	-	---------	_	9	ADV	_	e_8
+18	·	·	u	u--------	_	16	AuxK	_	t_351
+
+
+# sentence_id = 41
+# translation_lang = en
+# prose_translation = But I don't think it will arrive today.
+# literal_translation = Not however I-think it to-be-going-to-arrive today.
+1	οὐ	οὐ	d	d--------	_	3	AuxZ	_	t_352
+2	μέντοι	μέντοι	d	d--------	_	3	AuxY	_	t_353
+3	οἶμαι	οἴομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	0	PRED	_	t_354
+4	ἥξειν	ἥκω	v	v--fna---	Mood=n|Tense=f|Voice=a	3	OBJ	_	t_355
+5	αὐτὸ	αὐτός	p	p-s---na-	Case=a|Gender=n|Number=s	4	SBJ	_	t_356
+6	τήμερον	σήμερον	d	d--------	_	4	ADV	_	t_357
+7	.	.	u	u--------	_	3	AuxK	_	t_358
+
+
+# sentence_id = 42
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_359
+2	.	.	u	u--------	_	1	AuxK	_	t_360
+
+
+# sentence_id = 43
+# translation_lang = en
+# prose_translation = Socrates: What makes you infer that?
+# literal_translation = Socrates: From where do you infer this?
+1	πόθεν	πόθεν	d	d--------	_	3	ADV	_	t_361
+2	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	3	OBJ	_	t_362
+3	τεκμαίρῃ	τεκμαίρομαι	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	0	PRED	_	t_363
+4	;	;	u	u--------	_	3	AuxK	_	t_364
+
+
+# sentence_id = 44
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_365
+2	.	.	u	u--------	_	1	AuxK	_	t_366
+
+
+# sentence_id = 45
+# translation_lang = en
+# prose_translation = Socrates: I'll tell you.
+# literal_translation = Socrates: I to-you will-tell.
+1	ἐγώ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	3	SBJ	_	t_367
+2	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	3	OBJ	_	t_368
+3	ἐρῶ	ἐρέω	v	v1sfia---	Mood=i|Number=s|Person=1|Tense=f|Voice=a	0	PRED	_	t_369
+4	.	.	u	u--------	_	3	AuxK	_	t_370
+
+
+# sentence_id = 46
+# translation_lang = en
+# prose_translation = For presumably I must die on the next day, or on whichever day the ship arrives.
+# literal_translation = For, presumably, on the next day it is necessary [for] me to die, or on whichever [day] the ship should come.
+1	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	4	ATR	_	t_371
+2	γάρ	γάρ	d	d--------	_	5	AuxY	_	t_372
+3	που	πού	d	d--------	_	7	ADV	_	t_373
+4	ὑστεραίᾳ	ὑστεραῖος	a	a-s---fd-	Case=d|Gender=f|Number=s	7	ADV	_	t_374
+5	δεῖ	δεῖ	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_375
+6	με	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	7	SBJ	_	t_376
+7	ἀποθνῄσκειν	ἀποθνήσκω	v	v--pna---	Mood=n|Tense=p|Voice=a	5	SBJ	_	t_377
+8	ἢ	ἤ1	c	c--------	_	4	AuxC	_	t_378
+9	ᾗ	ὅς	p	p-s---fd-	Case=d|Gender=f|Number=s	11	ADV	_	t_379
+10	ἂν	ἄν	d	d--------	_	11	AuxY	_	t_380
+11	ἔλθῃ	ἔρχομαι	v	v3sasa---	Mood=s|Number=s|Person=3|Tense=a|Voice=a	8	ADV	_	t_381
+12	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	13	ATR	_	t_382
+13	πλοῖον	πλοῖον	n	n-s---nn-	Case=n|Gender=n|Number=s	11	SBJ	_	t_383
+14	.	.	u	u--------	_	5	AuxK	_	t_384
+
+
+# sentence_id = 47
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_385
+2	.	.	u	u--------	_	1	AuxK	_	t_386
+
+
+# sentence_id = 48
+# translation_lang = en
+# prose_translation = They say, at any rate, that those in authority over these matters can, of course, do so.
+# literal_translation = They say indeed, you know, that the [ones] in authority over these things [can do so].
+1	φασί	φημί	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	0	PRED	_	t_387
+2	γέ	γε	d	d--------	_	1	AuxZ	_	t_388
+3	τοι	σύ	d	d--------	_	1	AuxY	_	t_389
+4	δὴ	δή	d	d--------	_	1	AuxY	_	t_390
+5	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	7	ATR	_	t_391
+6	τούτων	οὗτος	p	p-p---ng-	Case=g|Gender=n|Number=p	7	ATR	_	t_392
+7	κύριοι	κύριος	n	n-p---mn-	Case=n|Gender=m|Number=p	1	SBJ	_	t_393
+8	.	.	u	u--------	_	1	AuxK	_	t_394
+
+
+# sentence_id = 49
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_395
+2	.	.	u	u--------	_	1	AuxK	_	t_396
+
+
+# sentence_id = 50
+# translation_lang = en
+# prose_translation = Socrates: I don't suppose it will come, then, on the coming day, but on the next one.
+# literal_translation = Socrates: Not, then, on-the coming day, I-think, will it come, but [it will come] on-the other [days].
+1	οὐ	οὐ	d	d--------	_	5	AuxZ	_	t_397
+2	τοίνυν	τοίνυν	d	d--------	_	6	AuxY	_	t_398
+3	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_399
+4	ἐπιούσης	ἔπειμι1	v	v-sppafg-	Case=g|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	5	ATR	_	t_400
+5	ἡμέρας	ἡμέρα	n	n-s---fg-	Case=g|Gender=f|Number=s	9	ADV	_	t_401
+6	οἶμαι	οἴομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	0	PRED	_	t_402
+7	αὐτὸ	αὐτός	p	p-s---na-	Case=a|Gender=n|Number=s	8	SBJ	_	t_403
+8	ἥξειν	ἥκω	v	v--fna---	Mood=n|Tense=f|Voice=a	6	OBJ	_	t_404
+9	ἀλλὰ	ἀλλά	c	c--------	_	8	COORD	_	t_405
+10	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	11	ATR	_	t_406
+11	ἑτέρας	ἕτερος	a	a-p---fa-	Case=a|Gender=f|Number=p	12	ADV	_	t_407
+12	[0]	[0]	-	---------	_	9	OBJ	_	e_9
+13	.	.	u	u--------	_	6	AuxK	_	t_408
+
+
+# sentence_id = 51
+# translation_lang = en
+# prose_translation = I am guessing this from a dream I saw a little earlier tonight.
+# literal_translation = I conjecture [it], moreover, from a certain dream which I have seen, a little before, of this night.
+1	τεκμαίρομαι	τεκμαίρομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	0	PRED	_	t_409
+2	δὲ	δέ	d	d--------	_	1	AuxY	_	t_410
+3	ἔκ	ἐκ	r	r--------	_	1	AuxP	_	t_411
+4	τινος	τις	a	a-s---ng-	Case=g|Gender=n|Number=s	5	ATR	_	t_412
+5	ἐνυπνίου	ἐνύπνιον	n	n-s---ng-	Case=g|Gender=n|Number=s	3	ADV	_	t_413
+6	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_414
+7	ἑώρακα	ὁράω	v	v1sria---	Mood=i|Number=s|Person=1|Tense=r|Voice=a	5	ATR	_	t_415
+8	ὀλίγον	ὀλίγος	a	a-s---na-	Case=a|Gender=n|Number=s	9	ADV	_	t_416
+9	πρότερον	πρότερος	a	a-s---na-	Case=a|Gender=n|Number=s	7	ADV	_	t_417
+10	ταύτης	οὗτος	a	a-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_418
+11	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_419
+12	νυκτός	νύξ	n	n-s---fg-	Case=g|Gender=f|Number=s	7	ADV	_	t_420
+13	·	·	u	u--------	_	1	AuxK	_	t_421
+
+
+# sentence_id = 52
+# translation_lang = en
+# prose_translation = Socrates: And you might be waking me at a rather inconvenient moment.
+# literal_translation = Socrates: And you risk, at some not [good] moment, [to] wake me.
+1	καὶ	καί	d	d--------	_	2	AuxY	_	t_422
+2	κινδυνεύεις	κινδυνεύω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_423
+3	ἐν	ἐν	r	r--------	_	7	AuxP	_	t_424
+4	καιρῷ	καιρός	n	n-s---md-	Case=d|Gender=m|Number=s	3	ADV	_	t_425
+5	τινι	τις	a	a-s---md-	Case=d|Gender=m|Number=s	4	ATR	_	t_426
+6	οὐκ	οὐ	d	d--------	_	7	AuxZ	_	t_427
+7	ἐγεῖραί	ἐγείρω	v	v--ana---	Mood=n|Tense=a|Voice=a	2	OBJ	_	t_428
+8	με	ἐγώ	p	p-s---ma-	Case=a|Gender=m|Number=s	7	OBJ	_	t_429
+9	.	.	u	u--------	_	2	AuxK	_	t_430
+
+
+# sentence_id = 53
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_431
+2	.	.	u	u--------	_	1	AuxK	_	t_432
+
+
+# sentence_id = 54
+# translation_lang = en
+# prose_translation = Well then, what was the dream?
+# literal_translation = [It] was, then, indeed, what the dream?
+1	ἦν	εἰμί	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	0	PRED	_	t_433
+2	δὲ	δέ	d	d--------	_	1	AuxY	_	t_434
+3	δὴ	δή	d	d--------	_	1	AuxY	_	t_435
+4	τί	τίς	p	p-s---nn-	Case=n|Gender=n|Number=s	1	PNOM	_	t_436
+5	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	6	ATR	_	t_437
+6	ἐνύπνιον	ἐνύπνιον	n	n-s---nn-	Case=n|Gender=n|Number=s	1	SBJ	_	t_438
+7	;	;	u	u--------	_	1	AuxK	_	t_439
+
+
+# sentence_id = 55
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates.
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_440
+2	.	.	u	u--------	_	1	AuxK	_	t_441
+
+
+# sentence_id = 56
+# translation_lang = en
+# prose_translation = It seemed to me that a woman approached me, beautiful and fair to look upon, wearing white garments, who called to me and said—
+# literal_translation = It seemed [to me that] a certain woman, having approached me, beautiful and fair-formed, wearing white garments, [seemed] to call me and to say—
+1	ἐδόκει	δοκέω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	0	PRED	_	t_442
+2	τίς	τις	a	a-s---fn-	Case=n|Gender=f|Number=s	4	ATR	_	t_443
+3	μοι	ἐγώ	p	p-s---md-	Case=d|Gender=m|Number=s	1	OBJ	_	t_444
+4	γυνὴ	γυνή	n	n-s---fn-	Case=n|Gender=f|Number=s	1	SBJ	_	t_445
+5	προσελθοῦσα	προσέρχομαι	v	v-sapafn-	Case=n|Gender=f|Mood=p|Number=s|Tense=a|Voice=a	1	ADV	_	t_446
+6	καλὴ	καλός	a	a-s---fn-	Case=n|Gender=f|Number=s	7	ATR	_	t_447
+7	καὶ	καί	c	c--------	_	4	COORD	_	t_448
+8	εὐειδής	εὐειδής	a	a-s---fn-	Case=n|Gender=f|Number=s	7	ATR	_	t_449
+9	,	,	u	u--------	_	1	AuxX	_	t_450
+10	λευκὰ	λευκός	a	a-p---na-	Case=a|Gender=n|Number=p	11	ATR	_	t_451
+11	ἱμάτια	ἱμάτιον	n	n-p---na-	Case=a|Gender=n|Number=p	12	OBJ	_	t_452
+12	ἔχουσα	ἔχω	v	v-sppafn-	Case=n|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	4	ATR	_	t_453
+13	,	,	u	u--------	_	1	AuxX	_	t_454
+14	καλέσαι	καλέω	v	v--ana---	Mood=n|Tense=a|Voice=a	16	OBJ	_	t_455
+15	με	ἐγώ	p	p-s---ma-	Case=a|Gender=m|Number=s	14	OBJ	_	t_456
+16	καὶ	καί	c	c--------	_	1	COORD	_	t_457
+17	εἰπεῖν	εἶπον	v	v--ana---	Mood=n|Tense=a|Voice=a	16	OBJ	_	t_458
+18	·	·	u	u--------	_	1	AuxK	_	t_459
+
+
+# sentence_id = 57
+# translation_lang = en
+# prose_translation = “O Socrates, on the third day you might reach fertile Phthia.”
+# literal_translation = O Socrates, on the [third] day, on the third one, might you come to fertile Phthia.
+1	ὦ	ὦ	i	i--------	_	2	AuxZ	_	t_460
+2	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	9	ExD	_	t_461
+3	,	,	u	u--------	_	9	AuxX	_	t_462
+4	ἤματί	ἦμαρ	n	n-s---nd-	Case=d|Gender=n|Number=s	9	ADV	_	t_463
+5	κεν	ἄν	d	d--------	_	9	AuxY	_	t_464
+6	τριτάτῳ	τρίτατος	a	a-s---nd-	Case=d|Gender=n|Number=s	4	ATR	_	t_465
+7	Φθίην	φθία	n	n-s---fa-	Case=a|Gender=f|Number=s	9	OBJ	_	t_466
+8	ἐρίβωλον	ἐριβῶλαξ	a	a-s---fa-	Case=a|Gender=f|Number=s	7	ATR	_	t_467
+9	ἵκοιο	ἱκνέομαι	v	v2saom---	Mood=o|Number=s|Person=2|Tense=a|Voice=m	0	PRED	_	t_468
+10	.	.	u	u--------	_	9	AuxK	_	t_469
+
+
+# sentence_id = 58
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_470
+2	.	.	u	u--------	_	1	AuxK	_	t_471
+
+
+# sentence_id = 59
+# translation_lang = en
+# prose_translation = Crito: That's a strange dream, Socrates.
+# literal_translation = Crito: [It is] strange, the dream, O Socrates.
+1	ἄτοπον	ἄτοπος	a	a-s---nn-	Case=n|Gender=n|Number=s	7	PNOM	_	t_472
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_473
+3	ἐνύπνιον	ἐνύπνιον	n	n-s---nn-	Case=n|Gender=n|Number=s	7	SBJ	_	t_474
+4	,	,	u	u--------	_	7	AuxX	_	t_475
+5	ὦ	ὦ	i	i--------	_	6	AuxZ	_	t_476
+6	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	7	ExD	_	t_477
+7	[0]	[0]	-	---------	_	0	PRED	_	e_10
+8	.	.	u	u--------	_	7	AuxK	_	t_478
+
+
+# sentence_id = 60
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_479
+2	.	.	u	u--------	_	1	AuxK	_	t_480
+
+
+# sentence_id = 61
+# translation_lang = en
+# prose_translation = Socrates: Well, it is clear, at least as it seems to me, Crito, [it is].
+# literal_translation = Socrates: Clear indeed then, as it seems to me at least, O Crito, [it is].
+1	ἐναργὲς	ἐναργής	a	a-s---nn-	Case=n|Gender=n|Number=s	12	PNOM	_	t_481
+2	μὲν	μέν	d	d--------	_	12	AuxY	_	t_482
+3	οὖν	οὖν	d	d--------	_	12	AuxY	_	t_483
+4	,	,	u	u--------	_	12	AuxX	_	t_484
+5	ὥς	ὡς	c	c--------	_	12	AuxC	_	t_485
+6	γέ	γε	d	d--------	_	8	AuxZ	_	t_486
+7	μοι	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	8	OBJ	_	t_487
+8	δοκεῖ	δοκέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	5	ADV	_	t_488
+9	,	,	u	u--------	_	12	AuxX	_	t_489
+10	ὦ	ὦ	i	i--------	_	11	AuxZ	_	t_490
+11	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	12	ExD	_	t_491
+12	[0]	[0]	-	---------	_	0	PRED	_	e_11
+13	.	.	u	u--------	_	12	AuxK	_	t_492
+
+
+# sentence_id = 62
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_493
+2	.	.	u	u--------	_	1	AuxK	_	t_494
+
+
+# sentence_id = 63
+# translation_lang = en
+# prose_translation = Crito: Very much so indeed, it seems.
+# literal_translation = Crito: Too [true] indeed, as it seems.
+1	λίαν	λίαν	d	d--------	_	6	ADV	_	t_495
+2	γε	γε	d	d--------	_	1	AuxZ	_	t_496
+3	,	,	u	u--------	_	6	AuxX	_	t_497
+4	ὡς	ὡς	c	c--------	_	6	AuxC	_	t_498
+5	ἔοικεν	ἔοικα	v	v3sria---	Mood=i|Number=s|Person=3|Tense=r|Voice=a	4	ADV	_	t_499
+6	[0]	[0]	-	---------	_	0	PRED	_	e_12
+7	.	.	u	u--------	_	6	AuxK	_	t_500
+
+
+# sentence_id = 64
+# translation_lang = en
+# prose_translation = Come now, my dear Socrates, even now listen to me and save yourself.
+# literal_translation = But, O strange Socrates, still even now obey me and be saved.
+1	ἀλλʼ	ἀλλά	d	d--------	_	12	AuxY	_	t_501
+2	,	,	u	u--------	_	0	AuxX	_	t_502
+3	ὦ	ὦ	i	i--------	_	5	AuxZ	_	t_503
+4	δαιμόνιε	δαιμόνιος	a	a-s---mv-	Case=v|Gender=m|Number=s	5	ATR	_	t_504
+5	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	12	ExD	_	t_505
+6	,	,	u	u--------	_	2	AuxX	_	t_506
+7	ἔτι	ἔτι	d	d--------	_	12	ADV	_	t_507
+8	καὶ	καί	d	d--------	_	9	AuxZ	_	t_508
+9	νῦν	νῦν	d	d--------	_	12	ADV	_	t_509
+10	ἐμοὶ	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	12	OBJ	_	t_510
+11	πιθοῦ	πείθω	v	v2samm---	Mood=m|Number=s|Person=2|Tense=a|Voice=m	12	PRED	_	t_511
+12	καὶ	καί	c	c--------	_	2	COORD	_	t_512
+13	σώθητι	σώζω	v	v2samp---	Mood=m|Number=s|Person=2|Tense=a|Voice=p	12	PRED	_	t_513
+14	·	·	u	u--------	_	2	AuxK	_	t_514
+
+
+# sentence_id = 65
+# translation_lang = en
+# prose_translation = For to me, if you should die, it would not be a single misfortune, but besides having been deprived of such a friend as I shall never find another like, I shall also seem to many—to those who do not know you and me well—to have neglected you, when I could have saved you if I had been willing to spend money.
+# literal_translation = As to me [it would be], if you should die, [it is] not one misfortune, but apart from having been deprived of such a friend, of the sort of which I shall never find any [other], still moreover to many I shall seem—to those who do not clearly know both me and you—[to have] neglected [you], [namely] that being able to save you, if I had been willing to spend money, [I neglected it].
+1	ὡς	ὡς	c	c--------	_	11	AuxC	_	t_515
+2	ἐμοί	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	53	ADV	_	t_516
+3	,	,	u	u--------	_	0	AuxX	_	t_517
+4	ἐὰν	ἐάν	c	c--------	_	11	AuxC	_	t_518
+5	σὺ	σύ	p	p-s---mn-	Case=n|Gender=m|Number=s	6	SBJ	_	t_519
+6	ἀποθάνῃς	ἀποθνῄσκω	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	4	ADV	_	t_520
+7	,	,	u	u--------	_	3	AuxX	_	t_521
+8	οὐ	οὐ	d	d--------	_	11	AuxZ	_	t_522
+9	μία	εἷς	a	a-s---fn-	Case=n|Gender=f|Number=s	10	ATR	_	t_523
+10	συμφορά	συμφορά	n	n-s---fn-	Case=n|Gender=f|Number=s	11	PNOM	_	t_524
+11	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	13	PRED	_	t_525
+12	,	,	u	u--------	_	3	AuxX	_	t_526
+13	ἀλλὰ	ἀλλά	c	c--------	_	3	COORD	_	t_527
+14	χωρὶς	χωρίς	r	r--------	_	25	AuxP	_	t_528
+15	μὲν	μέν	d	d--------	_	28	AuxY	_	t_529
+16	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	17	ATR	_	t_530
+17	ἐστερῆσθαι	στερέω	v	v--rne---	Mood=n|Tense=r|Voice=e	14	ADV	_	t_531
+18	τοιούτου	τοιοῦτος	a	a-s---ng-	Case=g|Gender=n|Number=s	19	ATR	_	t_532
+19	ἐπιτηδείου	ἐπιτήδειος	a	a-s---ng-	Case=g|Gender=n|Number=s	25	OBJ	_	t_533
+20	οἷον	οἷος	a	a-s---ma-	Case=a|Gender=m|Number=s	25	OBJ	_	t_534
+21	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	25	SBJ	_	t_535
+22	οὐδένα	οὐδείς	p	p-s---ma-	Case=a|Gender=m|Number=s	25	OBJ	_	t_536
+23	μή	μή	d	d--------	_	25	AuxZ	_	t_537
+24	ποτε	ποτέ	d	d--------	_	25	ADV	_	t_538
+25	εὑρήσω	εὑρίσκω	v	v1sfia---	Mood=i|Number=s|Person=1|Tense=f|Voice=a	28	PRED	_	t_539
+26	,	,	u	u--------	_	3	AuxX	_	t_540
+27	ἔτι	ἔτι	d	d--------	_	31	ADV	_	t_541
+28	δὲ	δέ	c	c--------	_	13	COORD	_	t_542
+29	καὶ	καί	d	d--------	_	30	AuxZ	_	t_543
+30	πολλοῖς	πολύς	a	a-p---md-	Case=d|Gender=m|Number=p	31	OBJ	_	t_544
+31	δόξω	δοκέω	v	v1sfia---	Mood=i|Number=s|Person=1|Tense=f|Voice=a	28	PRED	_	t_545
+32	,	,	u	u--------	_	3	AuxX	_	t_546
+33	οἳ	ὅς	p	p-s---md-	Case=d|Gender=m|Number=s	39	SBJ	_	t_547
+34	ἐμὲ	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	35	OBJ	_	t_548
+35	καὶ	καί	c	c--------	_	39	COORD	_	t_549
+36	σὲ	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	35	OBJ	_	t_550
+37	μὴ	μή	d	d--------	_	38	AuxZ	_	t_551
+38	σαφῶς	σαφής	d	d--------	_	39	ADV	_	t_552
+39	ἴσασιν	οἶδα	v	v3pria---	Mood=i|Number=p|Person=3|Tense=r|Voice=a	30	ATR	_	t_553
+40	,	,	u	u--------	_	3	AuxX	_	t_554
+41	ὡς	ὡς	d	d--------	_	44	AuxZ	_	t_555
+42	οἷός	οἷος	a	a-s---mn-	Case=n|Gender=m|Number=s	44	PNOM	_	t_556
+43	τʼ	τε	d	d--------	_	42	AuxZ	_	t_557
+44	ὤν	εἰμί	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	52	ADV	_	t_558
+45	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	46	OBJ	_	t_559
+46	σῴζειν	σώζω	v	v--pna---	Mood=n|Tense=p|Voice=a	42	ADV	_	t_560
+47	εἰ	εἰ	c	c--------	_	46	AuxC	_	t_561
+48	ἤθελον	ἐθέλω	v	v1siia---	Mood=i|Number=s|Person=1|Tense=i|Voice=a	47	ADV	_	t_562
+49	ἀναλίσκειν	ἀναλίσκω	v	v--pna---	Mood=n|Tense=p|Voice=a	48	OBJ	_	t_563
+50	χρήματα	χρῆμα	n	n-p---na-	Case=a|Gender=n|Number=p	49	OBJ	_	t_564
+51	,	,	u	u--------	_	3	AuxX	_	t_565
+52	ἀμελῆσαι	ἀμελέω	v	v--ana---	Mood=n|Tense=a|Voice=a	31	OBJ	_	t_566
+53	[0]	[0]	-	---------	_	1	ADV	_	e_13
+54	.	.	u	u--------	_	3	AuxK	_	t_567
+
+
+# sentence_id = 66
+# translation_lang = en
+# prose_translation = And yet what opinion could be more shameful than this—to seem to value money more highly than [one's] friends?
+# literal_translation = And-yet what could be more-shameful than this, opinion, than to-seem money about more to-make than [0] friends?
+1	καίτοι	καίτοι	d	d--------	_	5	AuxY	_	t_568
+2	τίς	τις	a	a-s---fn-	Case=n|Gender=f|Number=s	7	ATR	_	t_569
+3	ἂν	ἄν	d	d--------	_	5	AuxY	_	t_570
+4	αἰσχίων	αἰσχρός	a	a-s---fnc	Case=n|Degree=c|Gender=f|Number=s	5	PNOM	_	t_571
+5	εἴη	εἰμί	v	v3spoa---	Mood=o|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_572
+6	ταύτης	οὗτος	p	p-s---fg-	Case=g|Gender=f|Number=s	4	ADV	_	t_573
+7	δόξα	δόξα	n	n-s---fn-	Case=n|Gender=f|Number=s	5	SBJ	_	t_574
+8	ἢ	ἤ1	c	c--------	_	4	AuxC	_	t_575
+9	δοκεῖν	δοκέω	v	v--pna---	Mood=n|Tense=p|Voice=a	8	ADV	_	t_576
+10	χρήματα	χρῆμα	n	n-p---na-	Case=a|Gender=n|Number=p	13	OBJ	_	t_577
+11	περὶ	περί	r	r--------	_	13	AuxP	_	t_578
+12	πλείονος	πλείων	a	a-s---mgc	Case=g|Degree=c|Gender=m|Number=s	11	OCOMP	_	t_579
+13	ποιεῖσθαι	ποιέω	v	v--pne---	Mood=n|Tense=p|Voice=e	9	OBJ	_	t_580
+14	ἢ	ἤ1	c	c--------	_	12	AuxC	_	t_581
+15	φίλους	φίλος	a	a-p---ma-	Case=a|Gender=m|Number=p	16	OBJ	_	t_582
+16	[0]	[0]	-	---------	_	14	ADV	_	e_14
+17	;	;	u	u--------	_	5	AuxK	_	t_583
+
+
+# sentence_id = 67
+# translation_lang = en
+# prose_translation = Most people, after all, won't believe that you yourself were unwilling to leave this place, even though we were eager for it.
+# literal_translation = For not will-be-persuaded the many, that you yourself were-not-willing to-depart from-here, [although] we being-eager.
+1	οὐ	οὐ	d	d--------	_	3	AuxZ	_	t_584
+2	γὰρ	γάρ	d	d--------	_	3	AuxY	_	t_585
+3	πείσονται	πείθω	v	v3pfim---	Mood=i|Number=p|Person=3|Tense=f|Voice=m	0	PRED	_	t_586
+4	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	5	ATR	_	t_587
+5	πολλοὶ	πολύς	a	a-p---mn-	Case=n|Gender=m|Number=p	3	SBJ	_	t_588
+6	ὡς	ὡς	c	c--------	_	3	AuxC	_	t_589
+7	σὺ	σύ	p	p2s----n-	Case=n|Number=s|Person=2	10	SBJ	_	t_590
+8	αὐτὸς	αὐτός	a	a-s---mn-	Case=n|Gender=m|Number=s	7	ATR	_	t_591
+9	οὐκ	οὐ	d	d--------	_	10	AuxZ	_	t_592
+10	ἠθέλησας	ἐθέλω	v	v2saia---	Mood=i|Number=s|Person=2|Tense=a|Voice=a	6	OBJ	_	t_593
+11	ἀπιέναι	ἀπέρχομαι	v	v--pna---	Mood=n|Tense=p|Voice=a	10	OBJ	_	t_594
+12	ἐνθένδε	ἐνθένδε	d	d--------	_	11	ADV	_	t_595
+13	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	14	SBJ	_	t_596
+14	προθυμουμένων	προθυμέομαι	v	v-pppemg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	10	ADV	_	t_597
+15	.	.	u	u--------	_	3	AuxK	_	t_598
+
+
+# sentence_id = 68
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates.
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_599
+2	.	.	u	u--------	_	1	AuxK	_	t_600
+
+
+# sentence_id = 69
+# translation_lang = en
+# prose_translation = Socrates: But, my dear blessed Crito, why should we care so much about the opinion of the majority?
+# literal_translation = Socrates: But why to us, O blessed Crito, does [there] so much care of the opinion of the many [belong]?
+1	ἀλλὰ	ἀλλά	d	d--------	_	14	AuxY	_	t_601
+2	τί	τίς	a	a-s---na-	Case=a|Gender=n|Number=s	14	ADV	_	t_602
+3	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	14	OBJ	_	t_603
+4	,	,	u	u--------	_	14	AuxX	_	t_604
+5	ὦ	ὦ	i	i--------	_	7	AuxZ	_	t_605
+6	μακάριε	μακάριος	a	a-s---mv-	Case=v|Gender=m|Number=s	7	ATR	_	t_606
+7	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	14	ExD	_	t_607
+8	,	,	u	u--------	_	14	AuxX	_	t_608
+9	οὕτω	οὕτως	d	d--------	_	14	ADV	_	t_609
+10	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	13	ATR	_	t_610
+11	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	12	ATR	_	t_611
+12	πολλῶν	πολύς	a	a-p---fg-	Case=g|Gender=f|Number=p	13	ATR	_	t_612
+13	δόξης	δόξα	n	n-s---fg-	Case=g|Gender=f|Number=s	14	OBJ	_	t_613
+14	μέλει	μέλω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_614
+15	;	;	u	u--------	_	14	AuxK	_	t_615
+
+
+# sentence_id = 70
+# translation_lang = en
+# prose_translation = For the most decent people—the ones whose opinion is worth caring about more than others'—will believe that these things were done just as they were in fact done.
+# literal_translation = For the most-decent [men] (those of whom [it is] more worth caring about [their opinion]) will consider these things to have been done thus, just as [they] were done.
+1	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	3	ATR	_	t_616
+2	γὰρ	γάρ	d	d--------	_	10	AuxY	_	t_617
+3	ἐπιεικέστατοι	ἐπιεικής	a	a-p---mns	Case=n|Degree=s|Gender=m|Number=p	10	SBJ	_	t_618
+4	,	,	u	u--------	_	10	AuxX	_	t_619
+5	ὧν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	8	OBJ	_	t_620
+6	μᾶλλον	μᾶλλον	d	d--------	_	7	ADV	_	t_621
+7	ἄξιον	ἄξιος	a	a-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_622
+8	φροντίζειν	φροντίζω	v	v--pna---	Mood=n|Tense=p|Voice=a	17	SBJ	_	t_623
+9	,	,	u	u--------	_	10	AuxX	_	t_624
+10	ἡγήσονται	ἡγέομαι	v	v3pfim---	Mood=i|Number=p|Person=3|Tense=f|Voice=m	0	PRED	_	t_625
+11	αὐτὰ	αὐτός	p	p-p---na-	Case=a|Gender=n|Number=p	13	SBJ	_	t_626
+12	οὕτω	οὕτως	d	d--------	_	13	ADV	_	t_627
+13	πεπρᾶχθαι	πράσσω	v	v--rne---	Mood=n|Tense=r|Voice=e	10	OBJ	_	t_628
+14	ὥσπερ	ὥσπερ	c	c--------	_	12	AuxC	_	t_629
+15	ἂν	ἄν	d	d--------	_	16	AuxY	_	t_630
+16	πραχθῇ	πράσσω	v	v3sasp---	Mood=s|Number=s|Person=3|Tense=a|Voice=p	14	ADV	_	t_631
+17	[0]	[0]	-	---------	_	3	ATR	_	e_15
+18	.	.	u	u--------	_	10	AuxK	_	t_632
+
+
+# sentence_id = 71
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_633
+2	.	.	u	u--------	_	1	AuxK	_	t_634
+
+
+# sentence_id = 72
+# translation_lang = en
+# prose_translation = Well, you see, Socrates, that it's also necessary to care about the opinion of the majority.
+# literal_translation = But you see, indeed, Socrates, that [it is] necessary [for us] to care for the opinion of the many [too].
+1	ἀλλʼ	ἀλλά	d	d--------	_	2	AuxY	_	t_635
+2	ὁρᾷς	ὁράω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_636
+3	δὴ	δή	d	d--------	_	2	AuxY	_	t_637
+4	ὅτι	ὅτι	c	c--------	_	2	AuxC	_	t_638
+5	ἀνάγκη	ἀνάγκη	n	n-s---fn-	Case=n|Gender=f|Number=s	16	PNOM	_	t_639
+6	,	,	u	u--------	_	2	AuxX	_	t_640
+7	ὦ	ὦ	i	i--------	_	8	AuxZ	_	t_641
+8	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	2	ExD	_	t_642
+9	,	,	u	u--------	_	2	AuxX	_	t_643
+10	καὶ	καί	d	d--------	_	13	AuxZ	_	t_644
+11	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	14	ATR	_	t_645
+12	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	13	ATR	_	t_646
+13	πολλῶν	πολύς	a	a-p---mg-	Case=g|Gender=m|Number=p	14	ATR	_	t_647
+14	δόξης	δόξα	n	n-s---fg-	Case=g|Gender=f|Number=s	15	OBJ	_	t_648
+15	μέλειν	μέλω	v	v--pna---	Mood=n|Tense=p|Voice=a	16	SBJ	_	t_649
+16	[0]	[0]	-	---------	_	4	OBJ	_	e_16
+17	.	.	u	u--------	_	2	AuxK	_	t_650
+
+
+# sentence_id = 73
+# translation_lang = en
+# prose_translation = And the present circumstances themselves make this clear, because the majority are not capable of doing the very smallest of harms, but rather, pretty much, the greatest, if someone is slandered among them.
+# literal_translation = And [these] present [circumstances] themselves [are] clear now, because the many are of such a sort as not to work out the smallest of evils, but the greatest, pretty nearly, if someone among them has been slandered.
+1	αὐτὰ	αὐτός	a	a-p---nn-	Case=n|Gender=n|Number=p	5	ATR	_	t_651
+2	δὲ	δέ	d	d--------	_	30	AuxY	_	t_652
+3	δῆλα	δῆλος	a	a-p---nn-	Case=n|Gender=n|Number=p	30	PNOM	_	t_653
+4	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	5	ATR	_	t_654
+5	παρόντα	πάρειμι1	v	v-pppann-	Case=n|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	30	SBJ	_	t_655
+6	νυνὶ	νυνί	d	d--------	_	30	ADV	_	t_656
+7	ὅτι	ὅτι	c	c--------	_	30	AuxC	_	t_657
+8	οἷοί	οἷος	a	a-p---mn-	Case=n|Gender=m|Number=p	10	PNOM	_	t_658
+9	τʼ	τε	d	d--------	_	8	AuxZ	_	t_659
+10	εἰσὶν	εἰμί	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	7	SBJ	_	t_660
+11	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	12	ATR	_	t_661
+12	πολλοὶ	πολύς	a	a-p---mn-	Case=n|Gender=m|Number=p	10	SBJ	_	t_662
+13	οὐ	οὐ	d	d--------	_	15	AuxZ	_	t_663
+14	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	15	ATR	_	t_664
+15	σμικρότατα	μικρός	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	19	OBJ	_	t_665
+16	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	17	ATR	_	t_666
+17	κακῶν	κακός	a	a-p---mg-	Case=g|Gender=m|Number=p	15	ATR	_	t_667
+18	ἐξεργάζεσθαι	ἐξεργάζομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	8	ADV	_	t_668
+19	ἀλλὰ	ἀλλά	c	c--------	_	18	COORD	_	t_669
+20	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	21	ATR	_	t_670
+21	μέγιστα	μέγας	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	19	OBJ	_	t_671
+22	σχεδόν	σχεδόν	d	d--------	_	21	ADV	_	t_672
+23	,	,	u	u--------	_	30	AuxX	_	t_673
+24	ἐάν	ἐάν	c	c--------	_	19	AuxC	_	t_674
+25	τις	τις	p	p-s---mn-	Case=n|Gender=m|Number=s	29	SBJ	_	t_675
+26	ἐν	ἐν	r	r--------	_	28	AuxP	_	t_676
+27	αὐτοῖς	αὐτός	p	p-p---nd-	Case=d|Gender=n|Number=p	26	ADV	_	t_677
+28	διαβεβλημένος	διαβάλλω	v	v-srpemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=r|Voice=e	29	PNOM	_	t_678
+29	ᾖ	εἰμί	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	24	ADV	_	t_679
+30	[0]	[0]	-	---------	_	0	PRED	_	e_17
+31	.	.	u	u--------	_	30	AuxK	_	t_680
+
+
+# sentence_id = 74
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_681
+2	.	.	u	u--------	_	1	AuxK	_	t_682
+
+
+# sentence_id = 75
+# translation_lang = en
+# prose_translation = Socrates: For if only ordinary people, Crito, were capable of doing the greatest harm, so that they might also be capable of doing the greatest good, things would be splendid.
+# literal_translation = Socrates: For would that, O Crito, the many were able to do the greatest evils, in order that they might also be able [to do] the greatest goods, [it would be] well indeed.
+1	εἰ	εἰ	d	d--------	_	27	AuxY	_	t_683
+2	γὰρ	γάρ	d	d--------	_	27	AuxY	_	t_684
+3	ὤφελον	ὀφείλω	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	27	PRED	_	t_685
+4	,	,	u	u--------	_	0	AuxX	_	t_686
+5	ὦ	ὦ	i	i--------	_	6	AuxZ	_	t_687
+6	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	3	ExD	_	t_688
+7	,	,	u	u--------	_	4	AuxX	_	t_689
+8	οἷοί	οἷος	a	a-p---mn-	Case=n|Gender=m|Number=p	10	PNOM	_	t_690
+9	τʼ	τε	d	d--------	_	8	AuxZ	_	t_691
+10	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	3	OBJ	_	t_692
+11	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	12	ATR	_	t_693
+12	πολλοὶ	πολύς	a	a-p---mn-	Case=n|Gender=m|Number=p	3	SBJ	_	t_694
+13	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	15	ATR	_	t_695
+14	μέγιστα	μέγας	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	15	ATR	_	t_696
+15	κακὰ	κακός	a	a-p---na-	Case=a|Gender=n|Number=p	16	OBJ	_	t_697
+16	ἐργάζεσθαι	ἐργάζομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	8	ADV	_	t_698
+17	,	,	u	u--------	_	4	AuxX	_	t_699
+18	ἵνα	ἵνα	c	c--------	_	3	AuxC	_	t_700
+19	οἷοί	οἷος	a	a-p---mn-	Case=n|Gender=m|Number=p	21	PNOM	_	t_701
+20	τʼ	τε	d	d--------	_	19	AuxZ	_	t_702
+21	ἦσαν	εἰμί	v	v3piia---	Mood=i|Number=p|Person=3|Tense=i|Voice=a	18	ADV	_	t_703
+22	καὶ	καί	d	d--------	_	23	AuxZ	_	t_704
+23	ἀγαθὰ	ἀγαθός	a	a-p---na-	Case=a|Gender=n|Number=p	15	ATR	_	t_705
+24	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	23	ATR	_	t_706
+25	μέγιστα	μέγας	a	a-p---nas	Case=a|Degree=s|Gender=n|Number=p	23	ATR	_	t_707
+26	,	,	u	u--------	_	4	AuxX	_	t_708
+27	καὶ	καί	c	c--------	_	4	COORD	_	t_709
+28	καλῶς	καλός	d	d--------	_	30	ADV	_	t_710
+29	ἂν	ἄν	d	d--------	_	30	AuxY	_	t_711
+30	εἶχεν	ἔχω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	27	PRED	_	t_712
+31	.	.	u	u--------	_	4	AuxK	_	t_713
+
+
+# sentence_id = 76
+# translation_lang = en
+# prose_translation = Crito: But as it is, we are able to do neither of the two.
+# literal_translation = Crito: But now, neither of the two [things] [are we] such as [we are] able [to do]·
+1	νῦν	νῦν	d	d--------	_	6	ADV	_	t_714
+2	δὲ	δέ	d	d--------	_	6	AuxY	_	t_715
+3	οὐδέτερα	οὐδέτερος	a	a-p---nn-	Case=a|Gender=n|Number=p	6	ADV	_	t_716
+4	οἷοί	οἷος	a	a-p---mn-	Case=n|Gender=m|Number=p	6	PNOM	_	t_717
+5	τε	τε	d	d--------	_	4	AuxZ	_	t_718
+6	[0]	[0]	-	---------	_	0	PRED	_	e_18
+7	·	·	u	u--------	_	6	AuxK	_	t_719
+
+
+# sentence_id = 77
+# translation_lang = en
+# prose_translation = For they are not able to make one wise or foolish, but they do whatever they happen to do at random.
+# literal_translation = For neither wise nor foolish [are they] able to make [it], but they do this [namely] whatever they happen [to do].
+1	οὔ	οὐ	d	d--------	_	2	AuxY	_	t_720
+2	τε	τε	d	d--------	_	6	AuxY	_	t_721
+3	γὰρ	γάρ	d	d--------	_	12	AuxY	_	t_722
+4	φρόνιμον	φρόνιμος	a	a-s---ma-	Case=a|Gender=m|Number=s	6	OCOMP	_	t_723
+5	οὔ	οὐ	d	d--------	_	7	AuxZ	_	t_724
+6	τε	τε	c	c--------	_	9	COORD	_	t_725
+7	ἄφρονα	ἄφρων	a	a-s---ma-	Case=a|Gender=m|Number=s	6	OCOMP	_	t_726
+8	δυνατοὶ	δυνατός	a	a-p---mn-	Case=n|Gender=m|Number=p	17	PNOM	_	t_727
+9	ποιῆσαι	ποιέω	v	v--ana---	Mood=n|Tense=a|Voice=a	8	ADV	_	t_728
+10	,	,	u	u--------	_	0	AuxX	_	t_729
+11	ποιοῦσι	ποιέω	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	12	PRED	_	t_730
+12	δὲ	δέ	c	c--------	_	10	COORD	_	t_731
+13	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	11	OBJ	_	t_732
+14	ὅτι	ὅτι	c	c--------	_	11	AuxC	_	t_733
+15	ἂν	ἄν	d	d--------	_	16	AuxY	_	t_734
+16	τύχωσι	τυγχάνω	v	v3pasa---	Mood=s|Number=p|Person=3|Tense=a|Voice=a	14	ADV	_	t_735
+17	[0]	[0]	-	---------	_	12	PRED	_	e_19
+18	.	.	u	u--------	_	10	AuxK	_	t_736
+
+
+# sentence_id = 78
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_737
+2	.	.	u	u--------	_	1	AuxK	_	t_738
+
+
+# sentence_id = 79
+# translation_lang = en
+# prose_translation = Well then, let's leave things as they are.
+# literal_translation = These things indeed thus let it hold·
+1	ταῦτα	οὗτος	p	p-p---nn-	Case=n|Gender=n|Number=p	5	SBJ	_	t_739
+2	μὲν	μέν	d	d--------	_	5	AuxY	_	t_740
+3	δὴ	δή	d	d--------	_	5	AuxY	_	t_741
+4	οὕτως	οὕτως	d	d--------	_	5	ADV	_	t_742
+5	ἐχέτω	ἔχω	v	v3spma---	Mood=m|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_743
+6	·	·	u	u--------	_	5	AuxK	_	t_744
+
+
+# sentence_id = 80
+# translation_lang = en
+# prose_translation = Crito: Tell me this, Socrates,
+# literal_translation = Crito: But tell me this, O Socrates,
+1	τάδε	ὅδε	p	p-p---na-	Case=a|Gender=n|Number=p	7	OBJ	_	t_745
+2	δέ	δέ	d	d--------	_	7	AuxY	_	t_746
+3	,	,	u	u--------	_	7	AuxX	_	t_747
+4	ὦ	ὦ	i	i--------	_	5	AuxZ	_	t_748
+5	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	7	ExD	_	t_749
+6	,	,	u	u--------	_	7	AuxX	_	t_750
+7	εἰπέ	εἶπον	v	v2sama---	Mood=m|Number=s|Person=2|Tense=a|Voice=a	0	PRED	_	t_751
+8	μοι	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	7	OBJ	_	t_752
+9	.	.	u	u--------	_	7	AuxK	_	t_753
+
+
+# sentence_id = 81
+# translation_lang = en
+# prose_translation = Are you not perhaps worried about me and about your other friends as well, in case, if you should escape from here, the informers give us trouble by claiming we smuggled you out of here, and we're forced to lose all our property too, or a great deal of money, or even to suffer something else besides these things?
+# literal_translation = Are you not perhaps taking-thought both for me and for the rest of the friends, lest, if you should go out from here, the informers give to us troubles, [saying] that [we] stole you away from here, and [we] be compelled either to lose all the property or much money, or also to suffer some other thing besides these things?
+1	ἆρά	ἆρα	d	d--------	_	5	AuxY	_	t_754
+2	γε	γε	d	d--------	_	5	AuxZ	_	t_755
+3	μὴ	μή	d	d--------	_	5	AuxZ	_	t_756
+4	ἐμοῦ	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	6	OBJ	_	t_757
+5	προμηθῇ	προμηθέομαι	v	v2spse---	Mood=s|Number=s|Person=2|Tense=p|Voice=e	0	PRED	_	t_758
+6	καὶ	καί	c	c--------	_	5	COORD	_	t_759
+7	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	9	ATR	_	t_760
+8	ἄλλων	ἄλλος	p	p-p---mg-	Case=g|Gender=m|Number=p	9	ATR	_	t_761
+9	ἐπιτηδείων	ἐπιτήδειος	a	a-p---mg-	Case=g|Gender=m|Number=p	6	OBJ	_	t_762
+10	μή	μή	d	d--------	_	5	AuxZ	_	t_763
+11	,	,	u	u--------	_	5	AuxX	_	t_764
+12	ἐὰν	ἐάν	c	c--------	_	21	AuxC	_	t_765
+13	σὺ	σύ	p	p-s---mn-	Case=n|Gender=m|Number=s	15	SBJ	_	t_766
+14	ἐνθένδε	ἐνθένδε	d	d--------	_	15	ADV	_	t_767
+15	ἐξέλθῃς	ἐξέρχομαι	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	12	ADV	_	t_768
+16	,	,	u	u--------	_	27	AuxX	_	t_769
+17	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	18	ATR	_	t_770
+18	συκοφάνται	συκοφάντης	n	n-p---mn-	Case=n|Gender=m|Number=p	21	SBJ	_	t_771
+19	ἡμῖν	ἐγώ	p	p1p---md-	Case=d|Gender=m|Number=p|Person=1	21	OBJ	_	t_772
+20	πράγματα	πρᾶγμα	n	n-p---na-	Case=a|Gender=n|Number=p	21	OBJ	_	t_773
+21	παρέχωσιν	παρέχω	v	v3ppsa---	Mood=s|Number=p|Person=3|Tense=p|Voice=a	27	ADV	_	t_774
+22	ὡς	ὡς	d	d--------	_	25	AuxZ	_	t_775
+23	σὲ	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	25	OBJ	_	t_776
+24	ἐνθένδε	ἐνθένδε	d	d--------	_	25	ADV	_	t_777
+25	ἐκκλέψασιν	ἐκκλέπτω	v	v-papamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=a|Voice=a	21	ADV	_	t_778
+26	,	,	u	u--------	_	5	AuxX	_	t_779
+27	καὶ	καί	c	c--------	_	5	COORD	_	t_780
+28	ἀναγκασθῶμεν	ἀναγκάζω	v	v1pasp---	Mood=s|Number=p|Person=1|Tense=a|Voice=p	27	PRED	_	t_781
+29	ἢ	ἤ1	c	c--------	_	28	AuxC	_	t_782
+30	καὶ	καί	d	d--------	_	35	AuxY	_	t_783
+31	πᾶσαν	πᾶς	a	a-s---fa-	Case=a|Gender=f|Number=s	33	ATR	_	t_784
+32	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	33	ATR	_	t_785
+33	οὐσίαν	οὐσία	n	n-s---fa-	Case=a|Gender=f|Number=s	35	OBJ	_	t_786
+34	ἀποβαλεῖν	ἀποβάλλω	v	v--ana---	Mood=n|Tense=a|Voice=a	39	OBJ	_	t_787
+35	ἢ	ἤ1	c	c--------	_	34	COORD	_	t_788
+36	συχνὰ	συχνός	a	a-p---na-	Case=a|Gender=n|Number=p	37	ATR	_	t_789
+37	χρήματα	χρῆμα	n	n-p---na-	Case=a|Gender=n|Number=p	35	OBJ	_	t_790
+38	,	,	u	u--------	_	5	AuxX	_	t_791
+39	ἢ	ἤ1	c	c--------	_	28	COORD	_	t_792
+40	καὶ	καί	d	d--------	_	45	AuxZ	_	t_793
+41	ἄλλο	ἄλλος	a	a-s---na-	Case=a|Gender=n|Number=s	42	ATR	_	t_794
+42	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	45	OBJ	_	t_795
+43	πρὸς	πρός	r	r--------	_	45	AuxP	_	t_796
+44	τούτοις	οὗτος	p	p-p---nd-	Case=d|Gender=n|Number=p	43	ADV	_	t_797
+45	παθεῖν	πάσχω	v	v--ana---	Mood=n|Tense=a|Voice=a	39	OBJ	_	t_798
+46	;	;	u	u--------	_	5	AuxK	_	t_799

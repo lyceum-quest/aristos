@@ -1,0 +1,19 @@
+{
+  "input": "../OGA/opera_graeca_adnotata_v0.2.0/workspace/conllu/tlg0059.tlg003.perseus-grc2.tok01_sentence-seg01_annotated_lemma.conllu",
+  "title": "Plato, Crito",
+  "model": "claude-sonnet-5",
+  "base_url": "https://api.ppq.ai/v1",
+  "api_key_env": "PPQ_API_KEY",
+  "allow_fallbacks": true,
+  "send_temperature": false,
+  "structured_schema": false,
+  "temperature": 0,
+  "translate": {
+    "max_tokens": 1024
+  },
+  "gloss": {
+    "max_tokens": 2048
+  },
+  "context": "These blocks come from Plato's Crito: an Attic Greek dialogue between Socrates and his friend Crito in Socrates' prison cell on the morning Crito urges him to escape. A sentence consisting only of a capitalized speaker abbreviation and a full stop marks a change of speaker: ΣΩ is Socrates and ΚΡ is Crito. Gloss the abbreviation with the speaker's name, and begin that speaker's translation with the name and a colon, as in Socrates: and Crito:. Render particles such as μέν, δέ, γε, δή, οὖν, and ἀλλά by their conversational force in prose, and keep them visible in literal translations. Keep the tone of spoken conversation. Do not reproduce the wording of a published English translation.",
+  "backend": "subscription"
+}
