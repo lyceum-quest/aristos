@@ -5,7 +5,8 @@ import cli.Path
 import cli.Stderr
 import cli.Stdout
 # Translates and glosses the first N sentences of a work's CoNLL-U input into conllu/generated/<work>-<model>/,
-# resuming from that folder's checkpoints. Every new sentence makes paid API calls.
+# resuming from that folder's checkpoints. Every new sentence makes model calls: paid API calls on the `api` backend,
+# or `claude -p` calls on this machine's Claude Code login on the `subscription` backend (see BackendConfig).
 # Kai starts this loop with SIGINT ignored and each stage restores it, so Ctrl-C kills only the running stage and
 # the loop can print its summary. basic-cli cannot observe SIGINT yet; remove this once it can
 # (../roc-issues/improvements/IMPROVEMENT-002-basic-cli-sigint-handling).
@@ -23,7 +24,10 @@ BasePrompts : { translate : Str, gloss : Str }
 base_prompts = "scripts/generate/base.json"
 ByokUsage : { usage : { cost : Dec, is_byok : Bool, cost_details : { upstream_inference_cost : Dec } } }
 Usage : { usage : { cost : Dec } }
-Costs : { total : Dec, unknown : U64 }
+Costs : { total : Dec, unknown : U64, subscription : Dec }
+# `backend` is optional in a work config: `api` (default) or `subscription` (scripts/generate/Backend.roc). It is not
+# pinned, because it changes how requests are sent, not what is generated; a work can switch between runs.
+BackendConfig : { backend : Str }
 stage_dir = "scripts/generate"
 max_attempts = 3
 bar_width = 24
@@ -33,7 +37,9 @@ main! = |args| match List.map(List.drop_first(args, 1), OsStr.display) {
 }
 run! = |work, config_path, count_arg| {
 	_ = (if valid_work(work) { Ok({}) } else { Err(InvalidWork(work)) })?
-	config_text = resolve_config!(Path.read_utf8!(Path.utf8(config_path))?)?
+	raw_config = Path.read_utf8!(Path.utf8(config_path))?
+	config_text = resolve_config!(raw_config)?
+	backend = backend_of(raw_config)?
 	config : LoopConfig
 	config = Json.parse(config_text)?
 	source = blocks_from(Str.replace_each(Path.read_utf8!(Path.utf8(config.input))?, "\r\n", "\n"))
@@ -47,7 +53,7 @@ run! = |work, config_path, count_arg| {
 	out = "conllu/generated/${work}-${Str.replace_each(config.model, "/", "-")}"
 	_ = Path.create_all!(Path.utf8("${out}/.scratch"))?
 	costs = read_costs!(out)?
-	job = { work, config_path, count_arg, input: config.input, out, requested, available, wanted, sentences, cost_at_start: costs.total }
+	job = { work, config_path, count_arg, input: config.input, out, requested, available, wanted, sentences, backend, cost_at_start: costs.total, subscription_at_start: costs.subscription }
 	outcome = generate!(job, config_text, source)
 	_ = Stderr.write!("\r\u(1b)[2K")?
 	_ = summary!(job, outcome)?
@@ -55,6 +61,14 @@ run! = |work, config_path, count_arg| {
 		Ok(_) => Ok({})
 		Err(Cancelled) => Err(Exit(130))
 		Err(_) => Err(Exit(1))
+	}
+}
+backend_of = |text| {
+	parsed : Try(BackendConfig, _)
+	parsed = Json.parse(text)
+	match parsed {
+		Ok(chosen) => if chosen.backend == "api" or chosen.backend == "subscription" Ok(chosen.backend) else Err(InvalidBackend(chosen.backend))
+		Err(_) => Ok("api")
 	}
 }
 generate! = |job, config_text, source| {
@@ -172,8 +186,8 @@ run_stage! = |job, stage, config_path, current, step, cost, attempt| {
 	response = "${scratch}/${script}-api-response.json"
 	_ = remove!(response)?
 	_ = remove!("${scratch}/${script}-output.conllu")?
-	result = Cmd.new_str("env").args_str(["--default-signal=INT", "timeout", "--foreground", "180", "roc", "${stage_dir}/${script}.roc", config_path, current, scratch]).exec_output!()
-	spent = cost + record_cost!(job.out, stage, step.index, response)?
+	result = Cmd.new_str("env").args_str(["--default-signal=INT", "timeout", "--foreground", "180", "roc", "${stage_dir}/${script}.roc", config_path, current, scratch, job.backend]).exec_output!()
+	spent = cost + record_cost!(job.out, stage, step.index, job.backend, response)?
 	match result {
 		Ok(_) => Ok(spent)
 		Err(error) => {
@@ -195,11 +209,11 @@ failure_text = |error| match error {
 	}
 	other => Str.inspect(other)
 }
-# Each attempt's reported cost is appended to costs.tsv, so totals survive cancellation and resume.
-record_cost! = |out, stage, index, response| if Path.exists!(Path.utf8(response))? {
+# Each attempt's reported cost is appended to costs.tsv with its backend, so totals survive cancellation and resume.
+record_cost! = |out, stage, index, backend, response| if Path.exists!(Path.utf8(response))? {
 	cost = response_cost(Path.read_utf8!(Path.utf8(response))?)
 	value = match cost { Ok(amount) => Dec.to_str(amount), Err(_) => "?" }
-	_ = append_text!("${out}/costs.tsv", "${stage}\t${U64.to_str(index)}\t${value}\n")?
+	_ = append_text!("${out}/costs.tsv", "${stage}\t${U64.to_str(index)}\t${value}\t${backend}\n")?
 	Ok(match cost { Ok(amount) => amount, Err(_) => 0 })
 } else {
 	Ok(0)
@@ -221,18 +235,19 @@ read_costs! : Str => Try(Costs, _)
 read_costs! = |out| {
 	path = "${out}/costs.tsv"
 	if Path.exists!(Path.utf8(path))? {
-		Ok(sum_costs(Str.split_on(Path.read_utf8!(Path.utf8(path))?, "\n"), { total: 0, unknown: 0 }))
+		Ok(sum_costs(Str.split_on(Path.read_utf8!(Path.utf8(path))?, "\n"), { total: 0, unknown: 0, subscription: 0 }))
 	} else {
-		Ok({ total: 0, unknown: 0 })
+		Ok({ total: 0, unknown: 0, subscription: 0 })
 	}
 }
 sum_costs : List(Str), Costs -> Costs
 sum_costs = |lines, found| match lines {
 	[] => found
 	[line, .. as rest] => match Str.split_on(line, "\t") {
-		[_, _, value] => match Dec.from_str(value) {
-			Ok(amount) => sum_costs(rest, { total: found.total + amount, unknown: found.unknown })
-			Err(_) => sum_costs(rest, { total: found.total, unknown: found.unknown + 1 })
+		# Rows written before backends existed have no fourth column and were API calls.
+		[_, _, value, .. as backend] => match Dec.from_str(value) {
+			Ok(amount) => sum_costs(rest, { ..found, total: found.total + amount, subscription: if backend == ["subscription"] found.subscription + amount else found.subscription })
+			Err(_) => sum_costs(rest, { ..found, unknown: found.unknown + 1 })
 		}
 		_ => sum_costs(rest, found)
 	}
@@ -266,7 +281,9 @@ summary! = |job, outcome| {
 			status,
 			"  requested:  ${U64.to_str(done * 100 // job.requested)}% complete (${U64.to_str(done)} of ${U64.to_str(job.requested)} requested)",
 			"  input:      ${tenths(List.len(units) * 1000 // job.available)}% complete (${U64.to_str(List.len(units))} of ${U64.to_str(job.available)} passages in ${job.input})",
+			"  backend:    ${job.backend}",
 			"  cost:       ${usd(costs.total - job.cost_at_start)} this run · ${usd(costs.total)} total for ${job.out}${unknown}",
+			"  of which:   ${usd(costs.subscription - job.subscription_at_start)} this run · ${usd(costs.subscription)} total at list price through the subscription (not billed per call)",
 			"  output:     ${job.out}/output.conllu (glosses), ${job.out}/units.jsonl (passage translations)",
 		],
 		resume,

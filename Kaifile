@@ -21,7 +21,11 @@ environment dev {
 # e.g. kai run generate -- 1peter scripts/generate/works/1peter.json 25
 # Glosses sentences and translates canonical passages (verses, sections; see
 # scripts/Passages.roc) into conllu/generated/<work>-<model>/, resuming its
-# checkpoints; missing work makes paid API calls. Meditations Book 1 is 42.
+# checkpoints; missing work makes model calls. Meditations Book 1 is 42.
+# A work config's optional "backend" picks how calls are made: "api" (the
+# default; paid per call through base_url) or "subscription" (`claude -p` on
+# this machine's Claude Code login; see scripts/generate/Backend.roc). Works
+# can switch between runs; costs.tsv records each call's backend.
 # SIGINT is ignored so Ctrl-C stops the current stage and the loop reports;
 # see ../roc-issues/improvements/IMPROVEMENT-002-basic-cli-sigint-handling.
 task generate {
