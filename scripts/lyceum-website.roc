@@ -17,7 +17,9 @@ main! = |args| match List.map(List.drop_first(args, 1), OsStr.display) {
 	}
 }
 
+setting! = |key| LyceumWebsite.setting(key, Env.var_str!(OsStr.from_str(key)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")
+
 website_dir! = |{}| {
-	dir = LyceumWebsite.dir(Env.var_str!(OsStr.from_str(LyceumWebsite.name)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")?
+	dir = LyceumWebsite.dir(setting!(LyceumWebsite.name))?
 	if Path.is_dir!(Path.utf8(dir)) ?? Bool.False Ok(dir) else Err(MissingWebsiteDir("${LyceumWebsite.name}=${dir} is not a directory"))
 }

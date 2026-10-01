@@ -15,7 +15,8 @@ main! : List(OsStr) => Try({}, _)
 main! = |args| {
 	displayed = args.map(OsStr.display)
 	provision = displayed.contains("infrastructure")
-	target = Env.var_str!("TARGET_HOST") ?? "lyceum-staging"
+	staging = LyceumWebsite.staging(setting!(LyceumWebsite.staging_host), setting!(LyceumWebsite.staging_url))?
+	target = Env.var_str!("TARGET_HOST") ?? staging.host
 	remote_dir = Env.var_str!("REMOTE_DIR") ?? "/var/www/aristos"
 	deploy_state = Env.var_str!("DEPLOY_STATE") ?? "/var/lib/aristos-deploy"
 	# Only provisioning reads the Lyceum website checkout (its flake pins the host).
@@ -26,7 +27,7 @@ main! = |args| {
 		exit_with_message!(1, "Release bundle is missing; run the Kai release workflow first.")
 	} else {
 		require_head!("https://conllu.lyceum.quest/")?
-		require_head!("https://demo.lyceum.quest/")?
+		require_head!("${staging.url}/")?
 		Cmd.new_str("ssh")
 			.args_str([target, "install", "-d", remote_dir])
 			.exec_cmd!()?
@@ -52,7 +53,7 @@ main! = |args| {
 		require_contains!("https://aristos.lyceum.quest/elm.js", "Elm.Main")?
 		require_contains!("https://aristos.lyceum.quest/browser-bridge.js", "storageRequest")?
 		require_head!("https://conllu.lyceum.quest/")?
-		require_head!("https://demo.lyceum.quest/")?
+		require_head!("${staging.url}/")?
 		Stdout.line!("deployed Aristos to https://aristos.lyceum.quest/ via ${target}:${remote_dir}")?
 		Ok({})
 	}
@@ -209,7 +210,9 @@ exit_with_message! = |code, message| {
 	Err(Exit(code))
 }
 
+setting! = |key| LyceumWebsite.setting(key, Env.var_str!(OsStr.from_str(key)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")
+
 website_dir! = |{}| {
-	dir = LyceumWebsite.dir(Env.var_str!(OsStr.from_str(LyceumWebsite.name)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")?
+	dir = LyceumWebsite.dir(setting!(LyceumWebsite.name))?
 	if Path.is_dir!(Path.utf8(dir)) ?? Bool.False Ok(dir) else Err(MissingWebsiteDir("${LyceumWebsite.name}=${dir} is not a directory"))
 }

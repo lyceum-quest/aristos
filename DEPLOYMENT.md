@@ -25,7 +25,7 @@ allowing the existing public Caddy instance to remain the sole owner of ports
 
 The `deploy` workflow, `publish` task, and CI workflow were removed while
 that host is down. `roc scripts/deploy.roc` still publishes `dist/` to it
-(defaults `TARGET_HOST=lyceum-staging`, `REMOTE_DIR=/var/www/aristos`) and
+(defaults `TARGET_HOST` to `LYCEUM_STAGING_HOST`, `REMOTE_DIR=/var/www/aristos`) and
 verifies Aristos plus the existing Conllu and Lyceum endpoints, should the
 host return.
 
@@ -66,7 +66,7 @@ LYCEUM_IMPORT_CONFIG=scripts/lyceum-imports/romans-claude-sonnet-5.json kai run 
 LYCEUM_IMPORT_CONFIG=scripts/lyceum-imports/romans-claude-sonnet-5.json LYCEUM_IMPORT_APPLY=1 kai run import-lyceum
 
 kai run check-lyceum-reader     # the website's Go tests, in its dev shell
-kai run deploy-lyceum-data      # lyceum-staging (demo.lyceum.quest)
+kai run deploy-lyceum-data      # staging, over the tailnet
 LYCEUM_DEPLOY_PRODUCTION=1 kai run deploy-lyceum-data-prod
 ```
 
@@ -75,4 +75,11 @@ repository, and the work and its author must already be in its catalog.
 Configs in `scripts/lyceum-imports/` add an `aristos-<model>` edition;
 `scripts/lyceum-replace.example.json` instead replaces two existing editions
 wholesale. A re-import replaces the passages it names and keeps the rest.
-Deploying uses the `lyceum-staging` and `lyceum-prod` SSH hosts.
+Deploying connects with SSH (as root: it stops and starts the `lyceum` and
+`lyceum-admin` services and installs the databases into `/var/lib/lyceum/data`
+owned by `lyceum`) to `LYCEUM_STAGING_HOST` (default `lyceum-staging`, the
+tailnet name) or `LYCEUM_PROD_HOST` (default `lyceum-prod`), then checks
+`<url>/health` with `LYCEUM_STAGING_URL` (default `http://<staging host>`) or
+`LYCEUM_PROD_URL` (default `https://lyceum.quest`). Staging needs no public
+domain. Set `LYCEUM_STAGING_HOST=root@lyceum-staging` unless SSH config already
+logs in as root.

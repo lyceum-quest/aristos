@@ -9,8 +9,6 @@ import cli.Stderr
 import cli.Stdout
 import LyceumWebsite
 
-host = "lyceum-staging"
-
 lock = "/var/lib/lyceum/data/.aristos-deploy-lock"
 
 # NixOS links /etc/systemd/system into the read-only store. system.control is
@@ -30,6 +28,8 @@ main! = |args| {
 		[_, "staging"] => Ok({})
 		_ => Err(Deploy("Usage: deploy-lyceum-reader staging (production unsupported)"))
 	}?
+	# Staging is reached over the tailnet; the host and URL come from .env.example settings.
+	target = LyceumWebsite.staging(setting!(LyceumWebsite.staging_host), setting!(LyceumWebsite.staging_url))?
 	website = website_dir!({})?
 	# Use the Git flake, never path: (which imports untracked secrets/databases).
 	artifact = run!("nix", ["build", "--no-link", "--print-out-paths", "${website}#default"])?
@@ -41,8 +41,8 @@ main! = |args| {
 		"Expected one safe /nix/store package path",
 	)?
 	_ = run!("test", ["-x", "${artifact}/bin/lyceum"])?
-	_ = remote!(["mkdir", "--mode=700", "--", lock])?
-	result = deploy_locked!(artifact)
+	_ = remote!(target, ["mkdir", "--mode=700", "--", lock])?
+	result = deploy_locked!(target, artifact)
 	_ = match result {
 		Err(RecoveryNeeded(message)) => {
 			Stderr.line!("Recovery failed; retaining ${lock}. ${message}") ?? {}
@@ -50,9 +50,9 @@ main! = |args| {
 		}
 		_ => Ok({})
 	}?
-	unlock = remote!(["rmdir", "--", lock])
+	unlock = remote!(target, ["rmdir", "--", lock])
 	match (result, unlock) {
-		(Ok(_), Ok(_)) => Stdout.line!("Deployed reader only to https://demo.lyceum.quest/")
+		(Ok(_), Ok(_)) => Stdout.line!("Deployed reader only to ${target.host} (${target.url}/)")
 		(Err(problem), Ok(_)) => Err(problem)
 		(_, Err(problem)) => {
 			Stderr.line!("Lock cleanup failed: ${lock}; deployment result: ${Str.inspect(result)}. Inspect retained deployment before manually removing lock.") ?? {}
@@ -73,13 +73,13 @@ run! = |program, args| {
 }
 
 # SSH joins words into a command; no shell scripts or unquoted arguments.
-remote! = |args| run!("ssh", ["-o", "BatchMode=yes", "-o", "ConnectTimeout=15", "-o", "ServerAliveInterval=15", "-o", "ServerAliveCountMax=2", host, Str.join_with(args.map(quote), " ")])
+remote! = |target, args| run!("ssh", ["-o", "BatchMode=yes", "-o", "ConnectTimeout=15", "-o", "ServerAliveInterval=15", "-o", "ServerAliveCountMax=2", target.host, Str.join_with(args.map(quote), " ")])
 
-deploy_locked! = |artifact| {
+deploy_locked! = |target, artifact| {
 	# Systemd configuration must never pass through a service-writable ancestor.
-	_ = remote!(["test", "!", "-L", recovery_dir])?
-	_ = remote!(["install", "-d", "-o", "root", "-g", "root", "-m", "0700", "--", recovery_dir])?
-	stage = remote!(["mktemp", "-d", "${recovery_dir}/reader-deploy.XXXXXXXX"])?
+	_ = remote!(target, ["test", "!", "-L", recovery_dir])?
+	_ = remote!(target, ["install", "-d", "-o", "root", "-g", "root", "-m", "0700", "--", recovery_dir])?
+	stage = remote!(target, ["mktemp", "-d", "${recovery_dir}/reader-deploy.XXXXXXXX"])?
 	_ = require(
 		match Str.split_on(stage, "/") {
 			["", "var", "lib", "aristos-reader-deploy", name] => Str.starts_with(name, "reader-deploy.") and safe_component(name)
@@ -88,32 +88,32 @@ deploy_locked! = |artifact| {
 		"Unexpected remote staging path",
 	)?
 	Stdout.line!("Retained recovery directory: ${stage}; package root: ${stage}/package; new binary: ${artifact}/bin/lyceum. Interrupted deployments may require manual recovery and removal of ${lock}.") ?? {}
-	_ = run!("nix", ["copy", "--to", "ssh://${host}", artifact])?
-	_ = remote!(["nix-store", "--realise", "--add-root", "${stage}/package", artifact])?
-	_ = remote!(["test", "!", "-L", override_root])?
-	_ = remote!(["test", "!", "-L", override_dir])?
-	_ = remote!(["mkdir", "-p", "--", override_dir])?
-	_ = remote!(["test", "!", "-L", override])?
+	_ = run!("nix", ["copy", "--to", "ssh://${target.host}", artifact])?
+	_ = remote!(target, ["nix-store", "--realise", "--add-root", "${stage}/package", artifact])?
+	_ = remote!(target, ["test", "!", "-L", override_root])?
+	_ = remote!(target, ["test", "!", "-L", override_dir])?
+	_ = remote!(target, ["mkdir", "-p", "--", override_dir])?
+	_ = remote!(target, ["test", "!", "-L", override])?
 	# Successful find distinguishes absence from transport/permission failures.
-	existing = remote!(["find", override_dir, "-maxdepth", "1", "-name", override_name, "-print"])?
+	existing = remote!(target, ["find", override_dir, "-maxdepth", "1", "-name", override_name, "-print"])?
 	_ = require(existing == "" or existing == override, "Unexpected override discovery result")?
 	had_override = existing == override
 	_ = (
 		if had_override {
-			_ = remote!(["test", "-f", override])?
-			remote!(["cp", "--preserve=all", "--", override, "${stage}/previous.conf"])
+			_ = remote!(target, ["test", "-f", override])?
+			remote!(target, ["cp", "--preserve=all", "--", override, "${stage}/previous.conf"])
 		} else {
-			remote!(["touch", "--", "${stage}/override-was-absent"])
+			remote!(target, ["touch", "--", "${stage}/override-was-absent"])
 		}
 	)?
-	old_paths = remote!(["systemctl", "show", "lyceum", "--property=FragmentPath", "--property=DropInPaths"])
+	old_paths = remote!(target, ["systemctl", "show", "lyceum", "--property=FragmentPath", "--property=DropInPaths"])
 	Stdout.line!("Previous service paths: ${Str.inspect(old_paths)}; prior override present: ${Str.inspect(had_override)}; backup: ${stage}/previous.conf") ?? {}
-	_ = stage_config!(stage, artifact)?
+	_ = stage_config!(target, stage, artifact)?
 	# An SSH error during install can still mean the override was changed.
-	match apply!(stage, artifact) {
+	match apply!(target, stage, artifact) {
 		Ok(_) => Ok({})
 		Err(problem) => {
-			recovery = rollback!(stage, had_override)
+			recovery = rollback!(target, stage, had_override)
 			Stderr.line!("Reader deploy failed: ${Str.inspect(problem)}; rollback result: ${Str.inspect(recovery)}. Recovery files retained in ${stage}; dedicated override: ${override}") ?? {}
 			match recovery {
 				Ok(_) => Err(problem)
@@ -123,7 +123,7 @@ deploy_locked! = |artifact| {
 	}
 }
 
-stage_config! = |stage, artifact| {
+stage_config! = |target, stage, artifact| {
 	local = run!("mktemp", ["/tmp/aristos-reader.XXXXXXXX"])?
 	config =
 		\\[Service]
@@ -132,7 +132,7 @@ stage_config! = |stage, artifact| {
 		\\
 	result = match Path.write_utf8!(Path.utf8(local), config) {
 		Err(problem) => Err(Deploy(Str.inspect(problem)))
-		Ok(_) => run!("scp", ["-B", "-o", "ConnectTimeout=15", "-o", "ServerAliveInterval=15", "-o", "ServerAliveCountMax=2", local, "${host}:${stage}/incoming.conf"])
+		Ok(_) => run!("scp", ["-B", "-o", "ConnectTimeout=15", "-o", "ServerAliveInterval=15", "-o", "ServerAliveCountMax=2", local, "${target.host}:${stage}/incoming.conf"])
 	}
 	cleanup = run!("rm", ["-f", "--", local])
 	match (result, cleanup) {
@@ -142,50 +142,52 @@ stage_config! = |stage, artifact| {
 	}
 }
 
-apply! = |stage, artifact| {
-	_ = remote!(["install", "-m", "0644", "--", "${stage}/incoming.conf", override])?
-	_ = restart_healthy!({})?
-	pid = remote!(["systemctl", "show", "lyceum", "--property=MainPID", "--value"])?
+apply! = |target, stage, artifact| {
+	_ = remote!(target, ["install", "-m", "0644", "--", "${stage}/incoming.conf", override])?
+	_ = restart_healthy!(target)?
+	pid = remote!(target, ["systemctl", "show", "lyceum", "--property=MainPID", "--value"])?
 	_ = require(pid != "" and List.all(Str.to_utf8(pid), |byte| byte >= 48 and byte <= 57), "Invalid reader MainPID")?
-	running = remote!(["readlink", "-f", "--", "/proc/${pid}/exe"])?
+	running = remote!(target, ["readlink", "-f", "--", "/proc/${pid}/exe"])?
 	require(running == "${artifact}/bin/lyceum", "Running reader does not match the deployed package")
 }
 
-rollback! = |stage, had_override| {
+rollback! = |target, stage, had_override| {
 	_ = (
 		if had_override {
-			remote!(["cp", "--preserve=all", "--", "${stage}/previous.conf", override])
+			remote!(target, ["cp", "--preserve=all", "--", "${stage}/previous.conf", override])
 		} else {
-			remote!(["rm", "-f", "--", override])
+			remote!(target, ["rm", "-f", "--", override])
 		}
 	)?
-	restart_healthy!({})
+	restart_healthy!(target)
 }
 
-restart_healthy! = |{}| {
-	_ = remote!(["systemctl", "daemon-reload"])?
-	_ = remote!(["systemctl", "restart", "lyceum"])?
-	health!(12)
+restart_healthy! = |target| {
+	_ = remote!(target, ["systemctl", "daemon-reload"])?
+	_ = remote!(target, ["systemctl", "restart", "lyceum"])?
+	health!(target, 12)
 }
 
-health! = |attempts| match probe!({}) {
+health! = |target, attempts| match probe!(target) {
 	Ok(_) => Ok({})
 	Err(problem) => if attempts <= 1 {
 		Err(problem)
 	} else {
 		Sleep.millis!(2000)
-		health!(attempts - 1)
+		health!(target, attempts - 1)
 	}
 }
 
-probe! = |{}| {
-	_ = remote!(["systemctl", "is-active", "--quiet", "lyceum"])?
-	_ = remote!(["curl", "--fail", "--silent", "--show-error", "--max-time", "10", "--output", "/dev/null", "http://127.0.0.1:8080/health"])?
-	_ = run!("curl", ["--fail", "--silent", "--show-error", "--max-time", "15", "--output", "/dev/null", "https://demo.lyceum.quest/health"])?
+probe! = |target| {
+	_ = remote!(target, ["systemctl", "is-active", "--quiet", "lyceum"])?
+	_ = remote!(target, ["curl", "--fail", "--silent", "--show-error", "--max-time", "10", "--output", "/dev/null", "http://127.0.0.1:8080/health"])?
+	_ = run!("curl", ["--fail", "--silent", "--show-error", "--max-time", "15", "--output", "/dev/null", "${target.url}/health"])?
 	Ok({})
 }
 
+setting! = |key| LyceumWebsite.setting(key, Env.var_str!(OsStr.from_str(key)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")
+
 website_dir! = |{}| {
-	dir = LyceumWebsite.dir(Env.var_str!(OsStr.from_str(LyceumWebsite.name)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")?
+	dir = LyceumWebsite.dir(setting!(LyceumWebsite.name))?
 	if Path.is_dir!(Path.utf8(dir)) ?? Bool.False Ok(dir) else Err(Deploy("${LyceumWebsite.name}=${dir} is not a directory"))
 }

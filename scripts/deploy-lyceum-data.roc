@@ -16,23 +16,26 @@ files = ["texts.db", "editions.db"]
 lock = "/var/lib/lyceum/data/.aristos-deploy-lock"
 
 main! = |args| {
-	(host, domain) = match args.map(OsStr.display) {
-		[_, "staging"] => Ok(("lyceum-staging", "demo.lyceum.quest"))
+	# Staging is reached over the tailnet; the hosts and URLs come from .env.example settings.
+	target = match args.map(OsStr.display) {
+		[_, "staging"] => LyceumWebsite.staging(setting!(LyceumWebsite.staging_host), setting!(LyceumWebsite.staging_url))
 		[_, "production"] => {
 			_ = require((Env.var_str!("LYCEUM_DEPLOY_PRODUCTION") ?? "") == "1", "Production requires LYCEUM_DEPLOY_PRODUCTION=1")?
-			Ok(("lyceum-prod", "lyceum.quest"))
+			LyceumWebsite.production(setting!(LyceumWebsite.production_host), setting!(LyceumWebsite.production_url))
 		}
 		_ => Err(Deploy("Usage: deploy-lyceum-data staging|production"))
 	}?
+	host = target.host
+	url = target.url
 	source = "${website_dir!({})?}/data"
 	# Validate the complete pair before even acquiring the remote lock.
 	_ = local_check!(source, files)?
 	expected = hashes(run!("sha256sum", paths(source))?)
 	_ = remote!(host, ["mkdir", "--mode=700", "--", lock])?
-	result = deploy_locked!(host, domain, source, expected)
+	result = deploy_locked!(host, url, source, expected)
 	unlock = remote!(host, ["rmdir", "--", lock])
 	match (result, unlock) {
-		(Ok(_), Ok(_)) => Stdout.line!("Deployed reader data to https://${domain}/")
+		(Ok(_), Ok(_)) => Stdout.line!("Deployed reader data to ${host} (${url}/)")
 		(Err(problem), Ok(_)) => Err(problem)
 		(_, Err(problem)) => {
 			Stderr.line!("Lock cleanup failed: ${lock}; deployment result: ${Str.inspect(result)}") ?? {}
@@ -94,7 +97,7 @@ verify! = |host, dir, expected| {
 
 services! = |host, action| remote!(host, ["systemctl", action, "lyceum", "lyceum-admin"])
 
-deploy_locked! = |host, domain, source, expected| {
+deploy_locked! = |host, url, source, expected| {
 	baseline = hashes(remote!(host, List.prepend(paths(data), "sha256sum"))?)
 	stage = remote!(host, ["mktemp", "-d", "${data}/.aristos-deploy.XXXXXXXXXX"])?
 	# mktemp's output is used by scp as well as SSH: constrain it to this template.
@@ -111,14 +114,14 @@ deploy_locked! = |host, domain, source, expected| {
 	# Any failure from stop onward may mean services are stopped, even if SSH failed.
 	match prepare!(host, backup, baseline) {
 		Err(problem) => {
-			recovery = start_healthy!(host, domain)
+			recovery = start_healthy!(host, url)
 			Stderr.line!("Deployment aborted before install; restart result: ${Str.inspect(recovery)}; retained ${backup}") ?? {}
 			Err(problem)
 		}
-		Ok(_) => match install!(host, domain, incoming, expected) {
+		Ok(_) => match install!(host, url, incoming, expected) {
 			Ok(_) => Ok({})
 			Err(problem) => {
-				match rollback!(host, domain, backup, baseline) {
+				match rollback!(host, url, backup, baseline) {
 					Ok(_) => Stderr.line!("Previous database pair restored; backups retained: ${backup}") ?? {}
 					Err(recovery) => {
 						stopped = services!(host, "stop")
@@ -139,50 +142,52 @@ prepare! = |host, backup, baseline| {
 	verify!(host, backup, baseline)
 }
 
-install! = |host, domain, incoming, expected| {
+install! = |host, url, incoming, expected| {
 	_ = remote!(host, ["install", "-o", "lyceum", "-g", "lyceum", "-m", "0644", "--", "${incoming}/texts.db", "${incoming}/editions.db", data])?
 	_ = verify!(host, data, expected)?
-	_ = start_healthy!(host, domain)?
+	_ = start_healthy!(host, url)?
 	verify!(host, data, expected)
 }
 
-rollback! = |host, domain, backup, baseline| {
+rollback! = |host, url, backup, baseline| {
 	_ = services!(host, "stop")?
 	# Never overwrite a live journal, including one unexpectedly created on restart.
 	_ = remote_clean!(host, files)?
 	_ = remote!(host, ["cp", "--preserve=all", "--", "${backup}/texts.db", "${backup}/editions.db", data])?
 	_ = verify!(host, data, baseline)?
-	_ = start_healthy!(host, domain)?
+	_ = start_healthy!(host, url)?
 	verify!(host, data, baseline)
 }
 
-start_healthy! = |host, domain| {
+start_healthy! = |host, url| {
 	_ = services!(host, "start")?
-	health!(host, domain, 12)
+	health!(host, url, 12)
 }
 
-health! = |host, domain, attempts| {
-	result = probe!(host, domain)
+health! = |host, url, attempts| {
+	result = probe!(host, url)
 	match result {
 		Ok(_) => Ok({})
 		Err(problem) => if attempts <= 1 {
 			Err(problem)
 		} else {
 			Sleep.millis!(2000)
-			health!(host, domain, attempts - 1)
+			health!(host, url, attempts - 1)
 		}
 	}
 }
 
-probe! = |host, domain| {
+probe! = |host, url| {
 	_ = remote!(host, ["systemctl", "is-active", "--quiet", "lyceum"])?
 	_ = remote!(host, ["systemctl", "is-active", "--quiet", "lyceum-admin"])?
 	_ = remote!(host, ["curl", "--fail", "--silent", "--show-error", "--max-time", "10", "--output", "/dev/null", "http://127.0.0.1:8080/health"])?
-	_ = run!("curl", ["--fail", "--silent", "--show-error", "--max-time", "15", "--output", "/dev/null", "https://${domain}/health"])?
+	_ = run!("curl", ["--fail", "--silent", "--show-error", "--max-time", "15", "--output", "/dev/null", "${url}/health"])?
 	Ok({})
 }
 
+setting! = |key| LyceumWebsite.setting(key, Env.var_str!(OsStr.from_str(key)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")
+
 website_dir! = |{}| {
-	dir = LyceumWebsite.dir(Env.var_str!(OsStr.from_str(LyceumWebsite.name)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")?
+	dir = LyceumWebsite.dir(setting!(LyceumWebsite.name))?
 	if Path.is_dir!(Path.utf8(dir)) ?? Bool.False Ok(dir) else Err(Deploy("${LyceumWebsite.name}=${dir} is not a directory"))
 }
