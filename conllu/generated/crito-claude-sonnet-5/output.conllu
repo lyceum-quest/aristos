@@ -6122,3 +6122,1371 @@
 78	πόλις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	75	SBJ	_	t_4110|gloss=city
 79	[0]	[0]	-	---------	_	41	ADV	_	e_107
 80	·	·	u	u--------	_	18	AuxK	_	t_4111|gloss=.
+
+
+# sentence_id = 319
+# translation_lang = en
+# prose_translation = So strongly did you choose us and agree to be a citizen under us, and you had your children in the city itself, because the city pleased you so much.
+# literal_translation = So very much [you] chose us and agreed to be a citizen in accordance with us, and the other things, and [you] made children in it, on the grounds that the city was pleasing to you.
+1	οὕτω	οὕτως	d	d--------	_	5	ADV	_	t_4112|gloss=so
+2	σφόδρα	σφόδρα	d	d--------	_	5	ADV	_	t_4113|gloss=strongly
+3	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	9	SBJ	_	t_4114|gloss=us
+4	ᾑροῦ	αἱρέω	v	v2siie---	Mood=i|Number=s|Person=2|Tense=i|Voice=e	5	PRED	_	t_4115|gloss=you-chose
+5	καὶ	καί	c	c--------	_	0	COORD	_	t_4116|gloss=and
+6	ὡμολόγεις	ὁμολογέω	v	v2siia---	Mood=i|Number=s|Person=2|Tense=i|Voice=a	5	PRED	_	t_4117|gloss=you-agreed
+7	καθʼ	κατά	r	r--------	_	9	AuxP	_	t_4118|gloss=in-accordance-with
+8	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	7	ADV	_	t_4119|gloss=us
+9	πολιτεύσεσθαι	πολιτεύω	v	v--fnm---	Mood=n|Tense=f|Voice=m	6	OBJ	_	t_4120|gloss=to-be-a-citizen
+10	,	,	u	u--------	_	5	AuxX	_	t_4121|gloss=,
+11	τά	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	13	ATR	_	t_4122|gloss=the
+12	τε	τε	d	d--------	_	5	AuxY	_	t_4123|gloss=and
+13	ἄλλα	ἄλλος	p	p-p---na-	Case=a|Gender=n|Number=p	14	OBJ	_	t_4124|gloss=other-things
+14	καὶ	καί	c	c--------	_	18	COORD	_	t_4125|gloss=and
+15	παῖδας	παῖς	n	n-p---ma-	Case=a|Gender=m|Number=p	14	OBJ	_	t_4126|gloss=children
+16	ἐν	ἐν	r	r--------	_	18	AuxP	_	t_4127|gloss=in
+17	αὐτῇ	αὐτός	p	p-s---fd-	Case=d|Gender=f|Number=s	16	ADV	_	t_4128|gloss=it
+18	ἐποιήσω	ποιέω	v	v2saim---	Mood=i|Number=s|Person=2|Tense=a|Voice=m	5	PRED	_	t_4129|gloss=you-made
+19	,	,	u	u--------	_	5	AuxX	_	t_4130|gloss=,
+20	ὡς	ὡς	d	d--------	_	21	AuxZ	_	t_4131|gloss=on-the-grounds-that
+21	ἀρεσκούσης	ἀρέσκω	v	v-sppafg-	Case=g|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	18	ADV	_	t_4132|gloss=was-pleasing
+22	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	21	OBJ	_	t_4133|gloss=to-you
+23	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	24	ATR	_	t_4134|gloss=the
+24	πόλεως	πόλις	n	n-s---fg-	Case=g|Gender=f|Number=s	21	SBJ	_	t_4135|gloss=city
+25	.	.	u	u--------	_	5	AuxK	_	t_4136|gloss=.
+
+
+# sentence_id = 320
+# translation_lang = en
+# prose_translation = Furthermore, even back then it was possible for you, in the course of your very trial, to propose exile as your penalty, if you had wanted to—and to do with the city's consent what you are now attempting to do without it.
+# literal_translation = Still, then, in the very trial itself it was possible for you to assess [the penalty of] exile, if you were willing, and [to do] the very thing which now you are attempting [to do] against the city's will, then to do [it] with [the city's] willing [consent].
+1	ἔτι	ἔτι	d	d--------	_	7	ADV	_	t_4137|gloss=still
+2	τοίνυν	τοίνυν	d	d--------	_	7	AuxY	_	t_4138|gloss=then
+3	ἐν	ἐν	r	r--------	_	7	AuxP	_	t_4139|gloss=in
+4	αὐτῇ	αὐτός	a	a-s---fd-	Case=d|Gender=f|Number=s	6	ATR	_	t_4140|gloss=very
+5	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	6	ATR	_	t_4141|gloss=the
+6	δίκῃ	δίκη	n	n-s---fd-	Case=d|Gender=f|Number=s	3	ADV	_	t_4142|gloss=trial
+7	ἐξῆν	ἔξεστι	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	0	PRED	_	t_4143|gloss=it-was-possible
+8	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	7	OBJ	_	t_4144|gloss=for-you
+9	φυγῆς	φυγή	n	n-s---fg-	Case=g|Gender=f|Number=s	10	OBJ	_	t_4145|gloss=of-exile
+10	τιμήσασθαι	τιμάω	v	v--anm---	Mood=n|Tense=a|Voice=m	14	SBJ	_	t_4146|gloss=to-assess-the-penalty
+11	εἰ	εἰ	c	c--------	_	7	AuxC	_	t_4147|gloss=if
+12	ἐβούλου	βούλομαι	v	v2siie---	Mood=i|Number=s|Person=2|Tense=i|Voice=e	11	ADV	_	t_4148|gloss=you-were-willing
+13	,	,	u	u--------	_	7	AuxX	_	t_4149|gloss=,
+14	καὶ	καί	c	c--------	_	7	COORD	_	t_4150|gloss=and
+15	ὅπερ	ὅσπερ	p	p-s---na-	Case=a|Gender=n|Number=s	20	OBJ	_	t_4151|gloss=the-very-thing-which
+16	νῦν	νῦν	d	d--------	_	20	ADV	_	t_4152|gloss=now
+17	ἀκούσης	ἀέκων	a	a-s---fg-	Case=g|Gender=f|Number=s	20	ADV	_	t_4153|gloss=unwilling
+18	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	19	ATR	_	t_4154|gloss=the
+19	πόλεως	πόλις	n	n-s---fg-	Case=g|Gender=f|Number=s	17	SBJ	_	t_4155|gloss=city's
+20	ἐπιχειρεῖς	ἐπιχειρέω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	22	ADV	_	t_4156|gloss=you-are-attempting
+21	,	,	u	u--------	_	7	AuxX	_	t_4157|gloss=,
+22	τότε	τότε	d	d--------	_	24	ADV	_	t_4158|gloss=then
+23	ἑκούσης	ἑκών	a	a-s---fg-	Case=g|Gender=f|Number=s	24	AtvV	_	t_4159|gloss=willing
+24	ποιῆσαι	ποιέω	v	v--ana---	Mood=n|Tense=a|Voice=a	14	SBJ	_	t_4160|gloss=to-do
+25	.	.	u	u--------	_	7	AuxK	_	t_4161|gloss=.
+
+
+# sentence_id = 321
+# translation_lang = en
+# prose_translation = But you, at that time, were putting on a fine show of not being upset, if it were necessary for you to die, but you chose, as you said, death over exile.
+# literal_translation = You [σὺ] but [δέ] then indeed [μέν] were-making-a-fine-show [ἐκαλλωπίζου] as [ὡς] not being-vexed [ἀγανακτῶν] if [εἰ] it-should-be-necessary [δέοι] [you] to-have-died [τεθνάναι], but [ἀλλά] you-were-choosing [ᾑροῦ], as [ὡς] you-said [ἔφησθα], before [πρό] the [τῆς] exile [φυγῆς] death [θάνατον].
+1	σὺ	σύ	p	p-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_4162|gloss=you
+2	δὲ	δέ	d	d--------	_	14	AuxY	_	t_4163|gloss=but
+3	τότε	τότε	d	d--------	_	5	ADV	_	t_4164|gloss=then
+4	μὲν	μέν	d	d--------	_	14	AuxY	_	t_4165|gloss=indeed
+5	ἐκαλλωπίζου	καλλωπίζω	v	v2siie---	Mood=i|Number=s|Person=2|Tense=i|Voice=e	14	PRED	_	t_4166|gloss=were-putting-on-a-fine-show
+6	ὡς	ὡς	d	d--------	_	8	AuxZ	_	t_4167|gloss=as
+7	οὐκ	οὐ	d	d--------	_	8	AuxZ	_	t_4168|gloss=not
+8	ἀγανακτῶν	ἀγανακτέω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	5	ADV	_	t_4169|gloss=being-vexed
+9	εἰ	εἰ	c	c--------	_	8	AuxC	_	t_4170|gloss=if
+10	δέοι	δέω	v	v3spoa---	Mood=o|Number=s|Person=3|Tense=p|Voice=a	9	ADV	_	t_4171|gloss=it-should-be-necessary
+11	τεθνάναι	θνήσκω	v	v--rna---	Mood=n|Tense=r|Voice=a	10	SBJ	_	t_4172|gloss=to-have-died
+12	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	11	SBJ	_	t_4173|gloss=you
+13	,	,	u	u--------	_	0	AuxX	_	t_4174|gloss=,
+14	ἀλλὰ	ἀλλά	c	c--------	_	13	COORD	_	t_4175|gloss=but
+15	ᾑροῦ	αἱρέω	v	v2siie---	Mood=i|Number=s|Person=2|Tense=i|Voice=e	14	PRED	_	t_4176|gloss=were-choosing
+16	,	,	u	u--------	_	13	AuxX	_	t_4177|gloss=,
+17	ὡς	ὡς	d	d--------	_	18	ADV	_	t_4178|gloss=as
+18	ἔφησθα	φημί	v	v2siia---	Mood=i|Number=s|Person=2|Tense=i|Voice=a	15	ADV	_	t_4179|gloss=you-said
+19	,	,	u	u--------	_	13	AuxX	_	t_4180|gloss=,
+20	πρὸ	πρό	r	r--------	_	15	AuxP	_	t_4181|gloss=before
+21	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	22	ATR	_	t_4182|gloss=the
+22	φυγῆς	φυγή	n	n-s---fg-	Case=g|Gender=f|Number=s	20	ADV	_	t_4183|gloss=exile
+23	θάνατον	θάνατος	n	n-s---ma-	Case=a|Gender=m|Number=s	15	OBJ	_	t_4184|gloss=death
+24	·	·	u	u--------	_	13	AuxK	_	t_4185|gloss=.
+
+
+# sentence_id = 322
+# translation_lang = en
+# prose_translation = Are you not ashamed of this, that now you don't feel shame before those arguments, and you don't show regard for us, the laws, while you try to destroy us, but you're doing the very things the lowest slave would do, trying to run away in violation of the compacts and agreements by which you agreed with us to be a citizen?
+# literal_translation = Now but not are-you-not-able-to-be-ashamed-of those the arguments, and-not of-us of-the laws do-you-feel-respect, trying to-destroy [us], but you-are-doing the-very-things-which a-slave the most-base would-have-done, trying to-run-away contrary-to the compacts both and the agreements according-to which to-us you-agreed to-be-a-citizen.
+1	νῦν	νῦν	d	d--------	_	21	ADV	_	t_4186|gloss=now
+2	δὲ	δέ	d	d--------	_	21	AuxY	_	t_4187|gloss=but
+3	οὔ	οὐ	d	d--------	_	8	AuxZ	_	t_4188|gloss=not
+4	τʼ	τε	d	d--------	_	21	AuxY	_	t_4189|gloss=indeed
+5	ἐκείνους	ἐκεῖνος	a	a-p---ma-	Case=a|Gender=m|Number=p	7	ATR	_	t_4190|gloss=those
+6	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	7	ATR	_	t_4191|gloss=the
+7	λόγους	λόγος	n	n-p---ma-	Case=a|Gender=m|Number=p	8	OBJ	_	t_4192|gloss=arguments
+8	αἰσχύνῃ	αἰσχύνη	v	v2sasm---	Mood=s|Number=s|Person=2|Tense=a|Voice=m	21	PRED	_	t_4193|gloss=are-you-ashamed-of
+9	,	,	u	u--------	_	0	AuxX	_	t_4194|gloss=,
+10	οὔ	οὐ	d	d--------	_	15	AuxZ	_	t_4195|gloss=not
+11	τε	τε	d	d--------	_	21	AuxY	_	t_4196|gloss=and
+12	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	14	ATR	_	t_4197|gloss=us
+13	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	14	ATR	_	t_4198|gloss=the
+14	νόμων	νόμος	n	n-p---mg-	Case=g|Gender=m|Number=p	15	OBJ	_	t_4199|gloss=laws
+15	ἐντρέπῃ	ἐντρέπω	v	v2spse---	Mood=s|Number=s|Person=2|Tense=p|Voice=e	21	PRED	_	t_4200|gloss=do-you-show-regard-for
+16	,	,	u	u--------	_	9	AuxX	_	t_4201|gloss=,
+17	ἐπιχειρῶν	ἐπιχειρέω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	15	ADV	_	t_4202|gloss=trying
+18	διαφθεῖραι	διαφθείρω	v	v--ana---	Mood=n|Tense=a|Voice=a	17	OBJ	_	t_4203|gloss=to-destroy
+19	,	,	u	u--------	_	9	AuxX	_	t_4204|gloss=,
+20	πράττεις	πράσσω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	21	PRED	_	t_4205|gloss=you-are-doing
+21	τε	τε	c	c--------	_	9	COORD	_	t_4206|gloss=while
+22	ἅπερ	ὅσπερ	p	p-p---na-	Case=a|Gender=n|Number=p	27	OBJ	_	t_4207|gloss=the-very-things
+23	ἂν	ἄν	d	d--------	_	27	AuxY	_	t_4208|gloss=would
+24	δοῦλος	δοῦλος	n	n-s---mn-	Case=n|Gender=m|Number=s	27	SBJ	_	t_4209|gloss=slave
+25	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	24	ATR	_	t_4210|gloss=the
+26	φαυλότατος	φαῦλος	a	a-s---mns	Case=n|Degree=s|Gender=m|Number=s	24	ATR	_	t_4211|gloss=most-base
+27	πράξειεν	πράσσω	v	v3saoa---	Mood=o|Number=s|Person=3|Tense=a|Voice=a	20	OBJ	_	t_4212|gloss=would-have-done
+28	,	,	u	u--------	_	9	AuxX	_	t_4213|gloss=,
+29	ἀποδιδράσκειν	ἀποδιδράσκω	v	v--pna---	Mood=n|Tense=p|Voice=a	30	OBJ	_	t_4214|gloss=to-run-away
+30	ἐπιχειρῶν	ἐπιχειρέω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	20	ADV	_	t_4215|gloss=trying
+31	παρὰ	παρά	r	r--------	_	29	AuxP	_	t_4216|gloss=contrary-to
+32	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	33	ATR	_	t_4217|gloss=the
+33	συνθήκας	συνθήκη	n	n-p---fa-	Case=a|Gender=f|Number=p	35	ADV	_	t_4218|gloss=compacts
+34	τε	τε	d	d--------	_	35	AuxY	_	t_4219|gloss=both
+35	καὶ	καί	c	c--------	_	31	COORD	_	t_4220|gloss=and
+36	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	37	ATR	_	t_4221|gloss=the
+37	ὁμολογίας	ὁμολογία	n	n-p---fa-	Case=a|Gender=f|Number=p	35	ADV	_	t_4222|gloss=agreements
+38	καθʼ	κατά	r	r--------	_	42	AuxP	_	t_4223|gloss=according-to
+39	ἃς	ὅς	p	p-p---fa-	Case=a|Gender=f|Number=p	38	ADV	_	t_4224|gloss=which
+40	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	41	OBJ	_	t_4225|gloss=us
+41	συνέθου	συντίθημι	v	v2saim---	Mood=i|Number=s|Person=2|Tense=a|Voice=m	35	ATR	_	t_4226|gloss=you-agreed
+42	πολιτεύεσθαι	πολιτεύω	v	v--pne---	Mood=n|Tense=p|Voice=e	41	OBJ	_	t_4227|gloss=to-be-a-citizen
+43	.	.	u	u--------	_	9	AuxK	_	t_4228|gloss=.
+
+
+# sentence_id = 323
+# translation_lang = en
+# prose_translation = First, then, answer us just this: do we speak the truth when we say that you agreed to live as a citizen under us in deed, not merely in word—or is that not true?
+# literal_translation = First μὲν οὖν answer us this very thing: whether we speak true things, [we] saying that you had agreed to be a citizen in accordance with us in deed, but not in word—or [are they] not true [things]?
+1	πρῶτον	πρῶτος	a	a-s---na-	Case=a|Gender=n|Number=s	7	ADV	_	t_4229|gloss=first
+2	μὲν	μέν	d	d--------	_	7	AuxY	_	t_4230|gloss=then
+3	οὖν	οὖν	d	d--------	_	7	AuxY	_	t_4231|gloss=so
+4	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	7	OBJ	_	t_4232|gloss=us
+5	τοῦτʼ	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	8	OBJ	_	t_4233|gloss=this
+6	αὐτὸ	αὐτός	a	a-s---na-	Case=a|Gender=n|Number=s	5	ATR	_	t_4234|gloss=very
+7	ἀπόκριναι	ἀποκρίνω	v	v2samm---	Mood=m|Number=s|Person=2|Tense=a|Voice=m	0	PRED	_	t_4235|gloss=answer
+8	,	,	u	u--------	_	7	APOS	_	t_4236|gloss=,
+9	εἰ	εἰ	c	c--------	_	8	AuxC	_	t_4237|gloss=whether
+10	ἀληθῆ	ἀληθής	a	a-p---na-	Case=a|Gender=n|Number=p	11	OBJ	_	t_4238|gloss=true-things
+11	λέγομεν	λέγω3	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	23	OBJ	_	t_4239|gloss=we-say
+12	φάσκοντές	φάσκω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	11	ADV	_	t_4240|gloss=claiming
+13	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	15	SBJ	_	t_4241|gloss=you
+14	ὡμολογηκέναι	ὁμολογέω	v	v--rna---	Mood=n|Tense=r|Voice=a	12	OBJ	_	t_4242|gloss=had-agreed
+15	πολιτεύσεσθαι	πολιτεύω	v	v--fnm---	Mood=n|Tense=f|Voice=m	14	OBJ	_	t_4243|gloss=to-be-a-citizen
+16	καθʼ	κατά	r	r--------	_	15	AuxP	_	t_4244|gloss=in-accordance-with
+17	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	16	ADV	_	t_4245|gloss=us
+18	ἔργῳ	ἔργον	n	n-s---nd-	Case=d|Gender=n|Number=s	19	ADV	_	t_4246|gloss=in-deed
+19	ἀλλʼ	ἀλλά	c	c--------	_	15	COORD	_	t_4247|gloss=but
+20	οὐ	οὐ	d	d--------	_	21	AuxZ	_	t_4248|gloss=not
+21	λόγῳ	λόγος	n	n-s---md-	Case=d|Gender=m|Number=s	19	ADV	_	t_4249|gloss=in-word
+22	,	,	u	u--------	_	7	AuxX	_	t_4250|gloss=,
+23	ἢ	ἤ1	c	c--------	_	9	COORD	_	t_4251|gloss=or
+24	οὐκ	οὐ	d	d--------	_	26	AuxZ	_	t_4252|gloss=not
+25	ἀληθῆ	ἀληθής	a	a-p---nn-	Case=n|Gender=n|Number=p	26	OBJ	_	t_4253|gloss=true-things
+26	[0]	[0]	-	---------	_	23	OBJ	_	e_108
+27	.	.	u	u--------	_	7	AuxK	_	t_4254|gloss=?
+
+
+# sentence_id = 324
+# translation_lang = en
+# prose_translation = Socrates: So what shall we say to this, Crito?
+# literal_translation = Socrates: What shall we say in reply to these things, O Crito?
+1	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	2	OBJ	_	t_4255|gloss=what
+2	φῶμεν	φημί	v	v1p-sa---	Mood=s|Number=p|Person=1|Voice=a	0	PRED	_	t_4256|gloss=shall-we-say
+3	πρὸς	πρός	r	r--------	_	2	AuxP	_	t_4257|gloss=in-reply-to
+4	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	3	ADV	_	t_4258|gloss=these-things
+5	,	,	u	u--------	_	2	AuxX	_	t_4259|gloss=,
+6	ὦ	ὦ	i	i--------	_	7	AuxZ	_	t_4260|gloss=O
+7	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	2	ExD	_	t_4261|gloss=Crito
+8	;	;	u	u--------	_	2	AuxK	_	t_4262|gloss=;
+
+
+# sentence_id = 325
+# translation_lang = en
+# prose_translation = Or shall we agree to something else?
+# literal_translation = [Something] else anything or shall we agree?
+1	ἄλλο	ἄλλος	a	a-s---na-	Case=a|Gender=n|Number=s	2	ATR	_	t_4263|gloss=something-else
+2	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	4	OBJ	_	t_4264|gloss=[anything]
+3	ἢ	ἤ1	d	d--------	_	4	AuxY	_	t_4265|gloss=or
+4	ὁμολογῶμεν	ὁμολογέω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_4266|gloss=shall-we-agree
+5	;	;	u	u--------	_	4	AuxK	_	t_4267|gloss=;
+
+
+# sentence_id = 326
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_4268|gloss=Crito
+2	.	.	u	u--------	_	1	AuxK	_	t_4269|gloss=.
+
+
+# sentence_id = 327
+# translation_lang = en
+# prose_translation = Crito: It's necessary, Socrates.
+# literal_translation = Crito: [It is] a necessity, O Socrates.
+1	ἀνάγκη	ἀνάγκη	n	n-s---fn-	Case=n|Gender=f|Number=s	5	PNOM	_	t_4270|gloss=a-necessity
+2	,	,	u	u--------	_	5	AuxX	_	t_4271|gloss=,
+3	ὦ	ὦ	i	i--------	_	4	AuxZ	_	t_4272|gloss=o
+4	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	5	ExD	_	t_4273|gloss=Socrates
+5	[0]	[0]	-	---------	_	0	PRED	_	e_109
+6	.	.	u	u--------	_	5	AuxK	_	t_4274|gloss=.
+
+
+# sentence_id = 328
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_4275|gloss=Socrates
+2	.	.	u	u--------	_	1	AuxK	_	t_4276|gloss=.
+
+
+# sentence_id = 329
+# translation_lang = en
+# prose_translation = So are you breaking some other agreement, or the covenants and compacts you made with us, not under compulsion, not deceived, and not forced to decide in a short time, but over seventy years, in which it was open to you to leave, if we were not pleasing to you and those agreements seemed to you unjust?
+# literal_translation = Something else, then, [are] you transgressing, or the covenants and agreements, the [ones] toward us ourselves, [that you] agreed to—not having agreed under compulsion, nor having been deceived, nor having been forced to deliberate in a short time, but in seventy years, in which it was possible for you to depart, if we were not pleasing [to you] and the agreements did not appear [to you] to be just?
+1	ἄλλο	ἄλλος	a	a-s---na-	Case=a|Gender=n|Number=s	2	ATR	_	t_4277|gloss=something-else
+2	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	16	OBJ	_	t_4278|gloss=something
+3	οὖν	οὖν	d	d--------	_	16	AuxY	_	t_4279|gloss=then
+4	,	,	u	u--------	_	16	AuxX	_	t_4280|gloss=,
+5	ἂν	ἄν	d	d--------	_	6	AuxY	_	t_4281|gloss=would
+6	φαῖεν	φημί	v	v3ppoa---	Mood=o|Number=p|Person=3|Tense=p|Voice=a	16	ExD	_	t_4282|gloss=they-would-say
+7	,	,	u	u--------	_	16	AuxX	_	t_4283|gloss=,
+8	ἢ	ἤ1	c	c--------	_	1	AuxC	_	t_4284|gloss=or
+9	συνθήκας	συνθήκη	n	n-p---fa-	Case=a|Gender=f|Number=p	14	OBJ	_	t_4285|gloss=covenants
+10	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	9	ATR	_	t_4286|gloss=the
+11	πρὸς	πρός	r	r--------	_	9	AuxP	_	t_4287|gloss=toward
+12	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	11	ATR	_	t_4288|gloss=us
+13	αὐτοὺς	αὐτός	a	a-p---ma-	Case=a|Gender=m|Number=p	12	ATR	_	t_4289|gloss=ourselves
+14	καὶ	καί	c	c--------	_	8	COORD	_	t_4290|gloss=and
+15	ὁμολογίας	ὁμολογία	n	n-p---fa-	Case=a|Gender=f|Number=p	14	OBJ	_	t_4291|gloss=agreements
+16	παραβαίνεις	παραβαίνω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_4292|gloss=you-are-transgressing
+17	,	,	u	u--------	_	16	AuxX	_	t_4293|gloss=,
+18	οὐχ	οὐ	d	d--------	_	21	AuxZ	_	t_4294|gloss=not
+19	ὑπὸ	ὑπό	r	r--------	_	21	AuxP	_	t_4295|gloss=under
+20	ἀνάγκης	ἀνάγκη	n	n-s---fg-	Case=g|Gender=f|Number=s	19	ADV	_	t_4296|gloss=compulsion
+21	ὁμολογήσας	ὁμολογέω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	26	ADV	_	t_4297|gloss=having-agreed
+22	οὐ	οὐ	d	d--------	_	24	AuxZ	_	t_4298|gloss=not
+23	δὲ	δέ	d	d--------	_	26	AuxY	_	t_4299|gloss=nor
+24	ἀπατηθεὶς	ἀπατάω	v	v-sappmn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=p	26	ADV	_	t_4300|gloss=having-been-deceived
+25	οὐ	οὐ	d	d--------	_	30	AuxZ	_	t_4301|gloss=not
+26	δὲ	δέ	c	c--------	_	33	COORD	_	t_4302|gloss=nor
+27	ἐν	ἐν	r	r--------	_	30	AuxP	_	t_4303|gloss=in
+28	ὀλίγῳ	ὀλίγος	a	a-s---md-	Case=d|Gender=m|Number=s	29	ATR	_	t_4304|gloss=short
+29	χρόνῳ	χρόνος	n	n-s---md-	Case=d|Gender=m|Number=s	27	ADV	_	t_4305|gloss=time
+30	ἀναγκασθεὶς	ἀναγκάζω	v	v-sappmn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=p	26	ADV	_	t_4306|gloss=having-been-forced
+31	βουλεύσασθαι	βουλεύω	v	v--anm---	Mood=n|Tense=a|Voice=m	30	OBJ	_	t_4307|gloss=to-deliberate
+32	,	,	u	u--------	_	16	AuxX	_	t_4308|gloss=,
+33	ἀλλʼ	ἀλλά	c	c--------	_	16	COORD	_	t_4309|gloss=but
+34	ἐν	ἐν	r	r--------	_	33	AuxP	_	t_4310|gloss=in
+35	ἔτεσιν	ἔτος	n	n-p---nd-	Case=d|Gender=n|Number=p	34	ADV	_	t_4311|gloss=years
+36	ἑβδομήκοντα	ἑβδομήκοντα	a	a--------	_	35	ATR	_	t_4312|gloss=seventy
+37	,	,	u	u--------	_	16	AuxX	_	t_4313|gloss=,
+38	ἐν	ἐν	r	r--------	_	42	AuxP	_	t_4314|gloss=in
+39	οἷς	ὅς	p	p-p---md-	Case=d|Gender=n|Number=p	38	ADV	_	t_4315|gloss=which
+40	ἐξῆν	ἔξεστι	v	v3piia---	Mood=i|Number=p|Person=3|Tense=i|Voice=a	35	ATR	_	t_4316|gloss=it-was-possible
+41	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	40	OBJ	_	t_4317|gloss=for-you
+42	ἀπιέναι	ἀπέρχομαι	v	v--pna---	Mood=n|Tense=p|Voice=a	40	SBJ	_	t_4318|gloss=to-depart
+43	,	,	u	u--------	_	16	AuxX	_	t_4319|gloss=,
+44	εἰ	εἰ	c	c--------	_	40	AuxC	_	t_4320|gloss=if
+45	μὴ	μή	d	d--------	_	46	AuxZ	_	t_4321|gloss=not
+46	ἠρέσκομεν	ἀρέσκω	v	v1piia---	Mood=i|Number=p|Person=1|Tense=i|Voice=a	49	ADV	_	t_4322|gloss=we-were-pleasing
+47	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	46	SBJ	_	t_4323|gloss=we
+48	μη	μη	d	d--------	_	51	AuxZ	_	t_4324|gloss=not
+49	δὲ	δέ	c	c--------	_	44	COORD	_	t_4325|gloss=and
+50	δίκαιαι	δίκαιος	a	a-p---fn-	Case=n|Gender=f|Number=p	55	PNOM	_	t_4326|gloss=just
+51	ἐφαίνοντό	φαίνω	v	v3piie---	Mood=i|Number=p|Person=3|Tense=i|Voice=e	49	ADV	_	t_4327|gloss=appeared
+52	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	51	OBJ	_	t_4328|gloss=to-you
+53	αἱ	ὁ	l	l-p---fn-	Case=n|Gender=f|Number=p	54	ATR	_	t_4329|gloss=the
+54	ὁμολογίαι	ὁμολογία	n	n-p---fn-	Case=n|Gender=f|Number=p	51	SBJ	_	t_4330|gloss=agreements
+55	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	51	OBJ	_	t_4331|gloss=to-be
+56	.	.	u	u--------	_	16	AuxK	_	t_4332|gloss=.
+
+
+# sentence_id = 330
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_4333|gloss=Socrates
+2	.	.	u	u--------	_	1	AuxK	_	t_4334|gloss=.
+
+
+# sentence_id = 331
+# translation_lang = en
+# prose_translation = You never chose Sparta or Crete, which you're always saying are so well-governed, nor any other Greek city or foreign one either, but you left the city less than the lame, the blind, and the other cripples do.
+# literal_translation = You, on the one hand, neither Sparta nor Crete—which indeed each time you say [are] well-governed—[did you] choose, nor any other of the Greek cities, nor of the barbarian ones, but you went abroad [from the city] less from it [than] the lame and blind and the other cripples [go abroad from it].
+1	σὺ	σύ	p	p-s---mn-	Case=n|Gender=m|Number=s	29	SBJ	_	t_4335|gloss=you
+2	δὲ	δέ	d	d--------	_	29	AuxY	_	t_4336|gloss=on-the-one-hand
+3	οὔ	οὐ	d	d--------	_	5	AuxZ	_	t_4337|gloss=not
+4	τε	τε	d	d--------	_	8	AuxY	_	t_4338|gloss=both
+5	Λακεδαίμονα	λακεδαίμων	n	n-s---fa-	Case=a|Gender=f|Number=s	8	OBJ	_	t_4339|gloss=Sparta
+6	προῃροῦ	προαιρέω	v	v2siie---	Mood=i|Number=s|Person=2|Tense=i|Voice=e	29	PRED	_	t_4340|gloss=did-you-choose
+7	οὔ	οὐ	d	d--------	_	9	AuxZ	_	t_4341|gloss=not
+8	τε	τε	c	c--------	_	18	COORD	_	t_4342|gloss=nor
+9	Κρήτην	κρήτη	n	n-s---fa-	Case=a|Gender=f|Number=s	8	OBJ	_	t_4343|gloss=Crete
+10	,	,	u	u--------	_	0	AuxX	_	t_4344|gloss=,
+11	ἃς	ὅς	p	p-p---fa-	Case=a|Gender=f|Number=p	15	SBJ	_	t_4345|gloss=which
+12	δὴ	δή	d	d--------	_	14	AuxZ	_	t_4346|gloss=indeed
+13	ἑκάστοτε	ἑκάστοτε	d	d--------	_	14	ADV	_	t_4347|gloss=each-time
+14	φῂς	φημί	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	9	ATR	_	t_4348|gloss=you-say
+15	εὐνομεῖσθαι	εὐνομέομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	14	OBJ	_	t_4349|gloss=are-well-governed
+16	,	,	u	u--------	_	10	AuxX	_	t_4350|gloss=,
+17	οὔ	οὐ	d	d--------	_	20	AuxZ	_	t_4351|gloss=nor
+18	τε	τε	c	c--------	_	29	COORD	_	t_4352|gloss=nor
+19	ἄλλην	ἄλλος	a	a-s---fa-	Case=a|Gender=f|Number=s	20	ATR	_	t_4353|gloss=other
+20	οὐδεμίαν	οὐδείς	p	p-s---fa-	Case=a|Gender=f|Number=s	44	OBJ	_	t_4354|gloss=none
+21	τῶν	ὁ	l	l-p---fg-	Case=g|Gender=f|Number=p	23	ATR	_	t_4355|gloss=of-the
+22	Ἑλληνίδων	ἑλλήνιος	a	a-p---fg-	Case=g|Gender=f|Number=p	25	ATR	_	t_4356|gloss=greek
+23	πόλεων	πόλις	n	n-p---fg-	Case=g|Gender=f|Number=p	20	ATR	_	t_4357|gloss=cities
+24	οὐ	οὐ	d	d--------	_	27	AuxZ	_	t_4358|gloss=nor
+25	δὲ	δέ	c	c--------	_	20	COORD	_	t_4359|gloss=and
+26	τῶν	ὁ	l	l-p---fg-	Case=g|Gender=f|Number=p	27	ATR	_	t_4360|gloss=of-the
+27	βαρβαρικῶν	βαρβαρικός	a	a-p---fg-	Case=g|Gender=f|Number=p	25	ATR	_	t_4361|gloss=barbarian
+28	,	,	u	u--------	_	10	AuxX	_	t_4362|gloss=,
+29	ἀλλὰ	ἀλλά	c	c--------	_	10	COORD	_	t_4363|gloss=but
+30	ἐλάττω	ἐλάσσων	a	a-p---nnc	Case=n|Degree=c|Gender=n|Number=p	33	ADV	_	t_4364|gloss=less
+31	ἐξ	ἐκ	r	r--------	_	33	AuxP	_	t_4365|gloss=from
+32	αὐτῆς	αὐτός	p	p-s---fg-	Case=g|Gender=f|Number=s	31	ADV	_	t_4366|gloss=it
+33	ἀπεδήμησας	ἀποδημέω	v	v2saia---	Mood=i|Number=s|Person=2|Tense=a|Voice=a	29	PRED	_	t_4367|gloss=you-went-abroad
+34	ἢ	ἤ1	c	c--------	_	30	AuxC	_	t_4368|gloss=than
+35	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	36	ATR	_	t_4369|gloss=the
+36	χωλοί	χωλός	a	a-p---mn-	Case=n|Gender=m|Number=p	40	SBJ	_	t_4370|gloss=lame
+37	τε	τε	d	d--------	_	40	AuxY	_	t_4371|gloss=both
+38	καὶ	καί	d	d--------	_	40	AuxY	_	t_4372|gloss=and
+39	τυφλοὶ	τυφλός	a	a-p---mn-	Case=n|Gender=m|Number=p	40	SBJ	_	t_4373|gloss=blind
+40	καὶ	καί	c	c--------	_	46	COORD	_	t_4374|gloss=and
+41	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	43	ATR	_	t_4375|gloss=the
+42	ἄλλοι	ἄλλος	a	a-p---mn-	Case=n|Gender=m|Number=p	43	ATR	_	t_4376|gloss=other
+43	ἀνάπηροι	ἀνάπηρος	a	a-p---mn-	Case=n|Gender=m|Number=p	40	SBJ	_	t_4377|gloss=cripples
+44	[0]	[0]	-	---------	_	18	PRED	_	e_110
+45	[1]	[1]	-	---------	_	34	ADV	_	e_111
+46	[2]	[2]	-	---------	_	34	ADV	_	e_112
+47	·	·	u	u--------	_	10	AuxK	_	t_4378|gloss=·
+
+
+# sentence_id = 332
+# translation_lang = en
+# prose_translation = It is clear that in this way the city and we the laws were especially pleasing to you beyond the rest of the Athenians;
+# literal_translation = [It is] clear that thus to you especially beyond the other Athenians were pleasing the city and we the laws;
+1	οὕτω	οὕτως	d	d--------	_	7	ADV	_	t_4379|gloss=thus
+2	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	7	OBJ	_	t_4380|gloss=to-you
+3	διαφερόντως	διαφερόντως	d	d--------	_	7	ADV	_	t_4381|gloss=exceptionally
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	6	ATR	_	t_4382|gloss=the
+5	ἄλλων	ἄλλος	a	a-p---mg-	Case=g|Gender=m|Number=p	6	ATR	_	t_4383|gloss=other
+6	Ἀθηναίων	ἀθήναιος	n	n-p---mg-	Case=g|Gender=m|Number=p	3	ADV	_	t_4384|gloss=athenians
+7	ἤρεσκεν	ἀρέσκω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	16	SBJ	_	t_4385|gloss=were-pleasing
+8	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	9	ATR	_	t_4386|gloss=the
+9	πόλις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	11	SBJ	_	t_4387|gloss=city
+10	τε	τε	d	d--------	_	11	AuxY	_	t_4388|gloss=both
+11	καὶ	καί	c	c--------	_	7	COORD	_	t_4389|gloss=and
+12	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	11	SBJ	_	t_4390|gloss=we
+13	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	14	ATR	_	t_4391|gloss=the
+14	νόμοι	νόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	11	SBJ	_	t_4392|gloss=laws
+15	δῆλον	δῆλος	a	a-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_4393|gloss=clear
+16	ὅτι	ὅτι	c	c--------	_	17	AuxC	_	t_4394|gloss=that
+17	[0]	[0]	-	---------	_	0	PRED	_	e_113
+18	·	·	u	u--------	_	17	AuxK	_	t_4395|gloss=·
+
+
+# sentence_id = 333
+# translation_lang = en
+# prose_translation = For what city could please you without laws?
+# literal_translation = For by what [thing] would [a/the] city please [you], without laws?
+1	τίνι	τις	p	p-s---nd-	Case=d|Gender=n|Number=s	5	OBJ	_	t_4396|gloss=by-what
+2	γὰρ	γάρ	d	d--------	_	5	AuxY	_	t_4397|gloss=for
+3	ἂν	ἄν	d	d--------	_	5	AuxY	_	t_4398|gloss=would
+4	πόλις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	5	SBJ	_	t_4399|gloss=city
+5	ἀρέσκοι	ἀρέσκω	v	v3spoa---	Mood=o|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_4400|gloss=please
+6	ἄνευ	ἄνευ	r	r--------	_	5	AuxP	_	t_4401|gloss=without
+7	νόμων	νόμος	n	n-p---mg-	Case=g|Gender=m|Number=p	6	ADV	_	t_4402|gloss=laws
+8	;	;	u	u--------	_	5	AuxK	_	t_4403|gloss=;
+
+
+# sentence_id = 334
+# translation_lang = en
+# prose_translation = Socrates: So now, really, won't you abide by what has been agreed?
+# literal_translation = Socrates: Now-δὲ-δή not will-you-abide-by to-the things-having-been-agreed?
+1	νῦν	νῦν	d	d--------	_	5	ADV	_	t_4404|gloss=now
+2	δὲ	δέ	d	d--------	_	5	AuxY	_	t_4405|gloss=so
+3	δὴ	δή	d	d--------	_	5	AuxY	_	t_4406|gloss=really
+4	οὐκ	οὐ	d	d--------	_	5	AuxZ	_	t_4407|gloss=not
+5	ἐμμενεῖς	ἐμμένω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	0	PRED	_	t_4408|gloss=will-you-abide-by
+6	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	7	ATR	_	t_4409|gloss=to-the
+7	ὡμολογημένοις	ὁμολογέω	v	v-prpend-	Case=d|Gender=n|Mood=p|Number=p|Tense=r|Voice=e	5	OBJ	_	t_4410|gloss=things-having-been-agreed
+8	;	;	u	u--------	_	5	AuxK	_	t_4411|gloss=;
+
+
+# sentence_id = 335
+# translation_lang = en
+# prose_translation = Crito: If you'll just listen to us, Socrates.
+# literal_translation = Crito: If indeed you are persuaded by us, O Socrates — [it will be well / supplied predicate].
+1	ἐὰν	ἐάν	c	c--------	_	8	AuxC	_	t_4412|gloss=if
+2	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	4	OBJ	_	t_4413|gloss=us
+3	γε	γε	d	d--------	_	2	AuxZ	_	t_4414|gloss=indeed
+4	πείθῃ	πείθω	v	v2spse---	Mood=s|Number=s|Person=2|Tense=p|Voice=e	1	ADV	_	t_4415|gloss=you-are-persuaded
+5	,	,	u	u--------	_	8	AuxX	_	t_4416|gloss=,
+6	ὦ	ὦ	i	i--------	_	7	AuxZ	_	t_4417|gloss=o
+7	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	8	ExD	_	t_4418|gloss=Socrates
+8	[0]	[0]	-	---------	_	0	PRED	_	e_114
+9	·	·	u	u--------	_	8	AuxK	_	t_4419|gloss=·
+
+
+# sentence_id = 336
+# translation_lang = en
+# prose_translation = And you will indeed be ridiculous once you have escaped from the city.
+# literal_translation = And not ridiculous indeed will-you-be, out of the city having-gone-out.
+1	καὶ	καί	d	d--------	_	5	AuxY	_	t_4420|gloss=and
+2	οὐ	οὐ	d	d--------	_	3	AuxZ	_	t_4421|gloss=not
+3	καταγέλαστός	καταγέλαστος	a	a-s---mn-	Case=n|Gender=m|Number=s	5	PNOM	_	t_4422|gloss=ridiculous
+4	γε	γε	d	d--------	_	3	AuxZ	_	t_4423|gloss=indeed
+5	ἔσῃ	εἰμί	v	v2sfim---	Mood=i|Number=s|Person=2|Tense=f|Voice=m	0	PRED	_	t_4424|gloss=you-will-be
+6	ἐκ	ἐκ	r	r--------	_	9	AuxP	_	t_4425|gloss=out-of
+7	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_4426|gloss=the
+8	πόλεως	πόλις	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ADV	_	t_4427|gloss=city
+9	ἐξελθών	ἐξέρχομαι	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	5	ADV	_	t_4428|gloss=having-gone-out
+10	.	.	u	u--------	_	5	AuxK	_	t_4429|gloss=.
+
+
+# sentence_id = 337
+# translation_lang = en
+# prose_translation = Socrates: Consider, then, by transgressing and doing wrong in any of these ways, what good you will do yourself or your friends.
+# literal_translation = Socrates: For consider indeed, having transgressed these things and doing wrong in anything of these, what good [thing] you will work for yourself or [for] the fitting [people], the [people] of your own.
+1	σκόπει	σκοπέω	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	13	ExD	_	t_4430|gloss=consider
+2	γὰρ	γάρ	d	d--------	_	13	AuxY	_	t_4431|gloss=for
+3	δή	δή	d	d--------	_	13	AuxY	_	t_4432|gloss=indeed
+4	,	,	u	u--------	_	13	AuxX	_	t_4433|gloss=,
+5	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	6	OBJ	_	t_4434|gloss=these-things
+6	παραβὰς	παραβαίνω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	7	ADV	_	t_4435|gloss=having-transgressed
+7	καὶ	καί	c	c--------	_	13	COORD	_	t_4436|gloss=and
+8	ἐξαμαρτάνων	ἐξαμαρτάνω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	7	ADV	_	t_4437|gloss=doing-wrong
+9	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	8	OBJ	_	t_4438|gloss=anything
+10	τούτων	οὗτος	p	p-p---ng-	Case=g|Gender=n|Number=p	9	ATR	_	t_4439|gloss=of-these
+11	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	13	OBJ	_	t_4440|gloss=what
+12	ἀγαθὸν	ἀγαθός	a	a-s---nn-	Case=n|Gender=n|Number=s	11	ATR	_	t_4441|gloss=good
+13	ἐργάσῃ	ἐργάζομαι	v	v2sfie---	Mood=i|Number=s|Person=2|Tense=f|Voice=e	0	PRED	_	t_4442|gloss=you-will-work
+14	σαυτὸν	σεαυτοῦ	p	p-s---ma-	Case=a|Gender=m|Number=s	13	OBJ	_	t_4443|gloss=for-yourself
+15	ἢ	ἤ1	c	c--------	_	13	COORD	_	t_4444|gloss=or
+16	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	17	ATR	_	t_4445|gloss=the
+17	ἐπιτηδείους	ἐπιτήδειος	a	a-p---fa-	Case=a|Gender=m|Number=p	20	OBJ	_	t_4446|gloss=fitting-people
+18	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	17	ATR	_	t_4447|gloss=the
+19	σαυτοῦ	σεαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	17	ATR	_	t_4448|gloss=your-own
+20	[0]	[0]	-	---------	_	15	ADV	_	e_115
+21	.	.	u	u--------	_	13	AuxK	_	t_4449|gloss=.
+
+
+# sentence_id = 338
+# translation_lang = en
+# prose_translation = [It is] fairly clear that your own people are likely to risk either fleeing with you or being deprived of their property or of the city itself.
+# literal_translation = [It is] fairly clear that, on the one hand, your friends are likely themselves also to risk both fleeing [with you] and being deprived either of their property or of the city.
+1	ὅτι	ὅτι	c	c--------	_	24	AuxC	_	t_4450|gloss=that
+2	μὲν	μέν	d	d--------	_	24	AuxY	_	t_4451|gloss=on-the-one-hand
+3	γὰρ	γάρ	d	d--------	_	24	AuxY	_	t_4452|gloss=for
+4	κινδυνεύσουσί	κινδυνεύω	v	v3pfia---	Mood=i|Number=p|Person=3|Tense=f|Voice=a	1	SBJ	_	t_4453|gloss=will-risk
+5	γέ	γε	d	d--------	_	4	AuxZ	_	t_4454|gloss=indeed
+6	σου	σύ	p	p-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_4455|gloss=your
+7	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	8	ATR	_	t_4456|gloss=the
+8	ἐπιτήδειοι	ἐπιτήδειος	a	a-p---mn-	Case=n|Gender=m|Number=p	4	SBJ	_	t_4457|gloss=friends
+9	καὶ	καί	d	d--------	_	10	AuxZ	_	t_4458|gloss=also
+10	αὐτοὶ	αὐτός	a	a-p---mn-	Case=n|Gender=m|Number=p	8	ATV	_	t_4459|gloss=themselves
+11	φεύγειν	φεύγω	v	v--pna---	Mood=n|Tense=p|Voice=a	12	OBJ	_	t_4460|gloss=fleeing
+12	καὶ	καί	c	c--------	_	16	COORD	_	t_4461|gloss=and
+13	στερηθῆναι	στερέω	v	v--anp---	Mood=n|Tense=a|Voice=p	12	OBJ	_	t_4462|gloss=being-deprived
+14	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	15	ATR	_	t_4463|gloss=the
+15	πόλεως	πόλις	n	n-s---fg-	Case=g|Gender=f|Number=s	13	OBJ	_	t_4464|gloss=city
+16	ἢ	ἤ1	c	c--------	_	4	COORD	_	t_4465|gloss=or
+17	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	18	ATR	_	t_4466|gloss=the
+18	οὐσίαν	οὐσία	n	n-s---fa-	Case=a|Gender=f|Number=s	19	OBJ	_	t_4467|gloss=property
+19	ἀπολέσαι	ἀπόλλυμι	v	v--ana---	Mood=n|Tense=a|Voice=a	16	OBJ	_	t_4468|gloss=losing
+20	,	,	u	u--------	_	24	AuxX	_	t_4469|gloss=,
+21	σχεδόν	σχεδόν	d	d--------	_	23	ADV	_	t_4470|gloss=fairly
+22	τι	τις	a	a-s---na-	Case=a|Gender=n|Number=s	24	ADV	_	t_4471|gloss=somewhat
+23	δῆλον	δῆλος	a	a-s---nn-	Case=n|Gender=n|Number=s	24	PNOM	_	t_4472|gloss=clear
+24	[0]	[0]	-	---------	_	0	PRED	_	e_116
+25	·	·	u	u--------	_	24	AuxK	_	t_4473|gloss=·
+
+
+# sentence_id = 339
+# translation_lang = en
+# prose_translation = In the first place, if you go to one of the cities nearest by—Thebes or Megara, say—you will arrive as an enemy, Socrates, for both of them are well governed, and all who care about their own cities will look at you askance, thinking you a corrupter of the laws, and you will confirm for the jurors the impression that they judged the case correctly.
+# literal_translation = And you yourself, first, on the one hand, if into one of the nearest cities you go, either to Thebes or to Megara—for both are well-governed—as an enemy you will come, O Socrates, to the constitution of these [cities], and as many as care for their own cities will look askance at you, considering [you] a corrupter of the laws, and you will confirm for the jurors the opinion [that they] judged the case rightly.
+1	αὐτὸς	αὐτός	p	p-s---mn-	Case=n|Gender=m|Number=s	45	SBJ	_	t_4474|gloss=you-yourself
+2	δὲ	δέ	d	d--------	_	45	AuxY	_	t_4475|gloss=and
+3	πρῶτον	πρῶτος	a	a-s---na-	Case=a|Gender=n|Number=s	45	ADV	_	t_4476|gloss=first
+4	μὲν	μέν	d	d--------	_	45	AuxY	_	t_4477|gloss=on-the-one-hand
+5	ἐὰν	ἐάν	c	c--------	_	23	AuxC	_	t_4478|gloss=if
+6	εἰς	εἰς	r	r--------	_	11	AuxP	_	t_4479|gloss=into
+7	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=f|Number=p	10	ATR	_	t_4480|gloss=of-the
+8	ἐγγύτατά	ἐγγύς	d	d--------	_	15	ATR	_	t_4481|gloss=nearest
+9	τινα	τις	p	p-p---na-	Case=a|Gender=n|Number=p	15	ATR	_	t_4482|gloss=some
+10	πόλεων	πόλις	n	n-p---fg-	Case=g|Gender=f|Number=p	8	ATR	_	t_4483|gloss=cities
+11	ἔλθῃς	ἔρχομαι	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	5	ADV	_	t_4484|gloss=you-go
+12	,	,	u	u--------	_	23	APOS	_	t_4485|gloss=,
+13	ἢ	ἤ1	d	d--------	_	15	AuxY	_	t_4486|gloss=either
+14	Θήβαζε	θήβαζε	d	d--------	_	15	ADV	_	t_4487|gloss=to-Thebes
+15	ἢ	ἤ1	c	c--------	_	12	COORD	_	t_4488|gloss=or
+16	Μέγαράδε	μέγαρα	d	d--------	_	15	ADV	_	t_4489|gloss=to-Megara
+17	—	—	u	u--------	_	18	AuxG	_	t_4490|gloss=—
+18	εὐνομοῦνται	εὐνομέομαι	v	v3ppie---	Mood=i|Number=p|Person=3|Tense=p|Voice=e	0	PRED	_	t_4491|gloss=are-well-governed
+19	γὰρ	γάρ	d	d--------	_	18	AuxY	_	t_4492|gloss=for
+20	ἀμφότεραι	ἀμφότερος	a	a-p---fn-	Case=n|Gender=f|Number=p	18	SBJ	_	t_4493|gloss=both
+21	—	—	u	u--------	_	18	AuxG	_	t_4494|gloss=—
+22	πολέμιος	πολέμιος	a	a-s---mn-	Case=n|Gender=m|Number=s	23	PNOM	_	t_4495|gloss=an-enemy
+23	ἥξεις	ἥκω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	45	PRED	_	t_4496|gloss=you-will-come
+24	,	,	u	u--------	_	18	AuxX	_	t_4497|gloss=,
+25	ὦ	ὦ	i	i--------	_	26	AuxZ	_	t_4498|gloss=O
+26	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	45	ExD	_	t_4499|gloss=Socrates
+27	,	,	u	u--------	_	18	AuxX	_	t_4500|gloss=,
+28	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	30	ATR	_	t_4501|gloss=to-the
+29	τούτων	οὗτος	p	p-p---mg-	Case=g|Gender=m|Number=p	30	ATR	_	t_4502|gloss=of-these
+30	πολιτείᾳ	πολιτεία	n	n-s---fd-	Case=d|Gender=f|Number=s	22	ADV	_	t_4503|gloss=constitution
+31	,	,	u	u--------	_	18	AuxX	_	t_4504|gloss=,
+32	καὶ	καί	d	d--------	_	45	AuxY	_	t_4505|gloss=and
+33	ὅσοιπερ	ὅσος	a	a-p---mn-	Case=n|Gender=m|Number=p	34	SBJ	_	t_4506|gloss=as-many-as
+34	κήδονται	κήδω	v	v3ppie---	Mood=i|Number=p|Person=3|Tense=p|Voice=e	38	SBJ	_	t_4507|gloss=care
+35	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	37	ATR	_	t_4508|gloss=the
+36	αὑτῶν	ἑαυτοῦ	p	p-p---fg-	Case=g|Gender=f|Number=p	37	ATR	_	t_4509|gloss=their-own
+37	πόλεων	πόλις	n	n-p---fg-	Case=g|Gender=f|Number=p	34	OBJ	_	t_4510|gloss=cities
+38	ὑποβλέψονταί	ὑποβλέπω	v	v3pfim---	Mood=i|Number=p|Person=3|Tense=f|Voice=m	45	PRED	_	t_4511|gloss=will-look-askance-at
+39	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	38	OBJ	_	t_4512|gloss=you
+40	διαφθορέα	διαφθορεύς	n	n-s---ma-	Case=a|Gender=m|Number=s	41	OCOMP	_	t_4513|gloss=a-corrupter
+41	ἡγούμενοι	ἡγέομαι	v	v-pppmmn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=m	38	ADV	_	t_4514|gloss=considering
+42	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	43	ATR	_	t_4515|gloss=of-the
+43	νόμων	νόμος	n	n-p---mg-	Case=g|Gender=m|Number=p	40	ATR	_	t_4516|gloss=laws
+44	,	,	u	u--------	_	18	AuxX	_	t_4517|gloss=,
+45	καὶ	καί	c	c--------	_	18	COORD	_	t_4518|gloss=and
+46	βεβαιώσεις	βεβαιόω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	45	PRED	_	t_4519|gloss=you-will-confirm
+47	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	48	ATR	_	t_4520|gloss=for-the
+48	δικασταῖς	δικαστής	n	n-p---md-	Case=d|Gender=m|Number=p	46	OBJ	_	t_4521|gloss=jurors
+49	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	50	ATR	_	t_4522|gloss=the
+50	δόξαν	δόξα	n	n-s---fa-	Case=a|Gender=f|Number=s	46	OBJ	_	t_4523|gloss=opinion
+51	,	,	u	u--------	_	18	AuxX	_	t_4524|gloss=,
+52	ὥστε	ὥστε	c	c--------	_	46	AuxC	_	t_4525|gloss=that
+53	δοκεῖν	δοκέω	v	v--pna---	Mood=n|Tense=p|Voice=a	52	ADV	_	t_4526|gloss=[they]-seemed
+54	ὀρθῶς	ὀρθός	d	d--------	_	57	ADV	_	t_4527|gloss=rightly
+55	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	56	ATR	_	t_4528|gloss=the
+56	δίκην	δίκη	n	n-s---fa-	Case=a|Gender=f|Number=s	57	OBJ	_	t_4529|gloss=case
+57	δικάσαι	δικάζω	v	v--ana---	Mood=n|Tense=a|Voice=a	53	OBJ	_	t_4530|gloss=to-have-judged
+58	·	·	u	u--------	_	18	AuxK	_	t_4531|gloss=·
+
+
+# sentence_id = 340
+# translation_lang = en
+# prose_translation = For whoever is a corrupter of the laws would surely seem, I suppose, very much to be a corrupter of young and foolish men.
+# literal_translation = For whoever is a corrupter of laws would seem, I suppose, very much to be a corrupter of young, at least, and foolish men.
+1	ὅστις	ὅστις	p	p-s---mn-	Case=n|Gender=m|Number=s	5	SBJ	_	t_4532|gloss=whoever
+2	γὰρ	γάρ	d	d--------	_	8	AuxY	_	t_4533|gloss=for
+3	νόμων	νόμος	n	n-p---mg-	Case=g|Gender=m|Number=p	4	ATR	_	t_4534|gloss=of-laws
+4	διαφθορεύς	διαφθορεύς	n	n-s---mn-	Case=n|Gender=m|Number=s	5	PNOM	_	t_4535|gloss=corrupter
+5	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	8	SBJ	_	t_4536|gloss=is
+6	σφόδρα	σφόδρα	d	d--------	_	8	ADV	_	t_4537|gloss=very-much
+7	που	πού	d	d--------	_	8	ADV	_	t_4538|gloss=i-suppose
+8	δόξειεν	δοκέω	v	v3saoa---	Mood=o|Number=s|Person=3|Tense=a|Voice=a	0	PRED	_	t_4539|gloss=would-seem
+9	ἂν	ἄν	d	d--------	_	8	AuxY	_	t_4540|gloss=would
+10	νέων	νέος	a	a-p---mg-	Case=g|Gender=m|Number=p	12	ATR	_	t_4541|gloss=young
+11	γε	γε	d	d--------	_	10	AuxZ	_	t_4542|gloss=at-least
+12	καὶ	καί	c	c--------	_	14	COORD	_	t_4543|gloss=and
+13	ἀνοήτων	ἀνόητος	a	a-p---mg-	Case=g|Gender=m|Number=p	12	ATR	_	t_4544|gloss=foolish
+14	ἀνθρώπων	ἄνθρωπος	n	n-p---mg-	Case=g|Gender=m|Number=p	15	ATR	_	t_4545|gloss=men
+15	διαφθορεὺς	διαφθορεύς	n	n-s---mn-	Case=n|Gender=m|Number=s	16	PNOM	_	t_4546|gloss=corrupter
+16	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	8	OBJ	_	t_4547|gloss=to-be
+17	.	.	u	u--------	_	8	AuxK	_	t_4548|gloss=.
+
+
+# sentence_id = 341
+# translation_lang = en
+# prose_translation = Will you, then, flee both the well-governed cities and the most orderly of men?
+# literal_translation = Whether then will-you-flee both the well-governed cities and of-the men the most-orderly [ones]?
+1	πότερον	πότερον	d	d--------	_	3	AuxY	_	t_4549|gloss=whether
+2	οὖν	οὖν	d	d--------	_	3	AuxY	_	t_4550|gloss=then
+3	φεύξῃ	φεύγω	v	v2sfim---	Mood=i|Number=s|Person=2|Tense=f|Voice=m	0	PRED	_	t_4551|gloss=will-you-flee
+4	τάς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	7	ATR	_	t_4552|gloss=the
+5	τε	τε	d	d--------	_	8	AuxY	_	t_4553|gloss=both
+6	εὐνομουμένας	εὐνομέομαι	v	v-pppefa-	Case=a|Gender=f|Mood=p|Number=p|Tense=p|Voice=e	7	ATR	_	t_4554|gloss=well-governed
+7	πόλεις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	8	OBJ	_	t_4555|gloss=cities
+8	καὶ	καί	c	c--------	_	3	COORD	_	t_4556|gloss=and
+9	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	10	ATR	_	t_4557|gloss=of-the
+10	ἀνδρῶν	ἀνήρ	n	n-p---mg-	Case=g|Gender=m|Number=p	12	ATR	_	t_4558|gloss=men
+11	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	12	ATR	_	t_4559|gloss=the
+12	κοσμιωτάτους	κόσμιος	a	a-p---mas	Case=a|Degree=s|Gender=m|Number=p	8	OBJ	_	t_4560|gloss=most-orderly
+13	;	;	u	u--------	_	3	AuxK	_	t_4561|gloss=?
+
+
+# sentence_id = 342
+# translation_lang = en
+# prose_translation = And will life even be worth living for you, doing this?
+# literal_translation = And this doing [for you], will [it] indeed be worth-while for-you to-live?
+1	καὶ	καί	d	d--------	_	8	AuxY	_	t_4562|gloss=and
+2	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	3	OBJ	_	t_4563|gloss=this
+3	ποιοῦντι	ποιέω	v	v-sppand-	Case=d|Gender=n|Mood=p|Number=s|Tense=p|Voice=a	8	ADV	_	t_4564|gloss=doing
+4	ἆρα	ἆρα	d	d--------	_	8	AuxY	_	t_4565|gloss=indeed
+5	ἄξιόν	ἄξιος	a	a-s---nn-	Case=n|Gender=n|Number=s	8	PNOM	_	t_4566|gloss=worth-while
+6	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	5	ADV	_	t_4567|gloss=for-you
+7	ζῆν	ζάω	v	v--pna---	Mood=n|Tense=p|Voice=a	8	SBJ	_	t_4568|gloss=to-live
+8	ἔσται	εἰμί	v	v3sfim---	Mood=i|Number=s|Person=3|Tense=f|Voice=m	0	PRED	_	t_4569|gloss=will-be
+9	;	;	u	u--------	_	8	AuxK	_	t_4570|gloss=;
+
+
+# sentence_id = 343
+# translation_lang = en
+# prose_translation = Or will you go near these people and shamelessly argue with them, saying what, Socrates?
+# literal_translation = Or you-will-approach these [men] and you-will-be-shameless, conversing — what sort of words, O Socrates?
+1	ἢ	ἤ1	d	d--------	_	4	AuxY	_	t_4571|gloss=or
+2	πλησιάσεις	πλησιάζω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	4	PRED	_	t_4572|gloss=you-will-go-near
+3	τούτοις	οὗτος	p	p-p---nd-	Case=d|Gender=n|Number=p	2	OBJ	_	t_4573|gloss=these-men
+4	καὶ	καί	c	c--------	_	0	COORD	_	t_4574|gloss=and
+5	ἀναισχυντήσεις	ἀναισχυντέω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	4	PRED	_	t_4575|gloss=you-will-be-shameless
+6	διαλεγόμενος	διαλέγω	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	5	ADV	_	t_4576|gloss=conversing
+7	—	—	u	u--------	_	4	AuxG	_	t_4577|gloss=—
+8	τίνας	τις	a	a-p---ma-	Case=a|Gender=m|Number=p	9	ATR	_	t_4578|gloss=what-sort-of
+9	λόγους	λόγος	n	n-p---ma-	Case=a|Gender=m|Number=p	4	OBJ	_	t_4579|gloss=words
+10	,	,	u	u--------	_	4	AuxX	_	t_4580|gloss=,
+11	ὦ	ὦ	i	i--------	_	12	AuxZ	_	t_4581|gloss=o
+12	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	4	ExD	_	t_4582|gloss=Socrates
+13	;	;	u	u--------	_	4	AuxK	_	t_4583|gloss=;
+
+
+# sentence_id = 344
+# translation_lang = en
+# prose_translation = Or [do you think it right, Socrates,] than those here, inasmuch as virtue and justice are worth the most to men, and so are lawful customs and the laws?
+# literal_translation = Or [you think it right] than these here, as the virtue and the justice are worth most to men, and both the lawful things and the laws?
+1	ἢ	ἤ1	d	d--------	_	22	AuxY	_	t_4584|gloss=or
+2	οὕσπερ	ὅς	p	p-p---ma-	Case=a|Gender=m|Number=p	21	OBJ	_	t_4585|gloss=than-those-whom
+3	ἐνθάδε	ἐνθάδε	d	d--------	_	21	ADV	_	t_4586|gloss=here
+4	,	,	u	u--------	_	22	APOS	_	t_4587|gloss=,
+5	ὡς	ὡς	c	c--------	_	4	AuxC	_	t_4588|gloss=inasmuch-as
+6	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	7	ATR	_	t_4589|gloss=the
+7	ἀρετὴ	ἀρετή	n	n-s---fn-	Case=n|Gender=f|Number=s	8	SBJ	_	t_4590|gloss=virtue
+8	καὶ	καί	c	c--------	_	21	COORD	_	t_4591|gloss=and
+9	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	10	ATR	_	t_4592|gloss=the
+10	δικαιοσύνη	δικαιοσύνη	n	n-s---fn-	Case=n|Gender=f|Number=s	8	SBJ	_	t_4593|gloss=justice
+11	πλείστου	πολύς	a	a-s---mg-	Case=g|Gender=m|Number=s	12	ADV	_	t_4594|gloss=most
+12	ἄξιον	ἄξιος	a	a-s---nn-	Case=n|Gender=n|Number=s	21	PNOM	_	t_4595|gloss=worth
+13	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	14	ATR	_	t_4596|gloss=to-the
+14	ἀνθρώποις	ἄνθρωπος	n	n-p---md-	Case=d|Gender=m|Number=p	12	ADV	_	t_4597|gloss=people
+15	καὶ	καί	d	d--------	_	18	AuxY	_	t_4598|gloss=both
+16	τὰ	ὁ	l	l-p---na-	Case=n|Gender=n|Number=p	17	ATR	_	t_4599|gloss=the
+17	νόμιμα	νόμιμος	n	n-p---nn-	Case=n|Gender=n|Number=p	18	SBJ	_	t_4600|gloss=lawful-customs
+18	καὶ	καί	c	c--------	_	22	COORD	_	t_4601|gloss=and
+19	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	20	ATR	_	t_4602|gloss=the
+20	νόμοι	νόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	18	SBJ	_	t_4603|gloss=laws
+21	[0]	[0]	-	---------	_	5	OBJ	_	e_117
+22	[1]	[1]	-	---------	_	0	PRED	_	e_118
+23	;	;	u	u--------	_	22	AuxK	_	t_4604|gloss=;
+
+
+# sentence_id = 345
+# translation_lang = en
+# prose_translation = And don't you think that Socrates' situation will turn out to look disgraceful?
+# literal_translation = And do you not think [that] the matter of Socrates [the-matter the-Socrates'] will appear shameful?
+1	καὶ	καί	d	d--------	_	3	AuxY	_	t_4605|gloss=and
+2	οὐκ	οὐ	d	d--------	_	3	AuxZ	_	t_4606|gloss=not
+3	οἴει	οἴομαι	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	0	PRED	_	t_4607|gloss=do-you-think
+4	ἄσχημον	ἄσχημος	a	a-s---na-	Case=a|Gender=n|Number=s	5	PNOM	_	t_4608|gloss=shameful
+5	φανεῖσθαι	φαίνω	v	v--fnm---	Mood=n|Tense=f|Voice=m	3	OBJ	_	t_4609|gloss=will-appear
+6	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	9	ATR	_	t_4610|gloss=the
+7	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=m|Number=s	8	ATR	_	t_4611|gloss=the
+8	Σωκράτους	σωκράτης	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_4612|gloss=Socrates'
+9	πρᾶγμα	πρᾶγμα	n	n-s---na-	Case=a|Gender=n|Number=s	5	SBJ	_	t_4613|gloss=matter
+10	;	;	u	u--------	_	3	AuxK	_	t_4614|gloss=;
+
+
+# sentence_id = 346
+# translation_lang = en
+# prose_translation = Yes, that's exactly what one must think.
+# literal_translation = [One] must indeed think [so].
+1	οἴεσθαί	οἴομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	3	SBJ	_	t_4615|gloss=to-think-[so]
+2	γε	γε	d	d--------	_	1	AuxZ	_	t_4616|gloss=indeed
+3	χρή	χρή	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_4617|gloss=one-must
+4	.	.	u	u--------	_	3	AuxK	_	t_4618|gloss=.
+
+
+# sentence_id = 347
+# translation_lang = en
+# prose_translation = Rather, you'll depart from these parts and travel to Thessaly, to Crito's friends there.
+# literal_translation = But [you], from these the places, on the one hand [μέν] you will depart, and [δέ] you will come into Thessaly, to the friends, [namely] those of Crito.
+1	ἀλλʼ	ἀλλά	d	d--------	_	10	AuxY	_	t_4619|gloss=but
+2	ἐκ	ἐκ	r	r--------	_	7	AuxP	_	t_4620|gloss=from
+3	μὲν	μέν	d	d--------	_	10	AuxY	_	t_4621|gloss=on-one-hand
+4	τούτων	οὗτος	a	a-p---mg-	Case=g|Gender=m|Number=p	6	ATR	_	t_4622|gloss=these
+5	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	6	ATR	_	t_4623|gloss=the
+6	τόπων	τόπος	n	n-p---mg-	Case=g|Gender=m|Number=p	2	ADV	_	t_4624|gloss=places
+7	ἀπαρεῖς	ἀπαείρω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	10	PRED	_	t_4625|gloss=you-will-depart
+8	,	,	u	u--------	_	0	AuxX	_	t_4626|gloss=,
+9	ἥξεις	ἥκω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	10	PRED	_	t_4627|gloss=you-will-come
+10	δὲ	δέ	c	c--------	_	8	COORD	_	t_4628|gloss=and
+11	εἰς	εἰς	r	r--------	_	9	AuxP	_	t_4629|gloss=into
+12	Θετταλίαν	θεσσαλία	n	n-s---fa-	Case=a|Gender=f|Number=s	11	OBJ	_	t_4630|gloss=Thessaly
+13	παρὰ	παρά	r	r--------	_	9	AuxP	_	t_4631|gloss=to
+14	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	15	ATR	_	t_4632|gloss=the
+15	ξένους	ξένος1	n	n-p---ma-	Case=a|Gender=m|Number=p	13	ADV	_	t_4633|gloss=friends
+16	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	15	ATR	_	t_4634|gloss=the
+17	Κρίτωνος	κρίτων	n	n-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_4635|gloss=Crito's
+18	;	;	u	u--------	_	8	AuxK	_	t_4636|gloss=;
+
+
+# sentence_id = 348
+# translation_lang = en
+# prose_translation = For there, no doubt, it would most likely be greatest disorder and licentiousness, and perhaps people would gladly hear about you — how you ran away from the prison ridiculously disguised in some rig, either putting on a leather jerkin or taking some other garb such as runaways are accustomed to dress themselves up in, and changing your own appearance.
+# literal_translation = For there, indeed, [there would be] greatest disorder and licentiousness; and perhaps they would gladly hear of you, how ridiculously you ran away from the prison, having put on some disguise, either a leather coat having taken, or other things such as those running away are indeed accustomed to dress themselves up in, and having changed the shape, the [shape] of yourself.
+1	ἐκεῖ	ἐκεῖ	d	d--------	_	44	ADV	_	t_4637|gloss=there
+2	γὰρ	γάρ	d	d--------	_	9	AuxY	_	t_4638|gloss=for
+3	δὴ	δή	d	d--------	_	9	AuxY	_	t_4639|gloss=indeed
+4	πλείστη	πλεῖστος	a	a-s---fn-	Case=n|Gender=f|Number=s	6	ATR	_	t_4640|gloss=greatest
+5	ἀταξία	ἀταξία	n	n-d---fn-	Case=n|Gender=f|Number=d	6	SBJ	_	t_4641|gloss=disorder
+6	καὶ	καί	c	c--------	_	44	COORD	_	t_4642|gloss=and
+7	ἀκολασία	ἀκολασία	n	n-d---fn-	Case=n|Gender=f|Number=d	6	SBJ	_	t_4643|gloss=licentiousness
+8	,	,	u	u--------	_	0	AuxX	_	t_4644|gloss=;
+9	καὶ	καί	c	c--------	_	8	COORD	_	t_4645|gloss=and
+10	ἴσως	ἴσως	d	d--------	_	14	ADV	_	t_4646|gloss=perhaps
+11	ἂν	ἄν	d	d--------	_	14	AuxY	_	t_4647|gloss=would
+12	ἡδέως	ἡδέως	d	d--------	_	14	ADV	_	t_4648|gloss=gladly
+13	σου	σύ	p	p-s---mg-	Case=g|Gender=m|Number=s	14	OBJ	_	t_4649|gloss=of-you
+14	ἀκούοιεν	ἀκούω	v	v3ppoa---	Mood=o|Number=p|Person=3|Tense=p|Voice=a	9	PRED	_	t_4650|gloss=would-hear
+15	ὡς	ὡς	c	c--------	_	14	AuxC	_	t_4651|gloss=how
+16	γελοίως	γέλοιος	d	d--------	_	20	ADV	_	t_4652|gloss=ridiculously
+17	ἐκ	ἐκ	r	r--------	_	20	AuxP	_	t_4653|gloss=from
+18	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	19	ATR	_	t_4654|gloss=the
+19	δεσμωτηρίου	δεσμωτήριον	n	n-s---ng-	Case=g|Gender=n|Number=s	17	ADV	_	t_4655|gloss=prison
+20	ἀπεδίδρασκες	ἀποδιδράσκω	v	v2siia---	Mood=i|Number=s|Person=2|Tense=i|Voice=a	15	OBJ	_	t_4656|gloss=you-ran-away
+21	σκευήν	σκευή	n	n-s---fa-	Case=a|Gender=f|Number=s	24	OBJ	_	t_4657|gloss=disguise
+22	τέ	τε	d	d--------	_	38	AuxY	_	t_4658|gloss=both
+23	τινα	τις	a	a-s---fa-	Case=a|Gender=f|Number=s	21	ATR	_	t_4659|gloss=some
+24	περιθέμενος	περιτίθημι	v	v-sapmmn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=m	14	ADV	_	t_4660|gloss=having-put-on
+25	,	,	u	u--------	_	8	AuxX	_	t_4661|gloss=,
+26	ἢ	ἤ1	d	d--------	_	29	AuxY	_	t_4662|gloss=either
+27	διφθέραν	διφθέρα	n	n-s---fa-	Case=a|Gender=f|Number=s	29	OBJ	_	t_4663|gloss=leather-coat
+28	λαβὼν	λαμβάνω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	38	ADV	_	t_4664|gloss=having-taken
+29	ἢ	ἤ1	c	c--------	_	28	COORD	_	t_4665|gloss=or
+30	ἄλλα	ἄλλος	p	p-p---na-	Case=a|Gender=n|Number=p	29	OBJ	_	t_4666|gloss=other-things
+31	οἷα	οἷος	a	a-p---na-	Case=a|Gender=n|Number=p	34	OBJ	_	t_4667|gloss=such-as
+32	δὴ	δή	d	d--------	_	33	AuxY	_	t_4668|gloss=indeed
+33	εἰώθασιν	ἔθω	v	v3pria---	Mood=i|Number=p|Person=3|Tense=r|Voice=a	30	ATR	_	t_4669|gloss=are-accustomed
+34	ἐνσκευάζεσθαι	ἐνσκευάζω	v	v--pne---	Mood=n|Tense=p|Voice=e	33	OBJ	_	t_4670|gloss=to-dress-themselves-up
+35	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	36	ATR	_	t_4671|gloss=the-ones
+36	ἀποδιδράσκοντες	ἀποδιδράσκω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	33	SBJ	_	t_4672|gloss=running-away
+37	,	,	u	u--------	_	8	AuxX	_	t_4673|gloss=,
+38	καὶ	καί	c	c--------	_	20	COORD	_	t_4674|gloss=and
+39	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	40	ATR	_	t_4675|gloss=the
+40	σχῆμα	σχῆμα	n	n-s---na-	Case=a|Gender=n|Number=s	43	OBJ	_	t_4676|gloss=shape
+41	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	40	ATR	_	t_4677|gloss=the
+42	σαυτοῦ	σεαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	40	ATR	_	t_4678|gloss=of-yourself
+43	μεταλλάξας	μεταλήγω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	38	ADV	_	t_4679|gloss=having-changed
+44	[0]	[0]	-	---------	_	9	PRED	_	e_119
+45	·	·	u	u--------	_	8	AuxK	_	t_4680|gloss=·
+
+
+# sentence_id = 349
+# translation_lang = en
+# prose_translation = But won't there be someone who will say that it's not likely that you, being an old man with little time left to live, dared to cling so greedily to life by transgressing the most important laws?
+# literal_translation = But [will there be] no one who will say that, [you being] an old man, of little time with respect to the remaining life being [left], as is likely, you dared so greedily to desire to live, having transgressed the greatest laws?
+1	ὅτι	ὅτι	c	c--------	_	29	AuxC	_	t_4681|gloss=that
+2	δὲ	δέ	d	d--------	_	29	AuxY	_	t_4682|gloss=but
+3	γέρων	γέρων	n	n-s---mn-	Case=n|Gender=m|Number=s	4	ATR	_	t_4683|gloss=old-man
+4	ἀνήρ	ἀνήρ	n	n-s---mn-	Case=n|Gender=m|Number=s	30	SBJ	_	t_4684|gloss=man
+5	,	,	u	u--------	_	29	AuxX	_	t_4685|gloss=,
+6	σμικροῦ	μικρός	a	a-s---mg-	Case=g|Gender=m|Number=s	7	ATR	_	t_4686|gloss=little
+7	χρόνου	χρόνος	n	n-s---mg-	Case=g|Gender=m|Number=s	11	SBJ	_	t_4687|gloss=time
+8	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	9	ATR	_	t_4688|gloss=the
+9	βίῳ	βίος	n	n-s---md-	Case=d|Gender=m|Number=s	11	ADV	_	t_4689|gloss=life
+10	λοιποῦ	λοιπός	a	a-s---mg-	Case=g|Gender=m|Number=s	11	PNOM	_	t_4690|gloss=remaining
+11	ὄντος	εἰμί	v	v-sppamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	16	ADV	_	t_4691|gloss=being
+12	ὡς	ὡς	c	c--------	_	11	AuxZ	_	t_4692|gloss=as
+13	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	14	ATR	_	t_4693|gloss=the
+14	εἰκός	εἰκός	v	v-srpann-	Case=n|Gender=n|Mood=p|Number=s|Tense=r|Voice=a	30	SBJ	_	t_4694|gloss=likely-thing
+15	,	,	u	u--------	_	29	AuxX	_	t_4695|gloss=,
+16	ἐτόλμησας	τολμάω	v	v2saia---	Mood=i|Number=s|Person=2|Tense=a|Voice=a	1	OBJ	_	t_4696|gloss=you-dared
+17	οὕτω	οὕτως	d	d--------	_	19	ADV	_	t_4697|gloss=so
+18	γλίσχρως	γλίσχρος	d	d--------	_	20	ADV	_	t_4698|gloss=greedily
+19	ἐπιθυμεῖν	ἐπιθυμέω	v	v--pna---	Mood=n|Tense=p|Voice=a	16	OBJ	_	t_4699|gloss=to-desire
+20	ζῆν	ζάω	v	v--pna---	Mood=n|Tense=p|Voice=a	19	OBJ	_	t_4700|gloss=to-live
+21	,	,	u	u--------	_	29	AuxX	_	t_4701|gloss=,
+22	νόμους	νόμος	n	n-p---ma-	Case=a|Gender=m|Number=p	25	OBJ	_	t_4702|gloss=laws
+23	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	22	ATR	_	t_4703|gloss=the
+24	μεγίστους	μέγας	a	a-p---mas	Case=a|Degree=s|Gender=m|Number=p	22	ATR	_	t_4704|gloss=greatest
+25	παραβάς	παραβαίνω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	16	ADV	_	t_4705|gloss=having-transgressed
+26	,	,	u	u--------	_	29	AuxX	_	t_4706|gloss=,
+27	οὐδεὶς	οὐδείς	p	p-s---mn-	Case=n|Gender=m|Number=s	29	SBJ	_	t_4707|gloss=no-one
+28	ὃς	ὅς	a	a-s---mn-	Case=n|Gender=m|Number=s	27	ATR	_	t_4708|gloss=who
+29	ἐρεῖ	ἐρῶ	v	v3sfia---	Mood=i|Number=s|Person=3|Tense=f|Voice=a	0	PRED	_	t_4709|gloss=will-say
+30	[0]	[0]	-	---------	_	12	ADV	_	e_120
+31	;	;	u	u--------	_	29	AuxK	_	t_4710|gloss=?
+
+
+# sentence_id = 350
+# translation_lang = en
+# prose_translation = Perhaps it's just that you don't want to upset anyone.
+# literal_translation = Perhaps, [it is that] you might not be upsetting someone.
+1	ἴσως	ἴσως	d	d--------	_	7	ADV	_	t_4711|gloss=perhaps
+2	,	,	u	u--------	_	7	AuxX	_	t_4712|gloss=,
+3	ἂν	ἄν	c	c--------	_	7	AuxC	_	t_4713|gloss=it-is-that
+4	μή	μή	d	d--------	_	6	AuxZ	_	t_4714|gloss=not
+5	τινα	τις	p	p-s---ma-	Case=a|Gender=m|Number=s	6	OBJ	_	t_4715|gloss=someone
+6	λυπῇς	λυπέω	v	v2spsa---	Mood=s|Number=s|Person=2|Tense=p|Voice=a	3	ADV	_	t_4716|gloss=you-might-be-upsetting
+7	[0]	[0]	-	---------	_	0	PRED	_	e_121
+8	·	·	u	u--------	_	7	AuxK	_	t_4717|gloss=·
+
+
+# sentence_id = 351
+# translation_lang = en
+# prose_translation = But if you don't listen, Socrates, you will hear many things unworthy of you.
+# literal_translation = But if [you] do not [obey], Socrates, you will hear many things also unworthy of yourself.
+1	εἰ	εἰ	c	c--------	_	5	AuxC	_	t_4718|gloss=if
+2	δὲ	δέ	d	d--------	_	5	AuxY	_	t_4719|gloss=but
+3	μή	μή	d	d--------	_	14	AuxZ	_	t_4720|gloss=not
+4	,	,	u	u--------	_	5	AuxX	_	t_4721|gloss=,
+5	ἀκούσῃ	ἀκούω	v	v2sfim---	Mood=i|Number=s|Person=2|Tense=f|Voice=m	0	PRED	_	t_4722|gloss=you-will-hear
+6	,	,	u	u--------	_	5	AuxX	_	t_4723|gloss=,
+7	ὦ	ὦ	i	i--------	_	8	AuxZ	_	t_4724|gloss=o
+8	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	5	ExD	_	t_4725|gloss=Socrates
+9	,	,	u	u--------	_	5	AuxX	_	t_4726|gloss=,
+10	πολλὰ	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	12	ATR	_	t_4727|gloss=many-things
+11	καὶ	καί	d	d--------	_	12	AuxZ	_	t_4728|gloss=also
+12	ἀνάξια	ἀνάξιος	a	a-p---na-	Case=a|Gender=n|Number=p	5	OBJ	_	t_4729|gloss=unworthy
+13	σαυτοῦ	σεαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	12	ADV	_	t_4730|gloss=of-yourself
+14	[0]	[0]	-	---------	_	1	ADV	_	e_122
+15	.	.	u	u--------	_	5	AuxK	_	t_4731|gloss=.
+
+
+# sentence_id = 352
+# translation_lang = en
+# prose_translation = Fawning on everyone and groveling, you'll live out your life—doing what, exactly, except feasting away in Thessaly, as if you'd gone abroad to Thessaly just for a dinner?
+# literal_translation = Fawning, then, [upon] all men and being a slave [to them], you will live—[doing] what, doing [something], or feasting, in Thessaly, as [if] to a dinner having gone abroad into Thessaly?
+1	ὑπερχόμενος	ὑπέρχομαι	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	3	ADV	_	t_4732|gloss=fawning-upon
+2	δὴ	δή	d	d--------	_	3	AuxY	_	t_4733|gloss=then
+3	βιώσῃ	βιόω	v	v2sfim---	Mood=i|Number=s|Person=2|Tense=f|Voice=m	0	PRED	_	t_4734|gloss=you-will-live
+4	πάντας	πᾶς	a	a-p---ma-	Case=a|Gender=m|Number=p	5	ATR	_	t_4735|gloss=all
+5	ἀνθρώπους	ἄνθρωπος	n	n-p---ma-	Case=a|Gender=m|Number=p	3	OBJ	_	t_4736|gloss=men
+6	καὶ	καί	d	d--------	_	7	AuxZ	_	t_4737|gloss=and
+7	δουλεύων	δουλεύω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	3	ADV	_	t_4738|gloss=being-a-slave
+8	—	—	u	u--------	_	3	AuxG	_	t_4739|gloss=—
+9	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	10	OBJ	_	t_4740|gloss=what
+10	ποιῶν	ποιέω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	11	ADV	_	t_4741|gloss=doing
+11	ἢ	ἤ1	c	c--------	_	3	COORD	_	t_4742|gloss=or
+12	εὐωχούμενος	εὐωχέω	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	11	ADV	_	t_4743|gloss=feasting
+13	ἐν	ἐν	r	r--------	_	12	AuxP	_	t_4744|gloss=in
+14	Θετταλίᾳ	θεσσαλία	n	n-s---fd-	Case=d|Gender=f|Number=s	13	ADV	_	t_4745|gloss=Thessaly
+15	,	,	u	u--------	_	3	AuxX	_	t_4746|gloss=,
+16	ὥσπερ	ὥσπερ	d	d--------	_	19	AuxZ	_	t_4747|gloss=as-if
+17	ἐπὶ	ἐπί	r	r--------	_	19	AuxP	_	t_4748|gloss=to
+18	δεῖπνον	δεῖπνον	n	n-s---na-	Case=a|Gender=n|Number=s	17	ADV	_	t_4749|gloss=dinner
+19	ἀποδεδημηκὼς	ἀποδημέω	v	v-srpamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=r|Voice=a	22	ADV	_	t_4750|gloss=having-gone-abroad
+20	εἰς	εἰς	r	r--------	_	19	AuxP	_	t_4751|gloss=into
+21	Θετταλίαν	θεσσαλία	n	n-s---fa-	Case=a|Gender=f|Number=s	20	ADV	_	t_4752|gloss=Thessaly
+22	[0]	[0]	-	---------	_	11	ADV	_	e_123
+23	;	;	u	u--------	_	3	AuxK	_	t_4753|gloss=?
+
+
+# sentence_id = 353
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_4754|gloss=Socrates
+2	.	.	u	u--------	_	1	AuxK	_	t_4755|gloss=.
+
+
+# sentence_id = 354
+# translation_lang = en
+# prose_translation = But those arguments about justice and the rest of virtue—where will they be for us then?
+# literal_translation = But those arguments, the ones concerning justice and the rest of virtue, where for us will they be?
+1	λόγοι	λόγος	n	n-p---mn-	Case=n|Gender=m|Number=p	14	SBJ	_	t_4756|gloss=arguments
+2	δὲ	δέ	d	d--------	_	14	AuxY	_	t_4757|gloss=but
+3	ἐκεῖνοι	ἐκεῖνος	a	a-p---mn-	Case=n|Gender=m|Number=p	1	ATR	_	t_4758|gloss=those
+4	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	1	ATR	_	t_4759|gloss=the
+5	περὶ	περί	r	r--------	_	1	AuxP	_	t_4760|gloss=concerning
+6	δικαιοσύνης	δικαιοσύνη	n	n-s---fg-	Case=g|Gender=f|Number=s	8	ADV	_	t_4761|gloss=justice
+7	τε	τε	d	d--------	_	8	AuxY	_	t_4762|gloss=both
+8	καὶ	καί	c	c--------	_	5	COORD	_	t_4763|gloss=and
+9	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	11	ATR	_	t_4764|gloss=the
+10	ἄλλης	ἄλλος	a	a-s---fg-	Case=g|Gender=f|Number=s	11	ATR	_	t_4765|gloss=other
+11	ἀρετῆς	ἀρετή	n	n-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_4766|gloss=virtue
+12	ποῦ	ποῦ	d	d--------	_	14	ADV	_	t_4767|gloss=where
+13	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	14	PNOM	_	t_4768|gloss=for-us
+14	ἔσονται	εἰμί	v	v3pfim---	Mood=i|Number=p|Person=3|Tense=f|Voice=m	0	PRED	_	t_4769|gloss=will-they-be
+15	;	;	u	u--------	_	14	AuxK	_	t_4770|gloss=;
+
+
+# sentence_id = 355
+# translation_lang = en
+# prose_translation = But surely you do want to live for your children's sake, so that you can raise and educate them?
+# literal_translation = But indeed, for the sake of [your] children, do you wish to live, in order that you might raise them up and educate [them]?
+1	ἀλλὰ	ἀλλά	d	d--------	_	6	AuxY	_	t_4771|gloss=but
+2	δὴ	δή	d	d--------	_	6	AuxY	_	t_4772|gloss=surely
+3	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	4	ATR	_	t_4773|gloss=[your]
+4	παίδων	παῖς	n	n-p---mg-	Case=g|Gender=m|Number=p	5	ADV	_	t_4774|gloss=children's-sake
+5	ἕνεκα	ἕνεκα	r	r--------	_	7	AuxP	_	t_4775|gloss=for-the-sake-of
+6	βούλει	βούλομαι	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	0	PRED	_	t_4776|gloss=do-you-wish
+7	ζῆν	ζάω	v	v--pna---	Mood=n|Tense=p|Voice=a	6	OBJ	_	t_4777|gloss=to-live
+8	,	,	u	u--------	_	6	AuxX	_	t_4778|gloss=,
+9	ἵνα	ἵνα	c	c--------	_	7	AuxC	_	t_4779|gloss=in-order-that
+10	αὐτοὺς	αὐτός	p	p-p---ma-	Case=a|Gender=m|Number=p	12	OBJ	_	t_4780|gloss=them
+11	ἐκθρέψῃς	ἐκτρέφω	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	12	ADV	_	t_4781|gloss=you-might-raise-up
+12	καὶ	καί	c	c--------	_	9	COORD	_	t_4782|gloss=and
+13	παιδεύσῃς	παιδεύω	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	12	ADV	_	t_4783|gloss=you-might-educate
+14	;	;	u	u--------	_	6	AuxK	_	t_4784|gloss=;
+
+
+# sentence_id = 356
+# translation_lang = en
+# prose_translation = What, then?
+# literal_translation = But what [is it]?
+1	τί	τίς	p	p-s---nn-	Case=n|Gender=n|Number=s	3	SBJ	_	t_4785|gloss=what
+2	δέ	δέ	d	d--------	_	3	AuxY	_	t_4786|gloss=but
+3	[0]	[0]	-	---------	_	0	PRED	_	e_124
+4	;	;	u	u--------	_	3	AuxK	_	t_4787|gloss=?
+
+
+# sentence_id = 357
+# translation_lang = en
+# prose_translation = ...having brought them into Thessaly, you will feed and educate them, making them strangers, so that they too may enjoy this benefit as well?
+# literal_translation = ...into Thessaly [them], having led [them], you will feed and you will educate, having made [them] strangers, in order that they too may enjoy this [benefit]?
+1	εἰς	εἰς	r	r--------	_	4	AuxP	_	t_4788|gloss=into
+2	Θετταλίαν	θεσσαλία	n	n-s---fa-	Case=a|Gender=f|Number=s	1	OBJ	_	t_4789|gloss=Thessaly
+3	αὐτοὺς	αὐτός	p	p-p---ma-	Case=a|Gender=m|Number=p	4	OBJ	_	t_4790|gloss=them
+4	ἀγαγὼν	ἄγω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	7	ADV	_	t_4791|gloss=having-led
+5	θρέψεις	τρέφω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	7	PRED	_	t_4792|gloss=you-will-feed
+6	τε	τε	d	d--------	_	7	AuxY	_	t_4793|gloss=and
+7	καὶ	καί	c	c--------	_	0	COORD	_	t_4794|gloss=and
+8	παιδεύσεις	παιδεύω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	7	PRED	_	t_4795|gloss=you-will-educate
+9	,	,	u	u--------	_	7	AuxX	_	t_4796|gloss=,
+10	ξένους	ξένος1	n	n-p---ma-	Case=a|Gender=m|Number=p	11	OCOMP	_	t_4797|gloss=strangers
+11	ποιήσας	ποιέω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	7	ADV	_	t_4798|gloss=having-made
+12	,	,	u	u--------	_	7	AuxX	_	t_4799|gloss=,
+13	ἵνα	ἵνα	c	c--------	_	7	AuxC	_	t_4800|gloss=so-that
+14	καὶ	καί	d	d--------	_	15	AuxZ	_	t_4801|gloss=also
+15	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	16	OBJ	_	t_4802|gloss=this
+16	ἀπολαύσωσιν	ἀπολαύω	v	v3pasa---	Mood=s|Number=p|Person=3|Tense=a|Voice=a	13	ADV	_	t_4803|gloss=they-may-enjoy
+17	;	;	u	u--------	_	7	AuxK	_	t_4804|gloss=?
+
+
+# sentence_id = 358
+# translation_lang = en
+# prose_translation = Or is this not so, but will they rather be better fed and educated here while you are alive, even if you are not with them, than if they are reared without you being present with them?
+# literal_translation = Or is this [so] not, but, being here reared, while-you-living, better will-they-be-fed and will-be-educated, you not being-present with-them?
+1	ἢ	ἤ1	d	d--------	_	7	AuxY	_	t_4805|gloss=or
+2	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	19	SBJ	_	t_4806|gloss=this
+3	μὲν	μέν	d	d--------	_	7	AuxY	_	t_4807|gloss=on-the-one-hand
+4	οὔ	οὐ	d	d--------	_	19	AuxZ	_	t_4808|gloss=not
+5	,	,	u	u--------	_	0	AuxX	_	t_4809|gloss=,
+6	αὐτοῦ	αὐτός	d	d--------	_	10	ADV	_	t_4810|gloss=here
+7	δὲ	δέ	c	c--------	_	5	COORD	_	t_4811|gloss=but
+8	τρεφόμενοι	τρέφω	v	v-pppemn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	13	ADV	_	t_4812|gloss=being-reared
+9	σοῦ	σύ	p	p-s---mg-	Case=g|Gender=m|Number=s	10	SBJ	_	t_4813|gloss=you
+10	ζῶντος	ζάω	v	v-sppamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	8	ADV	_	t_4814|gloss=living
+11	βέλτιον	βελτίων	a	a-s---nac	Case=a|Degree=c|Gender=n|Number=s	13	ADV	_	t_4815|gloss=better
+12	θρέψονται	τρέφω	v	v3pfim---	Mood=i|Number=p|Person=3|Tense=f|Voice=m	13	PRED	_	t_4816|gloss=will-be-fed
+13	καὶ	καί	c	c--------	_	7	COORD	_	t_4817|gloss=and
+14	παιδεύσονται	παιδεύω	v	v3pfim---	Mood=i|Number=p|Person=3|Tense=f|Voice=m	13	PRED	_	t_4818|gloss=will-be-educated
+15	μὴ	μή	d	d--------	_	16	AuxZ	_	t_4819|gloss=not
+16	συνόντος	σύνειμι1	v	v-sppamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	13	ADV	_	t_4820|gloss=being-present
+17	σοῦ	σύ	p	p-s---mg-	Case=g|Gender=m|Number=s	16	SBJ	_	t_4821|gloss=you
+18	αὐτοῖς	αὐτός	p	p-p---md-	Case=d|Gender=m|Number=p	16	OBJ	_	t_4822|gloss=with-them
+19	[0]	[0]	-	---------	_	7	PRED	_	e_125
+20	;	;	u	u--------	_	5	AuxK	_	t_4823|gloss=;
+
+
+# sentence_id = 359
+# translation_lang = en
+# prose_translation = For your friends will take care of them.
+# literal_translation = For the — your — friends will take care of them.
+1	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	3	ATR	_	t_4824|gloss=the
+2	γὰρ	γάρ	d	d--------	_	6	AuxY	_	t_4825|gloss=for
+3	ἐπιτήδειοι	ἐπιτήδειος	a	a-p---mn-	Case=n|Gender=m|Number=p	6	SBJ	_	t_4826|gloss=friends
+4	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	3	ATR	_	t_4827|gloss=the
+5	σοὶ	σύ	a	a-p---mn-	Case=n|Gender=m|Number=p	3	ATR	_	t_4828|gloss=your
+6	ἐπιμελήσονται	ἐπιμελέομαι	v	v3pfie---	Mood=i|Number=p|Person=3|Tense=f|Voice=e	0	PRED	_	t_4829|gloss=will-take-care
+7	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	6	OBJ	_	t_4830|gloss=of-them
+8	.	.	u	u--------	_	6	AuxK	_	t_4831|gloss=.
+
+
+# sentence_id = 360
+# translation_lang = en
+# prose_translation = Will they care for you if you go abroad to Thessaly, but not care for you if you go abroad to Hades?
+# literal_translation = Whether, on the one hand, if you go abroad into Thessaly, they will care [for you], but, on the other hand, if you go abroad into Hades, will they not care [for you]?
+1	πότερον	πότερον	d	d--------	_	11	AuxY	_	t_4832|gloss=whether
+2	ἐὰν	ἐάν	c	c--------	_	8	AuxC	_	t_4833|gloss=if
+3	μὲν	μέν	d	d--------	_	11	AuxY	_	t_4834|gloss=on-one-hand
+4	εἰς	εἰς	r	r--------	_	6	AuxP	_	t_4835|gloss=into
+5	Θετταλίαν	θεσσαλία	n	n-s---fa-	Case=a|Gender=f|Number=s	4	OBJ	_	t_4836|gloss=Thessaly
+6	ἀποδημήσῃς	ἀποδημέω	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	2	ADV	_	t_4837|gloss=you-go-abroad
+7	,	,	u	u--------	_	0	AuxX	_	t_4838|gloss=,
+8	ἐπιμελήσονται	ἐπιμελέομαι	v	v3pfie---	Mood=i|Number=p|Person=3|Tense=f|Voice=e	11	PRED	_	t_4839|gloss=they-will-care
+9	,	,	u	u--------	_	7	AuxX	_	t_4840|gloss=,
+10	ἐὰν	ἐάν	c	c--------	_	17	AuxC	_	t_4841|gloss=if
+11	δὲ	δέ	c	c--------	_	7	COORD	_	t_4842|gloss=but-on-other-hand
+12	εἰς	εἰς	r	r--------	_	14	AuxP	_	t_4843|gloss=into
+13	Ἅιδου	ᾅδης	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ADV	_	t_4844|gloss=Hades
+14	ἀποδημήσῃς	ἀποδημέω	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	10	ADV	_	t_4845|gloss=you-go-abroad
+15	,	,	u	u--------	_	7	AuxX	_	t_4846|gloss=,
+16	οὐχὶ	οὐ	d	d--------	_	17	AuxZ	_	t_4847|gloss=not
+17	ἐπιμελήσονται	ἐπιμελέομαι	v	v3pfie---	Mood=i|Number=p|Person=3|Tense=f|Voice=e	11	PRED	_	t_4848|gloss=will-they-care
+18	;	;	u	u--------	_	7	AuxK	_	t_4849|gloss=?
+
+
+# sentence_id = 361
+# translation_lang = en
+# prose_translation = If indeed there is any use at all in those of your friends who claim to be devoted to you, one ought to think so.
+# literal_translation = If indeed there is some use of them, of those claiming to you to be devoted ones, [one] ought at least to think [so].
+1	εἴπερ	εἴπερ	c	c--------	_	15	AuxC	_	t_4850|gloss=if-indeed
+2	γέ	γε	d	d--------	_	6	AuxZ	_	t_4851|gloss=at-least
+3	τι	τις	a	a-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_4852|gloss=some
+4	ὄφελος	ὄφελος	n	n-s---nn-	Case=n|Gender=n|Number=s	6	SBJ	_	t_4853|gloss=use
+5	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	9	ATR	_	t_4854|gloss=of-them
+6	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	1	ADV	_	t_4855|gloss=there-is
+7	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	9	ATR	_	t_4856|gloss=those
+8	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	9	OBJ	_	t_4857|gloss=to-you
+9	φασκόντων	φάσκω	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	4	ATR	_	t_4858|gloss=claiming
+10	ἐπιτηδείων	ἐπιτήδειος	a	a-p---mg-	Case=g|Gender=m|Number=p	11	PNOM	_	t_4859|gloss=devoted
+11	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	9	OBJ	_	t_4860|gloss=to-be
+12	,	,	u	u--------	_	15	AuxX	_	t_4861|gloss=,
+13	οἴεσθαί	οἴομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	15	SBJ	_	t_4862|gloss=to-think[-so]
+14	γε	γε	d	d--------	_	13	AuxZ	_	t_4863|gloss=at-least
+15	χρή	χρή	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_4864|gloss=one-ought
+16	.	.	u	u--------	_	15	AuxK	_	t_4865|gloss=.
+
+
+# sentence_id = 362
+# translation_lang = en
+# prose_translation = No, Socrates, obey us, your nurturers, and value neither your children nor your life nor anything else more than justice, so that when you arrive in Hades you may have all this to say in your defense before the rulers there.
+# literal_translation = But, O Socrates, obeying us, your nurturers, make neither children nor the living nor anything else to be of more account than the just, so that having gone into Hades you may have all these things to say in defense to the rulers there.
+1	ἀλλʼ	ἀλλά	d	d--------	_	16	AuxY	_	t_4866|gloss=but
+2	,	,	u	u--------	_	16	AuxX	_	t_4867|gloss=,
+3	ὦ	ὦ	i	i--------	_	4	AuxZ	_	t_4868|gloss=o
+4	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	16	ExD	_	t_4869|gloss=Socrates
+5	,	,	u	u--------	_	16	AuxX	_	t_4870|gloss=,
+6	πειθόμενος	πείθω	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	16	ADV	_	t_4871|gloss=obeying
+7	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	6	OBJ	_	t_4872|gloss=us
+8	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	10	ATR	_	t_4873|gloss=the
+9	σοῖς	σός	a	a-p---md-	Case=d|Gender=m|Number=p	10	ATR	_	t_4874|gloss=your
+10	τροφεῦσι	τροφεύς	n	n-p---md-	Case=d|Gender=m|Number=p	7	ATR	_	t_4875|gloss=nurturers
+11	μή	μή	d	d--------	_	12	AuxY	_	t_4876|gloss=not
+12	τε	τε	d	d--------	_	22	AuxY	_	t_4877|gloss=both
+13	παῖδας	παῖς	n	n-p---ma-	Case=a|Gender=m|Number=p	22	OBJ	_	t_4878|gloss=children
+14	περὶ	περί	r	r--------	_	16	AuxP	_	t_4879|gloss=above
+15	πλείονος	πλείων	a	a-s---mgc	Case=g|Degree=c|Gender=m|Number=s	14	ADV	_	t_4880|gloss=more-than
+16	ποιοῦ	ποιέω	v	v2spme---	Mood=m|Number=s|Person=2|Tense=p|Voice=e	0	PRED	_	t_4881|gloss=make
+17	μή	μή	d	d--------	_	20	AuxZ	_	t_4882|gloss=not
+18	τε	τε	d	d--------	_	22	AuxY	_	t_4883|gloss=and
+19	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	20	ATR	_	t_4884|gloss=the
+20	ζῆν	ζάω	v	v--pna---	Mood=n|Tense=p|Voice=a	22	OBJ	_	t_4885|gloss=being-alive
+21	μή	μή	d	d--------	_	24	AuxZ	_	t_4886|gloss=not
+22	τε	τε	c	c--------	_	16	COORD	_	t_4887|gloss=nor
+23	ἄλλο	ἄλλος	a	a-s---na-	Case=a|Gender=n|Number=s	24	ATR	_	t_4888|gloss=other
+24	μηδὲν	μηδείς	p	p-s---na-	Case=a|Gender=n|Number=s	22	OBJ	_	t_4889|gloss=nothing
+25	πρὸ	πρό	r	r--------	_	16	AuxP	_	t_4890|gloss=before
+26	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	27	ATR	_	t_4891|gloss=the
+27	δικαίου	δίκαιος	a	a-s---ng-	Case=g|Gender=n|Number=s	25	ADV	_	t_4892|gloss=just
+28	,	,	u	u--------	_	16	AuxX	_	t_4893|gloss=,
+29	ἵνα	ἵνα	c	c--------	_	16	AuxC	_	t_4894|gloss=so-that
+30	εἰς	εἰς	r	r--------	_	32	AuxP	_	t_4895|gloss=into
+31	Ἅιδου	ᾅδης	n	n-s---mg-	Case=g|Gender=m|Number=s	30	OBJ	_	t_4896|gloss=Hades
+32	ἐλθὼν	ἔρχομαι	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	33	ADV	_	t_4897|gloss=having-gone
+33	ἔχῃς	ἔχω	v	v2spsa---	Mood=s|Number=s|Person=2|Tense=p|Voice=a	29	ADV	_	t_4898|gloss=you-may-have
+34	πάντα	πᾶς	a	a-p---na-	Case=a|Gender=n|Number=p	35	ATR	_	t_4899|gloss=all
+35	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	36	OBJ	_	t_4900|gloss=these-things
+36	ἀπολογήσασθαι	ἀπολογέομαι	v	v--ane---	Mood=n|Tense=a|Voice=e	33	OBJ	_	t_4901|gloss=to-say-in-defense
+37	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	39	ATR	_	t_4902|gloss=to-the
+38	ἐκεῖ	ἐκεῖ	d	d--------	_	39	ADV	_	t_4903|gloss=there
+39	ἄρχουσιν	ἄρχω	v	v-pppamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	36	OBJ	_	t_4904|gloss=rulers
+40	·	·	u	u--------	_	16	AuxK	_	t_4905|gloss=·
+
+
+# sentence_id = 363
+# translation_lang = en
+# prose_translation = For it doesn't even seem better to you to act this way here, nor more just or more pious, nor, having arrived there, will it be better for you either.
+# literal_translation = For not even to you, acting [thus] here, does it seem [to be] better, nor more just, nor more pious, nor to any other of your [people] either; nor, having arrived there, will [it] be better [for you].
+1	οὔ	οὐ	d	d--------	_	9	AuxZ	_	t_4906|gloss=not
+2	τε	τε	d	d--------	_	26	AuxY	_	t_4907|gloss=and
+3	γὰρ	γάρ	d	d--------	_	26	AuxY	_	t_4908|gloss=for
+4	ἐνθάδε	ἐνθάδε	d	d--------	_	6	ADV	_	t_4909|gloss=here
+5	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	19	ADV	_	t_4910|gloss=to-you
+6	φαίνεται	φαίνω	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	26	PRED	_	t_4911|gloss=does-it-seem
+7	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	8	OBJ	_	t_4912|gloss=this
+8	πράττοντι	πράσσω	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	5	ATR	_	t_4913|gloss=doing
+9	ἄμεινον	ἀμείνων	a	a-s---nnc	Case=n|Degree=c|Gender=n|Number=s	15	PNOM	_	t_4914|gloss=better
+10	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	6	SBJ	_	t_4915|gloss=to-be
+11	οὐ	οὐ	d	d--------	_	13	AuxZ	_	t_4916|gloss=not
+12	δὲ	δέ	d	d--------	_	15	AuxY	_	t_4917|gloss=nor
+13	δικαιότερον	δίκαιος	a	a-s---nac	Case=a|Degree=c|Gender=n|Number=s	15	PNOM	_	t_4918|gloss=more-just
+14	οὐ	οὐ	d	d--------	_	16	AuxZ	_	t_4919|gloss=not
+15	δὲ	δέ	c	c--------	_	10	COORD	_	t_4920|gloss=nor
+16	ὁσιώτερον	ὅσιος	a	a-s---mac	Case=a|Degree=c|Gender=m|Number=s	15	PNOM	_	t_4921|gloss=more-pious
+17	,	,	u	u--------	_	0	AuxX	_	t_4922|gloss=,
+18	οὐ	οὐ	d	d--------	_	23	AuxZ	_	t_4923|gloss=not
+19	δὲ	δέ	c	c--------	_	10	COORD	_	t_4924|gloss=nor
+20	ἄλλῳ	ἄλλος	a	a-s---md-	Case=d|Gender=m|Number=s	23	ATR	_	t_4925|gloss=other
+21	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	22	ATR	_	t_4926|gloss=of-the
+22	σῶν	σός	a	a-p---mg-	Case=g|Gender=m|Number=p	23	ATR	_	t_4927|gloss=your
+23	οὐδενί	οὐδείς	p	p-s---md-	Case=d|Gender=m|Number=s	19	ADV	_	t_4928|gloss=to-no-one
+24	,	,	u	u--------	_	17	AuxX	_	t_4929|gloss=,
+25	οὔ	οὐ	d	d--------	_	29	AuxZ	_	t_4930|gloss=not
+26	τε	τε	c	c--------	_	17	COORD	_	t_4931|gloss=and
+27	ἐκεῖσε	ἐκεῖσε	d	d--------	_	28	ADV	_	t_4932|gloss=there
+28	ἀφικομένῳ	ἀφικνέομαι	v	v-sapmmd-	Case=d|Gender=m|Mood=p|Number=s|Tense=a|Voice=m	29	ADV	_	t_4933|gloss=having-arrived
+29	ἄμεινον	ἀμείνων	a	a-s---mvc	Case=v|Degree=c|Gender=m|Number=s	30	PNOM	_	t_4934|gloss=better
+30	ἔσται	εἰμί	v	v3sfim---	Mood=i|Number=s|Person=3|Tense=f|Voice=m	26	PRED	_	t_4935|gloss=will-it-be
+31	.	.	u	u--------	_	17	AuxK	_	t_4936|gloss=.
+
+
+# sentence_id = 364
+# translation_lang = en
+# prose_translation = But now you will go away having been wronged, if indeed you go away, not by us, the laws, but by men.
+# literal_translation = But now indeed, [though you are] having-been-wronged, you are going away, if you go away, not by us the laws, but by men;
+1	ἀλλὰ	ἀλλά	d	d--------	_	5	AuxY	_	t_4937|gloss=but
+2	νῦν	νῦν	d	d--------	_	5	ADV	_	t_4938|gloss=now
+3	μὲν	μέν	d	d--------	_	5	AuxY	_	t_4939|gloss=indeed
+4	ἠδικημένος	ἀδικέω	v	v-srpemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=r|Voice=e	5	ADV	_	t_4940|gloss=having-been-wronged
+5	ἄπει	ἄπειμι2	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_4941|gloss=you-are-going-away
+6	,	,	u	u--------	_	5	AuxX	_	t_4942|gloss=,
+7	ἐὰν	ἐάν	c	c--------	_	5	AuxC	_	t_4943|gloss=if
+8	ἀπίῃς	ἄπειμι2	v	v2spsa---	Mood=s|Number=s|Person=2|Tense=p|Voice=a	7	ADV	_	t_4944|gloss=you-go-away
+9	,	,	u	u--------	_	5	AuxX	_	t_4945|gloss=,
+10	οὐχ	οὐ	d	d--------	_	12	AuxZ	_	t_4946|gloss=not
+11	ὑφʼ	ὑπό	r	r--------	_	15	AuxP	_	t_4947|gloss=by
+12	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	11	OBJ	_	t_4948|gloss=us
+13	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	14	ATR	_	t_4949|gloss=the
+14	νόμων	νόμος	n	n-p---mg-	Case=g|Gender=m|Number=p	12	ATR	_	t_4950|gloss=laws
+15	ἀλλὰ	ἀλλά	c	c--------	_	4	COORD	_	t_4951|gloss=but
+16	ὑπʼ	ὑπό	r	r--------	_	15	AuxP	_	t_4952|gloss=by
+17	ἀνθρώπων	ἄνθρωπος	n	n-p---mg-	Case=g|Gender=m|Number=p	16	OBJ	_	t_4953|gloss=men
+18	·	·	u	u--------	_	5	AuxK	_	t_4954|gloss=·
+
+
+# sentence_id = 365
+# translation_lang = en
+# prose_translation = But if you go away like that, disgracefully returning wrong for wrong and harm for harm, breaking your agreements and covenants with us, and doing harm to these very people whom you ought least of all to have harmed—yourself, your friends, your country, and us—then we will be angry with you while you live, and there too our brother laws in Hades will not receive you kindly, knowing that you tried your best to destroy us as well.
+# literal_translation = And if you go out thus disgracefully, having both wronged in return and done harm in return, your own agreements and covenants, those toward us, having transgressed, and having worked these evils, whom it was least necessary [to harm]—yourself, and friends, and country, and us—we will be angry at you while living, and there the laws, our brothers, those in Hades, will not receive you kindly, knowing that you tried to destroy us too, so far as lay in your part.
+1	ἐὰν	ἐάν	c	c--------	_	41	AuxC	_	t_4955|gloss=if
+2	δὲ	δέ	d	d--------	_	44	AuxY	_	t_4956|gloss=but
+3	ἐξέλθῃς	ἐξέρχομαι	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	1	ADV	_	t_4957|gloss=you-go-out
+4	οὕτως	οὕτως	d	d--------	_	5	ADV	_	t_4958|gloss=thus
+5	αἰσχρῶς	αἰσχρός	d	d--------	_	3	ADV	_	t_4959|gloss=disgracefully
+6	ἀνταδικήσας	ἀνταδικέω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	8	ADV	_	t_4960|gloss=having-wronged-in-return
+7	τε	τε	d	d--------	_	8	AuxY	_	t_4961|gloss=both
+8	καὶ	καί	c	c--------	_	3	COORD	_	t_4962|gloss=and
+9	ἀντικακουργήσας	ἀντικακουργέω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	8	ADV	_	t_4963|gloss=having-done-harm-in-return
+10	,	,	u	u--------	_	0	AuxX	_	t_4964|gloss=,
+11	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	13	ATR	_	t_4965|gloss=the
+12	σαυτοῦ	σεαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	13	ATR	_	t_4966|gloss=your-own
+13	ὁμολογίας	ὁμολογία	n	n-p---fa-	Case=a|Gender=f|Number=p	15	OBJ	_	t_4967|gloss=agreements
+14	τε	τε	d	d--------	_	15	AuxY	_	t_4968|gloss=both
+15	καὶ	καί	c	c--------	_	20	COORD	_	t_4969|gloss=and
+16	συνθήκας	συνθήκη	n	n-p---fa-	Case=a|Gender=f|Number=p	15	OBJ	_	t_4970|gloss=covenants
+17	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	16	ATR	_	t_4971|gloss=the
+18	πρὸς	πρός	r	r--------	_	16	AuxP	_	t_4972|gloss=toward
+19	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	18	ATR	_	t_4973|gloss=us
+20	παραβὰς	παραβαίνω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	21	ADV	_	t_4974|gloss=having-transgressed
+21	καὶ	καί	c	c--------	_	41	COORD	_	t_4975|gloss=and
+22	κακὰ	κακός	a	a-p---na-	Case=a|Gender=n|Number=p	28	OBJ	_	t_4976|gloss=harms
+23	ἐργασάμενος	ἐργάζομαι	v	v-sapemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=e	21	ADV	_	t_4977|gloss=having-done
+24	τούτους	οὗτος	p	p-p---ma-	Case=a|Gender=m|Number=p	28	OBJ	_	t_4978|gloss=these
+25	οὓς	ὅς	p	p-p---ma-	Case=a|Gender=m|Number=p	27	OBJ	_	t_4979|gloss=whom
+26	ἥκιστα	ἥκιστος	a	a-p---na-	Case=a|Gender=n|Number=p	27	ADV	_	t_4980|gloss=least-of-all
+27	ἔδει	δεῖ	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	24	ATR	_	t_4981|gloss=it-was-right
+28	,	,	u	u--------	_	23	APOS	_	t_4982|gloss=,
+29	σαυτόν	σεαυτοῦ	p	p-s---na-	Case=a|Gender=n|Number=s	35	OBJ	_	t_4983|gloss=yourself
+30	τε	τε	d	d--------	_	35	AuxY	_	t_4984|gloss=both
+31	καὶ	καί	d	d--------	_	35	AuxY	_	t_4985|gloss=and
+32	φίλους	φίλος	n	n-p---ma-	Case=a|Gender=m|Number=p	35	OBJ	_	t_4986|gloss=friends
+33	καὶ	καί	d	d--------	_	35	AuxY	_	t_4987|gloss=and
+34	πατρίδα	πατρίς	n	n-s---fa-	Case=a|Gender=f|Number=s	35	OBJ	_	t_4988|gloss=country
+35	καὶ	καί	c	c--------	_	28	COORD	_	t_4989|gloss=and
+36	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	35	OBJ	_	t_4990|gloss=us
+37	,	,	u	u--------	_	10	AuxX	_	t_4991|gloss=,
+38	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	41	SBJ	_	t_4992|gloss=we
+39	τέ	τε	d	d--------	_	44	AuxY	_	t_4993|gloss=indeed
+40	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	41	OBJ	_	t_4994|gloss=at-you
+41	χαλεπανοῦμεν	χαλεπαίνω	v	v1pfia---	Mood=i|Number=p|Person=1|Tense=f|Voice=a	44	PRED	_	t_4995|gloss=will-be-angry
+42	ζῶντι	ζάω	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	40	ATR	_	t_4996|gloss=while-you-are-living
+43	,	,	u	u--------	_	10	AuxX	_	t_4997|gloss=,
+44	καὶ	καί	c	c--------	_	10	COORD	_	t_4998|gloss=and
+45	ἐκεῖ	ἐκεῖ	d	d--------	_	56	ADV	_	t_4999|gloss=there
+46	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	52	ATR	_	t_5000|gloss=the
+47	ἡμέτεροι	ἡμέτερος	a	a-p---mn-	Case=n|Gender=m|Number=p	52	ATR	_	t_5001|gloss=our
+48	ἀδελφοὶ	ἀδελφός	n	n-p---mn-	Case=n|Gender=m|Number=p	52	ATR	_	t_5002|gloss=brother-laws
+49	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	52	ATR	_	t_5003|gloss=the
+50	ἐν	ἐν	r	r--------	_	52	AuxP	_	t_5004|gloss=in
+51	Ἅιδου	ᾅδης	n	n-s---mg-	Case=g|Gender=m|Number=s	50	ATR	_	t_5005|gloss=Hades
+52	νόμοι	νόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	56	SBJ	_	t_5006|gloss=laws
+53	οὐκ	οὐ	d	d--------	_	54	AuxZ	_	t_5007|gloss=not
+54	εὐμενῶς	εὐμενής	d	d--------	_	56	ADV	_	t_5008|gloss=kindly
+55	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	56	OBJ	_	t_5009|gloss=you
+56	ὑποδέξονται	ὑποδέχομαι	v	v3pfim---	Mood=i|Number=p|Person=3|Tense=f|Voice=m	44	PRED	_	t_5010|gloss=will-receive
+57	,	,	u	u--------	_	10	AuxX	_	t_5011|gloss=,
+58	εἰδότες	οἶδα	v	v-prpamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=r|Voice=a	56	ADV	_	t_5012|gloss=knowing
+59	ὅτι	ὅτι	c	c--------	_	58	AuxC	_	t_5013|gloss=that
+60	καὶ	καί	d	d--------	_	61	AuxZ	_	t_5014|gloss=also
+61	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	62	OBJ	_	t_5015|gloss=us
+62	ἐπεχείρησας	ἐπιχειρέω	v	v2saia---	Mood=i|Number=s|Person=2|Tense=a|Voice=a	59	OBJ	_	t_5016|gloss=you-tried
+63	ἀπολέσαι	ἀπόλλυμι	v	v--ana---	Mood=n|Tense=a|Voice=a	62	OBJ	_	t_5017|gloss=to-destroy
+64	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	66	ATR	_	t_5018|gloss=the
+65	σὸν	σός	a	a-s---na-	Case=a|Gender=n|Number=s	66	ATR	_	t_5019|gloss=your
+66	μέρος	μέρος	n	n-s---na-	Case=a|Gender=n|Number=s	63	OBJ	_	t_5020|gloss=share
+67	.	.	u	u--------	_	10	AuxK	_	t_5021|gloss=.
+
+
+# sentence_id = 366
+# translation_lang = en
+# prose_translation = Socrates: No, Crito—don't let yourself be persuaded to do what he says rather than what we say.
+# literal_translation = Socrates: But not you let-yourself-be-persuaded, Crito, to do the-things-which he-says rather than we [say].
+1	ἀλλὰ	ἀλλά	d	d--------	_	4	AuxY	_	t_5022|gloss=but
+2	μή	μή	d	d--------	_	4	AuxZ	_	t_5023|gloss=not
+3	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	4	OBJ	_	t_5024|gloss=you
+4	πείσῃ	πείθω	v	v2sasm---	Mood=s|Number=s|Person=2|Tense=a|Voice=m	0	PRED	_	t_5025|gloss=let-yourself-be-persuaded
+5	Κρίτων	κρίτων	n	n-s---mn-	Case=n|Gender=m|Number=s	4	SBJ	_	t_5026|gloss=Crito
+6	ποιεῖν	ποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	4	OBJ	_	t_5027|gloss=to-do
+7	ἃ	ὅς	p	p-p---na-	Case=a|Gender=n|Number=p	8	OBJ	_	t_5028|gloss=the-things-which
+8	λέγει	λέγω3	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	6	OBJ	_	t_5029|gloss=he-says
+9	μᾶλλον	μᾶλλον	d	d--------	_	8	ADV	_	t_5030|gloss=rather
+10	ἢ	ἤ1	c	c--------	_	9	AuxC	_	t_5031|gloss=than
+11	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	12	SBJ	_	t_5032|gloss=we
+12	[0]	[0]	-	---------	_	10	ADV	_	e_126
+13	.	.	u	u--------	_	4	AuxK	_	t_5033|gloss=.
+
+
+# sentence_id = 367
+# translation_lang = en
+# prose_translation = Socrates: Know this well, dear friend Crito—I do seem to hear these arguments just as the corybants seem to hear the flutes, and in me this very echo of these words resounds and makes it impossible for me to hear anything else.
+# literal_translation = Socrates: These things, O dear friend, comrade, Crito, know well that I myself seem to hear, just as those who are corybant-raving seem to hear of the flutes, and in me this same echo of these words buzzes and makes [me] not able to hear of the others.
+1	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	9	OBJ	_	t_5034|gloss=these-things
+2	,	,	u	u--------	_	9	AuxX	_	t_5035|gloss=,
+3	ὦ	ὦ	i	i--------	_	6	AuxZ	_	t_5036|gloss=o
+4	φίλε	φίλος	a	a-s---mv-	Case=v|Gender=m|Number=s	6	ATR	_	t_5037|gloss=dear
+5	ἑταῖρε	ἑταῖρος	n	n-s---mv-	Case=v|Gender=m|Number=s	6	ATR	_	t_5038|gloss=comrade
+6	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	9	ExD	_	t_5039|gloss=Crito
+7	,	,	u	u--------	_	9	AuxX	_	t_5040|gloss=,
+8	εὖ	εὖ	d	d--------	_	9	AuxZ	_	t_5041|gloss=well
+9	ἴσθι	οἶδα	v	v2srma---	Mood=m|Number=s|Person=2|Tense=r|Voice=a	0	PRED	_	t_5042|gloss=know
+10	ὅτι	ὅτι	c	c--------	_	9	AuxC	_	t_5043|gloss=that
+11	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	12	SBJ	_	t_5044|gloss=I
+12	δοκῶ	δοκέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	23	OBJ	_	t_5045|gloss=seem
+13	ἀκούειν	ἀκούω	v	v--pna---	Mood=n|Tense=p|Voice=a	12	OBJ	_	t_5046|gloss=to-hear
+14	,	,	u	u--------	_	9	AuxX	_	t_5047|gloss=,
+15	ὥσπερ	ὥσπερ	c	c--------	_	12	AuxC	_	t_5048|gloss=just-as
+16	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	17	ATR	_	t_5049|gloss=those
+17	κορυβαντιῶντες	κορυβαντιάω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	20	SBJ	_	t_5050|gloss=corybant-raving
+18	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	19	ATR	_	t_5051|gloss=the
+19	αὐλῶν	αὐλός	n	n-p---mg-	Case=g|Gender=m|Number=p	21	OBJ	_	t_5052|gloss=flutes
+20	δοκοῦσιν	δοκέω	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	15	ADV	_	t_5053|gloss=seem
+21	ἀκούειν	ἀκούω	v	v--pna---	Mood=n|Tense=p|Voice=a	20	OBJ	_	t_5054|gloss=to-hear
+22	,	,	u	u--------	_	9	AuxX	_	t_5055|gloss=,
+23	καὶ	καί	c	c--------	_	10	COORD	_	t_5056|gloss=and
+24	ἐν	ἐν	r	r--------	_	33	AuxP	_	t_5057|gloss=in
+25	ἐμοὶ	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	24	ADV	_	t_5058|gloss=me
+26	αὕτη	οὗτος	a	a-s---fn-	Case=n|Gender=f|Number=s	28	ATR	_	t_5059|gloss=this
+27	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	28	ATR	_	t_5060|gloss=the
+28	ἠχὴ	ἠχή	n	n-s---fn-	Case=n|Gender=f|Number=s	33	SBJ	_	t_5061|gloss=echo
+29	τούτων	οὗτος	a	a-p---mg-	Case=g|Gender=m|Number=p	31	ATR	_	t_5062|gloss=of-these
+30	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	31	ATR	_	t_5063|gloss=the
+31	λόγων	λόγος	n	n-p---mg-	Case=g|Gender=m|Number=p	28	ATR	_	t_5064|gloss=words
+32	βομβεῖ	βομβέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	33	OBJ	_	t_5065|gloss=buzzes
+33	καὶ	καί	c	c--------	_	23	COORD	_	t_5066|gloss=and
+34	ποιεῖ	ποιέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	33	OBJ	_	t_5067|gloss=makes
+35	μὴ	μή	d	d--------	_	36	AuxZ	_	t_5068|gloss=not
+36	δύνασθαι	δύναμαι	v	v--pne---	Mood=n|Tense=p|Voice=e	34	OBJ	_	t_5069|gloss=be-able
+37	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	38	ATR	_	t_5070|gloss=the
+38	ἄλλων	ἄλλος	p	p-p---mg-	Case=g|Gender=m|Number=p	39	OBJ	_	t_5071|gloss=other-things
+39	ἀκούειν	ἀκούω	v	v--pna---	Mood=n|Tense=p|Voice=a	36	OBJ	_	t_5072|gloss=to-hear
+40	·	·	u	u--------	_	9	AuxK	_	t_5073|gloss=·
+
+
+# sentence_id = 368
+# translation_lang = en
+# prose_translation = Well, you may be sure that whatever I now think, if you speak against it, you'll be speaking in vain.
+# literal_translation = But know, as much, at least, as [is] now seeming to me, if you speak contrary to these things, in vain you will speak.
+1	ἀλλὰ	ἀλλά	d	d--------	_	17	AuxY	_	t_5074|gloss=but
+2	ἴσθι	οἶδα	v	v2srma---	Mood=m|Number=s|Person=2|Tense=r|Voice=a	17	ExD	_	t_5075|gloss=know
+3	,	,	u	u--------	_	17	AuxX	_	t_5076|gloss=,
+4	ὅσα	ὅσος	a	a-p---nn-	Case=n|Gender=n|Number=p	9	ATR	_	t_5077|gloss=as-much-as
+5	γε	γε	d	d--------	_	9	AuxZ	_	t_5078|gloss=at-least
+6	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	9	ATR	_	t_5079|gloss=the
+7	νῦν	νῦν	d	d--------	_	9	ADV	_	t_5080|gloss=now
+8	ἐμοὶ	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	9	OBJ	_	t_5081|gloss=to-me
+9	δοκοῦντα	δοκέω	v	v-pppann-	Case=n|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	14	ATR	_	t_5082|gloss=seeming
+10	,	,	u	u--------	_	17	AuxX	_	t_5083|gloss=,
+11	ἐὰν	ἐάν	c	c--------	_	17	AuxC	_	t_5084|gloss=if
+12	λέγῃς	λέγω	v	v2spsa---	Mood=s|Number=s|Person=2|Tense=p|Voice=a	11	ADV	_	t_5085|gloss=you-speak
+13	παρὰ	παρά	r	r--------	_	12	AuxP	_	t_5086|gloss=contrary-to
+14	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	13	ADV	_	t_5087|gloss=these-things
+15	,	,	u	u--------	_	17	AuxX	_	t_5088|gloss=,
+16	μάτην	μάτην	d	d--------	_	17	ADV	_	t_5089|gloss=in-vain
+17	ἐρεῖς	ἐρῶ	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	0	PRED	_	t_5090|gloss=you-will-speak
+18	.	.	u	u--------	_	17	AuxK	_	t_5091|gloss=.
+
+
+# sentence_id = 369
+# translation_lang = en
+# prose_translation = Still, if you think you'll accomplish anything more, say it anyway.
+# literal_translation = Nevertheless-indeed, if you-think [that-]you-will-do anything more, say [it].
+1	ὅμως	ὅμως	d	d--------	_	9	AuxY	_	t_5092|gloss=nevertheless
+2	μέντοι	μέντοι	d	d--------	_	9	AuxY	_	t_5093|gloss=indeed
+3	εἴ	εἰ	c	c--------	_	9	AuxC	_	t_5094|gloss=if
+4	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_5095|gloss=anything
+5	οἴει	οἴομαι	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	3	ADV	_	t_5096|gloss=you-think
+6	πλέον	πλέος	a	a-s---nac	Case=a|Degree=c|Gender=n|Number=s	4	ATR	_	t_5097|gloss=more
+7	ποιήσειν	ποιέω	v	v--fna---	Mood=n|Tense=f|Voice=a	5	OBJ	_	t_5098|gloss=[that-]you-will-do
+8	,	,	u	u--------	_	9	AuxX	_	t_5099|gloss=,
+9	λέγε	λέγω3	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_5100|gloss=say-[it]
+10	.	.	u	u--------	_	9	AuxK	_	t_5101|gloss=.
+
+
+# sentence_id = 370
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_5102|gloss=Crito
+2	.	.	u	u--------	_	1	AuxK	_	t_5103|gloss=.
+
+
+# sentence_id = 371
+# translation_lang = en
+# prose_translation = Crito: But, Socrates, I don't know what to say.
+# literal_translation = Crito: But, O Socrates, not I-have to-say.
+1	ἀλλʼ	ἀλλά	c	c--------	_	7	AuxY	_	t_5104|gloss=but
+2	,	,	u	u--------	_	7	AuxX	_	t_5105|gloss=,
+3	ὦ	ὦ	i	i--------	_	4	AuxZ	_	t_5106|gloss=o
+4	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	7	ExD	_	t_5107|gloss=Socrates
+5	,	,	u	u--------	_	7	AuxX	_	t_5108|gloss=,
+6	οὐκ	οὐ	d	d--------	_	7	AuxZ	_	t_5109|gloss=not
+7	ἔχω	ἔχω	v	v1spsa---	Mood=s|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_5110|gloss=I-have
+8	λέγειν	λέγω3	v	v--pna---	Mood=n|Tense=p|Voice=a	7	OBJ	_	t_5111|gloss=to-say
+9	.	.	u	u--------	_	7	AuxK	_	t_5112|gloss=.
+
+
+# sentence_id = 372
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_5113|gloss=Socrates
+2	.	.	u	u--------	_	1	AuxK	_	t_5114|gloss=.
+
+
+# sentence_id = 373
+# translation_lang = en
+# prose_translation = Socrates: Well then, let it be, Crito, and let's act this way, since this is the way the god is leading us.
+# literal_translation = Socrates: Allow [it] then, O Crito, and let us act in this way, since in this way the god is leading [us] on.
+1	ἔα	ἐάω	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	7	PRED	_	t_5115|gloss=allow-[it]
+2	τοίνυν	τοίνυν	d	d--------	_	7	AuxY	_	t_5116|gloss=then
+3	,	,	u	u--------	_	0	AuxX	_	t_5117|gloss=,
+4	ὦ	ὦ	i	i--------	_	5	AuxZ	_	t_5118|gloss=o
+5	Κρίτων	κρίτων	n	n-s---mn-	Case=n|Gender=m|Number=s	7	ExD	_	t_5119|gloss=Crito
+6	,	,	u	u--------	_	3	AuxX	_	t_5120|gloss=,
+7	καὶ	καί	c	c--------	_	3	COORD	_	t_5121|gloss=and
+8	πράττωμεν	πράσσω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	7	PRED	_	t_5122|gloss=let-us-act
+9	ταύτῃ	οὗτος	d	d--------	_	8	ADV	_	t_5123|gloss=in-this-way
+10	,	,	u	u--------	_	3	AuxX	_	t_5124|gloss=,
+11	ἐπειδὴ	ἐπεί	c	c--------	_	8	AuxC	_	t_5125|gloss=since
+12	ταύτῃ	οὗτος	d	d--------	_	15	ADV	_	t_5126|gloss=in-this-way
+13	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	14	ATR	_	t_5127|gloss=the
+14	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	15	SBJ	_	t_5128|gloss=god
+15	ὑφηγεῖται	ὑφηγέομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	11	ADV	_	t_5129|gloss=is-leading-[us]-on
+16	.	.	u	u--------	_	3	AuxK	_	t_5130|gloss=.
