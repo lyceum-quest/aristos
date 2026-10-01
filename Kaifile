@@ -33,6 +33,12 @@ task generate {
   run: ["env", "--ignore-signal=INT", "roc", "scripts/generate/loop.roc"]
 }
 
+# Runs the subscription backend's expects (cost numbers past Dec's precision).
+task test-generate-backend {
+  environment: "dev"
+  run: ["roc", "test", "scripts/generate/Backend.roc"]
+}
+
 # Export SQL by default. Configs: scripts/lyceum-{import,replace}.example.json.
 # LYCEUM_IMPORT_CONFIG selects the config; LYCEUM_IMPORT_APPLY=1 writes.
 # Backups default on; LYCEUM_IMPORT_BACKUP=0 explicitly skips them.

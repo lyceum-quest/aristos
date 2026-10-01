@@ -37,7 +37,7 @@ Backend :: [].{
 	completion : Str -> Try(Str, [SubscriptionError(Str), ..])
 	completion = |output| {
 		parsed : Try(ClaudeResult, _)
-		parsed = Json.parse(Str.trim(output))
+		parsed = Json.parse(clamp_fractions(Str.trim(output)))
 		match parsed {
 			Ok(reply) =>
 				if reply.is_error {
@@ -58,6 +58,43 @@ Backend :: [].{
 					}
 				}
 			Err(_) => Err(SubscriptionError(Str.trim(output)))
+		}
+	}
+
+	# Claude Code can report costs with more fraction digits than Dec's 18 (`"total_cost_usd":0.0007735999999999999`),
+	# and Json.parse then rejects the whole result, discarding a successful reply. Outside JSON strings, this drops
+	# fraction digits past the 18th; the cost is informational, so truncating it is harmless. No upstream Roc issue
+	# exists yet (searched roc-lang/roc 2026-10-01); the repro is drafted as roc-issues BUG-015
+	# (json-dec-over-18-fraction-digits). Remove this once Json.parse accepts such numbers into Dec.
+	clamp_fractions : Str -> Str
+	clamp_fractions = |text| {
+		start = { out: List.with_capacity(Str.count_utf8_bytes(text)), string: Bool.False, escaped: Bool.False, digit: Bool.False, fraction: Bool.False, digits: 0 }
+		clamped = List.fold(
+			Str.to_utf8(text),
+			start,
+			|state, byte| {
+				digit = byte >= '0' and byte <= '9'
+				if state.string {
+					string = state.escaped or byte != '"'
+					{ ..state, out: List.append(state.out, byte), string, escaped: !state.escaped and byte == '\\' }
+				} else if state.fraction and digit {
+					digits = state.digits + 1
+					{ ..state, out: if digits > 18 state.out else List.append(state.out, byte), digits }
+				} else {
+					{ ..state, out: List.append(state.out, byte), string: byte == '"', digit, fraction: byte == '.' and state.digit, digits: 0 }
+				}
+			},
+		)
+		Str.from_utf8(clamped.out) ?? text
+	}
+
+	expect clamp_fractions("{\"total_cost_usd\":0.0007735999999999999,\"n\":12}") == "{\"total_cost_usd\":0.000773599999999999,\"n\":12}"
+	expect clamp_fractions("{\"result\":\"0.12345678901234567890 \\\" 1.1234567890123456789\",\"c\":1.5}") == "{\"result\":\"0.12345678901234567890 \\\" 1.1234567890123456789\",\"c\":1.5}"
+	expect {
+		reply = completion("{\"is_error\":false,\"result\":\"ok\",\"total_cost_usd\":0.0007735999999999999,\"usage\":{\"input_tokens\":2,\"output_tokens\":47,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":1498}}")
+		match reply {
+			Ok(text) => Str.contains(text, "\"content\":\"ok\"")
+			Err(_) => Bool.False
 		}
 	}
 }
