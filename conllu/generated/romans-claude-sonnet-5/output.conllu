@@ -1814,3 +1814,1056 @@
 20	ἔγνωσαν	γιγνώσκω	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	16	PRED	_	t_1394|gloss=they-knew
 21	[0]	[0]	-	---------	_	16	PRED	_	e_21
 22	.	.	u	u--------	_	7	AuxK	_	t_1395|gloss=.
+
+
+# sentence_id = 68
+# translation_lang = en
+# prose_translation = There is no fear of God before their eyes.
+# literal_translation = There is not fear of God before the eyes of them.
+1	οὐκ	οὐ	d	d--------	_	2	AuxZ	_	t_1396|gloss=not
+2	ἔστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_1397|gloss=there-is
+3	φόβος	φόβος	n	n-s---mn-	Case=n|Gender=m|Number=s	2	SBJ	_	t_1398|gloss=fear
+4	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_1399|gloss=of-God
+5	ἀπέναντι	ἀπέναντι	r	r--------	_	2	AuxP	_	t_1400|gloss=before
+6	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	7	ATR	_	t_1401|gloss=the
+7	ὀφθαλμῶν	ὀφθαλμός	n	n-p---mg-	Case=g|Gender=m|Number=p	5	ADV	_	t_1402|gloss=eyes
+8	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	7	ATR	_	t_1403|gloss=their
+9	.	.	u	u--------	_	2	AuxK	_	t_1404|gloss=.
+
+
+# sentence_id = 69
+# translation_lang = en
+# prose_translation = Now we know that whatever the law says, it speaks to those who are under the law, so that every mouth may be stopped and the whole world may become accountable to God.
+# literal_translation = But we know that as many things as the law says, it speaks to the [ones] in the law, in order that every mouth may be stopped and all the world may become liable-to-judgment to God.
+1	Οἴδαμεν	οἶδα	v	v1pria---	Mood=i|Number=p|Person=1|Tense=r|Voice=a	0	PRED	_	t_1405|gloss=we-know
+2	δὲ	δέ	d	d--------	_	1	AuxY	_	t_1406|gloss=but
+3	ὅτι	ὅτι	c	c--------	_	1	AuxC	_	t_1407|gloss=that
+4	ὅσα	ὅσος	p	p-p---na-	Case=a|Gender=n|Number=p	7	OBJ	_	t_1408|gloss=as-many-things-as
+5	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	6	ATR	_	t_1409|gloss=the
+6	νόμος	νόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	7	SBJ	_	t_1410|gloss=law
+7	λέγει	λέγω3	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	12	OBJ	_	t_1411|gloss=says
+8	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	12	OBJ	_	t_1412|gloss=to-the-[ones]
+9	ἐν	ἐν	r	r--------	_	8	AuxP	_	t_1413|gloss=in
+10	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	11	ATR	_	t_1414|gloss=the
+11	νόμῳ	νόμος	n	n-s---md-	Case=d|Gender=m|Number=s	9	ATR	_	t_1415|gloss=law
+12	λαλεῖ	λαλέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	3	OBJ	_	t_1416|gloss=it-speaks
+13	,	,	u	u--------	_	1	AuxX	_	t_1417|gloss=,
+14	ἵνα	ἵνα	c	c--------	_	12	AuxC	_	t_1418|gloss=in-order-that
+15	πᾶν	πᾶς	a	a-s---nn-	Case=n|Gender=n|Number=s	16	ATR	_	t_1419|gloss=every
+16	στόμα	στόμα	n	n-s---nn-	Case=n|Gender=n|Number=s	17	SBJ	_	t_1420|gloss=mouth
+17	φραγῇ	φράγνυμι	v	v3sasp---	Mood=s|Number=s|Person=3|Tense=a|Voice=p	18	ADV	_	t_1421|gloss=may-be-stopped
+18	καὶ	καί	c	c--------	_	14	COORD	_	t_1422|gloss=and
+19	ὑπόδικος	ὑπόδικος	a	a-s---mn-	Case=n|Gender=m|Number=s	20	PNOM	_	t_1423|gloss=liable-to-judgment
+20	γένηται	γίγνομαι	v	v3sasm---	Mood=s|Number=s|Person=3|Tense=a|Voice=m	18	ADV	_	t_1424|gloss=may-become
+21	πᾶς	πᾶς	a	a-s---mn-	Case=n|Gender=m|Number=s	23	ATR	_	t_1425|gloss=all
+22	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	23	ATR	_	t_1426|gloss=the
+23	κόσμος	κόσμος	n	n-s---mn-	Case=n|Gender=m|Number=s	20	SBJ	_	t_1427|gloss=world
+24	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	25	ATR	_	t_1428|gloss=to-the
+25	θεῷ	θεός	n	n-s---md-	Case=d|Gender=m|Number=s	19	ADV	_	t_1429|gloss=God
+26	·	·	u	u--------	_	1	AuxK	_	t_1430|gloss=·
+
+
+# sentence_id = 70
+# translation_lang = en
+# prose_translation = Because by works of law no flesh will be justified before Him; for through law comes knowledge of sin.
+# literal_translation = Because out-of works of-law not will-be-justified all flesh before Him, for through law [is] knowledge of-sin.
+1	διότι	διότι	c	c--------	_	17	AuxC	_	t_1431|gloss=because
+2	ἐξ	ἐκ	r	r--------	_	6	AuxP	_	t_1432|gloss=out-of
+3	ἔργων	ἔργον	n	n-p---ng-	Case=g|Gender=n|Number=p	2	ADV	_	t_1433|gloss=works
+4	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_1434|gloss=of-law
+5	οὐ	οὐ	d	d--------	_	6	AuxZ	_	t_1435|gloss=not
+6	δικαιωθήσεται	δικαιόω	v	v3sfip---	Mood=i|Number=s|Person=3|Tense=f|Voice=p	1	ADV	_	t_1436|gloss=will-be-justified
+7	πᾶσα	πᾶς	a	a-s---fn-	Case=n|Gender=f|Number=s	8	ATR	_	t_1437|gloss=all
+8	σὰρξ	σάρξ	n	n-s---fn-	Case=n|Gender=f|Number=s	6	SBJ	_	t_1438|gloss=flesh
+9	ἐνώπιον	ἐνώπιον	d	d--------	_	6	ADV	_	t_1439|gloss=before
+10	αὐτοῦ	αὐτός	p	p-s---ng-	Case=g|Gender=m|Number=s	9	ADV	_	t_1440|gloss=him
+11	,	,	u	u--------	_	17	AuxX	_	t_1441|gloss=,
+12	διὰ	διά	r	r--------	_	6	AuxP	_	t_1442|gloss=through
+13	γὰρ	γάρ	d	d--------	_	17	AuxY	_	t_1443|gloss=for
+14	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ADV	_	t_1444|gloss=law
+15	ἐπίγνωσις	ἐπίγνωσις	n	n-s---fn-	Case=n|Gender=f|Number=s	17	SBJ	_	t_1445|gloss=knowledge
+16	ἁμαρτίας	ἁμαρτία	n	n-s---fg-	Case=g|Gender=f|Number=s	15	ATR	_	t_1446|gloss=of-sin
+17	[0]	[0]	-	---------	_	0	PRED	_	e_22
+18	.	.	u	u--------	_	17	AuxK	_	t_1447|gloss=.
+
+
+# sentence_id = 71
+# translation_lang = en
+# prose_translation = But now, apart from law, the righteousness of God has been manifested, being witnessed to by the law and the prophets—the righteousness of God through faith in Jesus Christ, for all who believe; for there is no distinction.
+# literal_translation = But now, apart from law, a righteousness of God has been manifested, being witnessed by the law and the prophets, and a righteousness of God through faith of Jesus Christ, unto all those believing, for there is not a distinction.
+1	νυνὶ	νυνί	d	d--------	_	7	ADV	_	t_1448|gloss=now
+2	δὲ	δέ	d	d--------	_	18	AuxY	_	t_1449|gloss=but
+3	χωρὶς	χωρίς	r	r--------	_	7	AuxP	_	t_1450|gloss=apart-from
+4	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ADV	_	t_1451|gloss=law
+5	δικαιοσύνη	δικαιοσύνη	n	n-s---fn-	Case=n|Gender=f|Number=s	7	SBJ	_	t_1452|gloss=righteousness
+6	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	5	ATR	_	t_1453|gloss=of-God
+7	πεφανέρωται	κηρύσσω	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	18	PRED	_	t_1454|gloss=has-been-manifested
+8	,	,	u	u--------	_	0	AuxX	_	t_1455|gloss=,
+9	μαρτυρουμένη	μαρτυρέω	v	v-sppefn-	Case=n|Gender=f|Mood=p|Number=s|Tense=p|Voice=e	5	ATR	_	t_1456|gloss=being-witnessed-to
+10	ὑπὸ	ὑπό	r	r--------	_	9	AuxP	_	t_1457|gloss=by
+11	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	12	ATR	_	t_1458|gloss=the
+12	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	13	OBJ	_	t_1459|gloss=law
+13	καὶ	καί	c	c--------	_	10	COORD	_	t_1460|gloss=and
+14	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	15	ATR	_	t_1461|gloss=the
+15	προφητῶν	προφήτης	n	n-p---mg-	Case=g|Gender=m|Number=p	13	OBJ	_	t_1462|gloss=prophets
+16	,	,	u	u--------	_	8	AuxX	_	t_1463|gloss=,
+17	δικαιοσύνη	δικαιοσύνη	n	n-s---fn-	Case=n|Gender=f|Number=s	34	SBJ	_	t_1464|gloss=righteousness
+18	δὲ	δέ	c	c--------	_	8	COORD	_	t_1465|gloss=and
+19	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	21	ATR	_	t_1466|gloss=of-God
+20	διὰ	διά	r	r--------	_	34	AuxP	_	t_1467|gloss=through
+21	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	20	ADV	_	t_1468|gloss=faith
+22	[	[	u	u--------	_	8	AuxX	_	t_1469|gloss=[
+23	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	25	ATR	_	t_1470|gloss=Jesus
+24	]	]	u	u--------	_	8	AuxX	_	t_1471|gloss=]
+25	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	21	ATR	_	t_1472|gloss=Christ
+26	,	,	u	u--------	_	8	AuxX	_	t_1473|gloss=,
+27	εἰς	εἰς	r	r--------	_	34	AuxP	_	t_1474|gloss=unto
+28	πάντας	πᾶς	a	a-p---ma-	Case=a|Gender=m|Number=p	30	ATR	_	t_1475|gloss=all
+29	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	30	ATR	_	t_1476|gloss=the
+30	πιστεύοντας	πιστεύω	v	v-pppama-	Case=a|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	27	ADV	_	t_1477|gloss=believing
+31	,	,	u	u--------	_	8	AuxX	_	t_1478|gloss=,
+32	οὐ	οὐ	d	d--------	_	34	AuxZ	_	t_1479|gloss=not
+33	γάρ	γάρ	d	d--------	_	34	AuxY	_	t_1480|gloss=for
+34	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	8	PNOM	_	t_1481|gloss=there-is
+35	διαστολή	διαστολή	n	n-s---fn-	Case=n|Gender=f|Number=s	34	SBJ	_	t_1482|gloss=distinction
+36	.	.	u	u--------	_	8	AuxK	_	t_1483|gloss=.
+
+
+# sentence_id = 72
+# translation_lang = en
+# prose_translation = For all sinned and fall short of the glory of God, being justified freely by his grace through the redemption that is in Christ Jesus;
+# literal_translation = For all sinned and are falling short of the glory of the God, being justified freely by the his grace through the redemption, [the one] in Christ Jesus;
+1	πάντες	πᾶς	a	a-p---mn-	Case=n|Gender=m|Number=p	4	SBJ	_	t_1484|gloss=all
+2	γὰρ	γάρ	d	d--------	_	4	AuxY	_	t_1485|gloss=for
+3	ἥμαρτον	ἁμαρτάνω	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	4	PRED	_	t_1486|gloss=sinned
+4	καὶ	καί	c	c--------	_	0	COORD	_	t_1487|gloss=and
+5	ὑστεροῦνται	ὑστερέω	v	v3ppie---	Mood=i|Number=p|Person=3|Tense=p|Voice=e	4	PRED	_	t_1488|gloss=are-falling-short
+6	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	7	ATR	_	t_1489|gloss=the
+7	δόξης	δόξα	n	n-s---fg-	Case=g|Gender=f|Number=s	5	OBJ	_	t_1490|gloss=glory
+8	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_1491|gloss=the
+9	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	7	ATR	_	t_1492|gloss=God
+10	,	,	u	u--------	_	4	AuxX	_	t_1493|gloss=,
+11	δικαιούμενοι	δικαιόω	v	v-pppemn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	4	ADV	_	t_1494|gloss=being-justified
+12	δωρεὰν	δωρεά	n	n-s---fa-	Case=a|Gender=f|Number=s	11	OBJ	_	t_1495|gloss=freely
+13	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	15	ATR	_	t_1496|gloss=the
+14	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_1497|gloss=his
+15	χάριτι	χάρις	n	n-s---fd-	Case=d|Gender=f|Number=s	11	ADV	_	t_1498|gloss=grace
+16	διὰ	διά	r	r--------	_	11	AuxP	_	t_1499|gloss=through
+17	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	18	ATR	_	t_1500|gloss=the
+18	ἀπολυτρώσεως	ἀπολύτρωσις	n	n-s---fg-	Case=g|Gender=f|Number=s	16	ADV	_	t_1501|gloss=redemption
+19	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	18	ATR	_	t_1502|gloss=the-one
+20	ἐν	ἐν	r	r--------	_	18	AuxP	_	t_1503|gloss=in
+21	Χριστῷ	χριστός	n	n-s---md-	Case=d|Gender=m|Number=s	20	ATR	_	t_1504|gloss=Christ
+22	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	18	ATR	_	t_1505|gloss=Jesus
+23	·	·	u	u--------	_	4	AuxK	_	t_1506|gloss=;
+
+
+# sentence_id = 73
+# translation_lang = en
+# prose_translation = God publicly set him forth as a means of atonement, through faith, by his blood, to demonstrate his righteousness, because in his forbearance God had passed over the sins previously committed, with a view to the demonstration of his righteousness at the present time, so that he might be just and the one who justifies the person who has faith in Jesus.
+# literal_translation = Whom God set forth [as] a mercy-seat, through faith, in his blood, for a demonstration of his righteousness, because of the passing-over of the sins having previously occurred in the forbearance of God, for a demonstration of his righteousness in the now time, so that he [might] be just and justifying the [one] out of faith of Jesus.
+1	ὃν	ὅς	p	p-s---ma-	Case=a|Gender=m|Number=s	2	OBJ	_	t_1507|gloss=whom
+2	προέθετο	προτίθημι	v	v3saim---	Mood=i|Number=s|Person=3|Tense=a|Voice=m	0	PRED	_	t_1508|gloss=set-forth-publicly
+3	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	4	ATR	_	t_1509|gloss=the
+4	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	2	SBJ	_	t_1510|gloss=God
+5	ἱλαστήριον	ἱλαστήριον	n	n-s---na-	Case=a|Gender=n|Number=s	2	OCOMP	_	t_1511|gloss=mercy-seat
+6	διὰ	διά	r	r--------	_	2	AuxP	_	t_1512|gloss=through
+7	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ADV	_	t_1513|gloss=faith
+8	ἐν	ἐν	r	r--------	_	2	AuxP	_	t_1514|gloss=in
+9	τῷ	ὁ	l	l-s---nd-	Case=d|Gender=n|Number=s	11	ATR	_	t_1515|gloss=the
+10	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_1516|gloss=his
+11	αἵματι	αἷμα	n	n-s---nd-	Case=d|Gender=n|Number=s	8	ADV	_	t_1517|gloss=blood
+12	εἰς	εἰς	r	r--------	_	2	AuxP	_	t_1518|gloss=for
+13	ἔνδειξιν	ἔνδειξις	n	n-s---fa-	Case=a|Gender=f|Number=s	12	ADV	_	t_1519|gloss=a-demonstration
+14	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	15	ATR	_	t_1520|gloss=the
+15	δικαιοσύνης	δικαιοσύνη	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ATR	_	t_1521|gloss=righteousness
+16	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_1522|gloss=his
+17	διὰ	διά	r	r--------	_	2	AuxP	_	t_1523|gloss=because-of
+18	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	19	ATR	_	t_1524|gloss=the
+19	πάρεσιν	πάρεσις	n	n-s---fa-	Case=a|Gender=f|Number=s	17	ADV	_	t_1525|gloss=passing-over
+20	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	22	ATR	_	t_1526|gloss=the
+21	προγεγονότων	προγίγνομαι	v	v-prpang-	Case=g|Gender=n|Mood=p|Number=p|Tense=r|Voice=a	22	ATR	_	t_1527|gloss=having-previously-occurred
+22	ἁμαρτημάτων	ἁμάρτημα	n	n-p---ng-	Case=g|Gender=n|Number=p	19	ATR	_	t_1528|gloss=sins
+23	ἐν	ἐν	r	r--------	_	21	AuxP	_	t_1529|gloss=in
+24	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	25	ATR	_	t_1530|gloss=the
+25	ἀνοχῇ	ἀνοχή	n	n-s---fd-	Case=d|Gender=f|Number=s	23	ADV	_	t_1531|gloss=forbearance
+26	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	27	ATR	_	t_1532|gloss=the
+27	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	25	ATR	_	t_1533|gloss=God
+28	,	,	u	u--------	_	2	AuxX	_	t_1534|gloss=,
+29	πρὸς	πρός	r	r--------	_	39	AuxP	_	t_1535|gloss=for
+30	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	31	ATR	_	t_1536|gloss=the
+31	ἔνδειξιν	ἔνδειξις	n	n-s---fa-	Case=a|Gender=f|Number=s	29	ADV	_	t_1537|gloss=demonstration
+32	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	33	ATR	_	t_1538|gloss=the
+33	δικαιοσύνης	δικαιοσύνη	n	n-s---fg-	Case=g|Gender=f|Number=s	31	ATR	_	t_1539|gloss=righteousness
+34	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	33	ATR	_	t_1540|gloss=his
+35	ἐν	ἐν	r	r--------	_	39	AuxP	_	t_1541|gloss=in
+36	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	38	ATR	_	t_1542|gloss=the
+37	νῦν	νῦν	d	d--------	_	38	ATR	_	t_1543|gloss=now
+38	καιρῷ	καιρός	n	n-s---md-	Case=d|Gender=m|Number=s	35	ADV	_	t_1544|gloss=time
+39	,	,	u	u--------	_	2	COORD	_	t_1545|gloss=,
+40	εἰς	εἰς	r	r--------	_	39	AuxP	_	t_1546|gloss=so-that
+41	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	42	ATR	_	t_1547|gloss=the
+42	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	40	ADV	_	t_1548|gloss=might-be
+43	αὐτὸν	αὐτός	p	p-s---ma-	Case=a|Gender=m|Number=s	42	SBJ	_	t_1549|gloss=he
+44	δίκαιον	δίκαιος	a	a-s---ma-	Case=a|Gender=m|Number=s	45	PNOM	_	t_1550|gloss=just
+45	καὶ	καί	c	c--------	_	42	COORD	_	t_1551|gloss=and
+46	δικαιοῦντα	δικαιόω	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	45	PNOM	_	t_1552|gloss=justifying
+47	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	42	PNOM	_	t_1553|gloss=the-one
+48	ἐκ	ἐκ	r	r--------	_	47	AuxP	_	t_1554|gloss=out-of
+49	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	48	ATR	_	t_1555|gloss=faith
+50	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	49	ATR	_	t_1556|gloss=Jesus
+51	.	.	u	u--------	_	2	AuxK	_	t_1557|gloss=.
+
+
+# sentence_id = 74
+# translation_lang = en
+# prose_translation = Where, then, is boasting?
+# literal_translation = Where then [is] the boasting?
+1	Ποῦ	ποῦ	d	d--------	_	5	PNOM	_	t_1558|gloss=where
+2	οὖν	οὖν	d	d--------	_	5	AuxY	_	t_1559|gloss=then
+3	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	4	ATR	_	t_1560|gloss=the
+4	καύχησις	καύχησις	n	n-s---fn-	Case=n|Gender=f|Number=s	5	SBJ	_	t_1561|gloss=boasting
+5	[0]	[0]	-	---------	_	0	PRED	_	e_23
+6	;	;	u	u--------	_	5	AuxK	_	t_1562|gloss=?
+
+
+# sentence_id = 75
+# translation_lang = en
+# prose_translation = It was excluded.
+# literal_translation = It was shut out.
+1	ἐξεκλείσθη	ἐκκλείω1	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	0	PRED	_	t_1563|gloss=it-was-shut-out
+2	.	.	u	u--------	_	1	AuxK	_	t_1564|gloss=.
+
+
+# sentence_id = 76
+# translation_lang = en
+# prose_translation = Through what kind of law?
+# literal_translation = Through what kind of law [is it]?
+1	διὰ	διά	r	r--------	_	4	AuxP	_	t_1565|gloss=through
+2	ποίου	ποῖος	a	a-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_1566|gloss=what-kind-of
+3	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_1567|gloss=law
+4	[0]	[0]	-	---------	_	0	PRED	_	e_24
+5	;	;	u	u--------	_	4	AuxK	_	t_1568|gloss=?
+
+
+# sentence_id = 77
+# translation_lang = en
+# prose_translation = Of works?
+# literal_translation = Of the works [is it]?
+1	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	2	ATR	_	t_1569|gloss=the
+2	ἔργων	ἔργον	n	n-p---ng-	Case=g|Gender=n|Number=p	3	OBJ	_	t_1570|gloss=works
+3	[0]	[0]	-	---------	_	0	PRED	_	e_25
+4	;	;	u	u--------	_	3	AuxK	_	t_1571|gloss=;
+
+
+# sentence_id = 78
+# translation_lang = en
+# prose_translation = No, but through a law of faith.
+# literal_translation = No, but through a law of faith [is it excluded].
+1	οὐχί	οὐ	d	d--------	_	7	AuxZ	_	t_1572|gloss=no
+2	,	,	u	u--------	_	7	AuxX	_	t_1573|gloss=,
+3	ἀλλὰ	ἀλλά	c	c--------	_	7	COORD	_	t_1574|gloss=but
+4	διὰ	διά	r	r--------	_	3	AuxP	_	t_1575|gloss=through
+5	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ADV	_	t_1576|gloss=law
+6	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_1577|gloss=of-faith
+7	[0]	[0]	-	---------	_	0	PRED	_	e_26
+8	.	.	u	u--------	_	7	AuxK	_	t_1578|gloss=.
+
+
+# sentence_id = 79
+# translation_lang = en
+# prose_translation = For we conclude that a person is justified by faith, apart from works of the law.
+# literal_translation = For we reckon [a] man to be justified by faith, apart from works of law.
+1	λογιζόμεθα	λογίζομαι	v	v1ppie---	Mood=i|Number=p|Person=1|Tense=p|Voice=e	0	PRED	_	t_1579|gloss=we-reckon
+2	γὰρ	γάρ	d	d--------	_	1	AuxY	_	t_1580|gloss=for
+3	δικαιοῦσθαι	δικαιόω	v	v--pne---	Mood=n|Tense=p|Voice=e	1	OBJ	_	t_1581|gloss=to-be-justified
+4	πίστει	πίστις	n	n-s---fd-	Case=d|Gender=f|Number=s	3	OBJ	_	t_1582|gloss=by-faith
+5	ἄνθρωπον	ἄνθρωπος	n	n-s---ma-	Case=a|Gender=m|Number=s	3	OBJ	_	t_1583|gloss=man
+6	χωρὶς	χωρίς	r	r--------	_	3	AuxP	_	t_1584|gloss=apart-from
+7	ἔργων	ἔργον	n	n-p---ng-	Case=g|Gender=n|Number=p	6	ADV	_	t_1585|gloss=works
+8	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	6	ADV	_	t_1586|gloss=of-law
+9	.	.	u	u--------	_	1	AuxK	_	t_1587|gloss=.
+
+
+# sentence_id = 80
+# translation_lang = en
+# prose_translation = Or is God the God of Jews only?
+# literal_translation = Or [is] the God of Jews only?
+1	ἢ	ἤ1	d	d--------	_	6	AuxY	_	t_1588|gloss=or
+2	Ἰουδαίων	ἰουδαῖος	n	n-p---mg-	Case=g|Gender=m|Number=p	4	ATR	_	t_1589|gloss=of-Jews
+3	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	4	ATR	_	t_1590|gloss=the
+4	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	6	SBJ	_	t_1591|gloss=God
+5	μόνον	μόνος	a	a-s---na-	Case=a|Gender=n|Number=s	6	ADV	_	t_1592|gloss=only
+6	[0]	[0]	-	---------	_	0	PRED	_	e_27
+7	;	;	u	u--------	_	6	AuxK	_	t_1593|gloss=;
+
+
+# sentence_id = 81
+# translation_lang = en
+# prose_translation = Is he not also the God of the Gentiles?
+# literal_translation = [Is he] not also [God] of Gentiles?
+1	οὐχὶ	οὐ	d	d--------	_	4	AuxZ	_	t_1594|gloss=not
+2	καὶ	καί	d	d--------	_	3	AuxZ	_	t_1595|gloss=also
+3	ἐθνῶν	ἔθνος	n	n-p---ng-	Case=g|Gender=n|Number=p	4	OBJ	_	t_1596|gloss=of-Gentiles
+4	[0]	[0]	-	---------	_	0	PRED	_	e_28
+5	;	;	u	u--------	_	4	AuxK	_	t_1597|gloss=;
+
+
+# sentence_id = 82
+# translation_lang = en
+# prose_translation = Yes, of Gentiles too, since God is one, who will justify the circumcised by faith and the uncircumcised through [their] faith.
+# literal_translation = Yes, also of Gentiles, since [he is] one, God, who will justify circumcision from faith and uncircumcision through the faith.
+1	ναὶ	ναί	i	i--------	_	20	ExD	_	t_1598|gloss=yes
+2	καὶ	καί	d	d--------	_	3	AuxZ	_	t_1599|gloss=also
+3	ἐθνῶν	ἔθνος	n	n-p---ng-	Case=g|Gender=n|Number=p	20	PNOM	_	t_1600|gloss=of-gentiles
+4	,	,	u	u--------	_	20	AuxX	_	t_1601|gloss=,
+5	εἴπερ	εἴπερ	c	c--------	_	20	AuxC	_	t_1602|gloss=since
+6	εἷς	εἷς	m	m-s---mn-	Case=n|Gender=m|Number=s	20	PNOM	_	t_1603|gloss=one
+7	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	8	ATR	_	t_1604|gloss=the
+8	θεός	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	20	SBJ	_	t_1605|gloss=God
+9	,	,	u	u--------	_	20	AuxX	_	t_1606|gloss=,
+10	ὃς	ὅς	p	p-s---mn-	Case=n|Gender=m|Number=s	11	SBJ	_	t_1607|gloss=who
+11	δικαιώσει	δικαιόω	v	v3sfia---	Mood=i|Number=s|Person=3|Tense=f|Voice=a	3	ATR	_	t_1608|gloss=will-justify
+12	περιτομὴν	περιτομή	n	n-s---fa-	Case=a|Gender=f|Number=s	15	OBJ	_	t_1609|gloss=circumcision
+13	ἐκ	ἐκ	r	r--------	_	11	AuxP	_	t_1610|gloss=from
+14	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ADV	_	t_1611|gloss=faith
+15	καὶ	καί	c	c--------	_	11	COORD	_	t_1612|gloss=and
+16	ἀκροβυστίαν	ἀκροβυστία	n	n-s---fa-	Case=a|Gender=f|Number=s	15	OBJ	_	t_1613|gloss=uncircumcision
+17	διὰ	διά	r	r--------	_	15	AuxP	_	t_1614|gloss=through
+18	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	19	ATR	_	t_1615|gloss=the
+19	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	17	ADV	_	t_1616|gloss=faith
+20	[0]	[0]	-	---------	_	0	PRED	_	e_29
+21	[1]	[1]	-	---------	_	15	OBJ	_	e_30
+22	.	.	u	u--------	_	20	AuxK	_	t_1617|gloss=.
+
+
+# sentence_id = 83
+# translation_lang = en
+# prose_translation = Do we then nullify the law through faith?
+# literal_translation = The law then do we nullify through the faith?
+1	νόμον	νόμος	n	n-s---ma-	Case=a|Gender=m|Number=s	3	OBJ	_	t_1618|gloss=law
+2	οὖν	οὖν	d	d--------	_	3	AuxY	_	t_1619|gloss=then
+3	καταργοῦμεν	κατεργέω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_1620|gloss=do-we-nullify
+4	διὰ	διά	r	r--------	_	3	AuxP	_	t_1621|gloss=through
+5	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	6	ATR	_	t_1622|gloss=the
+6	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	4	ADV	_	t_1623|gloss=faith
+7	;	;	u	u--------	_	3	AuxK	_	t_1624|gloss=;
+
+
+# sentence_id = 84
+# translation_lang = en
+# prose_translation = By no means! Rather, we uphold the law.
+# literal_translation = May it not be, but law we uphold.
+1	μὴ	μή	g	g--------	_	2	AuxZ	_	t_1625|gloss=not
+2	γένοιτο	γίγνομαι	v	v3saom---	Mood=o|Number=s|Person=3|Tense=a|Voice=m	4	PRED	_	t_1626|gloss=may-it-be
+3	,	,	u	u--------	_	4	AuxX	_	t_1627|gloss=,
+4	ἀλλὰ	ἀλλά	c	c--------	_	0	COORD	_	t_1628|gloss=but
+5	νόμον	νόμος	n	n-s---ma-	Case=a|Gender=m|Number=s	6	OBJ	_	t_1629|gloss=law
+6	ἱστάνομεν	ἵστημι	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	4	PRED	_	t_1630|gloss=we-uphold
+7	.	.	u	u--------	_	4	AuxK	_	t_1631|gloss=.
+
+
+# sentence_id = 85
+# translation_lang = en
+# prose_translation = What then shall we say that Abraham, our forefather according to the flesh, found?
+# literal_translation = What then shall we say Abraham our forefather according to flesh [found]?
+1	Τί	τίς	d	d--------	_	3	ADV	_	t_1632|gloss=what
+2	οὖν	οὖν	d	d--------	_	3	AuxY	_	t_1633|gloss=then
+3	ἐροῦμεν	λέγω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_1634|gloss=shall-we-say
+4	Ἀβραὰμ	ἀβραάμ	n	n-s---ma-	Case=a|Gender=m|Number=s	3	SBJ	_	t_1635|gloss=Abraham
+5	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	6	ATR	_	t_1636|gloss=the
+6	προπάτορα	προπάτωρ	n	n-s---ma-	Case=a|Gender=m|Number=s	4	APOS	_	t_1637|gloss=forefather
+7	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	6	ATR	_	t_1638|gloss=of-us
+8	κατὰ	κατά	r	r--------	_	3	AuxP	_	t_1639|gloss=according-to
+9	σάρκα	σάρξ	n	n-s---fa-	Case=a|Gender=f|Number=s	8	ADV	_	t_1640|gloss=flesh
+10	;	;	u	u--------	_	3	AuxK	_	t_1641|gloss=;
+
+
+# sentence_id = 86
+# translation_lang = en
+# prose_translation = For if Abraham was justified by works, he has a ground for boasting.
+# literal_translation = For if Abraham was justified out of works, he has a boast;
+1	εἰ	εἰ	c	c--------	_	8	AuxC	_	t_1642|gloss=if
+2	γὰρ	γάρ	d	d--------	_	8	AuxY	_	t_1643|gloss=for
+3	Ἀβραὰμ	ἀβραάμ	n	n-s---mn-	Case=n|Gender=m|Number=s	6	SBJ	_	t_1644|gloss=Abraham
+4	ἐξ	ἐκ	r	r--------	_	6	AuxP	_	t_1645|gloss=out-of
+5	ἔργων	ἔργον	n	n-p---ng-	Case=g|Gender=n|Number=p	4	ADV	_	t_1646|gloss=works
+6	ἐδικαιώθη	δικαιόω	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	1	ADV	_	t_1647|gloss=was-justified
+7	,	,	u	u--------	_	8	AuxX	_	t_1648|gloss=,
+8	ἔχει	ἔχω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_1649|gloss=he-has
+9	καύχημα	καύχημα	n	n-s---na-	Case=a|Gender=n|Number=s	8	OBJ	_	t_1650|gloss=a-boast
+10	·	·	u	u--------	_	8	AuxK	_	t_1651|gloss=;
+
+
+# sentence_id = 87
+# translation_lang = en
+# prose_translation = But [it is] not [spoken] with reference to God. For what does the scripture say?
+# literal_translation = But [it is] not toward God; for what does the scripture say?
+1	ἀλλʼ	ἀλλά	c	c--------	_	11	AuxY	_	t_1652|gloss=but
+2	οὐ	οὐ	d	d--------	_	11	AuxZ	_	t_1653|gloss=not
+3	πρὸς	πρός	r	r--------	_	11	AuxP	_	t_1654|gloss=toward
+4	θεόν	θεός	n	n-s---ma-	Case=a|Gender=m|Number=s	3	ExD	_	t_1655|gloss=God
+5	,	,	u	u--------	_	0	COORD	_	t_1656|gloss=,
+6	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	10	OBJ	_	t_1657|gloss=what
+7	γὰρ	γάρ	d	d--------	_	10	AuxY	_	t_1658|gloss=for
+8	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	9	ATR	_	t_1659|gloss=the
+9	γραφὴ	γραφή	n	n-s---fn-	Case=n|Gender=f|Number=s	10	SBJ	_	t_1660|gloss=scripture
+10	λέγει	λέγω3	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	11	PRED	_	t_1661|gloss=says
+11	[0]	[0]	-	---------	_	5	PRED	_	e_31
+12	;	;	u	u--------	_	5	AuxK	_	t_1662|gloss=;
+
+
+# sentence_id = 88
+# translation_lang = en
+# prose_translation = And Abraham believed God, and it was credited to him as righteousness.
+# literal_translation = And Abraham believed God, and it was credited to him unto righteousness.
+1	Ἐπίστευσεν	πιστεύω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	7	PRED	_	t_1663|gloss=believed
+2	δὲ	δέ	d	d--------	_	0	COORD	_	t_1664|gloss=and
+3	Ἀβραὰμ	ἀβραάμ	n	n-s---mn-	Case=n|Gender=m|Number=s	1	SBJ	_	t_1665|gloss=Abraham
+4	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	5	ATR	_	t_1666|gloss=the
+5	θεῷ	θεός	n	n-s---md-	Case=d|Gender=m|Number=s	1	OBJ	_	t_1667|gloss=God
+6	,	,	u	u--------	_	1	AuxX	_	t_1668|gloss=,
+7	καὶ	καί	c	c--------	_	2	COORD	_	t_1669|gloss=and
+8	ἐλογίσθη	λογίζομαι	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	7	PRED	_	t_1670|gloss=was-credited
+9	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	8	OBJ	_	t_1671|gloss=to-him
+10	εἰς	εἰς	r	r--------	_	8	AuxP	_	t_1672|gloss=unto
+11	δικαιοσύνην	δικαιοσύνη	n	n-s---fa-	Case=a|Gender=f|Number=s	10	ADV	_	t_1673|gloss=righteousness
+12	.	.	u	u--------	_	2	AuxK	_	t_1674|gloss=.
+
+
+# sentence_id = 89
+# translation_lang = en
+# prose_translation = Now to the one who works, the wages are not reckoned as a favor, but as a debt owed.
+# literal_translation = But to the one working, the wage is not reckoned according to grace, but according to debt.
+1	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	3	ATR	_	t_1675|gloss=to-the
+2	δὲ	δέ	d	d--------	_	7	AuxY	_	t_1676|gloss=but
+3	ἐργαζομένῳ	ἐργάζομαι	v	v-sppemd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	7	OBJ	_	t_1677|gloss=one-working
+4	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	5	ATR	_	t_1678|gloss=the
+5	μισθὸς	μισθός	n	n-s---mn-	Case=n|Gender=m|Number=s	7	SBJ	_	t_1679|gloss=wage
+6	οὐ	οὐ	d	d--------	_	9	AuxZ	_	t_1680|gloss=not
+7	λογίζεται	λογίζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_1681|gloss=is-reckoned
+8	κατὰ	κατά	r	r--------	_	10	AuxP	_	t_1682|gloss=according-to
+9	χάριν	χάρις	n	n-s---fa-	Case=a|Gender=f|Number=s	8	ADV	_	t_1683|gloss=grace
+10	ἀλλὰ	ἀλλά	c	c--------	_	7	COORD	_	t_1684|gloss=but
+11	κατὰ	κατά	r	r--------	_	10	AuxP	_	t_1685|gloss=according-to
+12	ὀφείλημα	ὄφλημα	n	n-s---na-	Case=a|Gender=n|Number=s	11	ADV	_	t_1686|gloss=debt
+13	·	·	u	u--------	_	7	AuxK	_	t_1687|gloss=.
+
+
+# sentence_id = 90
+# translation_lang = en
+# prose_translation = But to the one who does not work, but believes on him who justifies the ungodly, his faith is credited for righteousness, just as David also speaks of the blessing of the man to whom God credits righteousness apart from works: "Blessed are they whose lawless deeds have been forgiven, and whose sins have been covered; blessed is the man against whom the Lord will not credit sin."
+# literal_translation = But to the one not working, but believing on the one justifying the ungodly, his faith is credited unto righteousness, just as also David speaks the blessing of the man to whom God credits righteousness apart from works [saying]: "Blessed [are they] of whom the lawless deeds were forgiven, and of whom the sins were covered; blessed [is the] man of whom the Lord shall by no means credit sin."
+1	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	7	ATR	_	t_1688|gloss=to-the-one
+2	δὲ	δέ	d	d--------	_	14	AuxY	_	t_1689|gloss=but
+3	μὴ	μή	d	d--------	_	4	AuxZ	_	t_1690|gloss=not
+4	ἐργαζομένῳ	ἐργάζομαι	v	v-sppemd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	7	ADV	_	t_1691|gloss=working
+5	,	,	u	u--------	_	14	AuxX	_	t_1692|gloss=,
+6	πιστεύοντι	πιστεύω	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	7	ATR	_	t_1693|gloss=believing
+7	δὲ	δέ	c	c--------	_	14	COORD	_	t_1694|gloss=but
+8	ἐπὶ	ἐπί	r	r--------	_	6	AuxP	_	t_1695|gloss=upon
+9	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	10	ATR	_	t_1696|gloss=the-one
+10	δικαιοῦντα	δικαιόω	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	8	OBJ	_	t_1697|gloss=justifying
+11	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	12	ATR	_	t_1698|gloss=the
+12	ἀσεβῆ	ἀσεβής	a	a-s---ma-	Case=a|Gender=m|Number=s	10	OBJ	_	t_1699|gloss=ungodly
+13	,	,	u	u--------	_	14	AuxX	_	t_1700|gloss=,
+14	λογίζεται	λογίζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_1701|gloss=is-credited
+15	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	16	ATR	_	t_1702|gloss=the
+16	πίστις	πίστις	n	n-s---fn-	Case=n|Gender=f|Number=s	14	SBJ	_	t_1703|gloss=faith
+17	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	16	ATR	_	t_1704|gloss=his
+18	εἰς	εἰς	r	r--------	_	14	AuxP	_	t_1705|gloss=unto
+19	δικαιοσύνην	δικαιοσύνη	n	n-s---fa-	Case=a|Gender=f|Number=s	18	ADV	_	t_1706|gloss=righteousness
+20	,	,	u	u--------	_	14	AuxX	_	t_1707|gloss=,
+21	καθάπερ	καθά	c	c--------	_	14	AuxC	_	t_1708|gloss=just-as
+22	καὶ	καί	d	d--------	_	23	AuxZ	_	t_1709|gloss=also
+23	Δαυεὶδ	δαυείδ	n	n-s---mn-	Case=n|Gender=m|Number=s	24	SBJ	_	t_1710|gloss=David
+24	λέγει	λέγω3	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	21	ADV	_	t_1711|gloss=speaks
+25	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	26	ATR	_	t_1712|gloss=the
+26	μακαρισμὸν	μακαρισμός	n	n-s---ma-	Case=a|Gender=m|Number=s	24	OBJ	_	t_1713|gloss=blessing
+27	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	28	ATR	_	t_1714|gloss=of-the
+28	ἀνθρώπου	ἄνθρωπος	n	n-s---mg-	Case=g|Gender=m|Number=s	26	ATR	_	t_1715|gloss=man
+29	ᾧ	ὅς	p	p-s---md-	Case=d|Gender=m|Number=s	32	ADV	_	t_1716|gloss=to-whom
+30	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	31	ATR	_	t_1717|gloss=the
+31	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	38	SBJ	_	t_1718|gloss=God
+32	λογίζεται	λογίζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	24	OBJ	_	t_1719|gloss=credits
+33	δικαιοσύνην	δικαιοσύνη	n	n-s---fa-	Case=a|Gender=f|Number=s	32	OBJ	_	t_1720|gloss=righteousness
+34	χωρὶς	χωρίς	r	r--------	_	32	AuxP	_	t_1721|gloss=apart-from
+35	ἔργων	ἔργον	n	n-p---ng-	Case=g|Gender=n|Number=p	34	ADV	_	t_1722|gloss=works
+36	Μακάριοι	μακάριος	a	a-p---mn-	Case=n|Gender=m|Number=p	41	ATR	_	t_1723|gloss=blessed
+37	ὧν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	38	OBJ	_	t_1724|gloss=of-whom
+38	ἀφέθησαν	ἀφίημι	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	41	ATR	_	t_1725|gloss=were-forgiven
+39	αἱ	ὁ	l	l-p---fn-	Case=n|Gender=f|Number=p	40	ATR	_	t_1726|gloss=the
+40	ἀνομίαι	ἀνομία	n	n-p---fn-	Case=n|Gender=f|Number=p	38	SBJ	_	t_1727|gloss=lawless-deeds
+41	καὶ	καί	c	c--------	_	35	COORD	_	t_1728|gloss=and
+42	ὧν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	43	OBJ	_	t_1729|gloss=of-whom
+43	ἐπεκα	ἐπίκημι	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	41	ATR	_	t_1730|gloss=were-covered
+44	-	-	u	u--------	_	45	AuxG	_	t_1731|gloss=-
+45	λύφθησαν	λύπτω	v	v3paip---	Mood=i|Number=p|Person=3|Tense=a|Voice=p	14	PRED	_	t_1732|gloss=were-covered
+46	αἱ	ὁ	l	l-p---fn-	Case=n|Gender=f|Number=p	47	ATR	_	t_1733|gloss=the
+47	ἁμαρτίαι	ἁμαρτία	n	n-p---fn-	Case=n|Gender=f|Number=p	45	SBJ	_	t_1734|gloss=sins
+48	,	,	u	u--------	_	14	APOS	_	t_1735|gloss=,
+49	μακάριος	μακάριος	a	a-s---mn-	Case=n|Gender=m|Number=s	50	ATR	_	t_1736|gloss=blessed
+50	ἀνὴρ	ἀνήρ	n	n-s---mn-	Case=n|Gender=m|Number=s	48	SBJ	_	t_1737|gloss=man
+51	οὗ	ὅς	p	p-s---mg-	Case=g|Gender=m|Number=s	54	OBJ	_	t_1738|gloss=of-whom
+52	οὐ	οὐ	d	d--------	_	54	AuxZ	_	t_1739|gloss=not
+53	μὴ	μή	d	d--------	_	54	AuxZ	_	t_1740|gloss=by-no-means
+54	λογίσηται	λογίζομαι	v	v3sasm---	Mood=s|Number=s|Person=3|Tense=a|Voice=m	50	ATR	_	t_1741|gloss=will-credit
+55	Κύριος	κύριος	n	n-s---mn-	Case=n|Gender=m|Number=s	54	SBJ	_	t_1742|gloss=Lord
+56	ἁμαρ	ἁμαρτία	d	d--------	_	54	ADV	_	t_1743|gloss=sin
+57	-	-	u	u--------	_	45	AuxG	_	t_1744|gloss=-
+58	τίαν	τις	n	n-s---fa-	Case=a|Gender=f|Number=s	59	OBJ	_	t_1745|gloss=sin
+59	[0]	[0]	-	---------	_	24	OBJ	_	e_32
+60	.	.	u	u--------	_	14	AuxK	_	t_1746|gloss=.
+
+
+# sentence_id = 91
+# translation_lang = en
+# prose_translation = Is this blessing, then, upon the circumcision, or also upon the uncircumcision?
+# literal_translation = This blessing, therefore, [is it] upon the circumcision, or also upon the uncircumcision?
+1	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	2	ATR	_	t_1747|gloss=the
+2	μακαρισμὸς	μακαρισμός	n	n-s---mn-	Case=n|Gender=m|Number=s	13	SBJ	_	t_1748|gloss=blessing
+3	οὖν	οὖν	d	d--------	_	13	AuxY	_	t_1749|gloss=therefore
+4	οὗτος	οὗτος	a	a-s---mn-	Case=n|Gender=m|Number=s	2	ATR	_	t_1750|gloss=this
+5	ἐπὶ	ἐπί	r	r--------	_	8	AuxP	_	t_1751|gloss=upon
+6	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	7	ATR	_	t_1752|gloss=the
+7	περιτομὴν	περιτομή	n	n-s---fa-	Case=a|Gender=f|Number=s	5	ADV	_	t_1753|gloss=circumcision
+8	ἢ	ἤ1	c	c--------	_	13	COORD	_	t_1754|gloss=or
+9	καὶ	καί	d	d--------	_	12	AuxZ	_	t_1755|gloss=also
+10	ἐπὶ	ἐπί	r	r--------	_	8	AuxP	_	t_1756|gloss=upon
+11	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	12	ATR	_	t_1757|gloss=the
+12	ἀκροβυστίαν	ἀκροβυστία	n	n-s---fa-	Case=a|Gender=f|Number=s	10	ADV	_	t_1758|gloss=uncircumcision
+13	[0]	[0]	-	---------	_	0	PRED	_	e_33
+14	[1]	[1]	-	---------	_	13	OBJ	_	e_34
+15	;	;	u	u--------	_	13	AuxK	_	t_1759|gloss=;
+
+
+# sentence_id = 92
+# translation_lang = en
+# prose_translation = For what do we say? "Faith was credited to Abraham as righteousness."
+# literal_translation = For we say: "Faith was credited to [the] Abraham unto righteousness."
+1	λέγομεν	λέγω3	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_1760|gloss=we-say
+2	γάρ	γάρ	d	d--------	_	1	AuxY	_	t_1761|gloss=for
+3	Ἐλογίσθη	λογίζομαι	n	n-s---fn-	Case=n|Gender=f|Number=s	1	SBJ	_	t_1762|gloss=was-credited
+4	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	5	ATR	_	t_1763|gloss=the
+5	Ἀβραὰμ	ἀβραάμ	n	n-s---md-	Case=d|Gender=m|Number=s	1	OBJ	_	t_1764|gloss=to-Abraham
+6	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	7	ATR	_	t_1765|gloss=the
+7	πίστις	πίστις	n	n-s---fn-	Case=n|Gender=f|Number=s	1	SBJ	_	t_1766|gloss=faith
+8	εἰς	εἰς	r	r--------	_	7	AuxP	_	t_1767|gloss=unto
+9	δικαιοσύνην	δικαιοσύνη	n	n-s---fa-	Case=a|Gender=f|Number=s	8	ATR	_	t_1768|gloss=righteousness
+10	.	.	u	u--------	_	1	AuxK	_	t_1769|gloss=.
+
+
+# sentence_id = 93
+# translation_lang = en
+# prose_translation = How then was it reckoned?
+# literal_translation = How then was it reckoned?
+1	πῶς	πῶς	d	d--------	_	3	ADV	_	t_1770|gloss=how
+2	οὖν	οὖν	d	d--------	_	3	AuxY	_	t_1771|gloss=then
+3	ἐλογίσθη	λογίζομαι	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	0	PRED	_	t_1772|gloss=was-it-reckoned
+4	;	;	u	u--------	_	3	AuxK	_	t_1773|gloss=?
+
+
+# sentence_id = 94
+# translation_lang = en
+# prose_translation = Was it while he was circumcised, or uncircumcised?
+# literal_translation = [Was it reckoned] while being in circumcision, or in uncircumcision?
+1	ἐν	ἐν	r	r--------	_	4	AuxP	_	t_1774|gloss=in
+2	περιτομῇ	περιτομή	n	n-s---fd-	Case=d|Gender=f|Number=s	1	PNOM	_	t_1775|gloss=circumcision
+3	ὄντι	εἰμί	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	2	ATR	_	t_1776|gloss=being
+4	ἢ	ἤ1	c	c--------	_	7	COORD	_	t_1777|gloss=or
+5	ἐν	ἐν	r	r--------	_	4	AuxP	_	t_1778|gloss=in
+6	ἀκροβυστίᾳ	ἀκροβυστία	n	n-s---fd-	Case=d|Gender=f|Number=s	5	PNOM	_	t_1779|gloss=uncircumcision
+7	[0]	[0]	-	---------	_	0	PRED	_	e_35
+8	;	;	u	u--------	_	7	AuxK	_	t_1780|gloss=?
+
+
+# sentence_id = 95
+# translation_lang = en
+# prose_translation = Not while circumcised, but while uncircumcised.
+# literal_translation = Not in circumcision, but in uncircumcision — [it was reckoned].
+1	οὐκ	οὐ	d	d--------	_	3	AuxZ	_	t_1781|gloss=not
+2	ἐν	ἐν	r	r--------	_	4	AuxP	_	t_1782|gloss=in
+3	περιτομῇ	περιτομή	n	n-s---fd-	Case=d|Gender=f|Number=s	2	ADV	_	t_1783|gloss=circumcision
+4	ἀλλʼ	ἀλλά	c	c--------	_	7	COORD	_	t_1784|gloss=but
+5	ἐν	ἐν	r	r--------	_	4	AuxP	_	t_1785|gloss=in
+6	ἀκροβυστίᾳ	ἀκροβυστία	n	n-s---fd-	Case=d|Gender=f|Number=s	5	ADV	_	t_1786|gloss=uncircumcision
+7	[0]	[0]	-	---------	_	0	PRED	_	e_36
+8	·	·	u	u--------	_	7	AuxK	_	t_1787|gloss=·
+
+
+# sentence_id = 96
+# translation_lang = en
+# prose_translation = And he received a sign, namely circumcision, a seal of the righteousness of the faith which he had while uncircumcised, so that he might be the father of all who believe while uncircumcised, in order that righteousness might be reckoned to them also, and the father of circumcision to those who are not only of the circumcision but who also follow in the footsteps of the faith which our father Abraham had while uncircumcised.
+# literal_translation = And a sign he received, of circumcision, a seal of the righteousness of the faith which [was] in uncircumcision, for him to be the father of all those believing through uncircumcision, for [it] to be reckoned to them [the] righteousness, and a father of circumcision to those not of circumcision only but also to those walking in the footsteps of the faith in uncircumcision of our father Abraham.
+1	καὶ	καί	d	d--------	_	3	AuxY	_	t_1788|gloss=and
+2	σημεῖον	σημεῖον	n	n-s---na-	Case=a|Gender=n|Number=s	36	OBJ	_	t_1789|gloss=sign
+3	ἔλαβεν	λαμβάνω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	0	PRED	_	t_1790|gloss=he-received
+4	περιτομῆς	περιτομή	n	n-s---fg-	Case=g|Gender=f|Number=s	2	ATR	_	t_1791|gloss=of-circumcision
+5	,	,	u	u--------	_	3	AuxX	_	t_1792|gloss=,
+6	σφραγῖδα	σφραγίς	n	n-s---fa-	Case=a|Gender=f|Number=s	36	OBJ	_	t_1793|gloss=seal
+7	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_1794|gloss=the
+8	δικαιοσύνης	δικαιοσύνη	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ATR	_	t_1795|gloss=righteousness
+9	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	10	ATR	_	t_1796|gloss=the
+10	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_1797|gloss=faith
+11	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	10	ATR	_	t_1798|gloss=the
+12	ἐν	ἐν	r	r--------	_	10	AuxP	_	t_1799|gloss=in
+13	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	14	ATR	_	t_1800|gloss=the
+14	ἀκροβυστίᾳ	ἀκροβυστία	n	n-s---fd-	Case=d|Gender=f|Number=s	12	ATR	_	t_1801|gloss=uncircumcision
+15	,	,	u	u--------	_	3	AuxX	_	t_1802|gloss=,
+16	εἰς	εἰς	r	r--------	_	2	AuxP	_	t_1803|gloss=for
+17	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	18	ATR	_	t_1804|gloss=the
+18	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	27	ATR	_	t_1805|gloss=to-be
+19	αὐτὸν	αὐτός	p	p-s---ma-	Case=a|Gender=m|Number=s	18	SBJ	_	t_1806|gloss=he
+20	πατέρα	πατήρ	n	n-s---ma-	Case=a|Gender=m|Number=s	18	PNOM	_	t_1807|gloss=father
+21	πάντων	πᾶς	a	a-p---mg-	Case=g|Gender=m|Number=p	23	ATR	_	t_1808|gloss=of-all
+22	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	23	ATR	_	t_1809|gloss=those
+23	πιστευόντων	πιστεύω	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	20	ATR	_	t_1810|gloss=believing
+24	διʼ	διά	r	r--------	_	23	AuxP	_	t_1811|gloss=through
+25	ἀκροβυστίας	ἀκροβυστία	n	n-s---fg-	Case=g|Gender=f|Number=s	24	ADV	_	t_1812|gloss=uncircumcision
+26	,	,	u	u--------	_	3	AuxX	_	t_1813|gloss=,
+27	εἰς	εἰς	r	r--------	_	36	AuxP	_	t_1814|gloss=for
+28	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	29	ATR	_	t_1815|gloss=the
+29	λογισθῆναι	λογίζομαι	v	v--anp---	Mood=n|Tense=a|Voice=p	27	ATR	_	t_1816|gloss=to-be-reckoned
+30	αὐτοῖς	αὐτός	p	p-p---md-	Case=d|Gender=m|Number=p	29	OBJ	_	t_1817|gloss=to-them
+31	[	[	u	u--------	_	3	AuxX	_	t_1818|gloss=[
+32	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	34	ATR	_	t_1819|gloss=the
+33	]	]	u	u--------	_	3	AuxX	_	t_1820|gloss=]
+34	δικαιοσύνην	δικαιοσύνη	n	n-s---fa-	Case=a|Gender=f|Number=s	29	SBJ	_	t_1821|gloss=righteousness
+35	,	,	u	u--------	_	3	AuxX	_	t_1822|gloss=,
+36	καὶ	καί	c	c--------	_	3	COORD	_	t_1823|gloss=and
+37	πατέρα	πατήρ	n	n-s---ma-	Case=a|Gender=m|Number=s	36	OBJ	_	t_1824|gloss=father
+38	περιτομῆς	περιτομή	n	n-s---fg-	Case=g|Gender=f|Number=s	37	ATR	_	t_1825|gloss=of-circumcision
+39	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	44	ATR	_	t_1826|gloss=to-those
+40	οὐκ	οὐ	d	d--------	_	43	AuxZ	_	t_1827|gloss=not
+41	ἐκ	ἐκ	r	r--------	_	44	AuxP	_	t_1828|gloss=of
+42	περιτομῆς	περιτομή	n	n-s---fg-	Case=g|Gender=f|Number=s	41	ATR	_	t_1829|gloss=circumcision
+43	μόνον	μόνος	a	a-s---na-	Case=a|Gender=n|Number=s	42	AuxZ	_	t_1830|gloss=only
+44	ἀλλὰ	ἀλλά	c	c--------	_	37	COORD	_	t_1831|gloss=but
+45	καὶ	καί	d	d--------	_	49	AuxZ	_	t_1832|gloss=also
+46	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	47	ATR	_	t_1833|gloss=to-those
+47	στοιχοῦσιν	στοιχέω	v	v-pppamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	44	ATR	_	t_1834|gloss=walking
+48	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=m|Number=p	49	ATR	_	t_1835|gloss=the
+49	ἴχνεσιν	ἴχνος	n	n-p---nd-	Case=d|Gender=n|Number=p	47	OBJ	_	t_1836|gloss=footsteps
+50	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	53	ATR	_	t_1837|gloss=the
+51	ἐν	ἐν	r	r--------	_	53	AuxP	_	t_1838|gloss=in
+52	ἀκροβυστίᾳ	ἀκροβυστία	n	n-s---fd-	Case=d|Gender=f|Number=s	51	ATR	_	t_1839|gloss=uncircumcision
+53	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	49	ATR	_	t_1840|gloss=of-faith
+54	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	55	ATR	_	t_1841|gloss=the
+55	πατρὸς	πατήρ	n	n-s---mg-	Case=g|Gender=m|Number=s	53	ATR	_	t_1842|gloss=father
+56	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	55	ATR	_	t_1843|gloss=our
+57	Ἀβραάμ	ἀβραάμ	n	n-s---mg-	Case=g|Gender=m|Number=s	55	APOS	_	t_1844|gloss=Abraham
+58	.	.	u	u--------	_	3	AuxK	_	t_1845|gloss=.
+
+
+# sentence_id = 97
+# translation_lang = en
+# prose_translation = For the promise to Abraham or to his descendant that he would be heir of the world was not through law, but through the righteousness of faith.
+# literal_translation = For not through law [was] the promise to Abraham or to his descendant, [the promise] that he be heir of the world, but through the righteousness of faith.
+1	Οὐ	οὐ	d	d--------	_	4	AuxZ	_	t_1846|gloss=not
+2	γὰρ	γάρ	d	d--------	_	24	AuxY	_	t_1847|gloss=for
+3	διὰ	διά	r	r--------	_	20	AuxP	_	t_1848|gloss=through
+4	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ADV	_	t_1849|gloss=law
+5	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	6	ATR	_	t_1850|gloss=the
+6	ἐπαγγελία	ἐπαγγελία	n	n-s---fn-	Case=n|Gender=f|Number=s	24	SBJ	_	t_1851|gloss=promise
+7	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	8	ATR	_	t_1852|gloss=to-the
+8	Ἀβραὰμ	ἀβραάμ	n	n-s---md-	Case=d|Gender=m|Number=s	9	ADV	_	t_1853|gloss=Abraham
+9	ἢ	ἤ1	c	c--------	_	6	COORD	_	t_1854|gloss=or
+10	τῷ	ὁ	l	l-s---nd-	Case=d|Gender=n|Number=s	11	ATR	_	t_1855|gloss=to-the
+11	σπέρματι	σπέρμα	n	n-s---nd-	Case=d|Gender=n|Number=s	9	ADV	_	t_1856|gloss=descendant
+12	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_1857|gloss=his
+13	,	,	u	u--------	_	24	AuxX	_	t_1858|gloss=,
+14	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	17	ATR	_	t_1859|gloss=the
+15	κληρονόμον	κληρονόμος	n	n-s---ma-	Case=a|Gender=m|Number=s	17	PNOM	_	t_1860|gloss=heir
+16	αὐτὸν	αὐτός	p	p-s---ma-	Case=a|Gender=m|Number=s	17	SBJ	_	t_1861|gloss=he
+17	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	24	SBJ	_	t_1862|gloss=to-be
+18	κόσμου	κόσμος	n	n-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_1863|gloss=of-the-world
+19	,	,	u	u--------	_	24	AuxX	_	t_1864|gloss=,
+20	ἀλλὰ	ἀλλά	c	c--------	_	24	COORD	_	t_1865|gloss=but
+21	διὰ	διά	r	r--------	_	20	AuxP	_	t_1866|gloss=through
+22	δικαιοσύνης	δικαιοσύνη	n	n-s---fg-	Case=g|Gender=f|Number=s	21	ADV	_	t_1867|gloss=righteousness
+23	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	22	ATR	_	t_1868|gloss=of-faith
+24	[0]	[0]	-	---------	_	0	PRED	_	e_37
+25	·	·	u	u--------	_	24	AuxK	_	t_1869|gloss=·
+
+
+# sentence_id = 98
+# translation_lang = en
+# prose_translation = For if those who are of the law are heirs, faith has been emptied, and the promise has been nullified.
+# literal_translation = For if those [who are] of [the] law [are] heirs, faith has been emptied, and the promise has been nullified.
+1	εἰ	εἰ	c	c--------	_	11	AuxC	_	t_1870|gloss=if
+2	γὰρ	γάρ	d	d--------	_	11	AuxY	_	t_1871|gloss=for
+3	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	6	ATR	_	t_1872|gloss=those
+4	ἐκ	ἐκ	r	r--------	_	6	AuxP	_	t_1873|gloss=from
+5	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ADV	_	t_1874|gloss=law
+6	κληρονόμοι	κληρονόμος	n	n-p---mn-	Mood=i|Number=p|Person=3|Tense=p|Voice=e	1	ADV	_	t_1875|gloss=are-heirs
+7	,	,	u	u--------	_	0	AuxX	_	t_1876|gloss=,
+8	κεκένωται	κενόω	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	11	PRED	_	t_1877|gloss=has-been-emptied
+9	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	10	ATR	_	t_1878|gloss=the
+10	πίστις	πίστις	n	n-s---fn-	Case=n|Gender=f|Number=s	8	SBJ	_	t_1879|gloss=faith
+11	καὶ	καί	c	c--------	_	7	COORD	_	t_1880|gloss=and
+12	κατήργηται	καταλύω	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	11	PRED	_	t_1881|gloss=has-been-nullified
+13	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	14	ATR	_	t_1882|gloss=the
+14	ἐπαγγελία	ἐπαγγελία	n	n-s---fn-	Case=n|Gender=f|Number=s	12	SBJ	_	t_1883|gloss=promise
+15	[0]	[0]	-	---------	_	11	PRED	_	e_38
+16	.	.	u	u--------	_	7	AuxK	_	t_1884|gloss=.
+
+
+# sentence_id = 99
+# translation_lang = en
+# prose_translation = For the law brings about wrath; but where there is no law, there is no transgression either.
+# literal_translation = For the law wrath works-out, but where law is not, neither is transgression.
+1	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_1885|gloss=the
+2	γὰρ	γάρ	d	d--------	_	8	AuxY	_	t_1886|gloss=for
+3	νόμος	νόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	5	SBJ	_	t_1887|gloss=law
+4	ὀργὴν	ὀργή	n	n-s---fa-	Case=a|Gender=f|Number=s	5	OBJ	_	t_1888|gloss=wrath
+5	κατεργάζεται	κατεργάζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	8	PRED	_	t_1889|gloss=works-out
+6	,	,	u	u--------	_	0	AuxX	_	t_1890|gloss=,
+7	οὗ	ὅς	p	p-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_1891|gloss=where
+8	δὲ	δέ	c	c--------	_	6	COORD	_	t_1892|gloss=but
+9	οὐκ	οὐ	d	d--------	_	11	AuxZ	_	t_1893|gloss=not
+10	ἔστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	8	PRED	_	t_1894|gloss=is
+11	νόμος	νόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_1895|gloss=law
+12	,	,	u	u--------	_	6	AuxX	_	t_1896|gloss=,
+13	οὐ	οὐ	d	d--------	_	15	AuxZ	_	t_1897|gloss=not
+14	δὲ	δέ	c	c--------	_	10	COORD	_	t_1898|gloss=neither
+15	παράβασις	παράβασις	n	n-s---fn-	Case=n|Gender=f|Number=s	14	SBJ	_	t_1899|gloss=transgression
+16	.	.	u	u--------	_	6	AuxK	_	t_1900|gloss=.
+
+
+# sentence_id = 100
+# translation_lang = en
+# prose_translation = Therefore it is by faith, so that it may be according to grace, in order that the promise may be guaranteed to all the offspring—not only to the offspring who are of the law, but also to the offspring who are of the faith of Abraham (who is the father of us all, as it is written, 'I have made you a father of many nations'), before God, in whose presence he believed, the God who gives life to the dead and calls into being the things that do not exist as though they existed.
+# literal_translation = Because of this, [it is] from faith, in order that [it may be] according to grace, for the promise to be sure to all the seed, not to that from the law only, but also to that from the faith of Abraham (who is father of all of us, just as it has been written, that, 'A father of many nations I have made you'), before whom he believed—of God, the one giving life to the dead and calling the things not existing as existing.
+1	Διὰ	διά	r	r--------	_	65	AuxP	_	t_1901|gloss=because-of
+2	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	1	ADV	_	t_1902|gloss=this
+3	ἐκ	ἐκ	r	r--------	_	65	AuxP	_	t_1903|gloss=from
+4	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	3	ADV	_	t_1904|gloss=faith
+5	,	,	u	u--------	_	65	AuxX	_	t_1905|gloss=,
+6	ἵνα	ἵνα	c	c--------	_	65	AuxC	_	t_1906|gloss=so-that
+7	κατὰ	κατά	r	r--------	_	65	AuxP	_	t_1907|gloss=according-to
+8	χάριν	χάρις	n	n-s---fa-	Case=a|Gender=f|Number=s	7	ADV	_	t_1908|gloss=grace
+9	,	,	u	u--------	_	65	AuxX	_	t_1909|gloss=,
+10	εἰς	εἰς	r	r--------	_	65	AuxP	_	t_1910|gloss=for
+11	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	12	ATR	_	t_1911|gloss=the
+12	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	10	ADV	_	t_1912|gloss=to-be
+13	βεβαίαν	βέβαιος	a	a-s---fa-	Case=a|Gender=f|Number=s	12	PNOM	_	t_1913|gloss=sure
+14	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	15	ATR	_	t_1914|gloss=the
+15	ἐπαγγελίαν	ἐπαγγελία	n	n-s---fa-	Case=a|Gender=f|Number=s	12	SBJ	_	t_1915|gloss=promise
+16	παντὶ	πᾶς	a	a-s---nd-	Case=d|Gender=n|Number=s	18	ATR	_	t_1916|gloss=all
+17	τῷ	ὁ	l	l-s---nd-	Case=d|Gender=n|Number=s	18	ATR	_	t_1917|gloss=the
+18	σπέρματι	σπέρμα	n	n-s---nd-	Case=d|Gender=n|Number=s	13	ADV	_	t_1918|gloss=offspring
+19	,	,	u	u--------	_	65	AuxX	_	t_1919|gloss=,
+20	οὐ	οὐ	d	d--------	_	25	AuxZ	_	t_1920|gloss=not
+21	τῷ	ὁ	l	l-s---nd-	Case=d|Gender=n|Number=s	26	ATR	_	t_1921|gloss=to-the
+22	ἐκ	ἐκ	r	r--------	_	21	AuxP	_	t_1922|gloss=from
+23	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	24	ATR	_	t_1923|gloss=the
+24	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	22	ATR	_	t_1924|gloss=law
+25	μόνον	μόνος	d	d--------	_	24	ADV	_	t_1925|gloss=only
+26	ἀλλὰ	ἀλλά	c	c--------	_	18	COORD	_	t_1926|gloss=but
+27	καὶ	καί	d	d--------	_	28	AuxZ	_	t_1927|gloss=also
+28	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	26	ATR	_	t_1928|gloss=to-the
+29	ἐκ	ἐκ	r	r--------	_	28	AuxP	_	t_1929|gloss=from
+30	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	29	ATR	_	t_1930|gloss=faith
+31	Ἀβραάμ	ἀβραάμ	n	n-s---mg-	Case=g|Gender=m|Number=s	28	APOS	_	t_1931|gloss=Abraham
+32	,	,	u	u--------	_	65	AuxX	_	t_1932|gloss=,
+33	(	̔	u	u--------	_	65	AuxG	_	t_1933|gloss=(
+34	ὅς	ὅς	p	p-s---mn-	Case=n|Gender=m|Number=s	35	SBJ	_	t_1934|gloss=who
+35	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	28	ATR	_	t_1935|gloss=is
+36	πατὴρ	πατήρ	n	n-s---mn-	Case=n|Gender=m|Number=s	35	PNOM	_	t_1936|gloss=father
+37	πάντων	πᾶς	a	a-p---ng-	Case=g|Gender=m|Number=p	38	ATR	_	t_1937|gloss=of-all
+38	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	36	ATR	_	t_1938|gloss=of-us
+39	,	,	u	u--------	_	65	AuxX	_	t_1939|gloss=,
+40	καθὼς	καθώς	c	c--------	_	35	AuxC	_	t_1940|gloss=just-as
+41	γέγραπται	γράφω	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	40	ADV	_	t_1941|gloss=it-has-been-written
+42	ὅτι	ὅτι	c	c--------	_	41	AuxC	_	t_1942|gloss=that
+43	Πατέρα	πατήρ	n	n-s---fn-	Case=n|Gender=f|Number=s	46	SBJ	_	t_1943|gloss=father
+44	πολλῶν	πολύς	a	a-p---ng-	Case=g|Gender=n|Number=p	45	ATR	_	t_1944|gloss=of-many
+45	ἐθνῶν	ἔθνος	n	n-p---ng-	Case=g|Gender=n|Number=p	46	OBJ	_	t_1945|gloss=nations
+46	τέθεικά	καθίστημι	v	v1sria---	Case=n|Gender=n|Number=p	41	PNOM	_	t_1946|gloss=i-have-made
+47	σε	σύ	p	p2s---ca-	Case=a|Gender=c|Number=s|Person=2	46	OBJ	_	t_1947|gloss=you
+48	,	,	u	u--------	_	65	AuxX	_	t_1948|gloss=,
+49	)	)	u	u--------	_	65	AuxG	_	t_1949|gloss=)
+50	κατέναντι	κατέναντι	r	r--------	_	65	AuxP	_	t_1950|gloss=before
+51	οὗ	ὅς	p	p-s---mg-	Case=g|Gender=m|Number=s	52	ADV	_	t_1951|gloss=whom
+52	ἐπίστευσεν	πιστεύω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	50	ADV	_	t_1952|gloss=he-believed
+53	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	52	OBJ	_	t_1953|gloss=God
+54	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	53	ATR	_	t_1954|gloss=the
+55	ζωοποιοῦντος	ζωοποιέω	v	v-sppamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	58	ADV	_	t_1955|gloss=giving-life
+56	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	57	ATR	_	t_1956|gloss=the
+57	νεκροὺς	νεκρός	n	n-p---ma-	Case=a|Gender=m|Number=p	55	OBJ	_	t_1957|gloss=dead
+58	καὶ	καί	c	c--------	_	52	COORD	_	t_1958|gloss=and
+59	καλοῦντος	καλέω	v	v-sppamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	58	ADV	_	t_1959|gloss=calling
+60	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	62	ATR	_	t_1960|gloss=the-things
+61	μὴ	μή	d	d--------	_	62	AuxZ	_	t_1961|gloss=not
+62	ὄντα	εἰμί	v	v-pppana-	Case=a|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	59	OBJ	_	t_1962|gloss=existing
+63	ὡς	ὡς	c	c--------	_	59	AuxC	_	t_1963|gloss=as
+64	ὄντα	εἰμί	v	v-pppana-	Case=a|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	63	ADV	_	t_1964|gloss=existing
+65	[0]	[0]	-	---------	_	0	PRED	_	e_39
+66	·	·	u	u--------	_	65	AuxK	_	t_1965|gloss=·
+
+
+# sentence_id = 101
+# translation_lang = en
+# prose_translation = Who, against hope, believed in hope, so that he became the father of many nations, according to what had been said: "So shall your offspring be."
+# literal_translation = Who against hope, in hope, believed, for [him] to become [the] father of many nations, according to the thing having been said, "Thus shall be the seed of you";
+1	ὃς	ὅς	p	p-s---mn-	Case=n|Gender=m|Number=s	6	SBJ	_	t_1966|gloss=who
+2	παρʼ	παρά	r	r--------	_	6	AuxP	_	t_1967|gloss=against
+3	ἐλπίδα	ἐλπίς	n	n-s---fa-	Case=a|Gender=f|Number=s	2	ADV	_	t_1968|gloss=hope
+4	ἐπʼ	ἐπί	r	r--------	_	6	AuxP	_	t_1969|gloss=in
+5	ἐλπίδι	ἐλπίς	n	n-s---fd-	Case=d|Gender=f|Number=s	4	ADV	_	t_1970|gloss=hope
+6	ἐπίστευσεν	πιστεύω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	18	SBJ	_	t_1971|gloss=believed
+7	εἰς	εἰς	r	r--------	_	6	AuxP	_	t_1972|gloss=for
+8	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	9	ATR	_	t_1973|gloss=the
+9	γενέσθαι	γίγνομαι	v	v--anm---	Mood=n|Tense=a|Voice=m	7	ADV	_	t_1974|gloss=to-become
+10	αὐτὸν	αὐτός	p	p-s---ma-	Case=a|Gender=m|Number=s	9	SBJ	_	t_1975|gloss=he
+11	πατέρα	πατήρ	n	n-s---ma-	Case=a|Gender=m|Number=s	9	PNOM	_	t_1976|gloss=father
+12	πολλῶν	πολύς	a	a-p---ng-	Case=g|Gender=n|Number=p	13	ATR	_	t_1977|gloss=many
+13	ἐθνῶν	ἔθνος	n	n-p---ng-	Case=g|Gender=n|Number=p	11	ATR	_	t_1978|gloss=nations
+14	κατὰ	κατά	r	r--------	_	18	AuxP	_	t_1979|gloss=according-to
+15	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	16	ATR	_	t_1980|gloss=the
+16	εἰρημένον	ἐρῶ	v	v-srpena-	Case=a|Gender=n|Mood=p|Number=s|Tense=r|Voice=e	14	ADV	_	t_1981|gloss=having-been-said
+17	Οὕτως	οὕτως	d	d--------	_	18	ADV	_	t_1982|gloss=thus
+18	ἔσται	εἰμί	v	v3sfim---	Mood=i|Number=s|Person=3|Tense=f|Voice=m	0	PRED	_	t_1983|gloss=shall-be
+19	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	20	ATR	_	t_1984|gloss=the
+20	σπέρμα	σπέρμα	n	n-s---nn-	Case=n|Gender=n|Number=s	18	SBJ	_	t_1985|gloss=seed
+21	σου	σύ	p	p-s---mg-	Case=g|Gender=m|Number=s	20	ATR	_	t_1986|gloss=of-you
+22	·	·	u	u--------	_	18	AuxK	_	t_1987|gloss=;
+
+
+# sentence_id = 102
+# translation_lang = en
+# prose_translation = And without weakening in faith, he considered his own body, already dead (since he was about a hundred years old), and the deadness of Sarah's womb; yet he did not waver in unbelief at God's promise, but was strengthened in faith, giving glory to God, and being fully convinced that what He had promised, He was also able to do.
+# literal_translation = And not having weakened in the faith, he considered his own body, [already] having been deadened already, being about a hundred years old, and the deadening of the womb of Sarah; but with regard to the promise of God he did not waver in unbelief, but was strengthened in faith, having given glory to God, and having been fully convinced that what He has promised, He is able also to do.
+1	καὶ	καί	d	d--------	_	27	AuxY	_	t_1988|gloss=and
+2	μὴ	μή	d	d--------	_	3	AuxZ	_	t_1989|gloss=not
+3	ἀσθενήσας	ἀσθενέω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	6	ADV	_	t_1990|gloss=having-weakened
+4	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	5	ATR	_	t_1991|gloss=the
+5	πίστει	πίστις	n	n-s---fd-	Case=d|Gender=f|Number=s	3	OBJ	_	t_1992|gloss=faith
+6	κατενόησεν	κατανοέω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	27	PRED	_	t_1993|gloss=he-considered
+7	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	9	ATR	_	t_1994|gloss=the
+8	ἑαυτοῦ	ἑαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_1995|gloss=his-own
+9	σῶμα	σῶμα	n	n-s---na-	Case=a|Gender=n|Number=s	19	OBJ	_	t_1996|gloss=body
+10	[	[	u	u--------	_	9	AuxX	_	t_1997|gloss=[
+11	ἤδη	ἤδη	d	d--------	_	13	ADV	_	t_1998|gloss=already
+12	]	]	u	u--------	_	10	AuxX	_	t_1999|gloss=]
+13	νενεκρωμένον	θνήσκω	v	v-srpena-	Case=a|Gender=n|Mood=p|Number=s|Tense=r|Voice=e	6	OBJ	_	t_2000|gloss=having-been-deadened
+14	,	,	u	u--------	_	10	AuxX	_	t_2001|gloss=,
+15	ἑκατονταετής	ἑκατονταετής	a	a-s---mn-	Case=n|Gender=m|Number=s	17	PNOM	_	t_2002|gloss=a-hundred-years-old
+16	που	πού	d	d--------	_	17	AuxZ	_	t_2003|gloss=about
+17	ὑπάρχων	ὑπάρχω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	6	ADV	_	t_2004|gloss=being
+18	,	,	u	u--------	_	10	AuxX	_	t_2005|gloss=,
+19	καὶ	καί	c	c--------	_	13	COORD	_	t_2006|gloss=and
+20	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	21	ATR	_	t_2007|gloss=the
+21	νέκρωσιν	νέκρωσις	n	n-s---fa-	Case=a|Gender=f|Number=s	19	OBJ	_	t_2008|gloss=deadening
+22	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	23	ATR	_	t_2009|gloss=the
+23	μήτρας	μήτρα	n	n-s---fg-	Case=g|Gender=f|Number=s	21	ATR	_	t_2010|gloss=womb
+24	Σάρρας	σάρρα	n	n-s---fg-	Case=g|Gender=f|Number=s	23	ATR	_	t_2011|gloss=of-Sarah
+25	,	,	u	u--------	_	10	AuxX	_	t_2012|gloss=,
+26	εἰς	εἰς	r	r--------	_	33	AuxP	_	t_2013|gloss=with-regard-to
+27	δὲ	δέ	c	c--------	_	0	COORD	_	t_2014|gloss=but
+28	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	29	ATR	_	t_2015|gloss=the
+29	ἐπαγγελίαν	ἐπαγγελία	n	n-s---fa-	Case=a|Gender=f|Number=s	26	ADV	_	t_2016|gloss=promise
+30	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	31	ATR	_	t_2017|gloss=the
+31	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	29	ATR	_	t_2018|gloss=of-God
+32	οὐ	οὐ	d	d--------	_	33	AuxZ	_	t_2019|gloss=not
+33	διεκρίθη	διακρίνω	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	36	PRED	_	t_2020|gloss=he-wavered
+34	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	35	ATR	_	t_2021|gloss=the
+35	ἀπιστίᾳ	ἀπιστία	n	n-s---fd-	Case=d|Gender=f|Number=s	33	ADV	_	t_2022|gloss=in-unbelief
+36	ἀλλὰ	ἀλλά	c	c--------	_	27	COORD	_	t_2023|gloss=but
+37	ἐνεδυναμώθη	δυναμόω	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	36	PRED	_	t_2024|gloss=he-was-strengthened
+38	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	39	ATR	_	t_2025|gloss=the
+39	πίστει	πίστις	n	n-s---fd-	Case=d|Gender=f|Number=s	37	OBJ	_	t_2026|gloss=in-faith
+40	,	,	u	u--------	_	10	AuxX	_	t_2027|gloss=,
+41	δοὺς	δίδωμι	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	45	ADV	_	t_2028|gloss=having-given
+42	δόξαν	δόξα	n	n-s---fa-	Case=a|Gender=f|Number=s	41	OBJ	_	t_2029|gloss=glory
+43	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	44	ATR	_	t_2030|gloss=the
+44	θεῷ	θεός	n	n-s---md-	Case=d|Gender=m|Number=s	41	OBJ	_	t_2031|gloss=to-God
+45	καὶ	καί	c	c--------	_	36	COORD	_	t_2032|gloss=and
+46	πληροφορηθεὶς	πληροφορέω	v	v-sappmn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=p	45	ADV	_	t_2033|gloss=having-been-fully-convinced
+47	ὅτι	ὅτι	c	c--------	_	46	AuxC	_	t_2034|gloss=that
+48	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	49	OBJ	_	t_2035|gloss=what
+49	ἐπήγγελται	ἐπαγγέλλω	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	51	OBJ	_	t_2036|gloss=he-has-promised
+50	δυνατός	δυνατός	a	a-s---mn-	Case=n|Gender=m|Number=s	51	PNOM	_	t_2037|gloss=able
+51	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	47	OBJ	_	t_2038|gloss=he-is
+52	καὶ	καί	d	d--------	_	50	AuxZ	_	t_2039|gloss=also
+53	ποιῆσαι	ποιέω	v	v--ana---	Mood=n|Tense=a|Voice=a	50	ADV	_	t_2040|gloss=to-do
+54	.	.	u	u--------	_	10	AuxK	_	t_2041|gloss=.
+
+
+# sentence_id = 103
+# translation_lang = en
+# prose_translation = Therefore it was also credited to him as righteousness.
+# literal_translation = Therefore [also] it was credited to him unto righteousness.
+1	διὸ	διό	d	d--------	_	5	AuxY	_	t_2042|gloss=therefore
+2	[	[	u	u--------	_	5	AuxX	_	t_2043|gloss=[
+3	καὶ	καί	d	d--------	_	5	AuxY	_	t_2044|gloss=also
+4	]	]	u	u--------	_	5	AuxX	_	t_2045|gloss=]
+5	ἐλογίσθη	λογίζομαι	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	0	PRED	_	t_2046|gloss=it-was-credited
+6	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	5	OBJ	_	t_2047|gloss=to-him
+7	εἰς	εἰς	r	r--------	_	5	AuxP	_	t_2048|gloss=unto
+8	δικαιοσύνην	δικαιοσύνη	n	n-s---fa-	Case=a|Gender=f|Number=s	7	ADV	_	t_2049|gloss=righteousness
+9	.	.	u	u--------	_	5	AuxK	_	t_2050|gloss=.
+
+
+# sentence_id = 104
+# translation_lang = en
+# prose_translation = Now it was not written for his sake alone that it was credited to him, but also for our sake, to whom it is going to be credited, who believe on him who raised Jesus our Lord from the dead, who was handed over because of our transgressions and was raised because of our justification.
+# literal_translation = Not but it-was-written for-his-sake only, that it-was-credited to-him, but also for-our-sake, to-whom it-is-about to-be-credited, to-the ones-believing upon the one-having-raised Jesus the Lord of-us out-of dead-ones, who was-handed-over because-of the transgressions of-us and was-raised because-of the justification of-us.
+1	Οὐκ	οὐ	d	d--------	_	2	AuxZ	_	t_2051|gloss=not
+2	ἐγράφη	γράφω	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	0	PRED	_	t_2052|gloss=it-was-written
+3	δὲ	δέ	d	d--------	_	2	AuxY	_	t_2053|gloss=but
+4	διʼ	διά	r	r--------	_	11	AuxP	_	t_2054|gloss=for-sake-of
+5	αὐτὸν	αὐτός	p	p-s---ma-	Case=a|Gender=m|Number=s	4	ADV	_	t_2055|gloss=him
+6	μόνον	μόνος	a	a-s---na-	Case=a|Gender=n|Number=s	8	AuxZ	_	t_2056|gloss=only
+7	ὅτι	ὅτι	c	c--------	_	2	AuxC	_	t_2057|gloss=that
+8	ἐλογίσθη	λογίζομαι	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	7	ADV	_	t_2058|gloss=it-was-credited
+9	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	8	OBJ	_	t_2059|gloss=to-him
+10	,	,	u	u--------	_	2	AuxX	_	t_2060|gloss=,
+11	ἀλλὰ	ἀλλά	c	c--------	_	2	COORD	_	t_2061|gloss=but
+12	καὶ	καί	d	d--------	_	14	AuxZ	_	t_2062|gloss=also
+13	διʼ	διά	r	r--------	_	11	AuxP	_	t_2063|gloss=for-sake-of
+14	ἡμᾶς	ἐγώ	p	p-p---ma-	Case=a|Gender=m|Number=p	13	ADV	_	t_2064|gloss=us
+15	οἷς	ὅς	p	p-p---md-	Case=d|Gender=m|Number=p	17	OBJ	_	t_2065|gloss=to-whom
+16	μέλλει	μέλλω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	14	ATR	_	t_2066|gloss=it-is-about
+17	λογίζεσθαι	λογίζομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	16	OBJ	_	t_2067|gloss=to-be-credited
+18	,	,	u	u--------	_	2	AuxX	_	t_2068|gloss=,
+19	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	20	ATR	_	t_2069|gloss=to-the
+20	πιστεύουσιν	πιστεύω	v	v-pppamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	18	OBJ	_	t_2070|gloss=ones-believing
+21	ἐπὶ	ἐπί	r	r--------	_	20	AuxP	_	t_2071|gloss=upon
+22	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	24	ATR	_	t_2072|gloss=the
+23	ἐγείραντα	ἐγείρω	v	v-sapama-	Case=a|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	24	ATR	_	t_2073|gloss=one-having-raised
+24	Ἰησοῦν	ἰησοῦς	n	n-s---ma-	Case=a|Gender=m|Number=s	21	OBJ	_	t_2074|gloss=Jesus
+25	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	24	ATR	_	t_2075|gloss=the
+26	κύριον	κύριος	n	n-s---ma-	Case=a|Gender=m|Number=s	24	ATR	_	t_2076|gloss=Lord
+27	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	26	ATR	_	t_2077|gloss=of-us
+28	ἐκ	ἐκ	r	r--------	_	23	AuxP	_	t_2078|gloss=out-of
+29	νεκρῶν	νεκρός	n	n-p---mg-	Case=g|Gender=m|Number=p	28	ATR	_	t_2079|gloss=dead-ones
+30	,	,	u	u--------	_	2	AuxX	_	t_2080|gloss=,
+31	ὃς	ὅς	p	p-s---mn-	Case=n|Gender=m|Number=s	37	SBJ	_	t_2081|gloss=who
+32	παρεδόθη	παραδίδωμι	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	37	ATR	_	t_2082|gloss=was-handed-over
+33	διὰ	διά	r	r--------	_	32	AuxP	_	t_2083|gloss=because-of
+34	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	35	ATR	_	t_2084|gloss=the
+35	παραπτώματα	πταῖσμα	n	n-p---na-	Case=a|Gender=n|Number=p	33	ADV	_	t_2085|gloss=transgressions
+36	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	35	ATR	_	t_2086|gloss=of-us
+37	καὶ	καί	c	c--------	_	26	COORD	_	t_2087|gloss=and
+38	ἠγέρθη	ἐγείρω	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	37	ATR	_	t_2088|gloss=was-raised
+39	διὰ	διά	r	r--------	_	38	AuxP	_	t_2089|gloss=because-of
+40	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	41	ATR	_	t_2090|gloss=the
+41	δικαίωσιν	δικαίωσις	n	n-s---fa-	Case=a|Gender=f|Number=s	39	ADV	_	t_2091|gloss=justification
+42	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	41	ATR	_	t_2092|gloss=of-us
+43	.	.	u	u--------	_	2	AuxK	_	t_2093|gloss=.
+
+
+# sentence_id = 105
+# translation_lang = en
+# prose_translation = Therefore, having been justified by faith, let us have peace with God through our Lord Jesus Christ, through whom also we have obtained our access [by faith] into this grace in which we stand, and let us boast in hope of the glory of God.
+# literal_translation = Having been justified, therefore, from faith, let us have peace toward God through our Lord Jesus Christ, through whom also we have obtained the access [by faith] into this grace in which we have stood, and let us boast upon hope of the glory of God.
+1	Δικαιωθέντες	δικαιόω	v	v-pappmn-	Case=n|Gender=m|Mood=p|Number=p|Tense=a|Voice=p	6	ADV	_	t_2094|gloss=having-been-justified
+2	οὖν	οὖν	d	d--------	_	6	AuxY	_	t_2095|gloss=therefore
+3	ἐκ	ἐκ	r	r--------	_	1	AuxP	_	t_2096|gloss=from
+4	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	3	ADV	_	t_2097|gloss=faith
+5	εἰρήνην	εἰρήνη	n	n-s---fa-	Case=a|Gender=f|Number=s	6	OBJ	_	t_2098|gloss=peace
+6	ἔχωμεν	ἔχω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	35	PRED	_	t_2099|gloss=let-us-have
+7	πρὸς	πρός	r	r--------	_	6	AuxP	_	t_2100|gloss=toward
+8	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	9	ATR	_	t_2101|gloss=the
+9	θεὸν	θεός	n	n-s---ma-	Case=a|Gender=m|Number=s	7	ADV	_	t_2102|gloss=God
+10	διὰ	διά	r	r--------	_	6	AuxP	_	t_2103|gloss=through
+11	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_2104|gloss=the
+12	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_2105|gloss=Lord
+13	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	14	ATR	_	t_2106|gloss=our
+14	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ATR	_	t_2107|gloss=Jesus
+15	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	10	ADV	_	t_2108|gloss=Christ
+16	,	,	u	u--------	_	0	AuxX	_	t_2109|gloss=,
+17	διʼ	διά	r	r--------	_	22	AuxP	_	t_2110|gloss=through
+18	οὗ	ὅς	p	p-s---ng-	Case=g|Gender=m|Number=s	17	ADV	_	t_2111|gloss=whom
+19	καὶ	καί	d	d--------	_	21	AuxZ	_	t_2112|gloss=also
+20	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	21	ATR	_	t_2113|gloss=the
+21	προσαγωγὴν	προσαγωγή	n	n-s---fa-	Case=a|Gender=f|Number=s	22	OBJ	_	t_2114|gloss=access
+22	ἐσχήκαμεν	ἔχω	v	v1pria---	Mood=i|Number=p|Person=1|Tense=r|Voice=a	35	ATR	_	t_2115|gloss=we-have-obtained
+23	[	[	u	u--------	_	16	AuxX	_	t_2116|gloss=[
+24	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	25	ATR	_	t_2117|gloss=the
+25	πίστει	πίστις	n	n-s---fd-	Case=d|Gender=f|Number=s	22	ADV	_	t_2118|gloss=faith
+26	]	]	u	u--------	_	16	AuxX	_	t_2119|gloss=]
+27	εἰς	εἰς	r	r--------	_	22	AuxP	_	t_2120|gloss=into
+28	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	29	ATR	_	t_2121|gloss=the
+29	χάριν	χάρις	n	n-s---fa-	Case=a|Gender=f|Number=s	27	ADV	_	t_2122|gloss=grace
+30	ταύτην	οὗτος	a	a-s---fa-	Case=a|Gender=f|Number=s	29	ATR	_	t_2123|gloss=this
+31	ἐν	ἐν	r	r--------	_	33	AuxP	_	t_2124|gloss=in
+32	ᾗ	ὅς	p	p-s---fd-	Case=d|Gender=f|Number=s	31	ADV	_	t_2125|gloss=which
+33	ἑστήκαμεν	ἵστημι	v	v1pria---	Mood=i|Number=p|Person=1|Tense=r|Voice=a	29	ATR	_	t_2126|gloss=we-have-stood
+34	,	,	u	u--------	_	16	AuxX	_	t_2127|gloss=,
+35	καὶ	καί	c	c--------	_	16	COORD	_	t_2128|gloss=and
+36	καυχώμεθα	καυχάω	v	v1ppie---	Mood=i|Number=p|Person=1|Tense=p|Voice=e	35	PRED	_	t_2129|gloss=let-us-boast
+37	ἐπʼ	ἐπί	r	r--------	_	36	AuxP	_	t_2130|gloss=upon
+38	ἐλπίδι	ἐλπίς	n	n-s---fd-	Case=d|Gender=f|Number=s	37	ADV	_	t_2131|gloss=hope
+39	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	40	ATR	_	t_2132|gloss=the
+40	δόξης	δόξα	n	n-s---fg-	Case=g|Gender=f|Number=s	38	ATR	_	t_2133|gloss=glory
+41	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	42	ATR	_	t_2134|gloss=the
+42	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	40	ATR	_	t_2135|gloss=God
+43	·	·	u	u--------	_	16	AuxK	_	t_2136|gloss=·
+
+
+# sentence_id = 106
+# translation_lang = en
+# prose_translation = And not only that, but we also boast in our afflictions, knowing that affliction produces endurance, and endurance produces proven character, and proven character produces hope; and hope does not put us to shame.
+# literal_translation = Not only [so], but also we boast in the afflictions, knowing that the affliction produces endurance, and the endurance [produces] proven character, and the proven character [produces] hope; and the hope does not put [us] to shame.
+1	οὐ	οὐ	d	d--------	_	2	AuxZ	_	t_2137|gloss=not
+2	μόνον	μόνος	d	d--------	_	33	AuxZ	_	t_2138|gloss=only
+3	δέ	δέ	d	d--------	_	5	AuxY	_	t_2139|gloss=but
+4	,	,	u	u--------	_	0	AuxX	_	t_2140|gloss=,
+5	ἀλλὰ	ἀλλά	c	c--------	_	4	COORD	_	t_2141|gloss=also
+6	καὶ	καί	d	d--------	_	7	AuxZ	_	t_2142|gloss=also
+7	καυχώμεθα	καυχάω	v	v1ppse---	Mood=s|Number=p|Person=1|Tense=p|Voice=e	5	PRED	_	t_2143|gloss=we-boast
+8	ἐν	ἐν	r	r--------	_	7	AuxP	_	t_2144|gloss=in
+9	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	10	ATR	_	t_2145|gloss=the
+10	θλίψεσιν	θλίψις	n	n-p---fd-	Case=d|Gender=f|Number=p	8	ADV	_	t_2146|gloss=afflictions
+11	,	,	u	u--------	_	4	AuxX	_	t_2147|gloss=,
+12	εἰδότες	οἶδα	v	v-prpamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=r|Voice=a	7	ADV	_	t_2148|gloss=knowing
+13	ὅτι	ὅτι	c	c--------	_	12	AuxC	_	t_2149|gloss=that
+14	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	15	ATR	_	t_2150|gloss=the
+15	θλίψις	θλίψις	n	n-s---fn-	Case=n|Gender=f|Number=s	17	SBJ	_	t_2151|gloss=affliction
+16	ὑπομονὴν	ὑπομονή	n	n-s---fa-	Case=a|Gender=f|Number=s	17	OBJ	_	t_2152|gloss=endurance
+17	κατεργάζεται	κατεργάζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	30	OBJ	_	t_2153|gloss=produces
+18	,	,	u	u--------	_	4	AuxX	_	t_2154|gloss=,
+19	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	21	ATR	_	t_2155|gloss=the
+20	δὲ	δέ	d	d--------	_	30	AuxY	_	t_2156|gloss=and
+21	ὑπομονὴ	ὑπομονή	n	n-s---fn-	Case=n|Gender=f|Number=s	34	SBJ	_	t_2157|gloss=endurance
+22	δοκιμήν	δοκιμή	n	n-s---fa-	Case=a|Gender=f|Number=s	34	PNOM	_	t_2158|gloss=proven-character
+23	,	,	u	u--------	_	4	AuxX	_	t_2159|gloss=,
+24	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	26	ATR	_	t_2160|gloss=the
+25	δὲ	δέ	d	d--------	_	30	AuxY	_	t_2161|gloss=and
+26	δοκιμὴ	δοκιμή	n	n-s---fn-	Case=n|Gender=f|Number=s	35	SBJ	_	t_2162|gloss=proven-character
+27	ἐλπίδα	ἐλπίς	n	n-s---fa-	Case=a|Gender=f|Number=s	35	OBJ	_	t_2163|gloss=hope
+28	,	,	u	u--------	_	4	AuxX	_	t_2164|gloss=,
+29	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	31	ATR	_	t_2165|gloss=the
+30	δὲ	δέ	c	c--------	_	13	COORD	_	t_2166|gloss=and
+31	ἐλπὶς	ἐλπίς	n	n-s---fn-	Case=n|Gender=f|Number=s	33	SBJ	_	t_2167|gloss=hope
+32	οὐ	οὐ	d	d--------	_	33	AuxZ	_	t_2168|gloss=not
+33	καταισχύνει	καταισχύνω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	30	OBJ	_	t_2169|gloss=puts-to-shame
+34	[0]	[0]	-	---------	_	30	OBJ	_	e_40
+35	[1]	[1]	-	---------	_	30	OBJ	_	e_41
+36	.	.	u	u--------	_	4	AuxK	_	t_2170|gloss=.
+
+
+# sentence_id = 107
+# translation_lang = en
+# prose_translation = because the love of God has been poured out in our hearts through the Holy Spirit who was given to us;
+# literal_translation = because the love of God has been poured out in our hearts through [the] Spirit holy, the one having been given to us;
+1	ὅτι	ὅτι	c	c--------	_	17	AuxC	_	t_2171|gloss=because
+2	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	3	ATR	_	t_2172|gloss=the
+3	ἀγάπη	ἀγάπη	n	n-s---fn-	Case=n|Gender=f|Number=s	6	SBJ	_	t_2173|gloss=love
+4	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	5	ATR	_	t_2174|gloss=of-the
+5	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_2175|gloss=God
+6	ἐκκέχυται	ἐκχέω	v	v3srie---	Mood=i|Number=s|Person=3|Tense=r|Voice=e	1	ADV	_	t_2176|gloss=has-been-poured-out
+7	ἐν	ἐν	r	r--------	_	6	AuxP	_	t_2177|gloss=in
+8	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	9	ATR	_	t_2178|gloss=the
+9	καρδίαις	καρδία	n	n-p---fd-	Case=d|Gender=f|Number=p	7	ADV	_	t_2179|gloss=hearts
+10	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	9	ATR	_	t_2180|gloss=our
+11	διὰ	διά	r	r--------	_	6	AuxP	_	t_2181|gloss=through
+12	πνεύματος	πνεῦμα	n	n-s---ng-	Case=g|Gender=n|Number=s	11	ADV	_	t_2182|gloss=Spirit
+13	ἁγίου	ἅγιος	a	a-s---ng-	Case=g|Gender=n|Number=s	12	ATR	_	t_2183|gloss=holy
+14	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	12	ATR	_	t_2184|gloss=the
+15	δοθέντος	δίδωμι	v	v-sappng-	Case=g|Gender=n|Mood=p|Number=s|Tense=a|Voice=p	12	ATR	_	t_2185|gloss=having-been-given
+16	ἡμῖν	ἐγώ	p	p1p---md-	Case=d|Gender=c|Number=p|Person=1	15	OBJ	_	t_2186|gloss=to-us
+17	[0]	[0]	-	---------	_	0	PRED	_	e_42
+18	·	·	u	u--------	_	17	AuxK	_	t_2187|gloss=;
