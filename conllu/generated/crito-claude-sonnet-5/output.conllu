@@ -3531,3 +3531,611 @@
 23	ζῆν	ζάω	v	v--pna---	Mood=n|Tense=p|Voice=a	20	OBJ	_	t_2285|gloss=living
 24	[0]	[0]	-	---------	_	20	OBJ	_	e_73
 25	.	.	u	u--------	_	5	AuxK	_	t_2286|gloss=.
+
+
+# sentence_id = 197
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_2287|gloss=Crito
+2	.	.	u	u--------	_	1	AuxK	_	t_2288|gloss=.
+
+
+# sentence_id = 198
+# translation_lang = en
+# prose_translation = But it stands.
+# literal_translation = But it remains.
+1	ἀλλὰ	ἀλλά	d	d--------	_	2	AuxY	_	t_2289|gloss=but
+2	μένει	μένω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_2290|gloss=it-remains
+3	.	.	u	u--------	_	2	AuxK	_	t_2291|gloss=.
+
+
+# sentence_id = 199
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_2292|gloss=Socrates
+2	.	.	u	u--------	_	1	AuxK	_	t_2293|gloss=.
+
+
+# sentence_id = 200
+# translation_lang = en
+# prose_translation = But does the principle that it's the same thing that's always good and fine and just remain valid, or not?
+# literal_translation = But the [principle], that the same thing is both well and finely and justly, does it remain, or does it not remain?
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	14	SBJ	_	t_2294|gloss=the
+2	δὲ	δέ	d	d--------	_	14	AuxY	_	t_2295|gloss=but
+3	εὖ	εὖ	d	d--------	_	6	PNOM	_	t_2296|gloss=well
+4	καὶ	καί	d	d--------	_	6	AuxY	_	t_2297|gloss=and
+5	καλῶς	καλός	d	d--------	_	6	PNOM	_	t_2298|gloss=finely
+6	καὶ	καί	c	c--------	_	11	COORD	_	t_2299|gloss=and
+7	δικαίως	δίκαιος	d	d--------	_	6	PNOM	_	t_2300|gloss=justly
+8	ὅτι	ὅτι	c	c--------	_	14	AuxC	_	t_2301|gloss=that
+9	τ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	10	ATR	_	t_2302|gloss=the
+10	αὐτόν	αὐτός	p	p-s---nn-	Case=n|Gender=n|Number=s	11	SBJ	_	t_2303|gloss=same-thing
+11	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	8	SBJ	_	t_2304|gloss=is
+12	,	,	u	u--------	_	0	AuxX	_	t_2305|gloss=,
+13	μένει	μένω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	14	PRED	_	t_2306|gloss=remains
+14	ἢ	ἤ1	c	c--------	_	12	COORD	_	t_2307|gloss=or
+15	οὐ	οὐ	d	d--------	_	16	AuxZ	_	t_2308|gloss=not
+16	μένει	μένω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	14	PRED	_	t_2309|gloss=remains
+17	;	;	u	u--------	_	12	AuxK	_	t_2310|gloss=;
+
+
+# sentence_id = 201
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_2311|gloss=Crito
+2	.	.	u	u--------	_	1	AuxK	_	t_2312|gloss=.
+
+
+# sentence_id = 202
+# translation_lang = en
+# prose_translation = It stands.
+# literal_translation = It stands.
+1	μένει	μένω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_2313|gloss=it-stands
+2	.	.	u	u--------	_	1	AuxK	_	t_2314|gloss=.
+
+
+# sentence_id = 203
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_2315|gloss=Socrates
+2	.	.	u	u--------	_	1	AuxK	_	t_2316|gloss=.
+
+
+# sentence_id = 204
+# translation_lang = en
+# prose_translation = So then, this must be considered on the basis of what has been agreed: whether it is just for me to try to get out of here when the Athenians do not release me, or not just.
+# literal_translation = So then, out of the things agreed [upon], this must-be-considered: whether [it is] just for-me to-try to-go-out from-here, the-Athenians not releasing [me], or [it is] not just.
+1	οὐκοῦν	οὐκοῦν	d	d--------	_	6	AuxY	_	t_2317|gloss=so-then
+2	ἐκ	ἐκ	r	r--------	_	6	AuxP	_	t_2318|gloss=from
+3	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	4	ATR	_	t_2319|gloss=the
+4	ὁμολογουμένων	ὁμολογέω	v	v-pppeng-	Case=g|Gender=n|Mood=p|Number=p|Tense=p|Voice=e	2	ADV	_	t_2320|gloss=things-agreed
+5	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_2321|gloss=this
+6	σκεπτέον	σκεπτέος	a	a-s---ma-	Case=a|Gender=m|Number=s	0	PRED	_	t_2322|gloss=must-be-considered
+7	,	,	u	u--------	_	6	APOS	_	t_2323|gloss=,
+8	πότερον	πότερον	d	d--------	_	17	AuxY	_	t_2324|gloss=whether
+9	δίκαιον	δίκαιος	a	a-s---nn-	Case=n|Gender=n|Number=s	20	PNOM	_	t_2325|gloss=just
+10	ἐμὲ	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	12	SBJ	_	t_2326|gloss=me
+11	ἐνθένδε	ἐνθένδε	d	d--------	_	13	ADV	_	t_2327|gloss=from-here
+12	πειρᾶσθαι	πειράω	v	v--pne---	Mood=n|Tense=p|Voice=e	20	SBJ	_	t_2328|gloss=to-try
+13	ἐξιέναι	ἐξίημι	v	v--pna---	Mood=n|Tense=p|Voice=a	12	OBJ	_	t_2329|gloss=to-go-out
+14	μὴ	μή	d	d--------	_	15	AuxZ	_	t_2330|gloss=not
+15	ἀφιέντων	ἀφίημι	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	21	ADV	_	t_2331|gloss=releasing
+16	Ἀθηναίων	ἀθήναιος	n	n-p---mg-	Case=g|Gender=m|Number=p	15	SBJ	_	t_2332|gloss=the-Athenians
+17	ἢ	ἤ1	c	c--------	_	7	COORD	_	t_2333|gloss=or
+18	οὐ	οὐ	d	d--------	_	19	AuxZ	_	t_2334|gloss=not
+19	δίκαιον	δίκαιος	a	a-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_2335|gloss=just
+20	[0]	[0]	-	---------	_	7	OBJ	_	e_74
+21	[1]	[1]	-	---------	_	17	SBJ	_	e_75
+22	·	·	u	u--------	_	6	AuxK	_	t_2336|gloss=·
+
+
+# sentence_id = 205
+# translation_lang = en
+# prose_translation = And if it appears just, let's try it; but if not, let's let it go.
+# literal_translation = And if on the one hand it appears just, let us try [it]; but if [it appears] not [just], let us let [it] go.
+1	καὶ	καί	d	d--------	_	10	AuxY	_	t_2337|gloss=and
+2	ἐὰν	ἐάν	c	c--------	_	7	AuxC	_	t_2338|gloss=if
+3	μὲν	μέν	d	d--------	_	10	AuxY	_	t_2339|gloss=on-one-hand
+4	φαίνηται	φαίνω	v	v3spse---	Mood=s|Number=s|Person=3|Tense=p|Voice=e	2	ADV	_	t_2340|gloss=it-appears
+5	δίκαιον	δίκαιος	a	a-s---nn-	Case=n|Gender=n|Number=s	4	PNOM	_	t_2341|gloss=just
+6	,	,	u	u--------	_	0	AuxX	_	t_2342|gloss=,
+7	πειρώμεθα	πειράω	v	v1ppse---	Mood=s|Number=p|Person=1|Tense=p|Voice=e	10	PRED	_	t_2343|gloss=let-us-try-[it]
+8	,	,	u	u--------	_	6	AuxX	_	t_2344|gloss=,
+9	εἰ	εἰ	c	c--------	_	13	AuxC	_	t_2345|gloss=if
+10	δὲ	δέ	c	c--------	_	6	COORD	_	t_2346|gloss=but
+11	μή	μή	d	d--------	_	14	AuxZ	_	t_2347|gloss=not
+12	,	,	u	u--------	_	6	AuxX	_	t_2348|gloss=,
+13	ἐῶμεν	ἐάω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	10	PRED	_	t_2349|gloss=let-us-let-[it]-go
+14	[0]	[0]	-	---------	_	9	ADV	_	e_76
+15	.	.	u	u--------	_	6	AuxK	_	t_2350|gloss=.
+
+
+# sentence_id = 206
+# translation_lang = en
+# prose_translation = Socrates: But these considerations you mention, about spending money and reputation and raising children, these, Crito, are in truth, I fear, just the concerns of the sort of people who carelessly put men to death and would just as carelessly bring them back to life again, if they could, acting with no sense at all—the concerns, that is, of the majority.
+# literal_translation = Socrates: But the considerations which you mention, concerning both expenditure of money and reputation and rearing of children, [these], not as [being] truly these [things], O Crito, might be the considerations of those [men] easily killing and bringing back to life [again], if they were able, with no sense—[the considerations], that is, of these the many.
+1	ἃς	ὅς	a	a-p---fa-	Case=a|Gender=f|Number=p	6	ATR	_	t_2351|gloss=which
+2	δὲ	δέ	d	d--------	_	26	AuxY	_	t_2352|gloss=but
+3	σὺ	σύ	p	p-s---mn-	Case=n|Gender=m|Number=s	4	SBJ	_	t_2353|gloss=you
+4	λέγεις	λέγω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	25	ATR	_	t_2354|gloss=mention
+5	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	6	ATR	_	t_2355|gloss=the
+6	σκέψεις	σκέψις	n	n-p---fa-	Case=a|Gender=f|Number=p	4	OBJ	_	t_2356|gloss=considerations
+7	περί	περί	r	r--------	_	4	AuxP	_	t_2357|gloss=about
+8	τε	τε	d	d--------	_	13	AuxY	_	t_2358|gloss=both
+9	ἀναλώσεως	ἀνάλωσις	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ADV	_	t_2359|gloss=spending
+10	χρημάτων	χρῆμα	n	n-p---ng-	Case=g|Gender=n|Number=p	9	ATR	_	t_2360|gloss=of-money
+11	καὶ	καί	d	d--------	_	13	AuxY	_	t_2361|gloss=and
+12	δόξης	δόξα	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ADV	_	t_2362|gloss=reputation
+13	καὶ	καί	c	c--------	_	7	COORD	_	t_2363|gloss=and
+14	παίδων	παῖς	n	n-p---mg-	Case=g|Gender=m|Number=p	15	ATR	_	t_2364|gloss=of-children
+15	τροφῆς	τροφή	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ADV	_	t_2365|gloss=rearing
+16	,	,	u	u--------	_	26	AuxX	_	t_2366|gloss=,
+17	μὴ	μή	d	d--------	_	26	AuxZ	_	t_2367|gloss=not
+18	ὡς	ὡς	d	d--------	_	19	AuxZ	_	t_2368|gloss=as
+19	ἀληθῶς	ἀληθής	d	d--------	_	26	ADV	_	t_2369|gloss=truly
+20	ταῦτα	οὗτος	p	p-p---nn-	Case=n|Gender=n|Number=p	26	SBJ	_	t_2370|gloss=these
+21	,	,	u	u--------	_	26	AuxX	_	t_2371|gloss=,
+22	ὦ	ὦ	i	i--------	_	23	AuxZ	_	t_2372|gloss=o
+23	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	26	ExD	_	t_2373|gloss=Crito
+24	,	,	u	u--------	_	26	AuxX	_	t_2374|gloss=,
+25	σκέμματα	σκέμμα	n	n-p---nn-	Case=n|Gender=n|Number=p	26	PNOM	_	t_2375|gloss=considerations
+26	ᾖ	εἰμί	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_2376|gloss=might-be
+27	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	29	ATR	_	t_2377|gloss=of-the
+28	ῥᾳδίως	ῥᾴδιος	d	d--------	_	29	ADV	_	t_2378|gloss=easily
+29	ἀποκτεινύντων	ἀποκτείνω	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	30	ATR	_	t_2379|gloss=killing
+30	καὶ	καί	c	c--------	_	43	COORD	_	t_2380|gloss=and
+31	ἀναβιωσκομένων	ἀναβιώσκομαι	v	v-pppmmg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=m	30	ATR	_	t_2381|gloss=bringing-back-to-life
+32	γʼ	γε	d	d--------	_	31	AuxZ	_	t_2382|gloss=indeed
+33	ἄν	ἄν	d	d--------	_	26	AuxY	_	t_2383|gloss=would
+34	,	,	u	u--------	_	26	AuxX	_	t_2384|gloss=,
+35	εἰ	εἰ	c	c--------	_	31	AuxC	_	t_2385|gloss=if
+36	οἷοί	οἷος	a	a-p---mn-	Case=n|Gender=m|Number=p	38	PNOM	_	t_2386|gloss=able
+37	τʼ	τε	d	d--------	_	36	AuxZ	_	t_2387|gloss=[were]
+38	ἦσαν	εἰμί	v	v3piia---	Mood=i|Number=p|Person=3|Tense=i|Voice=a	35	ADV	_	t_2388|gloss=they-were
+39	,	,	u	u--------	_	26	AuxX	_	t_2389|gloss=,
+40	οὐδενὶ	οὐδείς	a	a-s---md-	Case=d|Gender=m|Number=s	42	AuxZ	_	t_2390|gloss=no
+41	ξὺν	σύν	r	r--------	_	38	AuxP	_	t_2391|gloss=with
+42	νῷ	νόος	n	n-s---md-	Case=d|Gender=m|Number=s	41	ADV	_	t_2392|gloss=sense
+43	,	,	u	u--------	_	25	APOS	_	t_2393|gloss=,
+44	τούτων	οὗτος	a	a-p---mg-	Case=g|Gender=m|Number=p	46	ATR	_	t_2394|gloss=of-these
+45	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	46	ATR	_	t_2395|gloss=the
+46	πολλῶν	πολύς	a	a-p---mg-	Case=g|Gender=m|Number=p	43	ATR	_	t_2396|gloss=many
+47	.	.	u	u--------	_	26	AuxK	_	t_2397|gloss=.
+
+
+# sentence_id = 207
+# translation_lang = en
+# prose_translation = But since the argument has turned out this way for us, nothing else needs to be considered except just what we were saying a moment ago: whether we would be acting justly in paying money and thanks to those who will get me out of here and in getting me out ourselves, or whether in truth we would be doing wrong by doing all this—we who are getting out and we who are getting them out.
+# literal_translation = But to-us, since the argument thus turns out, nothing else must-be-considered than just-what we-were-saying just-now: whether just-things we-will-do, both money paying to-these the-ones who-will-lead-out me from-here, and [giving] thanks, and ourselves both leading-out and being-led-out, or in truth we-will-do-wrong, all these-things doing [0].
+1	ἡμῖν	ἐγώ	p	p1p---md-	Case=d|Gender=m|Number=p|Person=1	13	OBJ	_	t_2398|gloss=to-us
+2	δʼ	δέ	d	d--------	_	13	AuxY	_	t_2399|gloss=but
+3	,	,	u	u--------	_	13	AuxX	_	t_2400|gloss=,
+4	ἐπειδὴ	ἐπεί	c	c--------	_	13	AuxC	_	t_2401|gloss=since
+5	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	6	ATR	_	t_2402|gloss=the
+6	λόγος	λόγος	n	n-s---mn-	Case=n|Gender=m|Number=s	8	SBJ	_	t_2403|gloss=argument
+7	οὕτως	οὕτως	d	d--------	_	8	ADV	_	t_2404|gloss=thus
+8	αἱρεῖ	αἱρέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	4	ADV	_	t_2405|gloss=turns-out
+9	,	,	u	u--------	_	13	AuxX	_	t_2406|gloss=,
+10	μὴ	μή	d	d--------	_	13	AuxZ	_	t_2407|gloss=not
+11	οὐδὲν	οὐδείς	p	p-s---na-	Case=a|Gender=n|Number=s	19	OBJ	_	t_2408|gloss=nothing
+12	ἄλλο	ἄλλος	a	a-s---na-	Case=a|Gender=n|Number=s	11	ATR	_	t_2409|gloss=else
+13	σκεπτέον	σκεπτέος	a	a-s---nn-	Case=n|Gender=n|Number=s	0	PRED	_	t_2410|gloss=must-be-considered
+14	ᾖ	εἰμί	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	13	AuxV	_	t_2411|gloss=[than]
+15	ἢ	ἤ1	c	c--------	_	12	AuxC	_	t_2412|gloss=than
+16	ὅπερ	ὅσπερ	p	p-s---na-	Case=a|Gender=n|Number=s	18	OBJ	_	t_2413|gloss=just-what
+17	νυνδὴ	νυνδί	d	d--------	_	18	ADV	_	t_2414|gloss=just-now
+18	ἐλέγομεν	λέγω3	v	v1piia---	Mood=i|Number=p|Person=1|Tense=i|Voice=a	19	OBJ	_	t_2415|gloss=we-were-saying
+19	,	,	u	u--------	_	13	APOS	_	t_2416|gloss=:
+20	πότερον	πότερον	a	a-s---na-	_	41	AuxY	_	t_2417|gloss=whether
+21	δίκαια	δίκαιος	a	a-p---na-	Case=a|Gender=n|Number=p	22	OBJ	_	t_2418|gloss=just-things
+22	πράξομεν	πράσσω	v	v1pfia---	Mood=i|Number=p|Person=1|Tense=f|Voice=a	41	OBJ	_	t_2419|gloss=we-will-do
+23	καὶ	καί	d	d--------	_	31	AuxY	_	t_2420|gloss=both
+24	χρήματα	χρῆμα	n	n-p---na-	Case=a|Gender=n|Number=p	31	OBJ	_	t_2421|gloss=money
+25	τελοῦντες	τελέω	v	v-pfpamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=f|Voice=a	22	ADV	_	t_2422|gloss=paying
+26	τούτοις	οὗτος	p	p-p---md-	Case=d|Gender=m|Number=p	25	OBJ	_	t_2423|gloss=to-these
+27	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	26	ATR	_	t_2424|gloss=the
+28	ἐμὲ	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	30	OBJ	_	t_2425|gloss=me
+29	ἐνθένδε	ἐνθένδε	d	d--------	_	30	ADV	_	t_2426|gloss=from-here
+30	ἐξάξουσιν	ἐξάγω	v	v-pfpamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=f|Voice=a	26	ATR	_	t_2427|gloss=who-will-lead-out
+31	καὶ	καί	c	c--------	_	25	COORD	_	t_2428|gloss=and
+32	χάριτας	χάρις	n	n-p---fa-	Case=a|Gender=f|Number=p	31	OBJ	_	t_2429|gloss=thanks
+33	,	,	u	u--------	_	13	AuxX	_	t_2430|gloss=,
+34	καὶ	καί	d	d--------	_	38	AuxY	_	t_2431|gloss=and
+35	αὐτοὶ	αὐτός	a	a-p---mn-	Case=n|Gender=m|Number=p	38	AtvV	_	t_2432|gloss=ourselves
+36	ἐξάγοντές	ἐξάγω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	38	ADV	_	t_2433|gloss=leading-out
+37	τε	τε	d	d--------	_	38	AuxY	_	t_2434|gloss=both
+38	καὶ	καί	c	c--------	_	22	COORD	_	t_2435|gloss=and
+39	ἐξαγόμενοι	ἐξάγω	v	v-pppemn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	38	ADV	_	t_2436|gloss=being-led-out
+40	,	,	u	u--------	_	13	AuxX	_	t_2437|gloss=,
+41	ἢ	ἤ1	c	c--------	_	19	COORD	_	t_2438|gloss=or
+42	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	43	ATR	_	t_2439|gloss=the
+43	ἀληθείᾳ	ἀλήθεια	n	n-s---fd-	Case=d|Gender=f|Number=s	44	ADV	_	t_2440|gloss=truth
+44	ἀδικήσομεν	ἀδικέω	v	v1pfia---	Mood=i|Number=p|Person=1|Tense=f|Voice=a	41	OBJ	_	t_2441|gloss=we-will-do-wrong
+45	πάντα	πᾶς	a	a-p---na-	Case=a|Gender=n|Number=p	46	ATR	_	t_2442|gloss=all
+46	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	47	OBJ	_	t_2443|gloss=these-things
+47	ποιοῦντες	ποιέω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	44	ADV	_	t_2444|gloss=doing
+48	[0]	[0]	-	---------	_	15	ADV	_	e_77
+49	·	·	u	u--------	_	13	AuxK	_	t_2445|gloss=·
+
+
+# sentence_id = 208
+# translation_lang = en
+# prose_translation = And if we would clearly be acting unjustly in this, then you needn't take into account whether we must die from staying put and keeping quiet, or suffer anything else whatsoever, in preference to doing wrong.
+# literal_translation = And if indeed we should appear doing these unjust things themselves, [it is] not necessary for you to reckon in whether it is necessary to die remaining and keeping quiet, nor to suffer anything else whatsoever, before the doing wrong.
+1	κ	καί	d	d--------	_	10	AuxY	_	t_2446|gloss=and
+2	ἂν	ἄν	c	c--------	_	10	AuxC	_	t_2447|gloss=if
+3	φαινώμεθα	φαίνω	v	v1ppse---	Mood=s|Number=p|Person=1|Tense=p|Voice=e	2	ADV	_	t_2448|gloss=we-should-appear
+4	ἄδικα	ἄδικος	a	a-p---na-	Case=a|Gender=n|Number=p	6	OBJ	_	t_2449|gloss=unjust-things
+5	αὐτὰ	αὐτός	a	a-p---na-	Case=a|Gender=n|Number=p	4	ATR	_	t_2450|gloss=these
+6	ἐργαζόμενοι	ἐργάζομαι	v	v-pppemn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	3	PNOM	_	t_2451|gloss=doing
+7	,	,	u	u--------	_	10	AuxX	_	t_2452|gloss=,
+8	μὴ	μή	d	d--------	_	10	AuxZ	_	t_2453|gloss=not
+9	οὐ	οὐ	d	d--------	_	10	AuxZ	_	t_2454|gloss=not
+10	δέῃ	δέω	v	v2spse---	Mood=s|Number=s|Person=2|Tense=p|Voice=e	0	PRED	_	t_2455|gloss=it-is-necessary
+11	ὑπολογίζεσθαι	ὑπολογίζομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	23	SBJ	_	t_2456|gloss=to-reckon-in
+12	οὔ	οὐ	d	d--------	_	11	AuxZ	_	t_2457|gloss=not
+13	τʼ	τε	d	d--------	_	23	AuxY	_	t_2458|gloss=and
+14	εἰ	εἰ	c	c--------	_	11	AuxC	_	t_2459|gloss=whether
+15	ἀποθνῄσκειν	ἀποθνήσκω	v	v--pna---	Mood=n|Tense=p|Voice=a	16	SBJ	_	t_2460|gloss=to-die
+16	δεῖ	δεῖ	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	14	OBJ	_	t_2461|gloss=it-is-necessary
+17	παραμένοντας	παραμένω	v	v-pppama-	Case=a|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	18	ADV	_	t_2462|gloss=remaining
+18	καὶ	καί	c	c--------	_	15	COORD	_	t_2463|gloss=and
+19	ἡσυχίαν	ἡσυχία	n	n-s---fa-	Case=a|Gender=f|Number=s	20	OBJ	_	t_2464|gloss=quiet
+20	ἄγοντας	ἄγω	v	v-pppama-	Case=a|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	18	ADV	_	t_2465|gloss=keeping
+21	,	,	u	u--------	_	10	AuxX	_	t_2466|gloss=,
+22	οὔ	οὐ	d	d--------	_	26	AuxZ	_	t_2467|gloss=not
+23	τε	τε	c	c--------	_	10	COORD	_	t_2468|gloss=or
+24	ἄλλο	ἄλλος	a	a-s---na-	Case=a|Gender=n|Number=s	25	ATR	_	t_2469|gloss=other
+25	ὁτιοῦν	ὁτιοῦν	p	p-s---na-	Case=a|Gender=n|Number=s	26	OBJ	_	t_2470|gloss=anything-whatsoever
+26	πάσχειν	πάσχω	v	v--pna---	Mood=n|Tense=p|Voice=a	23	SBJ	_	t_2471|gloss=to-suffer
+27	πρὸ	πρό	r	r--------	_	26	AuxP	_	t_2472|gloss=before
+28	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	29	ATR	_	t_2473|gloss=the
+29	ἀδικεῖν	ἀδικέω	v	v--pna---	Mood=n|Tense=p|Voice=a	27	ADV	_	t_2474|gloss=doing-wrong
+30	.	.	u	u--------	_	10	AuxK	_	t_2475|gloss=.
+
+
+# sentence_id = 209
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_2476|gloss=Crito
+2	.	.	u	u--------	_	1	AuxK	_	t_2477|gloss=.
+
+
+# sentence_id = 210
+# translation_lang = en
+# prose_translation = Crito: I think you're right about that, Socrates, but do consider what we should do.
+# literal_translation = Crito: Well, you seem to me to speak well, O Socrates, but consider what we should do.
+1	καλῶς	καλός	d	d--------	_	5	ADV	_	t_2478|gloss=well
+2	μέν	μέν	d	d--------	_	11	AuxY	_	t_2479|gloss=indeed
+3	μοι	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	4	OBJ	_	t_2480|gloss=to-me
+4	δοκεῖς	δοκέω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	11	PRED	_	t_2481|gloss=you-seem
+5	λέγειν	λέγω3	v	v--pna---	Mood=n|Tense=p|Voice=a	4	OBJ	_	t_2482|gloss=to-speak
+6	,	,	u	u--------	_	0	AuxX	_	t_2483|gloss=,
+7	ὦ	ὦ	i	i--------	_	8	AuxZ	_	t_2484|gloss=O
+8	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	11	ExD	_	t_2485|gloss=Socrates
+9	,	,	u	u--------	_	6	AuxX	_	t_2486|gloss=,
+10	ὅρα	ὁράω	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	11	PRED	_	t_2487|gloss=consider
+11	δὲ	δέ	c	c--------	_	6	COORD	_	t_2488|gloss=but
+12	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	13	OBJ	_	t_2489|gloss=what
+13	δρῶμεν	δράω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	10	OBJ	_	t_2490|gloss=we-should-do
+14	.	.	u	u--------	_	6	AuxK	_	t_2491|gloss=.
+
+
+# sentence_id = 211
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_2492|gloss=Socrates
+2	.	.	u	u--------	_	1	AuxK	_	t_2493|gloss=.
+
+
+# sentence_id = 212
+# translation_lang = en
+# prose_translation = Socrates: Let's examine it together, my good man, and if you have any way to argue against what I say, speak up, and I'll listen to you; but if you don't, then stop, you blessed fellow, saying the same thing to me over and over, that I should leave here against the Athenians' wishes.
+# literal_translation = Socrates: Let-us-examine, O good-one, in-common, and if in-some-way you-have to-speak-against, while-I am-speaking, speak-against, and I-will-be-persuaded by-you.
+1	σκοπῶμεν	σκοπέω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	8	PRED	_	t_2494|gloss=let-us-examine
+2	,	,	u	u--------	_	0	AuxX	_	t_2495|gloss=,
+3	ὦ	ὦ	i	i--------	_	4	AuxZ	_	t_2496|gloss=o
+4	ἀγαθέ	ἀγαθός	a	a-s---mv-	Case=v|Gender=m|Number=s	8	ExD	_	t_2497|gloss=good-one
+5	,	,	u	u--------	_	2	AuxX	_	t_2498|gloss=,
+6	κοινῇ	κοινῇ	d	d--------	_	1	ADV	_	t_2499|gloss=in-common
+7	,	,	u	u--------	_	2	AuxX	_	t_2500|gloss=,
+8	καὶ	καί	c	c--------	_	2	COORD	_	t_2501|gloss=and
+9	εἴ	εἰ	c	c--------	_	17	AuxC	_	t_2502|gloss=if
+10	πῃ	πη	d	d--------	_	11	ADV	_	t_2503|gloss=in-some-way
+11	ἔχεις	ἔχω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	9	ADV	_	t_2504|gloss=you-have
+12	ἀντιλέγειν	ἀντιλέγω	v	v--pna---	Mood=n|Tense=p|Voice=a	11	OBJ	_	t_2505|gloss=to-speak-against
+13	ἐμοῦ	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	14	SBJ	_	t_2506|gloss=I
+14	λέγοντος	λέγω3	v	v-sppamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	12	ADV	_	t_2507|gloss=while-speaking
+15	,	,	u	u--------	_	2	AuxX	_	t_2508|gloss=,
+16	ἀντίλεγε	ἀντιλέγω	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	17	PRED	_	t_2509|gloss=speak-against
+17	καί	καί	c	c--------	_	8	COORD	_	t_2510|gloss=and
+18	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	19	OBJ	_	t_2511|gloss=you
+19	πείσομαι	πείθω	v	v1sfim---	Mood=i|Number=s|Person=1|Tense=f|Voice=m	17	PRED	_	t_2512|gloss=I-will-be-persuaded
+20	·	·	u	u--------	_	2	AuxK	_	t_2513|gloss=·
+
+
+# sentence_id = 213
+# translation_lang = en
+# prose_translation = But if not, stop already, blessed one, telling me the same thing over and over, that I must go away from here against the will of the Athenians.
+# literal_translation = But if not [do so], stop already, O blessed one, [you who are] often telling me the same word, that it is necessary [for] me, [with] the Athenians unwilling, to go away from here.
+1	εἰ	εἰ	c	c--------	_	5	AuxC	_	t_2514|gloss=if
+2	δὲ	δέ	d	d--------	_	5	AuxY	_	t_2515|gloss=but
+3	μή	μή	d	d--------	_	25	AuxZ	_	t_2516|gloss=not
+4	,	,	u	u--------	_	5	AuxX	_	t_2517|gloss=,
+5	παῦσαι	παύω	v	v2samm---	Mood=m|Number=s|Person=2|Tense=a|Voice=m	0	PRED	_	t_2518|gloss=stop
+6	ἤδη	ἤδη	d	d--------	_	5	ADV	_	t_2519|gloss=already
+7	,	,	u	u--------	_	5	AuxX	_	t_2520|gloss=,
+8	ὦ	ὦ	i	i--------	_	9	AuxZ	_	t_2521|gloss=o
+9	μακάριε	μακάριος	a	a-s---mv-	Case=v|Gender=m|Number=s	5	ExD	_	t_2522|gloss=blessed-one
+10	,	,	u	u--------	_	5	AuxX	_	t_2523|gloss=,
+11	πολλάκις	πολλάκις	d	d--------	_	13	ADV	_	t_2524|gloss=often
+12	μοι	ἐγώ	p	p-s---md-	Case=d|Gender=m|Number=s	13	OBJ	_	t_2525|gloss=to-me
+13	λέγων	λέγω3	v	v-sppamv-	Case=v|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	5	ADV	_	t_2526|gloss=telling
+14	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	16	ATR	_	t_2527|gloss=the
+15	αὐτὸν	αὐτός	a	a-s---ma-	Case=a|Gender=m|Number=s	16	ATR	_	t_2528|gloss=same
+16	λόγον	λόγος	n	n-s---ma-	Case=a|Gender=m|Number=s	17	OBJ	_	t_2529|gloss=word
+17	,	,	u	u--------	_	13	APOS	_	t_2530|gloss=,
+18	ὡς	ὡς	d	d--------	_	19	ADV	_	t_2531|gloss=that
+19	χρὴ	χρή	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	17	OBJ	_	t_2532|gloss=it-is-necessary
+20	ἐνθένδε	ἐνθένδε	d	d--------	_	24	ADV	_	t_2533|gloss=from-here
+21	ἀκόντων	ἀέκων	a	a-p---mg-	Case=g|Gender=m|Number=p	19	ADV	_	t_2534|gloss=unwilling
+22	Ἀθηναίων	ἀθήναιος	n	n-p---mg-	Case=g|Gender=m|Number=p	21	SBJ	_	t_2535|gloss=Athenians
+23	ἐμὲ	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	24	SBJ	_	t_2536|gloss=me
+24	ἀπιέναι	ἀπέρχομαι	v	v--pna---	Mood=n|Tense=p|Voice=a	19	SBJ	_	t_2537|gloss=to-go-away
+25	[0]	[0]	-	---------	_	1	ADV	_	e_78
+26	·	·	u	u--------	_	5	AuxK	_	t_2538|gloss=·
+
+
+# sentence_id = 214
+# translation_lang = en
+# prose_translation = I set great store on persuading you to do this, not on doing it while you are unwilling.
+# literal_translation = as I about much make [it], having persuaded you to do these things, but not [make it] of [you] unwilling.
+1	ὡς	ὡς	d	d--------	_	11	AuxY	_	t_2539|gloss=as
+2	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	11	SBJ	_	t_2540|gloss=I
+3	περὶ	περί	r	r--------	_	5	AuxP	_	t_2541|gloss=about
+4	πολλοῦ	πολύς	a	a-s---mg-	Case=g|Gender=m|Number=s	3	ADV	_	t_2542|gloss=much
+5	ποιοῦμαι	ποιέω	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	11	PRED	_	t_2543|gloss=make-[it]
+6	πείσας	πείθω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	5	ADV	_	t_2544|gloss=having-persuaded
+7	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	6	OBJ	_	t_2545|gloss=you
+8	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	9	OBJ	_	t_2546|gloss=these-things
+9	πράττειν	πράσσω	v	v--pna---	Mood=n|Tense=p|Voice=a	6	OBJ	_	t_2547|gloss=to-do
+10	,	,	u	u--------	_	0	AuxX	_	t_2548|gloss=,
+11	ἀλλὰ	ἀλλά	c	c--------	_	10	COORD	_	t_2549|gloss=but
+12	μὴ	μή	d	d--------	_	13	AuxZ	_	t_2550|gloss=not
+13	ἄκοντος	ἀέκων	a	a-s---mg-	Case=g|Gender=m|Number=s	14	PNOM	_	t_2551|gloss=unwilling
+14	[0]	[0]	-	---------	_	11	PRED	_	e_79
+15	.	.	u	u--------	_	10	AuxK	_	t_2552|gloss=.
+
+
+# sentence_id = 215
+# translation_lang = en
+# prose_translation = Socrates: Now look back at the starting point of our inquiry, and try to answer what is asked in whatever way you think best.
+# literal_translation = Socrates: Look, now, indeed, at the beginning of the inquiry, if it be adequately stated to you, and try to answer the thing being asked, in whatever way you think best.
+1	ὅρα	ὁράω	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	13	PRED	_	t_2553|gloss=look
+2	δὲ	δέ	d	d--------	_	13	AuxY	_	t_2554|gloss=now
+3	δὴ	δή	d	d--------	_	1	AuxZ	_	t_2555|gloss=indeed
+4	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_2556|gloss=the
+5	σκέψεως	σκέψις	n	n-s---fg-	Case=g|Gender=f|Number=s	7	ATR	_	t_2557|gloss=inquiry
+6	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	7	ATR	_	t_2558|gloss=the
+7	ἀρχὴν	ἀρχή	n	n-s---fa-	Case=a|Gender=f|Number=s	1	OBJ	_	t_2559|gloss=starting-point
+8	ἐάν	ἐάν	c	c--------	_	1	AuxC	_	t_2560|gloss=if
+9	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	11	OBJ	_	t_2561|gloss=to-you
+10	ἱκανῶς	ἱκανός	d	d--------	_	11	ADV	_	t_2562|gloss=adequately
+11	λέγηται	λέγω3	v	v3spse---	Mood=s|Number=s|Person=3|Tense=p|Voice=e	8	ADV	_	t_2563|gloss=it-be-stated
+12	,	,	u	u--------	_	0	AuxX	_	t_2564|gloss=,
+13	καὶ	καί	c	c--------	_	12	COORD	_	t_2565|gloss=and
+14	πειρῶ	πειράω	v	v2spme---	Mood=m|Number=s|Person=2|Tense=p|Voice=e	13	PRED	_	t_2566|gloss=try
+15	ἀποκρίνεσθαι	ἀποκρίνω	v	v--pne---	Mood=n|Tense=p|Voice=e	14	OBJ	_	t_2567|gloss=to-answer
+16	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	17	ATR	_	t_2568|gloss=the
+17	ἐρωτώμενον	ἐρωτάω	v	v-sppena-	Case=a|Gender=n|Mood=p|Number=s|Tense=p|Voice=e	15	OBJ	_	t_2569|gloss=thing-being-asked
+18	ᾗ	ὅς	d	d--------	_	21	ADV	_	t_2570|gloss=in-whatever-way
+19	ἂν	ἄν	d	d--------	_	21	AuxY	_	t_2571|gloss=-ever
+20	μάλιστα	μάλιστα	d	d--------	_	21	ADV	_	t_2572|gloss=best
+21	οἴῃ	οἶος	v	v2spse---	Mood=s|Number=s|Person=2|Tense=p|Voice=e	15	ADV	_	t_2573|gloss=you-think
+22	.	.	u	u--------	_	12	AuxK	_	t_2574|gloss=.
+
+
+# sentence_id = 216
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_2575|gloss=Crito
+2	.	.	u	u--------	_	1	AuxK	_	t_2576|gloss=.
+
+
+# sentence_id = 217
+# translation_lang = en
+# prose_translation = Socrates: Well, I'll try.
+# literal_translation = Socrates: But I will try.
+1	ἀλλὰ	ἀλλά	d	d--------	_	2	AuxY	_	t_2577|gloss=but
+2	πειράσομαι	πειράω	v	v1sfim---	Mood=i|Number=s|Person=1|Tense=f|Voice=m	0	PRED	_	t_2578|gloss=I-will-try
+3	.	.	u	u--------	_	2	AuxK	_	t_2579|gloss=.
+
+
+# sentence_id = 218
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_2580|gloss=Socrates
+2	.	.	u	u--------	_	1	AuxK	_	t_2581|gloss=.
+
+
+# sentence_id = 219
+# translation_lang = en
+# prose_translation = Do we say that in no way must one willingly do wrong, or that it must be done in one way but not in another?
+# literal_translation = In no way do we say [it] must be done-wrong willingly, or for someone, on the one hand, must-be-done-wrong in some way, but [for someone], on the other hand, not [must-be-done-wrong]?
+1	οὐδενὶ	οὐδείς	a	a-s---md-	Case=d|Gender=m|Number=s	2	ATR	_	t_2582|gloss=in-no
+2	τρόπῳ	τρόπος	n	n-s---md-	Case=d|Gender=m|Number=s	5	ADV	_	t_2583|gloss=way
+3	φαμὲν	φημί	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_2584|gloss=do-we-say
+4	ἑκόντας	ἑκών	a	a-p---ma-	Case=a|Gender=m|Number=p	5	AtvV	_	t_2585|gloss=willingly
+5	ἀδικητέον	ἀδικητέον	a	a-s---na-	Case=a|Gender=n|Number=s	8	OBJ	_	t_2586|gloss=must-be-done-wrong
+6	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	5	AuxV	_	t_2587|gloss=to-be
+7	,	,	u	u--------	_	3	AuxX	_	t_2588|gloss=,
+8	ἢ	ἤ1	c	c--------	_	3	COORD	_	t_2589|gloss=or
+9	τινὶ	τις	p	p-s---md-	Case=d|Gender=m|Number=s	11	OBJ	_	t_2590|gloss=for-someone
+10	μὲν	μέν	d	d--------	_	14	AuxY	_	t_2591|gloss=on-the-one-hand
+11	ἀδικητέον	ἀδικητέον	a	a-s---na-	Case=a|Gender=n|Number=s	14	PNOM	_	t_2592|gloss=must-be-done-wrong
+12	τρόπῳ	τρόπος	n	n-s---md-	Case=d|Gender=m|Number=s	11	ADV	_	t_2593|gloss=in-some-way
+13	τινὶ	τις	p	p-s---md-	Case=d|Gender=m|Number=s	11	ADV	_	t_2594|gloss=in-some
+14	δὲ	δέ	d	d--------	_	16	COORD	_	t_2595|gloss=but
+15	οὔ	οὐ	d	d--------	_	16	AuxZ	_	t_2596|gloss=not
+16	[0]	[0]	-	---------	_	8	OBJ	_	e_80
+17	;	;	u	u--------	_	3	AuxK	_	t_2597|gloss=?
+
+
+# sentence_id = 220
+# translation_lang = en
+# prose_translation = Or is doing wrong not at all good nor noble, as we have often agreed with each other in the past?
+# literal_translation = Or [is it] in no way the doing-wrong [that is] good nor noble, as often [it] was agreed by us also in the former time?
+1	ἢ	ἤ1	d	d--------	_	22	AuxY	_	t_2598|gloss=or
+2	οὐδαμῶς	οὐδαμῶς	d	d--------	_	22	ADV	_	t_2599|gloss=in-no-way
+3	τό	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	5	ATR	_	t_2600|gloss=the
+4	γε	γε	d	d--------	_	5	AuxZ	_	t_2601|gloss=indeed
+5	ἀδικεῖν	ἀδικέω	v	v--pna---	Mood=n|Tense=p|Voice=a	22	SBJ	_	t_2602|gloss=doing-wrong
+6	οὔ	οὐ	d	d--------	_	8	AuxZ	_	t_2603|gloss=not
+7	τε	τε	d	d--------	_	10	AuxY	_	t_2604|gloss=both
+8	ἀγαθὸν	ἀγαθός	a	a-s---nn-	Case=n|Gender=n|Number=s	10	PNOM	_	t_2605|gloss=good
+9	οὔ	οὐ	d	d--------	_	11	AuxZ	_	t_2606|gloss=nor
+10	τε	τε	c	c--------	_	22	COORD	_	t_2607|gloss=and
+11	καλόν	καλός	a	a-s---nn-	Case=n|Gender=n|Number=s	10	PNOM	_	t_2608|gloss=noble
+12	,	,	u	u--------	_	22	AuxX	_	t_2609|gloss=,
+13	ὡς	ὡς	c	c--------	_	22	AuxC	_	t_2610|gloss=as
+14	πολλάκις	πολλάκις	d	d--------	_	16	ADV	_	t_2611|gloss=often
+15	ἡμῖν	ἐγώ	p	p1p---md-	Case=d|Gender=m|Number=p|Person=1	21	OBJ	_	t_2612|gloss=by-us
+16	καὶ	καί	c	c--------	_	21	COORD	_	t_2613|gloss=also
+17	ἐν	ἐν	r	r--------	_	16	AuxP	_	t_2614|gloss=in
+18	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	20	ATR	_	t_2615|gloss=the
+19	ἔμπροσθεν	ἔμπροσθεν	d	d--------	_	20	ATR	_	t_2616|gloss=former
+20	χρόνῳ	χρόνος	n	n-s---md-	Case=d|Gender=m|Number=s	17	ADV	_	t_2617|gloss=time
+21	ὡμολογήθη	ὁμολογέω	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	13	ADV	_	t_2618|gloss=was-agreed
+22	[0]	[0]	-	---------	_	0	PRED	_	e_81
+23	;	;	u	u--------	_	22	AuxK	_	t_2619|gloss=?
+
+
+# sentence_id = 221
+# translation_lang = en
+# prose_translation = Or are all those earlier agreements of ours now poured out, Crito, and have we long since—without noticing it—been nothing more than children, talking so earnestly with one another at our age?
+# literal_translation = Or all those former agreements of ours are poured-out, O Crito, and long-ago, O Crito, so-then such-great men to one another with-eagerness conversing we-escaped-notice-of ourselves, from children nothing differing?
+1	ἢ	ἤ1	d	d--------	_	16	AuxY	_	t_2620|gloss=or
+2	πᾶσαι	πᾶς	a	a-p---fn-	Case=n|Gender=f|Number=p	7	ATR	_	t_2621|gloss=all
+3	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p|Person=1	13	OBJ	_	t_2622|gloss=for-us
+4	ἐκεῖναι	ἐκεῖνος	a	a-p---fn-	Case=n|Gender=f|Number=p	7	ATR	_	t_2623|gloss=those
+5	αἱ	ὁ	l	l-p---fn-	Case=n|Gender=f|Number=p	7	ATR	_	t_2624|gloss=the
+6	πρόσθεν	πρόσθεν	d	d--------	_	7	ATR	_	t_2625|gloss=former
+7	ὁμολογίαι	ὁμολογία	n	n-p---fn-	Case=n|Gender=f|Number=p	14	SBJ	_	t_2626|gloss=agreements
+8	ἐν	ἐν	r	r--------	_	13	AuxP	_	t_2627|gloss=within
+9	ταῖσδε	ὅδε	a	a-p---fd-	Case=d|Gender=f|Number=p	12	ATR	_	t_2628|gloss=these
+10	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	12	ATR	_	t_2629|gloss=the
+11	ὀλίγαις	ὀλίγος	a	a-p---fd-	Case=d|Gender=f|Number=p	12	ATR	_	t_2630|gloss=few
+12	ἡμέραις	ἡμέρα	n	n-p---fd-	Case=d|Gender=f|Number=p	8	ADV	_	t_2631|gloss=days
+13	ἐκκεχυμέναι	ἐκχέω	v	v-prpefn-	Case=n|Gender=f|Mood=p|Number=p|Tense=r|Voice=e	14	PNOM	_	t_2632|gloss=poured-out
+14	εἰσίν	εἰμί	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	16	PRED	_	t_2633|gloss=are
+15	,	,	u	u--------	_	0	AuxX	_	t_2634|gloss=,
+16	καὶ	καί	c	c--------	_	15	COORD	_	t_2635|gloss=and
+17	πάλαι	πάλαι	d	d--------	_	29	ADV	_	t_2636|gloss=long-ago
+18	,	,	u	u--------	_	15	AuxX	_	t_2637|gloss=,
+19	ὦ	ὦ	i	i--------	_	20	AuxZ	_	t_2638|gloss=o
+20	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	29	ExD	_	t_2639|gloss=Crito
+21	,	,	u	u--------	_	15	AuxX	_	t_2640|gloss=,
+22	ἄρα	ἄρα	d	d--------	_	29	AuxY	_	t_2641|gloss=so-then
+23	τηλικοίδε	τηλικόσδε	a	a-p---mn-	Case=n|Gender=m|Number=p	24	ATR	_	t_2642|gloss=such-great
+24	ἄνδρες	ἀνήρ	n	n-p---mn-	Case=n|Gender=m|Number=p	29	SBJ	_	t_2643|gloss=men
+25	πρὸς	πρός	r	r--------	_	28	AuxP	_	t_2644|gloss=toward
+26	ἀλλήλους	ἀλλήλων	p	p-p---ma-	Case=a|Gender=m|Number=p	25	ADV	_	t_2645|gloss=one-another
+27	σπουδῇ	σπουδή	n	n-s---fd-	Case=d|Gender=f|Number=s	28	ADV	_	t_2646|gloss=with-eagerness
+28	διαλεγόμενοι	διαλέγω	v	v-pppemn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	29	ADV	_	t_2647|gloss=conversing
+29	ἐλάθομεν	λανθάνω	v	v1paia---	Mood=i|Number=p|Person=1|Tense=a|Voice=a	16	PRED	_	t_2648|gloss=we-escaped-notice-of
+30	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	34	OBJ	_	t_2649|gloss=ourselves
+31	αὐτοὺς	αὐτός	a	a-p---ma-	Case=a|Gender=m|Number=p	30	ATR	_	t_2650|gloss=ourselves
+32	παίδων	παῖς	n	n-p---mg-	Case=g|Gender=m|Number=p	34	OBJ	_	t_2651|gloss=from-children
+33	οὐδὲν	οὐδείς	a	a-s---na-	Case=a|Gender=n|Number=s	34	ADV	_	t_2652|gloss=nothing
+34	διαφέροντες	διαφέρω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	29	ADV	_	t_2653|gloss=differing
+35	;	;	u	u--------	_	15	AuxK	_	t_2654|gloss=?
+
+
+# sentence_id = 222
+# translation_lang = en
+# prose_translation = Or rather, it is absolutely more the case this way, just as it was said to us then.
+# literal_translation = Or, more than everything, it is so in this way, just as it was then said to us.
+1	ἢ	ἤ1	d	d--------	_	5	AuxY	_	t_2655|gloss=or
+2	παντὸς	πᾶς	a	a-s---ng-	Case=g|Gender=n|Number=s	3	ADV	_	t_2656|gloss=everything
+3	μᾶλλον	μᾶλλον	d	d-------c	Degree=c	5	ADV	_	t_2657|gloss=more
+4	οὕτως	οὕτως	d	d--------	_	5	ADV	_	t_2658|gloss=this-way
+5	ἔχει	ἔχω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_2659|gloss=it-is
+6	ὥσπερ	ὥσπερ	d	d--------	_	8	ADV	_	t_2660|gloss=just-as
+7	τότε	τότε	d	d--------	_	8	ADV	_	t_2661|gloss=then
+8	ἐλέγετο	λέγω3	v	v3siie---	Mood=i|Number=s|Person=3|Tense=i|Voice=e	4	ADV	_	t_2662|gloss=it-was-said
+9	ἡμῖν	ἐγώ	p	p1p---md-	Case=d|Gender=m|Number=p|Person=1	8	OBJ	_	t_2663|gloss=to-us
+10	·	·	u	u--------	_	5	AuxK	_	t_2664|gloss=·
+
+
+# sentence_id = 223
+# translation_lang = en
+# prose_translation = Whether the majority say so or not, and whether we must suffer still harsher things than these or milder ones, doing wrong is nevertheless in every way bad and shameful for the one who does wrong.
+# literal_translation = Both if the many say [so] and if not, and both if it is necessary [for] us to suffer still harsher things than these, and if milder [ones], nevertheless the [act of] doing wrong, at least, happens to be, for the one doing wrong, both bad and shameful in every way;
+1	εἴ	εἰ	c	c--------	_	7	AuxC	_	t_2665|gloss=if
+2	τε	τε	d	d--------	_	7	AuxY	_	t_2666|gloss=both
+3	φασὶν	φημί	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	1	ADV	_	t_2667|gloss=say-so
+4	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	5	ATR	_	t_2668|gloss=the
+5	πολλοὶ	πολύς	a	a-p---mn-	Case=n|Gender=m|Number=p	3	SBJ	_	t_2669|gloss=majority
+6	εἴ	εἰ	c	c--------	_	7	AuxC	_	t_2670|gloss=if
+7	τε	τε	c	c--------	_	10	COORD	_	t_2671|gloss=and
+8	μή	μή	d	d--------	_	38	AuxZ	_	t_2672|gloss=not
+9	,	,	u	u--------	_	34	AuxX	_	t_2673|gloss=,
+10	καὶ	καί	c	c--------	_	34	COORD	_	t_2674|gloss=and
+11	εἴ	εἰ	c	c--------	_	20	AuxC	_	t_2675|gloss=if
+12	τε	τε	d	d--------	_	20	AuxY	_	t_2676|gloss=both
+13	δεῖ	δεῖ	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	11	ADV	_	t_2677|gloss=it-is-necessary
+14	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	18	SBJ	_	t_2678|gloss=us
+15	ἔτι	ἔτι	d	d--------	_	13	ADV	_	t_2679|gloss=still
+16	τῶνδε	ὅδε	p	p-p---ng-	Case=g|Gender=n|Number=p	17	ADV	_	t_2680|gloss=than-these
+17	χαλεπώτερα	χαλεπός	a	a-p---nac	Case=a|Degree=c|Gender=n|Number=p	18	OBJ	_	t_2681|gloss=harsher-things
+18	πάσχειν	πάσχω	v	v--pna---	Mood=n|Tense=p|Voice=a	13	SBJ	_	t_2682|gloss=to-suffer
+19	εἴ	εἰ	c	c--------	_	20	AuxC	_	t_2683|gloss=if
+20	τε	τε	c	c--------	_	10	COORD	_	t_2684|gloss=and
+21	καὶ	καί	d	d--------	_	22	AuxZ	_	t_2685|gloss=even
+22	πρᾳότερα	πρᾶος	a	a-p---nac	Case=a|Degree=c|Gender=n|Number=p	40	OBJ	_	t_2686|gloss=milder-things
+23	,	,	u	u--------	_	34	AuxX	_	t_2687|gloss=,
+24	ὅμως	ὅμως	d	d--------	_	34	AuxY	_	t_2688|gloss=nevertheless
+25	τό	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	27	ATR	_	t_2689|gloss=the
+26	γε	γε	d	d--------	_	27	AuxZ	_	t_2690|gloss=at-least
+27	ἀδικεῖν	ἀδικέω	v	v--pna---	Mood=n|Tense=p|Voice=a	34	SBJ	_	t_2691|gloss=doing-wrong
+28	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	29	ATR	_	t_2692|gloss=the
+29	ἀδικοῦντι	ἀδικέω	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	27	OBJ	_	t_2693|gloss=one-doing-wrong
+30	καὶ	καί	d	d--------	_	32	AuxY	_	t_2694|gloss=both
+31	κακὸν	κακός	a	a-s---nn-	Case=n|Gender=n|Number=s	32	PNOM	_	t_2695|gloss=bad
+32	καὶ	καί	c	c--------	_	35	COORD	_	t_2696|gloss=and
+33	αἰσχρὸν	αἰσχρός	a	a-s---nn-	Case=n|Gender=n|Number=s	32	PNOM	_	t_2697|gloss=shameful
+34	τυγχάνει	τυγχάνω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_2698|gloss=happens
+35	ὂν	εἰμί	v	v-sppann-	Case=n|Gender=n|Mood=p|Number=s|Tense=p|Voice=a	34	PNOM	_	t_2699|gloss=being
+36	παντὶ	πᾶς	a	a-s---md-	Case=d|Gender=m|Number=s	37	ATR	_	t_2700|gloss=every
+37	τρόπῳ	τρόπος	n	n-s---md-	Case=d|Gender=m|Number=s	34	ADV	_	t_2701|gloss=way
+38	[0]	[0]	-	---------	_	6	ADV	_	e_82
+39	[1]	[1]	-	---------	_	19	ADV	_	e_83
+40	[2]	[2]	-	---------	_	19	ADV	_	e_84
+41	;	;	u	u--------	_	34	AuxK	_	t_2702|gloss=;
+
+
+# sentence_id = 224
+# translation_lang = en
+# prose_translation = Shall we say so, or not?
+# literal_translation = Do we say [this], or not?
+1	φαμὲν	φημί	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	2	PRED	_	t_2703|gloss=do-we-say
+2	ἢ	ἤ1	c	c--------	_	0	COORD	_	t_2704|gloss=or
+3	οὔ	οὐ	d	d--------	_	4	AuxZ	_	t_2705|gloss=not
+4	[0]	[0]	-	---------	_	2	PRED	_	e_85
+5	;	;	u	u--------	_	2	AuxK	_	t_2706|gloss=?
+
+
+# sentence_id = 225
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito.
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_2707|gloss=Crito
+2	.	.	u	u--------	_	1	AuxK	_	t_2708|gloss=.
