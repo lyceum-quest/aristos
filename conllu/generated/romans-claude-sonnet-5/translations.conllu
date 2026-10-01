@@ -4173,3 +4173,1267 @@
 23	παλαιότητι	παλαιότης	n	n-s---fd-	Case=d|Gender=f|Number=s	21	ADV	_	t_3158
 24	γράμματος	γράμμα	n	n-s---ng-	Case=g|Gender=n|Number=s	23	ATR	_	t_3159
 25	.	.	u	u--------	_	3	AuxK	_	t_3160
+
+
+# sentence_id = 161
+# translation_lang = en
+# prose_translation = What then shall we say?
+# literal_translation = What then shall we say?
+1	Τί	τίς	d	d--------	_	3	OBJ	_	t_3161
+2	οὖν	οὖν	d	d--------	_	3	AuxY	_	t_3162
+3	ἐροῦμεν	λέγω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_3163
+4	;	;	u	u--------	_	3	AuxK	_	t_3164
+
+
+# sentence_id = 162
+# translation_lang = en
+# prose_translation = Is the law sin?
+# literal_translation = [Is] the law sin?
+1	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	2	ATR	_	t_3165
+2	νόμος	νόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	4	SBJ	_	t_3166
+3	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	4	PNOM	_	t_3167
+4	[0]	[0]	-	---------	_	0	PRED	_	e_58
+5	;	;	u	u--------	_	4	AuxK	_	t_3168
+
+
+# sentence_id = 163
+# translation_lang = en
+# prose_translation = Certainly not!
+# literal_translation = May it not be!
+1	μὴ	μή	d	d--------	_	2	AuxZ	_	t_3169
+2	γένοιτο	γίγνομαι	v	v3saom---	Mood=o|Number=s|Person=3|Tense=a|Voice=m	0	PRED	_	t_3170
+3	·	·	u	u--------	_	2	AuxK	_	t_3171
+
+
+# sentence_id = 164
+# translation_lang = en
+# prose_translation = But I did not know sin except through the law; for indeed I would not have known covetousness, except the law had said, "You shall not covet."
+# literal_translation = But sin I did not know, except through [the] law; for indeed covetousness I would not have known, except the law had said, "You shall not covet";
+1	ἀλλὰ	ἀλλά	d	d--------	_	12	AuxY	_	t_3172
+2	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	3	ATR	_	t_3173
+3	ἁμαρτίαν	ἁμαρτία	n	n-s---fa-	Case=a|Gender=f|Number=s	5	OBJ	_	t_3174
+4	οὐκ	οὐ	d	d--------	_	5	AuxZ	_	t_3175
+5	ἔγνων	γιγνώσκω	v	v1saia---	Mood=i|Number=s|Person=1|Tense=a|Voice=a	12	PRED	_	t_3176
+6	εἰ	εἰ	c	c--------	_	5	AuxC	_	t_3177
+7	μὴ	μή	d	d--------	_	24	AuxZ	_	t_3178
+8	διὰ	διά	r	r--------	_	24	AuxP	_	t_3179
+9	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ADV	_	t_3180
+10	,	,	u	u--------	_	0	AuxX	_	t_3181
+11	τήν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	14	ATR	_	t_3182
+12	τε	τε	c	c--------	_	10	COORD	_	t_3183
+13	γὰρ	γάρ	d	d--------	_	12	AuxY	_	t_3184
+14	ἐπιθυμίαν	ἐπιθυμία	n	n-s---fa-	Case=a|Gender=f|Number=s	16	OBJ	_	t_3185
+15	οὐκ	οὐ	d	d--------	_	16	AuxZ	_	t_3186
+16	ᾔδειν	οἶδα	v	v3slia---	Mood=i|Number=s|Person=3|Tense=l|Voice=a	12	PRED	_	t_3187
+17	εἰ	εἰ	c	c--------	_	16	AuxC	_	t_3188
+18	μὴ	μή	d	d--------	_	21	AuxZ	_	t_3189
+19	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	20	ATR	_	t_3190
+20	νόμος	νόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	21	SBJ	_	t_3191
+21	ἔλεγεν	λέγω3	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	17	ADV	_	t_3192
+22	Οὐκ	οὐ	d	d--------	_	23	AuxZ	_	t_3193
+23	ἐπιθυμήσεις	ἐπιθυμέω	n	n-p---fa-	Mood=i|Number=s|Person=2|Tense=f|Voice=a	21	OBJ	_	t_3194
+24	[0]	[0]	-	---------	_	6	ADV	_	e_59
+25	·	·	u	u--------	_	10	AuxK	_	t_3195
+
+
+# sentence_id = 165
+# translation_lang = en
+# prose_translation = But sin, seizing an opportunity through the commandment, produced in me every kind of desire; for apart from law, sin [is] dead.
+# literal_translation = But sin, having taken an opportunity through the commandment, worked out in me every desire; for apart from law sin [is] dead.
+1	ἀφορμὴν	ἀφορμή	n	n-s---fa-	Case=a|Gender=f|Number=s	3	OBJ	_	t_3196
+2	δὲ	δέ	d	d--------	_	9	AuxY	_	t_3197
+3	λαβοῦσα	λαμβάνω	v	v-sapafn-	Case=n|Gender=f|Mood=p|Number=s|Tense=a|Voice=a	9	ADV	_	t_3198
+4	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	5	ATR	_	t_3199
+5	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	9	SBJ	_	t_3200
+6	διὰ	διά	r	r--------	_	9	AuxP	_	t_3201
+7	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_3202
+8	ἐντολῆς	ἐντολή	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ADV	_	t_3203
+9	κατειργάσατο	κατεργάζομαι	v	v3saie---	Mood=i|Number=s|Person=3|Tense=a|Voice=e	0	PRED	_	t_3204
+10	ἐν	ἐν	r	r--------	_	9	AuxP	_	t_3205
+11	ἐμοὶ	ἐγώ	p	p1s---cd-	Case=d|Number=s	10	ADV	_	t_3206
+12	πᾶσαν	πᾶς	a	a-s---fa-	Case=a|Gender=f|Number=s	13	ATR	_	t_3207
+13	ἐπιθυμίαν	ἐπιθυμία	n	n-s---fa-	Case=a|Gender=f|Number=s	9	OBJ	_	t_3208
+14	,	,	u	u--------	_	9	AuxX	_	t_3209
+15	χωρὶς	χωρίς	r	r--------	_	20	AuxP	_	t_3210
+16	γὰρ	γάρ	d	d--------	_	20	AuxY	_	t_3211
+17	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	15	ADV	_	t_3212
+18	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	20	SBJ	_	t_3213
+19	νεκρά	νεκρός	a	a-s---fn-	Case=n|Gender=f|Number=s	20	PNOM	_	t_3214
+20	[0]	[0]	-	---------	_	9	PRED	_	e_60
+21	.	.	u	u--------	_	9	AuxK	_	t_3215
+
+
+# sentence_id = 166
+# translation_lang = en
+# prose_translation = But I was once alive apart from the law.
+# literal_translation = I but was living apart from law once.
+1	ἐγὼ	ἐγώ	p	p-s---mn-	Case=n|Gender=m|Number=s	3	SBJ	_	t_3216
+2	δὲ	δέ	g	g--------	_	3	AuxY	_	t_3217
+3	ἔζων	ζάω	v	v1siia---	Mood=i|Number=s|Person=1|Tense=i|Voice=a	0	PRED	_	t_3218
+4	χωρὶς	χωρίς	r	r--------	_	3	AuxP	_	t_3219
+5	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ADV	_	t_3220
+6	ποτέ	ποτέ	g	g--------	_	3	ADV	_	t_3221
+7	·	·	u	u--------	_	3	AuxK	_	t_3222
+
+
+# sentence_id = 167
+# translation_lang = en
+# prose_translation = But when the commandment came, sin sprang to life, and I died; and the commandment that was meant for life proved, for me, to result in death.
+# literal_translation = But the commandment having come, sin lived again, and I died, and the commandment, the one for life, this one was found by me to be for death.
+1	ἐλθούσης	ἔρχομαι	v	v-sapafg-	Case=g|Gender=f|Mood=p|Number=s|Tense=a|Voice=a	7	ADV	_	t_3223
+2	δὲ	δέ	d	d--------	_	7	AuxY	_	t_3224
+3	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	4	ATR	_	t_3225
+4	ἐντολῆς	ἐντολή	n	n-s---fg-	Case=g|Gender=f|Number=s	1	SBJ	_	t_3226
+5	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	6	ATR	_	t_3227
+6	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	7	SBJ	_	t_3228
+7	ἀνέζησεν	ἀναζέω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	13	PRED	_	t_3229
+8	,	,	u	u--------	_	0	AuxX	_	t_3230
+9	ἐγὼ	ἐγώ	p	p1s---cn-	Case=n|Gender=c|Number=s|Person=1	11	SBJ	_	t_3231
+10	δὲ	δέ	d	d--------	_	8	COORD	_	t_3232
+11	ἀπέθανον	ἀποθνήσκω	v	v1saia---	Mood=i|Number=s|Person=1|Tense=a|Voice=a	13	PRED	_	t_3233
+12	,	,	u	u--------	_	8	AuxX	_	t_3234
+13	καὶ	καί	c	c--------	_	8	COORD	_	t_3235
+14	εὑρέθη	εὑρίσκω	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	13	PRED	_	t_3236
+15	μοι	ἐγώ	p	p1s---cd-	Case=d|Gender=c|Number=s|Person=1	14	ADV	_	t_3237
+16	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	17	ATR	_	t_3238
+17	ἐντολὴ	ἐντολή	n	n-s---fn-	Case=n|Gender=f|Number=s	14	SBJ	_	t_3239
+18	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	17	ATR	_	t_3240
+19	εἰς	εἰς	r	r--------	_	17	AuxP	_	t_3241
+20	ζωὴν	ζωή	n	n-s---fa-	Case=a|Gender=f|Number=s	19	ATR	_	t_3242
+21	αὕτη	οὗτος	p	p-s---fn-	Case=n|Gender=f|Number=s	17	ATR	_	t_3243
+22	εἰς	εἰς	r	r--------	_	14	AuxP	_	t_3244
+23	θάνατον	θάνατος	n	n-s---ma-	Case=a|Gender=m|Number=s	22	ADV	_	t_3245
+24	·	·	u	u--------	_	8	AuxK	_	t_3246
+
+
+# sentence_id = 168
+# translation_lang = en
+# prose_translation = For sin, seizing an opportunity through the commandment, deceived me, and through it killed me.
+# literal_translation = For sin, having taken opportunity through the commandment, deceived me, and through it killed [me].
+1	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	3	ATR	_	t_3247
+2	γὰρ	γάρ	d	d--------	_	11	AuxY	_	t_3248
+3	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	11	SBJ	_	t_3249
+4	ἀφορμὴν	ἀφορμή	n	n-s---fa-	Case=a|Gender=f|Number=s	5	OBJ	_	t_3250
+5	λαβοῦσα	λαμβάνω	v	v-sapafn-	Case=n|Gender=f|Mood=p|Number=s|Tense=a|Voice=a	9	ADV	_	t_3251
+6	διὰ	διά	r	r--------	_	5	AuxP	_	t_3252
+7	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_3253
+8	ἐντολῆς	ἐντολή	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ADV	_	t_3254
+9	ἐξηπάτησέν	ἐξαπατάω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	11	PRED	_	t_3255
+10	με	ἐγώ	p	p1s---ma-	Case=a|Gender=m|Number=s|Person=1	9	OBJ	_	t_3256
+11	καὶ	καί	c	c--------	_	0	COORD	_	t_3257
+12	διʼ	διά	r	r--------	_	14	AuxP	_	t_3258
+13	αὐτῆς	αὐτός	p	p-s---fg-	Case=g|Gender=f|Number=s	12	ADV	_	t_3259
+14	ἀπέκτεινεν	ἀποκτείνω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	11	PRED	_	t_3260
+15	.	.	u	u--------	_	11	AuxK	_	t_3261
+
+
+# sentence_id = 169
+# translation_lang = en
+# prose_translation = So then, the law is holy, and the commandment is holy and just and good.
+# literal_translation = So-that the law [is] holy on the one hand, and the commandment [is] holy and just and good.
+1	ὥστε	ὥστε	d	d--------	_	7	AuxY	_	t_3262
+2	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	4	ATR	_	t_3263
+3	μὲν	μέν	d	d--------	_	7	AuxY	_	t_3264
+4	νόμος	νόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	15	SBJ	_	t_3265
+5	ἅγιος	ἅγιος	a	a-s---mn-	Case=n|Gender=m|Number=s	15	PNOM	_	t_3266
+6	,	,	u	u--------	_	0	AuxX	_	t_3267
+7	καὶ	καί	c	c--------	_	6	COORD	_	t_3268
+8	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	9	ATR	_	t_3269
+9	ἐντολὴ	ἐντολή	n	n-s---fn-	Case=n|Gender=f|Number=s	16	SBJ	_	t_3270
+10	ἁγία	ἅγιος	a	a-s---fn-	Case=n|Gender=f|Number=s	13	PNOM	_	t_3271
+11	καὶ	καί	d	d--------	_	13	AuxY	_	t_3272
+12	δικαία	δίκαιος	a	a-s---fn-	Case=n|Gender=f|Number=s	13	PNOM	_	t_3273
+13	καὶ	καί	c	c--------	_	16	COORD	_	t_3274
+14	ἀγαθή	ἀγαθός	a	a-s---fn-	Case=n|Gender=f|Number=s	13	PNOM	_	t_3275
+15	[0]	[0]	-	---------	_	7	PRED	_	e_61
+16	[1]	[1]	-	---------	_	7	PRED	_	e_62
+17	.	.	u	u--------	_	6	AuxK	_	t_3276
+
+
+# sentence_id = 170
+# translation_lang = en
+# prose_translation = Did, then, what is good become death to me? [Certainly not!]
+# literal_translation = The good, then, to me, did it become death?
+1	Τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_3277
+2	οὖν	οὖν	d	d--------	_	5	AuxY	_	t_3278
+3	ἀγαθὸν	ἀγαθός	a	a-s---nn-	Case=n|Gender=n|Number=s	5	SBJ	_	t_3279
+4	ἐμοὶ	ἐγώ	p	p-s---md-	Case=d|Gender=m|Number=s	5	ADV	_	t_3280
+5	ἐγένετο	γίγνομαι	v	v3saim---	Mood=i|Number=s|Person=3|Tense=a|Voice=m	0	PRED	_	t_3281
+6	θάνατος	θάνατος	n	n-s---mn-	Case=n|Gender=m|Number=s	5	PNOM	_	t_3282
+7	;	;	u	u--------	_	5	AuxK	_	t_3283
+
+
+# sentence_id = 171
+# translation_lang = en
+# prose_translation = Certainly not!
+# literal_translation = May it not be!
+1	μὴ	μή	d	d--------	_	2	AuxZ	_	t_3284
+2	γένοιτο	γίγνομαι	v	v3saom---	Mood=o|Number=s|Person=3|Tense=a|Voice=m	0	PRED	_	t_3285
+3	·	·	u	u--------	_	2	AuxK	_	t_3286
+
+
+# sentence_id = 172
+# translation_lang = en
+# prose_translation = But [it was] sin, so that sin might appear sin, working out death for me through what was good.
+# literal_translation = But sin [it was], in order that sin might appear sin, through the good working out for me death.
+1	ἀλλὰ	ἀλλά	d	d--------	_	14	AuxY	_	t_3287
+2	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	3	ATR	_	t_3288
+3	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	14	SBJ	_	t_3289
+4	,	,	u	u--------	_	14	AuxX	_	t_3290
+5	ἵνα	ἵνα	c	c--------	_	14	AuxC	_	t_3291
+6	φανῇ	φαίνω	v	v3sasp---	Mood=s|Number=s|Person=3|Tense=a|Voice=p	5	ADV	_	t_3292
+7	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	6	SBJ	_	t_3293
+8	διὰ	διά	r	r--------	_	12	AuxP	_	t_3294
+9	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	10	ATR	_	t_3295
+10	ἀγαθοῦ	ἀγαθός	a	a-s---ng-	Case=g|Gender=n|Number=s	8	ADV	_	t_3296
+11	μοι	ἐγώ	p	p1s---cd-	Case=d|Gender=c|Number=s|Person=1	12	OBJ	_	t_3297
+12	κατεργαζομένη	κατεργάζομαι	v	v-sppefn-	Case=n|Gender=f|Mood=p|Number=s|Tense=p|Voice=e	6	PNOM	_	t_3298
+13	θάνατον	θάνατος	n	n-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_3299
+14	[0]	[0]	-	---------	_	0	PRED	_	e_63
+15	·	·	u	u--------	_	14	AuxK	_	t_3300
+
+
+# sentence_id = 173
+# translation_lang = en
+# prose_translation = so that sin might become sinful beyond measure through the commandment.
+# literal_translation = in order that it might become, according to excess, sinful — sin — through the commandment.
+1	ἵνα	ἵνα	c	c--------	_	0	AuxC	_	t_3301
+2	γένηται	γίγνομαι	v	v3sasm---	Mood=s|Number=s|Person=3|Tense=a|Voice=m	1	ADV	_	t_3302
+3	καθʼ	κατά	r	r--------	_	2	AuxP	_	t_3303
+4	ὑπερβολὴν	ὑπερβολή	n	n-s---fa-	Case=a|Gender=f|Number=s	3	ADV	_	t_3304
+5	ἁμαρτωλὸς	ἁμαρτωλός	a	a-s---fn-	Case=n|Gender=f|Number=s	2	PNOM	_	t_3305
+6	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	7	ATR	_	t_3306
+7	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	2	SBJ	_	t_3307
+8	διὰ	διά	r	r--------	_	2	AuxP	_	t_3308
+9	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	10	ATR	_	t_3309
+10	ἐντολῆς	ἐντολή	n	n-s---fg-	Case=g|Gender=f|Number=s	8	ADV	_	t_3310
+11	.	.	u	u--------	_	1	AuxK	_	t_3311
+
+
+# sentence_id = 174
+# translation_lang = en
+# prose_translation = For we know that the law is spiritual.
+# literal_translation = For we know that the law is spiritual.
+1	οἴδαμεν	οἶδα	v	v1pria---	Mood=i|Number=p|Person=1|Tense=r|Voice=a	0	PRED	_	t_3312
+2	γὰρ	γάρ	d	d--------	_	1	AuxY	_	t_3313
+3	ὅτι	ὅτι	c	c--------	_	1	AuxC	_	t_3314
+4	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	5	ATR	_	t_3315
+5	νόμος	νόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	7	SBJ	_	t_3316
+6	πνευματικός	πνευματικός	a	a-s---mn-	Case=n|Gender=m|Number=s	7	PNOM	_	t_3317
+7	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	3	OBJ	_	t_3318
+8	·	·	u	u--------	_	1	AuxK	_	t_3319
+
+
+# sentence_id = 175
+# translation_lang = en
+# prose_translation = But I am made of flesh, sold under sin.
+# literal_translation = But I am fleshly, having been sold under the sin.
+1	ἐγὼ	ἐγώ	p	p1s---cn-	Case=n|Gender=c|Number=s|Person=1	4	SBJ	_	t_3320
+2	δὲ	δέ	d	d--------	_	4	AuxY	_	t_3321
+3	σάρκινός	σάρκινος	n	n-s---mn-	Case=n|Gender=m|Number=s	4	PNOM	_	t_3322
+4	εἰμι	εἰμί	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_3323
+5	,	,	u	u--------	_	4	AuxX	_	t_3324
+6	πεπραμένος	πιπράσκω	v	v-srpemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=r|Voice=e	4	ADV	_	t_3325
+7	ὑπὸ	ὑπό	r	r--------	_	6	AuxP	_	t_3326
+8	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	9	ATR	_	t_3327
+9	ἁμαρτίαν	ἁμαρτία	n	n-s---fa-	Case=a|Gender=f|Number=s	7	OBJ	_	t_3328
+10	.	.	u	u--------	_	4	AuxK	_	t_3329
+
+
+# sentence_id = 176
+# translation_lang = en
+# prose_translation = For what I do, I do not understand.
+# literal_translation = For what I work, I do not know.
+1	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	3	OBJ	_	t_3330
+2	γὰρ	γάρ	d	d--------	_	5	AuxY	_	t_3331
+3	κατεργάζομαι	κατεργάζομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	5	OBJ	_	t_3332
+4	οὐ	οὐ	d	d--------	_	5	AuxZ	_	t_3333
+5	γινώσκω	γιγνώσκω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_3334
+6	·	·	u	u--------	_	5	AuxK	_	t_3335
+
+
+# sentence_id = 177
+# translation_lang = en
+# prose_translation = For what I will, this I do not do; but what I hate, this I do.
+# literal_translation = For not what I will, this I do, but what I hate, this I do.
+1	οὐ	οὐ	d	d--------	_	6	AuxZ	_	t_3336
+2	γὰρ	γάρ	d	d--------	_	8	AuxY	_	t_3337
+3	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	4	OBJ	_	t_3338
+4	θέλω	ἐθέλω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	6	OBJ	_	t_3339
+5	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	6	OBJ	_	t_3340
+6	πράσσω	πράσσω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	8	PRED	_	t_3341
+7	,	,	u	u--------	_	0	AuxX	_	t_3342
+8	ἀλλʼ	ἀλλά	c	c--------	_	7	COORD	_	t_3343
+9	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	10	OBJ	_	t_3344
+10	μισῶ	μισέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	11	ATR	_	t_3345
+11	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	12	OBJ	_	t_3346
+12	ποιῶ	ποιέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	8	PRED	_	t_3347
+13	.	.	u	u--------	_	7	AuxK	_	t_3348
+
+
+# sentence_id = 178
+# translation_lang = en
+# prose_translation = But if I do what I do not want, I agree with the law that it is good.
+# literal_translation = But if what I do not want, this I do, I agree with the law, that [it is] good.
+1	εἰ	εἰ	c	c--------	_	9	AuxC	_	t_3349
+2	δὲ	δέ	d	d--------	_	9	AuxY	_	t_3350
+3	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_3351
+4	οὐ	οὐ	d	d--------	_	5	AuxZ	_	t_3352
+5	θέλω	ἐθέλω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	6	ATR	_	t_3353
+6	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_3354
+7	ποιῶ	ποιέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	1	ADV	_	t_3355
+8	,	,	u	u--------	_	9	AuxX	_	t_3356
+9	σύνφημι	σύμφημι	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_3357
+10	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	11	ATR	_	t_3358
+11	νόμῳ	νόμος	n	n-s---md-	Case=d|Gender=m|Number=s	9	OBJ	_	t_3359
+12	ὅτι	ὅτι	c	c--------	_	9	AuxC	_	t_3360
+13	καλός	καλός	a	a-s---mn-	Case=n|Gender=m|Number=s	14	PNOM	_	t_3361
+14	[0]	[0]	-	---------	_	12	OBJ	_	e_64
+15	.	.	u	u--------	_	9	AuxK	_	t_3362
+
+
+# sentence_id = 179
+# translation_lang = en
+# prose_translation = But now it is no longer I who do it, but the sin that dwells in me.
+# literal_translation = But now no longer I work out it, but the sin dwelling in me [works it out].
+1	Νυνὶ	νυνί	d	d--------	_	5	ADV	_	t_3363
+2	δὲ	δέ	d	d--------	_	7	AuxY	_	t_3364
+3	οὐκέτι	οὐκέτι	d	d--------	_	5	AuxZ	_	t_3365
+4	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	5	SBJ	_	t_3366
+5	κατεργάζομαι	κατεργάζομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	7	PRED	_	t_3367
+6	αὐτὸ	αὐτός	p	p-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_3368
+7	ἀλλὰ	ἀλλά	c	c--------	_	0	COORD	_	t_3369
+8	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	12	ATR	_	t_3370
+9	ἐνοικοῦσα	ἐνοικέω	v	v-sppafn-	Case=n|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	12	ATR	_	t_3371
+10	ἐν	ἐν	r	r--------	_	9	AuxP	_	t_3372
+11	ἐμοὶ	ἐγώ	p	p1s---cd-	Case=d|Gender=c|Number=s|Person=1	10	ADV	_	t_3373
+12	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	13	SBJ	_	t_3374
+13	[0]	[0]	-	---------	_	7	PRED	_	e_65
+14	.	.	u	u--------	_	7	AuxK	_	t_3375
+
+
+# sentence_id = 180
+# translation_lang = en
+# prose_translation = For I know that nothing good dwells in me, that is, in my flesh.
+# literal_translation = For I know that [it] does not dwell in me — that is, in my flesh — [anything] good;
+1	οἶδα	οἶδα	v	v1sria---	Mood=i|Number=s|Person=1|Tense=r|Voice=a	8	PRED	_	t_3376
+2	γὰρ	γάρ	d	d--------	_	1	AuxY	_	t_3377
+3	ὅτι	ὅτι	c	c--------	_	1	AuxC	_	t_3378
+4	οὐκ	οὐ	d	d--------	_	5	AuxZ	_	t_3379
+5	οἰκεῖ	οἰκέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	3	OBJ	_	t_3380
+6	ἐν	ἐν	r	r--------	_	5	AuxP	_	t_3381
+7	ἐμοί	ἐγώ	p	p1s---cd-	Case=d|Gender=c|Number=s|Person=1	6	ADV	_	t_3382
+8	,	,	u	u--------	_	0	COORD	_	t_3383
+9	τοῦτʼ	οὗτος	p	p-s---nn-	Case=n|Gender=n|Number=s	10	SBJ	_	t_3384
+10	ἔστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	8	PRED	_	t_3385
+11	ἐν	ἐν	r	r--------	_	10	AuxP	_	t_3386
+12	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	13	ATR	_	t_3387
+13	σαρκί	σάρξ	n	n-s---fd-	Case=d|Gender=f|Number=s	11	ADV	_	t_3388
+14	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	13	ATR	_	t_3389
+15	,	,	u	u--------	_	1	AuxX	_	t_3390
+16	ἀγαθόν	ἀγαθός	a	a-s---nn-	Case=n|Gender=n|Number=s	10	PNOM	_	t_3391
+17	·	·	u	u--------	_	1	AuxK	_	t_3392
+
+
+# sentence_id = 181
+# translation_lang = en
+# prose_translation = For to will is present with me, but to accomplish the good is not.
+# literal_translation = For the to-will is present to-me, but the to-accomplish the good [is] not.
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_3393
+2	γὰρ	γάρ	d	d--------	_	4	AuxY	_	t_3394
+3	θέλειν	ἐθέλω	v	v--pna---	Mood=n|Tense=p|Voice=a	4	SBJ	_	t_3395
+4	παράκειταί	παράκειμαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	8	PRED	_	t_3396
+5	μοι	ἐγώ	p	p1s---cd-	Case=d|Gender=c|Number=s|Person=1	4	OBJ	_	t_3397
+6	,	,	u	u--------	_	0	AuxX	_	t_3398
+7	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	9	ATR	_	t_3399
+8	δὲ	δέ	d	d--------	_	6	COORD	_	t_3400
+9	κατεργάζεσθαι	κατεργάζομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	13	SBJ	_	t_3401
+10	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	11	ATR	_	t_3402
+11	καλὸν	καλός	a	a-s---na-	Case=a|Gender=n|Number=s	9	OBJ	_	t_3403
+12	οὔ	οὐ	d	d--------	_	13	AuxZ	_	t_3404
+13	[0]	[0]	-	---------	_	8	PRED	_	e_66
+14	·	·	u	u--------	_	6	AuxK	_	t_3405
+
+
+# sentence_id = 182
+# translation_lang = en
+# prose_translation = For I do not do the good that I want, but the evil that I do not want—this I practice.
+# literal_translation = For not what I want, this I do, [that is,] good, but what I do not want, this [i.e.] evil, I practice.
+1	οὐ	οὐ	d	d--------	_	5	AuxZ	_	t_3406
+2	γὰρ	γάρ	d	d--------	_	8	AuxY	_	t_3407
+3	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	4	OBJ	_	t_3408
+4	θέλω	ἐθέλω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	6	ADV	_	t_3409
+5	ποιῶ	ποιέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	8	PRED	_	t_3410
+6	ἀγαθόν	ἀγαθός	a	a-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_3411
+7	,	,	u	u--------	_	0	AuxX	_	t_3412
+8	ἀλλὰ	ἀλλά	c	c--------	_	7	COORD	_	t_3413
+9	ὃ	ὅς	p	p-s---na-	Case=n|Gender=n|Number=s	11	OBJ	_	t_3414
+10	οὐ	οὐ	d	d--------	_	11	AuxZ	_	t_3415
+11	θέλω	ἐθέλω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	13	ATR	_	t_3416
+12	κακὸν	κακός	a	a-s---na-	Case=a|Gender=n|Number=s	9	ATR	_	t_3417
+13	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	14	OBJ	_	t_3418
+14	πράσσω	πράσσω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	8	PRED	_	t_3419
+15	.	.	u	u--------	_	7	AuxK	_	t_3420
+
+
+# sentence_id = 183
+# translation_lang = en
+# prose_translation = But if I do what I do not want, it is no longer I who do it, but the sin that dwells in me.
+# literal_translation = But if what I do not want, this I do, no longer I [am the one who] work it, but the sin dwelling in me [is the one who works it].
+1	εἰ	εἰ	c	c--------	_	13	AuxC	_	t_3421
+2	δὲ	δέ	d	d--------	_	13	AuxY	_	t_3422
+3	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_3423
+4	οὐ	οὐ	d	d--------	_	5	AuxZ	_	t_3424
+5	θέλω	ἐθέλω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	6	ATR	_	t_3425
+6	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_3426
+7	ποιῶ	ποιέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	1	ADV	_	t_3427
+8	,	,	u	u--------	_	0	AuxX	_	t_3428
+9	οὐκέτι	οὐκέτι	d	d--------	_	11	AuxZ	_	t_3429
+10	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	11	SBJ	_	t_3430
+11	κατεργάζομαι	κατεργάζομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	13	PRED	_	t_3431
+12	αὐτὸ	αὐτός	p	p-s---na-	Case=a|Gender=n|Number=s	11	OBJ	_	t_3432
+13	ἀλλὰ	ἀλλά	c	c--------	_	8	COORD	_	t_3433
+14	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	18	ATR	_	t_3434
+15	οἰκοῦσα	οἰκέω	v	v-sppafn-	Case=n|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	18	ATR	_	t_3435
+16	ἐν	ἐν	r	r--------	_	15	AuxP	_	t_3436
+17	ἐμοὶ	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	16	ADV	_	t_3437
+18	ἁμαρτία	ἁμαρτία	n	n-s---fn-	Case=n|Gender=f|Number=s	19	SBJ	_	t_3438
+19	[0]	[0]	-	---------	_	13	PRED	_	e_67
+20	.	.	u	u--------	_	8	AuxK	_	t_3439
+
+
+# sentence_id = 184
+# translation_lang = en
+# prose_translation = So I find this law: that when I want to do good, evil lies close at hand for me.
+# literal_translation = I find, then, the law for me who wants to do the good, that for me evil lies close at hand.
+1	Εὑρίσκω	εὑρίσκω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_3440
+2	ἄρα	ἄρα	d	d--------	_	1	AuxY	_	t_3441
+3	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	4	ATR	_	t_3442
+4	νόμον	νόμος	n	n-s---ma-	Case=a|Gender=m|Number=s	1	OBJ	_	t_3443
+5	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	6	ATR	_	t_3444
+6	θέλοντι	ἐθέλω	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	1	OBJ	_	t_3445
+7	ἐμοὶ	ἐγώ	p	p-s---md-	Case=d|Number=s	8	OBJ	_	t_3446
+8	ποιεῖν	ποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	6	OBJ	_	t_3447
+9	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	10	ATR	_	t_3448
+10	καλὸν	καλός	a	a-s---na-	Case=a|Gender=n|Number=s	8	OBJ	_	t_3449
+11	ὅτι	ὅτι	c	c--------	_	10	AuxC	_	t_3450
+12	ἐμοὶ	ἐγώ	p	p-s---md-	Case=d|Gender=m|Number=s	15	OBJ	_	t_3451
+13	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	14	ATR	_	t_3452
+14	κακὸν	κακός	a	a-s---na-	Case=a|Gender=n|Number=s	15	SBJ	_	t_3453
+15	παράκειται	παράκειμαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	11	ATR	_	t_3454
+16	·	·	u	u--------	_	1	AuxK	_	t_3455
+
+
+# sentence_id = 185
+# translation_lang = en
+# prose_translation = For I delight in the law of God according to the inner man, but I see another law in my members, warring against the law of my mind and taking me captive to the law of sin that is in my members.
+# literal_translation = For I delight in the law of God according to the inner man, but I see another law in my members, warring against the law of my mind and taking captive me [in] the law of sin that is in my members.
+1	συνήδομαι	συνήδομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	13	PRED	_	t_3456
+2	γὰρ	γάρ	d	d--------	_	1	AuxY	_	t_3457
+3	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	4	ATR	_	t_3458
+4	νόμῳ	νόμος	n	n-s---md-	Case=d|Gender=m|Number=s	1	ADV	_	t_3459
+5	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	6	ATR	_	t_3460
+6	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_3461
+7	κατὰ	κατά	r	r--------	_	1	AuxP	_	t_3462
+8	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	10	ATR	_	t_3463
+9	ἔσω	ἔσω	d	d--------	_	10	ATR	_	t_3464
+10	ἄνθρωπον	ἄνθρωπος	n	n-s---ma-	Case=a|Gender=m|Number=s	7	ADV	_	t_3465
+11	,	,	u	u--------	_	0	AuxX	_	t_3466
+12	βλέπω	βλέπω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	13	PRED	_	t_3467
+13	δὲ	δέ	d	d--------	_	11	COORD	_	t_3468
+14	ἕτερον	ἕτερος	a	a-s---ma-	Case=a|Gender=m|Number=s	15	ATR	_	t_3469
+15	νόμον	νόμος	n	n-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_3470
+16	ἐν	ἐν	r	r--------	_	20	AuxP	_	t_3471
+17	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	18	ATR	_	t_3472
+18	μέλεσίν	μέλος	n	n-p---nd-	Case=d|Gender=n|Number=p	16	ADV	_	t_3473
+19	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	18	ATR	_	t_3474
+20	ἀντιστρατευόμενον	ἐναντιόομαι	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	26	OBJ	_	t_3475
+21	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	22	ATR	_	t_3476
+22	νόμῳ	νόμος	n	n-s---md-	Case=d|Gender=m|Number=s	20	ADV	_	t_3477
+23	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	24	ATR	_	t_3478
+24	νοός	νόος	n	n-s---mg-	Case=g|Gender=m|Number=s	22	ATR	_	t_3479
+25	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	24	ATR	_	t_3480
+26	καὶ	καί	c	c--------	_	15	COORD	_	t_3481
+27	αἰχμαλωτίζοντά	αἰχμαλωτίζω	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	26	OBJ	_	t_3482
+28	με	ἐγώ	p	p1s---ca-	Case=a|Gender=c|Number=s|Person=1	27	OBJ	_	t_3483
+29	[	[	u	u--------	_	11	AuxX	_	t_3484
+30	ἐν	ἐν	r	r--------	_	27	AuxP	_	t_3485
+31	]	]	u	u--------	_	11	AuxX	_	t_3486
+32	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	33	ATR	_	t_3487
+33	νόμῳ	νόμος	n	n-s---md-	Case=d|Gender=m|Number=s	30	ADV	_	t_3488
+34	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	35	ATR	_	t_3489
+35	ἁμαρτίας	ἁμαρτία	n	n-s---fg-	Case=g|Gender=f|Number=s	33	ATR	_	t_3490
+36	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	33	ATR	_	t_3491
+37	ὄντι	εἰμί	v	v-sppamd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	33	ATR	_	t_3492
+38	ἐν	ἐν	r	r--------	_	37	AuxP	_	t_3493
+39	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	40	ATR	_	t_3494
+40	μέλεσίν	μέλος	n	n-p---nd-	Case=d|Gender=n|Number=p	38	PNOM	_	t_3495
+41	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	40	ATR	_	t_3496
+42	.	.	u	u--------	_	11	AuxK	_	t_3497
+
+
+# sentence_id = 186
+# translation_lang = en
+# prose_translation = Wretched man that I am!
+# literal_translation = Wretched I [am] [a] man;
+1	ταλαίπωρος	ταλαίπωρος	a	a-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_3498
+2	ἐγὼ	ἐγώ	p	p1s---cn-	Case=n|Gender=c|Number=s|Person=1	4	SBJ	_	t_3499
+3	ἄνθρωπος	ἄνθρωπος	n	n-s---mn-	Case=n|Gender=m|Number=s	4	PNOM	_	t_3500
+4	[0]	[0]	-	---------	_	0	PRED	_	e_68
+5	·	·	u	u--------	_	4	AuxK	_	t_3501
+
+
+# sentence_id = 187
+# translation_lang = en
+# prose_translation = Who will rescue me from this body of death?
+# literal_translation = Who will rescue me out of the body of this death?
+1	τίς	τις	p	p-s---cn-	Case=n|Gender=c|Number=s	3	SBJ	_	t_3502
+2	με	ἐγώ	p	p1s---ca-	Case=a|Gender=c|Number=s|Person=1	3	OBJ	_	t_3503
+3	ῥύσεται	ῥύομαι	v	v3sfim---	Mood=i|Number=s|Person=3|Tense=f|Voice=m	0	PRED	_	t_3504
+4	ἐκ	ἐκ	r	r--------	_	3	AuxP	_	t_3505
+5	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	6	ATR	_	t_3506
+6	σώματος	σῶμα	n	n-s---ng-	Case=g|Gender=n|Number=s	4	OBJ	_	t_3507
+7	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_3508
+8	θανάτου	θάνατος	n	n-s---mg-	Case=g|Gender=m|Number=s	6	ATR	_	t_3509
+9	τούτου	οὗτος	p	p-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_3510
+10	;	;	u	u--------	_	3	AuxK	_	t_3511
+
+
+# sentence_id = 188
+# translation_lang = en
+# prose_translation = But thanks be to God through Jesus Christ our Lord.
+# literal_translation = But thanks [be] to God through Jesus Christ our Lord.
+1	χάρις	χάρις	n	n-s---fn-	Case=n|Gender=f|Number=s	13	SBJ	_	t_3512
+2	[	[	u	u--------	_	13	AuxG	_	t_3513
+3	δὲ	δέ	d	d--------	_	13	AuxY	_	t_3514
+4	]	]	u	u--------	_	13	AuxG	_	t_3515
+5	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	6	ATR	_	t_3516
+6	θεῷ	θεός	n	n-s---md-	Case=d|Gender=m|Number=s	13	ADV	_	t_3517
+7	διὰ	διά	r	r--------	_	13	AuxP	_	t_3518
+8	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	7	ADV	_	t_3519
+9	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_3520
+10	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_3521
+11	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_3522
+12	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	11	ATR	_	t_3523
+13	[0]	[0]	-	---------	_	0	PRED	_	e_69
+14	.	.	u	u--------	_	13	AuxK	_	t_3524
+
+
+# sentence_id = 189
+# translation_lang = en
+# prose_translation = So then, I myself serve the law of God with my mind, but with my flesh [I serve] the law of sin.
+# literal_translation = So then, I myself with the mind indeed serve the law of God, but with the flesh [I serve] the law of sin.
+1	ἄρα	ἄρα	g	g--------	_	13	AuxY	_	t_3525
+2	οὖν	οὖν	g	g--------	_	1	AuxZ	_	t_3526
+3	αὐτὸς	αὐτός	a	a-s---mn-	Case=n|Gender=m|Number=s	4	ATV	_	t_3527
+4	ἐγὼ	ἐγώ	p	p-s---mn-	Case=n|Gender=m|Number=s	13	SBJ	_	t_3528
+5	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	7	ATR	_	t_3529
+6	μὲν	μέν	g	g--------	_	13	AuxY	_	t_3530
+7	νοῒ	νόος	n	n-s---md-	Case=d|Gender=m|Number=s	8	ADV	_	t_3531
+8	δουλεύω	δουλεύω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	13	ADV	_	t_3532
+9	νόμῳ	νόμος	n	n-s---md-	Case=d|Gender=m|Number=s	8	ADV	_	t_3533
+10	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_3534
+11	,	,	u	u--------	_	13	AuxX	_	t_3535
+12	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	14	ATR	_	t_3536
+13	δὲ	δέ	g	g--------	_	0	COORD	_	t_3537
+14	σαρκὶ	σάρξ	n	n-s---fd-	Case=d|Gender=f|Number=s	17	ADV	_	t_3538
+15	νόμῳ	νόμος	n	n-s---md-	Case=d|Gender=m|Number=s	17	ADV	_	t_3539
+16	ἁμαρτίας	ἁμαρτία	n	n-s---fg-	Case=g|Gender=f|Number=s	15	ATR	_	t_3540
+17	[0]	[0]	-	---------	_	13	PRED	_	e_70
+18	.	.	u	u--------	_	13	AuxK	_	t_3541
+
+
+# sentence_id = 190
+# translation_lang = en
+# prose_translation = There is, then, now no condemnation for those who are in Christ Jesus.
+# literal_translation = [There is] nothing, then, now [as] condemnation for those [who are] in Christ Jesus.
+1	Οὐδὲν	οὐδείς	a	a-s---nn-	Case=n|Gender=n|Number=s	9	SBJ	_	t_3542
+2	ἄρα	ἄρα	g	g--------	_	9	AuxY	_	t_3543
+3	νῦν	νῦν	d	d--------	_	9	ADV	_	t_3544
+4	κατάκριμα	κατάκριμα	a	a-s---nn-	Case=n|Gender=n|Number=s	9	PNOM	_	t_3545
+5	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	4	ADV	_	t_3546
+6	ἐν	ἐν	r	r--------	_	5	AuxP	_	t_3547
+7	Χριστῷ	χριστός	n	n-s---md-	Case=d|Gender=m|Number=s	6	ATR	_	t_3548
+8	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	5	ATR	_	t_3549
+9	[0]	[0]	-	---------	_	0	PRED	_	e_71
+10	·	·	u	u--------	_	9	AuxK	_	t_3550
+
+
+# sentence_id = 191
+# translation_lang = en
+# prose_translation = For the law of the Spirit of life in Christ Jesus has set you free from the law of sin and of death.
+# literal_translation = For the law of the Spirit of the life in Christ Jesus freed you from the law of sin and of death.
+1	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_3551
+2	γὰρ	γάρ	d	d--------	_	11	AuxY	_	t_3552
+3	νόμος	νόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	11	SBJ	_	t_3553
+4	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	5	ATR	_	t_3554
+5	πνεύματος	πνεῦμα	n	n-s---ng-	Case=g|Gender=n|Number=s	3	ATR	_	t_3555
+6	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	7	ATR	_	t_3556
+7	ζωῆς	ζωή	n	n-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_3557
+8	ἐν	ἐν	r	r--------	_	5	AuxP	_	t_3558
+9	Χριστῷ	χριστός	n	n-s---md-	Case=d|Gender=m|Number=s	8	ATR	_	t_3559
+10	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_3560
+11	ἠλευθέρωσέν	ἐλευθερόω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	0	PRED	_	t_3561
+12	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	11	OBJ	_	t_3562
+13	ἀπὸ	ἀπό	r	r--------	_	11	AuxP	_	t_3563
+14	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	15	ATR	_	t_3564
+15	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ADV	_	t_3565
+16	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	17	ATR	_	t_3566
+17	ἁμαρτίας	ἁμαρτία	n	n-s---fg-	Case=g|Gender=f|Number=s	18	ADV	_	t_3567
+18	καὶ	καί	c	c--------	_	13	COORD	_	t_3568
+19	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	20	ATR	_	t_3569
+20	θανάτου	θάνατος	n	n-s---mg-	Case=g|Gender=m|Number=s	18	ADV	_	t_3570
+21	.	.	u	u--------	_	11	AuxK	_	t_3571
+
+
+# sentence_id = 192
+# translation_lang = en
+# prose_translation = For what the law could not do, in that it was weak through the flesh, God did, by sending His own Son in the likeness of sinful flesh, and for sin, He condemned sin in the flesh, so that the righteous requirement of the law might be fulfilled in us, who walk not according to the flesh but according to the Spirit.
+# literal_translation = For the [thing] impossible of the law, in which it was weak through the flesh, God, having sent His own Son in the likeness of flesh of sin, and concerning sin, condemned the sin in the flesh, in order that the righteous-requirement of the law might be fulfilled in us, who walk not according to flesh but according to Spirit.
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	3	ATR	_	t_3572
+2	γὰρ	γάρ	d	d--------	_	27	AuxY	_	t_3573
+3	ἀδύνατον	ἀδύνατος	a	a-s---na-	Case=a|Gender=n|Number=s	27	OBJ	_	t_3574
+4	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	5	ATR	_	t_3575
+5	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_3576
+6	,	,	u	u--------	_	27	AuxX	_	t_3577
+7	ἐν	ἐν	r	r--------	_	9	AuxP	_	t_3578
+8	ᾧ	ὅς	p	p-s---nd-	Case=d|Gender=n|Number=s	7	ADV	_	t_3579
+9	ἠσθένει	ἀσθενέω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	3	ATR	_	t_3580
+10	διὰ	διά	r	r--------	_	9	AuxP	_	t_3581
+11	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_3582
+12	σαρκός	σάρξ	n	n-s---fg-	Case=g|Gender=f|Number=s	10	ADV	_	t_3583
+13	,	,	u	u--------	_	27	AuxX	_	t_3584
+14	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	15	ATR	_	t_3585
+15	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	27	SBJ	_	t_3586
+16	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	18	ATR	_	t_3587
+17	ἑαυτοῦ	ἑαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	18	ATR	_	t_3588
+18	υἱὸν	υἱός	n	n-s---ma-	Case=a|Gender=m|Number=s	19	OBJ	_	t_3589
+19	πέμψας	πέμπω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	27	ADV	_	t_3590
+20	ἐν	ἐν	r	r--------	_	19	AuxP	_	t_3591
+21	ὁμοιώματι	ὁμοίωμα	n	n-s---nd-	Case=d|Gender=n|Number=s	20	ADV	_	t_3592
+22	σαρκὸς	σάρξ	n	n-s---fg-	Case=g|Gender=f|Number=s	23	ATR	_	t_3593
+23	ἁμαρτίας	ἁμαρτία	n	n-s---fg-	Case=g|Gender=f|Number=s	21	ATR	_	t_3594
+24	καὶ	καί	c	c--------	_	19	COORD	_	t_3595
+25	περὶ	περί	r	r--------	_	24	AuxP	_	t_3596
+26	ἁμαρτίας	ἁμαρτία	n	n-s---fg-	Case=g|Gender=f|Number=s	25	ADV	_	t_3597
+27	κατέκρινε	καταδικάζω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	0	PRED	_	t_3598
+28	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	29	ATR	_	t_3599
+29	ἁμαρτίαν	ἁμαρτία	n	n-s---fa-	Case=a|Gender=f|Number=s	27	OBJ	_	t_3600
+30	ἐν	ἐν	r	r--------	_	27	AuxP	_	t_3601
+31	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	32	ATR	_	t_3602
+32	σαρκί	σάρξ	n	n-s---fd-	Case=d|Gender=f|Number=s	30	ADV	_	t_3603
+33	,	,	u	u--------	_	27	AuxX	_	t_3604
+34	ἵνα	ἵνα	c	c--------	_	27	AuxC	_	t_3605
+35	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	36	ATR	_	t_3606
+36	δικαίωμα	δικαίωμα	n	n-s---nn-	Case=n|Gender=n|Number=s	39	SBJ	_	t_3607
+37	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	38	ATR	_	t_3608
+38	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	36	ATR	_	t_3609
+39	πληρωθῇ	πληρόω	v	v3sasp---	Mood=s|Number=s|Person=3|Tense=a|Voice=p	34	ADV	_	t_3610
+40	ἐν	ἐν	r	r--------	_	39	AuxP	_	t_3611
+41	ἡμῖν	ἐγώ	p	p1p---md-	Case=d|Gender=m|Number=p	40	ADV	_	t_3612
+42	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	41	ATR	_	t_3613
+43	μὴ	μή	d	d--------	_	45	AuxZ	_	t_3614
+44	κατὰ	κατά	r	r--------	_	47	AuxP	_	t_3615
+45	σάρκα	σάρξ	n	n-s---fa-	Case=a|Gender=f|Number=s	44	ADV	_	t_3616
+46	περιπατοῦσιν	περιπατέω	v	v-pppamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	41	ATR	_	t_3617
+47	ἀλλὰ	ἀλλά	c	c--------	_	46	COORD	_	t_3618
+48	κατὰ	κατά	r	r--------	_	47	AuxP	_	t_3619
+49	πνεῦμα	πνεῦμα	n	n-s---na-	Case=a|Gender=n|Number=s	48	ADV	_	t_3620
+50	·	·	u	u--------	_	27	AuxK	_	t_3621
+
+
+# sentence_id = 193
+# translation_lang = en
+# prose_translation = For those who are according to the flesh think the things of the flesh, but those who are according to the spirit [think] the things of the spirit.
+# literal_translation = For the ones being according to flesh think the things of the flesh, but the ones according to spirit [think] the things of the spirit.
+1	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	5	ATR	_	t_3622
+2	γὰρ	γάρ	d	d--------	_	12	AuxY	_	t_3623
+3	κατὰ	κατά	r	r--------	_	5	AuxP	_	t_3624
+4	σάρκα	σάρξ	n	n-s---fa-	Case=a|Gender=f|Number=s	3	PNOM	_	t_3625
+5	ὄντες	εἰμί	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	9	SBJ	_	t_3626
+6	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	9	OBJ	_	t_3627
+7	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_3628
+8	σαρκὸς	σάρξ	n	n-s---fg-	Case=g|Gender=f|Number=s	6	ATR	_	t_3629
+9	φρονοῦσιν	φρονέω	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	12	PRED	_	t_3630
+10	,	,	u	u--------	_	0	AuxX	_	t_3631
+11	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	18	SBJ	_	t_3632
+12	δὲ	δέ	d	d--------	_	10	COORD	_	t_3633
+13	κατὰ	κατά	r	r--------	_	18	AuxP	_	t_3634
+14	πνεῦμα	πνεῦμα	n	n-s---na-	Case=a|Gender=n|Number=s	13	ADV	_	t_3635
+15	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	18	OBJ	_	t_3636
+16	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	17	ATR	_	t_3637
+17	πνεύματος	πνεῦμα	n	n-s---ng-	Case=g|Gender=n|Number=s	15	ATR	_	t_3638
+18	[0]	[0]	-	---------	_	12	PRED	_	e_72
+19	.	.	u	u--------	_	10	AuxK	_	t_3639
+
+
+# sentence_id = 194
+# translation_lang = en
+# prose_translation = For the mindset of the flesh is death, but the mindset of the Spirit is life and peace;
+# literal_translation = For the mindset of the flesh [is] death, but the mindset of the Spirit [is] life and peace;
+1	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_3640
+2	γὰρ	γάρ	d	d--------	_	9	AuxY	_	t_3641
+3	φρόνημα	φρόνημα	n	n-s---nn-	Case=n|Gender=n|Number=s	16	SBJ	_	t_3642
+4	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_3643
+5	σαρκὸς	σάρξ	n	n-s---fg-	Case=g|Gender=f|Number=s	3	ATR	_	t_3644
+6	θάνατος	θάνατος	n	n-s---mn-	Case=n|Gender=m|Number=s	16	PNOM	_	t_3645
+7	,	,	u	u--------	_	0	AuxX	_	t_3646
+8	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	10	ATR	_	t_3647
+9	δὲ	δέ	d	d--------	_	7	COORD	_	t_3648
+10	φρόνημα	φρόνημα	n	n-s---nn-	Case=n|Gender=n|Number=s	17	PNOM	_	t_3649
+11	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	12	ATR	_	t_3650
+12	πνεύματος	πνεῦμα	n	n-s---ng-	Case=g|Gender=n|Number=s	10	ATR	_	t_3651
+13	ζωὴ	ζωή	n	n-s---fn-	Case=n|Gender=f|Number=s	14	SBJ	_	t_3652
+14	καὶ	καί	c	c--------	_	17	COORD	_	t_3653
+15	εἰρήνη	εἰρήνη	n	n-s---fn-	Case=n|Gender=f|Number=s	14	PNOM	_	t_3654
+16	[0]	[0]	-	---------	_	9	PRED	_	e_73
+17	[1]	[1]	-	---------	_	9	PRED	_	e_74
+18	·	·	u	u--------	_	7	AuxK	_	t_3655
+
+
+# sentence_id = 195
+# translation_lang = en
+# prose_translation = Because the mind of the flesh is hostility toward God, for it does not submit to the law of God, nor indeed can it;
+# literal_translation = Because the mind-set of the flesh [is] hostility toward God; for to the law of God it is not subjected, for neither is it able [to be];
+1	διότι	διότι	c	c--------	_	22	AuxC	_	t_3656
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_3657
+3	φρόνημα	φρόνημα	n	n-s---nn-	Case=n|Gender=n|Number=s	6	SBJ	_	t_3658
+4	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_3659
+5	σαρκὸς	σάρξ	n	n-s---fg-	Case=g|Gender=f|Number=s	3	ATR	_	t_3660
+6	ἔχθρα	ἔχθρα	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	1	ADV	_	t_3661
+7	εἰς	εἰς	r	r--------	_	6	AuxP	_	t_3662
+8	θεόν	θεός	n	n-s---ma-	Case=a|Gender=m|Number=s	7	ADV	_	t_3663
+9	,	,	u	u--------	_	22	AuxX	_	t_3664
+10	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	12	ATR	_	t_3665
+11	γὰρ	γάρ	g	g--------	_	16	AuxY	_	t_3666
+12	νόμῳ	νόμος	n	n-s---md-	Case=d|Gender=m|Number=s	16	ADV	_	t_3667
+13	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	14	ATR	_	t_3668
+14	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ATR	_	t_3669
+15	οὐχ	οὐ	d	d--------	_	16	AuxZ	_	t_3670
+16	ὑποτάσσεται	ὑποτάσσω	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	19	PRED	_	t_3671
+17	,	,	u	u--------	_	22	AuxX	_	t_3672
+18	οὐ	οὐ	d	d--------	_	21	AuxZ	_	t_3673
+19	δὲ	δέ	c	c--------	_	9	COORD	_	t_3674
+20	γὰρ	γάρ	g	g--------	_	21	AuxY	_	t_3675
+21	δύναται	δύναμαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	19	PRED	_	t_3676
+22	[0]	[0]	-	---------	_	0	PRED	_	e_75
+23	·	·	u	u--------	_	22	AuxK	_	t_3677
+
+
+# sentence_id = 196
+# translation_lang = en
+# prose_translation = And those who are in the flesh cannot please God.
+# literal_translation = But those being in [the] flesh are not able to please God.
+1	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	5	ATR	_	t_3678
+2	δὲ	δέ	g	g--------	_	0	COORD	_	t_3679
+3	ἐν	ἐν	r	r--------	_	5	AuxP	_	t_3680
+4	σαρκὶ	σάρξ	n	n-s---fd-	Case=d|Gender=f|Number=s	3	PNOM	_	t_3681
+5	ὄντες	εἰμί	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	9	SBJ	_	t_3682
+6	θεῷ	θεός	n	n-s---md-	Case=d|Gender=m|Number=s	7	OBJ	_	t_3683
+7	ἀρέσαι	ἀρέσκω	v	v--ana---	Mood=n|Tense=a|Voice=a	9	OBJ	_	t_3684
+8	οὐ	οὐ	d	d--------	_	9	AuxZ	_	t_3685
+9	δύνανται	δύναμαι	v	v3ppie---	Mood=i|Number=p|Person=3|Tense=p|Voice=e	2	PRED	_	t_3686
+10	.	.	u	u--------	_	9	AuxK	_	t_3687
+
+
+# sentence_id = 197
+# translation_lang = en
+# prose_translation = But you are not in the flesh but in the Spirit.
+# literal_translation = But you are not in flesh but in Spirit.
+1	Ὑμεῖς	σύ	n	n-p---mn-	Case=n|Gender=m|Number=p	4	SBJ	_	t_3688
+2	δὲ	δέ	d	d--------	_	4	AuxY	_	t_3689
+3	οὐκ	οὐ	d	d--------	_	6	AuxZ	_	t_3690
+4	ἐστὲ	εἰμί	v	v2ppia---	Mood=i|Number=p|Person=2|Tense=p|Voice=a	0	PRED	_	t_3691
+5	ἐν	ἐν	r	r--------	_	7	AuxP	_	t_3692
+6	σαρκὶ	σάρξ	n	n-s---fd-	Case=d|Gender=f|Number=s	5	PNOM	_	t_3693
+7	ἀλλὰ	ἀλλά	c	c--------	_	4	COORD	_	t_3694
+8	ἐν	ἐν	r	r--------	_	7	AuxP	_	t_3695
+9	πνεύματι	πνεῦμα	n	n-s---nd-	Case=d|Gender=n|Number=s	8	PNOM	_	t_3696
+10	.	.	u	u--------	_	4	AuxK	_	t_3697
+
+
+# sentence_id = 198
+# translation_lang = en
+# prose_translation = If indeed the Spirit of God dwells in you.
+# literal_translation = If indeed [the] Spirit of God dwells in you.
+1	εἴπερ	εἴπερ	c	c--------	_	7	AuxC	_	t_3698
+2	πνεῦμα	πνεῦμα	n	n-s---nn-	Case=n|Gender=n|Number=s	4	SBJ	_	t_3699
+3	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	2	ATR	_	t_3700
+4	οἰκεῖ	οἰκέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	1	ADV	_	t_3701
+5	ἐν	ἐν	r	r--------	_	4	AuxP	_	t_3702
+6	ὑμῖν	σύ	p	p-p----d-	Case=d|Number=p	5	ADV	_	t_3703
+7	[0]	[0]	-	---------	_	0	PRED	_	e_76
+8	.	.	u	u--------	_	7	AuxK	_	t_3704
+
+
+# sentence_id = 199
+# translation_lang = en
+# prose_translation = But if anyone does not have the Spirit of Christ, he does not belong to him.
+# literal_translation = But if anyone [the] Spirit of Christ not has, this one not is of him.
+1	εἰ	εἰ	c	c--------	_	11	AuxC	_	t_3705
+2	δέ	δέ	d	d--------	_	11	AuxY	_	t_3706
+3	τις	τις	p	p-s---mn-	Case=n|Gender=m|Number=s	7	SBJ	_	t_3707
+4	πνεῦμα	πνεῦμα	n	n-s---na-	Case=a|Gender=n|Number=s	7	OBJ	_	t_3708
+5	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_3709
+6	οὐκ	οὐ	d	d--------	_	7	AuxZ	_	t_3710
+7	ἔχει	ἔχω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	1	ADV	_	t_3711
+8	,	,	u	u--------	_	11	AuxX	_	t_3712
+9	οὗτος	οὗτος	p	p-s---mn-	Case=n|Gender=m|Number=s	11	SBJ	_	t_3713
+10	οὐκ	οὐ	d	d--------	_	11	AuxZ	_	t_3714
+11	ἔστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_3715
+12	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	11	PNOM	_	t_3716
+13	.	.	u	u--------	_	11	AuxK	_	t_3717
+
+
+# sentence_id = 200
+# translation_lang = en
+# prose_translation = But if Christ is in you, the body is dead because of sin, but the spirit is life because of righteousness.
+# literal_translation = But if Christ [is] in you, the body indeed [is] dead on account of sin, but the spirit [is] life on account of righteousness.
+1	εἰ	εἰ	c	c--------	_	15	AuxC	_	t_3718
+2	δὲ	δέ	d	d--------	_	15	AuxY	_	t_3719
+3	Χριστὸς	χριστός	n	n-s---mn-	Case=n|Gender=m|Number=s	20	SBJ	_	t_3720
+4	ἐν	ἐν	r	r--------	_	20	AuxP	_	t_3721
+5	ὑμῖν	σύ	p	p-p---md-	Case=d|Gender=m|Number=p	4	ADV	_	t_3722
+6	,	,	u	u--------	_	0	AuxX	_	t_3723
+7	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	9	ATR	_	t_3724
+8	μὲν	μέν	d	d--------	_	15	AuxY	_	t_3725
+9	σῶμα	σῶμα	n	n-s---nn-	Case=n|Gender=n|Number=s	20	SBJ	_	t_3726
+10	νεκρὸν	νεκρός	a	a-s---nn-	Case=n|Gender=n|Number=s	20	PNOM	_	t_3727
+11	διὰ	διά	r	r--------	_	20	AuxP	_	t_3728
+12	ἁμαρτίαν	ἁμαρτία	n	n-s---fa-	Case=a|Gender=f|Number=s	11	ADV	_	t_3729
+13	,	,	u	u--------	_	6	AuxX	_	t_3730
+14	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	16	ATR	_	t_3731
+15	δὲ	δέ	c	c--------	_	6	COORD	_	t_3732
+16	πνεῦμα	πνεῦμα	n	n-s---nn-	Case=n|Gender=n|Number=s	21	SBJ	_	t_3733
+17	ζωὴ	ζωή	a	a-s---fn-	Case=n|Gender=f|Number=s	21	PNOM	_	t_3734
+18	διὰ	διά	r	r--------	_	21	AuxP	_	t_3735
+19	δικαιοσύνην	δικαιοσύνη	n	n-s---fa-	Case=a|Gender=f|Number=s	18	ADV	_	t_3736
+20	[0]	[0]	-	---------	_	1	ADV	_	e_77
+21	[1]	[1]	-	---------	_	15	PRED	_	e_78
+22	.	.	u	u--------	_	6	AuxK	_	t_3737
+
+
+# sentence_id = 201
+# translation_lang = en
+# prose_translation = But if the Spirit of the one who raised Jesus from the dead dwells in you, the one who raised Christ Jesus from the dead will also give life to your mortal bodies through his Spirit that dwells in you.
+# literal_translation = But if the Spirit of the one who raised Jesus out from among the dead dwells in you, the one who raised Christ Jesus out from among the dead will give life [also] to the mortal bodies of you through his Spirit that dwells in you.
+1	εἰ	εἰ	c	c--------	_	21	AuxC	_	t_3738
+2	δὲ	δέ	d	d--------	_	21	AuxY	_	t_3739
+3	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	4	ATR	_	t_3740
+4	πνεῦμα	πνεῦμα	n	n-s---nn-	Case=n|Gender=n|Number=s	11	SBJ	_	t_3741
+5	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	6	ATR	_	t_3742
+6	ἐγείραντος	ἐγείρω	v	v-sapamg-	Case=g|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	4	ATR	_	t_3743
+7	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	8	ATR	_	t_3744
+8	Ἰησοῦν	ἰησοῦς	n	n-s---ma-	Case=a|Gender=m|Number=s	6	OBJ	_	t_3745
+9	ἐκ	ἐκ	r	r--------	_	6	AuxP	_	t_3746
+10	νεκρῶν	νεκρός	n	n-p---mg-	Case=g|Gender=m|Number=p	9	ADV	_	t_3747
+11	οἰκεῖ	οἰκέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	1	ADV	_	t_3748
+12	ἐν	ἐν	r	r--------	_	11	AuxP	_	t_3749
+13	ὑμῖν	σύ	p	p-p---md-	Case=d|Gender=m|Number=p	12	ADV	_	t_3750
+14	,	,	u	u--------	_	21	AuxX	_	t_3751
+15	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	16	ATR	_	t_3752
+16	ἐγείρας	ἐγείρω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	21	SBJ	_	t_3753
+17	ἐκ	ἐκ	r	r--------	_	16	AuxP	_	t_3754
+18	νεκρῶν	νεκρός	n	n-p---fg-	Case=g|Gender=m|Number=p	17	ADV	_	t_3755
+19	Χριστὸν	χριστός	n	n-s---ma-	Case=a|Gender=m|Number=s	20	ATR	_	t_3756
+20	Ἰησοῦν	ἰησοῦς	n	n-s---ma-	Case=a|Gender=m|Number=s	23	OBJ	_	t_3757
+21	ζωοποιήσει	ζωοποιέω	v	v3sfia---	Mood=i|Number=s|Person=3|Tense=f|Voice=a	0	PRED	_	t_3758
+22	[	[	u	u--------	_	21	AuxX	_	t_3759
+23	καὶ	καί	c	c--------	_	21	COORD	_	t_3760
+24	]	]	u	u--------	_	21	AuxX	_	t_3761
+25	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	27	ATR	_	t_3762
+26	θνητὰ	θνητός	a	a-p---na-	Case=a|Gender=n|Number=p	27	ATR	_	t_3763
+27	σώματα	σῶμα	n	n-p---na-	Case=a|Gender=n|Number=p	23	OBJ	_	t_3764
+28	ὑμῶν	σύ	p	p2p---cg-	Case=g|Gender=c|Number=p|Person=2	27	ATR	_	t_3765
+29	διὰ	διά	r	r--------	_	21	AuxP	_	t_3766
+30	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	33	ATR	_	t_3767
+31	ἐνοικοῦντος	ἐνοικέω	v	v-sppang-	Case=g|Gender=n|Mood=p|Number=s|Tense=p|Voice=a	33	ATR	_	t_3768
+32	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	33	ATR	_	t_3769
+33	πνεύματος	πνεῦμα	n	n-s---ng-	Case=g|Gender=n|Number=s	29	ADV	_	t_3770
+34	ἐν	ἐν	r	r--------	_	21	AuxP	_	t_3771
+35	ὑμῖν	σύ	p	p2p---cd-	Case=d|Gender=c|Number=p|Person=2	34	ADV	_	t_3772
+36	.	.	u	u--------	_	21	AuxK	_	t_3773
+
+
+# sentence_id = 202
+# translation_lang = en
+# prose_translation = So then, brothers, we are debtors, not to the flesh, to live according to the flesh; for if you live according to the flesh, you are about to die, but if by the Spirit you put to death the deeds of the body, you will live.
+# literal_translation = Therefore then, brothers, debtors we are, not to the flesh, to live according to the flesh, for if according to the flesh you live, you are about to die, but if by [the] Spirit the deeds of the body you put to death, you will live.
+1	Ἄρα	ἄρα	n	n-s---mv-	Case=v|Gender=m|Number=s	7	ExD	_	t_3774
+2	οὖν	οὖν	d	d--------	_	7	AuxY	_	t_3775
+3	,	,	u	u--------	_	7	AuxX	_	t_3776
+4	ἀδελφοί	ἀδελφός	n	n-p---mv-	Case=v|Gender=m|Number=p	7	ExD	_	t_3777
+5	,	,	u	u--------	_	7	AuxX	_	t_3778
+6	ὀφειλέται	ὀφείλω	n	n-p---mn-	Case=n|Gender=m|Number=p	7	PNOM	_	t_3779
+7	ἐσμέν	εἰμί	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_3780
+8	,	,	u	u--------	_	7	AuxX	_	t_3781
+9	οὐ	οὐ	d	d--------	_	11	AuxZ	_	t_3782
+10	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	11	ATR	_	t_3783
+11	σαρκὶ	σάρξ	n	n-s---fd-	Case=d|Gender=f|Number=s	15	ADV	_	t_3784
+12	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	15	ATR	_	t_3785
+13	κατὰ	κατά	r	r--------	_	15	AuxP	_	t_3786
+14	σάρκα	σάρξ	n	n-s---fa-	Case=a|Gender=f|Number=s	13	ADV	_	t_3787
+15	ζῇν	ζάω	v	v--pna---	Mood=n|Tense=p|Voice=a	26	ATR	_	t_3788
+16	,	,	u	u--------	_	7	AuxX	_	t_3789
+17	εἰ	εἰ	c	c--------	_	26	AuxC	_	t_3790
+18	γὰρ	γάρ	d	d--------	_	22	AuxY	_	t_3791
+19	κατὰ	κατά	r	r--------	_	21	AuxP	_	t_3792
+20	σάρκα	σάρξ	n	n-s---fa-	Case=a|Gender=f|Number=s	19	ADV	_	t_3793
+21	ζῆτε	ζάω	v	v2ppsa---	Mood=s|Number=p|Person=2|Tense=p|Voice=a	22	ADV	_	t_3794
+22	μέλλετε	μέλλω	v	v2ppia---	Mood=i|Number=p|Person=2|Tense=p|Voice=a	17	ADV	_	t_3795
+23	ἀποθνήσκειν	ἀποθνήσκω	v	v--pna---	Mood=n|Tense=p|Voice=a	22	OBJ	_	t_3796
+24	,	,	u	u--------	_	7	AuxX	_	t_3797
+25	εἰ	εἰ	c	c--------	_	26	AuxC	_	t_3798
+26	δὲ	δέ	c	c--------	_	7	COORD	_	t_3799
+27	πνεύματι	πνεῦμα	n	n-s---nd-	Case=d|Gender=n|Number=s	33	ADV	_	t_3800
+28	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	29	ATR	_	t_3801
+29	πράξεις	πρᾶξις	n	n-p---fa-	Case=a|Gender=f|Number=p	33	OBJ	_	t_3802
+30	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	31	ATR	_	t_3803
+31	σώματος	σῶμα	n	n-s---ng-	Case=g|Gender=n|Number=s	29	ATR	_	t_3804
+32	θανατοῦτε	θανατόω	n	n-s---mg-	Case=g|Gender=m|Number=s	29	ATR	_	t_3805
+33	ζήσεσθε	ζάω	v	v2pfim---	Mood=i|Number=p|Person=2|Tense=f|Voice=m	25	ADV	_	t_3806
+34	.	.	u	u--------	_	7	AuxK	_	t_3807
+
+
+# sentence_id = 203
+# translation_lang = en
+# prose_translation = For as many as are led by the Spirit of God, these are sons of God.
+# literal_translation = For as many as are led by [the] Spirit of God, these are sons of God.
+1	ὅσοι	ὅσος	a	a-p---mn-	Case=n|Gender=m|Number=p	5	SBJ	_	t_3808
+2	γὰρ	γάρ	d	d--------	_	10	AuxY	_	t_3809
+3	πνεύματι	πνεῦμα	n	n-s---nd-	Case=d|Gender=n|Number=s	5	ADV	_	t_3810
+4	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	3	ATR	_	t_3811
+5	ἄγονται	ἄγω	v	v3ppie---	Mood=i|Number=p|Person=3|Tense=p|Voice=e	7	ATR	_	t_3812
+6	,	,	u	u--------	_	10	AuxX	_	t_3813
+7	οὗτοι	οὗτος	p	p-p---mn-	Case=n|Gender=m|Number=p	10	SBJ	_	t_3814
+8	υἱοὶ	υἱός	n	n-p---mn-	Case=n|Gender=m|Number=p	10	PNOM	_	t_3815
+9	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_3816
+10	εἰσίν	εἰμί	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	0	PRED	_	t_3817
+11	.	.	u	u--------	_	10	AuxK	_	t_3818
+
+
+# sentence_id = 204
+# translation_lang = en
+# prose_translation = For you did not receive a spirit of slavery, to fall back into fear, but you received a spirit of adoption, by which we cry, "Abba, Father!"
+# literal_translation = For not you received a spirit of slavery again into fear, but you received a spirit of adoption, in which we cry, "Abba, the Father";
+1	οὐ	οὐ	d	d--------	_	3	AuxZ	_	t_3819
+2	γὰρ	γάρ	d	d--------	_	10	AuxY	_	t_3820
+3	ἐλάβετε	λαμβάνω	v	v2paia---	Mood=i|Number=p|Person=2|Tense=a|Voice=a	10	PRED	_	t_3821
+4	πνεῦμα	πνεῦμα	n	n-s---na-	Case=a|Gender=n|Number=s	3	OBJ	_	t_3822
+5	δουλείας	δουλεία	n	n-s---fg-	Case=g|Gender=f|Number=s	4	ATR	_	t_3823
+6	πάλιν	πάλιν	d	d--------	_	3	ADV	_	t_3824
+7	εἰς	εἰς	r	r--------	_	3	AuxP	_	t_3825
+8	φόβον	φόβος	n	n-s---ma-	Case=a|Gender=m|Number=s	7	ADV	_	t_3826
+9	,	,	u	u--------	_	0	AuxX	_	t_3827
+10	ἀλλὰ	ἀλλά	c	c--------	_	9	COORD	_	t_3828
+11	ἐλάβετε	λαμβάνω	v	v2paia---	Mood=i|Number=p|Person=2|Tense=a|Voice=a	10	PRED	_	t_3829
+12	πνεῦμα	πνεῦμα	n	n-s---na-	Case=a|Gender=n|Number=s	11	OBJ	_	t_3830
+13	υἱοθεσίας	υἱοθεσία	n	n-s---fg-	Case=g|Gender=f|Number=s	12	ATR	_	t_3831
+14	,	,	u	u--------	_	9	AuxX	_	t_3832
+15	ἐν	ἐν	r	r--------	_	17	AuxP	_	t_3833
+16	ᾧ	ὅς	p	p-s---nd-	Case=d|Gender=n|Number=s	15	ADV	_	t_3834
+17	κράζομεν	κράζω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	12	ATR	_	t_3835
+18	Ἀββά	ἀββά	n	n-s---mn-	Case=n|Gender=m|Number=s	17	SBJ	_	t_3836
+19	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	20	ATR	_	t_3837
+20	πατήρ	πατήρ	n	n-s---mn-	Case=n|Gender=m|Number=s	18	APOS	_	t_3838
+21	·	·	u	u--------	_	9	AuxK	_	t_3839
+
+
+# sentence_id = 205
+# translation_lang = en
+# prose_translation = The Spirit itself bears witness together with our spirit that we are children of God.
+# literal_translation = The Spirit itself bears-witness-together with our spirit, that we are children of God.
+1	αὐτὸ	αὐτός	a	a-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_3840
+2	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	3	ATR	_	t_3841
+3	πνεῦμα	πνεῦμα	n	n-s---nn-	Case=n|Gender=n|Number=s	4	SBJ	_	t_3842
+4	συνμαρτυρεῖ	συνμαρτυρέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_3843
+5	τῷ	ὁ	l	l-s---nd-	Case=d|Gender=n|Number=s	6	ATR	_	t_3844
+6	πνεύματι	πνεῦμα	n	n-s---nd-	Case=d|Gender=n|Number=s	4	OBJ	_	t_3845
+7	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	6	ATR	_	t_3846
+8	ὅτι	ὅτι	c	c--------	_	4	AuxC	_	t_3847
+9	ἐσμὲν	εἰμί	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	8	OBJ	_	t_3848
+10	τέκνα	τέκνον	n	n-p---nn-	Case=n|Gender=n|Number=p	9	PNOM	_	t_3849
+11	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	10	ATR	_	t_3850
+12	.	.	u	u--------	_	4	AuxK	_	t_3851
+
+
+# sentence_id = 206
+# translation_lang = en
+# prose_translation = And if children, also heirs.
+# literal_translation = And if children, also heirs [we are].
+1	εἰ	εἰ	c	c--------	_	8	AuxC	_	t_3852
+2	δὲ	δέ	d	d--------	_	8	AuxY	_	t_3853
+3	τέκνα	τέκνον	n	n-p---na-	Case=a|Gender=n|Number=p	7	SBJ	_	t_3854
+4	,	,	u	u--------	_	8	AuxX	_	t_3855
+5	καὶ	καί	d	d--------	_	6	AuxZ	_	t_3856
+6	κληρονόμοι	κληρονόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	8	PNOM	_	t_3857
+7	[0]	[0]	-	---------	_	1	ADV	_	e_79
+8	[1]	[1]	-	---------	_	0	PRED	_	e_80
+9	·	·	u	u--------	_	8	AuxK	_	t_3858
+
+
+# sentence_id = 207
+# translation_lang = en
+# prose_translation = heirs of God, and fellow heirs with Christ, if indeed we suffer with him so that we may also be glorified with him.
+# literal_translation = heirs on the one hand of God, and fellow-heirs of Christ, if indeed we suffer together, in order that we may also be glorified together.
+1	κληρονόμοι	κληρονόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	14	PNOM	_	t_3859
+2	μὲν	μέν	d	d--------	_	6	AuxY	_	t_3860
+3	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ATR	_	t_3861
+4	,	,	u	u--------	_	14	AuxX	_	t_3862
+5	συνκληρονόμοι	συνκληρονόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	6	PRED	_	t_3863
+6	δὲ	δέ	c	c--------	_	14	COORD	_	t_3864
+7	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	5	ATR	_	t_3865
+8	,	,	u	u--------	_	14	AuxX	_	t_3866
+9	εἴπερ	εἴπερ	c	c--------	_	14	AuxC	_	t_3867
+10	συνπάσχομεν	συνπάσχω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	9	ADV	_	t_3868
+11	ἵνα	ἵνα	c	c--------	_	10	AuxC	_	t_3869
+12	καὶ	καί	d	d--------	_	13	AuxZ	_	t_3870
+13	συνδοξασθῶμεν	συνδοξασθήομαι	v	v1pasa---	Mood=s|Number=p|Person=1|Tense=a|Voice=a	11	ADV	_	t_3871
+14	[0]	[0]	-	---------	_	0	PRED	_	e_81
+15	.	.	u	u--------	_	14	AuxK	_	t_3872
+
+
+# sentence_id = 208
+# translation_lang = en
+# prose_translation = For I consider that the sufferings of the present time are not worth comparing with the glory that is about to be revealed to us.
+# literal_translation = For I reckon that the sufferings of the now time [are] not worthy with-regard-to the glory about-to-be of-the-coming, for-it-to-be-revealed unto us.
+1	Λογίζομαι	λογίζομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	0	PRED	_	t_3873
+2	γὰρ	γάρ	d	d--------	_	1	AuxY	_	t_3874
+3	ὅτι	ὅτι	c	c--------	_	1	AuxC	_	t_3875
+4	οὐκ	οὐ	d	d--------	_	5	AuxZ	_	t_3876
+5	ἄξια	ἄξιος	a	a-p---nn-	Case=n|Gender=n|Number=p	18	PNOM	_	t_3877
+6	τὰ	ὁ	l	l-p---nn-	Case=n|Gender=n|Number=p	7	ATR	_	t_3878
+7	παθήματα	πάθημα	n	n-p---nn-	Case=n|Gender=n|Number=p	18	SBJ	_	t_3879
+8	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	10	ATR	_	t_3880
+9	νῦν	νῦν	d	d--------	_	10	ATR	_	t_3881
+10	καιροῦ	καιρός	n	n-s---mg-	Case=g|Gender=m|Number=s	5	ADV	_	t_3882
+11	πρὸς	πρός	r	r--------	_	15	AuxP	_	t_3883
+12	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	14	ATR	_	t_3884
+13	μέλλουσαν	μέλλω	v	v-sppafa-	Case=a|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	14	ATR	_	t_3885
+14	δόξαν	δόξα	n	n-s---fa-	Case=a|Gender=f|Number=s	11	ADV	_	t_3886
+15	ἀποκαλυφθῆναι	ἀποκαλύπτω	v	v--anp---	Mood=n|Tense=a|Voice=p	5	ADV	_	t_3887
+16	εἰς	εἰς	r	r--------	_	15	AuxP	_	t_3888
+17	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	16	ADV	_	t_3889
+18	[0]	[0]	-	---------	_	3	OBJ	_	e_82
+19	.	.	u	u--------	_	1	AuxK	_	t_3890
+
+
+# sentence_id = 209
+# translation_lang = en
+# prose_translation = For the creation's eager expectation awaits the revelation of the sons of God.
+# literal_translation = For the eager-expectation of the creation awaits the revelation of the sons of God.
+1	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	3	ATR	_	t_3891
+2	γὰρ	γάρ	d	d--------	_	12	AuxY	_	t_3892
+3	ἀποκαραδοκία	ἀποκαραδοκία	n	n-s---fn-	Case=n|Gender=f|Number=s	12	SBJ	_	t_3893
+4	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_3894
+5	κτίσεως	κτίσις	n	n-s---fg-	Case=g|Gender=f|Number=s	3	ATR	_	t_3895
+6	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	7	ATR	_	t_3896
+7	ἀποκάλυψιν	ἀποκάλυψις	n	n-s---fa-	Case=a|Gender=f|Number=s	12	OBJ	_	t_3897
+8	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	9	ATR	_	t_3898
+9	υἱῶν	υἱός	n	n-p---mg-	Case=g|Gender=m|Number=p	7	ATR	_	t_3899
+10	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_3900
+11	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_3901
+12	ἀπεκδέχεται	ἀπεκδέχομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_3902
+13	·	·	u	u--------	_	12	AuxK	_	t_3903
+
+
+# sentence_id = 210
+# translation_lang = en
+# prose_translation = For the creation was subjected to futility, not willingly, but because of him who subjected it, in hope that the creation itself also will be set free from the slavery of corruption into the freedom of the glory of the children of God.
+# literal_translation = For to the futility the creation was subjected, not willingly, but on account of the one who subjected [it], in hope that also the creation itself will be freed from the slavery of the corruption into the freedom of the glory of the children of God.
+1	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	3	ATR	_	t_3904
+2	γὰρ	γάρ	d	d--------	_	6	AuxY	_	t_3905
+3	ματαιότητι	ματαιότης	n	n-s---fd-	Case=d|Gender=f|Number=s	6	ADV	_	t_3906
+4	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	5	ATR	_	t_3907
+5	κτίσις	κτίσις	n	n-s---fn-	Case=n|Gender=f|Number=s	6	SBJ	_	t_3908
+6	ὑπετάγη	δουλεύω	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	0	PRED	_	t_3909
+7	,	,	u	u--------	_	6	AuxX	_	t_3910
+8	οὐχ	οὐ	d	d--------	_	9	AuxZ	_	t_3911
+9	ἑκοῦσα	ἑκών	a	a-s---fn-	Case=n|Gender=f|Number=s	10	ADV	_	t_3912
+10	ἀλλὰ	ἀλλά	c	c--------	_	6	COORD	_	t_3913
+11	διὰ	διά	r	r--------	_	10	AuxP	_	t_3914
+12	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	13	ATR	_	t_3915
+13	ὑποτάξαντα	ὑποτάσσω	v	v-sapama-	Case=a|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	11	ADV	_	t_3916
+14	,	,	u	u--------	_	6	AuxX	_	t_3917
+15	ἐφʼ	ἐπί	r	r--------	_	6	AuxP	_	t_3918
+16	ἑλπίδι	ἑλπίδες	n	n-s---fd-	Case=d|Gender=f|Number=s	15	ADV	_	t_3919
+17	ὅτι	ὅτι	c	c--------	_	16	AuxC	_	t_3920
+18	καὶ	καί	d	d--------	_	21	AuxZ	_	t_3921
+19	αὐτὴ	αὐτός	a	a-s---fn-	Case=n|Gender=f|Number=s	21	ATV	_	t_3922
+20	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	21	ATR	_	t_3923
+21	κτίσις	κτίσις	n	n-s---fn-	Case=n|Gender=f|Number=s	22	SBJ	_	t_3924
+22	ἐλευθερωθήσεται	ἐλευθερόω	v	v3sfip---	Mood=i|Number=s|Person=3|Tense=f|Voice=p	17	ATR	_	t_3925
+23	ἀπὸ	ἀπό	r	r--------	_	22	AuxP	_	t_3926
+24	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	25	ATR	_	t_3927
+25	δουλείας	δουλεία	n	n-s---fg-	Case=g|Gender=f|Number=s	23	ADV	_	t_3928
+26	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	25	ATR	_	t_3929
+27	φθορᾶς	φθορά	n	n-s---fg-	Case=g|Gender=f|Number=s	25	ATR	_	t_3930
+28	εἰς	εἰς	r	r--------	_	22	AuxP	_	t_3931
+29	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	30	ATR	_	t_3932
+30	ἐλευθερίαν	ἐλευθερία	n	n-s---fa-	Case=a|Gender=f|Number=s	28	ADV	_	t_3933
+31	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	32	ATR	_	t_3934
+32	δόξης	δόξα	n	n-s---fg-	Case=g|Gender=f|Number=s	30	ATR	_	t_3935
+33	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	34	ATR	_	t_3936
+34	τέκνων	τέκνον	n	n-p---ng-	Case=g|Gender=n|Number=p	32	ATR	_	t_3937
+35	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	36	ATR	_	t_3938
+36	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	34	ATR	_	t_3939
+37	.	.	u	u--------	_	6	AuxK	_	t_3940
+
+
+# sentence_id = 211
+# translation_lang = en
+# prose_translation = For we know that the whole creation groans together and suffers agony together until now.
+# literal_translation = For we know that all the creation groans-together and suffers-agony-together until the now.
+1	οἴδαμεν	οἶδα	v	v1pria---	Mood=i|Number=p|Person=1|Tense=r|Voice=a	0	PRED	_	t_3941
+2	γὰρ	γάρ	d	d--------	_	1	AuxY	_	t_3942
+3	ὅτι	ὅτι	c	c--------	_	1	AuxC	_	t_3943
+4	πᾶσα	πᾶς	a	a-s---fn-	Case=n|Gender=f|Number=s	6	ATR	_	t_3944
+5	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	6	ATR	_	t_3945
+6	κτίσις	κτίσις	n	n-s---fn-	Case=n|Gender=f|Number=s	8	SBJ	_	t_3946
+7	συνστενάζει	συνστενάζω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	8	OBJ	_	t_3947
+8	καὶ	καί	c	c--------	_	3	COORD	_	t_3948
+9	συνωδίνει	συνοδυνάω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	8	OBJ	_	t_3949
+10	ἄχρι	ἄχρι	r	r--------	_	8	AuxP	_	t_3950
+11	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	12	ATR	_	t_3951
+12	νῦν	νῦν	d	d--------	_	10	ADV	_	t_3952
+13	·	·	u	u--------	_	1	AuxK	_	t_3953
+
+
+# sentence_id = 212
+# translation_lang = en
+# prose_translation = And not only that, but we ourselves also, who have the firstfruits of the Spirit, we ourselves groan within ourselves, eagerly awaiting our adoption as sons, the redemption of our body.
+# literal_translation = Not only [so], but also [we] ourselves, having the firstfruits of the Spirit, [we], we ourselves also, in ourselves groan, awaiting eagerly [the] adoption, the redemption of our body.
+1	οὐ	οὐ	d	d--------	_	2	AuxZ	_	t_3954
+2	μόνον	μόνος	d	d--------	Case=a|Gender=n|Number=s	7	AuxZ	_	t_3955
+3	δέ	δέ	d	d--------	_	20	AuxY	_	t_3956
+4	,	,	u	u--------	_	20	AuxX	_	t_3957
+5	ἀλλὰ	ἀλλά	c	c--------	_	20	COORD	_	t_3958
+6	καὶ	καί	d	d--------	_	7	AuxZ	_	t_3959
+7	αὐτοὶ	αὐτός	p	p-p---mn-	Case=n|Gender=m|Number=p	5	ADV	_	t_3960
+8	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	9	ATR	_	t_3961
+9	ἀπαρχὴν	ἀπαρχή	n	n-s---fa-	Case=a|Gender=f|Number=s	12	OBJ	_	t_3962
+10	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	11	ATR	_	t_3963
+11	πνεύματος	πνεῦμα	n	n-s---ng-	Case=g|Gender=n|Number=s	9	ATR	_	t_3964
+12	ἔχοντες	ἔχω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	5	ADV	_	t_3965
+13	[	[	u	u--------	_	20	AuxG	_	t_3966
+14	ἡμεῖς	ἐγώ	p	p1p---cn-	Case=n|Gender=c|Number=p|Person=1	20	SBJ	_	t_3967
+15	]	]	u	u--------	_	20	AuxX	_	t_3968
+16	καὶ	καί	d	d--------	_	17	AuxZ	_	t_3969
+17	αὐτοὶ	αὐτός	p	p-p---mn-	Case=n|Gender=m|Number=p	20	ADV	_	t_3970
+18	ἐν	ἐν	r	r--------	_	20	AuxP	_	t_3971
+19	ἑαυτοῖς	ἑαυτοῦ	p	p-p---md-	Case=d|Gender=m|Number=p	18	ADV	_	t_3972
+20	στενάζομεν	στενάχω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_3973
+21	,	,	u	u--------	_	20	AuxX	_	t_3974
+22	υἱοθεσίαν	υἱοθεσία	n	n-s---fa-	Case=a|Gender=f|Number=s	23	OCOMP	_	t_3975
+23	ἀπεκδεχόμενοι	ἐκδέχομαι	v	v-pppemn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	20	ADV	_	t_3976
+24	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	25	ATR	_	t_3977
+25	ἀπολύτρωσιν	ἀπολύτρωσις	n	n-s---fa-	Case=a|Gender=f|Number=s	23	OBJ	_	t_3978
+26	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	27	ATR	_	t_3979
+27	σώματος	σῶμα	n	n-s---ng-	Case=g|Gender=n|Number=s	25	ATR	_	t_3980
+28	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	27	ATR	_	t_3981
+29	.	.	u	u--------	_	20	AuxK	_	t_3982
+
+
+# sentence_id = 213
+# translation_lang = en
+# prose_translation = For in hope we were saved.
+# literal_translation = For in the hope we were saved.
+1	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	3	ATR	_	t_3983
+2	γὰρ	γάρ	g	g--------	_	4	AuxY	_	t_3984
+3	ἐλπίδι	ἐλπίς	n	n-s---fd-	Case=d|Gender=f|Number=s	4	ADV	_	t_3985
+4	ἐσώθημεν	σώζω	v	v1paip---	Mood=i|Number=p|Person=1|Tense=a|Voice=p	0	PRED	_	t_3986
+5	·	·	u	u--------	_	4	AuxK	_	t_3987
+
+
+# sentence_id = 214
+# translation_lang = en
+# prose_translation = But hope that is seen is not hope; for why does one hope for what he sees?
+# literal_translation = But hope being seen is not hope; for that which someone sees, why does he hope [for it]?
+1	ἐλπὶς	ἐλπίς	n	n-s---fn-	Case=n|Gender=f|Number=s	5	SBJ	_	t_3988
+2	δὲ	δέ	g	g--------	_	5	AuxY	_	t_3989
+3	βλεπομένη	βλέπω	v	v-sppefn-	Case=n|Gender=f|Mood=p|Number=s|Tense=p|Voice=e	1	ATR	_	t_3990
+4	οὐκ	οὐ	d	d--------	_	5	AuxZ	_	t_3991
+5	ἔστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	7	PRED	_	t_3992
+6	ἐλπίς	ἐλπίς	n	n-s---fn-	Case=n|Gender=f|Number=s	5	SBJ	_	t_3993
+7	,	,	u	u--------	_	0	COORD	_	t_3994
+8	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	10	OBJ	_	t_3995
+9	γὰρ	γάρ	g	g--------	_	12	AuxY	_	t_3996
+10	βλέπει	βλέπω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	12	OBJ	_	t_3997
+11	τίς	τις	p	p-s---cn-	Case=n|Gender=c|Number=s	12	SBJ	_	t_3998
+12	ἐλπίζει	ἐλπίζω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	7	PRED	_	t_3999
+13	;	;	u	u--------	_	7	AuxK	_	t_4000
+
+
+# sentence_id = 215
+# translation_lang = en
+# prose_translation = But if we hope for what we do not see, we wait for it eagerly through patience.
+# literal_translation = But if what we do not see we hope for, through patience we wait eagerly for [it].
+1	εἰ	εἰ	c	c--------	_	10	AuxC	_	t_4001
+2	δὲ	δέ	d	d--------	_	10	AuxY	_	t_4002
+3	ὃ	ὅς	p	p-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_4003
+4	οὐ	οὐ	d	d--------	_	5	AuxZ	_	t_4004
+5	βλέπομεν	βλέπω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	6	OBJ	_	t_4005
+6	ἐλπίζομεν	ἐλπίζω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	1	ADV	_	t_4006
+7	,	,	u	u--------	_	10	AuxX	_	t_4007
+8	διʼ	διά	r	r--------	_	10	AuxP	_	t_4008
+9	ὑπομονῆς	ὑπομονή	n	n-s---fg-	Case=g|Gender=f|Number=s	8	ADV	_	t_4009
+10	ἀπεκδεχόμεθα	ἀποδέχομαι	v	v1ppie---	Mood=i|Number=p|Person=1|Tense=p|Voice=e	0	PRED	_	t_4010
+11	.	.	u	u--------	_	10	AuxK	_	t_4011
+
+
+# sentence_id = 216
+# translation_lang = en
+# prose_translation = Likewise too the Spirit helps us in our weakness;
+# literal_translation = Likewise also the Spirit helps our weakness;
+1	Ὡσαύτως	ὡσαύτως	d	d--------	_	6	ADV	_	t_4012
+2	δὲ	δέ	d	d--------	_	6	AuxY	_	t_4013
+3	καὶ	καί	c	c--------	_	5	AuxZ	_	t_4014
+4	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	5	ATR	_	t_4015
+5	πνεῦμα	πνεῦμα	n	n-s---nn-	Case=n|Gender=n|Number=s	6	SBJ	_	t_4016
+6	συναντιλαμβάνεται	συναντιλαμβάνω	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_4017
+7	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	8	ATR	_	t_4018
+8	ἀσθενείᾳ	ἀσθένεια	n	n-s---fd-	Case=d|Gender=f|Number=s	6	OBJ	_	t_4019
+9	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	8	ATR	_	t_4020
+10	·	·	u	u--------	_	6	AuxK	_	t_4021
+
+
+# sentence_id = 217
+# translation_lang = en
+# prose_translation = For we do not know what we should pray for as we ought, but the Spirit himself intercedes for us with inexpressible groanings; and he who searches the hearts knows what the mind of the Spirit is, because he intercedes for the saints according to God's will.
+# literal_translation = For the what we should pray, as it is necessary, we do not know, but the Spirit himself intercedes [for us] with groanings inexpressible; and the one searching the hearts knows what [is] the mind of the Spirit, because according to God he intercedes on behalf of [the] saints.
+1	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	4	ATR	_	t_4022
+2	γὰρ	γάρ	d	d--------	_	8	AuxY	_	t_4023
+3	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	4	OBJ	_	t_4024
+4	προσευξώμεθα	προσεύχομαι	v	v1pasm---	Mood=s|Number=p|Person=1|Tense=a|Voice=m	8	OBJ	_	t_4025
+5	καθὸ	καθό	d	d--------	_	4	AuxC	_	t_4026
+6	δεῖ	δεῖ	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	4	OBJ	_	t_4027
+7	οὐκ	οὐ	d	d--------	_	8	AuxZ	_	t_4028
+8	οἴδαμεν	οἶδα	v	v1pria---	Mood=i|Number=p|Person=1|Tense=r|Voice=a	10	PRED	_	t_4029
+9	,	,	u	u--------	_	0	AuxX	_	t_4030
+10	ἀλλὰ	ἀλλά	c	c--------	_	9	COORD	_	t_4031
+11	αὐτὸ	αὐτός	a	a-s---nn-	Case=n|Gender=n|Number=s	13	ATR	_	t_4032
+12	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	13	ATR	_	t_4033
+13	πνεῦμα	πνεῦμα	n	n-s---nn-	Case=n|Gender=n|Number=s	14	SBJ	_	t_4034
+14	ὑπερεντυγχάνει	ὑπερεντυγχάνω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	19	PRED	_	t_4035
+15	στεναγμοῖς	στεναγμός	n	n-p---md-	Case=d|Gender=m|Number=p	14	OBJ	_	t_4036
+16	ἀλαλήτοις	ἄφραστος	a	a-p---md-	Case=d|Gender=m|Number=p	15	ATR	_	t_4037
+17	,	,	u	u--------	_	9	AuxX	_	t_4038
+18	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	20	ATR	_	t_4039
+19	δὲ	δέ	d	d--------	_	10	COORD	_	t_4040
+20	ἐραυνῶν	ἐραυνάω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	23	SBJ	_	t_4041
+21	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	22	ATR	_	t_4042
+22	καρδίας	καρδία	n	n-p---fa-	Case=a|Gender=f|Number=p	20	OBJ	_	t_4043
+23	οἶδεν	οἶδα	v	v3sria---	Mood=i|Number=s|Person=3|Tense=r|Voice=a	19	PRED	_	t_4044
+24	τί	τίς	p	p-s---na-	Case=n|Gender=n|Number=s	26	ATR	_	t_4045
+25	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	26	ATR	_	t_4046
+26	φρόνημα	φρόνημα	n	n-s---na-	Case=a|Gender=n|Number=s	29	OBJ	_	t_4047
+27	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	28	ATR	_	t_4048
+28	πνεύματος	πνεῦμα	n	n-s---ng-	Case=g|Gender=n|Number=s	26	ATR	_	t_4049
+29	,	,	u	u--------	_	23	APOS	_	t_4050
+30	ὅτι	ὅτι	c	c--------	_	29	AuxC	_	t_4051
+31	κατὰ	κατά	r	r--------	_	33	AuxP	_	t_4052
+32	θεὸν	θεός	n	n-s---ma-	Case=a|Gender=m|Number=s	31	ADV	_	t_4053
+33	ἐντυγχάνει	ἐντυγχάνω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	30	OBJ	_	t_4054
+34	ὑπὲρ	ὑπέρ	r	r--------	_	33	AuxP	_	t_4055
+35	ἁγίων	ἅγιος	a	a-p---ng-	Case=g|Gender=n|Number=p	34	ADV	_	t_4056
+36	.	.	u	u--------	_	9	AuxK	_	t_4057
