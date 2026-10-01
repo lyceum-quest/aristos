@@ -1,5 +1,8 @@
-# Kai-generated environment
-.kai/
+# Kai-generated environment; only the lock is committed
+/.kai/*
+!/.kai/lock.json
+
+# Local settings (see .env.example)
 .env
 
 # Elm build cache and generated browser bundle

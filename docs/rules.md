@@ -2,7 +2,7 @@
 
 ## Workflow
 
-- Run project tooling through Kai tasks or workflows. Declare new tooling dependencies and runnable tasks in `Kaifile`.
+- Run project tooling through Kai tasks or workflows. Declare new tooling dependencies and runnable tasks in `Kaifile.roc`.
 - Do not commit unless explicitly instructed. Never push, create an issue, or open a pull request.
 - If asked why a problem occurs, explain it so the developer can fix it. Do not edit files unless asked.
 - Use a subagent for self-contained work when one is available, preserving the main context for design discussions.

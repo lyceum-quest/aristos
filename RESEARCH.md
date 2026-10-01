@@ -335,7 +335,7 @@ Before building every curator feature into Aristos:
 - **INCEpTION** provides multilayer annotation, active learning, external recommenders, explicit accept/reject, curation, and inter-annotator agreement.
 - **Arethusa** remains relevant for AGDT-style Ancient Greek workflows and Morpheus-backed analysis.
 
-A prototype can export/import immutable patches through a Roc/Kai task while using one of these tools externally. Grew rules or non-Roc scripts must remain disposable/external experiments; production validation rules maintained in this repository must be Roc and exposed through `Kaifile`. The Python-first runner/layout in the older `docs/plans/conllu-data-pipeline/README.md` is superseded by the current repository language boundary and must not be implemented as written.
+A prototype can export/import immutable patches through a Roc/Kai task while using one of these tools externally. Grew rules or non-Roc scripts must remain disposable/external experiments; production validation rules maintained in this repository must be Roc and exposed through `Kaifile.roc`. The Python-first runner/layout in the older `docs/plans/conllu-data-pipeline/README.md` is superseded by the current repository language boundary and must not be implemented as written.
 
 Sources:
 
