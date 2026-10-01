@@ -4870,3 +4870,1255 @@
 21	μέρος	μέρος	n	n-s---na-	Case=a|Gender=n|Number=s	15	ADV	_	t_3121
 22	[0]	[0]	-	---------	_	3	ADV	_	e_96
 23	;	;	u	u--------	_	9	AuxK	_	t_3122
+
+
+# sentence_id = 277
+# translation_lang = en
+# prose_translation = Or do you think it's still possible for that city to exist and not be overturned, if its legal judgments have no force but are rendered powerless and destroyed by private individuals?
+# literal_translation = Or does it seem to you [to be] still possible for that city to exist and not to have been overturned, in which the judgments that have come to be have no strength, but by private individuals are made both powerless and destroyed?
+1	ἢ	ἤ1	d	d--------	_	2	AuxY	_	t_3123
+2	δοκεῖ	δοκέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_3124
+3	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	2	OBJ	_	t_3125
+4	οἷόν	οἷος	a	a-s---nn-	Case=n|Gender=n|Number=s	10	PNOM	_	t_3126
+5	τε	τε	d	d--------	_	4	AuxZ	_	t_3127
+6	ἔτι	ἔτι	d	d--------	_	4	ADV	_	t_3128
+7	ἐκείνην	ἐκεῖνος	a	a-s---fa-	Case=a|Gender=f|Number=s	9	ATR	_	t_3129
+8	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	9	ATR	_	t_3130
+9	πόλιν	πόλις	n	n-s---fa-	Case=a|Gender=f|Number=s	13	SBJ	_	t_3131
+10	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	2	OBJ	_	t_3132
+11	καὶ	καί	d	d--------	_	4	AuxZ	_	t_3133
+12	μὴ	μή	d	d--------	_	13	AuxZ	_	t_3134
+13	ἀνατετράφθαι	ἀνατρέπω	v	v--rne---	Mood=n|Tense=r|Voice=e	2	SBJ	_	t_3135
+14	,	,	u	u--------	_	2	AuxX	_	t_3136
+15	ἐν	ἐν	r	r--------	_	23	AuxP	_	t_3137
+16	ᾗ	ὅς	p	p-s---fd-	Case=d|Gender=f|Number=s	15	ADV	_	t_3138
+17	ἂν	ἄν	d	d--------	_	22	AuxY	_	t_3139
+18	αἱ	ὁ	l	l-p---fn-	Case=n|Gender=f|Number=p	20	ATR	_	t_3140
+19	γενόμεναι	γίγνομαι	v	v-papmfn-	Case=n|Gender=f|Mood=p|Number=p|Tense=a|Voice=m	20	ATR	_	t_3141
+20	δίκαι	δίκη	n	n-p---fn-	Case=n|Gender=f|Number=p	23	SBJ	_	t_3142
+21	μηδὲν	μηδείς	a	a-s---na-	Case=a|Gender=n|Number=s	22	ADV	_	t_3143
+22	ἰσχύωσιν	ἰσχύω	v	v3ppsa---	Mood=s|Number=p|Person=3|Tense=p|Voice=a	23	ATR	_	t_3144
+23	ἀλλὰ	ἀλλά	c	c--------	_	9	COORD	_	t_3145
+24	ὑπὸ	ὑπό	r	r--------	_	29	AuxP	_	t_3146
+25	ἰδιωτῶν	ἰδιώτης	n	n-p---mg-	Case=g|Gender=m|Number=p	24	OBJ	_	t_3147
+26	ἄκυροί	ἄκυρος	a	a-p---fn-	Case=n|Gender=f|Number=p	29	AtvV	_	t_3148
+27	τε	τε	d	d--------	_	29	AuxY	_	t_3149
+28	γίγνωνται	γίγνομαι	v	v3ppse---	Mood=s|Number=p|Person=3|Tense=p|Voice=e	29	ATR	_	t_3150
+29	καὶ	καί	c	c--------	_	23	COORD	_	t_3151
+30	διαφθείρωνται	διαφθείρω	v	v3pasm---	Mood=s|Number=p|Person=3|Tense=a|Voice=m	29	ATR	_	t_3152
+31	;	;	u	u--------	_	2	AuxK	_	t_3153
+
+
+# sentence_id = 278
+# translation_lang = en
+# prose_translation = Socrates: What shall we say to this, Crito, and to other such points?
+# literal_translation = Socrates: What shall we say, O Crito, in reply to these things and other such things?
+1	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	2	OBJ	_	t_3154
+2	ἐροῦμεν	λέγω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_3155
+3	,	,	u	u--------	_	2	AuxX	_	t_3156
+4	ὦ	ὦ	i	i--------	_	5	AuxZ	_	t_3157
+5	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	2	ExD	_	t_3158
+6	,	,	u	u--------	_	2	AuxX	_	t_3159
+7	πρὸς	πρός	r	r--------	_	2	AuxP	_	t_3160
+8	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	9	ADV	_	t_3161
+9	καὶ	καί	c	c--------	_	7	COORD	_	t_3162
+10	ἄλλα	ἄλλος	a	a-p---na-	Case=a|Gender=n|Number=p	11	ATR	_	t_3163
+11	τοιαῦτα	τοιοῦτος	p	p-p---na-	Case=a|Gender=n|Number=p	9	ADV	_	t_3164
+12	;	;	u	u--------	_	2	AuxK	_	t_3165
+
+
+# sentence_id = 279
+# translation_lang = en
+# prose_translation = For a man could say a great deal, especially if he were a skilled speaker, in defense of this law, which prescribes that the judgments which have been decided are to be authoritative.
+# literal_translation = For many things a man could say [, if he] were, both otherwise and [especially if he were] a speaker/rhetorician, on behalf of this law, [as it is] being destroyed, which prescribes that the judgments, the ones having been judged, are to be authoritative.
+1	πολλὰ	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	12	OBJ	_	t_3166
+2	γὰρ	γάρ	d	d--------	_	5	AuxY	_	t_3167
+3	ἄν	ἄν	d	d--------	_	5	AuxY	_	t_3168
+4	τις	τις	p	p-s---mn-	Case=n|Gender=m|Number=s	5	SBJ	_	t_3169
+5	ἔχοι	ἔχω	v	v3spoa---	Mood=o|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_3170
+6	,	,	u	u--------	_	5	AuxX	_	t_3171
+7	ἄλλως	ἄλλως	d	d--------	_	9	ADV	_	t_3172
+8	τε	τε	d	d--------	_	9	AuxY	_	t_3173
+9	καὶ	καί	c	c--------	_	5	COORD	_	t_3174
+10	ῥήτωρ	ῥήτωρ	n	n-s---mn-	Case=n|Gender=m|Number=s	9	SBJ	_	t_3175
+11	,	,	u	u--------	_	5	AuxX	_	t_3176
+12	εἰπεῖν	εἶπον	v	v--ana---	Mood=n|Tense=a|Voice=a	5	OBJ	_	t_3177
+13	ὑπὲρ	ὑπέρ	r	r--------	_	12	AuxP	_	t_3178
+14	τούτου	οὗτος	a	a-s---ng-	Case=g|Gender=m|Number=s	16	ATR	_	t_3179
+15	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	16	ATR	_	t_3180
+16	νόμου	νόμος	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ADV	_	t_3181
+17	ἀπολλυμένου	ἀπόλλυμι	v	v-sppemg-	Case=g|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	16	ATR	_	t_3182
+18	ὃς	ὅς	p	p3s---mn-	Case=n|Gender=m|Number=s|Person=3	23	SBJ	_	t_3183
+19	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	20	ATR	_	t_3184
+20	δίκας	δίκη	n	n-p---fa-	Case=a|Gender=f|Number=p	25	SBJ	_	t_3185
+21	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	20	ATR	_	t_3186
+22	δικασθείσας	δικάζω	v	v-pappfa-	Case=a|Gender=f|Mood=p|Number=p|Tense=a|Voice=p	20	ATR	_	t_3187
+23	προστάττει	προστάσσω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	16	ATR	_	t_3188
+24	κυρίας	κύριος	a	a-p---fa-	Case=a|Gender=f|Number=p	25	PNOM	_	t_3189
+25	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	23	OBJ	_	t_3190
+26	.	.	u	u--------	_	5	AuxK	_	t_3191
+
+
+# sentence_id = 280
+# translation_lang = en
+# prose_translation = Or shall we say to them that the city wronged us and did not judge the case rightly?
+# literal_translation = Or shall-we-say to them that it-was-wronging us — for the city — and not rightly the case it-judged?
+1	ἢ	ἤ1	d	d--------	_	2	AuxY	_	t_3192
+2	ἐροῦμεν	λέγω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_3193
+3	πρὸς	πρός	r	r--------	_	2	AuxP	_	t_3194
+4	αὐτοὺς	αὐτός	p	p-p---ma-	Case=a|Gender=m|Number=p	3	OBJ	_	t_3195
+5	ὅτι	ὅτι	c	c--------	_	2	AuxC	_	t_3196
+6	ἠδίκει	ἀδικέω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	11	OBJ	_	t_3197
+7	γὰρ	γάρ	d	d--------	_	11	AuxZ	_	t_3198
+8	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	6	OBJ	_	t_3199
+9	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	10	ATR	_	t_3200
+10	πόλις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	11	SBJ	_	t_3201
+11	καὶ	καί	c	c--------	_	5	COORD	_	t_3202
+12	οὐκ	οὐ	d	d--------	_	13	AuxZ	_	t_3203
+13	ὀρθῶς	ὀρθός	d	d--------	_	16	ADV	_	t_3204
+14	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	15	ATR	_	t_3205
+15	δίκην	δίκη	n	n-s---fa-	Case=a|Gender=f|Number=s	16	OBJ	_	t_3206
+16	ἔκρινεν	κρίνω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	11	OBJ	_	t_3207
+17	;	;	u	u--------	_	2	AuxK	_	t_3208
+
+
+# sentence_id = 281
+# translation_lang = en
+# prose_translation = Shall we say this, or what shall we say?
+# literal_translation = This [shall we say], or what shall we say?
+1	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	2	OBJ	_	t_3209
+2	ἢ	ἤ1	c	c--------	_	4	COORD	_	t_3210
+3	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	4	OBJ	_	t_3211
+4	ἐροῦμεν	λέγω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_3212
+5	;	;	u	u--------	_	4	AuxK	_	t_3213
+
+
+# sentence_id = 282
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_3214
+2	.	.	u	u--------	_	1	AuxK	_	t_3215
+
+
+# sentence_id = 283
+# translation_lang = en
+# prose_translation = Crito: Yes, by Zeus, this is so, Socrates.
+# literal_translation = Crito: [This is] this, by Zeus, O Socrates.
+1	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	7	OBJ	_	t_3216
+2	νὴ	νή	r	r--------	_	7	AuxP	_	t_3217
+3	Δία	ζεύς	n	n-d---fn-	Case=n|Gender=f|Number=d	2	ExD	_	t_3218
+4	,	,	u	u--------	_	7	AuxX	_	t_3219
+5	ὦ	ὦ	i	i--------	_	6	AuxZ	_	t_3220
+6	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	7	ExD	_	t_3221
+7	[0]	[0]	-	---------	_	0	PRED	_	e_97
+8	.	.	u	u--------	_	7	AuxK	_	t_3222
+
+
+# sentence_id = 284
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_3223
+2	.	.	u	u--------	_	1	AuxK	_	t_3224
+
+
+# sentence_id = 285
+# translation_lang = en
+# prose_translation = What, then, would the laws say?
+# literal_translation = What then would say the laws?
+1	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	4	OBJ	_	t_3225
+2	οὖν	οὖν	d	d--------	_	4	AuxY	_	t_3226
+3	ἂν	ἄν	d	d--------	_	4	AuxY	_	t_3227
+4	εἴπωσιν	εἶπον	v	v3pasa---	Mood=s|Number=p|Person=3|Tense=a|Voice=a	0	PRED	_	t_3228
+5	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	6	ATR	_	t_3229
+6	νόμοι	νόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	4	SBJ	_	t_3230
+7	·	·	u	u--------	_	4	AuxK	_	t_3231
+
+
+# sentence_id = 286
+# translation_lang = en
+# prose_translation = Socrates: Was this in fact agreed between us, Socrates, that you would abide by whatever judgments the city rendered?
+# literal_translation = O Socrates, was indeed also this agreed by us and by you, [that you] would-abide-in the judgments in-which the city judges?
+1	ὦ	ὦ	i	i--------	_	2	AuxZ	_	t_3232
+2	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	7	ExD	_	t_3233
+3	,	,	u	u--------	_	7	AuxX	_	t_3234
+4	ἦ	ἦ	d	d--------	_	13	AuxY	_	t_3235
+5	καὶ	καί	d	d--------	_	6	AuxZ	_	t_3236
+6	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	7	SBJ	_	t_3237
+7	ὡμολόγητο	ὁμολογέω	v	v3slie---	Mood=i|Number=s|Person=3|Tense=l|Voice=e	0	PRED	_	t_3238
+8	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	10	OBJ	_	t_3239
+9	τε	τε	d	d--------	_	10	AuxY	_	t_3240
+10	καὶ	καί	c	c--------	_	7	COORD	_	t_3241
+11	σοί	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	10	OBJ	_	t_3242
+12	,	,	u	u--------	_	7	AuxX	_	t_3243
+13	ἢ	ἤ1	c	c--------	_	7	COORD	_	t_3244
+14	ἐμμενεῖν	ἐμμένω	v	v--fna---	Mood=n|Tense=f|Voice=a	13	OBJ	_	t_3245
+15	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	16	ATR	_	t_3246
+16	δίκαις	δίκη	n	n-p---fd-	Case=d|Gender=f|Number=p	14	OBJ	_	t_3247
+17	αἷς	ὅς	p	p-p---fd-	Case=d|Gender=f|Number=p	21	OBJ	_	t_3248
+18	ἂν	ἄν	d	d--------	_	21	AuxY	_	t_3249
+19	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	20	ATR	_	t_3250
+20	πόλις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	21	SBJ	_	t_3251
+21	δικάζῃ	δικάζω	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	16	ATR	_	t_3252
+22	;	;	u	u--------	_	7	AuxK	_	t_3253
+
+
+# sentence_id = 287
+# translation_lang = en
+# prose_translation = So if they were saying these things, we would perhaps be surprised at them saying, "O Socrates, do not be surprised at what is being said, but answer, since you are indeed accustomed to making use of question and answer."
+# literal_translation = If then at them saying [them] we would be surprised, perhaps they would say that, "O Socrates, do not be surprised at the things being said, but answer, since also you are accustomed to make use of asking and answering."
+1	εἰ	εἰ	c	c--------	_	9	AuxC	_	t_3254
+2	οὖν	οὖν	d	d--------	_	9	AuxY	_	t_3255
+3	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	5	SBJ	_	t_3256
+4	θαυμάζοιμεν	θαυμάζω	v	v1ppoa---	Mood=o|Number=p|Person=1|Tense=p|Voice=a	1	ADV	_	t_3257
+5	λεγόντων	λέγω3	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	4	OBJ	_	t_3258
+6	,	,	u	u--------	_	9	AuxX	_	t_3259
+7	ἴσως	ἴσως	d	d--------	_	9	ADV	_	t_3260
+8	ἂν	ἄν	d	d--------	_	9	AuxY	_	t_3261
+9	εἴποιεν	εἶπον	v	v3paoa---	Mood=o|Number=p|Person=3|Tense=a|Voice=a	0	PRED	_	t_3262
+10	ὅτι	ὅτι	c	c--------	_	9	AuxC	_	t_3263
+11	ὦ	ὦ	i	i--------	_	12	AuxZ	_	t_3264
+12	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	18	ExD	_	t_3265
+13	,	,	u	u--------	_	9	AuxX	_	t_3266
+14	μὴ	μή	d	d--------	_	15	AuxZ	_	t_3267
+15	θαύμαζε	θαυμάζω	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	18	OBJ	_	t_3268
+16	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	17	ATR	_	t_3269
+17	λεγόμενα	λέγω3	v	v-pppenn-	Case=n|Gender=n|Mood=p|Number=p|Tense=p|Voice=e	15	OBJ	_	t_3270
+18	ἀλλʼ	ἀλλά	c	c--------	_	10	COORD	_	t_3271
+19	ἀποκρίνου	ἀποκρίνω	v	v2spme---	Mood=m|Number=s|Person=2|Tense=p|Voice=e	18	OBJ	_	t_3272
+20	,	,	u	u--------	_	9	AuxX	_	t_3273
+21	ἐπειδὴ	ἐπεί	c	c--------	_	18	AuxC	_	t_3274
+22	καὶ	καί	d	d--------	_	23	AuxZ	_	t_3275
+23	εἴωθας	ἔθω	v	v2sria---	Mood=i|Number=s|Person=2|Tense=r|Voice=a	21	ADV	_	t_3276
+24	χρῆσθαι	χράω	v	v--pne---	Mood=n|Tense=p|Voice=e	23	OBJ	_	t_3277
+25	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	28	ATR	_	t_3278
+26	ἐρωτᾶν	ἐρωτάω	v	v-sppamv-	Case=v|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	28	OBJ	_	t_3279
+27	τε	τε	c	c--------	_	28	AuxY	_	t_3280
+28	καὶ	καί	c	c--------	_	24	COORD	_	t_3281
+29	ἀποκρίνεσθαι	ἀποκρίνω	v	v--pne---	Mood=n|Tense=p|Voice=e	28	OBJ	_	t_3282
+30	.	.	u	u--------	_	9	AuxK	_	t_3283
+
+
+# sentence_id = 288
+# translation_lang = en
+# prose_translation = Come now, what fault do you find with us and the city, that you are trying to destroy us?
+# literal_translation = Come, for [tell me], finding what fault with us and with the city, are you attempting to destroy us?
+1	φέρε	φέρω	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	10	ExD	_	t_3284
+2	γάρ	γάρ	d	d--------	_	10	AuxY	_	t_3285
+3	,	,	u	u--------	_	10	AuxX	_	t_3286
+4	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	5	OBJ	_	t_3287
+5	ἐγκαλῶν	ἐγκαλέω	v	v-sfpamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=f|Voice=a	10	ADV	_	t_3288
+6	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	7	OBJ	_	t_3289
+7	καὶ	καί	c	c--------	_	5	COORD	_	t_3290
+8	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	9	ATR	_	t_3291
+9	πόλει	πόλις	n	n-d---fn-	Case=n|Gender=f|Number=d	7	OBJ	_	t_3292
+10	ἐπιχειρεῖς	ἐπιχειρέω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_3293
+11	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	12	OBJ	_	t_3294
+12	ἀπολλύναι	ἀπόλλυμι	v	v--pna---	Mood=n|Tense=p|Voice=a	10	OBJ	_	t_3295
+13	;	;	u	u--------	_	10	AuxK	_	t_3296
+
+
+# sentence_id = 289
+# translation_lang = en
+# prose_translation = Did not we, first of all, beget you, and was it not through us that your father took your mother and brought you into being?
+# literal_translation = Not first indeed we begot you, and through us your mother took, and your father begot you?
+1	οὐ	οὐ	d	d--------	_	5	AuxZ	_	t_3297
+2	πρῶτον	πρῶτος	a	a-s---na-	Case=a|Gender=n|Number=s	5	ADV	_	t_3298
+3	μέν	μέν	d	d--------	_	8	AuxY	_	t_3299
+4	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	5	OBJ	_	t_3300
+5	ἐγεννήσαμεν	γεννάω	v	v1paia---	Mood=i|Number=p|Person=1|Tense=a|Voice=a	8	PRED	_	t_3301
+6	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	5	SBJ	_	t_3302
+7	,	,	u	u--------	_	0	AuxX	_	t_3303
+8	καὶ	καί	c	c--------	_	7	COORD	_	t_3304
+9	διʼ	διά	r	r--------	_	11	AuxP	_	t_3305
+10	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	9	ADV	_	t_3306
+11	ἔλαβε	λαμβάνω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	17	PRED	_	t_3307
+12	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	13	ATR	_	t_3308
+13	μητέρα	μήτηρ	n	n-s---fa-	Case=a|Gender=f|Number=s	11	OBJ	_	t_3309
+14	σου	σύ	p	p-s---mg-	Case=g|Gender=m|Number=s	13	ATR	_	t_3310
+15	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	16	ATR	_	t_3311
+16	πατὴρ	πατήρ	n	n-s---mn-	Case=n|Gender=m|Number=s	17	SBJ	_	t_3312
+17	καὶ	καί	c	c--------	_	8	COORD	_	t_3313
+18	ἐφύτευσέν	φυτεύω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	17	PRED	_	t_3314
+19	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	18	OBJ	_	t_3315
+20	;	;	u	u--------	_	7	AuxK	_	t_3316
+
+
+# sentence_id = 290
+# translation_lang = en
+# prose_translation = Tell us, then, with regard to these laws of ours, the ones about marriage, do you find any fault, as though they were not well framed?
+# literal_translation = Tell [us], then, to these — to us — namely, to the laws, to the ones concerning the marriages, do you find fault with something, as that not well they are [framed]?
+1	φράσον	φράζω	v	v2sama---	Mood=m|Number=s|Person=2|Tense=a|Voice=a	14	AuxY	_	t_3317
+2	οὖν	οὖν	d	d--------	_	14	AuxY	_	t_3318
+3	,	,	u	u--------	_	14	AuxX	_	t_3319
+4	τούτοις	οὗτος	p	p-p---md-	Case=d|Gender=m|Number=p	6	OBJ	_	t_3320
+5	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	4	ATR	_	t_3321
+6	,	,	u	u--------	_	14	APOS	_	t_3322
+7	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	8	ATR	_	t_3323
+8	νόμοις	νόμος	n	n-p---md-	Case=d|Gender=m|Number=p	6	OBJ	_	t_3324
+9	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	8	ATR	_	t_3325
+10	περὶ	περί	r	r--------	_	8	AuxP	_	t_3326
+11	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	12	ATR	_	t_3327
+12	γάμους	γάμος	n	n-p---ma-	Case=a|Gender=m|Number=p	10	ATR	_	t_3328
+13	,	,	u	u--------	_	14	AuxX	_	t_3329
+14	μέμφῃ	μέμφομαι	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	0	PRED	_	t_3330
+15	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	14	OBJ	_	t_3331
+16	ὡς	ὡς	d	d--------	_	19	AuxZ	_	t_3332
+17	οὐ	οὐ	d	d--------	_	18	AuxZ	_	t_3333
+18	καλῶς	καλός	d	d--------	_	19	ADV	_	t_3334
+19	ἔχουσιν	ἔχω	v	v-pppand-	Case=d|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	14	ADV	_	t_3335
+20	;	;	u	u--------	_	14	AuxK	_	t_3336
+
+
+# sentence_id = 291
+# translation_lang = en
+# prose_translation = 'I would not complain,' I would say.
+# literal_translation = Not would-I-complain, I-would-say [ἄν].
+1	οὐ	οὐ	d	d--------	_	2	AuxZ	_	t_3337
+2	μέμφομαι	μέμφομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	4	OBJ	_	t_3338
+3	,	,	u	u--------	_	4	AuxX	_	t_3339
+4	φαίην	φημί	v	v1spoa---	Mood=o|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_3340
+5	ἄν	ἄν	d	d--------	_	4	AuxY	_	t_3341
+6	.	.	u	u--------	_	4	AuxK	_	t_3342
+
+
+# sentence_id = 292
+# translation_lang = en
+# prose_translation = But [will you wrong] those [laws] concerned with upbringing and education, in which you too were educated?
+# literal_translation = But [will you wrong] the [laws] concerned-with the of-the-one-who-came-to-be nurture and education, in which also you were educated?
+1	ἀλλὰ	ἀλλά	d	d--------	_	16	AuxY	_	t_3343
+2	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	16	OBJ	_	t_3344
+3	περὶ	περί	r	r--------	_	16	AuxP	_	t_3345
+4	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	7	ATR	_	t_3346
+5	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	6	ATR	_	t_3347
+6	γενομένου	γίγνομαι	v	v-sapmmg-	Case=g|Gender=m|Mood=p|Number=s|Tense=a|Voice=m	7	ATR	_	t_3348
+7	τροφήν	τροφή	n	n-s---fa-	Case=a|Gender=f|Number=s	9	ADV	_	t_3349
+8	τε	τε	d	d--------	_	9	AuxY	_	t_3350
+9	καὶ	καί	c	c--------	_	3	COORD	_	t_3351
+10	παιδείαν	παιδεία	n	n-s---fa-	Case=a|Gender=f|Number=s	9	ADV	_	t_3352
+11	ἐν	ἐν	r	r--------	_	15	AuxP	_	t_3353
+12	ᾗ	ὅς	p	p-s---fd-	Case=d|Gender=f|Number=s	11	ADV	_	t_3354
+13	καὶ	καί	d	d--------	_	14	AuxZ	_	t_3355
+14	σὺ	σύ	p	p-s---mn-	Case=n|Gender=m|Number=s	15	SBJ	_	t_3356
+15	ἐπαιδεύθης	παιδεύω	v	v2saip---	Mood=i|Number=s|Person=2|Tense=a|Voice=p	2	ATR	_	t_3357
+16	[0]	[0]	-	---------	_	0	PRED	_	e_98
+17	;	;	u	u--------	_	16	AuxK	_	t_3358
+
+
+# sentence_id = 293
+# translation_lang = en
+# prose_translation = Or did the laws that were set over this very matter, commanding your father to educate you in music and gymnastics, not give good orders?
+# literal_translation = Or [did] not well order [us] the laws, for us, those set over this, commanding to-the father, to-the [father] of-you, you in music and gymnastic to educate?
+1	ἢ	ἤ1	d	d--------	_	4	AuxY	_	t_3359
+2	οὐ	οὐ	d	d--------	_	3	AuxZ	_	t_3360
+3	καλῶς	καλός	d	d--------	_	4	ADV	_	t_3361
+4	προσέταττον	προστάσσω	v	v3piia---	Mood=i|Number=p|Person=3|Tense=i|Voice=a	0	PRED	_	t_3362
+5	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	10	ATR	_	t_3363
+6	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	10	ATR	_	t_3364
+7	ἐπὶ	ἐπί	r	r--------	_	10	AuxP	_	t_3365
+8	τούτῳ	οὗτος	p	p-s---nd-	Case=d|Gender=n|Number=s	7	ADV	_	t_3366
+9	τεταγμένοι	τάσσω	v	v-prpemn-	Case=n|Gender=m|Mood=p|Number=p|Tense=r|Voice=e	10	ATR	_	t_3367
+10	νόμοι	νόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	4	SBJ	_	t_3368
+11	,	,	u	u--------	_	4	AuxX	_	t_3369
+12	παραγγέλλοντες	παραγγέλλω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	4	ADV	_	t_3370
+13	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	14	ATR	_	t_3371
+14	πατρὶ	πατήρ	n	n-s---md-	Case=d|Gender=m|Number=s	12	OBJ	_	t_3372
+15	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	14	ATR	_	t_3373
+16	σῷ	σός	a	a-s---md-	Case=d|Gender=m|Number=s	14	ATR	_	t_3374
+17	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	22	SBJ	_	t_3375
+18	ἐν	ἐν	r	r--------	_	22	AuxP	_	t_3376
+19	μουσικῇ	μουσική	n	n-s---fd-	Case=d|Gender=f|Number=s	20	ADV	_	t_3377
+20	καὶ	καί	c	c--------	_	18	COORD	_	t_3378
+21	γυμναστικῇ	γυμναστικός	a	a-s---fd-	Case=d|Gender=f|Number=s	20	ADV	_	t_3379
+22	παιδεύειν	παιδεύω	v	v--pna---	Mood=n|Tense=p|Voice=a	12	OBJ	_	t_3380
+23	;	;	u	u--------	_	4	AuxK	_	t_3381
+
+
+# sentence_id = 294
+# translation_lang = en
+# prose_translation = Socrates: "Well," I would say.
+# literal_translation = Socrates: "Well," I would say [it].
+1	καλῶς	καλός	d	d--------	_	3	ADV	_	t_3382
+2	,	,	u	u--------	_	3	AuxX	_	t_3383
+3	φαίην	φημί	v	v1spoa---	Mood=o|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_3384
+4	ἄν	ἄν	d	d--------	_	3	AuxY	_	t_3385
+5	.	.	u	u--------	_	3	AuxK	_	t_3386
+
+
+# sentence_id = 295
+# translation_lang = en
+# prose_translation = Well, then.
+# literal_translation = Well then.
+1	εἶεν	εἰμί	d	d--------	_	0	ExD	_	t_3387
+2	.	.	u	u--------	_	1	AuxK	_	t_3388
+
+
+# sentence_id = 296
+# translation_lang = en
+# prose_translation = Socrates: Since you were born and raised and educated, could you say, first of all, that you were not ours, both you yourself and your ancestors?
+# literal_translation = Socrates: Since indeed you were born and were reared and were educated, first indeed you could say this, that not ours were you, both you yourself and your forebears?
+1	ἐπειδὴ	ἐπεί	c	c--------	_	10	AuxC	_	t_3389
+2	δὲ	δέ	d	d--------	_	10	AuxY	_	t_3390
+3	ἐγένου	γίγνομαι	v	v2saim---	Mood=i|Number=s|Person=2|Tense=a|Voice=m	7	ADV	_	t_3391
+4	τε	τε	d	d--------	_	7	AuxY	_	t_3392
+5	καὶ	καί	d	d--------	_	7	AuxY	_	t_3393
+6	ἐξετράφης	ἐκτρέφω	v	v2saip---	Mood=i|Number=s|Person=2|Tense=a|Voice=p	7	ADV	_	t_3394
+7	καὶ	καί	c	c--------	_	1	COORD	_	t_3395
+8	ἐπαιδεύθης	παιδεύω	v	v2saip---	Mood=i|Number=s|Person=2|Tense=a|Voice=p	7	ADV	_	t_3396
+9	,	,	u	u--------	_	10	AuxX	_	t_3397
+10	ἔχοις	ἔχω	v	v2spoa---	Mood=o|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_3398
+11	ἂν	ἄν	d	d--------	_	10	AuxY	_	t_3399
+12	εἰπεῖν	εἶπον	v	v--ana---	Mood=n|Tense=a|Voice=a	10	OBJ	_	t_3400
+13	πρῶτον	πρῶτος	a	a-s---na-	Case=a|Gender=n|Number=s	10	ADV	_	t_3401
+14	μὲν	μέν	d	d--------	_	10	AuxY	_	t_3402
+15	ὡς	ὡς	c	c--------	_	12	AuxC	_	t_3403
+16	οὐχὶ	οὐ	d	d--------	_	18	AuxZ	_	t_3404
+17	ἡμέτερος	ἡμέτερος	a	a-s---mn-	Case=n|Gender=m|Number=p|Person=1	21	PNOM	_	t_3405
+18	ἦσθα	εἰμί	v	v2spsa---	Mood=s|Number=s|Person=2|Tense=p|Voice=a	15	OBJ	_	t_3406
+19	καὶ	καί	d	d--------	_	21	AuxY	_	t_3407
+20	ἔκγονος	ἔκγονος	a	a-s---mn-	Case=n|Gender=m|Number=s	21	PNOM	_	t_3408
+21	καὶ	καί	c	c--------	_	18	COORD	_	t_3409
+22	δοῦλος	δοῦλος	a	a-s---mn-	Case=n|Gender=m|Number=s	21	PNOM	_	t_3410
+23	,	,	u	u--------	_	10	AuxX	_	t_3411
+24	αὐτός	αὐτός	p	p-s---mn-	Case=n|Gender=m|Number=s	26	SBJ	_	t_3412
+25	τε	τε	d	d--------	_	26	AuxY	_	t_3413
+26	καὶ	καί	c	c--------	_	18	COORD	_	t_3414
+27	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	29	ATR	_	t_3415
+28	σοὶ	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	29	ATR	_	t_3416
+29	πρόγονοι	πρόγονος	n	n-p---mn-	Case=n|Gender=m|Number=p	26	SBJ	_	t_3417
+30	;	;	u	u--------	_	10	AuxK	_	t_3418
+
+
+# sentence_id = 297
+# translation_lang = en
+# prose_translation = And if this is so, do you think it's fair, on your side, that you and we stand on equal terms as to justice, so that whatever treatment we undertake to give you, you think it right to do that back to us in return?
+# literal_translation = And if this [is] so, do-you-think it-is from equal [footing] for-you both the just [thing] and for-us, and whatever-things we might undertake to-do to-you, these-things do-you-think [it-is] just to-do-in-return to-you?
+1	καὶ	καί	d	d--------	_	18	AuxY	_	t_3419
+2	εἰ	εἰ	c	c--------	_	18	AuxC	_	t_3420
+3	τοῦθʼ	οὗτος	p	p-p---na-	Case=n|Gender=n|Number=p	5	SBJ	_	t_3421
+4	οὕτως	οὕτως	d	d--------	_	5	ADV	_	t_3422
+5	ἔχει	ἔχω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	2	ADV	_	t_3423
+6	,	,	u	u--------	_	0	AuxX	_	t_3424
+7	ἆρʼ	ἆρα	d	d--------	_	18	AuxY	_	t_3425
+8	ἐξ	ἐκ	r	r--------	_	11	AuxP	_	t_3426
+9	ἴσου	ἴσος	a	a-s---ng-	Case=g|Gender=n|Number=s	8	ADV	_	t_3427
+10	οἴει	οἴομαι	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	18	PRED	_	t_3428
+11	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	10	OBJ	_	t_3429
+12	σοὶ	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	15	ADV	_	t_3430
+13	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	14	ATR	_	t_3431
+14	δίκαιον	δίκαιος	a	a-s---na-	Case=a|Gender=n|Number=s	11	SBJ	_	t_3432
+15	καὶ	καί	c	c--------	_	9	COORD	_	t_3433
+16	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	15	ADV	_	t_3434
+17	,	,	u	u--------	_	6	AuxX	_	t_3435
+18	καὶ	καί	c	c--------	_	6	COORD	_	t_3436
+19	ἅττʼ	ὅστις	p	p-p---na-	Case=a|Gender=n|Number=p	24	OBJ	_	t_3437
+20	ἂν	ἄν	d	d--------	_	23	AuxY	_	t_3438
+21	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	23	SBJ	_	t_3439
+22	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	24	OBJ	_	t_3440
+23	ἐπιχειρῶμεν	ἐπιχειρέω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	28	ATR	_	t_3441
+24	ποιεῖν	ποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	23	OBJ	_	t_3442
+25	,	,	u	u--------	_	6	AuxX	_	t_3443
+26	καὶ	καί	d	d--------	_	27	AuxZ	_	t_3444
+27	σοὶ	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	31	ADV	_	t_3445
+28	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	29	OBJ	_	t_3446
+29	ἀντιποιεῖν	ἀντιποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	32	SBJ	_	t_3447
+30	οἴει	οἴομαι	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	18	PRED	_	t_3448
+31	δίκαιον	δίκαιος	a	a-s---na-	Case=a|Gender=n|Number=s	32	PNOM	_	t_3449
+32	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	30	OBJ	_	t_3450
+33	;	;	u	u--------	_	6	AuxK	_	t_3451
+
+
+# sentence_id = 298
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates.
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_3452
+2	.	.	u	u--------	_	1	AuxK	_	t_3453
+
+
+# sentence_id = 299
+# translation_lang = en
+# prose_translation = Or was it not fair treatment, then, toward your father — if you happened to have one — or toward a master, as it is also fair toward a master, that whatever you suffer you should also do in return, neither to answer back when spoken ill of, nor to strike back when struck, nor many other such things?
+# literal_translation = Or was [it] not then toward your father on equal terms, or toward a master, as [it is] also toward a master, if you happened to have [one], so as [for you] to do in return these very things which you might suffer — neither, being spoken ill of, to answer back, nor, being struck, to strike back, nor many other such other things?
+1	ἢ	ἤ1	d	d--------	_	11	AuxY	_	t_3454
+2	πρὸς	πρός	r	r--------	_	14	AuxP	_	t_3455
+3	μὲν	μέν	d	d--------	_	11	AuxY	_	t_3456
+4	ἄρα	ἄρα	d	d--------	_	11	AuxY	_	t_3457
+5	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	10	ADV	_	t_3458
+6	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	7	ATR	_	t_3459
+7	πατέρα	πατήρ	n	n-s---ma-	Case=a|Gender=m|Number=s	2	ADV	_	t_3460
+8	οὐκ	οὐ	d	d--------	_	10	AuxZ	_	t_3461
+9	ἐξ	ἐκ	r	r--------	_	11	AuxP	_	t_3462
+10	ἴσου	ἴσος	a	a-s---ng-	Case=g|Gender=n|Number=s	9	PNOM	_	t_3463
+11	ἦν	εἰμί	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	0	PRED	_	t_3464
+12	τὸ	ὁ	l	l-s---na-	Case=n|Gender=n|Number=s	13	ATR	_	t_3465
+13	δίκαιον	δίκαιος	a	a-s---nn-	Case=n|Gender=n|Number=s	11	SBJ	_	t_3466
+14	καὶ	καί	c	c--------	_	10	AuxC	_	t_3467
+15	πρὸς	πρός	r	r--------	_	14	AuxP	_	t_3468
+16	δεσπότην	δεσπότης	n	n-s---ma-	Case=a|Gender=m|Number=s	15	ADV	_	t_3469
+17	,	,	u	u--------	_	11	AuxX	_	t_3470
+18	εἴ	εἰ	c	c--------	_	11	AuxC	_	t_3471
+19	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	20	ADV	_	t_3472
+20	ὢν	εἰμί	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	21	PNOM	_	t_3473
+21	ἐτύγχανεν	τυγχάνω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	18	ADV	_	t_3474
+22	,	,	u	u--------	_	11	AuxX	_	t_3475
+23	ὥστε	ὥστε	c	c--------	_	11	AuxC	_	t_3476
+24	ἅπερ	ὅσπερ	p	p-p---na-	Case=a|Gender=n|Number=p	25	OBJ	_	t_3477
+25	πάσχοις	πάσχω	v	v2spoa---	Mood=o|Number=s|Person=2|Tense=p|Voice=a	26	ATR	_	t_3478
+26	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	29	OBJ	_	t_3479
+27	καὶ	καί	d	d--------	_	28	AuxZ	_	t_3480
+28	ἀντιποιεῖν	ἀντιποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	23	ADV	_	t_3481
+29	,	,	u	u--------	_	28	APOS	_	t_3482
+30	οὔ	οὐ	d	d--------	_	34	AuxZ	_	t_3483
+31	τε	τε	d	d--------	_	40	AuxY	_	t_3484
+32	κακῶς	κακός	d	d--------	_	33	ADV	_	t_3485
+33	ἀκούοντα	ἀκούω	v	v-pppann-	Case=n|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	34	ADV	_	t_3486
+34	ἀντιλέγειν	ἀντιλέγω	v	v--pna---	Mood=n|Tense=p|Voice=a	40	ADV	_	t_3487
+35	οὔ	οὐ	d	d--------	_	38	AuxZ	_	t_3488
+36	τε	τε	d	d--------	_	40	AuxY	_	t_3489
+37	τυπτόμενον	τύπτω	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	38	ADV	_	t_3490
+38	ἀντιτύπτειν	ἀντιτύπτω	v	v--pna---	Mood=n|Tense=p|Voice=a	40	OBJ	_	t_3491
+39	οὔ	οὐ	d	d--------	_	42	AuxZ	_	t_3492
+40	τε	τε	c	c--------	_	29	COORD	_	t_3493
+41	ἄλλα	ἄλλος	a	a-p---na-	Case=a|Gender=n|Number=p	42	ATR	_	t_3494
+42	τοιαῦτα	τοιοῦτος	p	p-p---na-	Case=a|Gender=n|Number=p	40	OBJ	_	t_3495
+43	πολλά	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	42	ATR	_	t_3496
+44	[0]	[0]	-	---------	_	18	ADV	_	e_99
+45	·	·	u	u--------	_	11	AuxK	_	t_3497
+
+
+# sentence_id = 300
+# translation_lang = en
+# prose_translation = And will it then be possible for you to try to destroy your country and its laws too, while we try to destroy you, and will you consider that act just—will you, yes you, try to destroy us in return, us the laws and your country, insofar as you are able, and will you claim that in doing this you are acting justly, you who are truly concerned with virtue?
+# literal_translation = And as for the fatherland too and the laws, then, will it be possible for you, so that, if we try to destroy you, considering [it] just [to do so], and you too, will you try to destroy us in return, the laws and the fatherland, insofar as you are able, and will you say that in doing these things you are doing just things, [you] the [one] in truth caring for virtue?
+1	πρὸς	πρός	r	r--------	_	9	AuxP	_	t_3498
+2	δὲ	δέ	d	d--------	_	9	AuxY	_	t_3499
+3	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	4	ATR	_	t_3500
+4	πατρίδα	πατρίς	n	n-s---fa-	Case=a|Gender=f|Number=s	6	ADV	_	t_3501
+5	ἄρα	ἄρα	d	d--------	_	9	AuxY	_	t_3502
+6	καὶ	καί	c	c--------	_	1	COORD	_	t_3503
+7	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	8	ATR	_	t_3504
+8	νόμους	νόμος	n	n-p---ma-	Case=a|Gender=m|Number=p	6	ADV	_	t_3505
+9	ἐξέσται	ἔξεστι	v	v3sfim---	Mood=i|Number=s|Person=3|Tense=f|Voice=m	0	PRED	_	t_3506
+10	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	9	OBJ	_	t_3507
+11	,	,	u	u--------	_	9	AuxX	_	t_3508
+12	ὥστε	ὥστε	c	c--------	_	9	AuxC	_	t_3509
+13	,	,	u	u--------	_	9	AuxX	_	t_3510
+14	ἐάν	ἐάν	c	c--------	_	38	AuxC	_	t_3511
+15	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	18	OBJ	_	t_3512
+16	ἐπιχειρῶμεν	ἐπιχειρέω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	14	ADV	_	t_3513
+17	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	16	SBJ	_	t_3514
+18	ἀπολλύναι	ἀπόλλυμι	v	v--pna---	Mood=n|Tense=p|Voice=a	16	OBJ	_	t_3515
+19	δίκαιον	δίκαιος	a	a-s---ma-	Case=a|Gender=m|Number=s	21	PNOM	_	t_3516
+20	ἡγούμενοι	ἡγέομαι	v	v-pppmmn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=m	16	ADV	_	t_3517
+21	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	20	OBJ	_	t_3518
+22	,	,	u	u--------	_	9	AuxX	_	t_3519
+23	καὶ	καί	d	d--------	_	38	AuxY	_	t_3520
+24	σὺ	σύ	p	p-s---mn-	Case=n|Gender=m|Number=s	35	SBJ	_	t_3521
+25	δὲ	δέ	d	d--------	_	38	AuxY	_	t_3522
+26	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	36	OBJ	_	t_3523
+27	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	28	ATR	_	t_3524
+28	νόμους	νόμος	n	n-p---ma-	Case=a|Gender=m|Number=p	29	OBJ	_	t_3525
+29	καὶ	καί	c	c--------	_	36	COORD	_	t_3526
+30	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	31	ATR	_	t_3527
+31	πατρίδα	πατρίς	n	n-s---fa-	Case=a|Gender=f|Number=s	29	OBJ	_	t_3528
+32	καθʼ	κατά	r	r--------	_	34	AuxP	_	t_3529
+33	ὅσον	ὅσος	a	a-s---na-	Case=a|Gender=n|Number=s	32	ADV	_	t_3530
+34	δύνασαι	δύναμαι	v	v2spie---	Mood=i|Number=s|Person=2|Tense=p|Voice=e	36	ADV	_	t_3531
+35	ἐπιχειρήσεις	ἐπιχειρέω	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	38	ADV	_	t_3532
+36	ἀνταπολλύναι	ἀνταπόλλυμι	v	v--pna---	Mood=n|Tense=p|Voice=a	35	OBJ	_	t_3533
+37	,	,	u	u--------	_	9	AuxX	_	t_3534
+38	καὶ	καί	c	c--------	_	12	COORD	_	t_3535
+39	φήσεις	φημί	v	v2sfia---	Mood=i|Number=s|Person=2|Tense=f|Voice=a	38	ADV	_	t_3536
+40	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	41	OBJ	_	t_3537
+41	ποιῶν	ποιέω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	43	ADV	_	t_3538
+42	δίκαια	δίκαιος	a	a-p---na-	Case=a|Gender=n|Number=p	43	OBJ	_	t_3539
+43	πράττειν	πράσσω	v	v--pna---	Mood=n|Tense=p|Voice=a	39	OBJ	_	t_3540
+44	,	,	u	u--------	_	9	AuxX	_	t_3541
+45	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	50	ATR	_	t_3542
+46	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	47	ATR	_	t_3543
+47	ἀληθείᾳ	ἀλήθεια	n	n-s---fd-	Case=d|Gender=f|Number=s	50	OBJ	_	t_3544
+48	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	49	ATR	_	t_3545
+49	ἀρετῆς	ἀρετή	n	n-s---fg-	Case=g|Gender=f|Number=s	47	ATR	_	t_3546
+50	ἐπιμελόμενος	ἐπιμελέομαι	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	39	SBJ	_	t_3547
+51	;	;	u	u--------	_	9	AuxK	_	t_3548
+
+
+# sentence_id = 301
+# translation_lang = en
+# prose_translation = Or are you so wise that you have failed to notice that one's homeland is more to be honored than one's mother and father and all one's other ancestors, and more revered and more sacred, and held in higher regard both among gods and among men of sense, and that one must revere it and yield to it and humor it when it is angry even more than a father, and either persuade it or do whatever it commands, and submit to suffering, if it orders one to suffer anything, in silence—whether that means being beaten or imprisoned, or, if it leads one to war to be wounded or killed, one must do these things, and this is what justice requires—and that one must not give way or retreat or abandon one's post, but both in war and in court and everywhere else one must do whatever the city and one's homeland commands, or else persuade it by what is naturally just?
+# literal_translation = Or are you thus wise that it has escaped you that [your] fatherland is more honorable than [your] mother and father and all [your] other ancestors, and more august and more sacred, and in greater esteem both among gods and among men who have sense, and [that] one must revere [it] and yield [to it] [0=rather/more] and flatter one's fatherland when it is angry [1=even more] than [one's] father, and either persuade [it] or do whatever it commands, and suffer [it], if it commands one to suffer anything, keeping quiet—whether [it commands] to be beaten or to be bound, whether [2=also] it leads [one] into war to be wounded or to be killed—these things must be done, and the just thus stands, and one must not give way nor retreat nor leave one's post, but both in war and in court and everywhere one must do what the city and [one's] fatherland commands, or persuade it by that by which the just is naturally [disposed].
+1	ἢ	ἤ1	d	d--------	_	3	AuxY	_	t_3549
+2	οὕτως	οὕτως	d	d--------	_	3	ADV	_	t_3550
+3	εἶ	εἰμί	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	0	PRED	_	t_3551
+4	σοφὸς	σοφός	a	a-s---mn-	Case=n|Gender=m|Number=s	3	PNOM	_	t_3552
+5	ὥστε	ὥστε	c	c--------	_	2	AuxC	_	t_3553
+6	λέληθέν	λανθάνω	v	v3sria---	Mood=i|Number=s|Person=3|Tense=r|Voice=a	5	ADV	_	t_3554
+7	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	6	OBJ	_	t_3555
+8	ὅτι	ὅτι	c	c--------	_	6	AuxC	_	t_3556
+9	μητρός	μήτηρ	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ADV	_	t_3557
+10	τε	τε	d	d--------	_	111	AuxY	_	t_3558
+11	καὶ	καί	c	c--------	_	13	AuxY	_	t_3559
+12	πατρὸς	πατήρ	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ADV	_	t_3560
+13	καὶ	καί	c	c--------	_	18	COORD	_	t_3561
+14	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	16	ATR	_	t_3562
+15	ἄλλων	ἄλλος	a	a-p---mg-	Case=g|Gender=m|Number=p	16	ATR	_	t_3563
+16	προγόνων	πρόγονος	n	n-p---mg-	Case=g|Gender=m|Number=p	13	ATR	_	t_3564
+17	ἁπάντων	ἅπας	a	a-p---ng-	Case=g|Gender=n|Number=p	16	ATR	_	t_3565
+18	τιμιώτερόν	τίμιος	a	a-------c	Degree=c	25	PNOM	_	t_3566
+19	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	92	SBJ	_	t_3567
+20	πατρὶς	πατρίς	n	n-s---mn-	Case=n|Gender=m|Number=s	19	SBJ	_	t_3568
+21	καὶ	καί	d	d--------	_	25	AuxY	_	t_3569
+22	σεμνότερον	σεμνός	a	a-------c	Degree=c	25	PNOM	_	t_3570
+23	καὶ	καί	d	d--------	_	25	AuxY	_	t_3571
+24	ἁγιώτερον	ἅγιος	a	a-------c	Degree=c	25	PNOM	_	t_3572
+25	καὶ	καί	c	c--------	_	19	COORD	_	t_3573
+26	ἐν	ἐν	r	r--------	_	25	AuxP	_	t_3574
+27	μείζονι	μέγας	a	a-s---fdc	Case=d|Degree=c|Gender=f|Number=s	28	ATR	_	t_3575
+28	μοίρᾳ	μοῖρα	n	n-s---fd-	Case=d|Gender=f|Number=s	26	PNOM	_	t_3576
+29	καὶ	καί	d	d--------	_	32	AuxY	_	t_3577
+30	παρὰ	παρά	r	r--------	_	32	AuxP	_	t_3578
+31	θεοῖς	θεός	n	n-p---md-	Case=d|Gender=m|Number=p	30	ADV	_	t_3579
+32	καὶ	καί	c	c--------	_	25	COORD	_	t_3580
+33	παρʼ	παρά	r	r--------	_	32	AuxP	_	t_3581
+34	ἀνθρώποις	ἄνθρωπος	n	n-p---md-	Case=d|Gender=m|Number=p	33	ADV	_	t_3582
+35	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	34	ATR	_	t_3583
+36	νοῦν	νόος	n	n-s---ma-	Case=a|Gender=m|Number=s	37	OBJ	_	t_3584
+37	ἔχουσι	ἔχω	v	v-pppamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	34	ATR	_	t_3585
+38	,	,	u	u--------	_	3	AuxX	_	t_3586
+39	καὶ	καί	d	d--------	_	92	AuxY	_	t_3587
+40	σέβεσθαι	σέβομαι	v	v--pne---	Mood=n|Tense=p|Voice=e	45	SBJ	_	t_3588
+41	δεῖ	δεῖ	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	92	SBJ	_	t_3589
+42	καὶ	καί	d	d--------	_	61	AuxY	_	t_3590
+43	μᾶλλον	μᾶλλον	d	d--------	_	44	ADV	_	t_3591
+44	ὑπείκειν	ὑπείκω	v	v--rna---	Mood=n|Tense=r|Voice=a	45	SBJ	_	t_3592
+45	καὶ	καί	c	c--------	_	41	COORD	_	t_3593
+46	θωπεύειν	θωπεύω	v	v--pna---	Mood=n|Tense=p|Voice=a	45	SBJ	_	t_3594
+47	πατρίδα	πατρίς	n	n-s---fa-	Case=a|Gender=f|Number=s	45	OBJ	_	t_3595
+48	χαλεπαίνουσαν	χαλεπαίνω	v	v-sppafa-	Case=a|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	47	ATR	_	t_3596
+49	ἢ	ἤ1	c	c--------	_	43	AuxC	_	t_3597
+50	πατέρα	πατήρ	n	n-s---ma-	Case=a|Gender=m|Number=s	130	OBJ	_	t_3598
+51	,	,	u	u--------	_	3	AuxX	_	t_3599
+52	καὶ	καί	d	d--------	_	61	AuxY	_	t_3600
+53	ἢ	ἤ1	d	d--------	_	55	AuxY	_	t_3601
+54	πείθειν	πείθω	v	v--pna---	Mood=n|Tense=p|Voice=a	55	SBJ	_	t_3602
+55	ἢ	ἤ1	c	c--------	_	61	COORD	_	t_3603
+56	ποιεῖν	ποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	55	SBJ	_	t_3604
+57	ἃ	ὅς	p	p-p---na-	Case=a|Gender=n|Number=p	129	OBJ	_	t_3605
+58	ἂν	ἄν	d	d--------	_	59	AuxY	_	t_3606
+59	κελεύῃ	κελεύω	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	55	OBJ	_	t_3607
+60	,	,	u	u--------	_	3	AuxX	_	t_3608
+61	καὶ	καί	c	c--------	_	41	COORD	_	t_3609
+62	πάσχειν	πάσχω	v	v--pna---	Mood=n|Tense=p|Voice=a	61	SBJ	_	t_3610
+63	ἐάν	ἐάν	c	c--------	_	62	AuxC	_	t_3611
+64	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	65	OBJ	_	t_3612
+65	προστάττῃ	προστάσσω	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	63	ADV	_	t_3613
+66	παθεῖν	πάσχω	v	v--ana---	Mood=n|Tense=a|Voice=a	62	OBJ	_	t_3614
+67	ἡσυχίαν	ἡσυχία	n	n-s---fa-	Case=a|Gender=f|Number=s	68	OBJ	_	t_3615
+68	ἄγοντα	ἄγω	v	v-sppama-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	66	ADV	_	t_3616
+69	,	,	u	u--------	_	3	AuxX	_	t_3617
+70	ἐάντε	ἐάν	c	c--------	_	75	AuxC	_	t_3618
+71	τύπτεσθαι	τύπτω	v	v--pne---	Mood=n|Tense=p|Voice=e	132	SBJ	_	t_3619
+72	ἐάντε	ἐάν	c	c--------	_	75	AuxC	_	t_3620
+73	δεῖσθαι	δέω2	v	v--pne---	Mood=n|Tense=p|Voice=e	132	OBJ	_	t_3621
+74	,	,	u	u--------	_	3	AuxX	_	t_3622
+75	ἐάντε	ἐάν	c	c--------	_	61	AuxC	_	t_3623
+76	εἰς	εἰς	r	r--------	_	78	AuxP	_	t_3624
+77	πόλεμον	πόλεμος	n	n-s---ma-	Case=a|Gender=m|Number=s	76	OBJ	_	t_3625
+78	ἄγῃ	ἄγω	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	75	ADV	_	t_3626
+79	τρωθησόμενον	τιτρώσκω	v	v-sfppma-	Case=a|Gender=m|Mood=p|Number=s|Tense=f|Voice=p	80	ADV	_	t_3627
+80	ἢ	ἤ1	c	c--------	_	78	COORD	_	t_3628
+81	ἀποθανούμενον	ἀποθνήσκω	v	v-sfpmma-	Case=a|Gender=m|Mood=p|Number=s|Tense=f|Voice=m	80	OBJ	_	t_3629
+82	,	,	u	u--------	_	3	AuxX	_	t_3630
+83	ποιητέον	ποιητέος	a	a-s---nn-	Case=n|Gender=n|Number=s	92	SBJ	_	t_3631
+84	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	83	OBJ	_	t_3632
+85	,	,	u	u--------	_	3	AuxX	_	t_3633
+86	καὶ	καί	d	d--------	_	92	AuxY	_	t_3634
+87	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	88	ATR	_	t_3635
+88	δίκαιον	δίκαιος	a	a-s---nn-	Case=n|Gender=n|Number=s	90	SBJ	_	t_3636
+89	οὕτως	οὕτως	d	d--------	_	90	ADV	_	t_3637
+90	ἔχει	ἔχω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	92	OBJ	_	t_3638
+91	,	,	u	u--------	_	3	AuxX	_	t_3639
+92	καὶ	καί	c	c--------	_	5	COORD	_	t_3640
+93	οὐχὶ	οὐ	d	d--------	_	94	AuxZ	_	t_3641
+94	ὑπεικτέον	ὑπεικτέον	a	a-s---nn-	Case=n|Gender=n|Number=s	99	SBJ	_	t_3642
+95	οὐ	οὐ	d	d--------	_	97	AuxZ	_	t_3643
+96	δὲ	δέ	d	d--------	_	99	AuxY	_	t_3644
+97	ἀναχωρητέον	ἀναχωρητέον	a	a-s---nn-	Case=n|Gender=n|Number=s	99	SBJ	_	t_3645
+98	οὐ	οὐ	d	d--------	_	100	AuxZ	_	t_3646
+99	δὲ	δέ	c	c--------	_	104	COORD	_	t_3647
+100	λειπτέον	λειπτέον	a	a-s---nn-	Case=n|Gender=n|Number=s	99	SBJ	_	t_3648
+101	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	102	ATR	_	t_3649
+102	τάξιν	τάξις	n	n-s---fa-	Case=a|Gender=f|Number=s	100	OBJ	_	t_3650
+103	,	,	u	u--------	_	3	AuxX	_	t_3651
+104	ἀλλὰ	ἀλλά	c	c--------	_	92	COORD	_	t_3652
+105	καὶ	καί	d	d--------	_	111	AuxY	_	t_3653
+106	ἐν	ἐν	r	r--------	_	111	AuxP	_	t_3654
+107	πολέμῳ	πόλεμος	n	n-s---md-	Case=d|Gender=m|Number=s	106	ADV	_	t_3655
+108	καὶ	καί	d	d--------	_	111	AuxY	_	t_3656
+109	ἐν	ἐν	r	r--------	_	111	AuxP	_	t_3657
+110	δικαστηρίῳ	δικαστήριον	n	n-s---nd-	Case=d|Gender=n|Number=s	109	ADV	_	t_3658
+111	καὶ	καί	c	c--------	_	113	COORD	_	t_3659
+112	πανταχοῦ	πανταχοῦ	d	d--------	_	111	ADV	_	t_3660
+113	ποιητέον	ποιητέος	a	a-s---nn-	Case=n|Gender=n|Number=s	104	SBJ	_	t_3661
+114	ἃ	ὅς	p	p-p---na-	Case=a|Gender=n|Number=p	116	OBJ	_	t_3662
+115	ἂν	ἄν	d	d--------	_	116	AuxY	_	t_3663
+116	κελεύῃ	κελεύω	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	113	OBJ	_	t_3664
+117	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	118	ATR	_	t_3665
+118	πόλις	πόλις	n	n-s---fn-	Case=n|Gender=f|Number=s	119	SBJ	_	t_3666
+119	καὶ	καί	c	c--------	_	116	COORD	_	t_3667
+120	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	121	ATR	_	t_3668
+121	πατρίς	πατρίς	n	n-s---fn-	Case=n|Gender=f|Number=s	119	SBJ	_	t_3669
+122	,	,	u	u--------	_	3	AuxX	_	t_3670
+123	ἢ	ἤ1	c	c--------	_	104	COORD	_	t_3671
+124	πείθειν	πείθω	v	v--pna---	Mood=n|Tense=p|Voice=a	99	SBJ	_	t_3672
+125	αὐτὴν	αὐτός	p	p-s---fa-	Case=a|Gender=f|Number=s	124	OBJ	_	t_3673
+126	ᾗ	ὅς	p	p-s---fd-	Case=d|Gender=f|Number=s	129	OBJ	_	t_3674
+127	τὸ	ὁ	l	l-s---nn-	Case=n|Gender=n|Number=s	128	ATR	_	t_3675
+128	δίκαιον	δίκαιος	a	a-s---nn-	Case=n|Gender=n|Number=s	129	SBJ	_	t_3676
+129	πέφυκε	φύω	v	v3sria---	Mood=i|Number=s|Person=3|Tense=r|Voice=a	55	OBJ	_	t_3677
+130	[0]	[0]	-	---------	_	49	ADV	_	e_100
+131	[1]	[1]	-	---------	_	49	ADV	_	e_101
+132	[2]	[2]	-	---------	_	75	ADV	_	e_102
+133	·	·	u	u--------	_	3	AuxK	_	t_3678
+
+
+# sentence_id = 302
+# translation_lang = en
+# prose_translation = But using force is not holy, not against your mother or your father, and much less still is it holy against your country?
+# literal_translation = But [to] use-force [is] not holy, not even against mother nor against father, and much yet less [is it holy] against your country?
+1	βιάζεσθαι	βιάζω	v	v--pne---	Mood=n|Tense=p|Voice=e	19	SBJ	_	t_3679
+2	δὲ	δέ	d	d--------	_	13	AuxY	_	t_3680
+3	οὐχ	οὐ	d	d--------	_	4	AuxZ	_	t_3681
+4	ὅσιον	ὅσιος	a	a-s---nn-	Case=n|Gender=n|Number=s	19	PNOM	_	t_3682
+5	οὔ	οὐ	d	d--------	_	7	AuxZ	_	t_3683
+6	τε	τε	d	d--------	_	9	AuxY	_	t_3684
+7	μητέρα	μήτηρ	n	n-s---fa-	Case=a|Gender=f|Number=s	9	OBJ	_	t_3685
+8	οὔ	οὐ	d	d--------	_	10	AuxZ	_	t_3686
+9	τε	τε	c	c--------	_	1	COORD	_	t_3687
+10	πατέρα	πατήρ	n	n-s---ma-	Case=a|Gender=m|Number=s	9	OBJ	_	t_3688
+11	,	,	u	u--------	_	0	AuxX	_	t_3689
+12	πολὺ	πολύς	a	a-s---nn-	Case=n|Gender=n|Number=s	16	ADV	_	t_3690
+13	δὲ	δέ	c	c--------	_	11	COORD	_	t_3691
+14	τούτων	οὗτος	p	p-p---ng-	Case=g|Gender=n|Number=p	16	ADV	_	t_3692
+15	ἔτι	ἔτι	d	d--------	_	16	ADV	_	t_3693
+16	ἧττον	ἥσσων	a	a-s---nnc	Case=n|Degree=c|Gender=n|Number=s	20	ADV	_	t_3694
+17	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	18	ATR	_	t_3695
+18	πατρίδα	πατρίς	n	n-s---fa-	Case=a|Gender=f|Number=s	20	SBJ	_	t_3696
+19	[0]	[0]	-	---------	_	13	PRED	_	e_103
+20	[1]	[1]	-	---------	_	13	PRED	_	e_104
+21	;	;	u	u--------	_	11	AuxK	_	t_3697
+
+
+# sentence_id = 303
+# translation_lang = en
+# prose_translation = Socrates: So what shall we say to this, Crito?
+# literal_translation = Socrates: What shall we say toward these things, O Crito?
+1	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	2	OBJ	_	t_3698
+2	φήσομεν	φημί	v	v1pasa---	Mood=s|Number=p|Person=1|Tense=a|Voice=a	0	PRED	_	t_3699
+3	πρὸς	πρός	r	r--------	_	2	AuxP	_	t_3700
+4	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	3	ADV	_	t_3701
+5	,	,	u	u--------	_	2	AuxX	_	t_3702
+6	ὦ	ὦ	i	i--------	_	7	AuxZ	_	t_3703
+7	Κρίτων	κρίτων	n	n-s---mv-	Case=v|Gender=m|Number=s	2	ExD	_	t_3704
+8	;	;	u	u--------	_	2	AuxK	_	t_3705
+
+
+# sentence_id = 304
+# translation_lang = en
+# prose_translation = ...that the laws speak the truth, or not?
+# literal_translation = ...the laws to speak true [things], or not [they speak true things]?
+1	ἀληθῆ	ἀληθής	a	a-p---na-	Case=a|Gender=n|Number=p	2	OBJ	_	t_3706
+2	λέγειν	λέγω3	v	v--pna---	Mood=n|Tense=p|Voice=a	5	PRED	_	t_3707
+3	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	4	ATR	_	t_3708
+4	νόμους	νόμος	n	n-p---ma-	Case=a|Gender=m|Number=p	2	SBJ	_	t_3709
+5	ἢ	ἤ1	c	c--------	_	0	COORD	_	t_3710
+6	οὔ	οὐ	d	d--------	_	7	AuxZ	_	t_3711
+7	[0]	[0]	-	---------	_	5	PRED	_	e_105
+8	;	;	u	u--------	_	5	AuxK	_	t_3712
+
+
+# sentence_id = 305
+# translation_lang = en
+# prose_translation = Crito:
+# literal_translation = Crito:
+1	ΚΡ	κρ	n	n-s---mn-	_	0	ExD	_	t_3713
+2	.	.	u	u--------	_	1	AuxK	_	t_3714
+
+
+# sentence_id = 306
+# translation_lang = en
+# prose_translation = It seems so to me, at least.
+# literal_translation = To me, at least, it seems [so].
+1	ἔμοιγε	ἐγώ	p	p1s---cd-	Case=d|Gender=c|Number=s|Person=1	2	OBJ	_	t_3715
+2	δοκεῖ	δοκέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_3716
+3	.	.	u	u--------	_	2	AuxK	_	t_3717
+
+
+# sentence_id = 307
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_3718
+2	.	.	u	u--------	_	1	AuxK	_	t_3719
+
+
+# sentence_id = 308
+# translation_lang = en
+# prose_translation = "Consider then, Socrates," the laws would perhaps say, "whether we are telling the truth in saying this, that you are attempting to do something unjust in trying to do what you are now trying to do."
+# literal_translation = Consider, then, O Socrates, the laws would perhaps say, if we speak these things truly, that you are attempting to do things not just, which things you are now attempting [to do].
+1	σκόπει	σκοπέω	v	v2spma---	Mood=m|Number=s|Person=2|Tense=p|Voice=a	7	OBJ	_	t_3720
+2	τοίνυν	τοίνυν	d	d--------	_	7	AuxY	_	t_3721
+3	,	,	u	u--------	_	7	AuxX	_	t_3722
+4	ὦ	ὦ	i	i--------	_	5	AuxZ	_	t_3723
+5	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	7	ExD	_	t_3724
+6	,	,	u	u--------	_	7	AuxX	_	t_3725
+7	φαῖεν	φημί	v	v3ppoa---	Mood=o|Number=p|Person=3|Tense=p|Voice=a	0	PRED	_	t_3726
+8	ἂν	ἄν	d	d--------	_	7	AuxY	_	t_3727
+9	ἴσως	ἴσως	d	d--------	_	7	ADV	_	t_3728
+10	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	11	ATR	_	t_3729
+11	νόμοι	νόμος	n	n-p---mn-	Case=n|Gender=m|Number=p	7	SBJ	_	t_3730
+12	,	,	u	u--------	_	7	AuxX	_	t_3731
+13	εἰ	εἰ	c	c--------	_	7	AuxC	_	t_3732
+14	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	17	SBJ	_	t_3733
+15	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	17	OBJ	_	t_3734
+16	ἀληθῆ	ἀληθής	a	a-p---na-	Case=a|Gender=n|Number=p	15	ATR	_	t_3735
+17	λέγομεν	λέγω3	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	13	ADV	_	t_3736
+18	,	,	u	u--------	_	7	AuxX	_	t_3737
+19	ὅτι	ὅτι	c	c--------	_	7	AuxC	_	t_3738
+20	οὐ	οὐ	d	d--------	_	23	AuxZ	_	t_3739
+21	δίκαια	δίκαιος	a	a-p---na-	Case=a|Gender=n|Number=p	24	OBJ	_	t_3740
+22	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	24	SBJ	_	t_3741
+23	ἐπιχειρεῖς	ἐπιχειρέω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	19	ADV	_	t_3742
+24	δρᾶν	δράω	v	v-sppamv-	Case=v|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	23	OBJ	_	t_3743
+25	ἃ	ὅς	p	p-p---na-	Case=a|Gender=n|Number=p	27	OBJ	_	t_3744
+26	νῦν	νῦν	d	d--------	_	27	ADV	_	t_3745
+27	ἐπιχειρεῖς	ἐπιχειρέω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	21	ATR	_	t_3746
+28	.	.	u	u--------	_	7	AuxK	_	t_3747
+
+
+# sentence_id = 309
+# translation_lang = en
+# prose_translation = For we, having begotten you, raised you, educated you, and given you a share in all the good things we could, both to you and to all the other citizens alike, nevertheless proclaim in advance that it is open to any Athenian, once he has been examined and has seen how things stand in the city, and seen us, the laws, if we do not please him, to go away and take his own possessions wherever he wishes.
+# literal_translation = For we, γάρ, you, having-begotten, having-reared, having-educated, having-given-a-share of-all-things of-which we-were able of-the-noble-things, to-you and to-the other all citizens, nevertheless we-proclaim-beforehand to-the one-having-made-the power, of-the Athenians, to-the one-wishing, whenever he-be-examined and he-see the-things in the city, the two matters, and us the laws, to-whom not we-may-please, we, [it]-is-permitted, having-taken the things of-himself, to-go-away, to-where he-may-wish.
+1	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	25	SBJ	_	t_3748
+2	γάρ	γάρ	d	d--------	_	25	AuxY	_	t_3749
+3	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	4	OBJ	_	t_3750
+4	γεννήσαντες	γεννάω	v	v-papamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=a|Voice=a	25	ADV	_	t_3751
+5	,	,	u	u--------	_	25	AuxX	_	t_3752
+6	ἐκθρέψαντες	ἐκτρέφω	v	v-papamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=a|Voice=a	25	ADV	_	t_3753
+7	,	,	u	u--------	_	25	AuxX	_	t_3754
+8	παιδεύσαντες	παιδεύω	v	v-papamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=a|Voice=a	25	ADV	_	t_3755
+9	,	,	u	u--------	_	25	AuxX	_	t_3756
+10	μεταδόντες	μεταδίδωμι	v	v-papamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=a|Voice=a	25	ADV	_	t_3757
+11	ἁπάντων	ἅπας	a	a-p---mg-	Case=g|Gender=m|Number=p	10	OBJ	_	t_3758
+12	ὧν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	16	ADV	_	t_3759
+13	οἷοί	οἷος	a	a-p---mn-	Case=n|Gender=m|Number=p	15	PNOM	_	t_3760
+14	τʼ	τε	d	d--------	_	13	AuxZ	_	t_3761
+15	ἦμεν	εἰμί	v	v--ina---	Mood=n|Tense=i|Voice=a	11	ATR	_	t_3762
+16	καλῶν	καλός	a	a-p---ng-	Case=g|Gender=n|Number=p	11	ATR	_	t_3763
+17	σοὶ	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	18	ADV	_	t_3764
+18	καὶ	καί	c	c--------	_	10	COORD	_	t_3765
+19	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	22	ATR	_	t_3766
+20	ἄλλοις	ἄλλος	a	a-p---md-	Case=d|Gender=m|Number=p	22	ATR	_	t_3767
+21	πᾶσιν	πᾶς	a	a-p---md-	Case=d|Gender=m|Number=p	22	ATR	_	t_3768
+22	πολίταις	πολίτης	n	n-p---md-	Case=d|Gender=m|Number=p	18	OBJ	_	t_3769
+23	,	,	u	u--------	_	25	AuxX	_	t_3770
+24	ὅμως	ὅμως	d	d--------	_	25	ADV	_	t_3771
+25	προαγορεύομεν	προαγορεύω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_3772
+26	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	31	ATR	_	t_3773
+27	ἐξουσίαν	ἐξουσία	n	n-s---fa-	Case=a|Gender=f|Number=s	28	OBJ	_	t_3774
+28	πεποιηκέναι	ποιέω	v	v--rna---	Mood=n|Tense=r|Voice=a	31	OBJ	_	t_3775
+29	Ἀθηναίων	ἀθήναιος	n	n-p---mg-	Case=g|Gender=m|Number=p	27	ATR	_	t_3776
+30	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	31	ATR	_	t_3777
+31	βουλομένῳ	βούλομαι	v	v-sppemd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	25	OBJ	_	t_3778
+32	,	,	u	u--------	_	25	AuxX	_	t_3779
+33	ἐπειδὰν	ἐπειδάν	c	c--------	_	53	AuxC	_	t_3780
+34	δοκιμασθῇ	δοκιμάζω	v	v3sasp---	Mood=s|Number=s|Person=3|Tense=a|Voice=p	35	ADV	_	t_3781
+35	καὶ	καί	c	c--------	_	33	COORD	_	t_3782
+36	ἴδῃ	ὁράω	v	v3sasa---	Mood=s|Number=s|Person=3|Tense=a|Voice=a	35	ADV	_	t_3783
+37	τὰ	ὁ	l	l-p---nn-	Case=n|Gender=n|Number=p	41	ATR	_	t_3784
+38	ἐν	ἐν	r	r--------	_	41	AuxP	_	t_3785
+39	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	40	ATR	_	t_3786
+40	πόλει	πόλις	n	n-d---fn-	Case=n|Gender=f|Number=d	38	ATR	_	t_3787
+41	πράγματα	πρᾶγμα	n	n-p---nn-	Case=n|Gender=n|Number=p	42	OBJ	_	t_3788
+42	καὶ	καί	c	c--------	_	53	COORD	_	t_3789
+43	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	42	OBJ	_	t_3790
+44	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	45	ATR	_	t_3791
+45	νόμους	νόμος	n	n-p---ma-	Case=a|Gender=m|Number=p	43	ATR	_	t_3792
+46	,	,	u	u--------	_	25	AuxX	_	t_3793
+47	ᾧ	ὅς	p	p-s---md-	Case=d|Gender=m|Number=s	50	OBJ	_	t_3794
+48	ἂν	ἄν	d	d--------	_	50	AuxY	_	t_3795
+49	μὴ	μή	d	d--------	_	50	AuxZ	_	t_3796
+50	ἀρέσκωμεν	ἀρέσκω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	43	ATR	_	t_3797
+51	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	50	SBJ	_	t_3798
+52	,	,	u	u--------	_	25	AuxX	_	t_3799
+53	ἐξεῖναι	ἔξεστι	v	v--pna---	Mood=n|Tense=p|Voice=a	25	OBJ	_	t_3800
+54	λαβόντα	λαμβάνω	v	v-papann-	Case=n|Gender=n|Mood=p|Number=p|Tense=a|Voice=a	53	ADV	_	t_3801
+55	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	54	OBJ	_	t_3802
+56	αὑτοῦ	ἑαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	55	ATR	_	t_3803
+57	ἀπιέναι	ἀπέρχομαι	v	v--pna---	Mood=n|Tense=p|Voice=a	53	OBJ	_	t_3804
+58	ὅποι	ὅποι	d	d--------	_	60	ADV	_	t_3805
+59	ἂν	ἄν	d	d--------	_	60	AuxY	_	t_3806
+60	βούληται	βούλομαι	v	v3spse---	Mood=s|Number=s|Person=3|Tense=p|Voice=e	57	ADV	_	t_3807
+61	.	.	u	u--------	_	25	AuxK	_	t_3808
+
+
+# sentence_id = 310
+# translation_lang = en
+# prose_translation = And none of us laws stands in the way, nor forbids it, if anyone of you wishes to go into exile, in case we do not please him, both we and the city; and whether he wishes to go there to settle elsewhere, wherever he pleases, taking his own belongings with him.
+# literal_translation = And no one of us, of the laws, is in-the-way, and does not forbid [it], if anyone of you wishes to go into a colony, if we do not please [him], both we and the city, and whether [he wishes] to settle-as-metic having gone elsewhere, whither he wishes, having his own things.
+1	καὶ	καί	d	d--------	_	9	AuxY	_	t_3809
+2	οὐδεὶς	οὐδείς	p	p-s---mn-	Case=n|Gender=m|Number=s	7	SBJ	_	t_3810
+3	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	2	ATR	_	t_3811
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	3	ATR	_	t_3812
+5	νόμων	νόμος	n	n-p---mg-	Case=g|Gender=m|Number=p	2	ATR	_	t_3813
+6	ἐμποδών	ἐμποδών	d	d--------	_	7	PNOM	_	t_3814
+7	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	9	PRED	_	t_3815
+8	οὐ	οὐ	d	d--------	_	10	AuxZ	_	t_3816
+9	δʼ	δέ	c	c--------	_	0	COORD	_	t_3817
+10	ἀπαγορεύει	ἀπαγορεύω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	9	PRED	_	t_3818
+11	,	,	u	u--------	_	9	AuxX	_	t_3819
+12	ἐάντε	ἐάν	c	c--------	_	9	AuxC	_	t_3820
+13	τις	τις	p	p-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_3821
+14	βούληται	βούλομαι	v	v3spse---	Mood=s|Number=s|Person=3|Tense=p|Voice=e	12	ADV	_	t_3822
+15	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	13	ATR	_	t_3823
+16	εἰς	εἰς	r	r--------	_	18	AuxP	_	t_3824
+17	ἀποικίαν	ἀποικία	n	n-s---fa-	Case=a|Gender=f|Number=s	16	OBJ	_	t_3825
+18	ἰέναι	εἶμι	v	v--pna---	Mood=n|Tense=p|Voice=a	14	OBJ	_	t_3826
+19	,	,	u	u--------	_	9	AuxX	_	t_3827
+20	εἰ	εἰ	c	c--------	_	10	AuxC	_	t_3828
+21	μὴ	μή	d	d--------	_	22	AuxZ	_	t_3829
+22	ἀρέσκοιμεν	ἀρέσκω	v	v1ppoa---	Mood=o|Number=p|Person=1|Tense=p|Voice=a	20	ADV	_	t_3830
+23	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	25	SBJ	_	t_3831
+24	τε	τε	d	d--------	_	25	AuxY	_	t_3832
+25	καὶ	καί	c	c--------	_	22	COORD	_	t_3833
+26	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	27	ATR	_	t_3834
+27	πόλις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	25	SBJ	_	t_3835
+28	,	,	u	u--------	_	9	AuxX	_	t_3836
+29	ἐάντε	ἐάν	c	c--------	_	10	AuxC	_	t_3837
+30	μετοικεῖν	μετοικέω	v	v--pna---	Mood=n|Tense=p|Voice=a	39	OBJ	_	t_3838
+31	ἄλλοσέ	ἄλλοτε	d	d--------	_	30	ADV	_	t_3839
+32	ποι	ποι	d	d--------	_	33	ADV	_	t_3840
+33	ἐλθών	ἔρχομαι	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	39	ADV	_	t_3841
+34	,	,	u	u--------	_	9	AuxX	_	t_3842
+35	ἰέναι	εἶμι	v	v--pna---	Mood=n|Tense=p|Voice=a	10	OBJ	_	t_3843
+36	ἐκεῖσε	ἐκεῖσε	d	d--------	_	35	ADV	_	t_3844
+37	ὅποι	ὅποι	d	d--------	_	39	ADV	_	t_3845
+38	ἂν	ἄν	d	d--------	_	39	AuxY	_	t_3846
+39	βούληται	βούλομαι	v	v3spse---	Mood=s|Number=s|Person=3|Tense=p|Voice=e	36	ATR	_	t_3847
+40	,	,	u	u--------	_	9	AuxX	_	t_3848
+41	ἔχοντα	ἔχω	v	v-pppann-	Case=n|Gender=n|Mood=p|Number=p|Tense=p|Voice=a	35	ADV	_	t_3849
+42	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	41	OBJ	_	t_3850
+43	αὑτοῦ	ἑαυτοῦ	p	p-s---mg-	Case=g|Gender=m|Number=s	42	ATR	_	t_3851
+44	.	.	u	u--------	_	9	AuxK	_	t_3852
+
+
+# sentence_id = 311
+# translation_lang = en
+# prose_translation = And whoever among you remains, seeing in what way we administer justice and manage the rest of the city's affairs, we say that he has now agreed with us in fact to do whatever we command; and we say that the one who does not obey does wrong in three ways — because he does not obey us who are, as it were, his parents, and because we are his nurturers, and because, having agreed to obey us, he neither obeys nor persuades us if we are doing something not right, even though we offer the alternative and do not harshly command him to do whatever we order, but allow him one of two things — either to persuade us or to do it — and he does neither of these.
+# literal_translation = And whoever of you remains, seeing in what manner we both adjudicate the cases and administer the other things of the city, already we say this one to have agreed in deed with us to do these things which we might command; and we say the one not being persuaded does wrong in three ways, both because to us being his begetters he is not persuaded, and because to his nurturers, and because having agreed with us to suffer [these things], he neither is persuaded nor persuades us, if we are doing something not well, [and] we proposing and not harshly commanding to do what we bid, but allowing one of two things — either to persuade us or to do [it] — he does neither of these.
+1	ὃς	ὅς	p	p3s---mn-	Case=n|Gender=m|Number=s|Person=3	5	SBJ	_	t_3853
+2	δʼ	δέ	d	d--------	_	35	AuxY	_	t_3854
+3	ἂν	ἄν	d	d--------	_	5	AuxY	_	t_3855
+4	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	1	ATR	_	t_3856
+5	παραμείνῃ	παραμένω	v	v3sasa---	Mood=s|Number=s|Person=3|Tense=a|Voice=a	23	SBJ	_	t_3857
+6	,	,	u	u--------	_	0	AuxX	_	t_3858
+7	ὁρῶν	ὁράω	v	v-sppamv-	Case=v|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	5	ADV	_	t_3859
+8	ὃν	ὅς	p	p-s---ma-	Case=a|Gender=m|Number=s	9	ATR	_	t_3860
+9	τρόπον	τρόπος	n	n-s---ma-	Case=a|Gender=m|Number=s	7	ADV	_	t_3861
+10	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	15	SBJ	_	t_3862
+11	τάς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	13	ATR	_	t_3863
+12	τε	τε	d	d--------	_	15	AuxY	_	t_3864
+13	δίκας	δίκη	n	n-p---fa-	Case=a|Gender=f|Number=p	14	OBJ	_	t_3865
+14	δικάζομεν	δικάζω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	15	ATR	_	t_3866
+15	καὶ	καί	c	c--------	_	7	COORD	_	t_3867
+16	τ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	17	ATR	_	t_3868
+17	ἆλλα	ἄλλος	p	p-p---na-	Case=a|Gender=n|Number=p	20	OBJ	_	t_3869
+18	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	19	ATR	_	t_3870
+19	πόλιν	πόλις	n	n-s---fa-	Case=a|Gender=f|Number=s	20	OBJ	_	t_3871
+20	διοικοῦμεν	διοικέω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	15	ATR	_	t_3872
+21	,	,	u	u--------	_	6	AuxX	_	t_3873
+22	ἤδη	ἤδη	d	d--------	_	23	ADV	_	t_3874
+23	φαμὲν	φημί	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	35	PRED	_	t_3875
+24	τοῦτον	οὗτος	p	p-s---ma-	Case=a|Gender=m|Number=s	25	SBJ	_	t_3876
+25	ὡμολογηκέναι	ὁμολογέω	v	v--rna---	Mood=n|Tense=r|Voice=a	23	OBJ	_	t_3877
+26	ἔργῳ	ἔργον	n	n-s---nd-	Case=d|Gender=n|Number=s	25	ADV	_	t_3878
+27	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	25	OBJ	_	t_3879
+28	ἃ	ὅς	p	p-p---na-	Case=a|Gender=n|Number=p	32	OBJ	_	t_3880
+29	ἂν	ἄν	d	d--------	_	31	AuxY	_	t_3881
+30	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	31	SBJ	_	t_3882
+31	κελεύωμεν	κελεύω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	33	ATR	_	t_3883
+32	ποιήσειν	ποιέω	v	v--fna---	Mood=n|Tense=f|Voice=a	31	OBJ	_	t_3884
+33	ταῦτα	οὗτος	p	p-p---na-	Case=a|Gender=n|Number=p	25	OBJ	_	t_3885
+34	,	,	u	u--------	_	6	AuxX	_	t_3886
+35	καὶ	καί	c	c--------	_	6	COORD	_	t_3887
+36	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	38	ATR	_	t_3888
+37	μὴ	μή	d	d--------	_	38	AuxZ	_	t_3889
+38	πειθόμενον	πείθω	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	41	SBJ	_	t_3890
+39	τριχῇ	τριχῆ	d	d--------	_	41	ADV	_	t_3891
+40	φαμεν	φημί	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	35	PRED	_	t_3892
+41	ἀδικεῖν	ἀδικέω	v	v--pna---	Mood=n|Tense=p|Voice=a	40	OBJ	_	t_3893
+42	,	,	u	u--------	_	6	AuxX	_	t_3894
+43	ὅτι	ὅτι	c	c--------	_	55	AuxC	_	t_3895
+44	τε	τε	d	d--------	_	55	AuxY	_	t_3896
+45	γεννηταῖς	γεννητής	n	n-p---md-	Case=d|Gender=m|Number=p	46	PNOM	_	t_3897
+46	οὖσιν	εἰμί	v	v-pppamd-	Case=d|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	49	ADV	_	t_3898
+47	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	49	OBJ	_	t_3899
+48	οὐ	οὐ	d	d--------	_	49	AuxZ	_	t_3900
+49	πείθεται	πείθω	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	43	ADV	_	t_3901
+50	,	,	u	u--------	_	6	AuxX	_	t_3902
+51	καὶ	καί	d	d--------	_	55	AuxY	_	t_3903
+52	ὅτι	ὅτι	c	c--------	_	55	AuxC	_	t_3904
+53	τροφεῦσι	τροφεύς	n	n-p---md-	Case=d|Gender=m|Number=p	46	PNOM	_	t_3905
+54	,	,	u	u--------	_	6	AuxX	_	t_3906
+55	καὶ	καί	c	c--------	_	41	COORD	_	t_3907
+56	ὅτι	ὅτι	c	c--------	_	55	AuxC	_	t_3908
+57	ὁμολογήσας	ὁμολογέω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	64	ADV	_	t_3909
+58	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	59	OBJ	_	t_3910
+59	πείσεσθαι	πάσχω	v	v--fnm---	Mood=n|Tense=f|Voice=m	57	OBJ	_	t_3911
+60	οὔ	οὐ	d	d--------	_	62	AuxZ	_	t_3912
+61	τε	τε	d	d--------	_	64	AuxY	_	t_3913
+62	πείθεται	πείθω	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	64	ADV	_	t_3914
+63	οὔ	οὐ	d	d--------	_	65	AuxZ	_	t_3915
+64	τε	τε	c	c--------	_	56	COORD	_	t_3916
+65	πείθει	πείθω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	64	ADV	_	t_3917
+66	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	65	OBJ	_	t_3918
+67	,	,	u	u--------	_	6	AuxX	_	t_3919
+68	εἰ	εἰ	c	c--------	_	65	AuxC	_	t_3920
+69	μὴ	μή	d	d--------	_	70	AuxZ	_	t_3921
+70	καλῶς	καλός	d	d--------	_	72	ADV	_	t_3922
+71	τι	τις	p	p-s---na-	Case=a|Gender=n|Number=s	72	OBJ	_	t_3923
+72	ποιοῦμεν	ποιέω	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	68	ADV	_	t_3924
+73	,	,	u	u--------	_	6	AuxX	_	t_3925
+74	προτιθέντων	προτίθημι	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	76	ADV	_	t_3926
+75	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	76	SBJ	_	t_3927
+76	καὶ	καί	c	c--------	_	85	COORD	_	t_3928
+77	οὐκ	οὐ	d	d--------	_	78	AuxZ	_	t_3929
+78	ἀγρίως	ἄγριος	d	d--------	_	79	ADV	_	t_3930
+79	ἐπιταττόντων	ἐπιτάσσω	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	76	ADV	_	t_3931
+80	ποιεῖν	ποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	65	OBJ	_	t_3932
+81	ἃ	ὅς	p	p-p---na-	Case=a|Gender=n|Number=p	83	OBJ	_	t_3933
+82	ἂν	ἄν	d	d--------	_	83	AuxY	_	t_3934
+83	κελεύωμεν	κελεύω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	80	OBJ	_	t_3935
+84	,	,	u	u--------	_	6	AuxX	_	t_3936
+85	ἀλλὰ	ἀλλά	c	c--------	_	98	COORD	_	t_3937
+86	ἐφιέντων	ἐφίημι	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	98	ADV	_	t_3938
+87	δυοῖν	δύο	a	a-d---ng-	Case=g|Gender=n|Number=d	88	ATR	_	t_3939
+88	θάτερα	ἕτερος	a	a-p---na-	Case=a|Gender=n|Number=p	89	OBJ	_	t_3940
+89	,	,	u	u--------	_	86	APOS	_	t_3941
+90	ἢ	ἤ1	d	d--------	_	93	AuxY	_	t_3942
+91	πείθειν	πείθω	v	v--pna---	Mood=n|Tense=p|Voice=a	93	OBJ	_	t_3943
+92	ἡμᾶς	ἐγώ	p	p1p---ma-	Case=a|Gender=m|Number=p|Person=1	91	OBJ	_	t_3944
+93	ἢ	ἤ1	c	c--------	_	89	COORD	_	t_3945
+94	ποιεῖν	ποιέω	v	v--pna---	Mood=n|Tense=p|Voice=a	93	OBJ	_	t_3946
+95	,	,	u	u--------	_	6	AuxX	_	t_3947
+96	τούτων	οὗτος	p	p-p---ng-	Case=g|Gender=n|Number=p	97	ATR	_	t_3948
+97	οὐδέτερα	οὐδέτερος	a	a-p---nn-	Case=n|Gender=n|Number=p	98	OBJ	_	t_3949
+98	ποιεῖ	ποιέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	35	PRED	_	t_3950
+99	.	.	u	u--------	_	6	AuxK	_	t_3951
+
+
+# sentence_id = 312
+# translation_lang = en
+# prose_translation = Socrates:
+# literal_translation = Socrates:
+1	ΣΩ	σω	n	n-s---mv-	Case=v|Gender=m|Number=s	0	ExD	_	t_3952
+2	.	.	u	u--------	_	1	AuxK	_	t_3953
+
+
+# sentence_id = 313
+# translation_lang = en
+# prose_translation = We say, then, that you too, Socrates, will be implicated in these charges, if indeed you do what you have in mind, and you not least of all the Athenians, but among those most of all.
+# literal_translation = We say, indeed, that you too, O Socrates, will be held in these charges, if indeed you will do the things which you have in mind, and [you will be] not least of the Athenians, but among those most of all.
+1	ταύταις	οὗτος	a	a-p---fd-	Case=d|Gender=f|Number=p	11	ATR	_	t_3954
+2	δή	δή	d	d--------	_	3	AuxY	_	t_3955
+3	φαμεν	φημί	v	v1ppia---	Mood=i|Number=p|Person=1|Tense=p|Voice=a	0	PRED	_	t_3956
+4	καὶ	καί	d	d--------	_	5	AuxZ	_	t_3957
+5	σέ	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	12	SBJ	_	t_3958
+6	,	,	u	u--------	_	3	AuxX	_	t_3959
+7	ὦ	ὦ	i	i--------	_	8	AuxZ	_	t_3960
+8	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	3	ExD	_	t_3961
+9	,	,	u	u--------	_	3	AuxX	_	t_3962
+10	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	11	ATR	_	t_3963
+11	αἰτίαις	αἰτία	n	n-p---fd-	Case=d|Gender=f|Number=p	12	OBJ	_	t_3964
+12	ἐνέξεσθαι	ἐνέχω	v	v--fnm---	Mood=n|Tense=f|Voice=m	3	OBJ	_	t_3965
+13	,	,	u	u--------	_	3	AuxX	_	t_3966
+14	εἴπερ	εἴπερ	c	c--------	_	12	AuxC	_	t_3967
+15	ποιήσεις	ποιέω	v	v2sasa---	Mood=s|Number=s|Person=2|Tense=a|Voice=a	14	ADV	_	t_3968
+16	ἃ	ὅς	p	p-p---na-	Case=a|Gender=n|Number=p	17	OBJ	_	t_3969
+17	ἐπινοεῖς	ἐπινοέω	v	v2spia---	Mood=i|Number=s|Person=2|Tense=p|Voice=a	15	OBJ	_	t_3970
+18	,	,	u	u--------	_	3	AuxX	_	t_3971
+19	καὶ	καί	c	c--------	_	12	COORD	_	t_3972
+20	οὐχ	οὐ	d	d--------	_	21	AuxZ	_	t_3973
+21	ἥκιστα	ἥκιστος	a	a-p---na-	Case=a|Gender=n|Number=p	25	ADV	_	t_3974
+22	Ἀθηναίων	ἀθήναιος	n	n-p---mg-	Case=g|Gender=m|Number=p	25	PNOM	_	t_3975
+23	σέ	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	19	SBJ	_	t_3976
+24	,	,	u	u--------	_	3	AuxX	_	t_3977
+25	ἀλλʼ	ἀλλά	c	c--------	_	12	COORD	_	t_3978
+26	ἐν	ἐν	r	r--------	_	25	AuxP	_	t_3979
+27	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	26	ADV	_	t_3980
+28	μάλιστα	μάλιστα	d	d--------	_	27	ADV	_	t_3981
+29	.	.	u	u--------	_	3	AuxK	_	t_3982
+
+
+# sentence_id = 314
+# translation_lang = en
+# prose_translation = So if I were to say this—
+# literal_translation = If, then, I should say [this]—
+1	εἰ	εἰ	d	d--------	_	4	AuxY	_	t_3983
+2	οὖν	οὖν	d	d--------	_	4	AuxY	_	t_3984
+3	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	4	SBJ	_	t_3985
+4	εἴποιμι	εἶπον	v	v1saoa---	Mood=o|Number=s|Person=1|Tense=a|Voice=a	0	PRED	_	t_3986
+5	·	·	u	u--------	_	4	AuxK	_	t_3987
+
+
+# sentence_id = 315
+# translation_lang = en
+# prose_translation = Why is that?
+# literal_translation = Why indeed [is it]?
+1	διὰ	διά	r	r--------	_	4	AuxP	_	t_3988
+2	τί	τίς	p	p-s---na-	Case=a|Gender=n|Number=s	1	ADV	_	t_3989
+3	δή	δή	d	d--------	_	4	AuxY	_	t_3990
+4	[0]	[0]	-	---------	_	0	PRED	_	e_106
+5	;	;	u	u--------	_	4	AuxK	_	t_3991
+
+
+# sentence_id = 316
+# translation_lang = en
+# prose_translation = Perhaps they could justly rebuke me by saying that, among the most eminent of the Athenians, I happen to have made this agreement with them.
+# literal_translation = Perhaps indeed they might justly fasten upon me, saying that among those most [eminent] of the Athenians, I happen to be one having agreed to this agreement.
+1	ἴσως	ἴσως	d	d--------	_	5	ADV	_	t_3992
+2	ἄν	ἄν	d	d--------	_	5	AuxY	_	t_3993
+3	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	5	OBJ	_	t_3994
+4	δικαίως	δίκαιος	d	d--------	_	5	ADV	_	t_3995
+5	καθάπτοιντο	καθάπτω	v	v3ppoe---	Mood=o|Number=p|Person=3|Tense=p|Voice=e	0	PRED	_	t_3996
+6	λέγοντες	λέγω3	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	5	ADV	_	t_3997
+7	ὅτι	ὅτι	c	c--------	_	6	AuxC	_	t_3998
+8	ἐν	ἐν	r	r--------	_	14	AuxP	_	t_3999
+9	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	8	ADV	_	t_4000
+10	μάλιστα	μάλιστα	d	d--------	_	11	ADV	_	t_4001
+11	Ἀθηναίων	ἀθήναιος	n	n-p---mg-	Case=g|Gender=m|Number=p	9	ATR	_	t_4002
+12	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	15	SBJ	_	t_4003
+13	αὐτοῖς	αὐτός	p	p-p---md-	Case=d|Gender=m|Number=p	14	OBJ	_	t_4004
+14	ὡμολογηκὼς	ὁμολογέω	v	v-srpamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=r|Voice=a	15	PNOM	_	t_4005
+15	τυγχάνω	τυγχάνω	v	v1spsa---	Mood=s|Number=s|Person=1|Tense=p|Voice=a	7	OBJ	_	t_4006
+16	ταύτην	οὗτος	a	a-s---fa-	Case=a|Gender=f|Number=s	18	ATR	_	t_4007
+17	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	18	ATR	_	t_4008
+18	ὁμολογίαν	ὁμολογία	n	n-s---fa-	Case=a|Gender=f|Number=s	14	OBJ	_	t_4009
+19	.	.	u	u--------	_	5	AuxK	_	t_4010
+
+
+# sentence_id = 317
+# translation_lang = en
+# prose_translation = For they would say, 'Socrates, these are strong proofs for us that we and the city were pleasing to you,'
+# literal_translation = For they would say that, 'O Socrates, great for us [are] proofs of these things, that both to you and we were pleasing, and the city,'
+1	φαῖεν	φημί	v	v3ppoa---	Mood=o|Number=p|Person=3|Tense=p|Voice=a	0	PRED	_	t_4011
+2	γὰρ	γάρ	d	d--------	_	1	AuxY	_	t_4012
+3	ἂν	ἄν	d	d--------	_	1	AuxY	_	t_4013
+4	ὅτι	ὅτι	c	c--------	_	1	AuxC	_	t_4014
+5	ὦ	ὦ	i	i--------	_	6	AuxZ	_	t_4015
+6	Σώκρατες	σωκράτης	n	n-s---mv-	Case=v|Gender=m|Number=s	12	ExD	_	t_4016
+7	,	,	u	u--------	_	1	AuxX	_	t_4017
+8	μεγάλα	μέγας	a	a-p---na-	Case=a|Gender=n|Number=p	11	ATR	_	t_4018
+9	ἡμῖν	ἐγώ	p	p-p---md-	Case=d|Gender=m|Number=p	12	PNOM	_	t_4019
+10	τούτων	οὗτος	p	p-p---ng-	Case=g|Gender=n|Number=p	11	ATR	_	t_4020
+11	τεκμήριά	τεκμήριον	n	n-p---nn-	Case=n|Gender=n|Number=p	12	SBJ	_	t_4021
+12	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	4	OBJ	_	t_4022
+13	,	,	u	u--------	_	12	APOS	_	t_4023
+14	ὅτι	ὅτι	c	c--------	_	13	AuxC	_	t_4024
+15	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	18	OBJ	_	t_4025
+16	καὶ	καί	d	d--------	_	19	AuxY	_	t_4026
+17	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	19	SBJ	_	t_4027
+18	ἠρέσκομεν	ἀρέσκω	v	v1piia---	Mood=i|Number=p|Person=1|Tense=i|Voice=a	14	ATR	_	t_4028
+19	καὶ	καί	c	c--------	_	18	COORD	_	t_4029
+20	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	21	ATR	_	t_4030
+21	πόλις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	19	SBJ	_	t_4031
+22	·	·	u	u--------	_	1	AuxK	_	t_4032
+
+
+# sentence_id = 318
+# translation_lang = en
+# prose_translation = For you would never have lived here in Athens, more than all the other Athenians, so exceptionally, unless it had suited you exceptionally; you never went out of the city to a festival, nor anywhere else at all except once to the Isthmus, nor did you ever make any other trip abroad, as other people do, nor did any desire ever take you to know another city or other laws — we and our city were enough for you.
+# literal_translation = For not ever would [you] have lived in it [i.e. the city], distinctively beyond all the other Athenians, unless it had been distinctively pleasing to you; and [you] went out neither to a festival-viewing ever from the city, except once to the Isthmus, nor [to] anywhere else at any other time, unless [you were] going to go on campaign somewhere; nor did [you] ever make any other trip abroad, as the other men [do]; nor did desire [take] you [to] know of another city or of other laws, but we were sufficient for you, and our city.
+1	οὐ	οὐ	d	d--------	_	12	AuxZ	_	t_4033
+2	γὰρ	γάρ	d	d--------	_	70	AuxY	_	t_4034
+3	ἄν	ἄν	d	d--------	_	12	AuxY	_	t_4035
+4	ποτε	ποτέ	d	d--------	_	12	ADV	_	t_4036
+5	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	7	ATR	_	t_4037
+6	ἄλλων	ἄλλος	a	a-p---mg-	Case=g|Gender=m|Number=p	7	ATR	_	t_4038
+7	Ἀθηναίων	ἀθήναιος	n	n-p---mg-	Case=g|Gender=m|Number=p	9	ADV	_	t_4039
+8	ἁπάντων	ἅπας	a	a-p---mg-	Case=g|Gender=m|Number=p	7	ATR	_	t_4040
+9	διαφερόντως	διαφερόντως	d	d--------	_	12	ADV	_	t_4041
+10	ἐν	ἐν	r	r--------	_	12	AuxP	_	t_4042
+11	αὐτῇ	αὐτός	p	p-s---fd-	Case=d|Gender=f|Number=s	10	ADV	_	t_4043
+12	ἐπεδήμεις	ἐπιδημέω	v	v2siia---	Mood=i|Number=s|Person=2|Tense=i|Voice=a	19	PRED	_	t_4044
+13	εἰ	εἰ	c	c--------	_	12	AuxC	_	t_4045
+14	μή	μή	d	d--------	_	17	AuxZ	_	t_4046
+15	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	17	OBJ	_	t_4047
+16	διαφερόντως	διαφερόντως	d	d--------	_	17	ADV	_	t_4048
+17	ἤρεσκεν	ἀρέσκω	v	v3siia---	Mood=i|Number=s|Person=3|Tense=i|Voice=a	13	ADV	_	t_4049
+18	,	,	u	u--------	_	0	AuxX	_	t_4050
+19	καὶ	καί	c	c--------	_	70	COORD	_	t_4051
+20	οὔ	οὐ	d	d--------	_	28	AuxZ	_	t_4052
+21	τʼ	τε	d	d--------	_	47	AuxY	_	t_4053
+22	ἐπὶ	ἐπί	r	r--------	_	28	AuxP	_	t_4054
+23	θεωρίαν	θεωρία	n	n-s---fa-	Case=a|Gender=f|Number=s	22	ADV	_	t_4055
+24	πώποτʼ	πώποτε	d	d--------	_	28	ADV	_	t_4056
+25	ἐκ	ἐκ	r	r--------	_	28	AuxP	_	t_4057
+26	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	27	ATR	_	t_4058
+27	πόλεως	πόλις	n	n-s---fg-	Case=g|Gender=f|Number=s	25	ADV	_	t_4059
+28	ἐξῆλθες	ἐξέρχομαι	v	v2saia---	Mood=i|Number=s|Person=2|Tense=a|Voice=a	47	PRED	_	t_4060
+29	,	,	u	u--------	_	18	AuxX	_	t_4061
+30	ὅτι	ὅτι	c	c--------	_	28	AuxC	_	t_4062
+31	μὴ	μή	d	d--------	_	32	AuxZ	_	t_4063
+32	ἅπαξ	ἅπαξ	d	d--------	_	79	ADV	_	t_4064
+33	εἰς	εἰς	r	r--------	_	79	AuxP	_	t_4065
+34	Ἰσθμόν	ἰσθμός	n	n-s---ma-	Case=a|Gender=m|Number=s	33	OBJ	_	t_4066
+35	,	,	u	u--------	_	18	AuxX	_	t_4067
+36	οὔ	οὐ	d	d--------	_	39	AuxZ	_	t_4068
+37	τε	τε	d	d--------	_	47	AuxY	_	t_4069
+38	ἄλλοσε	ἄλλοτε	d	d--------	_	79	ADV	_	t_4070
+39	οὐδαμόσε	οὐδαμόσε	d	d--------	_	79	ADV	_	t_4071
+40	,	,	u	u--------	_	18	AuxX	_	t_4072
+41	εἰ	εἰ	c	c--------	_	50	AuxC	_	t_4073
+42	μή	μή	d	d--------	_	44	AuxZ	_	t_4074
+43	ποι	ποι	d	d--------	_	44	AuxZ	_	t_4075
+44	στρατευσόμενος	στρατεύω	v	v-sfpmmn-	Case=n|Gender=m|Mood=p|Number=s|Tense=f|Voice=m	79	PNOM	_	t_4076
+45	,	,	u	u--------	_	18	AuxX	_	t_4077
+46	οὔ	οὐ	d	d--------	_	50	AuxZ	_	t_4078
+47	τε	τε	c	c--------	_	70	COORD	_	t_4079
+48	ἄλλην	ἄλλος	a	a-s---fa-	Case=a|Gender=f|Number=s	49	ATR	_	t_4080
+49	ἀποδημίαν	ἀποδημία	n	n-s---fa-	Case=a|Gender=f|Number=s	50	OBJ	_	t_4081
+50	ἐποιήσω	ποιέω	v	v2saim---	Mood=i|Number=s|Person=2|Tense=a|Voice=m	47	PRED	_	t_4082
+51	πώποτε	πώποτε	d	d--------	_	50	ADV	_	t_4083
+52	ὥσπερ	ὥσπερ	c	c--------	_	50	AuxC	_	t_4084
+53	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	55	ATR	_	t_4085
+54	ἄλλοι	ἄλλος	a	a-p---mn-	Case=n|Gender=m|Number=p	55	ATR	_	t_4086
+55	ἄνθρωποι	ἄνθρωπος	n	n-p---fn-	Case=n|Gender=f|Number=p	79	SBJ	_	t_4087
+56	,	,	u	u--------	_	18	AuxX	_	t_4088
+57	οὐ	οὐ	d	d--------	_	62	AuxZ	_	t_4089
+58	δʼ	δέ	d	d--------	_	47	AuxY	_	t_4090
+59	ἐπιθυμία	ἐπιθυμία	n	n-d---fn-	Case=n|Gender=f|Number=d	67	SBJ	_	t_4091
+60	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	67	OBJ	_	t_4092
+61	ἄλλης	ἄλλος	a	a-s---fg-	Case=g|Gender=f|Number=s	62	ATR	_	t_4093
+62	πόλεως	πόλις	n	n-s---fg-	Case=g|Gender=f|Number=s	64	OBJ	_	t_4094
+63	οὐ	οὐ	d	d--------	_	66	AuxZ	_	t_4095
+64	δὲ	δέ	c	c--------	_	68	COORD	_	t_4096
+65	ἄλλων	ἄλλος	a	a-p---mg-	Case=g|Gender=m|Number=p	66	ATR	_	t_4097
+66	νόμων	νόμος	n	n-p---mg-	Case=g|Gender=m|Number=p	64	OBJ	_	t_4098
+67	ἔλαβεν	λαμβάνω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	70	PRED	_	t_4099
+68	εἰδέναι	οἶδα	v	v--rna---	Mood=n|Tense=r|Voice=a	59	ATR	_	t_4100
+69	,	,	u	u--------	_	18	AuxX	_	t_4101
+70	ἀλλὰ	ἀλλά	c	c--------	_	18	COORD	_	t_4102
+71	ἡμεῖς	ἐγώ	p	p1p---mn-	Case=n|Gender=m|Number=p|Person=1	75	SBJ	_	t_4103
+72	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	73	ADV	_	t_4104
+73	ἱκανοὶ	ἱκανός	a	a-p---mn-	Case=n|Gender=m|Number=p	74	PNOM	_	t_4105
+74	ἦμεν	εἰμί	v	v--ina---	Mood=n|Tense=i|Voice=a	70	PRED	_	t_4106
+75	καὶ	καί	c	c--------	_	74	COORD	_	t_4107
+76	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	78	ATR	_	t_4108
+77	ἡμετέρα	ἡμέτερος	a	a-s---fn-	Case=n|Gender=f|Number=s	78	ATR	_	t_4109
+78	πόλις	πόλις	n	n-p---fa-	Case=a|Gender=f|Number=p	75	SBJ	_	t_4110
+79	[0]	[0]	-	---------	_	41	ADV	_	e_107
+80	·	·	u	u--------	_	18	AuxK	_	t_4111
