@@ -1,0 +1,370 @@
+# sentence_id = 1
+# translation_lang = en
+# prose_translation = The elder, to the elect lady and her children, whom I love in truth—and not I only, but also all who have come to know the truth—because of the truth that abides in us and will be with us forever:
+# literal_translation = The elder to [the] elect lady and to the children of her, whom I love in truth, and not I alone but also all the [ones] having known the truth, because of the truth [that] abides in us, and [it] will be with us into the age;
+1	Ο	ο	l	l-s---mn-	Case=n|Gender=m|Number=s	2	ATR	_	t_1|gloss=the
+2	ΠΡΕΣΒΥΤΕΡΟΣ	πρεσβυτεροσ	n	n-s---mn-	Case=n|Gender=m|Number=s	3	SBJ	_	t_2|gloss=elder
+3	ἐκλεκτῇ	ἐκλεκτός	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	16	PRED	_	t_3|gloss=elect
+4	κυρίᾳ	κυρία	n	n-s---fd-	Case=d|Gender=f|Number=s	5	ADV	_	t_4|gloss=lady
+5	καὶ	καί	c	c--------	_	3	COORD	_	t_5|gloss=and
+6	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=m|Number=p	7	ATR	_	t_6|gloss=the
+7	τέκνοις	τέκνον	n	n-p---nd-	Case=d|Gender=n|Number=p	5	OBJ	_	t_7|gloss=children
+8	αὐτῆς	αὐτός	p	p-s---fg-	Case=g|Gender=f|Number=s	4	ATR	_	t_8|gloss=her
+9	,	,	u	u--------	_	0	AuxX	_	t_9|gloss=,
+10	οὓς	ὅς	p	p-p---ma-	Case=a|Gender=m|Number=p	12	OBJ	_	t_10|gloss=whom
+11	ἐγὼ	ἐγώ	p	p1s---cn-	Case=n|Gender=c|Number=s|Person=1	12	SBJ	_	t_11|gloss=i
+12	ἀγαπῶ	ἀγαπάω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	7	ATR	_	t_12|gloss=love
+13	ἐν	ἐν	r	r--------	_	12	AuxP	_	t_13|gloss=in
+14	ἀληθείᾳ	ἀλήθεια	n	n-s---fd-	Case=d|Gender=f|Number=s	13	ADV	_	t_14|gloss=truth
+15	,	,	u	u--------	_	9	AuxX	_	t_15|gloss=,
+16	καὶ	καί	c	c--------	_	9	COORD	_	t_16|gloss=and
+17	οὐκ	οὐ	d	d--------	_	19	AuxZ	_	t_17|gloss=not
+18	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	43	SBJ	_	t_18|gloss=i
+19	μόνος	μόνος	a	a-s---mn-	Case=n|Gender=m|Number=s	18	ATV	_	t_19|gloss=alone
+20	ἀλλὰ	ἀλλά	c	c--------	_	43	COORD	_	t_20|gloss=but
+21	καὶ	καί	d	d--------	_	22	AuxZ	_	t_21|gloss=also
+22	πάντες	πᾶς	a	a-p---mn-	Case=n|Gender=m|Number=p	20	SBJ	_	t_22|gloss=all
+23	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	24	ATR	_	t_23|gloss=the-ones
+24	ἐγνωκότες	γιγνώσκω	v	v-prpamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=r|Voice=a	43	PNOM	_	t_24|gloss=having-known
+25	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	26	ATR	_	t_25|gloss=the
+26	ἀλήθειαν	ἀλήθεια	n	n-s---fa-	Case=a|Gender=f|Number=s	24	OBJ	_	t_26|gloss=truth
+27	,	,	u	u--------	_	9	AuxX	_	t_27|gloss=,
+28	διὰ	διά	r	r--------	_	43	AuxP	_	t_28|gloss=because-of
+29	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	30	ATR	_	t_29|gloss=the
+30	ἀλήθειαν	ἀλήθεια	n	n-s---fa-	Case=a|Gender=f|Number=s	28	ADV	_	t_30|gloss=truth
+31	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	30	ATR	_	t_31|gloss=that
+32	μένουσαν	μένω	v	v-sppafa-	Case=a|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	30	ATR	_	t_32|gloss=abides
+33	ἐν	ἐν	r	r--------	_	32	AuxP	_	t_33|gloss=in
+34	ἡμῖν	ἐγώ	p	p1p---cd-	Case=d|Gender=c|Number=p|Person=1	33	ADV	_	t_34|gloss=us
+35	,	,	u	u--------	_	9	AuxX	_	t_35|gloss=,
+36	καὶ	καί	c	c--------	_	9	COORD	_	t_36|gloss=and
+37	μεθʼ	μετά	r	r--------	_	39	AuxP	_	t_37|gloss=with
+38	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	37	PNOM	_	t_38|gloss=us
+39	ἔσται	εἰμί	v	v3sfim---	Mood=i|Number=s|Person=3|Tense=f|Voice=m	36	PRED	_	t_39|gloss=will-be
+40	εἰς	εἰς	r	r--------	_	39	AuxP	_	t_40|gloss=into
+41	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	42	ATR	_	t_41|gloss=the
+42	αἰῶνα	αἰών	n	n-s---ma-	Case=a|Gender=m|Number=s	40	ADV	_	t_42|gloss=age
+43	[0]	[0]	-	---------	_	36	PRED	_	e_1
+44	·	·	u	u--------	_	9	AuxK	_	t_43|gloss=;
+
+
+# sentence_id = 2
+# translation_lang = en
+# prose_translation = Grace, mercy, and peace will be with us from God the Father and from Jesus Christ, the Father's Son, in truth and love.
+# literal_translation = Will be with us grace, mercy, peace, from God [the] Father, and from Jesus Christ, the Son of the Father, in truth and love.
+1	ἔσται	εἰμί	v	v3sfim---	Mood=i|Number=s|Person=3|Tense=f|Voice=m	0	PRED	_	t_44|gloss=will-be
+2	μεθʼ	μετά	r	r--------	_	1	AuxP	_	t_45|gloss=with
+3	ἡμῶν	ἐγώ	p	p-p---mg-	Case=g|Gender=m|Number=p	2	PNOM	_	t_46|gloss=us
+4	χάρις	χάρις	n	n-s---fn-	Case=n|Gender=f|Number=s	1	SBJ	_	t_47|gloss=grace
+5	ἔλεος	ἔλεος	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_48|gloss=mercy
+6	εἰρήνη	εἰρήνη	n	n-s---fn-	Case=n|Gender=f|Number=s	1	SBJ	_	t_49|gloss=peace
+7	παρὰ	παρά	r	r--------	_	11	AuxP	_	t_50|gloss=from
+8	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	7	ATR	_	t_51|gloss=God
+9	πατρός	πατήρ	n	n-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_52|gloss=Father
+10	,	,	u	u--------	_	1	AuxX	_	t_53|gloss=,
+11	καὶ	καί	c	c--------	_	1	COORD	_	t_54|gloss=and
+12	παρὰ	παρά	r	r--------	_	11	AuxP	_	t_55|gloss=from
+13	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ADV	_	t_56|gloss=Jesus
+14	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ATR	_	t_57|gloss=Christ
+15	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	14	ATR	_	t_58|gloss=the
+16	υἱοῦ	υἱός	n	n-s---mg-	Case=g|Gender=m|Number=s	14	ATR	_	t_59|gloss=Son
+17	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	16	ATR	_	t_60|gloss=the
+18	πατρός	πατήρ	n	n-s---mg-	Case=g|Gender=m|Number=s	16	ATR	_	t_61|gloss=Father's
+19	,	,	u	u--------	_	1	AuxX	_	t_62|gloss=,
+20	ἐν	ἐν	r	r--------	_	1	AuxP	_	t_63|gloss=in
+21	ἀληθείᾳ	ἀλήθεια	n	n-s---fd-	Case=d|Gender=f|Number=s	22	ADV	_	t_64|gloss=truth
+22	καὶ	καί	c	c--------	_	20	COORD	_	t_65|gloss=and
+23	ἀγάπῃ	ἀγάπη	n	n-s---fd-	Case=d|Gender=f|Number=s	22	ADV	_	t_66|gloss=love
+24	.	.	u	u--------	_	1	AuxK	_	t_67|gloss=.
+
+
+# sentence_id = 3
+# translation_lang = en
+# prose_translation = I rejoiced greatly that I have found some of your children walking in truth, just as we received a commandment from the Father.
+# literal_translation = I rejoiced greatly that I have found [some] of your children walking in truth, just as we received a commandment from the Father.
+1	Ἐχάρην	χαίρω	n	n-s---fa-	Case=a|Gender=f|Number=s	9	SBJ	_	t_68|gloss=I-rejoiced
+2	λίαν	λίαν	d	d--------	_	4	ADV	_	t_69|gloss=greatly
+3	ὅτι	ὅτι	c	c--------	_	4	AuxC	_	t_70|gloss=that
+4	εὕρηκα	εὑρίσκω	v	v1sria---	Mood=i|Number=s|Person=1|Tense=r|Voice=a	0	PRED	_	t_71|gloss=I-have-found
+5	ἐκ	ἐκ	r	r--------	_	9	AuxP	_	t_72|gloss=from
+6	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	7	ATR	_	t_73|gloss=the
+7	τέκνων	τέκνον	n	n-p---ng-	Case=g|Gender=n|Number=p	5	ADV	_	t_74|gloss=children
+8	σου	σύ	p	p2s---cg-	Case=g|Gender=c|Number=s|Person=2	7	ATR	_	t_75|gloss=your
+9	περιπατοῦντας	περιπατέω	v	v-pppama-	Case=a|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	4	OBJ	_	t_76|gloss=walking
+10	ἐν	ἐν	r	r--------	_	9	AuxP	_	t_77|gloss=in
+11	ἀληθείᾳ	ἀλήθεια	n	n-s---fd-	Case=d|Gender=f|Number=s	10	ADV	_	t_78|gloss=truth
+12	,	,	u	u--------	_	4	AuxX	_	t_79|gloss=,
+13	καθὼς	καθώς	c	c--------	_	9	AuxC	_	t_80|gloss=just-as
+14	ἐντολὴν	ἐντολή	n	n-s---fa-	Case=a|Gender=f|Number=s	15	OBJ	_	t_81|gloss=commandment
+15	ἐλάβομεν	λαμβάνω	v	v1paia---	Mood=i|Number=p|Person=1|Tense=a|Voice=a	13	ADV	_	t_82|gloss=we-received
+16	παρὰ	παρά	r	r--------	_	15	AuxP	_	t_83|gloss=from
+17	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	18	ATR	_	t_84|gloss=the
+18	πατρός	πατήρ	n	n-s---mg-	Case=g|Gender=m|Number=s	16	ADV	_	t_85|gloss=Father
+19	.	.	u	u--------	_	4	AuxK	_	t_86|gloss=.
+
+
+# sentence_id = 4
+# translation_lang = en
+# prose_translation = And now I ask you, lady—not as though writing you a new commandment, but the one we have had from the beginning—that we love one another.
+# literal_translation = And now I ask you, lady, not as writing to you a new commandment, but the [one] which we were having from [the] beginning, that we love one another.
+1	καὶ	καί	d	d--------	_	3	AuxY	_	t_87|gloss=and
+2	νῦν	νῦν	d	d--------	_	3	ADV	_	t_88|gloss=now
+3	ἐρωτῶ	ἐρωτάω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_89|gloss=i-ask
+4	σε	σύ	p	p-s---ma-	Case=a|Gender=m|Number=s	3	OBJ	_	t_90|gloss=you
+5	,	,	u	u--------	_	3	AuxX	_	t_91|gloss=,
+6	κυρία	κύριος	n	n-s---mv-	Case=v|Gender=m|Number=s	3	ExD	_	t_92|gloss=lady
+7	,	,	u	u--------	_	3	AuxX	_	t_93|gloss=,
+8	οὐχ	οὐ	d	d--------	_	10	AuxZ	_	t_94|gloss=not
+9	ὡς	ὡς	d	d--------	_	10	AuxZ	_	t_95|gloss=as
+10	ἐντολὴν	ἐντολή	n	n-s---fa-	Case=a|Gender=f|Number=s	11	OBJ	_	t_96|gloss=commandment
+11	γράφων	γράφω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	3	ADV	_	t_97|gloss=writing
+12	σοι	σύ	p	p-s---md-	Case=d|Gender=m|Number=s	11	OBJ	_	t_98|gloss=to-you
+13	καινὴν	καινός	a	a-s---fa-	Case=a|Gender=f|Number=s	10	ATR	_	t_99|gloss=new
+14	ἀλλὰ	ἀλλά	c	c--------	_	3	COORD	_	t_100|gloss=but
+15	ἣν	ὅς	p	p-p---ng-	Case=a|Gender=f|Number=s	16	OBJ	_	t_101|gloss=which
+16	εἴχαμεν	ἔχω	v	v1paia---	Mood=i|Number=p|Person=1|Tense=a|Voice=a	14	OBJ	_	t_102|gloss=we-were-having
+17	ἀπʼ	ἀπό	r	r--------	_	16	AuxP	_	t_103|gloss=from
+18	ἀρχῆς	ἀρχή	n	n-s---fg-	Case=g|Gender=f|Number=s	17	ADV	_	t_104|gloss=beginning
+19	,	,	u	u--------	_	3	AuxX	_	t_105|gloss=,
+20	ἵνα	ἵνα	c	c--------	_	14	AuxC	_	t_106|gloss=that
+21	ἀγαπῶμεν	ἀγαπάω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	20	ADV	_	t_107|gloss=we-may-love
+22	ἀλλήλους	ἀλλήλων	p	p-p---ma-	Case=a|Gender=m|Number=p	21	OBJ	_	t_108|gloss=one-another
+23	.	.	u	u--------	_	3	AuxK	_	t_109|gloss=.
+
+
+# sentence_id = 5
+# translation_lang = en
+# prose_translation = And this is love, that we walk according to his commandments.
+# literal_translation = And this is the love, that we might walk according to his commandments;
+1	καὶ	καί	c	c--------	_	3	AuxY	_	t_110|gloss=and
+2	αὕτη	οὗτος	p	p-s---fn-	Case=n|Gender=f|Number=s	3	SBJ	_	t_111|gloss=this
+3	ἐστὶν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_112|gloss=is
+4	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	5	ATR	_	t_113|gloss=the
+5	ἀγάπη	ἀγάπη	n	n-s---fn-	Case=n|Gender=f|Number=s	3	PNOM	_	t_114|gloss=love
+6	,	,	u	u--------	_	3	AuxX	_	t_115|gloss=,
+7	ἵνα	ἵνα	c	c--------	_	3	AuxC	_	t_116|gloss=that
+8	περιπατῶμεν	περιπατέω	v	v1ppsa---	Mood=s|Number=p|Person=1|Tense=p|Voice=a	7	ADV	_	t_117|gloss=we-might-walk
+9	κατὰ	κατά	r	r--------	_	8	AuxP	_	t_118|gloss=according-to
+10	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	11	ATR	_	t_119|gloss=the
+11	ἐντολὰς	ἐντολή	n	n-p---fa-	Case=a|Gender=f|Number=p	9	ADV	_	t_120|gloss=commandments
+12	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_121|gloss=his
+13	·	·	u	u--------	_	3	AuxK	_	t_122|gloss=·
+
+
+# sentence_id = 6
+# translation_lang = en
+# prose_translation = And this is the commandment, just as you heard from the beginning, that you walk in it.
+# literal_translation = This is the commandment, just as you heard from the beginning, that in it you should walk.
+1	αὕτη	οὗτος	p	p-s---fn-	Case=n|Gender=f|Number=s	3	ATR	_	t_123|gloss=this
+2	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	3	ATR	_	t_124|gloss=the
+3	ἐντολή	ἐντολή	n	n-s---fn-	Case=n|Gender=f|Number=s	4	SBJ	_	t_125|gloss=commandment
+4	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_126|gloss=is
+5	,	,	u	u--------	_	4	AuxX	_	t_127|gloss=,
+6	καθὼς	καθώς	c	c--------	_	4	AuxC	_	t_128|gloss=just-as
+7	ἠκούσατε	ἀκούω	v	v2paia---	Mood=i|Number=p|Person=2|Tense=a|Voice=a	6	ADV	_	t_129|gloss=you-heard
+8	ἀπʼ	ἀπό	r	r--------	_	7	AuxP	_	t_130|gloss=from
+9	ἀρχῆς	ἀρχή	n	n-s---fg-	Case=g|Gender=f|Number=s	8	ADV	_	t_131|gloss=beginning
+10	,	,	u	u--------	_	4	AuxX	_	t_132|gloss=,
+11	ἵνα	ἵνα	c	c--------	_	4	AuxC	_	t_133|gloss=that
+12	ἐν	ἐν	r	r--------	_	14	AuxP	_	t_134|gloss=in
+13	αὐτῇ	αὐτός	p	p-s---fd-	Case=d|Gender=f|Number=s	12	ADV	_	t_135|gloss=it
+14	περιπατῆτε	περιπατέω	v	v2ppsa---	Mood=s|Number=p|Person=2|Tense=p|Voice=a	11	ADV	_	t_136|gloss=you-should-walk
+15	.	.	u	u--------	_	4	AuxK	_	t_137|gloss=.
+
+
+# sentence_id = 7
+# translation_lang = en
+# prose_translation = For many deceivers have gone out into the world, those who do not confess Jesus Christ coming in the flesh.
+# literal_translation = Because many deceivers went out into the world, the ones not confessing Jesus Christ coming in flesh.
+1	ὅτι	ὅτι	c	c--------	_	17	AuxC	_	t_138|gloss=because
+2	πολλοὶ	πολύς	a	a-p---mn-	Case=n|Gender=m|Number=p	3	ATR	_	t_139|gloss=many
+3	πλάνοι	πλάνος	n	n-p---mn-	Case=n|Gender=m|Number=p	4	SBJ	_	t_140|gloss=deceivers
+4	ἐξῆλθαν	ἐξέρχομαι	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	1	ADV	_	t_141|gloss=went-out
+5	εἰς	εἰς	r	r--------	_	4	AuxP	_	t_142|gloss=into
+6	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	7	ATR	_	t_143|gloss=the
+7	κόσμον	κόσμος	n	n-s---ma-	Case=a|Gender=m|Number=s	5	OBJ	_	t_144|gloss=world
+8	,	,	u	u--------	_	17	AuxX	_	t_145|gloss=,
+9	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	3	ATR	_	t_146|gloss=the-ones
+10	μὴ	μή	d	d--------	_	11	AuxZ	_	t_147|gloss=not
+11	ὁμολογοῦντες	ὁμολογέω	v	v-pppamn-	Case=n|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	3	ATR	_	t_148|gloss=confessing
+12	Ἰησοῦν	ἰησοῦς	n	n-s---ma-	Case=a|Gender=m|Number=s	13	ATR	_	t_149|gloss=Jesus
+13	Χριστὸν	χριστός	n	n-s---ma-	Case=a|Gender=m|Number=s	14	SBJ	_	t_150|gloss=Christ
+14	ἐρχόμενον	ἔρχομαι	v	v-sppema-	Case=a|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	11	OBJ	_	t_151|gloss=coming
+15	ἐν	ἐν	r	r--------	_	14	AuxP	_	t_152|gloss=in
+16	σαρκί	σάρξ	n	n-s---fd-	Case=d|Gender=f|Number=s	15	ADV	_	t_153|gloss=flesh
+17	[0]	[0]	-	---------	_	0	PRED	_	e_2
+18	·	·	u	u--------	_	17	AuxK	_	t_154|gloss=·
+
+
+# sentence_id = 8
+# translation_lang = en
+# prose_translation = This one is the deceiver and the antichrist.
+# literal_translation = This [one] is the deceiver and the antichrist.
+1	οὗτός	οὗτος	p	p-s---mn-	Case=n|Gender=m|Number=s	2	SBJ	_	t_155|gloss=this-one
+2	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_156|gloss=is
+3	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	5	ATR	_	t_157|gloss=the
+4	πλάνος	πλάνος	a	a-s---mn-	Case=n|Gender=m|Number=s	5	PNOM	_	t_158|gloss=deceiver
+5	καὶ	καί	c	c--------	_	2	COORD	_	t_159|gloss=and
+6	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	7	ATR	_	t_160|gloss=the
+7	ἀντίχριστος	ἀντίχριστος	a	a-s---mn-	Case=n|Gender=m|Number=s	5	PNOM	_	t_161|gloss=antichrist
+8	.	.	u	u--------	_	2	AuxK	_	t_162|gloss=.
+
+
+# sentence_id = 9
+# translation_lang = en
+# prose_translation = Watch yourselves, so that you do not lose what we have worked for, but may receive a full reward.
+# literal_translation = Watch yourselves, that you may not lose the things which we worked, but may receive a full reward.
+1	βλέπετε	βλέπω	v	v2ppia---	Mood=i|Number=p|Person=2|Tense=p|Voice=a	0	PRED	_	t_163|gloss=watch
+2	ἑαυτούς	ἑαυτοῦ	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_164|gloss=yourselves
+3	,	,	u	u--------	_	1	AuxX	_	t_165|gloss=,
+4	ἵνα	ἵνα	c	c--------	_	1	AuxC	_	t_166|gloss=so-that
+5	μὴ	μή	d	d--------	_	6	AuxZ	_	t_167|gloss=not
+6	ἀπολέσητε	ἀπόλλυμι	v	v2pasa---	Mood=s|Number=p|Person=2|Tense=a|Voice=a	10	ADV	_	t_168|gloss=you-lose
+7	ἃ	ὅς	p	p-p---na-	Case=a|Gender=n|Number=p	8	OBJ	_	t_169|gloss=which
+8	ἠργασάμεθα	ἐργάζομαι	v	v1paim---	Mood=i|Number=p|Person=1|Tense=a|Voice=m	6	OBJ	_	t_170|gloss=we-worked-for
+9	,	,	u	u--------	_	1	AuxX	_	t_171|gloss=,
+10	ἀλλὰ	ἀλλά	c	c--------	_	4	COORD	_	t_172|gloss=but
+11	μισθὸν	μισθός	n	n-s---ma-	Case=a|Gender=m|Number=s	13	OBJ	_	t_173|gloss=reward
+12	πλήρη	πλήρης	a	a-s---ma-	Case=a|Gender=m|Number=s	11	ATR	_	t_174|gloss=full
+13	ἀπολάβητε	ἀπολαμβάνω	v	v2pasa---	Mood=s|Number=p|Person=2|Tense=a|Voice=a	10	ADV	_	t_175|gloss=you-may-receive
+14	.	.	u	u--------	_	1	AuxK	_	t_176|gloss=.
+
+
+# sentence_id = 10
+# translation_lang = en
+# prose_translation = Everyone who goes ahead and does not remain in the teaching of Christ does not have God.
+# literal_translation = Everyone who goes-ahead and does-not remain in the teaching of-the Christ, God he-does-not have.
+1	πᾶς	πᾶς	a	a-s---mn-	Case=n|Gender=m|Number=s	4	ATR	_	t_177|gloss=everyone
+2	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	4	ATR	_	t_178|gloss=the-one
+3	προάγων	προάγω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	4	ATR	_	t_179|gloss=going-ahead
+4	καὶ	καί	c	c--------	_	14	COORD	_	t_180|gloss=and
+5	μὴ	μή	d	d--------	_	6	AuxZ	_	t_181|gloss=not
+6	μένων	μένω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	4	ATR	_	t_182|gloss=remaining
+7	ἐν	ἐν	r	r--------	_	6	AuxP	_	t_183|gloss=in
+8	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	9	ATR	_	t_184|gloss=the
+9	διδαχῇ	διδαχή	n	n-s---fd-	Case=d|Gender=f|Number=s	7	ADV	_	t_185|gloss=teaching
+10	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_186|gloss=the
+11	χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_187|gloss=Christ
+12	θεὸν	θεός	n	n-s---ma-	Case=a|Gender=m|Number=s	14	OBJ	_	t_188|gloss=God
+13	οὐκ	οὐ	d	d--------	_	14	AuxZ	_	t_189|gloss=not
+14	ἔχει	ἔχω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_190|gloss=has
+15	·	·	u	u--------	_	14	AuxK	_	t_191|gloss=.
+
+
+# sentence_id = 11
+# translation_lang = en
+# prose_translation = Whoever remains in the teaching, this one has both the Father and the Son.
+# literal_translation = The [one] remaining in the teaching, this one has both the Father and the Son.
+1	ὁ	ὁ	v	v-sppemg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=e	14	ADV	_	t_192|gloss=the-[one]
+2	μένων	μένω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	14	ADV	_	t_193|gloss=remaining
+3	ἐν	ἐν	r	r--------	_	2	AuxP	_	t_194|gloss=in
+4	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	5	ATR	_	t_195|gloss=the
+5	διδαχῇ	διδαχή	n	n-s---fd-	Case=d|Gender=f|Number=s	3	ADV	_	t_196|gloss=teaching
+6	,	,	u	u--------	_	14	AuxX	_	t_197|gloss=,
+7	οὗτος	οὗτος	p	p-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_198|gloss=this-one
+8	καὶ	καί	d	d--------	_	11	AuxY	_	t_199|gloss=both
+9	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	10	ATR	_	t_200|gloss=the
+10	πατέρα	πατήρ	n	n-s---ma-	Case=a|Gender=m|Number=s	11	OBJ	_	t_201|gloss=Father
+11	καὶ	καί	c	c--------	_	14	COORD	_	t_202|gloss=and
+12	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	13	ATR	_	t_203|gloss=the
+13	υἱὸν	υἱός	n	n-s---ma-	Case=a|Gender=m|Number=s	11	OBJ	_	t_204|gloss=Son
+14	ἔχει	ἔχω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_205|gloss=has
+15	.	.	u	u--------	_	14	AuxK	_	t_206|gloss=.
+
+
+# sentence_id = 12
+# translation_lang = en
+# prose_translation = If anyone comes to you and does not bring this teaching, do not receive him into your house and do not say to him, "Greetings."
+# literal_translation = If anyone comes to you and this teaching does not bring, do not receive him into house and do not say to him, "to rejoice."
+1	εἴ	εἰ	c	c--------	_	18	AuxC	_	t_207|gloss=if
+2	τις	τις	p	p-s---cn-	Case=n|Gender=c|Number=s	6	SBJ	_	t_208|gloss=anyone
+3	ἔρχεται	ἔρχομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	6	ADV	_	t_209|gloss=comes
+4	πρὸς	πρός	r	r--------	_	3	AuxP	_	t_210|gloss=to
+5	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	4	OBJ	_	t_211|gloss=you
+6	καὶ	καί	c	c--------	_	1	COORD	_	t_212|gloss=and
+7	ταύτην	οὗτος	a	a-s---fa-	Case=a|Gender=f|Number=s	9	ATR	_	t_213|gloss=this
+8	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	9	ATR	_	t_214|gloss=the
+9	διδαχὴν	διδαχή	n	n-s---fa-	Case=a|Gender=f|Number=s	11	OBJ	_	t_215|gloss=teaching
+10	οὐ	οὐ	d	d--------	_	11	AuxZ	_	t_216|gloss=not
+11	φέρει	φέρω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	6	ADV	_	t_217|gloss=brings
+12	,	,	u	u--------	_	0	AuxX	_	t_218|gloss=,
+13	μὴ	μή	d	d--------	_	14	AuxZ	_	t_219|gloss=not
+14	λαμβάνετε	λαμβάνω	v	v2ppia---	Mood=i|Number=p|Person=2|Tense=p|Voice=a	18	PRED	_	t_220|gloss=receive
+15	αὐτὸν	αὐτός	p	p-s---ma-	Case=a|Gender=m|Number=s	14	OBJ	_	t_221|gloss=him
+16	εἰς	εἰς	r	r--------	_	14	AuxP	_	t_222|gloss=into
+17	οἰκίαν	οἰκία	n	n-s---fa-	Case=a|Gender=f|Number=s	16	OBJ	_	t_223|gloss=house
+18	καὶ	καί	c	c--------	_	12	COORD	_	t_224|gloss=and
+19	χαίρειν	χαίρω	v	v--pna---	Mood=n|Tense=p|Voice=a	22	OBJ	_	t_225|gloss=to-rejoice
+20	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	19	OBJ	_	t_226|gloss=to-him
+21	μὴ	μή	d	d--------	_	22	AuxZ	_	t_227|gloss=not
+22	λέγετε	λέγω3	v	v2ppma---	Mood=m|Number=p|Person=2|Tense=p|Voice=a	18	PRED	_	t_228|gloss=say
+23	·	·	u	u--------	_	12	AuxK	_	t_229|gloss=·
+
+
+# sentence_id = 13
+# translation_lang = en
+# prose_translation = For the one who says a greeting to him shares in his wicked works.
+# literal_translation = For the one saying to him, Rejoice, shares in his works, the wicked [ones].
+1	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	2	ATR	_	t_230|gloss=the-one
+2	λέγων	λέγω3	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	6	SBJ	_	t_231|gloss=saying
+3	γὰρ	γάρ	d	d--------	_	6	AuxY	_	t_232|gloss=for
+4	αὐτῷ	αὐτός	p	p-s---md-	Case=d|Gender=m|Number=s	5	OBJ	_	t_233|gloss=to-him
+5	χαίρειν	χαίρω	v	v--pna---	Mood=n|Tense=p|Voice=a	2	OBJ	_	t_234|gloss=rejoice
+6	κοινωνεῖ	κοινωνέω	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	0	PRED	_	t_235|gloss=shares
+7	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	8	ATR	_	t_236|gloss=the
+8	ἔργοις	ἔργον	n	n-p---nd-	Case=d|Gender=n|Number=p	6	OBJ	_	t_237|gloss=works
+9	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_238|gloss=his
+10	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	8	ATR	_	t_239|gloss=the
+11	πονηροῖς	πονηρός	a	a-p---nd-	Case=d|Gender=n|Number=p	8	ATR	_	t_240|gloss=wicked
+12	.	.	u	u--------	_	6	AuxK	_	t_241|gloss=.
+
+
+# sentence_id = 14
+# translation_lang = en
+# prose_translation = Though I have many things to write to you, I did not want to do so with paper and ink, but I hope to come to you and speak face to face, so that our joy may be fulfilled.
+# literal_translation = Having many things to write to you, I did not want [to do so] through paper and ink, but I hope to come to be with you and to speak mouth to mouth, so that the joy of you may be fulfilled.
+1	Πολλὰ	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	4	OBJ	_	t_242|gloss=many-things
+2	ἔχων	ἔχω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	6	ADV	_	t_243|gloss=having
+3	ὑμῖν	σύ	p	p-p---md-	Case=d|Gender=m|Number=p	4	OBJ	_	t_244|gloss=to-you
+4	γράφειν	γράφω	v	v--pna---	Mood=n|Tense=p|Voice=a	2	OBJ	_	t_245|gloss=to-write
+5	οὐκ	οὐ	d	d--------	_	6	AuxZ	_	t_246|gloss=not
+6	ἐβουλήθην	βούλομαι	v	v1saip---	Mood=i|Number=s|Person=1|Tense=a|Voice=p	12	PRED	_	t_247|gloss=i-wished
+7	διὰ	διά	r	r--------	_	6	AuxP	_	t_248|gloss=through
+8	χάρτου	χάρτης	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ADV	_	t_249|gloss=paper
+9	καὶ	καί	c	c--------	_	7	COORD	_	t_250|gloss=and
+10	μέλανος	μέλας	n	n-s---ng-	Case=g|Gender=n|Number=s	9	ADV	_	t_251|gloss=ink
+11	,	,	u	u--------	_	0	AuxX	_	t_252|gloss=,
+12	ἀλλὰ	ἀλλά	c	c--------	_	11	COORD	_	t_253|gloss=but
+13	ἐλπίζω	ἐλπίζω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	12	PRED	_	t_254|gloss=i-hope
+14	γενέσθαι	γίγνομαι	v	v--anm---	Mood=n|Tense=a|Voice=m	17	OBJ	_	t_255|gloss=to-come
+15	πρὸς	πρός	r	r--------	_	14	AuxP	_	t_256|gloss=to
+16	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	15	PNOM	_	t_257|gloss=you
+17	καὶ	καί	c	c--------	_	13	COORD	_	t_258|gloss=and
+18	στόμα	στόμα	n	n-s---na-	Case=a|Gender=n|Number=s	21	ADV	_	t_259|gloss=mouth
+19	πρὸς	πρός	r	r--------	_	21	AuxP	_	t_260|gloss=to
+20	στόμα	στόμα	n	n-s---na-	Case=n|Gender=n|Number=s	19	ADV	_	t_261|gloss=mouth
+21	λαλῆσαι	λαλέω	v	v--ana---	Mood=n|Tense=a|Voice=a	17	OBJ	_	t_262|gloss=to-speak
+22	,	,	u	u--------	_	11	AuxX	_	t_263|gloss=,
+23	ἵνα	ἵνα	c	c--------	_	21	AuxC	_	t_264|gloss=so-that
+24	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	25	ATR	_	t_265|gloss=the
+25	χαρὰ	χαρά	n	n-s---fn-	Case=n|Gender=f|Number=s	28	SBJ	_	t_266|gloss=joy
+26	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	25	ATR	_	t_267|gloss=of-you
+27	πεπληρωμένη	πληρόω	v	v-srpefn-	Case=n|Gender=f|Mood=p|Number=s|Tense=r|Voice=e	28	PNOM	_	t_268|gloss=having-been-fulfilled
+28	ᾖ	εἰμί	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	23	ADV	_	t_269|gloss=may-be
+29	.	.	u	u--------	_	11	AuxK	_	t_270|gloss=.
+
+
+# sentence_id = 15
+# translation_lang = en
+# prose_translation = The children of your elect sister greet you.
+# literal_translation = Greet you the children of the sister of you, of the elect [one].
+1	Ἀσπάζεταί	ἀσπάζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_271|gloss=greets
+2	σε	σύ	p	p2s---ca-	Case=a|Gender=c|Number=s|Person=2	1	OBJ	_	t_272|gloss=you
+3	τὰ	ὁ	l	l-p---nn-	Case=n|Gender=n|Number=p	4	ATR	_	t_273|gloss=the
+4	τέκνα	τέκνον	n	n-p---nn-	Case=n|Gender=n|Number=p	1	SBJ	_	t_274|gloss=children
+5	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	6	ATR	_	t_275|gloss=the
+6	ἀδελφῆς	ἀδελφή	n	n-s---fg-	Case=g|Gender=f|Number=s	4	ATR	_	t_276|gloss=sister
+7	σου	σύ	p	p2s---cg-	Case=g|Gender=c|Number=s|Person=2	6	ATR	_	t_277|gloss=your
+8	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	9	ATR	_	t_278|gloss=the
+9	ἐκλεκτῆς	ἐκλεκτός	a	a-s---fg-	Case=g|Gender=f|Number=s	6	ATR	_	t_279|gloss=elect
+10	.	.	u	u--------	_	1	AuxK	_	t_280|gloss=.
