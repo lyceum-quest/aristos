@@ -10377,3 +10377,950 @@
 46	συνήσουσιν	συνίημι	v	v3pfia---	Mood=i|Number=p|Person=3|Tense=f|Voice=a	42	PRED	_	t_7525
 47	[0]	[0]	-	---------	_	0	PRED	_	e_173
 48	.	.	u	u--------	_	47	AuxK	_	t_7526
+
+
+# sentence_id = 448
+# translation_lang = en
+# prose_translation = That is also why I was so often hindered from coming to you.
+# literal_translation = Therefore also I was being hindered the many times of the coming to you;
+1	Διὸ	διό	d	d--------	_	3	AuxY	_	t_7527
+2	καὶ	καί	d	d--------	_	3	AuxY	_	t_7528
+3	ἐνεκοπτόμην	ἐγκόπτω	v	v1saim---	Mood=i|Number=s|Person=1|Tense=a|Voice=m	0	PRED	_	t_7529
+4	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	5	ATR	_	t_7530
+5	πολλὰ	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	3	OBJ	_	t_7531
+6	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	7	ATR	_	t_7532
+7	ἐλθεῖν	ἔρχομαι	v	v--ana---	Mood=n|Tense=a|Voice=a	3	OBJ	_	t_7533
+8	πρὸς	πρός	r	r--------	_	7	AuxP	_	t_7534
+9	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	8	OBJ	_	t_7535
+10	·	·	u	u--------	_	3	AuxK	_	t_7536
+
+
+# sentence_id = 449
+# translation_lang = en
+# prose_translation = but now, having no longer any place in these regions, and having a longing to come to you for many years, whenever I journey to Spain—for I hope to see you as I pass through, and to be sent on my way there by you, if first I may be somewhat filled with your company—but now I am going to Jerusalem, ministering to the saints.
+# literal_translation = but now, no longer having a place in these regions, and having a longing of coming to you from sufficient years, whenever I might journey into Spain—for I hope, journeying through, to see you and to be sent forward there by you, if of you first I might be filled in part—but now I journey into Jerusalem, ministering to the saints.
+1	νυνὶ	νυνί	d	d--------	_	5	ADV	_	t_7537
+2	δὲ	δέ	d	d--------	_	49	AuxY	_	t_7538
+3	μηκέτι	μηκέτι	d	d--------	_	5	ADV	_	t_7539
+4	τόπον	τόπος	n	n-s---ma-	Case=a|Gender=m|Number=s	5	OBJ	_	t_7540
+5	ἔχων	ἔχω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	12	ADV	_	t_7541
+6	ἐν	ἐν	r	r--------	_	5	AuxP	_	t_7542
+7	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	8	ATR	_	t_7543
+8	κλίμασι	κλίμα	n	n-p---nd-	Case=d|Gender=n|Number=p	6	ADV	_	t_7544
+9	τούτοις	οὗτος	a	a-p---nd-	Case=d|Gender=n|Number=p	8	ATR	_	t_7545
+10	,	,	u	u--------	_	29	AuxX	_	t_7546
+11	ἐπιπόθειαν	ἐπιπόθησις	n	n-s---fa-	Case=a|Gender=f|Number=s	13	OBJ	_	t_7547
+12	δὲ	δέ	c	c--------	_	29	COORD	_	t_7548
+13	ἔχων	ἔχω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	12	ADV	_	t_7549
+14	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	15	ATR	_	t_7550
+15	ἐλθεῖν	ἔρχομαι	v	v--ana---	Mood=n|Tense=a|Voice=a	11	ATR	_	t_7551
+16	πρὸς	πρός	r	r--------	_	15	AuxP	_	t_7552
+17	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	16	OBJ	_	t_7553
+18	ἀπὸ	ἀπό	r	r--------	_	15	AuxP	_	t_7554
+19	ἱκανῶν	ἱκανός	a	a-p---ng-	Case=g|Gender=n|Number=p	20	ATR	_	t_7555
+20	ἐτῶν	ἔτος	n	n-p---ng-	Case=g|Gender=n|Number=p	18	ADV	_	t_7556
+21	,	,	u	u--------	_	29	AuxX	_	t_7557
+22	ὡς	ὡς	c	c--------	_	13	AuxC	_	t_7558
+23	ἂν	ἄν	d	d--------	_	24	AuxY	_	t_7559
+24	πορεύωμαι	πορεύω	v	v1spse---	Mood=s|Number=s|Person=1|Tense=p|Voice=e	22	ADV	_	t_7560
+25	εἰς	εἰς	r	r--------	_	24	AuxP	_	t_7561
+26	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	27	ATR	_	t_7562
+27	Σπανίαν	σπάνιος	n	n-s---fa-	Case=a|Gender=f|Number=s	25	OBJ	_	t_7563
+28	,	,	u	u--------	_	29	AuxX	_	t_7564
+29	ἐλπίζω	ἐλπίζω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_7565
+30	γὰρ	γάρ	d	d--------	_	29	AuxY	_	t_7566
+31	διαπορευόμενος	διαπορεύω	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	29	ADV	_	t_7567
+32	θεάσασθαι	θεάομαι	v	v--anm---	Mood=n|Tense=a|Voice=m	34	OBJ	_	t_7568
+33	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	32	OBJ	_	t_7569
+34	καὶ	καί	c	c--------	_	29	COORD	_	t_7570
+35	ὑφʼ	ὑπό	r	r--------	_	37	AuxP	_	t_7571
+36	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	35	OBJ	_	t_7572
+37	προπεμφθῆναι	προπέμπω	v	v--rne---	Mood=n|Tense=r|Voice=e	34	OBJ	_	t_7573
+38	ἐκεῖ	ἐκεῖ	d	d--------	_	37	ADV	_	t_7574
+39	ἐὰν	ἐάν	c	c--------	_	37	AuxC	_	t_7575
+40	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	41	ADV	_	t_7576
+41	πρῶτον	πρῶτος	a	a-s---na-	Case=a|Gender=n|Number=s	44	ADV	_	t_7577
+42	ἀπὸ	ἀπό	r	r--------	_	44	AuxP	_	t_7578
+43	μέρους	μέρος	n	n-s---ng-	Case=g|Gender=n|Number=s	42	ADV	_	t_7579
+44	ἐμπλησθῶ	ἐμπίπλημι	v	v1sasp---	Mood=s|Number=s|Person=1|Tense=a|Voice=p	39	ADV	_	t_7580
+45	,	,	u	u--------	_	29	AuxX	_	t_7581
+46	—	—	u	u--------	_	29	AuxG	_	t_7582
+47	νυνὶ	νυνί	d	d--------	_	49	ADV	_	t_7583
+48	δὲ	δέ	d	d--------	_	49	AuxY	_	t_7584
+49	πορεύομαι	πορεύω	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	29	PRED	_	t_7585
+50	εἰς	εἰς	r	r--------	_	49	AuxP	_	t_7586
+51	Ἰερουσαλὴμ	ἰερουσαλὴμ	n	n-s---fa-	Case=a|Gender=f|Number=s	50	OBJ	_	t_7587
+52	διακονῶν	διακονέω	v	v-sppamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=a	49	ADV	_	t_7588
+53	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	54	ATR	_	t_7589
+54	ἁγίοις	ἅγιος	a	a-p---md-	Case=d|Gender=m|Number=p	52	OBJ	_	t_7590
+55	.	.	u	u--------	_	29	AuxK	_	t_7591
+
+
+# sentence_id = 450
+# translation_lang = en
+# prose_translation = For Macedonia and Achaia were pleased to make some contribution for the poor among the saints who are in Jerusalem.
+# literal_translation = For they were well-pleased—Macedonia and Achaia—to make a certain contribution unto the poor of the saints, of those in Jerusalem.
+1	ηὐδόκησαν	εὐδοκέω	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	0	PRED	_	t_7592
+2	γὰρ	γάρ	d	d--------	_	1	AuxY	_	t_7593
+3	Μακεδονία	μακεδονία	n	n-s---fn-	Case=n|Gender=f|Number=s	4	SBJ	_	t_7594
+4	καὶ	καί	c	c--------	_	1	COORD	_	t_7595
+5	Ἀχαία	ἀχαία	n	n-s---fn-	Case=n|Gender=f|Number=s	4	SBJ	_	t_7596
+6	κοινωνίαν	κοινωνία	n	n-s---fa-	Case=a|Gender=f|Number=s	8	OBJ	_	t_7597
+7	τινὰ	τις	a	a-s---fa-	Case=a|Gender=f|Number=s	6	ATR	_	t_7598
+8	ποιήσασθαι	ποιέω	v	v--anm---	Mood=n|Tense=a|Voice=m	1	OBJ	_	t_7599
+9	εἰς	εἰς	r	r--------	_	8	AuxP	_	t_7600
+10	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	11	ATR	_	t_7601
+11	πτωχοὺς	πτωχός	n	n-p---ma-	Case=a|Gender=m|Number=p	9	ADV	_	t_7602
+12	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	13	ATR	_	t_7603
+13	ἁγίων	ἅγιος	a	a-p---mg-	Case=g|Gender=m|Number=p	11	ATR	_	t_7604
+14	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	13	ATR	_	t_7605
+15	ἐν	ἐν	r	r--------	_	13	AuxP	_	t_7606
+16	Ἰερουσαλήμ	ἰερουσαλὴμ	n	n-s---md-	Case=d|Gender=m|Number=s	15	ATR	_	t_7607
+17	.	.	u	u--------	_	1	AuxK	_	t_7608
+
+
+# sentence_id = 451
+# translation_lang = en
+# prose_translation = For they were pleased to do so, and indeed they are their debtors.
+# literal_translation = For they were well pleased, and debtors they are of them.
+1	ηὐδόκησαν	εὐδοκέω	v	v3paip---	Mood=i|Number=p|Person=3|Tense=a|Voice=p	4	PRED	_	t_7609
+2	γάρ	γάρ	d	d--------	_	4	AuxY	_	t_7610
+3	,	,	u	u--------	_	0	AuxX	_	t_7611
+4	καὶ	καί	c	c--------	_	3	COORD	_	t_7612
+5	ὀφειλέται	ὀφείλω	n	n-p---mn-	Case=n|Gender=m|Number=p	6	PNOM	_	t_7613
+6	εἰσὶν	εἰμί	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	4	PRED	_	t_7614
+7	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	5	ATR	_	t_7615
+8	·	·	u	u--------	_	3	AuxK	_	t_7616
+
+
+# sentence_id = 452
+# translation_lang = en
+# prose_translation = For if the Gentiles have shared in their spiritual things, they ought also to minister to them in material things.
+# literal_translation = For if the Gentiles shared in their spiritual things, they owe [it] also in the fleshly things to minister to them.
+1	εἰ	εἰ	c	c--------	_	10	AuxC	_	t_7617
+2	γὰρ	γάρ	d	d--------	_	10	AuxY	_	t_7618
+3	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	4	ATR	_	t_7619
+4	πνευματικοῖς	πνευματικός	a	a-p---nd-	Case=d|Gender=n|Number=p	6	OBJ	_	t_7620
+5	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	4	ATR	_	t_7621
+6	ἐκοινώνησαν	κοινωνέω	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	1	ADV	_	t_7622
+7	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	8	ATR	_	t_7623
+8	ἔθνη	ἔθνος	n	n-p---na-	Case=a|Gender=n|Number=p	6	OBJ	_	t_7624
+9	,	,	u	u--------	_	10	AuxX	_	t_7625
+10	ὀφείλουσιν	ὀφείλω	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	0	PRED	_	t_7626
+11	καὶ	καί	d	d--------	_	14	AuxZ	_	t_7627
+12	ἐν	ἐν	r	r--------	_	15	AuxP	_	t_7628
+13	τοῖς	ὁ	l	l-p---nd-	Case=d|Gender=n|Number=p	14	ATR	_	t_7629
+14	σαρκικοῖς	σαρκικός	a	a-p---nd-	Case=d|Gender=n|Number=p	12	ADV	_	t_7630
+15	λειτουργῆσαι	λειτουργέω	v	v--ana---	Mood=n|Tense=a|Voice=a	10	OBJ	_	t_7631
+16	αὐτοῖς	αὐτός	p	p-p---md-	Case=d|Gender=m|Number=p	15	OBJ	_	t_7632
+17	.	.	u	u--------	_	10	AuxK	_	t_7633
+
+
+# sentence_id = 453
+# translation_lang = en
+# prose_translation = So when I have completed this, and have sealed to them this fruit, I will go on through you into Spain.
+# literal_translation = This therefore, having completed [it] and having sealed to them this fruit, I will go away through you into Spain.
+1	τοῦτο	οὗτος	p	p-s---na-	Case=a|Gender=n|Number=s	3	OBJ	_	t_7634
+2	οὖν	οὖν	d	d--------	_	12	AuxY	_	t_7635
+3	ἐπιτελέσας	ἐπιτελέω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	5	ADV	_	t_7636
+4	,	,	u	u--------	_	12	AuxX	_	t_7637
+5	καὶ	καί	c	c--------	_	12	COORD	_	t_7638
+6	σφραγισάμενος	σφραγίζω	v	v-sapemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=e	5	ADV	_	t_7639
+7	αὐτοῖς	αὐτός	p	p-p---md-	Case=d|Gender=m|Number=p	6	OBJ	_	t_7640
+8	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	9	ATR	_	t_7641
+9	καρπὸν	καρπός	n	n-s---ma-	Case=a|Gender=m|Number=s	6	OBJ	_	t_7642
+10	τοῦτον	οὗτος	a	a-s---ma-	Case=a|Gender=m|Number=s	9	ATR	_	t_7643
+11	,	,	u	u--------	_	12	AuxX	_	t_7644
+12	ἀπελεύσομαι	ἀπέρχομαι	v	v1sfim---	Mood=i|Number=s|Person=1|Tense=f|Voice=m	0	PRED	_	t_7645
+13	διʼ	διά	r	r--------	_	12	AuxP	_	t_7646
+14	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	13	ADV	_	t_7647
+15	εἰς	εἰς	r	r--------	_	12	AuxP	_	t_7648
+16	Σπανίαν	σπάνιος	n	n-s---fa-	Case=a|Gender=f|Number=s	15	OBJ	_	t_7649
+17	·	·	u	u--------	_	12	AuxK	_	t_7650
+
+
+# sentence_id = 454
+# translation_lang = en
+# prose_translation = And I know that when I come to you, I will come in the fullness of Christ's blessing.
+# literal_translation = But I know that, coming to you, I will come in [the] fullness of [the] blessing of Christ.
+1	οἶδα	οἶδα	v	v1sria---	Mood=i|Number=s|Person=1|Tense=r|Voice=a	0	PRED	_	t_7651
+2	δὲ	δέ	d	d--------	_	1	AuxY	_	t_7652
+3	ὅτι	ὅτι	c	c--------	_	1	AuxC	_	t_7653
+4	ἐρχόμενος	ἔρχομαι	v	v-sppemn-	Case=n|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	11	ADV	_	t_7654
+5	πρὸς	πρός	r	r--------	_	4	AuxP	_	t_7655
+6	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	5	OBJ	_	t_7656
+7	ἐν	ἐν	r	r--------	_	11	AuxP	_	t_7657
+8	πληρώματι	πλήρωμα	n	n-s---nd-	Case=d|Gender=n|Number=s	7	ADV	_	t_7658
+9	εὐλογίας	εὐλογία	n	n-s---fg-	Case=g|Gender=f|Number=s	8	ATR	_	t_7659
+10	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_7660
+11	ἐλεύσομαι	ἔρχομαι	v	v1sfim---	Mood=i|Number=s|Person=1|Tense=f|Voice=m	3	OBJ	_	t_7661
+12	.	.	u	u--------	_	1	AuxK	_	t_7662
+
+
+# sentence_id = 455
+# translation_lang = en
+# prose_translation = Now I urge you, brothers, through our Lord Jesus Christ and through the love of the Spirit, to strive together with me in your prayers to God on my behalf, that I may be rescued from those who are disobedient in Judea, and that my service for Jerusalem may be acceptable to the saints, so that, coming to you in joy by the will of God, I may rest together with you.
+# literal_translation = I urge now you, [, brothers, ], through the Lord of us Jesus Christ and through the love of the Spirit, to strive-together with me in the prayers on behalf of me toward God, in order that I might be rescued from the ones disobeying in Judea, and the service of me, the one for Jerusalem, might become acceptable to the saints, in order that in joy having come to you through the will of God I might rest-together-with you.
+1	Παρακαλῶ	παρακαλέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_7663
+2	δὲ	δέ	d	d--------	_	1	AuxY	_	t_7664
+3	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_7665
+4	[	[	u	u--------	_	1	AuxX	_	t_7666
+5	,	,	u	u--------	_	1	AuxX	_	t_7667
+6	ἀδελφοί	ἀδελφός	n	n-p---mv-	Case=v|Gender=m|Number=p	1	ExD	_	t_7668
+7	,	,	u	u--------	_	1	AuxX	_	t_7669
+8	]	]	u	u--------	_	1	AuxX	_	t_7670
+9	διὰ	διά	r	r--------	_	15	AuxP	_	t_7671
+10	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_7672
+11	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ADV	_	t_7673
+12	ἡμῶν	ἐγώ	p	p-p---mg-	Case=g|Gender=m|Number=p	11	ATR	_	t_7674
+13	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_7675
+14	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ADV	_	t_7676
+15	καὶ	καί	c	c--------	_	21	COORD	_	t_7677
+16	διὰ	διά	r	r--------	_	15	AuxP	_	t_7678
+17	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	18	ATR	_	t_7679
+18	ἀγάπης	ἀγάπη	n	n-s---fg-	Case=g|Gender=f|Number=s	16	ADV	_	t_7680
+19	τοῦ	ὁ	l	l-s---ng-	Case=g|Gender=n|Number=s	20	ATR	_	t_7681
+20	πνεύματος	πνεῦμα	n	n-s---ng-	Case=g|Gender=n|Number=s	18	ATR	_	t_7682
+21	συναγωνίσασθαί	συναγωνίζομαι	v	v--anm---	Mood=n|Tense=a|Voice=m	1	OBJ	_	t_7683
+22	μοι	ἐγώ	p	p1s---md-	Case=d|Gender=m|Number=s|Person=1	21	OBJ	_	t_7684
+23	ἐν	ἐν	r	r--------	_	21	AuxP	_	t_7685
+24	ταῖς	ὁ	l	l-p---fd-	Case=d|Gender=f|Number=p	25	ATR	_	t_7686
+25	προσευχαῖς	προσευχή	n	n-p---fd-	Case=d|Gender=f|Number=p	23	ADV	_	t_7687
+26	ὑπὲρ	ὑπέρ	r	r--------	_	21	AuxP	_	t_7688
+27	ἐμοῦ	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	26	ADV	_	t_7689
+28	πρὸς	πρός	r	r--------	_	21	AuxP	_	t_7690
+29	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	30	ATR	_	t_7691
+30	θεόν	θεός	n	n-s---ma-	Case=a|Gender=m|Number=s	28	OBJ	_	t_7692
+31	,	,	u	u--------	_	1	AuxX	_	t_7693
+32	ἵνα	ἵνα	c	c--------	_	21	AuxC	_	t_7694
+33	ῥυσθῶ	ῥύομαι	v	v1sasp---	Mood=s|Number=s|Person=1|Tense=a|Voice=p	40	ADV	_	t_7695
+34	ἀπὸ	ἀπό	r	r--------	_	33	AuxP	_	t_7696
+35	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	36	ATR	_	t_7697
+36	ἀπειθούντων	ἀπειθέω	v	v-pppamg-	Case=g|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	34	ADV	_	t_7698
+37	ἐν	ἐν	r	r--------	_	36	AuxP	_	t_7699
+38	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	39	ATR	_	t_7700
+39	Ἰουδαίᾳ	ἰουδαία	n	n-s---fd-	Case=d|Gender=f|Number=s	37	ADV	_	t_7701
+40	καὶ	καί	c	c--------	_	32	COORD	_	t_7702
+41	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	42	ATR	_	t_7703
+42	διακονία	διακονία	n	n-s---fn-	Case=n|Gender=f|Number=s	50	SBJ	_	t_7704
+43	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	42	ATR	_	t_7705
+44	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	42	ATR	_	t_7706
+45	εἰς	εἰς	r	r--------	_	42	AuxP	_	t_7707
+46	Ἰερουσαλὴμ	ἰερουσαλὴμ	n	n-s---fa-	Case=a|Gender=f|Number=s	45	ATR	_	t_7708
+47	εὐπρόσδεκτος	εὐπρόσδεκτος	a	a-s---fn-	Case=n|Gender=f|Number=s	50	PNOM	_	t_7709
+48	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	49	ATR	_	t_7710
+49	ἁγίοις	ἅγιος	a	a-p---md-	Case=d|Gender=m|Number=p	47	ADV	_	t_7711
+50	γένηται	γίγνομαι	v	v3sasm---	Mood=s|Number=s|Person=3|Tense=a|Voice=m	40	ADV	_	t_7712
+51	,	,	u	u--------	_	1	AuxX	_	t_7713
+52	ἵνα	ἵνα	c	c--------	_	21	AuxC	_	t_7714
+53	ἐν	ἐν	r	r--------	_	55	AuxP	_	t_7715
+54	χαρᾷ	χαρά	n	n-s---fd-	Case=d|Gender=f|Number=s	53	ADV	_	t_7716
+55	ἐλθὼν	ἔρχομαι	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	61	ADV	_	t_7717
+56	πρὸς	πρός	r	r--------	_	55	AuxP	_	t_7718
+57	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	56	OBJ	_	t_7719
+58	διὰ	διά	r	r--------	_	61	AuxP	_	t_7720
+59	θελήματος	θέλημα	n	n-s---ng-	Case=g|Gender=n|Number=s	58	ADV	_	t_7721
+60	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	59	ATR	_	t_7722
+61	συναναπαύσωμαι	συναναπαύω	v	v1sasm---	Mood=s|Number=s|Person=1|Tense=a|Voice=m	52	ADV	_	t_7723
+62	ὑμῖν	σύ	p	p2p----d-	Case=d|Gender=m|Number=p	61	OBJ	_	t_7724
+63	.	.	u	u--------	_	1	AuxK	_	t_7725
+
+
+# sentence_id = 456
+# translation_lang = en
+# prose_translation = Now the God of peace be with all of you.
+# literal_translation = Now the God of peace [be] with all of you.
+1	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_7726
+2	δὲ	δέ	d	d--------	_	9	AuxY	_	t_7727
+3	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	9	SBJ	_	t_7728
+4	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_7729
+5	εἰρήνης	εἰρήνη	n	n-s---fg-	Case=g|Gender=f|Number=s	3	ATR	_	t_7730
+6	μετὰ	μετά	r	r--------	_	9	AuxP	_	t_7731
+7	πάντων	πᾶς	a	a-p---mg-	Case=g|Gender=m|Number=p	8	ATR	_	t_7732
+8	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	6	ADV	_	t_7733
+9	[0]	[0]	-	---------	_	0	PRED	_	e_174
+10	·	·	u	u--------	_	9	AuxK	_	t_7734
+
+
+# sentence_id = 457
+# translation_lang = en
+# prose_translation = Amen.
+# literal_translation = Amen.
+1	ἀμήν	ἀμήν	i	i--------	_	2	ExD	_	t_7735
+2	[0]	[0]	-	---------	_	0	PRED	_	e_175
+3	.	.	u	u--------	_	2	AuxK	_	t_7736
+
+
+# sentence_id = 458
+# translation_lang = en
+# prose_translation = I commend to you Phoebe our sister, who is a servant of the church that is in Cenchreae, so that you may receive her in the Lord in a manner worthy of the saints, and may assist her in whatever matter she may have need of you; for she herself has also become a patron of many, and of me myself.
+# literal_translation = I commend now to you Phoebe the sister of us, being [also] a servant of the church, the one in Cenchreae, in order that you may receive her in [the] Lord worthily of the saints, and may stand by her in whatever matter she may have need of you, for she herself also became a patroness of many, and of me myself.
+1	Συνίστημι	συνίστημι	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_7737
+2	δὲ	δέ	d	d--------	_	1	AuxY	_	t_7738
+3	ὑμῖν	σύ	p	p-p---md-	Case=d|Gender=m|Number=p	1	OBJ	_	t_7739
+4	Φοίβην	φοίβη	n	n-s---fa-	Case=a|Gender=f|Number=s	1	OBJ	_	t_7740
+5	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	4	ATR	_	t_7741
+6	ἀδελφὴν	ἀδελφή	n	n-s---fa-	Case=a|Gender=f|Number=s	4	ATR	_	t_7742
+7	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	6	ATR	_	t_7743
+8	,	,	u	u--------	_	1	AuxX	_	t_7744
+9	οὖσαν	εἰμί	v	v-sppafa-	Case=a|Gender=f|Mood=p|Number=s|Tense=p|Voice=a	4	ATR	_	t_7745
+10	[	[	u	u--------	_	1	AuxX	_	t_7746
+11	καὶ	καί	d	d--------	_	9	AuxZ	_	t_7747
+12	]	]	u	u--------	_	1	AuxX	_	t_7748
+13	διάκονον	διάκονος	n	n-s---ma-	Case=a|Gender=m|Number=s	9	PNOM	_	t_7749
+14	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	15	ATR	_	t_7750
+15	ἐκκλησίας	ἐκκλησία	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ATR	_	t_7751
+16	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	15	ATR	_	t_7752
+17	ἐν	ἐν	r	r--------	_	15	AuxP	_	t_7753
+18	Κενχρεαῖς	κενχρεός	n	n-p---fd-	Case=d|Gender=f|Number=p	17	ATR	_	t_7754
+19	,	,	u	u--------	_	1	AuxX	_	t_7755
+20	ἵνα	ἵνα	c	c--------	_	1	AuxC	_	t_7756
+21	προσδέξησθε	προσδέχομαι	v	v2pasa---	Mood=s|Number=p|Person=2|Tense=a|Voice=a	29	ADV	_	t_7757
+22	αὐτὴν	αὐτός	p	p-s---fa-	Case=a|Gender=f|Number=s	21	OBJ	_	t_7758
+23	ἐν	ἐν	r	r--------	_	21	AuxP	_	t_7759
+24	κυρίῳ	κύριος	n	n-s---md-	Case=d|Gender=n|Number=s	23	ADV	_	t_7760
+25	ἀξίως	ἄξιος	d	d--------	_	21	ADV	_	t_7761
+26	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	27	ATR	_	t_7762
+27	ἁγίων	ἅγιος	a	a-p---ng-	Case=g|Gender=n|Number=p	24	ATR	_	t_7763
+28	,	,	u	u--------	_	1	AuxX	_	t_7764
+29	καὶ	καί	c	c--------	_	20	COORD	_	t_7765
+30	παραστῆτε	παρίστημι	v	v2pasa---	Mood=s|Number=p|Person=2|Tense=a|Voice=a	29	ADV	_	t_7766
+31	αὐτῇ	αὐτός	p	p-s---fd-	Case=d|Gender=f|Number=s	30	OBJ	_	t_7767
+32	ἐν	ἐν	r	r--------	_	36	AuxP	_	t_7768
+33	ᾧ	ὅς	a	a-s---nd-	Case=d|Gender=n|Number=s	37	ATR	_	t_7769
+34	ἂν	ἄν	d	d--------	_	36	AuxY	_	t_7770
+35	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	37	ATR	_	t_7771
+36	χρῄζῃ	χρῄζω	v	v2spse---	Mood=s|Number=s|Person=2|Tense=p|Voice=e	30	ADV	_	t_7772
+37	πράγματι	πρᾶγμα	n	n-s---nd-	Case=d|Gender=n|Number=s	32	ADV	_	t_7773
+38	,	,	u	u--------	_	1	AuxX	_	t_7774
+39	καὶ	καί	c	c--------	_	44	COORD	_	t_7775
+40	γὰρ	γάρ	d	d--------	_	44	AuxY	_	t_7776
+41	αὐτὴ	αὐτός	p	p-s---fn-	Case=n|Gender=f|Number=s	44	SBJ	_	t_7777
+42	προστάτις	προστάτις	n	n-s---fn-	Case=n|Gender=f|Number=s	44	PNOM	_	t_7778
+43	πολλῶν	πολύς	a	a-p---ng-	Case=g|Gender=n|Number=p	42	ATR	_	t_7779
+44	ἐγενήθη	γίγνομαι	v	v3saip---	Mood=i|Number=s|Person=3|Tense=a|Voice=p	1	PRED	_	t_7780
+45	καὶ	καί	c	c--------	_	42	COORD	_	t_7781
+46	ἐμοῦ	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	45	ADV	_	t_7782
+47	αὐτοῦ	αὐτός	a	a-s---mg-	Case=g|Gender=m|Number=s	46	ATR	_	t_7783
+48	.	.	u	u--------	_	1	AuxK	_	t_7784
+
+
+# sentence_id = 459
+# translation_lang = en
+# prose_translation = Greet Prisca and Aquila, my fellow workers in Christ Jesus, who risked their own necks for my life, to whom not only I give thanks, but also all the churches of the Gentiles; and greet the church in their house.
+# literal_translation = Greet Prisca and Aquila, the fellow-workers of-me in Christ Jesus, who-indeed on-behalf-of the soul of-me their-own neck laid-under [risked], to whom not I alone give-thanks but also all the churches of-the Gentiles, and the according-to house of-them church.
+1	Ἀσπάσασθε	ἀσπάζομαι	v	v2paie---	Mood=i|Number=p|Person=2|Tense=a|Voice=e	0	PRED	_	t_7785
+2	Πρίσκαν	πρίσκα	n	n-s---ma-	Case=a|Gender=m|Number=s	3	OBJ	_	t_7786
+3	καὶ	καί	c	c--------	_	1	COORD	_	t_7787
+4	Ἀκύλαν	ἀκύλας	n	n-s---ma-	Case=a|Gender=m|Number=s	3	OBJ	_	t_7788
+5	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	3	ATR	_	t_7789
+6	συνεργούς	συνεργός	a	a-p---ma-	Case=a|Gender=m|Number=p	3	ATR	_	t_7790
+7	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	6	ATR	_	t_7791
+8	ἐν	ἐν	r	r--------	_	1	AuxP	_	t_7792
+9	Χριστῷ	χριστός	n	n-s---md-	Case=d|Gender=m|Number=s	8	ADV	_	t_7793
+10	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_7794
+11	,	,	u	u--------	_	1	AuxX	_	t_7795
+12	οἵτινες	ὅστις	p	p-p---mn-	Case=n|Gender=m|Number=p	20	SBJ	_	t_7796
+13	ὑπὲρ	ὑπέρ	r	r--------	_	20	AuxP	_	t_7797
+14	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	15	ATR	_	t_7798
+15	ψυχῆς	ψυχή	n	n-s---fg-	Case=g|Gender=f|Number=s	13	ADV	_	t_7799
+16	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	15	ATR	_	t_7800
+17	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	19	ATR	_	t_7801
+18	ἑαυτῶν	ἑαυτοῦ	p	p-p---mg-	Case=g|Gender=m|Number=p	19	ATR	_	t_7802
+19	τράχηλον	τράχηλος	n	n-s---ma-	Case=a|Gender=m|Number=s	20	OBJ	_	t_7803
+20	ὑπέθηκαν	ὑποτίθημι	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	3	ATR	_	t_7804
+21	,	,	u	u--------	_	1	AuxX	_	t_7805
+22	οἷς	ὅς	p	p-p---md-	Case=d|Gender=m|Number=p	26	OBJ	_	t_7806
+23	οὐκ	οὐ	d	d--------	_	24	AuxZ	_	t_7807
+24	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	27	SBJ	_	t_7808
+25	μόνος	μόνος	a	a-s---mn-	Case=n|Gender=m|Number=s	24	ATV	_	t_7809
+26	εὐχαριστῶ	εὐχαριστέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	19	ATR	_	t_7810
+27	ἀλλὰ	ἀλλά	c	c--------	_	26	COORD	_	t_7811
+28	καὶ	καί	d	d--------	_	31	AuxZ	_	t_7812
+29	πᾶσαι	πᾶς	a	a-p---fn-	Case=n|Gender=f|Number=p	31	ATR	_	t_7813
+30	αἱ	ὁ	l	l-p---fn-	Case=n|Gender=f|Number=p	31	ATR	_	t_7814
+31	ἐκκλησίαι	ἐκκλησία	n	n-p---fn-	Case=n|Gender=f|Number=p	35	SBJ	_	t_7815
+32	τῶν	ὁ	l	l-p---ng-	Case=g|Gender=n|Number=p	33	ATR	_	t_7816
+33	ἐθνῶν	ἔθνος	n	n-p---ng-	Case=g|Gender=n|Number=p	31	ATR	_	t_7817
+34	,	,	u	u--------	_	1	AuxX	_	t_7818
+35	καὶ	καί	c	c--------	_	27	COORD	_	t_7819
+36	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	40	ATR	_	t_7820
+37	κατʼ	κατά	r	r--------	_	40	AuxP	_	t_7821
+38	οἶκον	οἶκος	n	n-s---ma-	Case=a|Gender=m|Number=s	37	ATR	_	t_7822
+39	αὐτῶν	αὐτός	p	p-p---mg-	Case=g|Gender=m|Number=p	38	ATR	_	t_7823
+40	ἐκκλησίαν	ἐκκλησία	n	n-s---fn-	Case=n|Gender=f|Number=s	35	SBJ	_	t_7824
+41	.	.	u	u--------	_	1	AuxK	_	t_7825
+
+
+# sentence_id = 460
+# translation_lang = en
+# prose_translation = Greet my beloved Epaenetus, who is the firstfruit of Asia for Christ.
+# literal_translation = Greet Epaenetus the beloved of-me, who is firstfruit of-the Asia unto Christ.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2paie---	Mood=i|Number=p|Person=2|Tense=a|Voice=e	0	PRED	_	t_7826
+2	Ἐπαίνετον	ἐπαίνετος	n	n-s---ma-	Case=a|Gender=m|Number=s	1	OBJ	_	t_7827
+3	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	4	ATR	_	t_7828
+4	ἀγαπητόν	ἀγαπητός	a	a-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7829
+5	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	4	ATR	_	t_7830
+6	,	,	u	u--------	_	1	AuxX	_	t_7831
+7	ὅς	ὅς	p	p-s---mn-	Case=n|Gender=m|Number=s	8	SBJ	_	t_7832
+8	ἐστιν	εἰμί	v	v3spia---	Mood=i|Number=s|Person=3|Tense=p|Voice=a	2	ATR	_	t_7833
+9	ἀπαρχὴ	ἀπαρχή	n	n-s---fn-	Case=n|Gender=f|Number=s	8	PNOM	_	t_7834
+10	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	11	ATR	_	t_7835
+11	Ἀσίας	ἀσία	n	n-s---fg-	Case=g|Gender=f|Number=s	9	ATR	_	t_7836
+12	εἰς	εἰς	r	r--------	_	9	AuxP	_	t_7837
+13	Χριστόν	χριστός	n	n-s---ma-	Case=a|Gender=m|Number=s	12	ATR	_	t_7838
+14	.	.	u	u--------	_	1	AuxK	_	t_7839
+
+
+# sentence_id = 461
+# translation_lang = en
+# prose_translation = Greet Mary, who has worked hard for you.
+# literal_translation = Greet Mary, who many things labored for you.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7840
+2	Μαρίαν	μαρία	n	n-s---fa-	Case=a|Gender=f|Number=s	1	OBJ	_	t_7841
+3	,	,	u	u--------	_	1	AuxX	_	t_7842
+4	ἥτις	ὅστις	p	p-s---fn-	Case=n|Gender=f|Number=s	6	SBJ	_	t_7843
+5	πολλὰ	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	6	OBJ	_	t_7844
+6	ἐκοπίασεν	κοπιάω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	2	ATR	_	t_7845
+7	εἰς	εἰς	r	r--------	_	6	AuxP	_	t_7846
+8	ὑμᾶς	σύ	p	p2p---ca-	Case=a|Gender=m|Number=p	7	OBJ	_	t_7847
+9	.	.	u	u--------	_	1	AuxK	_	t_7848
+
+
+# sentence_id = 462
+# translation_lang = en
+# prose_translation = Greet Andronicus and Junia, my relatives and fellow prisoners, who are outstanding among the apostles, and who were in Christ before me.
+# literal_translation = Greet Andronicus and Junia, the relatives of me and fellow-prisoners of me, who are outstanding among the apostles, who also have come to be in Christ before me.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7849
+2	Ἀνδρόνικον	ἀνδρόνικος	n	n-s---ma-	Case=a|Gender=m|Number=s	3	OBJ	_	t_7850
+3	καὶ	καί	c	c--------	_	1	COORD	_	t_7851
+4	Ἰουνίαν	ἰουνία	n	n-s---ma-	Case=a|Gender=m|Number=s	8	OBJ	_	t_7852
+5	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	8	ATR	_	t_7853
+6	συγγενεῖς	συγγενής	a	a-p---ma-	Case=a|Gender=m|Number=p	8	ATR	_	t_7854
+7	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	6	ATR	_	t_7855
+8	καὶ	καί	c	c--------	_	3	COORD	_	t_7856
+9	συναιχμαλώτους	συναιχμάλωτος	a	a-p---ma-	Case=a|Gender=m|Number=p	8	ATR	_	t_7857
+10	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	9	ATR	_	t_7858
+11	,	,	u	u--------	_	1	AuxX	_	t_7859
+12	οἵτινές	ὅστις	p	p-p---mn-	Case=n|Gender=m|Number=p	13	SBJ	_	t_7860
+13	εἰσιν	εἰμί	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	8	ATR	_	t_7861
+14	ἐπίσημοι	ἐπίσημος	a	a-p---mn-	Case=n|Gender=m|Number=p	13	PNOM	_	t_7862
+15	ἐν	ἐν	r	r--------	_	13	AuxP	_	t_7863
+16	τοῖς	ὁ	l	l-p---md-	Case=d|Gender=m|Number=p	17	ATR	_	t_7864
+17	ἀποστόλοις	ἀπόστολος	n	n-p---md-	Case=d|Gender=m|Number=p	15	ADV	_	t_7865
+18	,	,	u	u--------	_	1	AuxX	_	t_7866
+19	οἳ	ὅς	p	p-p---mn-	Case=n|Gender=m|Number=p	23	SBJ	_	t_7867
+20	καὶ	καί	d	d--------	_	22	AuxZ	_	t_7868
+21	πρὸ	πρό	r	r--------	_	23	AuxP	_	t_7869
+22	ἐμοῦ	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	21	ADV	_	t_7870
+23	γέγοναν	γίγνομαι	v	v3paia---	Mood=i|Number=p|Person=3|Tense=a|Voice=a	17	ATR	_	t_7871
+24	ἐν	ἐν	r	r--------	_	23	AuxP	_	t_7872
+25	Χριστῷ	χριστός	n	n-s---md-	Case=d|Gender=m|Number=s	24	PNOM	_	t_7873
+26	.	.	u	u--------	_	1	AuxK	_	t_7874
+
+
+# sentence_id = 463
+# translation_lang = en
+# prose_translation = Greet Ampliatus, my beloved in the Lord.
+# literal_translation = Greet Ampliatus, the beloved of me in [the] Lord.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pame---	Mood=m|Number=p|Person=2|Tense=a|Voice=e	0	PRED	_	t_7875
+2	Ἀμπλιᾶτον	ἀμπλιᾶτος	n	n-s---ma-	Case=a|Gender=m|Number=s	1	OBJ	_	t_7876
+3	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	4	ATR	_	t_7877
+4	ἀγαπητόν	ἀγαπητός	a	a-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7878
+5	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	4	ATR	_	t_7879
+6	ἐν	ἐν	r	r--------	_	1	AuxP	_	t_7880
+7	κυρίῳ	κύριος	n	n-s---md-	Case=d|Gender=m|Number=s	6	ADV	_	t_7881
+8	.	.	u	u--------	_	1	AuxK	_	t_7882
+
+
+# sentence_id = 464
+# translation_lang = en
+# prose_translation = Greet Urbanus, our fellow worker in Christ, and Stachys, my beloved.
+# literal_translation = Greet Urbanus the fellow-worker of-us in Christ and Stachys the beloved of-me.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7883
+2	Οὐρβανὸν	οὐρβανός	n	n-s---ma-	Case=a|Gender=m|Number=s	8	OBJ	_	t_7884
+3	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	4	ATR	_	t_7885
+4	συνεργὸν	συνεργός	a	a-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7886
+5	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	4	ATR	_	t_7887
+6	ἐν	ἐν	r	r--------	_	4	AuxP	_	t_7888
+7	Χριστῷ	χριστός	n	n-s---md-	Case=d|Gender=m|Number=s	6	ADV	_	t_7889
+8	καὶ	καί	c	c--------	_	1	COORD	_	t_7890
+9	Στάχυν	στάχυς	n	n-s---ma-	Case=a|Gender=m|Number=s	8	OBJ	_	t_7891
+10	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	11	ATR	_	t_7892
+11	ἀγαπητόν	ἀγαπητός	a	a-s---ma-	Case=a|Gender=m|Number=s	9	ATR	_	t_7893
+12	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	11	ATR	_	t_7894
+13	.	.	u	u--------	_	1	AuxK	_	t_7895
+
+
+# sentence_id = 465
+# translation_lang = en
+# prose_translation = Greet Apelles, the approved/tested one in Christ.
+# literal_translation = Greet Apelles, the approved [one], in Christ.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2paie---	Mood=i|Number=p|Person=2|Tense=a|Voice=e	0	PRED	_	t_7896
+2	Ἀπελλῆν	ἀπελλᾶς	n	n-s---ma-	Case=a|Gender=m|Number=s	1	OBJ	_	t_7897
+3	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7898
+4	δόκιμον	δόκιμος	a	a-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7899
+5	ἐν	ἐν	r	r--------	_	1	AuxP	_	t_7900
+6	Χριστῷ	χριστός	n	n-s---md-	Case=d|Gender=m|Number=s	5	ADV	_	t_7901
+7	.	.	u	u--------	_	1	AuxK	_	t_7902
+
+
+# sentence_id = 466
+# translation_lang = en
+# prose_translation = Greet those who belong to the household of Aristobulus.
+# literal_translation = Greet the [ones] from the [household] of Aristobulus.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7903
+2	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_7904
+3	ἐκ	ἐκ	r	r--------	_	2	AuxP	_	t_7905
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	3	ATR	_	t_7906
+5	Ἀριστοβούλου	ἀριστόβουλος	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_7907
+6	.	.	u	u--------	_	1	AuxK	_	t_7908
+
+
+# sentence_id = 467
+# translation_lang = en
+# prose_translation = Greet Herodion, my relative.
+# literal_translation = Greet Herodion, the relative of me.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7909
+2	Ἡρῳδίωνα	ἡρῴδιον	n	n-s---ma-	Case=a|Gender=m|Number=s	1	OBJ	_	t_7910
+3	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7911
+4	συγγενῆ	συγγενής	a	a-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7912
+5	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	4	ATR	_	t_7913
+6	.	.	u	u--------	_	1	AuxK	_	t_7914
+
+
+# sentence_id = 468
+# translation_lang = en
+# prose_translation = Greet those of Narcissus's household who are in the Lord.
+# literal_translation = Greet those of the [household] of Narcissus, the ones being in [the] Lord.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7915
+2	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_7916
+3	ἐκ	ἐκ	r	r--------	_	2	AuxP	_	t_7917
+4	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	3	ATR	_	t_7918
+5	Ναρκίσσου	νάρκισσος	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_7919
+6	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	2	ATR	_	t_7920
+7	ὄντας	εἰμί	v	v-pppama-	Case=a|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	2	ATR	_	t_7921
+8	ἐν	ἐν	r	r--------	_	7	AuxP	_	t_7922
+9	κυρίῳ	κύριος	n	n-s---md-	Case=d|Gender=n|Number=s	8	PNOM	_	t_7923
+10	.	.	u	u--------	_	1	AuxK	_	t_7924
+
+
+# sentence_id = 469
+# translation_lang = en
+# prose_translation = Greet Tryphaena and Tryphosa, who have worked hard in the Lord.
+# literal_translation = Greet Tryphaena and Tryphosa, the ones laboring in [the] Lord.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7925
+2	Τρύφαιναν	τρύφαινα	n	n-s---fa-	Case=a|Gender=f|Number=s	3	OBJ	_	t_7926
+3	καὶ	καί	c	c--------	_	1	COORD	_	t_7927
+4	Τρυφῶσαν	τρυφάω	n	n-s---fa-	Case=a|Gender=f|Number=s	3	OBJ	_	t_7928
+5	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	3	ATR	_	t_7929
+6	κοπιώσας	κοπιάω	v	v-pppafa-	Case=a|Gender=f|Mood=p|Number=p|Tense=p|Voice=a	3	ATR	_	t_7930
+7	ἐν	ἐν	r	r--------	_	6	AuxP	_	t_7931
+8	κυρίῳ	κύριος	n	n-s---md-	Case=d|Gender=m|Number=s	7	ADV	_	t_7932
+9	.	.	u	u--------	_	1	AuxK	_	t_7933
+
+
+# sentence_id = 470
+# translation_lang = en
+# prose_translation = Greet Persis, the beloved, who has labored much in the Lord.
+# literal_translation = Greet Persis, the beloved [one], who labored many things in [the] Lord.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2paim---	Mood=i|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7934
+2	Περσίδα	περσίς	n	n-s---fa-	Case=a|Gender=f|Number=s	1	OBJ	_	t_7935
+3	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	2	ATR	_	t_7936
+4	ἀγαπητήν	ἀγαπητός	a	a-s---fa-	Case=a|Gender=f|Number=s	2	ATR	_	t_7937
+5	,	,	u	u--------	_	1	AuxX	_	t_7938
+6	ἥτις	ὅστις	p	p-s---fn-	Case=n|Gender=f|Number=s	8	SBJ	_	t_7939
+7	πολλὰ	πολύς	a	a-p---na-	Case=a|Gender=n|Number=p	8	OBJ	_	t_7940
+8	ἐκοπίασεν	κοπιάω	v	v3saia---	Mood=i|Number=s|Person=3|Tense=a|Voice=a	2	ATR	_	t_7941
+9	ἐν	ἐν	r	r--------	_	8	AuxP	_	t_7942
+10	κυρίῳ	κύριος	n	n-s---md-	Case=d|Gender=n|Number=s	9	ADV	_	t_7943
+11	.	.	u	u--------	_	1	AuxK	_	t_7944
+
+
+# sentence_id = 471
+# translation_lang = en
+# prose_translation = Greet Rufus, who is chosen in the Lord, and his mother and mine.
+# literal_translation = Greet Rufus the chosen [one] in [the] Lord, and the mother of him and of me.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7945
+2	Ῥοῦφον	ῥοῦφος	n	n-s---ma-	Case=a|Gender=m|Number=s	7	OBJ	_	t_7946
+3	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7947
+4	ἐκλεκτὸν	ἐκλεκτός	a	a-s---ma-	Case=a|Gender=m|Number=s	2	ATR	_	t_7948
+5	ἐν	ἐν	r	r--------	_	4	AuxP	_	t_7949
+6	κυρίῳ	κύριος	n	n-s---md-	Case=d|Gender=m|Number=s	5	ADV	_	t_7950
+7	καὶ	καί	d	d--------	_	1	COORD	_	t_7951
+8	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	9	ATR	_	t_7952
+9	μητέρα	μήτηρ	n	n-s---fa-	Case=a|Gender=f|Number=s	7	OBJ	_	t_7953
+10	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	11	ATR	_	t_7954
+11	καὶ	καί	c	c--------	_	9	COORD	_	t_7955
+12	ἐμοῦ	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	11	ATR	_	t_7956
+13	.	.	u	u--------	_	1	AuxK	_	t_7957
+
+
+# sentence_id = 472
+# translation_lang = en
+# prose_translation = Greet Asyncritus, Phlegon, Hermes, Patrobas, Hermas, and the brothers who are with them.
+# literal_translation = Greet Asyncritus, Phlegon, Hermes, Patrobas, Hermas, and the [ones] with them brothers.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7958
+2	Ἀσύνκριτον	ἀσύνκριτος	n	n-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_7959
+3	,	,	u	u--------	_	1	AuxX	_	t_7960
+4	Φλέγοντα	φλέγω	n	n-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_7961
+5	,	,	u	u--------	_	1	AuxX	_	t_7962
+6	Ἑρμῆν	ἑρμῆς	n	n-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_7963
+7	,	,	u	u--------	_	1	AuxX	_	t_7964
+8	Πατρόβαν	πατροβας	n	n-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_7965
+9	,	,	u	u--------	_	1	AuxX	_	t_7966
+10	Ἑρμᾶν	ἑρμῆς	n	n-s---ma-	Case=a|Gender=m|Number=s	12	OBJ	_	t_7967
+11	,	,	u	u--------	_	1	AuxX	_	t_7968
+12	καὶ	καί	c	c--------	_	1	COORD	_	t_7969
+13	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	16	ATR	_	t_7970
+14	σὺν	σύν	r	r--------	_	16	AuxP	_	t_7971
+15	αὐτοῖς	αὐτός	p	p-p---md-	Case=d|Gender=m|Number=p	14	ATR	_	t_7972
+16	ἀδελφούς	ἀδελφός	n	n-p---ma-	Case=a|Gender=m|Number=p	12	OBJ	_	t_7973
+17	.	.	u	u--------	_	1	AuxK	_	t_7974
+
+
+# sentence_id = 473
+# translation_lang = en
+# prose_translation = Greet Philologus and Julia, Nereus and his sister, and Olympas, and all the saints with them.
+# literal_translation = Greet Philologus and Julia, Nereus and his sister, and Olympas, and all the saints [who are] with them.
+1	ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7975
+2	Φιλόλογον	φιλόλογος	n	n-s---ma-	Case=a|Gender=m|Number=s	15	OBJ	_	t_7976
+3	καὶ	καί	d	d--------	_	15	AuxY	_	t_7977
+4	Ἰουλίαν	ἰουλία	n	n-s---fa-	Case=a|Gender=f|Number=s	7	OBJ	_	t_7978
+5	,	,	u	u--------	_	1	AuxX	_	t_7979
+6	Νηρέα	νηρεύς	n	n-s---ma-	Case=a|Gender=m|Number=s	7	OBJ	_	t_7980
+7	καὶ	καί	c	c--------	_	15	COORD	_	t_7981
+8	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	9	ATR	_	t_7982
+9	ἀδελφὴν	ἀδελφή	n	n-s---fa-	Case=a|Gender=f|Number=s	7	OBJ	_	t_7983
+10	αὐτοῦ	αὐτός	p	p-s---mg-	Case=g|Gender=m|Number=s	9	ATR	_	t_7984
+11	,	,	u	u--------	_	1	AuxX	_	t_7985
+12	καὶ	καί	d	d--------	_	15	AuxY	_	t_7986
+13	Ὀλυμπᾶν	ὀλυμπιάς	n	n-s---fa-	Case=a|Gender=f|Number=s	15	OBJ	_	t_7987
+14	,	,	u	u--------	_	1	AuxX	_	t_7988
+15	καὶ	καί	c	c--------	_	1	COORD	_	t_7989
+16	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	15	OBJ	_	t_7990
+17	σὺν	σύν	r	r--------	_	16	AuxP	_	t_7991
+18	αὐτοῖς	αὐτός	p	p-p---md-	Case=d|Gender=m|Number=p	17	ATR	_	t_7992
+19	πάντας	πᾶς	a	a-p---ma-	Case=a|Gender=m|Number=p	16	ATR	_	t_7993
+20	ἁγίους	ἅγιος	a	a-p---ma-	Case=a|Gender=m|Number=p	15	OBJ	_	t_7994
+21	.	.	u	u--------	_	1	AuxK	_	t_7995
+
+
+# sentence_id = 474
+# translation_lang = en
+# prose_translation = Greet one another with a holy kiss.
+# literal_translation = Greet one another with a holy kiss.
+1	Ἀσπάσασθε	ἀσπάζομαι	v	v2pamm---	Mood=m|Number=p|Person=2|Tense=a|Voice=m	0	PRED	_	t_7996
+2	ἀλλήλους	ἀλλήλων	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_7997
+3	ἐν	ἐν	r	r--------	_	1	AuxP	_	t_7998
+4	φιλήματι	φίλημα	n	n-s---nd-	Case=d|Gender=n|Number=s	3	ADV	_	t_7999
+5	ἁγίῳ	ἅγιος	a	a-s---nd-	Case=d|Gender=n|Number=s	4	ATR	_	t_8000
+6	.	.	u	u--------	_	1	AuxK	_	t_8001
+
+
+# sentence_id = 475
+# translation_lang = en
+# prose_translation = All the churches of Christ greet you.
+# literal_translation = Greet you all the churches of the Christ.
+1	Ἀσπάζονται	ἀσπάζομαι	v	v3ppie---	Mood=i|Number=p|Person=3|Tense=p|Voice=e	0	PRED	_	t_8002
+2	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_8003
+3	αἱ	ὁ	l	l-p---fn-	Case=n|Gender=f|Number=p	4	ATR	_	t_8004
+4	ἐκκλησίαι	ἐκκλησία	n	n-p---fn-	Case=n|Gender=f|Number=p	1	SBJ	_	t_8005
+5	πᾶσαι	πᾶς	a	a-p---fn-	Case=n|Gender=f|Number=p	4	ATR	_	t_8006
+6	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=n|Number=s	7	ATR	_	t_8007
+7	χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	1	ADV	_	t_8008
+8	.	.	u	u--------	_	1	AuxK	_	t_8009
+
+
+# sentence_id = 476
+# translation_lang = en
+# prose_translation = Now I urge you, brothers, to watch out for those who cause divisions and offenses contrary to the teaching that you learned, and turn away from them.
+# literal_translation = Now I urge you, brothers, to watch out for the divisions and the offenses contrary to the teaching which you learned, [watch out for them] making [them], and turn away from them.
+1	Παρακαλῶ	παρακαλέω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	0	PRED	_	t_8010
+2	δὲ	δέ	d	d--------	_	1	AuxY	_	t_8011
+3	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_8012
+4	,	,	u	u--------	_	1	AuxX	_	t_8013
+5	ἀδελφοί	ἀδελφός	n	n-p---mv-	Case=v|Gender=m|Number=p	1	ExD	_	t_8014
+6	,	,	u	u--------	_	1	AuxX	_	t_8015
+7	σκοπεῖν	σκοπέω	v	v--pna---	Mood=n|Tense=p|Voice=a	22	OBJ	_	t_8016
+8	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	11	ATR	_	t_8017
+9	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	10	ATR	_	t_8018
+10	διχοστασίας	διχοστασία	n	n-p---fa-	Case=a|Gender=f|Number=p	11	OBJ	_	t_8019
+11	καὶ	καί	c	c--------	_	7	COORD	_	t_8020
+12	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	13	ATR	_	t_8021
+13	σκάνδαλα	σκάνδαλον	n	n-p---na-	Case=a|Gender=n|Number=p	11	OBJ	_	t_8022
+14	παρὰ	παρά	r	r--------	_	20	AuxP	_	t_8023
+15	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	16	ATR	_	t_8024
+16	διδαχὴν	διδαχή	n	n-s---fa-	Case=a|Gender=f|Number=s	14	ADV	_	t_8025
+17	ἣν	ὅς	p	p-p---ng-	Case=g|Gender=n|Number=p	19	OBJ	_	t_8026
+18	ὑμεῖς	σύ	p	p-p---mn-	Case=n|Gender=m|Number=p	19	SBJ	_	t_8027
+19	ἐμάθετε	μανθάνω	v	v2paia---	Mood=i|Number=p|Person=2|Tense=a|Voice=a	13	ATR	_	t_8028
+20	ποιοῦντας	ποιέω	v	v-pppama-	Case=a|Gender=m|Mood=p|Number=p|Tense=p|Voice=a	19	OBJ	_	t_8029
+21	,	,	u	u--------	_	1	AuxX	_	t_8030
+22	καὶ	καί	c	c--------	_	1	COORD	_	t_8031
+23	ἐκκλίνετε	ἐκκλίνω	v	v2ppma---	Mood=m|Number=p|Person=2|Tense=p|Voice=a	22	OBJ	_	t_8032
+24	ἀπʼ	ἀπό	r	r--------	_	23	AuxP	_	t_8033
+25	αὐτῶν	αὐτός	p	p-p---ng-	Case=g|Gender=n|Number=p	24	OBJ	_	t_8034
+26	·	·	u	u--------	_	1	AuxK	_	t_8035
+
+
+# sentence_id = 477
+# translation_lang = en
+# prose_translation = For such people do not serve our Lord Christ, but their own belly, and through smooth talk and flattering speech they deceive the hearts of the innocent.
+# literal_translation = For such ones to our Lord Christ not do they serve, but to their own belly; and through the fine-speaking and blessing-speech they deceive the hearts of the guileless.
+1	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	3	ATR	_	t_8036
+2	γὰρ	γάρ	d	d--------	_	15	AuxY	_	t_8037
+3	τοιοῦτοι	τοιοῦτος	p	p-p---mn-	Case=n|Gender=m|Number=p	15	SBJ	_	t_8038
+4	τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	7	ATR	_	t_8039
+5	κυρίῳ	κύριος	a	a-s---md-	Case=d|Gender=m|Number=s	7	ATR	_	t_8040
+6	ἡμῶν	ἐγώ	p	p1p---mg-	Case=g|Gender=m|Number=p|Person=1	5	ATR	_	t_8041
+7	Χριστῷ	χριστός	n	n-s---md-	Case=d|Gender=m|Number=s	10	OBJ	_	t_8042
+8	οὐ	οὐ	d	d--------	_	7	AuxZ	_	t_8043
+9	δουλεύουσιν	δουλεύω	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	15	PRED	_	t_8044
+10	ἀλλὰ	ἀλλά	c	c--------	_	9	COORD	_	t_8045
+11	τῇ	ὁ	l	l-s---fd-	Case=d|Gender=f|Number=s	13	ATR	_	t_8046
+12	ἑαυτῶν	ἑαυτοῦ	p	p-p---mg-	Case=g|Gender=m|Number=p	13	ATR	_	t_8047
+13	κοιλίᾳ	κοιλία	n	n-s---fd-	Case=n|Gender=f|Number=p	10	ADV	_	t_8048
+14	,	,	u	u--------	_	0	AuxX	_	t_8049
+15	καὶ	καί	c	c--------	_	14	COORD	_	t_8050
+16	διὰ	διά	r	r--------	_	21	AuxP	_	t_8051
+17	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	18	ATR	_	t_8052
+18	χρηστολογίας	χρηστολογία	n	n-s---fg-	Case=g|Gender=f|Number=s	19	ADV	_	t_8053
+19	καὶ	καί	c	c--------	_	16	COORD	_	t_8054
+20	εὐλογίας	εὐλογία	n	n-s---fg-	Case=g|Gender=f|Number=s	19	ADV	_	t_8055
+21	ἐξαπατῶσι	ἐξαπατάω	v	v3ppia---	Mood=i|Number=p|Person=3|Tense=p|Voice=a	15	PRED	_	t_8056
+22	τὰς	ὁ	l	l-p---fa-	Case=a|Gender=f|Number=p	23	ATR	_	t_8057
+23	καρδίας	καρδία	n	n-p---fa-	Case=a|Gender=f|Number=p	21	OBJ	_	t_8058
+24	τῶν	ὁ	l	l-p---mg-	Case=g|Gender=m|Number=p	25	ATR	_	t_8059
+25	ἀκάκων	ἄκμων	a	a-p---mg-	Case=g|Gender=m|Number=p	23	ATR	_	t_8060
+26	.	.	u	u--------	_	14	AuxK	_	t_8061
+
+
+# sentence_id = 478
+# translation_lang = en
+# prose_translation = For your obedience has reached everyone.
+# literal_translation = For your obedience has arrived to all [people].
+1	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	4	ATR	_	t_8062
+2	γὰρ	γάρ	d	d--------	_	7	AuxY	_	t_8063
+3	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	4	ATR	_	t_8064
+4	ὑπακοὴ	ὑπακοή	n	n-s---fn-	Case=n|Gender=f|Number=s	7	SBJ	_	t_8065
+5	εἰς	εἰς	r	r--------	_	7	AuxP	_	t_8066
+6	πάντας	πᾶς	a	a-p---ma-	Case=a|Gender=m|Number=p	5	OBJ	_	t_8067
+7	ἀφίκετο	ἀφικνέομαι	v	v3saim---	Mood=i|Number=s|Person=3|Tense=a|Voice=m	0	PRED	_	t_8068
+8	·	·	u	u--------	_	7	AuxK	_	t_8069
+
+
+# sentence_id = 479
+# translation_lang = en
+# prose_translation = So I rejoice over you, but I want you to be wise toward the good, and innocent toward evil.
+# literal_translation = Over you therefore I rejoice, and I want you to be wise toward the good, but innocent toward the evil.
+1	ἐφʼ	ἐπί	r	r--------	_	4	AuxP	_	t_8070
+2	ὑμῖν	σύ	p	p-p---md-	Case=d|Gender=m|Number=p	1	ADV	_	t_8071
+3	οὖν	οὖν	d	d--------	_	7	AuxY	_	t_8072
+4	χαίρω	χαίρω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	7	PRED	_	t_8073
+5	,	,	u	u--------	_	0	AuxX	_	t_8074
+6	θέλω	ἐθέλω	v	v1spia---	Mood=i|Number=s|Person=1|Tense=p|Voice=a	7	PRED	_	t_8075
+7	δὲ	δέ	c	c--------	_	5	COORD	_	t_8076
+8	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	13	SBJ	_	t_8077
+9	σοφοὺς	σοφός	a	a-p---ma-	Case=a|Gender=m|Number=p	19	PNOM	_	t_8078
+10	[	[	u	u--------	_	5	AuxX	_	t_8079
+11	μὲν	μέν	d	d--------	_	19	AuxY	_	t_8080
+12	]	]	u	u--------	_	5	AuxX	_	t_8081
+13	εἶναι	εἰμί	v	v--pna---	Mood=n|Tense=p|Voice=a	6	OBJ	_	t_8082
+14	εἰς	εἰς	r	r--------	_	9	AuxP	_	t_8083
+15	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	16	ATR	_	t_8084
+16	ἀγαθόν	ἀγαθός	a	a-s---na-	Case=a|Gender=n|Number=s	14	ADV	_	t_8085
+17	,	,	u	u--------	_	5	AuxX	_	t_8086
+18	ἀκεραίους	ἀκέραιος	a	a-p---ma-	Case=a|Gender=m|Number=p	19	PNOM	_	t_8087
+19	δὲ	δέ	d	d--------	_	13	COORD	_	t_8088
+20	εἰς	εἰς	r	r--------	_	18	AuxP	_	t_8089
+21	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	22	ATR	_	t_8090
+22	κακόν	κακός	a	a-s---na-	Case=a|Gender=n|Number=s	20	ADV	_	t_8091
+23	.	.	u	u--------	_	5	AuxK	_	t_8092
+
+
+# sentence_id = 480
+# translation_lang = en
+# prose_translation = And the God of peace will crush Satan under your feet shortly.
+# literal_translation = And the God of peace will crush Satan under your feet in speed.
+1	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_8093
+2	δὲ	δέ	d	d--------	_	6	AuxY	_	t_8094
+3	θεὸς	θεός	n	n-s---mn-	Case=n|Gender=m|Number=s	6	SBJ	_	t_8095
+4	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_8096
+5	εἰρήνης	εἰρήνη	n	n-s---fg-	Case=g|Gender=f|Number=s	3	ATR	_	t_8097
+6	συντρίψει	συντρίβω	v	v3sfia---	Mood=i|Number=s|Person=3|Tense=f|Voice=a	0	PRED	_	t_8098
+7	τὸν	ὁ	l	l-s---ma-	Case=a|Gender=m|Number=s	8	ATR	_	t_8099
+8	Σατανᾶν	σατανᾶς	n	n-p---mg-	Case=a|Gender=m|Number=s	6	OBJ	_	t_8100
+9	ὑπὸ	ὑπό	r	r--------	_	6	AuxP	_	t_8101
+10	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	11	ATR	_	t_8102
+11	πόδας	πούς	n	n-p---ma-	Case=a|Gender=m|Number=p	9	ADV	_	t_8103
+12	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	11	ATR	_	t_8104
+13	ἐν	ἐν	r	r--------	_	6	AuxP	_	t_8105
+14	τάχει	τάχος	n	n-s---nd-	Case=d|Gender=n|Number=s	13	ADV	_	t_8106
+15	.	.	u	u--------	_	6	AuxK	_	t_8107
+
+
+# sentence_id = 481
+# translation_lang = en
+# prose_translation = The grace of our Lord Jesus be with you.
+# literal_translation = The grace of our Lord Jesus [be] with you.
+1	Ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	2	ATR	_	t_8108
+2	χάρις	χάρις	n	n-s---fn-	Case=n|Gender=f|Number=s	9	SBJ	_	t_8109
+3	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_8110
+4	κυρίου	κύριος	n	n-s---mg-	Case=g|Gender=m|Number=s	2	ATR	_	t_8111
+5	ἡμῶν	ἐγώ	p	p1p---cg-	Case=g|Gender=c|Number=p|Person=1	6	ATR	_	t_8112
+6	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	4	ATR	_	t_8113
+7	μεθʼ	μετά	r	r--------	_	9	AuxP	_	t_8114
+8	ὑμῶν	σύ	p	p-p---mg-	Case=g|Gender=m|Number=p	7	ADV	_	t_8115
+9	[0]	[0]	-	---------	_	0	PRED	_	e_176
+10	.	.	u	u--------	_	9	AuxK	_	t_8116
+
+
+# sentence_id = 482
+# translation_lang = en
+# prose_translation = Timothy my fellow worker greets you, and so do Lucius and Jason and Sosipater, my kinsmen.
+# literal_translation = Greets you Timothy the fellow worker [of me], and Lucius and Jason and Sosipater, the kinsmen of me.
+1	Ἀσπάζεται	ἀσπάζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_8117
+2	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_8118
+3	Τιμόθεος	τιμόθεος	n	n-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_8119
+4	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_8120
+5	συνεργός	συνεργός	n	n-s---mn-	Case=n|Gender=m|Number=s	3	APOS	_	t_8121
+6	[	[	u	u--------	_	1	AuxX	_	t_8122
+7	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	5	ATR	_	t_8123
+8	]	]	u	u--------	_	1	AuxX	_	t_8124
+9	,	,	u	u--------	_	1	AuxX	_	t_8125
+10	καὶ	καί	d	d--------	_	14	AuxY	_	t_8126
+11	Λούκιος	λούκιος	n	n-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_8127
+12	καὶ	καί	d	d--------	_	14	AuxY	_	t_8128
+13	Ἰάσων	ἰάσων	n	n-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_8129
+14	καὶ	καί	c	c--------	_	1	COORD	_	t_8130
+15	Σωσίπατρος	σωσίπατρος	n	n-s---mn-	Case=n|Gender=m|Number=s	14	SBJ	_	t_8131
+16	οἱ	ὁ	l	l-p---mn-	Case=n|Gender=m|Number=p	17	ATR	_	t_8132
+17	συγγενεῖς	συγγενής	n	n-p---mn-	Case=n|Gender=m|Number=p	15	ATR	_	t_8133
+18	μου	ἐγώ	p	p1s---cg-	Case=g|Gender=c|Number=s|Person=1	17	ATR	_	t_8134
+19	.	.	u	u--------	_	1	AuxK	_	t_8135
+
+
+# sentence_id = 483
+# translation_lang = en
+# prose_translation = I, Tertius, who wrote this letter, greet you in the Lord.
+# literal_translation = I greet you, I, Tertius, the one who wrote the letter, in [the] Lord.
+1	ἀσπάζομαι	ἀσπάζομαι	v	v1spie---	Mood=i|Number=s|Person=1|Tense=p|Voice=e	0	PRED	_	t_8136
+2	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_8137
+3	ἐγὼ	ἐγώ	p	p1s---mn-	Case=n|Gender=m|Number=s|Person=1	1	SBJ	_	t_8138
+4	Τέρτιος	τέρτιος	n	n-s---mn-	Case=n|Gender=m|Number=s	1	SBJ	_	t_8139
+5	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	4	ATR	_	t_8140
+6	γράψας	γράφω	v	v-sapamn-	Case=n|Gender=m|Mood=p|Number=s|Tense=a|Voice=a	4	ATR	_	t_8141
+7	τὴν	ὁ	l	l-s---fa-	Case=a|Gender=f|Number=s	8	ATR	_	t_8142
+8	ἐπιστολὴν	ἐπιστολή	n	n-s---fa-	Case=a|Gender=f|Number=s	6	OBJ	_	t_8143
+9	ἐν	ἐν	r	r--------	_	6	AuxP	_	t_8144
+10	κυρίῳ	κύριος	n	n-s---nd-	Case=d|Gender=n|Number=s	9	ADV	_	t_8145
+11	.	.	u	u--------	_	1	AuxK	_	t_8146
+
+
+# sentence_id = 484
+# translation_lang = en
+# prose_translation = Gaius, my host and host of the whole church, greets you.
+# literal_translation = Greets you Gaius, the host of me, and of [the] whole the church.
+1	ἀσπάζεται	ἀσπάζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_8147
+2	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_8148
+3	Γαῖος	γαῖος	n	n-s---mn-	Case=n|Gender=m|Number=s	1	SBJ	_	t_8149
+4	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_8150
+5	ξένος	ξένος	n	n-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_8151
+6	μου	ἐγώ	p	p1s---mg-	Case=g|Gender=m|Number=s|Person=1	5	ATR	_	t_8152
+7	καὶ	καί	c	c--------	_	1	COORD	_	t_8153
+8	ὅλης	ὅλος	a	a-s---fg-	Case=g|Gender=f|Number=s	10	ATR	_	t_8154
+9	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	10	ATR	_	t_8155
+10	ἐκκλησίας	ἐκκλησία	n	n-s---fg-	Case=g|Gender=f|Number=s	7	OBJ	_	t_8156
+11	.	.	u	u--------	_	1	AuxK	_	t_8157
+
+
+# sentence_id = 485
+# translation_lang = en
+# prose_translation = Erastus, the city treasurer, greets you, and Quartus the brother.
+# literal_translation = Greets you Erastus the treasurer of the city, and Quartus the brother.
+1	ἀσπάζεται	ἀσπάζομαι	v	v3spie---	Mood=i|Number=s|Person=3|Tense=p|Voice=e	0	PRED	_	t_8158
+2	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	1	OBJ	_	t_8159
+3	Ἔραστος	ἔραστος	n	n-s---mn-	Case=n|Gender=m|Number=s	8	SBJ	_	t_8160
+4	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_8161
+5	οἰκονόμος	οἰκονόμος	n	n-s---mn-	Case=n|Gender=m|Number=s	3	ATR	_	t_8162
+6	τῆς	ὁ	l	l-s---fg-	Case=g|Gender=f|Number=s	7	ATR	_	t_8163
+7	πόλεως	πόλις	n	n-s---fg-	Case=g|Gender=f|Number=s	5	ATR	_	t_8164
+8	καὶ	καί	c	c--------	_	1	COORD	_	t_8165
+9	Κούαρτος	κούαρτος	n	n-s---mn-	Case=n|Gender=m|Number=s	8	SBJ	_	t_8166
+10	ὁ	ὁ	l	l-s---mn-	Case=n|Gender=m|Number=s	9	ATR	_	t_8167
+11	ἀδελφός	ἀδελφός	n	n-s---mn-	Case=n|Gender=m|Number=s	9	ATR	_	t_8168
+12	.	.	u	u--------	_	1	AuxK	_	t_8169
+
+
+# sentence_id = 486
+# translation_lang = en
+# prose_translation = Now to Him who is able to establish you according to my gospel and the proclamation of Jesus Christ, according to the revelation of the mystery kept silent in eternal times but now made manifest, and through the prophetic writings made known according to the command of the eternal God for obedience of faith among all the nations — to the only wise God, through Jesus Christ, to whom be the glory forever, [be this letter/doxology addressed]. Amen.
+# literal_translation = Now to the [one] being able to establish you according to the gospel of me and the proclamation of Jesus Christ, according to [the] revelation of [the] mystery having been kept silent in times eternal, but now having been made manifest, and through prophetic writings, according to [the] command of the eternal God, having been made known for obedience of faith unto all the nations — to [the] only wise God, through Jesus Christ, [to whom be] the glory unto the ages; [this is addressed].
+1	Τῷ	ὁ	l	l-s---md-	Case=d|Gender=m|Number=s	3	ATR	_	t_8170
+2	δὲ	δέ	d	d--------	_	57	AuxY	_	t_8171
+3	δυναμένῳ	δύναμαι	v	v-sppemd-	Case=d|Gender=m|Mood=p|Number=s|Tense=p|Voice=e	23	ADV	_	t_8172
+4	ὑμᾶς	σύ	p	p-p---ma-	Case=a|Gender=m|Number=p	5	OBJ	_	t_8173
+5	στηρίξαι	στηρίζω	v	v--ana---	Mood=n|Tense=a|Voice=a	3	OBJ	_	t_8174
+6	κατὰ	κατά	r	r--------	_	5	AuxP	_	t_8175
+7	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	8	ATR	_	t_8176
+8	εὐαγγέλιόν	εὐαγγέλιον	n	n-s---na-	Case=a|Gender=n|Number=s	10	ADV	_	t_8177
+9	μου	ἐγώ	p	p-s---mg-	Case=g|Gender=m|Number=s	8	ATR	_	t_8178
+10	καὶ	καί	c	c--------	_	6	COORD	_	t_8179
+11	τὸ	ὁ	l	l-s---na-	Case=a|Gender=n|Number=s	12	ATR	_	t_8180
+12	κήρυγμα	κήρυγμα	n	n-s---na-	Case=a|Gender=n|Number=s	10	ADV	_	t_8181
+13	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	12	ATR	_	t_8182
+14	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	13	ATR	_	t_8183
+15	,	,	u	u--------	_	57	AuxX	_	t_8184
+16	κατὰ	κατά	r	r--------	_	5	AuxP	_	t_8185
+17	ἀποκάλυψιν	ἀποκάλυψις	n	n-s---fa-	Case=a|Gender=f|Number=s	16	ADV	_	t_8186
+18	μυστηρίου	μυστήριον	n	n-s---ng-	Case=g|Gender=n|Number=s	22	SBJ	_	t_8187
+19	χρόνοις	χρόνος	n	n-p---md-	Case=d|Gender=m|Number=p	21	ADV	_	t_8188
+20	αἰωνίοις	αἰώνιος	a	a-p---md-	Case=d|Gender=m|Number=p	19	ATR	_	t_8189
+21	σεσιγημένου	παραγράφω	v	v-srpemg-	Case=g|Gender=m|Mood=p|Number=s|Tense=r|Voice=e	13	ATR	_	t_8190
+22	φανερωθέντος	φανερωθέννυμι	v	v-sappmg-	Case=g|Gender=m|Mood=p|Number=s|Tense=a|Voice=p	23	ADV	_	t_8191
+23	δὲ	δέ	c	c--------	_	57	COORD	_	t_8192
+24	νῦν	νῦν	d	d--------	_	22	ADV	_	t_8193
+25	διά	διά	r	r--------	_	22	AuxP	_	t_8194
+26	τε	τε	d	d--------	_	23	AuxY	_	t_8195
+27	γραφῶν	γραφή	n	n-p---fg-	Case=g|Gender=f|Number=p	25	ADV	_	t_8196
+28	προφητικῶν	προφητικός	a	a-p---fg-	Case=g|Gender=f|Number=p	27	ATR	_	t_8197
+29	κατʼ	κατά	r	r--------	_	41	AuxP	_	t_8198
+30	ἐπιταγὴν	ἐπιταγή	n	n-s---fa-	Case=a|Gender=f|Number=s	29	ADV	_	t_8199
+31	τοῦ	ὁ	l	l-s---mg-	Case=g|Gender=m|Number=s	33	ATR	_	t_8200
+32	αἰωνίου	αἰώνιος	a	a-s---mg-	Case=g|Gender=m|Number=s	33	ATR	_	t_8201
+33	θεοῦ	θεός	n	n-s---mg-	Case=g|Gender=m|Number=s	30	ATR	_	t_8202
+34	εἰς	εἰς	r	r--------	_	41	AuxP	_	t_8203
+35	ὑπακοὴν	ὑπακοή	n	n-s---fa-	Case=a|Gender=f|Number=s	37	OBJ	_	t_8204
+36	πίστεως	πίστις	n	n-s---fg-	Case=g|Gender=f|Number=s	35	ATR	_	t_8205
+37	εἰς	εἰς	r	r--------	_	41	AuxP	_	t_8206
+38	πάντα	πᾶς	a	a-p---na-	Case=a|Gender=n|Number=p	40	ATR	_	t_8207
+39	τὰ	ὁ	l	l-p---na-	Case=a|Gender=n|Number=p	40	ATR	_	t_8208
+40	ἔθνη	ἔθνος	n	n-p---na-	Case=a|Gender=n|Number=p	37	ADV	_	t_8209
+41	γνωρισθέντος	γνωρίζω	v	v-sappmg-	Case=g|Gender=m|Mood=p|Number=s|Tense=a|Voice=p	23	ADV	_	t_8210
+42	,	,	u	u--------	_	57	AuxX	_	t_8211
+43	μόνῳ	μόνος	a	a-s---md-	Case=d|Gender=m|Number=s	45	ATR	_	t_8212
+44	σοφῷ	σοφός	a	a-s---md-	Case=d|Gender=m|Number=s	45	ATR	_	t_8213
+45	θεῷ	θεός	n	n-s---md-	Case=d|Gender=m|Number=s	57	OBJ	_	t_8214
+46	διὰ	διά	r	r--------	_	57	AuxP	_	t_8215
+47	Ἰησοῦ	ἰησοῦς	n	n-s---mg-	Case=g|Gender=m|Number=s	48	ATR	_	t_8216
+48	Χριστοῦ	χριστός	n	n-s---mg-	Case=g|Gender=m|Number=s	46	ADV	_	t_8217
+49	[	[	u	u--------	_	57	AuxG	_	t_8218
+50	ᾧ	ὅς	v	v3spsa---	Mood=s|Number=s|Person=3|Tense=p|Voice=a	57	ADV	_	t_8219
+51	]	]	u	u--------	_	57	AuxG	_	t_8220
+52	ἡ	ὁ	l	l-s---fn-	Case=n|Gender=f|Number=s	53	ATR	_	t_8221
+53	δόξα	δόξα	n	n-s---fn-	Case=n|Gender=f|Number=s	57	SBJ	_	t_8222
+54	εἰς	εἰς	r	r--------	_	50	AuxP	_	t_8223
+55	τοὺς	ὁ	l	l-p---ma-	Case=a|Gender=m|Number=p	56	ATR	_	t_8224
+56	αἰῶνας	αἰών	n	n-p---ma-	Case=a|Gender=m|Number=p	54	ADV	_	t_8225
+57	[0]	[0]	-	---------	_	0	PRED	_	e_177
+58	·	·	u	u--------	_	57	AuxK	_	t_8226
+
+
+# sentence_id = 487
+# translation_lang = en
+# prose_translation = Amen.
+# literal_translation = Amen.
+1	ἀμήν	ἀμήν	i	i--------	_	2	ExD	_	t_8227
+2	[0]	[0]	-	---------	_	0	PRED	_	e_178
+3	.	.	u	u--------	_	2	AuxK	_	t_8228
