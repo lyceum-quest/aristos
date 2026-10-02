@@ -31,7 +31,22 @@ Backend :: [].{
 		user,
 	]
 
-	ClaudeResult : { is_error : Bool, result : Str, total_cost_usd : Dec, usage : { input_tokens : U64, output_tokens : U64, cache_creation_input_tokens : U64, cache_read_input_tokens : U64 } }
+	ClaudeResult : { is_error : Bool, result : Str, usage : { input_tokens : U64, output_tokens : U64, cache_creation_input_tokens : U64, cache_read_input_tokens : U64 } }
+
+	# `total_cost_usd` is read from the text: JavaScript can print more decimals (0.0008872000000000001) than Dec holds,
+	# which would fail the whole parse. It is cut to 12 decimal places; an unreadable cost counts as 0.
+	cost_of : Str -> Dec
+	cost_of = |output| match Str.split_on(output, "\"total_cost_usd\":") {
+		[_, after, ..] => {
+			number = Str.trim(List.first(Str.split_on(after, ",")) ?? "")
+			short = match Str.split_on(number, ".") {
+				[whole, fraction] => "${whole}.${Str.from_utf8(List.take_first(Str.to_utf8(fraction), 12)) ?? "0"}"
+				_ => number
+			}
+			Dec.from_str(short) ?? 0
+		}
+		_ => 0
+	}
 
 	# Claude Code's `--output-format json` result -> `{ choices: [{ message: { content } }], usage: { cost, … } }`.
 	completion : Str -> Try(Str, [SubscriptionError(Str), ..])
@@ -47,7 +62,7 @@ Backend :: [].{
 						backend: "subscription",
 						choices: [{ message: { content: reply.result } }],
 						usage: {
-							cost: reply.total_cost_usd,
+							cost: cost_of(output),
 							prompt_tokens: reply.usage.input_tokens + reply.usage.cache_creation_input_tokens + reply.usage.cache_read_input_tokens,
 							completion_tokens: reply.usage.output_tokens,
 						},
