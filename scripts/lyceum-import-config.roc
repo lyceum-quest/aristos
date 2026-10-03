@@ -4,102 +4,111 @@ import cli.OsStr
 import cli.Path
 import cli.Stdout
 import Citation
-import Passages
 
-# Writes scripts/lyceum-imports/<folder>.json, the import-lyceum config for a generated work, adding a new
-# aristos-<model> edition. Each sentence is cited by its first token's canonical citation (data/oga/refs), cut to
-# the reader's citation depth: Meditations is cited book.chapter (2) though OGA adds sections, a Bible book
-# chapter.verse (2), Plato by Stephanus page (1). Sentences sharing a citation become one reader passage.
-# Usage: roc scripts/lyceum-import-config.roc <conllu/generated/work-model> <levels>
+# Prepares a generated work for import-lyceum so Lyceum shows the same passages as Aristos: one reader passage per
+# canonical passage in units.jsonl (a verse, a section, a Stephanus page part), with that passage's own prose and
+# literal translations and its glossed rows from output.conllu.
+# Writes /tmp/aristos-lyceum-<folder>.conllu (one block per passage, `# ref` set, rows renumbered) and
+# scripts/lyceum-imports/<folder>.json, which adds an aristos-<model> edition, or with --replace overwrites two
+# existing editions wholesale (as for Meditations, whose Lyceum edition predates Aristos passages).
+# Lyceum references are dotted numbers, so a split unit's `43~2` becomes `43.2`.
+# Usage: roc scripts/lyceum-import-config.roc <conllu/generated/work-model> [--replace <greek-urn> <english-urn>]
+Unit : { ref : Str, tokens : List(Str), prose : Str, literal : Str }
+
 main! = |args| match List.map(List.drop_first(args, 1), OsStr.display) {
-	[dir, levels_text] => {
-		levels = U64.from_str(levels_text) ? |_| Usage("levels must be a positive integer")
-		_ = (if levels == 0 Err(Usage("levels must be a positive integer")) else Ok({}))?
-		folder = List.last(List.keep_if(Str.split_on(dir, "/"), |part| part != "")) ?? dir
-		settings : { input : Str, model : Str }
-		settings = Json.parse(Path.read_utf8!(Path.utf8("${dir}/config.json"))?)?
-		cts_id = Citation.cts_id(settings.input)?
-		work_urn = match Str.split_on(cts_id, ".") {
-			[group, work, ..] => Ok("urn:cts:greekLit:${group}.${work}")
-			_ => Err(NoCtsId(cts_id))
-		}?
-		refs = Passages.citations(Path.read_utf8!(Path.utf8(Passages.refs_path(cts_id)))?).refs
-		input = "${dir}/output.conllu"
-		source = Str.replace_each(Path.read_utf8!(Path.utf8(input))?, "\r\n", "\n")
-		blocks = List.keep_if(List.map(Str.split_on(Str.trim(source), "\n\n"), Str.trim), |block| block != "")
-		references = cite(blocks, refs, levels, [])?
-		slug = Str.from_utf8(List.map(Str.to_utf8(Str.with_ascii_lowercased(settings.model)), |byte| if (byte >= 97 and byte <= 122) or (byte >= 48 and byte <= 57) byte else 45)) ?? "generated"
-		rows = List.map(references, |entry| "    { \"sentence_id\": ${json(entry.sentence_id)}, \"reference\": ${json(entry.reference)} }")
-		config = Str.join_with(
-			[
-				"{",
-				"  \"input\": ${json(input)},",
-				"  \"sql_output\": ${json("/tmp/aristos-lyceum-${folder}.sql")},",
-				"  \"work_urn\": ${json(work_urn)},",
-				"  \"edition_slug\": ${json("aristos-${slug}")},",
-				# The generator is part of the edition marker a re-import must match: keep it the bare model.
-				"  \"generator\": ${json(settings.model)},",
-				"  \"references\": [",
-				Str.join_with(rows, ",\n"),
-				"  ]",
-				"}",
-				"",
-			],
-			"\n",
-		)
-		output = "scripts/lyceum-imports/${folder}.json"
-		_ = Path.create_all!(Path.utf8("scripts/lyceum-imports"))?
-		_ = Path.write_utf8!(Path.utf8(output), config)?
-		first = (List.first(references) ?? { sentence_id: "", reference: "" }).reference
-		last = (List.last(references) ?? { sentence_id: "", reference: "" }).reference
-		Stdout.line!("wrote ${output}: ${U64.to_str(List.len(references))} sentence(s), ${U64.to_str(List.len(distinct(references, [])))} passage(s), ${first} to ${last}")
-	}
-	_ => Err(Usage("lyceum-import-config.roc <conllu/generated/work-model> <levels>"))
+	[dir] => run!(dir, Err(NoReplacement))
+	[dir, "--replace", greek_urn, english_urn] => run!(dir, Ok({ greek_urn, english_urn }))
+	_ => Err(Usage("lyceum-import-config.roc <conllu/generated/work-model> [--replace <greek-urn> <english-urn>]"))
 }
 
-cite = |blocks, refs, levels, found| match blocks {
-	[] => if List.is_empty(found) Err(EmptyOutput) else Ok(found)
-	[block, .. as rest] => {
-		lines = Str.split_on(block, "\n")
-		sentence_id = List.first(List.keep_oks(lines, |line| sentence_id_of(line))) ? |_| MissingSentenceId(block)
-		# OGA placeholder rows (MISC `e_…`) have no citation; the first real token does.
-		token = List.first(List.keep_oks(lines, |line| first_token(line))) ? |_| NoCitedToken(sentence_id)
-		ref = Dict.get(refs, token) ? |_| MissingCitation(token)
-		parts = Str.split_on(ref, "_")
-		if List.len(parts) < levels {
-			Err(ShallowCitation(token, ref))
-		} else {
-			cite(rest, refs, levels, List.append(found, { sentence_id, reference: Str.join_with(List.take_first(parts, levels), ".") }))
-		}
+run! = |dir, replacement| {
+	folder = List.last(List.keep_if(Str.split_on(dir, "/"), |part| part != "")) ?? dir
+	settings : { input : Str, model : Str }
+	settings = Json.parse(Path.read_utf8!(Path.utf8("${dir}/config.json"))?)?
+	cts_id = Citation.cts_id(settings.input)?
+	work_urn = match Str.split_on(cts_id, ".") {
+		[group, work, ..] => Ok("urn:cts:greekLit:${group}.${work}")
+		_ => Err(NoCtsId(cts_id))
+	}?
+	rows = glossed_rows(Str.split_on(Str.replace_each(Path.read_utf8!(Path.utf8("${dir}/output.conllu"))?, "\r\n", "\n"), "\n"), Dict.empty())
+	units = parse_units(List.keep_if(Str.split_on(Path.read_utf8!(Path.utf8("${dir}/units.jsonl"))?, "\n"), |line| Str.trim(line) != ""), [])?
+	blocks = passage_blocks(units, rows, 1, [], [])?
+	passages = "/tmp/aristos-lyceum-${folder}.conllu"
+	_ = Path.write_utf8!(Path.utf8(passages), "${Str.join_with(blocks, "\n\n")}\n")?
+	slug = Str.from_utf8(List.map(Str.to_utf8(Str.with_ascii_lowercased(settings.model)), |byte| if (byte >= 97 and byte <= 122) or (byte >= 48 and byte <= 57) byte else 45)) ?? "generated"
+	target = match replacement {
+		Ok(urns) => "  \"replace_editions\": { \"greek_urn\": ${json(urns.greek_urn)}, \"english_urn\": ${json(urns.english_urn)} },"
+		Err(_) => "  \"edition_slug\": ${json("aristos-${slug}")},"
 	}
+	config = Str.join_with(
+		[
+			"{",
+			"  \"input\": ${json(passages)},",
+			"  \"sql_output\": ${json("/tmp/aristos-lyceum-${folder}.sql")},",
+			"  \"work_urn\": ${json(work_urn)},",
+			target,
+			# The generator is part of the edition marker a re-import must match: keep it the bare model.
+			"  \"generator\": ${json(settings.model)}",
+			"}",
+			"",
+		],
+		"\n",
+	)
+	output = "scripts/lyceum-imports/${folder}.json"
+	_ = Path.create_all!(Path.utf8("scripts/lyceum-imports"))?
+	_ = Path.write_utf8!(Path.utf8(output), config)?
+	first = (List.first(units) ?? { ref: "", tokens: [], prose: "", literal: "" }).ref
+	last = (List.last(units) ?? { ref: "", tokens: [], prose: "", literal: "" }).ref
+	Stdout.line!("wrote ${output} and ${passages}: ${U64.to_str(List.len(units))} passage(s), ${lyceum_ref(first)} to ${lyceum_ref(last)}")
 }
 
-sentence_id_of = |line|
-	if Str.starts_with(line, "#") {
-		match Str.split_on(Str.drop_prefix(line, "#"), "=") {
-			[key, .. as value] if List.contains(["sentence_id", "sent_id"], Str.trim(key)) and Str.trim(Str.join_with(value, "=")) != "" => Ok(Str.trim(Str.join_with(value, "=")))
-			_ => Err(NotSentenceId)
-		}
-	} else {
-		Err(NotSentenceId)
-	}
-
-first_token = |line|
-	if Str.starts_with(line, "#") {
-		Err(Comment)
-	} else {
+# OGA token id (`t_N`, the first MISC field) -> its glossed row; placeholder rows (`e_…`) are not passage tokens.
+glossed_rows = |lines, found| match lines {
+	[] => found
+	[line, .. as rest] =>
 		match Str.split_on(line, "\t") {
-			[_, _, _, _, _, _, _, _, _, misc] => {
+			[_, _, _, _, _, _, _, _, _, misc] if !Str.starts_with(line, "#") => {
 				token = List.first(Str.split_on(misc, "|")) ?? ""
-				if Str.starts_with(token, "t_") Ok(token) else Err(Placeholder)
+				glossed_rows(rest, if Str.starts_with(token, "t_") Dict.insert(found, token, line) else found)
 			}
-			_ => Err(NotARow)
+			_ => glossed_rows(rest, found)
 		}
-	}
-
-distinct = |references, seen| match references {
-	[] => seen
-	[entry, .. as rest] => distinct(rest, if List.contains(seen, entry.reference) seen else List.append(seen, entry.reference))
 }
+
+parse_units = |lines, found| match lines {
+	[] => if List.is_empty(found) Err(NoPassages) else Ok(found)
+	[line, .. as rest] => {
+		unit : Unit
+		unit = Json.parse(line)?
+		parse_units(rest, List.append(found, unit))
+	}
+}
+
+passage_blocks = |units, rows, index, refs, found| match units {
+	[] => Ok(found)
+	[unit, .. as rest] => {
+		ref = lyceum_ref(unit.ref)
+		_ = (if List.contains(refs, ref) Err(DuplicateReference(ref)) else Ok({}))?
+		lines = renumber(unit.tokens, rows, 1, [])?
+		comments = ["# sentence_id = ${U64.to_str(index)}", "# ref = ${ref}", "# prose_translation = ${unit.prose}", "# literal_translation = ${unit.literal}"]
+		passage_blocks(rest, rows, index + 1, List.append(refs, ref), List.append(found, Str.join_with(List.concat(comments, lines), "\n")))
+	}
+}
+
+# A passage can join tokens of two OGA sentences, whose numbering restarts; Lyceum needs ascending IDs.
+renumber = |tokens, rows, id, found| match tokens {
+	[] => Ok(found)
+	[token, .. as rest] =>
+		match Dict.get(rows, token) {
+			Ok(line) =>
+				match Str.split_on(line, "\t") {
+					[_, .. as columns] => renumber(rest, rows, id + 1, List.append(found, Str.join_with(List.prepend(columns, U64.to_str(id)), "\t")))
+					[] => Err(MissingRow(token))
+				}
+			Err(_) => Err(MissingRow(token))
+		}
+}
+
+lyceum_ref = |ref| Str.replace_each(ref, "~", ".")
 
 json = |value| "\"${Str.replace_each(Str.replace_each(value, "\\", "\\\\"), "\"", "\\\"")}\""

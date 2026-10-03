@@ -1,0 +1,7 @@
+{
+  "input": "/tmp/aristos-lyceum-meditations-claude-sonnet-5.conllu",
+  "sql_output": "/tmp/aristos-lyceum-meditations-claude-sonnet-5.sql",
+  "work_urn": "urn:cts:greekLit:tlg0562.tlg001",
+  "replace_editions": { "greek_urn": "urn:cts:greekLit:tlg0562.tlg001.workspace-grc1", "english_urn": "urn:cts:greekLit:tlg0562.tlg001.workspace-grc1-gen-eng1" },
+  "generator": "claude-sonnet-5"
+}
