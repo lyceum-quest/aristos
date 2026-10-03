@@ -87,8 +87,8 @@ validate_config = |config| {
 	} else {
 		match (config.edition_slug, config.replace_editions) {
 			(Ok(slug), Err(Missing)) => {
-				if !Str.starts_with(slug, "aristos-") or !List.all(Str.to_utf8(slug), slug_byte) {
-					Err(InvalidConfig("edition_slug must start aristos- and use lowercase ASCII letters, digits, or hyphens"))
+				if slug == "" or !List.all(Str.to_utf8(slug), slug_byte) {
+					Err(InvalidConfig("edition_slug must use lowercase ASCII letters, digits, or hyphens"))
 				} else {
 					Ok({ greek_urn: "${config.work_urn}.${slug}-grc1", english_urn: "${config.work_urn}.${slug}-versified-eng1", replace: Bool.False })
 				}

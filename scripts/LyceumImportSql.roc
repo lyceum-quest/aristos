@@ -12,7 +12,8 @@ LyceumImportSql :: [].{
 	build = |config, editions_db, verses, target| {
 		greek_urn = target.greek_urn
 		english_urn = target.english_urn
-		marker = "Aristos generated edition; model=${config.generator}; not human-adjudicated"
+		# Shown in Lyceum as the edition description, and the marker a re-import must match to touch the edition.
+		marker = "Glosses and translations generated with ${config.generator}; not yet reviewed by a human."
 		setup =
 			\\PRAGMA foreign_keys = ON;
 			\\BEGIN IMMEDIATE;
@@ -40,8 +41,8 @@ LyceumImportSql :: [].{
 					guard("work_must_exist", "(SELECT COUNT(*) FROM main.works w JOIN main.authors a ON a.id=w.author_id JOIN _import_target t ON t.work_urn=w.urn)=1"),
 					guard("catalog_ids_must_agree", catalog_agreement),
 					guard("generated_editions_only", ownership),
-					edition_sql("greek_urn", "grc", "edition", " (Aristos Greek)"),
-					edition_sql("english_urn", "eng", "translation", " (Aristos verse-aligned English)"),
+					edition_sql("greek_urn", "grc", "edition", " (Lyceum Edition)"),
+					edition_sql("english_urn", "eng", "translation", " (Generated English)"),
 					guard("edition_ids_must_agree", edition_agreement),
 					catalog,
 				],
@@ -177,8 +178,8 @@ LyceumImportSql :: [].{
 			\\FROM _import_words w JOIN DB.aligned_segments s ON s.reference=w.reference JOIN _import_target t ON s.source_urn=t.greek_urn;
 		metadata = if replace {
 			\\DELETE FROM DB.text_metadata WHERE edition_urn IN(SELECT greek_urn FROM _import_target UNION ALL SELECT english_urn FROM _import_target);
-			\\UPDATE DB.editions SET description=(SELECT marker FROM _import_target), type='edition' WHERE urn=(SELECT greek_urn FROM _import_target);
-			\\UPDATE DB.editions SET description=(SELECT marker FROM _import_target) WHERE urn=(SELECT english_urn FROM _import_target);
+			\\UPDATE DB.editions SET description=(SELECT marker FROM _import_target), type='edition', label=(SELECT title FROM curated.works WHERE urn=(SELECT work_urn FROM _import_target))||' (Lyceum Edition)' WHERE urn=(SELECT greek_urn FROM _import_target);
+			\\UPDATE DB.editions SET description=(SELECT marker FROM _import_target), label=(SELECT title FROM curated.works WHERE urn=(SELECT work_urn FROM _import_target))||' (Generated English)' WHERE urn=(SELECT english_urn FROM _import_target);
 		} else {
 			""
 		}

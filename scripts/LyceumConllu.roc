@@ -220,14 +220,16 @@ LyceumConllu :: [].{
 								parse_rows(rest, next)
 							} else {
 								_ = required(Str.trim(form), "token ${id_text} form")?
-								punctuation = upos == "PUNCT" or upos == "u"
+								# By form, not tag: OGA tags some words as punctuation (Luke 1:66 Τί is `u`), and a word left out of the
+								# word list while kept in the Greek text breaks Lyceum's passage alignment.
+								punctuation = punctuation_form(form)
 								words = (
 									if punctuation {
 										Ok(state.words)
 									} else {
 										gloss = required(field(fields, ["gloss", "Gloss"], "token ${id_text} gloss")?, "token ${id_text} gloss")?
 										transliteration = field(fields, ["Translit"], "token ${id_text} transliteration")?
-										Ok(List.append(state.words, { form, lemma: optional(lemma), pos: reader_pos(upos), morphology: optional(feats), gloss, transliteration }))
+										Ok(List.append(state.words, { form, lemma: optional(lemma), pos: if upos == "PUNCT" or upos == "u" "unknown" else reader_pos(upos), morphology: optional(feats), gloss, transliteration }))
 									}
 								)?
 								# OGA lacks spacing: attach closing punctuation left and opening brackets right.
@@ -256,6 +258,19 @@ LyceumConllu :: [].{
 		}
 
 	optional = |value| if value == "_" "" else value
+
+	# Only punctuation characters: ASCII marks, or the Greek and typographic marks below.
+	punctuation_form = |form| {
+		marks = ["·", "·", "ʼ", "’", "‘", "“", "”", "«", "»", "—", "–", "…", "§", "†", "⸀", "⸁", "⸂", "⸃"]
+		rest = Str.to_utf8(strip_marks(form, marks))
+		form != "" and List.all(rest, |byte| byte > 32 and byte < 127 and !((byte >= 48 and byte <= 57) or (byte >= 65 and byte <= 90) or (byte >= 97 and byte <= 122)))
+	}
+
+	strip_marks = |text, marks|
+		match marks {
+			[] => text
+			[mark, .. as rest] => strip_marks(Str.replace_each(text, mark, ""), rest)
+		}
 
 	# C0, DEL, and UTF-8-encoded C1 controls; do not reject Greek continuation bytes.
 	has_control = |bytes|

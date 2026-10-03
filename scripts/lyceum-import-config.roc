@@ -9,7 +9,7 @@ import Citation
 # canonical passage in units.jsonl (a verse, a section, a Stephanus page part), with that passage's own prose and
 # literal translations and its glossed rows from output.conllu.
 # Writes /tmp/aristos-lyceum-<folder>.conllu (one block per passage, `# ref` set, rows renumbered) and
-# scripts/lyceum-imports/<folder>.json, which adds an aristos-<model> edition, or with --replace overwrites two
+# scripts/lyceum-imports/<folder>.json, which adds a `lyceum` edition (`<work>.lyceum-grc1` and `-versified-eng1`), or with --replace overwrites two
 # existing editions wholesale (as for Meditations, whose Lyceum edition predates Aristos passages).
 # Lyceum references are dotted numbers, so a split unit's `43~2` becomes `43.2`.
 # Usage: roc scripts/lyceum-import-config.roc <conllu/generated/work-model> [--replace <greek-urn> <english-urn>]
@@ -35,10 +35,9 @@ run! = |dir, replacement| {
 	blocks = passage_blocks(units, rows, 1, [], [])?
 	passages = "/tmp/aristos-lyceum-${folder}.conllu"
 	_ = Path.write_utf8!(Path.utf8(passages), "${Str.join_with(blocks, "\n\n")}\n")?
-	slug = Str.from_utf8(List.map(Str.to_utf8(Str.with_ascii_lowercased(settings.model)), |byte| if (byte >= 97 and byte <= 122) or (byte >= 48 and byte <= 57) byte else 45)) ?? "generated"
 	target = match replacement {
 		Ok(urns) => "  \"replace_editions\": { \"greek_urn\": ${json(urns.greek_urn)}, \"english_urn\": ${json(urns.english_urn)} },"
-		Err(_) => "  \"edition_slug\": ${json("aristos-${slug}")},"
+		Err(_) => "  \"edition_slug\": \"lyceum\","
 	}
 	config = Str.join_with(
 		[

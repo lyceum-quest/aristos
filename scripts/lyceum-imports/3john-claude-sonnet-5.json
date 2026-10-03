@@ -2,6 +2,6 @@
   "input": "/tmp/aristos-lyceum-3john-claude-sonnet-5.conllu",
   "sql_output": "/tmp/aristos-lyceum-3john-claude-sonnet-5.sql",
   "work_urn": "urn:cts:greekLit:tlg0031.tlg025",
-  "edition_slug": "aristos-claude-sonnet-5",
+  "edition_slug": "lyceum",
   "generator": "claude-sonnet-5"
 }
