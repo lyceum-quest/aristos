@@ -57,9 +57,12 @@ back to a guessed path.
 ```sh
 cp .env.example .env            # then set LYCEUM_WEBSITE_DIR
 
-# Write an import config for a generated work, citing each sentence by its
-# first token in data/oga/refs; levels is the reader's citation depth.
-kai run lyceum-import-config -- conllu/generated/romans-claude-sonnet-5 2
+# Write a generated work's passages (units.jsonl, one Lyceum passage per Aristos
+# verse or section) to /tmp and its import config to scripts/lyceum-imports/.
+kai run lyceum-import-config -- conllu/generated/romans-claude-sonnet-5
+# A work whose Lyceum editions predate Aristos is replaced in place instead:
+kai run lyceum-import-config -- conllu/generated/meditations-claude-sonnet-5 \
+  --replace urn:cts:greekLit:tlg0562.tlg001.workspace-grc1 urn:cts:greekLit:tlg0562.tlg001.workspace-grc1-gen-eng1
 
 # Write the SQL only, then apply it (backs up both databases first).
 LYCEUM_IMPORT_CONFIG=scripts/lyceum-imports/romans-claude-sonnet-5.json kai run import-lyceum
@@ -75,8 +78,8 @@ repository, and the work and its author must already be in its catalog.
 Configs in `scripts/lyceum-imports/` add an `aristos-<model>` edition;
 `scripts/lyceum-replace.example.json` instead replaces two existing editions
 wholesale. A re-import replaces the passages it names and keeps the rest.
-Deploying connects with SSH (as root: it stops and starts the `lyceum` and
-`lyceum-admin` services and installs the databases into `/var/lib/lyceum/data`
+Deploying connects with SSH (as root: it stops and starts the `lyceum` service, and
+`lyceum-admin` where installed (production only) and installs the databases into `/var/lib/lyceum/data`
 owned by `lyceum`) to `LYCEUM_STAGING_HOST` (default `lyceum-staging`, the
 tailnet name) or `LYCEUM_PROD_HOST` (default `lyceum-prod`), then checks
 `<url>/health` with `LYCEUM_STAGING_URL` (default `http://<staging host>`) or

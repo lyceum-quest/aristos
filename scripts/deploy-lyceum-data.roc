@@ -95,7 +95,22 @@ verify! = |host, dir, expected| {
 	require(actual == expected, "SHA256 mismatch in ${dir}")
 }
 
-services! = |host, action| remote!(host, ["systemctl", action, "lyceum", "lyceum-admin"])
+# Production runs an admin panel beside the reader; staging does not (flake.nix enables lyceum-admin only where
+# admin is on). Manage whichever units the host has installed; an installed unit must still be active.
+units! = |host| match remote!(host, ["systemctl", "cat", "--quiet", "lyceum-admin.service"]) {
+	Ok(_) => ["lyceum", "lyceum-admin"]
+	Err(_) => ["lyceum"]
+}
+
+services! = |host, action| remote!(host, List.concat(["systemctl", action], units!(host)))
+
+active! = |host, names| match names {
+	[] => Ok({})
+	[name, .. as rest] => {
+		_ = remote!(host, ["systemctl", "is-active", "--quiet", name])?
+		active!(host, rest)
+	}
+}
 
 deploy_locked! = |host, url, source, expected| {
 	baseline = hashes(remote!(host, List.prepend(paths(data), "sha256sum"))?)
@@ -178,8 +193,7 @@ health! = |host, url, attempts| {
 }
 
 probe! = |host, url| {
-	_ = remote!(host, ["systemctl", "is-active", "--quiet", "lyceum"])?
-	_ = remote!(host, ["systemctl", "is-active", "--quiet", "lyceum-admin"])?
+	_ = active!(host, units!(host))?
 	_ = remote!(host, ["curl", "--fail", "--silent", "--show-error", "--max-time", "10", "--output", "/dev/null", "http://127.0.0.1:8080/health"])?
 	_ = run!("curl", ["--fail", "--silent", "--show-error", "--max-time", "15", "--output", "/dev/null", "${url}/health"])?
 	Ok({})

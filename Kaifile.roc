@@ -64,9 +64,9 @@ kaifile = Std.kaifile([
 
 	Task("check-lyceum-import", [Use("dev"), Run(["roc", "check", "scripts/import-lyceum.roc"])]),
 
-	# kai run lyceum-import-config -- <conllu/generated/work-model> <citation-levels>
-	# Writes scripts/lyceum-imports/<work-model>.json, citing each sentence by its first token in
-	# data/oga/refs (levels: 2 for Bible chapter.verse and Meditations book.chapter, 1 for Plato pages).
+	# kai run lyceum-import-config -- <conllu/generated/work-model> [--replace <greek-urn> <english-urn>]
+	# Writes the work's passages (one Lyceum passage per units.jsonl passage) to /tmp and
+	# scripts/lyceum-imports/<work-model>.json, which imports them.
 	Task("lyceum-import-config", [Use("dev"), Run(["roc", "scripts/lyceum-import-config.roc"])]),
 
 	Task("check-lyceum-import-config-tool", [Use("dev"), Run(["roc", "check", "scripts/lyceum-import-config.roc"])]),
