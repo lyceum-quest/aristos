@@ -2474,7 +2474,9 @@ p {
     left: 0;
     display: grid;
     min-height: 58px;
-    grid-template-columns: repeat(3, 1fr);
+    /* One row whatever the number of destinations. */
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
     border-top: 1px solid var(--line);
     background: var(--mobile-nav-bg);
     backdrop-filter: blur(16px);
@@ -4014,4 +4016,433 @@ p {
   color: var(--faint);
   font-size: 0.68rem;
   letter-spacing: 0.01em;
+}
+
+/* Today: the home page's first panel, and the session page */
+.today-panel {
+  margin: 0 0 28px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper-strong);
+}
+
+.today-title {
+  margin: 4px 0 6px;
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+.today-summary,
+.today-continue,
+.session-status {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.session-status {
+  margin: 0 0 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.today-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+a.primary-button,
+a.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.secondary-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Words: review card and word page */
+.word-review-page,
+.word-page,
+.stats-page,
+.today-page {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.word-review-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper-strong);
+}
+
+.word-context {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--greek);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.context-word {
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: var(--ink);
+  background: var(--teal-soft);
+  box-shadow: inset 0 -2px 0 var(--teal);
+}
+
+.word-review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.review-form {
+  font-family: var(--greek);
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+
+.review-lemma,
+.popup-lemma {
+  color: var(--muted);
+  font-family: var(--greek);
+  font-size: 1rem;
+}
+
+.popup-lemma {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.word-review-input {
+  max-width: 24rem;
+  font-size: 1rem;
+}
+
+.word-review-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.word-review-answer .reference-answer {
+  font-size: 1.1rem;
+}
+
+.word-header {
+  margin-bottom: 18px;
+}
+
+.word-header h1 {
+  margin: 4px 0;
+}
+
+.word-section {
+  margin: 26px 0 0;
+}
+
+.word-section h2 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+
+.word-occurrences {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.word-occurrences .word-context {
+  margin-top: 4px;
+  font-size: 1rem;
+}
+
+/* Interlinear study: a gloss box under each word */
+.study-interlinear .study-cell {
+  width: 9rem;
+  max-width: none;
+}
+
+.study-cell-greek {
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.study-cell-greek.is-open,
+.study-cell-greek:hover {
+  background: var(--teal-soft);
+}
+
+.study-cell-greek.is-revealed {
+  text-decoration: underline dotted var(--muted);
+}
+
+.cell-input {
+  width: 100%;
+  min-width: 0;
+  padding: 5px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink);
+  background: var(--surface-input);
+  font: inherit;
+  font-size: 0.88rem;
+}
+
+.cell-input:focus {
+  border-color: var(--teal);
+  outline: 2px solid var(--teal-soft);
+}
+
+.study-cell.is-repeat {
+  box-shadow: inset 3px 0 0 var(--rose);
+  background: var(--rose-soft);
+}
+
+.cell-previous {
+  color: var(--faint);
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.interlinear-word.is-settled .interlinear-greek {
+  color: var(--muted);
+}
+
+/* Progress */
+.stat-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.stat-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper-strong);
+}
+
+.stat-tile-label,
+.stat-tile-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.stat-tile-value {
+  color: var(--ink);
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.column-chart {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper-strong);
+}
+
+.chart-title {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.chart-subtitle {
+  margin: 2px 0 12px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.chart-plot {
+  position: relative;
+  height: 110px;
+  padding-top: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.chart-tick {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--faint);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-columns {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 100%;
+}
+
+.chart-slot {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  outline: none;
+}
+
+.chart-column {
+  width: 100%;
+  max-width: 24px;
+  min-height: 0;
+  border-radius: 4px 4px 0 0;
+  background: var(--teal);
+}
+
+.chart-slot:hover .chart-column,
+.chart-slot:focus .chart-column {
+  opacity: 0.8;
+}
+
+.chart-peak {
+  margin-bottom: 2px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-slot:hover::after,
+.chart-slot:focus::after {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  z-index: 2;
+  padding: 4px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 0.72rem;
+  white-space: nowrap;
+  content: attr(data-tip);
+  pointer-events: none;
+}
+
+.chart-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: var(--faint);
+  font-size: 0.7rem;
+}
+
+.chart-table {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.chart-table summary {
+  cursor: pointer;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats-table th,
+.stats-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.stats-table th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.stats-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0 24px;
+}
+
+.work-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.work-progress-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 14rem) 1fr auto;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.86rem;
+}
+
+.progress-track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--teal-soft);
+  overflow: hidden;
+}
+
+.progress-fill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--teal);
+}
+
+.work-progress-count {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .today-panel,
+  .word-review-card {
+    padding: 18px;
+  }
+
+  .work-progress-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .progress-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }

@@ -94,8 +94,9 @@ write_preload! = |output_dir, specs| {
 	corpora_dir = output_dir.join("corpora")
 	corpora_dir.create_all!()?
 	write_assets!(assets, corpora_dir)?
-	manifest = "{\"version\":1,\"corpora\":[${Str.join_with(assets.map(asset_json), ",")}]}\n"
+	manifest = "{\"version\":1,\"lemmasPath\":\"lemmas.json\",\"corpora\":[${Str.join_with(assets.map(asset_json), ",")}]}\n"
 	output_dir.join("corpora.json").write_utf8!(manifest)?
+	output_dir.join("lemmas.json").write_utf8!(lemmas_json(assets))?
 	Stdout.line!("wrote ${output_dir.display()}: ${assets.len().to_str()} corpus asset(s)")?
 	Ok({})
 }
@@ -346,12 +347,12 @@ units! = |corpus_path, content| {
 	text = units_path.read_utf8!() ? |_| InvalidCorpus(corpus_path, "missing ${units_path.display()}; run the generation loop to translate its canonical passages")
 	lines = List.keep_if(List.map(Str.split_on(text, "\n"), Str.trim), |line| line != "")
 	glossed = glossed_tokens(content.split_on("\n"), Dict.empty())
-	check_units!(units_path, lines, glossed, [])
+	check_units!(units_path, lines, glossed, [], [], [])
 }
 
-check_units! = |units_path, lines, glossed, refs|
+check_units! = |units_path, lines, glossed, refs, occurrences, passages|
 	match lines {
-		[] => Ok({ lines: lines_of(refs), refs: List.map(refs, |unit| unit.ref) })
+		[] => Ok({ lines: lines_of(refs), refs: List.map(refs, |unit| unit.ref), occurrences, passages })
 		[line, .. as rest] => {
 			parsed : Try({ ref : Str, tokens : List(Str) }, _)
 			parsed = Json.parse(line)
@@ -360,7 +361,12 @@ check_units! = |units_path, lines, glossed, refs|
 				Ok(unit) =>
 					match List.first(List.keep_if(unit.tokens, |token| !Dict.contains(glossed, token))) {
 						Ok(token) => Err(InvalidCorpus(units_path, "passage ${unit.ref} token ${token} is not a glossed corpus token"))
-						Err(_) => check_units!(units_path, rest, glossed, List.append(refs, { ref: unit.ref, line }))
+						Err(_) => {
+							rows = List.map(unit.tokens, |token| Dict.get(glossed, token) ?? { form: "", lemma: "", gloss: "" })
+							found = unit_occurrences(unit.ref, rows, 1.U64, occurrences)
+							passage = { ref: unit.ref, text: passage_text(rows, "", Bool.False) }
+							check_units!(units_path, rest, glossed, List.append(refs, { ref: unit.ref, line }), found, List.append(passages, passage))
+						}
 					}
 			}
 		}
@@ -368,18 +374,90 @@ check_units! = |units_path, lines, glossed, refs|
 
 lines_of = |units| List.map(units, |unit| unit.line)
 
-# `t_N` ids of rows whose MISC carries a gloss.
+# Rows whose MISC carries a gloss, by `t_N` id.
 glossed_tokens = |lines, found|
 	match lines {
 		[] => found
 		[line, .. as rest] =>
 			match line.split_on("\t") {
-				[_, _, _, _, _, _, _, _, _, misc] =>
+				[_, form, lemma, _, _, _, _, _, _, misc] =>
 					if misc.contains("gloss=") {
-						glossed_tokens(rest, Dict.insert(found, List.first(misc.split_on("|")) ?? "", {}))
+						fields = misc.split_on("|")
+						gloss = gloss_of(fields)
+						glossed_tokens(rest, Dict.insert(found, List.first(fields) ?? "", { form, lemma, gloss }))
 					} else {
 						glossed_tokens(rest, found)
 					}
 				_ => glossed_tokens(rest, found)
 			}
+	}
+
+gloss_of = |fields|
+	match fields {
+		[] => ""
+		[field, .. as rest] =>
+			if field.starts_with("gloss=") {
+				Str.replace_each(Str.drop_prefix(field, "gloss="), "-", " ")
+			} else {
+				gloss_of(rest)
+			}
+	}
+
+# Word occurrences of one passage; `position` is the token's 1-based index in the passage, as the app renumbers it.
+unit_occurrences = |ref, rows, position, found|
+	match rows {
+		[] => found
+		[row, .. as rest] =>
+			if punctuation_form(row.form) or row.lemma == "_" or row.lemma == "" {
+				unit_occurrences(ref, rest, position + 1, found)
+			} else {
+				unit_occurrences(ref, rest, position + 1, List.append(found, { lemma: row.lemma, ref, position, form: row.form, gloss: row.gloss }))
+			}
+	}
+
+# OGA lacks spacing: attach closing punctuation left and opening brackets right.
+passage_text = |rows, text, joined|
+	match rows {
+		[] => text
+		[row, .. as rest] => {
+			opening = List.contains(["(", "[", "«", "“", "‘"], row.form)
+			separator = if text == "" or joined or (punctuation_form(row.form) and !opening) "" else " "
+			passage_text(rest, "${text}${separator}${row.form}", opening)
+		}
+	}
+
+# By form, not tag: OGA tags some words as punctuation (Luke 1:66 Τί is `u`). Mirrors LyceumConllu.punctuation_form.
+punctuation_form = |form| {
+	marks = ["·", "·", "ʼ", "’", "‘", "“", "”", "«", "»", "—", "–", "…", "§", "†", "⸀", "⸁", "⸂", "⸃"]
+	rest = Str.to_utf8(strip_marks(form, marks))
+	List.all(rest, |byte| byte > 32 and byte < 127 and !((byte >= 48 and byte <= 57) or (byte >= 65 and byte <= 90) or (byte >= 97 and byte <= 122)))
+}
+
+strip_marks = |text, marks|
+	match marks {
+		[] => text
+		[mark, .. as rest] => strip_marks(Str.replace_each(text, mark, ""), rest)
+	}
+
+# preload/lemmas.json: every word occurrence by lemma, in work then text order, and each passage's display text.
+lemmas_json = |assets| {
+	by_lemma = group_assets(assets, Dict.empty())
+	lemmas = Str.join_with(List.map(Dict.to_list(by_lemma), |(lemma, items)| "${json_string(lemma)}:[${Str.join_with(items, ",")}]"), ",")
+	passages = Str.join_with(List.map(assets, |asset| "${json_string(asset.id)}:{${Str.join_with(List.map(asset.units.passages, |passage| "${json_string(passage.ref)}:${json_string(passage.text)}"), ",")}}"), ",")
+	"{\"version\":1,\"lemmas\":{${lemmas}},\"passages\":{${passages}}}\n"
+}
+
+group_assets = |assets, by_lemma|
+	match assets {
+		[] => by_lemma
+		[asset, .. as rest] => group_assets(rest, group_occurrences(asset.id, asset.units.occurrences, by_lemma))
+	}
+
+group_occurrences = |work, occurrences, by_lemma|
+	match occurrences {
+		[] => by_lemma
+		[item, .. as rest] => {
+			entry = "{\"work\":${json_string(work)},\"ref\":${json_string(item.ref)},\"position\":${item.position.to_str()},\"form\":${json_string(item.form)},\"gloss\":${json_string(item.gloss)}}"
+			group_occurrences(work, rest, Dict.insert(by_lemma, item.lemma, List.append(Dict.get(by_lemma, item.lemma) ?? [], entry)))
+		}
 	}

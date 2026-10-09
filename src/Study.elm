@@ -126,12 +126,12 @@ proseKey =
     "prose"
 
 
-{-| Punctuation is attached to the preceding word, never a word to gloss.
+{-| Punctuation is attached to the preceding word, never a word to gloss. Judged by the characters, not the tag: OGA
+tags some words as punctuation (Luke 1:66 Τί).
 -}
 isWordToken : { a | form : String, upos : String } -> Bool
 isWordToken token =
-    not (List.member token.upos [ "u", "PUNCT" ])
-        && not (String.isEmpty token.form)
+    not (String.isEmpty token.form)
         && not (String.all (\char -> String.contains (String.fromChar char) ".,;:!?·\u{0387}\u{037E}()[]«»“”‘’—–'\"") token.form)
 
 

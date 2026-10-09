@@ -86,3 +86,33 @@ tailnet name) or `LYCEUM_PROD_HOST` (default `lyceum-prod`), then checks
 `LYCEUM_PROD_URL` (default `https://lyceum.quest`). Staging needs no public
 domain. Set `LYCEUM_STAGING_HOST=root@lyceum-staging` unless SSH config already
 logs in as root.
+
+## Archeion releases
+
+[Archeion](https://github.com/lyceum-quest/archeion) publishes what Lyceum serves.
+`publish-archeion` checks that production serves exactly the website's local
+`texts.db`, `editions.db`, `morph.db`, and `lsj.db` (by SHA-256 over SSH),
+copies every work with a config in `scripts/lyceum-imports/` into
+`ARCHEION_DIR/conllu/lyceum/<work>-<model>/` (`output.conllu`, `units.jsonl`,
+`config.json`), and commits and tags `vYYYY.MM.DD` there with a manifest in
+`releases/`. A partly imported work is cut to the passages the served
+`editions.db` holds; a work whose imported passages are not a prefix of its
+`units.jsonl` stops the release until it is re-imported. The zstd-compressed
+databases, `SHA256SUMS.txt`, `manifest.json`, `NOTES.md`, and the website's
+`DATA_PROVENANCE.md` are staged in `ARCHEION_RELEASE_DIR/<version>/` (default
+`/var/tmp/archeion-releases`). `users.db` is never read.
+
+```sh
+kai run publish-archeion                 # production; nothing leaves this machine
+ARCHEION_PUSH=1 kai run push-archeion    # master + tag to ARCHEION_REMOTES (default rad)
+ARCHEION_GITHUB_RELEASE=1 kai run release-archeion-github   # needs the tag on GitHub
+
+# All of it, after deploying the data to production:
+LYCEUM_DEPLOY_PRODUCTION=1 ARCHEION_PUSH=1 ARCHEION_REMOTES="rad origin" \
+  ARCHEION_GITHUB_RELEASE=1 kai workflow release-lyceum
+```
+
+`publish-archeion-staging` rehearses against staging and tags
+`vYYYY.MM.DD-staging`; `release-archeion-github` refuses anything not verified
+against production. Set `ARCHEION_VERSION=vYYYY.MM.DD.2` for a second release
+on the same day.

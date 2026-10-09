@@ -18,6 +18,7 @@ kaifile = Std.kaifile([
 				"elmPackages.elm",
 				"elmPackages.elm-live",
 				"elmPackages.elm-test",
+				"gh",
 				"git",
 				"gnugrep",
 				"openssh",
@@ -25,6 +26,7 @@ kaifile = Std.kaifile([
 				"rsync",
 				"sqlite",
 				"unzip",
+				"zstd",
 			]),
 			Overlays(["roc"]),
 		],
@@ -57,6 +59,35 @@ kaifile = Std.kaifile([
 	Task("deploy-lyceum-data-prod", [Use("dev"), Run(["roc", "scripts/deploy-lyceum-data.roc", "production"])]),
 
 	Task("check-lyceum-data-deploy", [Use("dev"), Run(["roc", "check", "scripts/deploy-lyceum-data.roc"])]),
+
+	# Snapshot the served databases and imported works into ARCHEION_DIR (commit and tag) and
+	# ARCHEION_RELEASE_DIR (compressed assets); fails unless the host serves the local databases.
+	Task("publish-archeion", [Use("dev"), Run(["roc", "scripts/publish-archeion.roc", "production"])]),
+
+	Task("publish-archeion-staging", [Use("dev"), Run(["roc", "scripts/publish-archeion.roc", "staging"])]),
+
+	# Requires ARCHEION_PUSH=1; pushes master and the release tag to ARCHEION_REMOTES (default rad).
+	Task("push-archeion", [Use("dev"), Run(["roc", "scripts/push-archeion.roc", "git"])]),
+
+	# Requires ARCHEION_GITHUB_RELEASE=1, a production snapshot, and its tag on GitHub.
+	Task("release-archeion-github", [Use("dev"), Run(["roc", "scripts/push-archeion.roc", "github"])]),
+
+	Task("check-publish-archeion-tool", [Use("dev"), Run(["roc", "check", "scripts/publish-archeion.roc"])]),
+
+	Task("check-push-archeion-tool", [Use("dev"), Run(["roc", "check", "scripts/push-archeion.roc"])]),
+
+	# Deploy the content databases to production, then publish exactly what it serves.
+	# Needs LYCEUM_DEPLOY_PRODUCTION=1, ARCHEION_PUSH=1 with ARCHEION_REMOTES naming the GitHub remote,
+	# and ARCHEION_GITHUB_RELEASE=1.
+	Workflow(
+		"release-lyceum",
+		[
+			RunTask("deploy-lyceum-data-prod", []),
+			RunTask("publish-archeion", []),
+			RunTask("push-archeion", []),
+			RunTask("release-archeion-github", []),
+		],
+	),
 
 	Task("format-lyceum-data-deploy", [Use("dev"), Run(["roc", "fmt", "scripts/deploy-lyceum-data.roc"])]),
 

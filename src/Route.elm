@@ -13,6 +13,10 @@ type Route
     | WorkLanding String
     | Study String String
     | Reader String (Maybe String)
+    | Word String
+    | WordReview String
+    | Stats
+    | Today
 
 
 {-| Routes live in the URL fragment (`/#/luke/5?word=7`), so the static server only ever serves `/` and every link or reload works without a server-side fallback.
@@ -55,11 +59,22 @@ parser =
     oneOf
         [ Parser.map Library top
         , Parser.map Settings (s "settings")
+        , Parser.map Stats (s "stats")
+        , Parser.map Today (s "today")
+        , Parser.map Word (s "word" </> lemma)
+        , Parser.map WordReview (s "review" </> s "word" </> lemma)
         , Parser.map (\work passage -> Reader work (Just passage)) (string </> s "read" </> string)
         , Parser.map (\work -> Reader work Nothing) (string </> s "read")
         , Parser.map Study (string </> string)
         , Parser.map WorkLanding string
         ]
+
+
+{-| A lemma path segment, percent-decoded (lemmas are Greek).
+-}
+lemma : Parser (String -> a) a
+lemma =
+    Parser.map (\raw -> Url.percentDecode raw |> Maybe.withDefault raw) string
 
 
 toPath : Route -> String
@@ -77,6 +92,18 @@ toPath route =
 
                 Study work passage ->
                     "/" ++ work ++ "/" ++ passage
+
+                Word name ->
+                    "/word/" ++ Url.percentEncode name
+
+                WordReview name ->
+                    "/review/word/" ++ Url.percentEncode name
+
+                Stats ->
+                    "/stats"
+
+                Today ->
+                    "/today"
 
                 Reader work passage ->
                     "/" ++ work ++ "/read" ++ (passage |> Maybe.map (\ref -> "/" ++ ref) |> Maybe.withDefault "")

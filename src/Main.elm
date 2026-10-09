@@ -6,7 +6,7 @@ import Browser.Events
 import Browser.Navigation as Nav
 import Conllu
 import Dict exposing (Dict)
-import Html exposing (Html, a, article, aside, button, div, footer, h1, h2, h3, header, input, label, main_, nav, option, p, section, select, span, text, textarea)
+import Html exposing (Html, a, article, aside, button, details, div, footer, h1, h2, h3, header, input, label, li, main_, nav, option, p, section, select, span, summary, table, tbody, td, text, textarea, th, thead, tr, ul)
 import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, style, target, type_, value)
 import Html.Events exposing (on, onClick, onInput, stopPropagationOn)
 import Http
@@ -23,7 +23,9 @@ import Review
 import Study
 import Task
 import Time
+import Today
 import Url exposing (Url)
+import Words
 
 
 type Screen
@@ -31,6 +33,34 @@ type Screen
     | WorkspaceScreen
     | SettingsScreen
     | ReaderScreen
+    | TodayScreen
+    | WordScreen String
+    | WordReviewScreen String
+    | StatsScreen
+
+
+{-| Every word occurrence across the library (`preload/lemmas.json`, written by the Roc preload tool), for word pages.
+-}
+type LemmaIndex
+    = IndexNotLoaded
+    | IndexLoading
+    | IndexLoaded LemmaData
+    | IndexFailed
+
+
+type alias LemmaData =
+    { lemmas : Dict String (List IndexOccurrence)
+    , passages : Dict String (Dict String String)
+    }
+
+
+type alias IndexOccurrence =
+    { work : String
+    , ref : String
+    , position : Int
+    , form : String
+    , gloss : String
+    }
 
 
 type Preset
@@ -206,6 +236,12 @@ type alias Model =
     , newPerDay : Int
     , queueMode : Bool
     , queueDone : Bool
+    , wordReviews : List Words.Review
+    , wordCards : Dict String Words.Card
+    , todayMode : Maybe Today.Mode
+    , wordAnswer : { guess : String, revealed : Bool }
+    , lemmaIndex : LemmaIndex
+    , allWords : Bool
     }
 
 
@@ -268,6 +304,14 @@ type Msg
     | GotManifest (Result Http.Error Manifest)
     | GotCorpus ManifestEntry (Result Http.Error ( String, String ))
     | GotStorage Decode.Value
+    | StartToday Today.Mode
+    | WordGuess String
+    | RevealWord
+    | RateWord Fsrs.Rating
+    | WordRated String Fsrs.Rating Time.Posix
+    | GotLemmaIndex (Result Http.Error LemmaData)
+    | SetAllWords Bool
+    | GoTo String
 
 
 port storageRequest : Encode.Value -> Cmd msg
@@ -332,6 +376,12 @@ init _ url key =
                 , newPerDay = Review.newPerDayDefault
                 , queueMode = False
                 , queueDone = False
+                , wordReviews = []
+                , wordCards = Dict.empty
+                , todayMode = Nothing
+                , wordAnswer = { guess = "", revealed = False }
+                , lemmaIndex = IndexNotLoaded
+                , allWords = False
                 }
     in
     ( model
@@ -360,6 +410,18 @@ documentTitle model =
 
         ( SettingsScreen, _ ) ->
             "Study tools · Aristos"
+
+        ( TodayScreen, _ ) ->
+            "Today · Aristos"
+
+        ( StatsScreen, _ ) ->
+            "Progress · Aristos"
+
+        ( WordScreen lemma, _ ) ->
+            displayLemma lemma ++ " · Aristos"
+
+        ( WordReviewScreen lemma, _ ) ->
+            "Review " ++ displayLemma lemma ++ " · Aristos"
 
         ( _, Just entry ) ->
             entry.title ++ " " ++ currentLabel model ++ " · Aristos"
@@ -403,7 +465,7 @@ subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.batch
         [ storageResponse GotStorage
-        , Time.every 30000 Tick
+        , Time.every 5000 Tick
         , if model.screen == WorkspaceScreen || model.screen == ReaderScreen then
             Browser.Events.onKeyDown keyDecoder
 
@@ -945,12 +1007,20 @@ updateModel msg model =
                                     scheduled
                                         |> Maybe.map (\review -> Dict.insert (Review.entryKey entry.id passage) review model.reviews)
                                         |> Maybe.withDefault model.reviews
+                                , wordCards = Words.cards (attempt :: model.attempts) model.wordReviews
                                 , study = Study.emptyDraft
+                                , allWords = False
                                 , clock = now
                             }
 
-                        advanced =
-                            advance recorded
+                        -- In today's session the next item may be a word or another work's passage.
+                        ( advanced, navigate ) =
+                            case model.todayMode of
+                                Just mode ->
+                                    goToday mode recorded
+
+                                Nothing ->
+                                    ( advance recorded, Cmd.none )
                     in
                     ( { advanced
                         | notice =
@@ -959,6 +1029,7 @@ updateModel msg model =
                       }
                     , Cmd.batch
                         [ storagePut "save-attempt" "progress" (Study.encodeAttempt attempt)
+                        , navigate
                         , scheduled |> Maybe.map (Review.encodeEntry >> storagePut "save-card" "progress") |> Maybe.withDefault Cmd.none
                         , draftKey model
                             |> Maybe.map (\key -> storagePut "save-draft" "metadata" (Encode.object [ ( "key", Encode.string key ), ( "value", Study.encodeDraft Study.emptyDraft ) ]))
@@ -998,6 +1069,91 @@ updateModel msg model =
                 Nothing ->
                     ( model, Cmd.none )
 
+        StartToday mode ->
+            goToday mode { model | todayMode = Just mode, queueMode = False, queueDone = False }
+
+        WordGuess guess ->
+            let
+                answer =
+                    model.wordAnswer
+            in
+            ( { model | wordAnswer = { answer | guess = guess } }, Cmd.none )
+
+        RevealWord ->
+            let
+                answer =
+                    model.wordAnswer
+            in
+            ( { model | wordAnswer = { answer | revealed = True } }, Cmd.none )
+
+        RateWord rating ->
+            case model.screen of
+                WordReviewScreen lemma ->
+                    ( model, Task.perform (WordRated lemma rating) Time.now )
+
+                _ ->
+                    ( model, Cmd.none )
+
+        WordRated lemma rating time ->
+            case Dict.get lemma model.wordCards of
+                Just word ->
+                    let
+                        now =
+                            Time.posixToMillis time
+
+                        context =
+                            word.context
+
+                        review =
+                            { lemma = lemma, at = now, rating = rating, occurrence = { context | guess = model.wordAnswer.guess } }
+
+                        reviews =
+                            review :: model.wordReviews
+
+                        cards =
+                            Words.cards model.attempts reviews
+
+                        recorded =
+                            { model | wordReviews = reviews, wordCards = cards, clock = now, wordAnswer = { guess = "", revealed = False } }
+
+                        ( moved, navigate ) =
+                            case model.todayMode of
+                                Just mode ->
+                                    goToday mode recorded
+
+                                Nothing ->
+                                    ( recorded, Nav.pushUrl model.key (Route.toPath (Route.Word lemma)) )
+                    in
+                    ( { moved
+                        | notice =
+                            Dict.get lemma cards
+                                |> Maybe.map (\updated -> "Saved. " ++ displayLemma lemma ++ " comes back in " ++ Review.intervalLabel now updated.card.due ++ ".")
+                      }
+                    , Cmd.batch [ storagePut "save-word-review" "progress" (Words.encodeReview review), navigate ]
+                    )
+
+                Nothing ->
+                    ( model, Cmd.none )
+
+        GotLemmaIndex result ->
+            ( { model
+                | lemmaIndex =
+                    case result of
+                        Ok data ->
+                            IndexLoaded data
+
+                        Err _ ->
+                            IndexFailed
+              }
+            , Cmd.none
+            )
+
+        SetAllWords on ->
+            ( { model | allWords = on }, Cmd.none )
+
+        GoTo path ->
+            ( model, Nav.pushUrl model.key path )
+
         ClearSavedData ->
             ( { model | confirmClear = True }, Cmd.none )
 
@@ -1008,6 +1164,8 @@ updateModel msg model =
             ( { model
                 | attempts = []
                 , reviews = Dict.empty
+                , wordReviews = []
+                , wordCards = Dict.empty
                 , study = Study.emptyDraft
                 , positions = Dict.empty
                 , confirmClear = False
@@ -1109,10 +1267,14 @@ studyItems model =
             , mark = Dict.get key study.marks
             }
 
+        targets =
+            askedWords model
+
         words =
             if moduleMode GlossModule model.settings /= ModuleOff || not (Dict.isEmpty study.glosses) then
                 sentence.tokens
                     |> List.filter Study.isWordToken
+                    |> List.filter (\token -> isAsked targets (Study.wordKey token.id))
                     |> List.map (\token -> item (Study.wordKey token.id) Study.WordItem token.form token.lemma (Dict.get token.id study.glosses |> Maybe.withDefault "") token.gloss)
 
             else
@@ -1133,6 +1295,47 @@ studyItems model =
                 []
     in
     words ++ literal ++ prose
+
+
+{-| The learner's last finished attempt at the current passage.
+-}
+lastAttempt : Model -> Maybe Study.Attempt
+lastAttempt model =
+    model.activeEntry
+        |> Maybe.andThen (\entry -> Study.passageAttempts entry.id (currentRef model) model.attempts |> List.head)
+
+
+{-| Word keys to ask on a repeat: those missed or revealed early last time. `Nothing` asks every word: a first attempt,
+or the learner chose every word.
+-}
+askedWords : Model -> Maybe (Set String)
+askedWords model =
+    if model.allWords then
+        Nothing
+
+    else
+        lastAttempt model
+            |> Maybe.map
+                (\attempt ->
+                    attempt.items
+                        |> List.filter (\item -> item.kind == Study.WordItem && (item.mark == Just False || item.revealedEarly))
+                        |> List.map .key
+                        |> Set.fromList
+                )
+
+
+isAsked : Maybe (Set String) -> String -> Bool
+isAsked targets key =
+    targets |> Maybe.map (Set.member key) |> Maybe.withDefault True
+
+
+{-| The learner's answers in their last attempt at this passage, by item key.
+-}
+previousAnswers : Model -> Dict String String
+previousAnswers model =
+    lastAttempt model
+        |> Maybe.map (\attempt -> attempt.items |> List.map (\item -> ( item.key, item.guess )) |> Dict.fromList)
+        |> Maybe.withDefault Dict.empty
 
 
 buildAttempt : Int -> Model -> Maybe Study.Attempt
@@ -1178,6 +1381,30 @@ applyRoute route model =
 
         Route.Settings ->
             ( { model | screen = SettingsScreen, pendingRoute = Nothing }, Cmd.none )
+
+        Route.Today ->
+            ( { model | screen = TodayScreen, pendingRoute = Nothing, todayMode = Just (queryMode model) }, Cmd.none )
+
+        Route.Stats ->
+            ( { model | screen = StatsScreen, pendingRoute = Nothing }, Cmd.none )
+
+        Route.Word name ->
+            ( { model | screen = WordScreen name, pendingRoute = Nothing, lemmaIndex = loadingIndex model.lemmaIndex }, loadLemmaIndex model )
+
+        Route.WordReview name ->
+            ( { model
+                | screen = WordReviewScreen name
+                , pendingRoute = Nothing
+                , todayMode = Dict.get "today" model.routeQuery |> Maybe.map Today.modeFromString
+                , wordAnswer =
+                    if model.screen == WordReviewScreen name then
+                        model.wordAnswer
+
+                    else
+                        { guess = "", revealed = False }
+              }
+            , Cmd.none
+            )
 
         Route.WorkLanding work ->
             ( model
@@ -1259,6 +1486,7 @@ applyQuery model =
         , historyOpen = Dict.get "history" query == Just "1"
         , historyAttempt = Dict.get "attempt" query |> Maybe.andThen String.toInt
         , queueMode = Dict.get "queue" query == Just "1"
+        , todayMode = Dict.get "today" query |> Maybe.map Today.modeFromString
     }
 
 
@@ -1289,6 +1517,7 @@ queryFor model =
 
                   else
                     Nothing
+                , model.todayMode |> Maybe.map (\mode -> "today=" ++ Today.modeToString mode)
                 ]
     in
     if List.isEmpty pairs then
@@ -1346,14 +1575,38 @@ basePath model =
         ReaderScreen ->
             forWork (\work -> Route.Reader work (Just passage))
 
+        TodayScreen ->
+            Just (Route.toPath Route.Today)
+
+        WordScreen lemma ->
+            Just (Route.toPath (Route.Word lemma))
+
+        WordReviewScreen lemma ->
+            Just (Route.toPath (Route.WordReview lemma))
+
+        StatsScreen ->
+            Just (Route.toPath Route.Stats)
+
 
 pathFor : Model -> Maybe String
 pathFor model =
-    if model.screen == WorkspaceScreen then
-        basePath model |> Maybe.map (\path -> path ++ queryFor model)
+    case model.screen of
+        WorkspaceScreen ->
+            basePath model |> Maybe.map (\path -> path ++ queryFor model)
 
-    else
-        basePath model
+        TodayScreen ->
+            basePath model |> Maybe.map (\path -> path ++ todayQuery model)
+
+        WordReviewScreen _ ->
+            basePath model |> Maybe.map (\path -> path ++ todayQuery model)
+
+        _ ->
+            basePath model
+
+
+todayQuery : Model -> String
+todayQuery model =
+    model.todayMode |> Maybe.map (\mode -> "?today=" ++ Today.modeToString mode) |> Maybe.withDefault ""
 
 
 handleStorageResponse : Decode.Value -> Model -> Model
@@ -1379,8 +1632,19 @@ handleStorageResponse value model =
                 -- The progress store holds both finished attempts and review cards.
                 case Decode.decodeValue (Decode.list (Decode.oneOf [ Decode.map Just Study.attemptDecoder, Decode.succeed Nothing ])) response.value of
                     Ok attempts ->
+                        let
+                            finished =
+                                List.filterMap identity attempts
+
+                            wordReviews =
+                                Decode.decodeValue (Decode.list (Decode.oneOf [ Decode.map Just Words.reviewDecoder, Decode.succeed Nothing ])) response.value
+                                    |> Result.withDefault []
+                                    |> List.filterMap identity
+                        in
                         { model
-                            | attempts = List.filterMap identity attempts
+                            | attempts = finished
+                            , wordReviews = wordReviews
+                            , wordCards = Words.cards finished wordReviews
                             , reviews =
                                 Decode.decodeValue (Decode.list (Decode.oneOf [ Decode.map Just Review.entryDecoder, Decode.succeed Nothing ])) response.value
                                     |> Result.withDefault []
@@ -1560,7 +1824,7 @@ indexOfRef ref model =
 -}
 browsing : Model -> Model
 browsing model =
-    { model | queueMode = False, queueDone = False }
+    { model | queueMode = False, queueDone = False, todayMode = Nothing }
 
 
 {-| After a graded passage: the next sentence in today's queue, or in text order when browsing.
@@ -1588,6 +1852,113 @@ todayQueue model =
         |> Maybe.map (\entry -> Review.queue model.clock model.newPerDay entry.id (List.map .id model.corpus.sentences) model.reviews)
 
 
+{-| Today's session across every work (see `Today`).
+-}
+todayPlan : Model -> Today.Plan
+todayPlan model =
+    Today.plan model.clock model.newPerDay (lastWork model) (List.map (\entry -> { id = entry.id, passages = entry.passages }) model.library) model.reviews model.wordCards
+
+
+{-| The work of the most recent graded passage, where new passages continue.
+-}
+lastWork : Model -> Maybe String
+lastWork model =
+    model.attempts |> List.sortBy (\attempt -> negate attempt.finishedAt) |> List.head |> Maybe.map .work
+
+
+queryMode : Model -> Today.Mode
+queryMode model =
+    Dict.get "today" model.routeQuery |> Maybe.map Today.modeFromString |> Maybe.withDefault Today.Everything
+
+
+{-| Opens the session's next item: a word review or a passage, in any work; with nothing due, today's page.
+-}
+goToday : Today.Mode -> Model -> ( Model, Cmd Msg )
+goToday mode model =
+    let
+        query =
+            "?today=" ++ Today.modeToString mode
+
+        path =
+            case Today.next mode (todayPlan model) of
+                Just (Today.WordItem lemma) ->
+                    Route.toPath (Route.WordReview lemma)
+
+                Just (Today.PassageItem work passage) ->
+                    Route.toPath (Route.Study work passage)
+
+                Nothing ->
+                    Route.toPath Route.Today
+    in
+    ( { model | todayMode = Just mode }, Nav.pushUrl model.key (path ++ query) )
+
+
+loadingIndex : LemmaIndex -> LemmaIndex
+loadingIndex index =
+    case index of
+        IndexLoaded _ ->
+            index
+
+        _ ->
+            IndexLoading
+
+
+loadLemmaIndex : Model -> Cmd Msg
+loadLemmaIndex model =
+    case model.lemmaIndex of
+        IndexLoaded _ ->
+            Cmd.none
+
+        IndexLoading ->
+            Cmd.none
+
+        _ ->
+            Http.get { url = "/preload/lemmas.json", expect = Http.expectJson GotLemmaIndex lemmaDataDecoder }
+
+
+lemmaDataDecoder : Decode.Decoder LemmaData
+lemmaDataDecoder =
+    Decode.map2 LemmaData
+        (Decode.field "lemmas"
+            (Decode.dict
+                (Decode.list
+                    (Decode.map5 IndexOccurrence
+                        (Decode.field "work" Decode.string)
+                        (Decode.field "ref" Decode.string)
+                        (Decode.field "position" Decode.int)
+                        (Decode.field "form" Decode.string)
+                        (Decode.field "gloss" Decode.string)
+                    )
+                )
+            )
+        )
+        (Decode.field "passages" (Decode.dict (Decode.dict Decode.string)))
+
+
+{-| OGA numbers homographs (`λέγω3`); the number is kept in keys but not shown.
+-}
+displayLemma : String -> String
+displayLemma lemma =
+    let
+        trimmed =
+            String.foldr
+                (\char found ->
+                    if String.isEmpty found && Char.isDigit char then
+                        found
+
+                    else
+                        String.cons char found
+                )
+                ""
+                lemma
+    in
+    if String.isEmpty trimmed then
+        lemma
+
+    else
+        trimmed
+
+
 moveToSentence : Int -> Model -> Model
 moveToSentence sentenceIndex model =
     if sentenceIndex < 0 || sentenceIndex >= List.length model.corpus.sentences then
@@ -1596,6 +1967,7 @@ moveToSentence sentenceIndex model =
     else
         { model
             | screen = WorkspaceScreen
+            , allWords = False
             , sentenceIndex = sentenceIndex
             , popupWord = Nothing
             , historyOpen = False
@@ -2466,7 +2838,8 @@ viewAppHeader model =
             , span [ class "brand-word" ] [ text "Aristos" ]
             ]
         , nav [ class "global-nav", attribute "aria-label" "Primary navigation" ]
-            (navButton "Library" ShowLibrary (model.screen == LibraryScreen)
+            (navButton "Home" (Navigate Route.Library) (model.screen == LibraryScreen || model.screen == TodayScreen)
+                :: navButton "Progress" (Navigate Route.Stats) (model.screen == StatsScreen)
                 :: (case model.activeEntry of
                         Just entry ->
                             [ navButton "Read" (Navigate (Route.Reader entry.id (Just (currentRef model)))) False
@@ -2522,7 +2895,8 @@ navButton label msg isActive =
 viewLibrary : Model -> Html Msg
 viewLibrary model =
     main_ [ class "page library-page" ]
-        [ section [ class "pack-list", attribute "aria-label" "Works" ]
+        [ viewTodayPanel model
+        , section [ class "pack-list", attribute "aria-label" "Works" ]
             (if List.isEmpty model.library then
                 [ p [ class "muted" ] [ text "Loading the library…" ] ]
 
@@ -2530,6 +2904,844 @@ viewLibrary model =
                 List.map (viewWorkCard model) model.library
             )
         ]
+
+
+
+-- TODAY
+
+
+entryFor : Model -> String -> Maybe ManifestEntry
+entryFor model work =
+    List.filter (\entry -> entry.id == work) model.library |> List.head
+
+
+workName : Model -> String -> String
+workName model work =
+    entryFor model work |> Maybe.map .title |> Maybe.withDefault work
+
+
+{-| A citation as the work prints it: `1:66` for the Bible, `1.2.1` for sections, `43 §2` for a split page.
+-}
+refLabel : Model -> String -> String -> String
+refLabel model work ref =
+    let
+        bible =
+            entryFor model work
+                |> Maybe.andThen .citation
+                |> Maybe.map (\citation -> String.contains "tlg0031." citation.text.urn || String.contains "tlg0527." citation.text.urn)
+                |> Maybe.withDefault False
+
+        ( base, part ) =
+            case String.split "~" ref of
+                [ unit, number ] ->
+                    ( unit, " §" ++ number )
+
+                _ ->
+                    ( ref, "" )
+
+        levels =
+            String.split "." base
+    in
+    (if bible && List.length levels >= 2 then
+        String.join "." (List.take (List.length levels - 1) levels) ++ ":" ++ (List.reverse levels |> List.head |> Maybe.withDefault "")
+
+     else
+        base
+    )
+        ++ part
+
+
+passageName : Model -> String -> String -> String
+passageName model work ref =
+    workName model work ++ " " ++ refLabel model work ref
+
+
+itemName : Model -> Today.Item -> String
+itemName model item =
+    case item of
+        Today.WordItem lemma ->
+            displayLemma lemma
+
+        Today.PassageItem work passage ->
+            passageName model work passage
+
+
+itemPath : Today.Mode -> Today.Item -> String
+itemPath mode item =
+    (case item of
+        Today.WordItem lemma ->
+            Route.toPath (Route.WordReview lemma)
+
+        Today.PassageItem work passage ->
+            Route.toPath (Route.Study work passage)
+    )
+        ++ "?today="
+        ++ Today.modeToString mode
+
+
+counted : Int -> String -> String -> String
+counted count one many =
+    String.fromInt count
+        ++ " "
+        ++ (if count == 1 then
+                one
+
+            else
+                many
+           )
+
+
+{-| The first thing on the home page: what to study now, and where the learner left off.
+-}
+viewTodayPanel : Model -> Html Msg
+viewTodayPanel model =
+    let
+        today =
+            todayPlan model
+
+        words =
+            List.length today.words
+
+        due =
+            List.length today.due
+
+        fresh =
+            List.length today.new
+
+        minutes =
+            max 1 (round (toFloat words * 0.3 + toFloat (due + fresh) * 2.5))
+
+        parts =
+            List.filterMap identity
+                [ if words > 0 then
+                    Just (counted words "word" "words" ++ " to review")
+
+                  else
+                    Nothing
+                , if due > 0 then
+                    Just (counted due "passage" "passages" ++ " to review")
+
+                  else
+                    Nothing
+                , if fresh > 0 then
+                    Just (counted fresh "new passage" "new passages")
+
+                  else
+                    Nothing
+                ]
+
+        continue =
+            lastWork model |> Maybe.andThen (entryFor model) |> Maybe.map (\entry -> ( entry, savedRef entry model ))
+    in
+    section [ class "today-panel", attribute "aria-label" "Today" ]
+        [ p [ class "eyebrow" ] [ text "Today" ]
+        , if List.isEmpty parts then
+            h1 [ class "today-title" ] [ text "All caught up" ]
+
+          else
+            h1 [ class "today-title" ] [ text (String.join " · " parts) ]
+        , if List.isEmpty parts then
+            viewUpcoming model Today.Everything
+
+          else
+            p [ class "today-summary" ] [ text ("About " ++ counted minutes "minute" "minutes" ++ ". Reviews come first, then new passages.") ]
+        , if List.isEmpty parts then
+            text ""
+
+          else
+            div [ class "today-actions" ]
+                [ button [ class "primary-button", type_ "button", onClick (StartToday Today.Everything) ] [ text "Start →" ]
+                , button [ class "secondary-button", type_ "button", onClick (StartToday Today.WordsOnly), disabled (words == 0) ] [ text ("Words only · " ++ String.fromInt words) ]
+                , button [ class "secondary-button", type_ "button", onClick (StartToday Today.PassagesOnly), disabled (due + fresh == 0) ] [ text ("Passages only · " ++ String.fromInt (due + fresh)) ]
+                ]
+        , case continue of
+            Just ( entry, ref ) ->
+                p [ class "today-continue" ]
+                    [ text "Continue where you left off: "
+                    , a [ href (Route.toPath (Route.Study entry.id ref)) ] [ text (passageName model entry.id ref ++ " →") ]
+                    ]
+
+            Nothing ->
+                text ""
+        ]
+
+
+{-| What comes back later today in this mode, with a way to take it now.
+-}
+viewUpcoming : Model -> Today.Mode -> Html Msg
+viewUpcoming model mode =
+    case Today.upcoming model.clock mode model.reviews model.wordCards of
+        Just ( item, due ) ->
+            p [ class "today-summary" ]
+                [ text ("Next: " ++ itemName model item ++ " comes back in " ++ Review.intervalLabel model.clock due ++ ". ")
+                , button [ class "text-button", type_ "button", onClick (GoTo (itemPath mode item)) ] [ text "Review it now" ]
+                ]
+
+        Nothing ->
+            p [ class "today-summary" ] [ text "Nothing else is due today." ]
+
+
+{-| Today's session page: where the session ends when nothing is due, with what returns next.
+-}
+viewTodayPage : Model -> Html Msg
+viewTodayPage model =
+    let
+        mode =
+            Maybe.withDefault Today.Everything model.todayMode
+
+        dayStart =
+            Review.startOfDay model.clock
+
+        graded =
+            List.filter (\attempt -> attempt.finishedAt >= dayStart) model.attempts
+
+        wordReviews =
+            List.filter (\review -> review.at >= dayStart) model.wordReviews
+
+        judged =
+            List.concatMap .items graded |> List.filter (\item -> item.mark /= Nothing)
+
+        right =
+            List.length (List.filter (\item -> item.mark == Just True) judged)
+    in
+    main_ [ class "page today-page" ]
+        [ section [ class "today-panel" ]
+            (p [ class "eyebrow" ] [ text "Today" ]
+                :: (case Today.next mode (todayPlan model) of
+                        Just _ ->
+                            [ h1 [ class "today-title" ] [ text "More is ready" ]
+                            , div [ class "today-actions" ] [ button [ class "primary-button", type_ "button", onClick (StartToday mode) ] [ text "Continue →" ] ]
+                            ]
+
+                        Nothing ->
+                            [ h1 [ class "today-title" ] [ text "Done for now" ]
+                            , viewUpcoming model mode
+                            ]
+                   )
+                ++ [ p [ class "today-summary" ]
+                        [ text
+                            ("Today so far: "
+                                ++ counted (List.length graded) "passage" "passages"
+                                ++ " graded, "
+                                ++ counted (List.length wordReviews) "word review" "word reviews"
+                                ++ (if List.isEmpty judged then
+                                        "."
+
+                                    else
+                                        ", " ++ String.fromInt (right * 100 // List.length judged) ++ "% of answers right."
+                                   )
+                            )
+                        ]
+                   , p [ class "today-continue" ]
+                        [ a [ href (Route.toPath Route.Library) ] [ text "Home" ]
+                        , text " · "
+                        , a [ href (Route.toPath Route.Stats) ] [ text "Progress" ]
+                        ]
+                   ]
+            )
+        ]
+
+
+{-| In today's session: how much is left.
+-}
+viewSessionStatus : Model -> Html Msg
+viewSessionStatus model =
+    case model.todayMode of
+        Just _ ->
+            let
+                today =
+                    todayPlan model
+            in
+            p [ class "session-status" ]
+                [ text
+                    ("Today · "
+                        ++ counted (List.length today.words) "word" "words"
+                        ++ " · "
+                        ++ counted (List.length today.due + List.length today.new) "passage" "passages"
+                        ++ " left"
+                    )
+                ]
+
+        Nothing ->
+            text ""
+
+
+{-| The passage text with the first word equal to `form` highlighted.
+-}
+viewHighlighted : String -> String -> Html Msg
+viewHighlighted passage form =
+    let
+        bare piece =
+            String.filter (\char -> not (String.contains (String.fromChar char) ".,;:!?·\u{0387}\u{037E}()[]«»“”‘’—–'\"")) piece
+    in
+    p [ class "word-context", attribute "lang" "grc" ]
+        (String.split " " passage
+            |> List.foldl
+                (\piece ( html, done ) ->
+                    if not done && bare piece == form then
+                        ( html ++ [ span [ class "context-word" ] [ text piece ], text " " ], True )
+
+                    else
+                        ( html ++ [ text (piece ++ " ") ], done )
+                )
+                ( [], False )
+            |> Tuple.first
+        )
+
+
+
+-- WORDS
+
+
+{-| Recall one word's meaning in the passage where it was last missed (or last seen), then rate it.
+-}
+viewWordReview : Model -> String -> Html Msg
+viewWordReview model lemma =
+    case Dict.get lemma model.wordCards of
+        Nothing ->
+            main_ [ class "page word-review-page" ]
+                [ p [ class "muted" ] [ text "You haven't studied this word yet." ]
+                , a [ href (Route.toPath (Route.Word lemma)) ] [ text "Word page →" ]
+                ]
+
+        Just word ->
+            let
+                context =
+                    word.context
+
+                answer =
+                    model.wordAnswer
+
+                outcomes =
+                    Review.scheduler |> Maybe.andThen (\fsrs -> Fsrs.preview fsrs model.clock word.card |> Result.toMaybe)
+
+                ratingButton rating label pick =
+                    button [ class "rating-button", type_ "button", onClick (RateWord rating) ]
+                        [ strongText label
+                        , span [ class "rating-interval" ]
+                            [ text (outcomes |> Maybe.map (\all -> Review.intervalLabel model.clock (pick all).card.due) |> Maybe.withDefault "") ]
+                        ]
+            in
+            main_ [ class "page word-review-page" ]
+                [ viewSessionStatus model
+                , section [ class "word-review-card" ]
+                    [ p [ class "eyebrow" ] [ text ("Word · " ++ passageName model context.work context.passage) ]
+                    , viewHighlighted context.text context.form
+                    , div [ class "word-review-form", attribute "lang" "grc" ]
+                        [ span [ class "review-form" ] [ text context.form ]
+                        , span [ class "review-lemma" ] [ text (displayLemma lemma) ]
+                        ]
+                    , input
+                        [ class "gloss-input word-review-input"
+                        , value answer.guess
+                        , onInput WordGuess
+                        , placeholder "What does it mean here?"
+                        , attribute "aria-label" ("Meaning of " ++ context.form)
+                        ]
+                        []
+                    , if answer.revealed then
+                        div [ class "word-review-answer" ]
+                            [ p [ class "reference-answer" ] [ text (displayGloss context.gloss) ]
+                            , p [ class "muted" ]
+                                [ text
+                                    ("Seen "
+                                        ++ counted word.seen "time" "times"
+                                        ++ ", missed "
+                                        ++ String.fromInt word.misses
+                                        ++ "."
+                                        ++ (if String.isEmpty (String.trim context.guess) then
+                                                ""
+
+                                            else
+                                                " Your answer there: " ++ context.guess
+                                           )
+                                    )
+                                ]
+                            , div [ class "rating-buttons" ]
+                                [ ratingButton Fsrs.Again "Again" .again
+                                , ratingButton Fsrs.Hard "Hard" .hard
+                                , ratingButton Fsrs.Good "Good" .good
+                                , ratingButton Fsrs.Easy "Easy" .easy
+                                ]
+                            ]
+
+                      else
+                        button [ class "primary-button", type_ "button", onClick RevealWord ] [ text "Show answer" ]
+                    , p [ class "today-continue" ]
+                        [ a [ href (Route.toPath (Route.Word lemma)) ] [ text "Word page →" ]
+                        , text " · "
+                        , a [ href (Route.toPath (Route.Study context.work context.passage)) ] [ text "Open the passage →" ]
+                        ]
+                    ]
+                ]
+
+
+{-| A lemma: the learner's record with it, the passages where they miss it, and every place it occurs.
+-}
+viewWordPage : Model -> String -> Html Msg
+viewWordPage model lemma =
+    let
+        word =
+            Dict.get lemma model.wordCards
+
+        -- Each passage where the learner met this lemma: misses, times seen, wrong answers, text.
+        met =
+            model.attempts
+                |> List.concatMap
+                    (\attempt ->
+                        attempt.items
+                            |> List.filter (\item -> item.kind == Study.WordItem && item.lemma == lemma && item.mark /= Nothing)
+                            |> List.map (\item -> ( ( attempt.work, attempt.passage ), ( item, attempt.sentenceText ) ))
+                    )
+                |> List.foldl
+                    (\( key, ( item, passageText ) ) found ->
+                        Dict.update key
+                            (\current ->
+                                let
+                                    prior =
+                                        Maybe.withDefault { misses = 0, seen = 0, wrong = [], text = passageText, form = item.form } current
+
+                                    missed =
+                                        item.mark == Just False
+                                in
+                                Just
+                                    { prior
+                                        | misses =
+                                            if missed then
+                                                prior.misses + 1
+
+                                            else
+                                                prior.misses
+                                        , seen = prior.seen + 1
+                                        , wrong =
+                                            if missed && not (String.isEmpty (String.trim item.guess)) && not (List.member item.guess prior.wrong) then
+                                                prior.wrong ++ [ item.guess ]
+
+                                            else
+                                                prior.wrong
+                                    }
+                            )
+                            found
+                    )
+                    Dict.empty
+                |> Dict.toList
+                |> List.filter (\( _, record ) -> record.misses > 0)
+                |> List.sortBy (\( _, record ) -> negate record.misses)
+    in
+    main_ [ class "page word-page" ]
+        [ section [ class "word-header" ]
+            [ p [ class "eyebrow" ] [ text "Word" ]
+            , h1 [ attribute "lang" "grc" ] [ text (displayLemma lemma) ]
+            , case word of
+                Just known ->
+                    div []
+                        [ p [ class "today-summary" ]
+                            [ text
+                                ("Seen "
+                                    ++ counted known.seen "time" "times"
+                                    ++ ", missed "
+                                    ++ String.fromInt known.misses
+                                    ++ ". "
+                                    ++ (if known.card.due <= model.clock then
+                                            "Due for review now."
+
+                                        else
+                                            "Next review in " ++ Review.intervalLabel model.clock known.card.due ++ "."
+                                       )
+                                )
+                            ]
+                        , p [ class "muted", attribute "lang" "grc" ] [ text ("Forms you've met: " ++ String.join ", " known.forms) ]
+                        , div [ class "today-actions" ]
+                            [ a [ class "primary-button", href (Route.toPath (Route.WordReview lemma)) ] [ text "Review now →" ] ]
+                        ]
+
+                Nothing ->
+                    p [ class "muted" ] [ text "You haven't studied this word yet." ]
+            ]
+        , if List.isEmpty met then
+            text ""
+
+          else
+            section [ class "word-section" ]
+                [ h2 [] [ text "Where you struggle" ]
+                , ul [ class "word-occurrences" ]
+                    (List.map
+                        (\( ( work, passage ), record ) ->
+                            li []
+                                [ a [ href (Route.toPath (Route.Study work passage)) ] [ text (passageName model work passage) ]
+                                , span [ class "muted" ]
+                                    [ text
+                                        (" · missed "
+                                            ++ String.fromInt record.misses
+                                            ++ " of "
+                                            ++ String.fromInt record.seen
+                                            ++ (if List.isEmpty record.wrong then
+                                                    ""
+
+                                                else
+                                                    " · you answered " ++ String.join ", " record.wrong
+                                               )
+                                        )
+                                    ]
+                                , viewHighlighted record.text record.form
+                                ]
+                        )
+                        met
+                    )
+                ]
+        , section [ class "word-section" ]
+            (case model.lemmaIndex of
+                IndexLoaded data ->
+                    let
+                        everywhere =
+                            Dict.get lemma data.lemmas |> Maybe.withDefault []
+
+                        shown =
+                            List.take 120 everywhere
+                    in
+                    [ h2 [] [ text ("Every occurrence · " ++ String.fromInt (List.length everywhere)) ]
+                    , ul [ class "word-occurrences" ]
+                        (List.map
+                            (\occurrence ->
+                                li []
+                                    [ a [ href (Route.toPath (Route.Study occurrence.work occurrence.ref)) ] [ text (passageName model occurrence.work occurrence.ref) ]
+                                    , span [ class "muted" ] [ text (" · " ++ displayGloss occurrence.gloss) ]
+                                    , Dict.get occurrence.work data.passages
+                                        |> Maybe.andThen (Dict.get occurrence.ref)
+                                        |> Maybe.map (\passage -> viewHighlighted passage occurrence.form)
+                                        |> Maybe.withDefault (text "")
+                                    ]
+                            )
+                            shown
+                        )
+                    , if List.length everywhere > List.length shown then
+                        p [ class "muted" ] [ text ("And " ++ String.fromInt (List.length everywhere - List.length shown) ++ " more.") ]
+
+                      else
+                        text ""
+                    ]
+
+                IndexFailed ->
+                    [ p [ class "muted" ] [ text "Couldn't load where this word occurs." ] ]
+
+                _ ->
+                    [ p [ class "muted" ] [ text "Finding every occurrence…" ] ]
+            )
+        ]
+
+
+
+-- PROGRESS
+
+
+{-| Progress over time, from the attempts, word reviews, and cards on this device.
+-}
+viewStats : Model -> Html Msg
+viewStats model =
+    let
+        now =
+            model.clock
+
+        today =
+            Review.startOfDay now
+
+        days =
+            List.map (\back -> today - back * 86400000) (List.range 0 29 |> List.reverse)
+
+        perDay times =
+            let
+                counts =
+                    List.foldl (\time found -> Dict.update (Review.startOfDay time) (Maybe.map ((+) 1) >> Maybe.withDefault 1 >> Just) found) Dict.empty times
+            in
+            List.map (\day -> ( day, Dict.get day counts |> Maybe.withDefault 0 )) days
+
+        reviewTimes =
+            List.map .finishedAt model.attempts ++ List.map .at model.wordReviews
+
+        words =
+            Dict.values model.wordCards
+
+        known =
+            List.length (List.filter Words.isMature words)
+
+        weekAgo =
+            today - 6 * 86400000
+
+        recentJudged =
+            model.attempts
+                |> List.filter (\attempt -> attempt.finishedAt >= weekAgo)
+                |> List.concatMap .items
+                |> List.filter (\item -> item.kind == Study.WordItem && item.mark /= Nothing)
+
+        recentReviews =
+            List.filter (\review -> review.at >= weekAgo) model.wordReviews
+
+        recentRight =
+            List.length (List.filter (\item -> item.mark == Just True) recentJudged)
+                + List.length (List.filter (\review -> review.rating /= Fsrs.Again) recentReviews)
+
+        recentTotal =
+            List.length recentJudged + List.length recentReviews
+
+        activeDays =
+            List.map Review.startOfDay reviewTimes |> Set.fromList
+
+        streak =
+            let
+                count day found =
+                    if Set.member day activeDays then
+                        count (day - 86400000) (found + 1)
+
+                    else
+                        found
+            in
+            -- Today still counts as a streak day until it ends.
+            if Set.member today activeDays then
+                count today 0
+
+            else
+                count (today - 86400000) 0
+
+        missedWords =
+            words
+                |> List.filter (\word -> word.misses > 0)
+                |> List.sortBy (\word -> ( negate word.misses, word.lemma ))
+                |> List.take 15
+
+        -- Passages by how many of their answers have been marked wrong, across all attempts.
+        hardPassages =
+            model.attempts
+                |> List.foldl
+                    (\attempt found ->
+                        Dict.update ( attempt.work, attempt.passage )
+                            (\current ->
+                                let
+                                    ( wrong, attempts ) =
+                                        Maybe.withDefault ( 0, 0 ) current
+                                in
+                                Just ( wrong + List.length (Study.missed attempt), attempts + 1 )
+                            )
+                            found
+                    )
+                    Dict.empty
+                |> Dict.toList
+                |> List.filter (\( _, ( wrong, _ ) ) -> wrong > 0)
+                |> List.sortBy (\( _, ( wrong, _ ) ) -> negate wrong)
+                |> List.take 10
+
+        studiedIn work =
+            model.reviews |> Dict.values |> List.filter (\entry -> entry.work == work) |> List.length
+    in
+    main_ [ class "page stats-page" ]
+        [ section [ class "word-header" ]
+            [ p [ class "eyebrow" ] [ text "Progress" ]
+            , h1 [] [ text "Your progress" ]
+            ]
+        , div [ class "stat-tiles" ]
+            [ viewStatTile "Words known" (String.fromInt known) "Three weeks or more between reviews"
+            , viewStatTile "Words learning" (String.fromInt (List.length words - known)) "Studied, not yet known"
+            , viewStatTile "Passages studied" (String.fromInt (Dict.size model.reviews)) ("of " ++ String.fromInt (List.sum (List.map (.passages >> List.length) model.library)))
+            , viewStatTile "Streak" (counted streak "day" "days") "Days in a row with a review"
+            , viewStatTile "Right, last 7 days"
+                (if recentTotal == 0 then
+                    "—"
+
+                 else
+                    String.fromInt (recentRight * 100 // recentTotal) ++ "%"
+                )
+                (counted recentTotal "word answer" "word answers")
+            ]
+        , div [ class "chart-grid" ]
+            [ viewColumnChart model "Reviews per day" "Passages graded and word reviews, last 30 days" (perDay reviewTimes)
+            , viewColumnChart model "New words per day" "Lemmas met for the first time" (perDay (List.map .introducedAt words))
+            , viewColumnChart model "New passages per day" "Passages studied for the first time" (perDay (List.map .introducedAt (Dict.values model.reviews)))
+            ]
+        , section [ class "word-section" ]
+            [ h2 [] [ text "By work" ]
+            , div [ class "work-progress" ]
+                (List.map
+                    (\entry ->
+                        let
+                            total =
+                                List.length entry.passages
+
+                            studied =
+                                studiedIn entry.id
+                        in
+                        div [ class "work-progress-row" ]
+                            [ span [ class "work-progress-title" ] [ text entry.title ]
+                            , span [ class "progress-track", attribute "role" "img", attribute "aria-label" (String.fromInt studied ++ " of " ++ String.fromInt total ++ " passages studied") ]
+                                [ span [ class "progress-fill", style "width" (String.fromFloat (100 * toFloat studied / toFloat (max 1 total)) ++ "%") ] [] ]
+                            , span [ class "work-progress-count" ] [ text (String.fromInt studied ++ " / " ++ String.fromInt total) ]
+                            ]
+                    )
+                    model.library
+                )
+            ]
+        , div [ class "stats-columns" ]
+            [ section [ class "word-section" ]
+                [ h2 [] [ text "Most-missed words" ]
+                , if List.isEmpty missedWords then
+                    p [ class "muted" ] [ text "No missed words yet." ]
+
+                  else
+                    table [ class "stats-table" ]
+                        [ thead [] [ tr [] [ th [] [ text "Word" ], th [] [ text "Missed" ], th [] [ text "Next review" ] ] ]
+                        , tbody []
+                            (List.map
+                                (\word ->
+                                    tr []
+                                        [ td [ attribute "lang" "grc" ] [ a [ href (Route.toPath (Route.Word word.lemma)) ] [ text (displayLemma word.lemma) ] ]
+                                        , td [] [ text (String.fromInt word.misses ++ " of " ++ String.fromInt word.seen) ]
+                                        , td []
+                                            [ text
+                                                (if word.card.due <= now then
+                                                    "now"
+
+                                                 else
+                                                    "in " ++ Review.intervalLabel now word.card.due
+                                                )
+                                            ]
+                                        ]
+                                )
+                                missedWords
+                            )
+                        ]
+                ]
+            , section [ class "word-section" ]
+                [ h2 [] [ text "Hardest passages" ]
+                , if List.isEmpty hardPassages then
+                    p [ class "muted" ] [ text "No missed answers yet." ]
+
+                  else
+                    table [ class "stats-table" ]
+                        [ thead [] [ tr [] [ th [] [ text "Passage" ], th [] [ text "Wrong answers" ], th [] [ text "Attempts" ] ] ]
+                        , tbody []
+                            (List.map
+                                (\( ( work, passage ), ( wrong, attempts ) ) ->
+                                    tr []
+                                        [ td [] [ a [ href (Route.toPath (Route.Study work passage)) ] [ text (passageName model work passage) ] ]
+                                        , td [] [ text (String.fromInt wrong) ]
+                                        , td [] [ text (String.fromInt attempts) ]
+                                        ]
+                                )
+                                hardPassages
+                            )
+                        ]
+                ]
+            ]
+        ]
+
+
+viewStatTile : String -> String -> String -> Html Msg
+viewStatTile label value note =
+    div [ class "stat-tile" ]
+        [ span [ class "stat-tile-label" ] [ text label ]
+        , span [ class "stat-tile-value" ] [ text value ]
+        , span [ class "stat-tile-note" ] [ text note ]
+        ]
+
+
+{-| One series of daily counts as columns: a single hue, so no legend; the busiest day is labelled, every day has a
+tooltip, and a table view carries the values.
+-}
+viewColumnChart : Model -> String -> String -> List ( Int, Int ) -> Html Msg
+viewColumnChart model title subtitle points =
+    let
+        peak =
+            List.maximum (List.map Tuple.second points) |> Maybe.withDefault 0
+
+        scale =
+            max 1 peak
+
+        total =
+            List.sum (List.map Tuple.second points)
+
+        peakDay =
+            points |> List.filter (\( _, value ) -> value == peak && peak > 0) |> List.reverse |> List.head |> Maybe.map Tuple.first
+
+        dateOf day =
+            shortDate Time.utc day
+    in
+    section [ class "column-chart" ]
+        [ h3 [ class "chart-title" ] [ text title ]
+        , p [ class "chart-subtitle" ] [ text (subtitle ++ " · " ++ String.fromInt total ++ " in all") ]
+        , div [ class "chart-plot", attribute "role" "img", attribute "aria-label" (title ++ ": " ++ String.fromInt total ++ " over 30 days, most on one day " ++ String.fromInt peak) ]
+            [ span [ class "chart-tick" ] [ text (String.fromInt peak) ]
+            , div [ class "chart-columns" ]
+                (List.map
+                    (\( day, value ) ->
+                        div [ class "chart-slot", attribute "data-tip" (dateOf day ++ ": " ++ String.fromInt value), attribute "tabindex" "0" ]
+                            [ if Just day == peakDay then
+                                span [ class "chart-peak" ] [ text (String.fromInt value) ]
+
+                              else
+                                text ""
+                            , div [ class "chart-column", style "height" (String.fromFloat (100 * toFloat value / toFloat scale) ++ "%") ] []
+                            ]
+                    )
+                    points
+                )
+            ]
+        , div [ class "chart-axis" ]
+            [ span [] [ text (List.head points |> Maybe.map (Tuple.first >> dateOf) |> Maybe.withDefault "") ]
+            , span [] [ text "Today" ]
+            ]
+        , details [ class "chart-table" ]
+            [ summary [] [ text "Show as table" ]
+            , table [ class "stats-table" ]
+                [ thead [] [ tr [] [ th [] [ text "Day" ], th [] [ text "Count" ] ] ]
+                , tbody [] (List.map (\( day, value ) -> tr [] [ td [] [ text (dateOf day) ], td [] [ text (String.fromInt value) ] ]) (List.reverse points))
+                ]
+            ]
+        ]
+
+
+shortDate : Time.Zone -> Int -> String
+shortDate zone millis =
+    let
+        posix =
+            Time.millisToPosix millis
+
+        month =
+            case Time.toMonth zone posix of
+                Time.Jan ->
+                    "Jan"
+
+                Time.Feb ->
+                    "Feb"
+
+                Time.Mar ->
+                    "Mar"
+
+                Time.Apr ->
+                    "Apr"
+
+                Time.May ->
+                    "May"
+
+                Time.Jun ->
+                    "Jun"
+
+                Time.Jul ->
+                    "Jul"
+
+                Time.Aug ->
+                    "Aug"
+
+                Time.Sep ->
+                    "Sep"
+
+                Time.Oct ->
+                    "Oct"
+
+                Time.Nov ->
+                    "Nov"
+
+                Time.Dec ->
+                    "Dec"
+    in
+    month ++ " " ++ String.fromInt (Time.toDay zone posix)
 
 
 viewWorkCard : Model -> ManifestEntry -> Html Msg
@@ -2795,6 +4007,18 @@ view model =
 
             ReaderScreen ->
                 viewReader model
+
+            TodayScreen ->
+                viewTodayPage model
+
+            WordScreen lemma ->
+                viewWordPage model lemma
+
+            WordReviewScreen lemma ->
+                viewWordReview model lemma
+
+            StatsScreen ->
+                viewStats model
         ]
 
 
@@ -3285,21 +4509,134 @@ viewStudyStage model =
     let
         sentence =
             currentSentence model
+
+        interlinear =
+            moduleMode GlossModule model.settings /= ModuleOff
+
+        targets =
+            askedWords model
+
+        previous =
+            previousAnswers model
     in
     section [ class "reading-stage" ]
-        [ viewHistoryLink model
+        [ viewSessionStatus model
+        , viewHistoryLink model
         , p [ class "reading-instruction" ]
-            [ text "Tap a word to gloss it. "
-            , span [] [ text "Answers stay hidden until you reveal them or submit." ]
-            ]
-        , div ([ class "greek-passage study-passage", attribute "lang" "grc" ] ++ passageSwipe model)
-            (List.concat (List.indexedMap (viewStudyToken model) sentence.tokens))
+            (if interlinear then
+                [ text "Write a gloss under each word; tap a word for its lemma, the sentence, or to reveal it. "
+                , case targets of
+                    Just asked ->
+                        span []
+                            [ text
+                                (if Set.isEmpty asked then
+                                    "You got every word last time, so only the translation is asked. "
+
+                                 else
+                                    "Only the words you missed last time are asked. "
+                                )
+                            , button [ class "text-button", type_ "button", onClick (SetAllWords True) ] [ text "Ask every word" ]
+                            ]
+
+                    Nothing ->
+                        if lastAttempt model /= Nothing then
+                            button [ class "text-button", type_ "button", onClick (SetAllWords False) ] [ text "Only words missed last time" ]
+
+                        else
+                            text ""
+                ]
+
+             else
+                [ text "Tap a word to gloss it. "
+                , span [] [ text "Answers stay hidden until you reveal them or submit." ]
+                ]
+            )
+        , if interlinear then
+            div ([ class "interlinear study-interlinear" ] ++ passageSwipe model)
+                (List.map (viewStudyCell model targets previous) (groupWords sentence.tokens))
+
+          else
+            div ([ class "greek-passage study-passage", attribute "lang" "grc" ] ++ passageSwipe model)
+                (List.concat (List.indexedMap (viewStudyToken model) sentence.tokens))
         , div [ class "source-line" ]
             [ span [] [ text model.corpus.source.edition ]
             , span [] [ text (String.fromInt (List.length (List.filter Study.isWordToken sentence.tokens)) ++ " words") ]
             ]
         , activeSources model
         , viewToolTray model
+        ]
+
+
+{-| One word of the interlinear study passage: the Greek (tap for the popup), and beneath it the learner's gloss, or on a
+repeat, for a word they got right last time, that answer faded. A revealed word shows the reference too.
+-}
+viewStudyCell : Model -> Maybe (Set String) -> Dict String String -> ( CorpusToken, String ) -> Html Msg
+viewStudyCell model targets previous ( token, suffix ) =
+    let
+        key =
+            Study.wordKey token.id
+
+        asked =
+            isAsked targets key
+
+        open =
+            model.popupWord == Just token.id
+
+        revealed =
+            Set.member key model.study.revealed
+    in
+    div
+        [ classList
+            [ ( "interlinear-word", True )
+            , ( "study-cell", True )
+            , ( "is-repeat", asked && targets /= Nothing )
+            , ( "is-settled", not asked )
+            ]
+        ]
+        [ span [ id (tokenElementId token.id), class "study-token-wrap" ]
+            [ button
+                [ classList [ ( "interlinear-greek", True ), ( "study-cell-greek", True ), ( "is-open", open ), ( "is-revealed", revealed ) ]
+                , type_ "button"
+                , attribute "lang" "grc"
+                , onClick
+                    (if open then
+                        ClosePopup
+
+                     else
+                        OpenWordPopup token.id
+                    )
+                , attribute "aria-expanded" (boolString open)
+                ]
+                [ text (token.form ++ suffix) ]
+            , if open then
+                span [ class "popup-backdrop", onClick ClosePopup, attribute "aria-hidden" "true" ] []
+
+              else
+                text ""
+            , if open then
+                viewWordPopup model token
+
+              else
+                text ""
+            ]
+        , if asked then
+            input
+                [ class "cell-input"
+                , value (Dict.get token.id model.study.glosses |> Maybe.withDefault "")
+                , onInput (StudyGloss token.id)
+                , attribute "aria-label" ("Your gloss for " ++ token.form)
+                , attribute "autocomplete" "off"
+                , attribute "autocapitalize" "off"
+                ]
+                []
+
+          else
+            span [ class "cell-previous" ] [ text (Dict.get key previous |> Maybe.withDefault (displayGloss token.gloss)) ]
+        , if revealed then
+            span [ class "interlinear-reference" ] [ text (displayGloss token.gloss) ]
+
+          else
+            text ""
         ]
 
 
@@ -3430,7 +4767,10 @@ viewGlossField model token showHeading =
     in
     div [ class "gloss-field" ]
         [ if showHeading then
-            p [ class "popup-form" ] [ span [ attribute "lang" "grc" ] [ text token.form ], span [ class "muted", attribute "lang" "grc" ] [ text token.lemma ] ]
+            p [ class "popup-form" ]
+                [ span [ attribute "lang" "grc" ] [ text token.form ]
+                , a [ class "muted popup-lemma", attribute "lang" "grc", href (Route.toPath (Route.Word token.lemma)) ] [ text (displayLemma token.lemma ++ " →") ]
+                ]
 
           else
             span [ class "gloss-row-form", attribute "lang" "grc" ] [ text token.form ]
@@ -3593,9 +4933,10 @@ viewGrading model =
                 |> Maybe.map (\entry -> Study.missedLastTime entry.id (currentRef model) model.attempts)
                 |> Maybe.withDefault Dict.empty
 
+        -- Every word stays in place; words not asked this time have no item and show faded.
         words =
             groupWords sentence.tokens
-                |> List.filterMap (\( token, suffix ) -> itemFor (Study.wordKey token.id) |> Maybe.map (\item -> ( token, suffix, item )))
+                |> List.map (\( token, suffix ) -> ( token, suffix, itemFor (Study.wordKey token.id) ))
 
         translations =
             List.filter (\item -> item.kind /= Study.WordItem) items
@@ -3621,22 +4962,30 @@ viewGrading model =
           else
             div [ class "interlinear" ]
                 (List.map
-                    (\( token, suffix, item ) ->
-                        div [ classList [ ( "interlinear-word", True ), ( "was-missed", Dict.member item.key missed ) ] ]
-                            [ span [ class "interlinear-greek", attribute "lang" "grc" ] [ text (token.form ++ suffix) ]
-                            , span [ class "interlinear-reference" ] [ text (displayGloss item.reference) ]
-                            , span [ classList [ ( "interlinear-guess", True ), ( "is-empty", String.isEmpty (String.trim item.guess) ) ] ]
-                                [ text
-                                    (if String.isEmpty (String.trim item.guess) then
-                                        "—"
+                    (\( token, suffix, found ) ->
+                        case found of
+                            Just item ->
+                                div [ classList [ ( "interlinear-word", True ), ( "was-missed", Dict.member item.key missed ) ] ]
+                                    [ span [ class "interlinear-greek", attribute "lang" "grc" ] [ text (token.form ++ suffix) ]
+                                    , span [ class "interlinear-reference" ] [ text (displayGloss item.reference) ]
+                                    , span [ classList [ ( "interlinear-guess", True ), ( "is-empty", String.isEmpty (String.trim item.guess) ) ] ]
+                                        [ text
+                                            (if String.isEmpty (String.trim item.guess) then
+                                                "—"
 
-                                     else
-                                        item.guess
-                                    )
-                                ]
-                            , viewMarkButtons item
-                            , viewItemNotes item missed
-                            ]
+                                             else
+                                                item.guess
+                                            )
+                                        ]
+                                    , viewMarkButtons item
+                                    , viewItemNotes item missed
+                                    ]
+
+                            Nothing ->
+                                div [ classList [ ( "interlinear-word", True ), ( "is-settled", True ) ] ]
+                                    [ span [ class "interlinear-greek", attribute "lang" "grc" ] [ text (token.form ++ suffix) ]
+                                    , span [ class "cell-previous" ] [ text (displayGloss token.gloss) ]
+                                    ]
                     )
                     words
                 )
