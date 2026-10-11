@@ -4446,3 +4446,138 @@ a.secondary-button {
     grid-row: 2;
   }
 }
+
+.today-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.today-head .eyebrow {
+  margin: 0;
+}
+
+.today-scope {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.today-scope select {
+  max-width: 14rem;
+  min-height: 34px;
+  padding: 0 26px 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--surface-input);
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+/* Home: works being studied, then the searchable library */
+.home-section {
+  margin: 0 0 28px;
+}
+
+.home-section h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.home-section > h2 {
+  margin-bottom: 10px;
+}
+
+.library-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.library-head h2 {
+  margin-right: auto;
+}
+
+.library-search,
+.library-sort {
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--surface-input);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.library-search {
+  width: min(20rem, 100%);
+}
+
+.work-rows {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper-strong);
+}
+
+.work-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px 16px;
+  padding: 14px 16px;
+}
+
+.work-row + .work-row {
+  border-top: 1px solid var(--line);
+}
+
+.work-row-main {
+  flex: 1 1 10rem;
+  min-width: 0;
+}
+
+.work-row-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.work-row-meta {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.work-row-sources {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.work-row-sources summary {
+  cursor: pointer;
+}
+
+.work-row-actions {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 720px) {
+  .library-search {
+    flex: 1 1 100%;
+    width: 100%;
+    order: 3;
+  }
+}

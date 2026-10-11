@@ -76,17 +76,25 @@ modeFromString name =
             Everything
 
 
-{-| Everything due or new now, in session order. `lastWork` is the work studied most recently.
+{-| Everything due or new now, in session order. `lastWork` is the work studied most recently. With a `scope`, only that
+work: its passages, and the words missed or reviewed in it.
 -}
-plan : Int -> Int -> Maybe String -> List Work -> Dict String Review.Entry -> Dict String Words.Card -> Plan
-plan now newPerDay lastWork works entries wordCards =
+plan : Int -> Int -> Maybe String -> Maybe String -> List Work -> Dict String Review.Entry -> Dict String Words.Card -> Plan
+plan now newPerDay scope lastWork allWorks entries allWords =
     let
+        works =
+            List.filter (\work -> inScope scope work.id) allWorks
+
+        wordCards =
+            Dict.filter (\_ word -> wordInScope scope word) allWords
+
         cards =
             Dict.values entries
 
         studied =
             cards |> List.map (\entry -> ( entry.work, entry.passage ))
 
+        -- The daily new limit counts every work, scoped or not.
         introducedToday =
             cards |> List.filter (\entry -> entry.introducedAt >= Review.startOfDay now) |> List.length
 
@@ -115,6 +123,21 @@ plan now newPerDay lastWork works entries wordCards =
     }
 
 
+inScope : Maybe String -> String -> Bool
+inScope scope work =
+    scope == Nothing || scope == Just work
+
+
+wordInScope : Maybe String -> Words.Card -> Bool
+wordInScope scope word =
+    case scope of
+        Just work ->
+            Dict.member work word.works
+
+        Nothing ->
+            True
+
+
 {-| The next item to study in this mode, if any is due or new.
 -}
 next : Mode -> Plan -> Maybe Item
@@ -141,8 +164,8 @@ next mode today =
 
 {-| The earliest item that comes due later today in this mode (a learning step), with its due time.
 -}
-upcoming : Int -> Mode -> Dict String Review.Entry -> Dict String Words.Card -> Maybe ( Item, Int )
-upcoming now mode entries wordCards =
+upcoming : Int -> Mode -> Maybe String -> Dict String Review.Entry -> Dict String Words.Card -> Maybe ( Item, Int )
+upcoming now mode scope entries wordCards =
     let
         endOfDay =
             Review.startOfDay now + 86400000
@@ -153,13 +176,13 @@ upcoming now mode entries wordCards =
         words =
             wordCards
                 |> Dict.values
-                |> List.filter (\word -> soon word.card.due)
+                |> List.filter (\word -> soon word.card.due && wordInScope scope word)
                 |> List.map (\word -> ( WordItem word.lemma, word.card.due ))
 
         passages =
             entries
                 |> Dict.values
-                |> List.filter (\entry -> soon entry.card.due)
+                |> List.filter (\entry -> soon entry.card.due && inScope scope entry.work)
                 |> List.map (\entry -> ( PassageItem entry.work entry.passage, entry.card.due ))
     in
     (case mode of

@@ -13,10 +13,14 @@ module Words exposing
 
 {-| Spaced review of words, one card per lemma (see `Review` for passages).
 
-A word card is not stored: it is replayed through FSRS from the learner's history, in time order. Every graded passage
-reviews each lemma it contains, rated from the learner's own marks (marked wrong → Again, revealed before the checkpoint →
-Hard, marked right → Good; several occurrences in one passage count as the worst), and every word review rates it
-directly. So attempts made before word cards existed count, and cards can never disagree with the history.
+A word card is not stored: it is replayed through FSRS from the learner's history, in time order, so attempts made before
+word cards existed count and cards can never disagree with the history.
+
+Words and passages are tracked separately. Recall inside a passage is helped by its context (the encoding-specificity
+principle), so a word answered right there is weak evidence that the learner knows it alone, while a word missed even
+with that help is strong evidence that they do not. So a passage only ever counts against a word: a word marked wrong
+or revealed before the checkpoint gets a card if it has none (its first miss introduces it) and an Again review.
+Words answered right in passages never get cards; otherwise only word reviews move a word's schedule.
 
 -}
 
@@ -53,7 +57,8 @@ type alias Review =
 
 
 {-| A lemma's schedule and history. `context` is the occurrence to quiz on next: the latest one missed, else the latest
-seen. `forms` are the inflected forms met, most recent first.
+seen. `forms` are the inflected forms met, most recent first. `works` holds the latest occurrence in each work where the
+word was missed or reviewed, for studying one work at a time.
 -}
 type alias Card =
     { lemma : String
@@ -65,6 +70,7 @@ type alias Card =
     , forms : List String
     , context : Occurrence
     , missedContext : Bool
+    , works : Dict String Occurrence
     }
 
 
@@ -112,7 +118,7 @@ reviewEvent review =
     { lemma = review.lemma, at = review.at, rating = review.rating, occurrence = review.occurrence }
 
 
-{-| One event per lemma judged in the attempt: the worst rating among its occurrences.
+{-| One Again per lemma the learner missed or revealed in the attempt; words answered right are not reviews.
 -}
 attemptEvents : Study.Attempt -> List Event
 attemptEvents attempt =
@@ -162,21 +168,11 @@ attemptEvents attempt =
 
 itemRating : Study.Item -> Maybe Fsrs.Rating
 itemRating item =
-    case ( item.mark, item.revealedEarly ) of
-        ( Just False, _ ) ->
-            Just Fsrs.Again
+    if item.mark == Just False || item.revealedEarly then
+        Just Fsrs.Again
 
-        ( Just True, True ) ->
-            Just Fsrs.Hard
-
-        ( Nothing, True ) ->
-            Just Fsrs.Hard
-
-        ( Just True, False ) ->
-            Just Fsrs.Good
-
-        ( Nothing, False ) ->
-            Nothing
+    else
+        Nothing
 
 
 positionOf : String -> Maybe Int
@@ -248,6 +244,7 @@ apply event all =
                             else
                                 word.context
                         , missedContext = missed || word.missedContext
+                        , works = Dict.insert event.occurrence.work event.occurrence word.works
                     }
 
                 Nothing ->
@@ -265,6 +262,7 @@ apply event all =
                     , forms = [ event.occurrence.form ]
                     , context = event.occurrence
                     , missedContext = missed
+                    , works = Dict.singleton event.occurrence.work event.occurrence
                     }
     in
     Dict.insert event.lemma updated all
