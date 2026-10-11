@@ -4581,3 +4581,20 @@ a.secondary-button {
     order: 3;
   }
 }
+
+.missed-button {
+  margin-top: 2px;
+  padding: 2px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--muted);
+  background: transparent;
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.missed-button:hover {
+  border-color: var(--rose);
+  color: var(--ink);
+}

@@ -1301,7 +1301,8 @@ studyItems model =
             if moduleMode GlossModule model.settings /= ModuleOff || not (Dict.isEmpty study.glosses) then
                 sentence.tokens
                     |> List.filter Study.isWordToken
-                    |> List.filter (\token -> isAsked targets (Study.wordKey token.id))
+                    -- A word not asked joins the attempt once the learner reveals it or marks it missed in grading.
+                    |> List.filter (\token -> isAsked targets (Study.wordKey token.id) || Dict.member (Study.wordKey token.id) study.marks || Set.member (Study.wordKey token.id) study.revealed)
                     |> List.map (\token -> item (Study.wordKey token.id) Study.WordItem token.form token.lemma (Dict.get token.id study.glosses |> Maybe.withDefault "") token.gloss)
 
             else
@@ -5148,6 +5149,7 @@ viewGrading model =
                                 div [ classList [ ( "interlinear-word", True ), ( "is-settled", True ) ] ]
                                     [ span [ class "interlinear-greek", attribute "lang" "grc" ] [ text (token.form ++ suffix) ]
                                     , span [ class "cell-previous" ] [ text (displayGloss token.gloss) ]
+                                    , button [ class "missed-button", type_ "button", onClick (MarkItem (Study.wordKey token.id) False), attribute "title" "You weren't asked this word, but got it wrong: it will be asked next time" ] [ text "✗ Missed it" ]
                                     ]
                     )
                     words
