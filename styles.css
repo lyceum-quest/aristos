@@ -225,6 +225,56 @@ p {
   line-height: 1;
 }
 
+/* Lyceum account (shown only when config.json names an account API) */
+.account-button {
+  display: flex;
+  min-height: 38px;
+  max-width: 14rem;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 0.76rem;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: pre;
+}
+
+.account-button:hover {
+  border-color: var(--teal);
+  color: var(--teal-dark);
+}
+
+.account-handle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin: 0 0 18px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper-strong);
+}
+
+.account-panel p {
+  margin: 0;
+}
+
+.account-panel .primary-button,
+.account-panel .secondary-button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .global-nav {
   display: flex;
   align-items: center;
@@ -2758,6 +2808,7 @@ p {
 @media (max-width: 480px) {
   .brand-word,
   .theme-label,
+  .account-label,
   .settings-label {
     position: absolute;
     width: 1px;

@@ -1,5 +1,6 @@
 port module Main exposing (main)
 
+import Account exposing (Account)
 import Browser
 import Browser.Dom as Dom
 import Browser.Events
@@ -245,6 +246,8 @@ type alias Model =
     , todayScope : Maybe String
     , librarySearch : String
     , librarySort : String
+    , account : Account
+    , appUrl : Url
     }
 
 
@@ -319,6 +322,10 @@ type Msg
     | StartTodayIn String
     | SetLibrarySearch String
     | SetLibrarySort String
+    | GotAccountConfig (Result Http.Error (Maybe String))
+    | GotAccount Account
+    | CheckAccount
+    | SignOut
 
 
 port storageRequest : Encode.Value -> Cmd msg
@@ -392,11 +399,14 @@ init _ url key =
                 , todayScope = Nothing
                 , librarySearch = ""
                 , librarySort = "recent"
+                , account = Account.NotConfigured
+                , appUrl = { url | query = Nothing, fragment = Nothing }
                 }
     in
     ( model
     , Cmd.batch
         [ fetchManifest
+        , Account.fetchConfig GotAccountConfig
         , routeCmd
         , Task.perform Tick Time.now
         , Task.perform GotZone Time.here
@@ -477,6 +487,12 @@ subscriptions model =
     Sub.batch
         [ storageResponse GotStorage
         , Time.every 5000 Tick
+        , case model.account of
+            Account.Unreachable _ ->
+                Time.every (5 * 60 * 1000) (\_ -> CheckAccount)
+
+            _ ->
+                Sub.none
         , if model.screen == WorkspaceScreen || model.screen == ReaderScreen then
             Browser.Events.onKeyDown keyDecoder
 
@@ -666,6 +682,31 @@ saveDraft previous next =
 updateModel : Msg -> Model -> ( Model, Cmd Msg )
 updateModel msg model =
     case msg of
+        GotAccountConfig (Ok (Just api)) ->
+            ( { model | account = Account.Checking api }, Account.checkSession api GotAccount )
+
+        GotAccountConfig _ ->
+            ( model, Cmd.none )
+
+        GotAccount account ->
+            ( { model | account = account }, Cmd.none )
+
+        CheckAccount ->
+            case Account.api model.account of
+                Just api ->
+                    ( { model | account = Account.Checking api }, Account.checkSession api GotAccount )
+
+                Nothing ->
+                    ( model, Cmd.none )
+
+        SignOut ->
+            case Account.api model.account of
+                Just api ->
+                    ( { model | account = Account.Checking api }, Account.signOut api CheckAccount )
+
+                Nothing ->
+                    ( model, Cmd.none )
+
         GotManifest result ->
             handleManifest result model
 
@@ -2899,7 +2940,8 @@ viewAppHeader model =
                    )
             )
         , div [ class "header-actions" ]
-            [ button
+            [ viewAccountButton model
+            , button
                 [ class "theme-button"
                 , type_ "button"
                 , onClick ToggleTheme
@@ -2928,6 +2970,62 @@ viewAppHeader model =
                 ]
             ]
         ]
+
+
+{-| Sign-in to the optional Lyceum account, shown only when the release names an account API (config.json).
+-}
+viewAccountButton : Model -> Html Msg
+viewAccountButton model =
+    case model.account of
+        Account.SignedOut _ loginUrl ->
+            a [ class "account-button", href (Account.loginHref loginUrl (accountReturnUrl model)) ]
+                [ text "Sign in", span [ class "account-label" ] [ text " to sync" ] ]
+
+        Account.SignedIn _ user ->
+            a [ class "account-button", href (Route.toPath Route.Stats), attribute "title" ("Signed in as " ++ user.handle) ]
+                [ span [ class "account-handle" ] [ text user.handle ] ]
+
+        _ ->
+            text ""
+
+
+{-| The account panel on the Progress page.
+-}
+viewAccountPanel : Model -> Html Msg
+viewAccountPanel model =
+    let
+        panel =
+            section [ class "account-panel" ]
+    in
+    case model.account of
+        Account.NotConfigured ->
+            text ""
+
+        Account.Checking _ ->
+            panel [ p [ class "muted" ] [ text "Checking your Lyceum account…" ] ]
+
+        Account.Unreachable _ ->
+            panel [ p [ class "muted" ] [ text "Your Lyceum account can't be reached right now. Progress is saved on this device." ] ]
+
+        Account.SignedOut _ loginUrl ->
+            panel
+                [ p [] [ text "Progress is saved on this device only. Sign in with a Lyceum account to sync it across devices." ]
+                , a [ class "primary-button", href (Account.loginHref loginUrl (accountReturnUrl model)) ] [ text "Sign in to sync" ]
+                ]
+
+        Account.SignedIn _ user ->
+            panel
+                [ p [] [ text "Signed in to Lyceum as ", span [ class "account-handle" ] [ text user.handle ], text "." ]
+                , p [ class "muted" ] [ text "Sync coming soon. Until then, progress stays on this device." ]
+                , button [ class "secondary-button", type_ "button", onClick SignOut ] [ text "Sign out" ]
+                ]
+
+
+{-| This page's full URL, where Lyceum sends the learner back after sign-in.
+-}
+accountReturnUrl : Model -> String
+accountReturnUrl model =
+    Url.toString model.appUrl ++ model.currentPath
 
 
 navButton : String -> Msg -> Bool -> Html Msg
@@ -3755,6 +3853,7 @@ viewStats model =
             [ p [ class "eyebrow" ] [ text "Progress" ]
             , h1 [] [ text "Your progress" ]
             ]
+        , viewAccountPanel model
         , div [ class "stat-tiles" ]
             [ viewStatTile "Words known" (String.fromInt known) "Trouble words now three weeks or more apart"
             , viewStatTile "Words learning" (String.fromInt (List.length words - known)) "Missed in a passage, still being drilled"

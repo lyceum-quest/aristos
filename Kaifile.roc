@@ -182,10 +182,23 @@ kaifile = Std.kaifile([
 
 	Task("check-browser-boundary", [Use("dev"), Run(["roc", "scripts/check-browser-boundary.roc"])]),
 
+	# kai run bundle -- production|staging|local
+	# Builds dist/aristos/<target>/<version>/ from the current preload/ (see DEPLOYMENT.md); the release workflows
+	# rebuild preload/ first.
 	Task("bundle", [Use("dev"), Run(["roc", "scripts/build-release.roc"])]),
+
+	Task("check-deploy-site-tool", [Use("dev"), Run(["roc", "check", "scripts/deploy-site.roc"])]),
+
+	# kai run deploy-site -- production|staging [<version>]   (default: the newest bundle for that target)
+	# Needs ARISTOS_DEPLOY_HOST (see .env.example); production also needs ARISTOS_DEPLOY_PRODUCTION=1.
+	Task("deploy-site", [Use("dev"), Run(["roc", "scripts/deploy-site.roc", "deploy"])]),
+
+	# kai run rollback-site -- production|staging   (swaps the host's current and previous releases)
+	Task("rollback-site", [Use("dev"), Run(["roc", "scripts/deploy-site.roc", "rollback"])]),
 
 	Task("provision", [Use("dev"), Run(["roc", "scripts/deploy.roc", "infrastructure"])]),
 
+	# kai workflow release (production) or release-staging: rebuild preload/ and bundle a release for deploy-site.
 	Workflow(
 		"release",
 		[
@@ -194,10 +207,27 @@ kaifile = Std.kaifile([
 			RunTask("check-release-tool", []),
 			RunTask("check-browser-boundary-tool", []),
 			RunTask("check-deploy-tool", []),
+			RunTask("check-deploy-site-tool", []),
 			RunTask("check-lint-tool", []),
 			RunTask("preload", []),
 			RunTask("check-browser-boundary", []),
-			RunTask("bundle", []),
+			RunTask("bundle", ["production"]),
+		],
+	),
+
+	Workflow(
+		"release-staging",
+		[
+			RunTask("check-preload-tool", []),
+			RunTask("check-cite-tool", []),
+			RunTask("check-release-tool", []),
+			RunTask("check-browser-boundary-tool", []),
+			RunTask("check-deploy-tool", []),
+			RunTask("check-deploy-site-tool", []),
+			RunTask("check-lint-tool", []),
+			RunTask("preload", []),
+			RunTask("check-browser-boundary", []),
+			RunTask("bundle", ["staging"]),
 		],
 	),
 ])
