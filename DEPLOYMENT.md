@@ -1,50 +1,91 @@
 # Aristos deployment
 
-Live preview: <https://aristos.blu.cx>, served from the development machine by
-`aristos-preview.service` (`elm-live` on `127.0.0.1:8092` in the repository
-root) behind the machine's system Caddy. It needs no deployment: source edits
-recompile automatically and `kai run preload` refreshes its data.
+Live preview: <https://aristos.internal.blu.cx> (tailnet only), served from the
+development machine by `aristos-preview.service` (`elm-live` on
+`127.0.0.1:8092` in the repository root). It needs no deployment: source edits
+recompile automatically and `kai run preload` refreshes its data. The committed
+`config.json` points the preview's "Sign in to sync" at the staging account API,
+`https://lyceum.internal.blu.cx`; while that is unreachable Aristos only notes it
+on the Progress page.
 
-The remainder of this document describes the earlier static deployment to
-`aristos.lyceum.quest`, which is currently down.
+## study.lyceum.quest
 
-Aristos was deployed to the same NixOS host as `conllu.lyceum.quest`, but its
-static files and serving process are isolated:
+Aristos is published as a static site on the Lyceum production host, whose
+Caddy serves `ARISTOS_DEPLOY_DIR/current` (default `/var/www/aristos/current`)
+at `study.lyceum.quest`. The vhost is declared in the Lyceum website's
+`flake.nix` (`services.lyceum.staticSites`); deploying Aristos never rebuilds
+the host.
 
-- `/var/www/aristos` contains the release bundle;
-- `aristos-caddy.service` serves it on `127.0.0.1:8092`;
-- the host's public Caddy service terminates TLS and reverse-proxies only the
-  `aristos.lyceum.quest` virtual host to that internal service; and
-- `conllu.lyceum.quest` continues to serve `/var/www/conllu-viz` directly.
-
-This two-Caddy layout gives Aristos a separate service and configuration while
-allowing the existing public Caddy instance to remain the sole owner of ports
-80 and 443.
-
-## Deploy
-
-The `deploy` workflow, `publish` task, and CI workflow were removed while
-that host is down. `roc scripts/deploy.roc` still publishes `dist/` to it
-(defaults `TARGET_HOST` to `LYCEUM_STAGING_HOST`, `REMOTE_DIR=/var/www/aristos`) and
-verifies Aristos plus the existing Conllu and Lyceum endpoints, should the
-host return.
-
-## Provision infrastructure
-
-The static service and public route normally do not need to be rebuilt during
-an application deploy. To apply the declarative NixOS module explicitly:
+### Release
 
 ```sh
-kai workflow release
-kai run provision
+kai workflow release            # production: account API https://lyceum.quest
+kai workflow release-staging    # staging: https://lyceum.internal.blu.cx
+kai run bundle -- local         # no account API: no sign-in UI
 ```
 
-The Roc deployment CLI assembles the host configuration in
-`/var/lib/aristos-deploy` from `deploy/flake.nix` and the local Lyceum checkout.
-This host-extension flake remains handwritten because the current Kai machine
-model cannot preserve and extend undeclared sibling services. It explicitly
-preserves the deployed Lyceum reader/admin packages and all existing Caddy
-routes. The checkout is `LYCEUM_WEBSITE_DIR` (see `.env.example`).
+The workflows check the tools, rebuild `preload/`, check the browser boundary,
+and run `scripts/build-release.roc <target>`, which writes a self-contained
+site to `dist/aristos/<target>/<version>/` (version
+`<UTC time>-<commit>[-dirty]`) and its name to `dist/aristos/<target>/latest`:
+
+- `index.html`, rewritten to load the assets below;
+- `assets/elm.<hash>.js` (`elm make --optimize`, not minified),
+  `assets/browser-bridge.<hash>.js`, `assets/styles.<hash>.css`, named by the
+  first 16 hex digits of their SHA-256;
+- `config.json`: `{"accountApi": "<origin>"}`, or `{}` for `local`;
+- `preload/`, copied as built.
+
+Caching: files under `assets/` never change under a name, so Caddy serves them
+`Cache-Control: public, max-age=31536000, immutable`. Everything else
+(`index.html`, `config.json`, `preload/`) keeps a fixed name and is served
+`no-cache`, so browsers revalidate it (ETag/Last-Modified) on every load.
+
+### Deploy
+
+Settings come from the environment or `.env` (see `.env.example`):
+`ARISTOS_DEPLOY_HOST` (SSH destination, required; root, like the Lyceum data
+deploy), `ARISTOS_DEPLOY_DIR` (default `/var/www/aristos`), and
+`ARISTOS_SITE_URL` (checked after the swap; default
+`https://study.lyceum.quest` for production and
+`https://study.internal.blu.cx` for staging). Production also needs
+`ARISTOS_DEPLOY_PRODUCTION=1`, read only from the environment.
+
+```sh
+ARISTOS_DEPLOY_PRODUCTION=1 kai run deploy-site -- production             # newest production bundle
+ARISTOS_DEPLOY_PRODUCTION=1 kai run deploy-site -- production <version>   # a specific one
+```
+
+`scripts/deploy-site.roc` checks the local release (complete, and its
+`config.json` matches the target), uploads it with rsync to
+`releases/.<version>.partial` (owned by the SSH user, world-readable), compares
+it with the local copy by checksum, renames it to `releases/<version>`, and
+points `current` at it by renaming a new symlink over the old one, so visitors
+get either the whole old site or the whole new one. It then requires
+`ARISTOS_SITE_URL` to serve the new `index.html` and `config.json`; if it does
+not, `current` is put back. On success `previous` points at the release it
+replaced and every other release is removed. Deploys take no lock: run one at a
+time.
+
+### Roll back
+
+```sh
+ARISTOS_DEPLOY_PRODUCTION=1 kai run rollback-site -- production
+```
+
+Swaps `current` and `previous` (so running it again rolls forward) and checks
+the public site.
+
+## Earlier deployment: aristos.lyceum.quest (down)
+
+Aristos was once deployed to the same NixOS host as `conllu.lyceum.quest`, with
+`/var/www/aristos` served by a separate `aristos-caddy.service` on
+`127.0.0.1:8092` behind the host's public Caddy. `roc scripts/deploy.roc` and
+`kai run provision` (which assembles that host's configuration in
+`/var/lib/aristos-deploy` from `deploy/flake.nix` and `LYCEUM_WEBSITE_DIR`)
+remain for it, but they publish a `dist/` bundle that the release workflow no
+longer builds; they need updating to `dist/aristos/<target>/<version>/` should
+that host return.
 
 ## Lyceum reader data
 
