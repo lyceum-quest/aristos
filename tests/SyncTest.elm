@@ -17,6 +17,7 @@ suite =
                     state =
                         { account = 7
                         , cursor = 42
+                        , primed = True
                         , sent = Set.fromList [ "attempt:a", "wordreview:b" ]
                         , settings = Dict.fromList [ ( "theme", { value = "\"dark\"", updatedAt = 5 } ) ]
                         }
@@ -26,7 +27,7 @@ suite =
         , test "a new account starts from nothing" <|
             \_ ->
                 Sync.emptyState 3
-                    |> Expect.equal { account = 3, cursor = 0, sent = Set.empty, settings = Dict.empty }
+                    |> Expect.equal { account = 3, cursor = 0, primed = False, sent = Set.empty, settings = Dict.empty }
         , test "status lines" <|
             \_ ->
                 List.map (Sync.statusText 1000000)

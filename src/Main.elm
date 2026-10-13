@@ -1542,8 +1542,10 @@ syncOutgoing model =
                 |> List.filter (\review -> not (Set.member (Words.reviewKey review) model.sync.sent))
                 |> List.map (\review -> { id = Words.reviewKey review, kind = "wordreview", mutable = False, updatedAt = review.at, body = Words.encodeReview review })
 
+        -- Not before the first exchange: a new device's defaults must not overwrite the account's settings.
         settings =
             syncedSettings model
+                |> List.filter (\_ -> model.sync.primed)
                 |> List.filter (\( key, value ) -> Maybe.map .value (Dict.get key model.sync.settings) /= Just (Encode.encode 0 value))
                 |> List.map (\( key, value ) -> { id = "meta:" ++ key, kind = "setting", mutable = True, updatedAt = model.clock, body = value })
     in
@@ -1612,7 +1614,7 @@ handleSynced sent response model =
 
         synced =
             { merged
-                | sync = (\s -> { s | cursor = response.cursor }) merged.sync
+                | sync = (\s -> { s | cursor = response.cursor, primed = True }) merged.sync
                 , wordCards = Words.cards merged.attempts merged.wordReviews
                 , reviews = Review.cards merged.reviews merged.attempts
                 , syncBusy = False
@@ -1623,7 +1625,8 @@ handleSynced sent response model =
             storagePut "save-sync-state" "metadata" (Encode.object [ ( "key", Encode.string "sync-state" ), ( "value", Sync.encodeState synced.sync ) ])
 
         ( next, again ) =
-            if response.more || List.length sent >= 500 then
+            -- After the first exchange, local setting edits go up.
+            if response.more || List.length sent >= 500 || not state.primed then
                 startSync synced
 
             else
@@ -1686,7 +1689,7 @@ applyReceived record ( model, writes ) =
                 newer =
                     Maybe.map (\s -> record.updatedAt > s.updatedAt) synced |> Maybe.withDefault True
             in
-            if current /= Nothing && newer && not editedHere then
+            if current /= Nothing && (synced == Nothing || (newer && not editedHere)) then
                 ( applySetting key record.body { model | sync = { state | settings = Dict.insert key { value = Encode.encode 0 record.body, updatedAt = record.updatedAt } state.settings } }
                 , storagePut ("sync-" ++ key) "metadata" (Encode.object [ ( "key", Encode.string key ), ( "value", record.body ) ]) :: writes
                 )

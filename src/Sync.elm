@@ -17,8 +17,10 @@ History records (attempts and word reviews) never change, so devices exchange th
 replayed from the merged history. Settings (theme, reader layers, positions, review settings, today's scope) can
 change: the newest edit wins. Drafts in progress stay on their device.
 
-The state remembers which account it belongs to, the server cursor, the history records the server already has, and
-the last synced value of each setting, so only new records and changed settings are sent.
+The state remembers which account it belongs to, the server cursor, whether the first exchange is done, the history
+records the server already has, and the last synced value of each setting, so only new records and changed settings
+are sent. A device's first exchange only downloads settings, so a new device's defaults never overwrite the
+account's choices; a setting this device never synced takes the account's value.
 
 -}
 
@@ -33,6 +35,7 @@ import Set exposing (Set)
 type alias State =
     { account : Int
     , cursor : Int
+    , primed : Bool
     , sent : Set String
     , settings : Dict String Setting
     }
@@ -57,7 +60,7 @@ type Status
 
 emptyState : Int -> State
 emptyState account =
-    { account = account, cursor = 0, sent = Set.empty, settings = Dict.empty }
+    { account = account, cursor = 0, primed = False, sent = Set.empty, settings = Dict.empty }
 
 
 {-| A record to send: history records are immutable, settings (`meta:<key>`) mutable.
@@ -141,6 +144,7 @@ encodeState state =
     Encode.object
         [ ( "account", Encode.int state.account )
         , ( "cursor", Encode.int state.cursor )
+        , ( "primed", Encode.bool state.primed )
         , ( "sent", Encode.list Encode.string (Set.toList state.sent) )
         , ( "settings"
           , Encode.dict identity
@@ -152,9 +156,10 @@ encodeState state =
 
 decodeState : Decode.Decoder State
 decodeState =
-    Decode.map4 State
+    Decode.map5 State
         (Decode.field "account" Decode.int)
         (Decode.field "cursor" Decode.int)
+        (Decode.oneOf [ Decode.field "primed" Decode.bool, Decode.succeed True ])
         (Decode.field "sent" (Decode.list Decode.string |> Decode.map Set.fromList))
         (Decode.field "settings"
             (Decode.dict (Decode.map2 Setting (Decode.field "value" Decode.string) (Decode.field "updatedAt" Decode.int)))
