@@ -57,7 +57,7 @@ deploy! = |host, dir, url, target, requested| {
 	releases = "${dir}/releases"
 	partial = "${releases}/.${version}.partial"
 	_ = remote!(host, ["install", "-d", "-m", "0755", "--", dir, releases])?
-	_ = remote!(host, ["test", "!", "-e", "${releases}/${version}"]) ? |_| Site("${releases}/${version} already exists on ${host}")
+	_ = remote!(host, ["test", "!", "-e", "${releases}/${version}"]) ? |_| Site("${releases}/${version} already exists on ${host}; releases are never overwritten (if it is the previous release, roll back to switch to it)")
 	_ = remote!(host, ["rm", "-rf", "--", partial])?
 	# Files are owned by the SSH user (root) and world-readable for the web server, whatever their local owner.
 	_ = run!("rsync", ["-rlt", "--delete", "--no-owner", "--no-group", "--chmod=D0755,F0644", "${local}/", "${host}:${partial}/"])?

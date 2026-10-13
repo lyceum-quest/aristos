@@ -95,8 +95,8 @@ verify! = |host, dir, expected| {
 	require(actual == expected, "SHA256 mismatch in ${dir}")
 }
 
-# Production runs an admin panel beside the reader; staging does not (flake.nix enables lyceum-admin only where
-# admin is on). Manage whichever units the host has installed; an installed unit must still be active.
+# Production ran an admin panel beside the reader until the Lyceum website removed it; a host not yet redeployed
+# still has the unit. Manage whichever units the host has installed; an installed unit must still be active.
 units! = |host| match remote!(host, ["systemctl", "cat", "--quiet", "lyceum-admin.service"]) {
 	Ok(_) => ["lyceum", "lyceum-admin"]
 	Err(_) => ["lyceum"]

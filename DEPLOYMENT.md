@@ -56,6 +56,15 @@ ARISTOS_DEPLOY_PRODUCTION=1 kai run deploy-site -- production             # newe
 ARISTOS_DEPLOY_PRODUCTION=1 kai run deploy-site -- production <version>   # a specific one
 ```
 
+Staging is the Lyceum staging microVM on blu-tower, at
+`https://study.internal.blu.cx` (tailnet only; signs in through
+`https://lyceum.internal.blu.cx`):
+
+```sh
+kai workflow release-staging
+ARISTOS_DEPLOY_HOST=root@lyceum-staging.tail42aee1.ts.net kai run deploy-site -- staging
+```
+
 `scripts/deploy-site.roc` checks the local release (complete, and its
 `config.json` matches the target), uploads it with rsync to
 `releases/.<version>.partial` (owned by the SSH user, world-readable), compares
@@ -71,10 +80,13 @@ time.
 
 ```sh
 ARISTOS_DEPLOY_PRODUCTION=1 kai run rollback-site -- production
+ARISTOS_DEPLOY_HOST=root@lyceum-staging.tail42aee1.ts.net kai run rollback-site -- staging
 ```
 
 Swaps `current` and `previous` (so running it again rolls forward) and checks
-the public site.
+the site. Releases already on the host are never overwritten, so to
+return to the release you rolled back from, roll back again rather than
+redeploying it.
 
 ## Earlier deployment: aristos.lyceum.quest (down)
 
@@ -119,8 +131,8 @@ repository, and the work and its author must already be in its catalog.
 Configs in `scripts/lyceum-imports/` add an `aristos-<model>` edition;
 `scripts/lyceum-replace.example.json` instead replaces two existing editions
 wholesale. A re-import replaces the passages it names and keeps the rest.
-Deploying connects with SSH (as root: it stops and starts the `lyceum` service, and
-`lyceum-admin` where installed (production only) and installs the databases into `/var/lib/lyceum/data`
+Deploying connects with SSH (as root: it stops and starts the `lyceum` service, and any
+leftover `lyceum-admin` unit (the admin panel has been removed), and installs the databases into `/var/lib/lyceum/data`
 owned by `lyceum`) to `LYCEUM_STAGING_HOST` (default `lyceum-staging`, the
 tailnet name) or `LYCEUM_PROD_HOST` (default `lyceum-prod`), then checks
 `<url>/health` with `LYCEUM_STAGING_URL` (default `http://<staging host>`) or
