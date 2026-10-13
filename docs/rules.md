@@ -17,6 +17,7 @@
 - Use Roc's `\\` syntax for static multiline strings. Use `Str.join_with` only when interpolation or composition is required.
 - Do not add tests unless explicitly asked to add a specific set or complete an already-started set.
 - Do not create or modify documentation unless explicitly requested.
+- Check every UI change in both light and dark mode (look at it rendered in each) before calling it done.
 
 ## Version control
 
