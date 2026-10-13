@@ -9,7 +9,7 @@ import AristosSite
 # build-release production|staging|local
 # Writes a self-contained static site to dist/aristos/<target>/<version>/ and its name to
 # dist/aristos/<target>/latest. The Elm bundle, bridge, and stylesheet get content-hashed names under assets/
-# (served with a long immutable cache); index.html, config.json, and preload/ keep fixed names (served no-cache,
+# (served with a long immutable cache); index.html, config.json, preload/, and fonts/ keep fixed names (served no-cache,
 # revalidated by ETag). config.json names the target's Lyceum account API.
 main! = |args| {
 	target = match args.map(OsStr.display) {
@@ -43,6 +43,7 @@ main! = |args| {
 	Path.write_utf8!(Path.utf8("${partial}/index.html"), rewritten)?
 	Path.write_utf8!(Path.utf8("${partial}/config.json"), AristosSite.config_json(api))?
 	_ = run!("cp", ["-R", "preload", "${partial}/preload"])?
+	_ = run!("cp", ["-R", "fonts", "${partial}/fonts"])?
 
 	Path.rename!(Path.utf8(partial), Path.utf8(release))?
 	Path.write_utf8!(Path.utf8("${root}/latest"), "${version}\n")?
