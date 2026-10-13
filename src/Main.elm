@@ -7,20 +7,20 @@ import Browser.Events
 import Browser.Navigation as Nav
 import Conllu
 import Dict exposing (Dict)
+import Fsrs
 import Html exposing (Html, a, article, aside, button, details, div, footer, h1, h2, h3, header, input, label, li, main_, nav, option, p, section, select, span, summary, table, tbody, td, text, textarea, th, thead, tr, ul)
 import Html.Attributes exposing (attribute, checked, class, classList, disabled, href, id, placeholder, rel, rows, selected, style, target, type_, value)
 import Html.Events exposing (on, onClick, onInput, stopPropagationOn)
 import Http
-import Morphology
-import Passage
 import Json.Decode as Decode
 import Json.Encode as Encode
+import Morphology
+import Passage
 import Process
+import Review
 import Route exposing (Route)
 import Set exposing (Set)
 import Sources
-import Fsrs
-import Review
 import Study
 import Task
 import Time
@@ -787,7 +787,8 @@ updateModel msg model =
                             { current | translation = not current.translation }
             in
             ( { model | readerLayers = layers, readerGloss = Nothing }
-            , storagePut "reader-layers" "metadata"
+            , storagePut "reader-layers"
+                "metadata"
                 (Encode.object
                     [ ( "key", Encode.string "reader-layers" )
                     , ( "value"
@@ -1043,7 +1044,7 @@ updateModel msg model =
                 now =
                     Time.posixToMillis time
             in
-            case ( buildAttempt now model, model.activeEntry ) of
+            case ( buildAttempt now rating model, model.activeEntry ) of
                 ( Just attempt, Just entry ) ->
                     let
                         passage =
@@ -1258,7 +1259,8 @@ updateModel msg model =
                         DarkTheme
             in
             ( { model | theme = theme }
-            , storagePut "theme" "metadata"
+            , storagePut "theme"
+                "metadata"
                 (Encode.object
                     [ ( "key", Encode.string "theme" )
                     , ( "value"
@@ -1398,8 +1400,8 @@ isAsked targets key =
     targets |> Maybe.map (Set.member key) |> Maybe.withDefault True
 
 
-buildAttempt : Int -> Model -> Maybe Study.Attempt
-buildAttempt now model =
+buildAttempt : Int -> Fsrs.Rating -> Model -> Maybe Study.Attempt
+buildAttempt now rating model =
     model.activeEntry
         |> Maybe.map
             (\entry ->
@@ -1423,6 +1425,7 @@ buildAttempt now model =
                         model.study.startedAt
                 , finishedAt = now
                 , items = studyItems model
+                , rating = Just rating
                 }
             )
 
@@ -1711,6 +1714,7 @@ handleStorageResponse value model =
                                     |> List.filterMap identity
                                     |> List.map (\entry -> ( Review.entryKey entry.work entry.passage, entry ))
                                     |> Dict.fromList
+                                    |> (\stored -> Review.cards stored finished)
                         }
 
                     Err _ ->
@@ -2207,12 +2211,12 @@ manifestEntryDecoder =
     -- Title, counts, citation, and passages default so entries cached by earlier builds still decode.
     Decode.map3 (\entry unitsPath passages -> entry unitsPath passages)
         (Decode.map7 ManifestEntry
-        (Decode.field "id" Decode.string)
-        (Decode.oneOf [ Decode.field "title" Decode.string, Decode.field "id" Decode.string ])
-        (Decode.field "path" Decode.string)
-        (Decode.oneOf [ Decode.field "sentenceCount" Decode.int, Decode.succeed 0 ])
-        (Decode.oneOf [ Decode.field "tokenCount" Decode.int, Decode.succeed 0 ])
-        (Decode.field "source" corpusSourceDecoder)
+            (Decode.field "id" Decode.string)
+            (Decode.oneOf [ Decode.field "title" Decode.string, Decode.field "id" Decode.string ])
+            (Decode.field "path" Decode.string)
+            (Decode.oneOf [ Decode.field "sentenceCount" Decode.int, Decode.succeed 0 ])
+            (Decode.oneOf [ Decode.field "tokenCount" Decode.int, Decode.succeed 0 ])
+            (Decode.field "source" corpusSourceDecoder)
             (Decode.oneOf [ Decode.field "citation" (Decode.map Just Sources.decoder), Decode.succeed Nothing ])
         )
         (Decode.oneOf [ Decode.field "unitsPath" Decode.string, Decode.succeed "" ])
@@ -2365,7 +2369,8 @@ savePosition model =
     case model.activeEntry of
         Just entry ->
             if model.screen == WorkspaceScreen || model.screen == ReaderScreen then
-                storagePut "save-positions" "metadata"
+                storagePut "save-positions"
+                    "metadata"
                     (Encode.object
                         [ ( "key", Encode.string "positions" )
                         , ( "value", Encode.dict identity Encode.int (Dict.insert entry.id (model.sentenceIndex + 1) model.positions) )
@@ -2628,7 +2633,8 @@ handleFetchedCorpus entry result model =
                         ( shown
                         , Cmd.batch
                             [ routeCmd
-                            , storagePut "cache-corpus" "metadata"
+                            , storagePut "cache-corpus"
+                                "metadata"
                                 (Encode.object
                                     [ ( "key", Encode.string "cached-corpus" )
                                     , ( "value"
@@ -2640,7 +2646,8 @@ handleFetchedCorpus entry result model =
                                       )
                                     ]
                                 )
-                            , storagePut "cache-manifest" "metadata"
+                            , storagePut "cache-manifest"
+                                "metadata"
                                 (Encode.object
                                     [ ( "key", Encode.string "preload-manifest" )
                                     , ( "value"
@@ -2651,7 +2658,8 @@ handleFetchedCorpus entry result model =
                                       )
                                     ]
                                 )
-                            , storagePut "cache-raw-corpus" "corpora"
+                            , storagePut "cache-raw-corpus"
+                                "corpora"
                                 (Encode.object
                                     [ ( "id", Encode.string entry.id )
                                     , ( "path", Encode.string entry.path )
@@ -2813,7 +2821,16 @@ viewReaderSentence model index sentence =
             [ classList [ ( "reader-marker", True ), ( "is-open", revealed ) ]
             , type_ "button"
             , onClick (ReaderToggleTranslation index)
-            , attribute "aria-label" (sentence.verse ++ ": " ++ (if revealed then "hide" else "show") ++ " translation")
+            , attribute "aria-label"
+                (sentence.verse ++ ": "
+                    ++ (if revealed then
+                            "hide"
+
+                        else
+                            "show"
+                       )
+                    ++ " translation"
+                )
             , attribute "aria-expanded" (boolString revealed)
             ]
             [ text sentence.verse ]
@@ -2916,7 +2933,7 @@ viewReaderToken model sentenceIndex position token =
 
 isPunctuation : String -> Bool
 isPunctuation form =
-    not (String.isEmpty form) && String.all (\char -> String.contains (String.fromChar char) ".,;:!?·\u{0387}\u{037E})]»”’—–") form
+    not (String.isEmpty form) && String.all (\char -> String.contains (String.fromChar char) ".,;:!?··;)]»”’—–") form
 
 
 viewAppHeader : Model -> Html Msg
@@ -3330,7 +3347,8 @@ viewTodayPanel model =
                 Nothing ->
                     lastWork model
             )
-                |> Maybe.andThen (entryFor model) |> Maybe.map (\entry -> ( entry, savedRef entry model ))
+                |> Maybe.andThen (entryFor model)
+                |> Maybe.map (\entry -> ( entry, savedRef entry model ))
     in
     section [ class "today-panel", attribute "aria-label" "Today" ]
         [ viewTodayHead model
@@ -3488,7 +3506,7 @@ viewHighlighted : String -> String -> Html Msg
 viewHighlighted passage form =
     let
         bare piece =
-            String.filter (\char -> not (String.contains (String.fromChar char) ".,;:!?·\u{0387}\u{037E}()[]«»“”‘’—–'\"")) piece
+            String.filter (\char -> not (String.contains (String.fromChar char) ".,;:!?··;()[]«»“”‘’—–'\"")) piece
     in
     p [ class "word-context", attribute "lang" "grc" ]
         (String.split " " passage
@@ -5505,8 +5523,6 @@ viewStudyFooter model =
         )
 
 
-
-
 {-| The passage the learner last had open in a work (positions are saved as 1-based passage indexes), or its first.
 -}
 savedRef : ManifestEntry -> Model -> String
@@ -5555,7 +5571,13 @@ viewCitationPicker model =
         (List.indexedMap levelSelect names
             ++ [ input
                     [ class "citation-go"
-                    , placeholder (if String.contains ":" (currentLabel model) then "Go to 1:2" else "Go to 1.2")
+                    , placeholder
+                        (if String.contains ":" (currentLabel model) then
+                            "Go to 1:2"
+
+                         else
+                            "Go to 1.2"
+                        )
                     , attribute "aria-label" "Go to citation"
                     , on "change" (Decode.map GoToCitation (Decode.at [ "target", "value" ] Decode.string))
                     ]

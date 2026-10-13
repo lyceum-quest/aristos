@@ -1,6 +1,7 @@
 module Review exposing
     ( Entry
     , Queue
+    , cards
     , dueLater
     , encodeEntry
     , entryDecoder
@@ -61,6 +62,57 @@ entryKey work passage =
     "card:" ++ work ++ ":" ++ passage
 
 
+{-| Passage cards replayed from attempts, oldest first, each with the rating it records, so a device that received
+another device's attempts reaches the same cards. Attempts saved before ratings were recorded have none: for a passage
+with such an attempt its stored card (written when it was graded) is kept as the starting point and only rated attempts
+after its last review are replayed; where no stored card exists (a newly synced device) they replay with the rating
+suggested from their marks. Stored cards for passages with no attempts are kept.
+-}
+cards : Dict String Entry -> List Study.Attempt -> Dict String Entry
+cards stored attempts =
+    let
+        byPassage =
+            attempts
+                |> List.sortBy .finishedAt
+                |> List.foldr (\attempt -> Dict.update (entryKey attempt.work attempt.passage) (Maybe.withDefault [] >> (::) attempt >> Just)) Dict.empty
+
+        replay key group =
+            let
+                legacy =
+                    if List.any (\attempt -> attempt.rating == Nothing) group then
+                        Dict.get key stored
+
+                    else
+                        Nothing
+
+                since =
+                    legacy |> Maybe.andThen (.card >> .lastReview) |> Maybe.withDefault 0
+
+                step attempt entry =
+                    case ( legacy, attempt.rating ) of
+                        ( Just _, Nothing ) ->
+                            entry
+
+                        ( Just _, Just rating ) ->
+                            if attempt.finishedAt > since then
+                                apply rating attempt entry
+
+                            else
+                                entry
+
+                        ( Nothing, rating ) ->
+                            apply (Maybe.withDefault (suggestRating attempt.items) rating) attempt entry
+
+                apply rating attempt entry =
+                    schedule attempt.finishedAt rating attempt.work attempt.passage (entry |> Maybe.map (Dict.singleton key) |> Maybe.withDefault Dict.empty)
+                        |> Maybe.map Just
+                        |> Maybe.withDefault entry
+            in
+            List.foldl step legacy group
+    in
+    Dict.union (Dict.map replay byPassage |> Dict.foldl (\key entry -> Maybe.map (Dict.insert key) entry |> Maybe.withDefault identity) Dict.empty) stored
+
+
 {-| Days are UTC days, matching how FSRS counts elapsed days.
 -}
 startOfDay : Int -> Int
@@ -73,20 +125,20 @@ startOfDay now =
 queue : Int -> Int -> String -> List String -> Dict String Entry -> Queue
 queue now newPerDay work passages entries =
     let
-        cards =
+        workCards =
             entries |> Dict.values |> List.filter (\entry -> entry.work == work)
 
         studied =
-            cards |> List.map .passage
+            workCards |> List.map .passage
 
         introducedToday =
-            cards |> List.filter (\entry -> entry.introducedAt >= startOfDay now) |> List.length
+            workCards |> List.filter (\entry -> entry.introducedAt >= startOfDay now) |> List.length
 
         newSlots =
             max 0 (newPerDay - introducedToday)
     in
     { due =
-        cards
+        workCards
             |> List.filter (\entry -> entry.card.due <= now)
             |> List.sortBy (\entry -> entry.card.due)
             |> List.map .passage

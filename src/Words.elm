@@ -6,7 +6,6 @@ module Words exposing
     , due
     , encodeReview
     , isMature
-    , ratingName
     , reviewDecoder
     , reviewKey
     )
@@ -268,22 +267,6 @@ apply event all =
     Dict.insert event.lemma updated all
 
 
-ratingName : Fsrs.Rating -> String
-ratingName rating =
-    case rating of
-        Fsrs.Again ->
-            "again"
-
-        Fsrs.Hard ->
-            "hard"
-
-        Fsrs.Good ->
-            "good"
-
-        Fsrs.Easy ->
-            "easy"
-
-
 
 -- ENCODING
 
@@ -295,7 +278,7 @@ encodeReview review =
         , ( "type", Encode.string "wordreview" )
         , ( "lemma", Encode.string review.lemma )
         , ( "at", Encode.int review.at )
-        , ( "rating", Encode.string (ratingName review.rating) )
+        , ( "rating", Encode.string (Study.ratingName review.rating) )
         , ( "occurrence"
           , Encode.object
                 [ ( "work", Encode.string review.occurrence.work )
@@ -324,7 +307,7 @@ reviewDecoder =
                     Decode.map4 Review
                         (Decode.field "lemma" Decode.string)
                         (Decode.field "at" Decode.int)
-                        (Decode.field "rating" Decode.string |> Decode.andThen ratingDecoder)
+                        (Decode.field "rating" Decode.string |> Decode.andThen Study.ratingDecoder)
                         (Decode.field "occurrence" occurrenceDecoder)
             )
 
@@ -339,22 +322,3 @@ occurrenceDecoder =
         (Decode.field "gloss" Decode.string)
         (Decode.field "text" Decode.string)
         (Decode.field "guess" Decode.string)
-
-
-ratingDecoder : String -> Decode.Decoder Fsrs.Rating
-ratingDecoder name =
-    case name of
-        "again" ->
-            Decode.succeed Fsrs.Again
-
-        "hard" ->
-            Decode.succeed Fsrs.Hard
-
-        "good" ->
-            Decode.succeed Fsrs.Good
-
-        "easy" ->
-            Decode.succeed Fsrs.Easy
-
-        _ ->
-            Decode.fail ("unknown rating " ++ name)

@@ -17,6 +17,8 @@ module Study exposing
     , missedLastTime
     , passageAttempts
     , proseKey
+    , ratingDecoder
+    , ratingName
     , stats
     , tally
     , wordKey
@@ -30,6 +32,7 @@ the checkpoint are recorded as such and excluded from unassisted statistics.
 -}
 
 import Dict exposing (Dict)
+import Fsrs
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Set exposing (Set)
@@ -78,6 +81,9 @@ type alias Attempt =
     , startedAt : Int
     , finishedAt : Int
     , items : List Item
+    , rating : Maybe Fsrs.Rating
+
+    {- the passage rating; Nothing in attempts saved before ratings were recorded -}
     }
 
 
@@ -132,7 +138,7 @@ tags some words as punctuation (Luke 1:66 Τί).
 isWordToken : { a | form : String, upos : String } -> Bool
 isWordToken token =
     not (String.isEmpty token.form)
-        && not (String.all (\char -> String.contains (String.fromChar char) ".,;:!?·\u{0387}\u{037E}()[]«»“”‘’—–'\"") token.form)
+        && not (String.all (\char -> String.contains (String.fromChar char) ".,;:!?··;()[]«»“”‘’—–'\"") token.form)
 
 
 {-| Keys the learner marked wrong in their most recent finished attempt at this passage.
@@ -267,16 +273,18 @@ draftDecoder =
 encodeAttempt : Attempt -> Encode.Value
 encodeAttempt attempt =
     Encode.object
-        [ ( "id", Encode.string attempt.id )
-        , ( "type", Encode.string "attempt" )
-        , ( "work", Encode.string attempt.work )
-        , ( "passage", Encode.string attempt.passage )
-        , ( "sentenceId", Encode.string attempt.sentenceId )
-        , ( "sentenceText", Encode.string attempt.sentenceText )
-        , ( "startedAt", Encode.int attempt.startedAt )
-        , ( "finishedAt", Encode.int attempt.finishedAt )
-        , ( "items", Encode.list encodeItem attempt.items )
-        ]
+        ([ ( "id", Encode.string attempt.id )
+         , ( "type", Encode.string "attempt" )
+         , ( "work", Encode.string attempt.work )
+         , ( "passage", Encode.string attempt.passage )
+         , ( "sentenceId", Encode.string attempt.sentenceId )
+         , ( "sentenceText", Encode.string attempt.sentenceText )
+         , ( "startedAt", Encode.int attempt.startedAt )
+         , ( "finishedAt", Encode.int attempt.finishedAt )
+         , ( "items", Encode.list encodeItem attempt.items )
+         ]
+            ++ (attempt.rating |> Maybe.map (\rating -> [ ( "rating", Encode.string (ratingName rating) ) ]) |> Maybe.withDefault [])
+        )
 
 
 encodeItem : Item -> Encode.Value
@@ -316,15 +324,18 @@ attemptDecoder =
                     Decode.fail "not an attempt"
 
                 else
-                    Decode.map8 Attempt
-                        (Decode.field "id" Decode.string)
-                        (Decode.field "work" Decode.string)
-                        (Decode.field "passage" Decode.string)
-                        (Decode.field "sentenceId" Decode.string)
-                        (Decode.field "sentenceText" Decode.string)
-                        (Decode.field "startedAt" Decode.int)
-                        (Decode.field "finishedAt" Decode.int)
-                        (Decode.field "items" (Decode.list itemDecoder |> Decode.map (List.filter (not << isPlaceholderItem))))
+                    Decode.map2 (<|)
+                        (Decode.map8 Attempt
+                            (Decode.field "id" Decode.string)
+                            (Decode.field "work" Decode.string)
+                            (Decode.field "passage" Decode.string)
+                            (Decode.field "sentenceId" Decode.string)
+                            (Decode.field "sentenceText" Decode.string)
+                            (Decode.field "startedAt" Decode.int)
+                            (Decode.field "finishedAt" Decode.int)
+                            (Decode.field "items" (Decode.list itemDecoder |> Decode.map (List.filter (not << isPlaceholderItem))))
+                        )
+                        (Decode.maybe (Decode.field "rating" Decode.string |> Decode.andThen ratingDecoder))
             )
 
 
@@ -364,3 +375,42 @@ itemDecoder =
         (Decode.field "reference" Decode.string)
         (Decode.field "revealedEarly" Decode.bool)
         (Decode.field "mark" (Decode.nullable Decode.bool))
+
+
+
+-- RATINGS
+
+
+ratingName : Fsrs.Rating -> String
+ratingName rating =
+    case rating of
+        Fsrs.Again ->
+            "again"
+
+        Fsrs.Hard ->
+            "hard"
+
+        Fsrs.Good ->
+            "good"
+
+        Fsrs.Easy ->
+            "easy"
+
+
+ratingDecoder : String -> Decode.Decoder Fsrs.Rating
+ratingDecoder name =
+    case name of
+        "again" ->
+            Decode.succeed Fsrs.Again
+
+        "hard" ->
+            Decode.succeed Fsrs.Hard
+
+        "good" ->
+            Decode.succeed Fsrs.Good
+
+        "easy" ->
+            Decode.succeed Fsrs.Easy
+
+        _ ->
+            Decode.fail ("unknown rating " ++ name)
