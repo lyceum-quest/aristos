@@ -22,6 +22,7 @@ import Route exposing (Route)
 import Set exposing (Set)
 import Sources
 import Study
+import Sync
 import Task
 import Time
 import Today
@@ -248,6 +249,15 @@ type alias Model =
     , librarySort : String
     , account : Account
     , appUrl : Url
+    , sync : Sync.State
+    , syncLoaded : Bool
+
+    {- the stored state has been read; no sync before -}
+    , syncStatus : Sync.Status
+    , syncBusy : Bool
+    , syncDueAt : Int
+
+    {- sync at this clock time (after a rating); 0 when nothing waits -}
     }
 
 
@@ -310,6 +320,9 @@ type Msg
     | GotManifest (Result Http.Error Manifest)
     | GotCorpus ManifestEntry (Result Http.Error ( String, String ))
     | GotStorage Decode.Value
+    | SyncNow
+    | GotSync (List Sync.Outgoing) (Result Http.Error Sync.Response)
+    | VisibilityChanged Browser.Events.Visibility
     | StartToday Today.Mode
     | WordGuess String
     | RevealWord
@@ -401,6 +414,11 @@ init _ url key =
                 , librarySort = "recent"
                 , account = Account.NotConfigured
                 , appUrl = { url | query = Nothing, fragment = Nothing }
+                , sync = Sync.emptyState 0
+                , syncLoaded = False
+                , syncStatus = Sync.NotSyncing
+                , syncBusy = False
+                , syncDueAt = 0
                 }
     in
     ( model
@@ -414,6 +432,7 @@ init _ url key =
         , storageGet "reader-layers" "metadata" "reader-layers"
         , storageGet "positions" "metadata" "positions"
         , storageGet "review-settings" "metadata" "review-settings"
+        , storageGet "sync-state" "metadata" "sync-state"
         , storageGet "today-scope" "metadata" "today-scope"
         , storageGetAll "attempts" "progress"
         , storageGet "cached-corpus" "metadata" "cached-corpus"
@@ -486,6 +505,7 @@ subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.batch
         [ storageResponse GotStorage
+        , Browser.Events.onVisibilityChange VisibilityChanged
         , Time.every 5000 Tick
         , case model.account of
             Account.Unreachable _ ->
@@ -689,7 +709,25 @@ updateModel msg model =
             ( model, Cmd.none )
 
         GotAccount account ->
-            ( { model | account = account }, Cmd.none )
+            startSync { model | account = account }
+
+        SyncNow ->
+            startSync model
+
+        GotSync sent result ->
+            case result of
+                Ok response ->
+                    handleSynced sent response model
+
+                Err error ->
+                    syncFailed error model
+
+        VisibilityChanged visibility ->
+            if visibility == Browser.Events.Visible then
+                startSync model
+
+            else
+                ( model, Cmd.none )
 
         CheckAccount ->
             case Account.api model.account of
@@ -1075,7 +1113,7 @@ updateModel msg model =
                                 Nothing ->
                                     ( advance recorded, Cmd.none )
                     in
-                    ( { advanced | notice = Nothing }
+                    ( { advanced | notice = Nothing, syncDueAt = now + 3000 }
                     , Cmd.batch
                         [ storagePut "save-attempt" "progress" (Study.encodeAttempt attempt)
                         , navigate
@@ -1173,7 +1211,7 @@ updateModel msg model =
                                 Nothing ->
                                     ( recorded, Nav.pushUrl model.key (Route.toPath (Route.Word lemma)) )
                     in
-                    ( { moved | notice = Nothing }
+                    ( { moved | notice = Nothing, syncDueAt = moved.clock + 3000 }
                     , Cmd.batch [ storagePut "save-word-review" "progress" (Words.encodeReview review), navigate ]
                     )
 
@@ -1238,7 +1276,18 @@ updateModel msg model =
                 , study = Study.emptyDraft
                 , positions = Dict.empty
                 , confirmClear = False
-                , notice = Just "Saved study data cleared from this device."
+                , notice =
+                    Just
+                        (if syncsProgress model then
+                            "Saved study data cleared from this device. Your synced progress comes back from your Lyceum account."
+
+                         else
+                            "Saved study data cleared from this device."
+                        )
+
+                -- With sync, the device downloads the account's history again.
+                , sync = Sync.emptyState 0
+                , syncDueAt = model.clock + 1
               }
             , Cmd.batch [ storageClear "clear-progress" "progress", storageClear "clear-metadata" "metadata" ]
             )
@@ -1277,7 +1326,24 @@ updateModel msg model =
             )
 
         Tick time ->
-            ( { model | clock = Time.posixToMillis time }, Cmd.none )
+            let
+                ticked =
+                    { model | clock = Time.posixToMillis time }
+
+                -- A rating waits a few seconds so a burst of them goes up together; otherwise every few minutes.
+                due =
+                    case ticked.syncStatus of
+                        Sync.Synced at ->
+                            ticked.clock - at > 3 * 60 * 1000
+
+                        _ ->
+                            False
+            in
+            if (ticked.syncDueAt > 0 && ticked.clock >= ticked.syncDueAt) || due then
+                startSync ticked
+
+            else
+                ( ticked, Cmd.none )
 
 
 {-| Answers can change only before the checkpoint; the first edit stamps when work on the passage began.
@@ -1428,6 +1494,262 @@ buildAttempt now rating model =
                 , rating = Just rating
                 }
             )
+
+
+
+-- SYNC
+
+
+{-| Settings that sync, as stored in the metadata store (the newest edit wins). Drafts stay on their device.
+-}
+syncedSettings : Model -> List ( String, Encode.Value )
+syncedSettings model =
+    [ ( "theme"
+      , Encode.string
+            (if model.theme == DarkTheme then
+                "dark"
+
+             else
+                "light"
+            )
+      )
+    , ( "reader-layers"
+      , Encode.object
+            [ ( "glosses", Encode.bool model.readerLayers.glosses )
+            , ( "morphology", Encode.bool model.readerLayers.morphology )
+            , ( "translation", Encode.bool model.readerLayers.translation )
+            ]
+      )
+    , ( "positions", Encode.dict identity Encode.int model.positions )
+    , ( "review-settings", Encode.object [ ( "newPerDay", Encode.int model.newPerDay ) ] )
+    , ( "today-scope", Encode.string (Maybe.withDefault "" model.todayScope) )
+    ]
+
+
+{-| Records the server doesn't have yet: history it hasn't acknowledged, and settings changed since they last synced
+(stamped now), at most 500 per round.
+-}
+syncOutgoing : Model -> List Sync.Outgoing
+syncOutgoing model =
+    let
+        attempts =
+            model.attempts
+                |> List.filter (\attempt -> not (Set.member attempt.id model.sync.sent))
+                |> List.map (\attempt -> { id = attempt.id, kind = "attempt", mutable = False, updatedAt = attempt.finishedAt, body = Study.encodeAttempt attempt })
+
+        wordReviews =
+            model.wordReviews
+                |> List.filter (\review -> not (Set.member (Words.reviewKey review) model.sync.sent))
+                |> List.map (\review -> { id = Words.reviewKey review, kind = "wordreview", mutable = False, updatedAt = review.at, body = Words.encodeReview review })
+
+        settings =
+            syncedSettings model
+                |> List.filter (\( key, value ) -> Maybe.map .value (Dict.get key model.sync.settings) /= Just (Encode.encode 0 value))
+                |> List.map (\( key, value ) -> { id = "meta:" ++ key, kind = "setting", mutable = True, updatedAt = model.clock, body = value })
+    in
+    List.take 500 (settings ++ attempts ++ wordReviews)
+
+
+{-| Sync with the signed-in account if it includes sync and no round is running.
+-}
+startSync : Model -> ( Model, Cmd Msg )
+startSync model =
+    case model.account of
+        Account.SignedIn origin user ->
+            if not (Account.hasSync user) then
+                ( { model | syncStatus = Sync.NeedsSupporter, syncDueAt = 0 }, Cmd.none )
+
+            else if model.syncBusy || not model.syncLoaded then
+                ( model, Cmd.none )
+
+            else
+                let
+                    -- Another account on this device starts over: its whole history goes up and comes down.
+                    state =
+                        if model.sync.account == user.id then
+                            model.sync
+
+                        else
+                            Sync.emptyState user.id
+
+                    ready =
+                        { model | sync = state }
+
+                    outgoing =
+                        syncOutgoing ready
+                in
+                ( { ready | syncBusy = True, syncStatus = Sync.Syncing, syncDueAt = 0 }
+                , Sync.request origin state outgoing (GotSync outgoing)
+                )
+
+        _ ->
+            ( { model | syncDueAt = 0 }, Cmd.none )
+
+
+{-| A finished round: what was sent is now on the server; received records merge in; cards replay from the merged
+history. Another round follows when the server has more or records are still waiting.
+-}
+handleSynced : List Sync.Outgoing -> Sync.Response -> Model -> ( Model, Cmd Msg )
+handleSynced sent response model =
+    let
+        state =
+            model.sync
+
+        acknowledged =
+            List.foldl
+                (\record acc ->
+                    if record.mutable then
+                        { acc | settings = Dict.insert (String.dropLeft 5 record.id) { value = Encode.encode 0 record.body, updatedAt = record.updatedAt } acc.settings }
+
+                    else
+                        { acc | sent = Set.insert record.id acc.sent }
+                )
+                state
+                sent
+
+        ( merged, writes ) =
+            List.foldl applyReceived ( { model | sync = acknowledged }, [] ) response.records
+
+        synced =
+            { merged
+                | sync = (\s -> { s | cursor = response.cursor }) merged.sync
+                , wordCards = Words.cards merged.attempts merged.wordReviews
+                , reviews = Review.cards merged.reviews merged.attempts
+                , syncBusy = False
+                , syncStatus = Sync.Synced merged.clock
+            }
+
+        saveState =
+            storagePut "save-sync-state" "metadata" (Encode.object [ ( "key", Encode.string "sync-state" ), ( "value", Sync.encodeState synced.sync ) ])
+
+        ( next, again ) =
+            if response.more || List.length sent >= 500 then
+                startSync synced
+
+            else
+                ( synced, Cmd.none )
+    in
+    ( next, Cmd.batch (saveState :: again :: writes) )
+
+
+{-| Merges one received record: new history is kept (and stored), a newer setting replaces the local one unless the
+local one has an edit that hasn't synced yet (it is newer and will go up next).
+-}
+applyReceived : Sync.Received -> ( Model, List (Cmd Msg) ) -> ( Model, List (Cmd Msg) )
+applyReceived record ( model, writes ) =
+    let
+        state =
+            model.sync
+
+        known =
+            { model | sync = { state | sent = Set.insert record.id state.sent } }
+    in
+    case record.kind of
+        "attempt" ->
+            case Decode.decodeValue Study.attemptDecoder record.body of
+                Ok attempt ->
+                    if List.any (\existing -> existing.id == attempt.id) model.attempts then
+                        ( known, writes )
+
+                    else
+                        ( { known | attempts = attempt :: model.attempts }, storagePut "sync-attempt" "progress" record.body :: writes )
+
+                Err _ ->
+                    ( model, writes )
+
+        "wordreview" ->
+            case Decode.decodeValue Words.reviewDecoder record.body of
+                Ok review ->
+                    if List.any (\existing -> Words.reviewKey existing == Words.reviewKey review) model.wordReviews then
+                        ( known, writes )
+
+                    else
+                        ( { known | wordReviews = review :: model.wordReviews }, storagePut "sync-word-review" "progress" record.body :: writes )
+
+                Err _ ->
+                    ( model, writes )
+
+        "setting" ->
+            let
+                key =
+                    String.dropLeft 5 record.id
+
+                synced =
+                    Dict.get key state.settings
+
+                current =
+                    syncedSettings model |> List.filter (Tuple.first >> (==) key) |> List.head |> Maybe.map (Tuple.second >> Encode.encode 0)
+
+                editedHere =
+                    current /= Maybe.map .value synced
+
+                newer =
+                    Maybe.map (\s -> record.updatedAt > s.updatedAt) synced |> Maybe.withDefault True
+            in
+            if current /= Nothing && newer && not editedHere then
+                ( applySetting key record.body { model | sync = { state | settings = Dict.insert key { value = Encode.encode 0 record.body, updatedAt = record.updatedAt } state.settings } }
+                , storagePut ("sync-" ++ key) "metadata" (Encode.object [ ( "key", Encode.string key ), ( "value", record.body ) ]) :: writes
+                )
+
+            else
+                ( model, writes )
+
+        _ ->
+            ( model, writes )
+
+
+{-| A setting from another device, read as if loaded from storage; positions merge (theirs win for the same work).
+-}
+applySetting : String -> Decode.Value -> Model -> Model
+applySetting key value model =
+    if key == "positions" then
+        case Decode.decodeValue (Decode.dict Decode.int) value of
+            Ok positions ->
+                { model | positions = Dict.union positions model.positions }
+
+            Err _ ->
+                model
+
+    else
+        handleStorageResponse
+            (Encode.object [ ( "id", Encode.string key ), ( "ok", Encode.bool True ), ( "value", Encode.object [ ( "key", Encode.string key ), ( "value", value ) ] ) ])
+            model
+
+
+{-| Whether this device syncs: signed in to an account that includes sync.
+-}
+syncsProgress : Model -> Bool
+syncsProgress model =
+    case model.account of
+        Account.SignedIn _ user ->
+            Account.hasSync user
+
+        _ ->
+            False
+
+
+syncFailed : Http.Error -> Model -> ( Model, Cmd Msg )
+syncFailed error model =
+    let
+        idle =
+            { model | syncBusy = False }
+    in
+    case error of
+        Http.BadStatus 402 ->
+            ( { idle | syncStatus = Sync.NeedsSupporter }, Cmd.none )
+
+        Http.BadStatus 401 ->
+            -- Signed out elsewhere: ask who is signed in.
+            update CheckAccount { idle | syncStatus = Sync.NotSyncing }
+
+        Http.NetworkError ->
+            ( { idle | syncStatus = Sync.Offline }, Cmd.none )
+
+        Http.Timeout ->
+            ( { idle | syncStatus = Sync.Offline }, Cmd.none )
+
+        _ ->
+            ( { idle | syncStatus = Sync.Failed }, Cmd.none )
 
 
 
@@ -1742,6 +2064,14 @@ handleStorageResponse value model =
 
                     Err _ ->
                         model
+
+            else if response.id == "sync-state" then
+                -- Read once at start (null on a device that never synced); the next tick syncs if signed in.
+                { model
+                    | syncLoaded = True
+                    , syncDueAt = 1
+                    , sync = Decode.decodeValue (Decode.field "value" Sync.decodeState) response.value |> Result.withDefault model.sync
+                }
 
             else if response.id == "positions" then
                 case Decode.decodeValue (Decode.field "value" (Decode.dict Decode.int)) response.value of
@@ -2822,7 +3152,8 @@ viewReaderSentence model index sentence =
             , type_ "button"
             , onClick (ReaderToggleTranslation index)
             , attribute "aria-label"
-                (sentence.verse ++ ": "
+                (sentence.verse
+                    ++ ": "
                     ++ (if revealed then
                             "hide"
 
@@ -2999,7 +3330,20 @@ viewAccountButton model =
                 [ text "Sign in", span [ class "account-label" ] [ text " to sync" ] ]
 
         Account.SignedIn _ user ->
-            a [ class "account-button", href (Route.toPath Route.Stats), attribute "title" ("Signed in as " ++ user.handle) ]
+            a
+                [ class "account-button"
+                , href (Route.toPath Route.Stats)
+                , attribute "title"
+                    ("Signed in as "
+                        ++ user.handle
+                        ++ (if Account.hasSync user then
+                                " · " ++ Sync.statusText model.clock model.syncStatus
+
+                            else
+                                ""
+                           )
+                    )
+                ]
                 [ span [ class "account-handle" ] [ text user.handle ] ]
 
         _ ->
@@ -3030,12 +3374,21 @@ viewAccountPanel model =
                 , a [ class "primary-button", href (Account.loginHref loginUrl (accountReturnUrl model)) ] [ text "Sign in to sync" ]
                 ]
 
-        Account.SignedIn _ user ->
+        Account.SignedIn origin user ->
             panel
-                [ p [] [ text "Signed in to Lyceum as ", span [ class "account-handle" ] [ text user.handle ], text "." ]
-                , p [ class "muted" ] [ text "Sync coming soon. Until then, progress stays on this device." ]
-                , button [ class "secondary-button", type_ "button", onClick SignOut ] [ text "Sign out" ]
-                ]
+                (p [] [ text "Signed in to Lyceum as ", span [ class "account-handle" ] [ text user.handle ], text "." ]
+                    :: (if Account.hasSync user then
+                            [ p [ class "muted sync-status" ] [ text (Sync.statusText model.clock model.syncStatus) ]
+                            , button [ class "secondary-button", type_ "button", onClick SyncNow, disabled model.syncBusy ] [ text "Sync now" ]
+                            ]
+
+                        else
+                            [ p [ class "muted" ] [ text "Progress is saved on this device. Syncing it across your devices comes with supporting Lyceum." ]
+                            , a [ class "secondary-button", href (origin ++ "/pricing") ] [ text "Support Lyceum" ]
+                            ]
+                       )
+                    ++ [ button [ class "secondary-button", type_ "button", onClick SignOut ] [ text "Sign out" ] ]
+                )
 
 
 {-| This page's full URL, where Lyceum sends the learner back after sign-in.
@@ -4383,7 +4736,15 @@ viewProgress model =
                 ]
         , div [ class "clear-data" ]
             (if model.confirmClear then
-                [ span [] [ text "Delete all attempts, drafts, and reading positions saved in this browser?" ]
+                [ span []
+                    [ text
+                        (if syncsProgress model then
+                            "Delete the attempts, drafts, and reading positions saved in this browser? Your synced progress stays in your Lyceum account and comes back on the next sync."
+
+                         else
+                            "Delete all attempts, drafts, and reading positions saved in this browser?"
+                        )
+                    ]
                 , button [ class "danger-button", type_ "button", onClick ConfirmClearSavedData ] [ text "Delete saved data" ]
                 , button [ class "secondary-button", type_ "button", onClick CancelClearSavedData ] [ text "Cancel" ]
                 ]

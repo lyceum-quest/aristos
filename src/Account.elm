@@ -1,10 +1,10 @@
-module Account exposing (Account(..), User, api, checkSession, fetchConfig, loginHref, signOut)
+module Account exposing (Account(..), User, api, checkSession, clientHeader, fetchConfig, hasSync, loginHref, signOut)
 
 {-| The optional Lyceum account (see `docs/dev_guide/auth-pattern.md`, "Apps on subdomains", in the Lyceum website).
 
 `/config.json`, written into each release, names the account API's origin; without one Aristos shows no sign-in.
 Sign-in happens on Lyceum's own pages: Aristos only asks `/api/me` who is signed in (sending the shared session
-cookie) and links to Lyceum's login page with a `return` URL. Nothing is synced yet.
+cookie) and links to Lyceum's login page with a `return` URL. A Supporter's progress syncs through it (see `Sync`).
 
 -}
 
@@ -45,8 +45,10 @@ api account =
 {-| Only the fields Lyceum documents for apps.
 -}
 type alias User =
-    { handle : String
+    { id : Int
+    , handle : String
     , pro : Bool
+    , entitlements : List String
     }
 
 
@@ -127,7 +129,15 @@ checkSession origin toMsg =
 
 meDecoder : String -> Decode.Decoder Account
 meDecoder origin =
-    Decode.field "user" (Decode.nullable (Decode.map2 User (Decode.field "handle" Decode.string) (Decode.oneOf [ Decode.field "pro" Decode.bool, Decode.succeed False ])))
+    Decode.field "user"
+        (Decode.nullable
+            (Decode.map4 User
+                (Decode.field "id" Decode.int)
+                (Decode.field "handle" Decode.string)
+                (Decode.oneOf [ Decode.field "pro" Decode.bool, Decode.succeed False ])
+                (Decode.oneOf [ Decode.field "entitlements" (Decode.list Decode.string), Decode.succeed [] ])
+            )
+        )
         |> Decode.andThen
             (\user ->
                 case user of
@@ -167,3 +177,10 @@ loginHref loginUrl returnUrl =
            )
         ++ "return="
         ++ Url.percentEncode returnUrl
+
+
+{-| Whether the signed-in account includes sync (a Supporter feature).
+-}
+hasSync : User -> Bool
+hasSync user =
+    List.member "sync" user.entitlements
