@@ -1,7 +1,0 @@
-{
-  "input": "conllu/generated/meditations-claude-sonnet-5/verse-aligned.conllu",
-  "sql_output": "/tmp/aristos-lyceum-import.sql",
-  "work_urn": "urn:cts:greekLit:tlg0562.tlg001",
-  "edition_slug": "aristos-claude-sonnet-5",
-  "generator": "claude-sonnet-5"
-}

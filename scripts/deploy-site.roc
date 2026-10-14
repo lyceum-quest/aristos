@@ -8,7 +8,6 @@ import cli.Sleep
 import cli.Stderr
 import cli.Stdout
 import AristosSite
-import LyceumWebsite
 
 # deploy-site deploy production|staging [<version>]   (default: dist/aristos/<target>/latest)
 # deploy-site rollback production|staging
@@ -30,7 +29,7 @@ main! = |args| {
 	host_setting = setting!("ARISTOS_DEPLOY_HOST")
 	_ = require(host_setting != "", "Set ARISTOS_DEPLOY_HOST (an SSH destination, e.g. root@lyceum-prod) in the environment or .env")?
 	site_setting = setting!("ARISTOS_SITE_URL")
-	checked = LyceumWebsite.target(host_setting, if site_setting != "" site_setting else default_site_url(target)) ? |InvalidTarget(problem)| Site(problem)
+	checked = AristosSite.target(host_setting, if site_setting != "" site_setting else default_site_url(target)) ? |InvalidTarget(problem)| Site(problem)
 	dir_setting = setting!("ARISTOS_DEPLOY_DIR")
 	dir = if dir_setting == "" "/var/www/aristos" else Str.drop_suffix(dir_setting, "/")
 	_ = require(Str.starts_with(dir, "/") and dir != "/" and AristosSite.valid_version(Str.replace_each(Str.drop_prefix(dir, "/"), "/", "_")), "ARISTOS_DEPLOY_DIR must be an absolute path of letters, digits, '.', '-', '_', and '/'")?
@@ -152,4 +151,4 @@ remote_raw! = |host, args| run_raw!("ssh", ["-o", "BatchMode=yes", "-o", "Connec
 
 remote! = |host, args| Ok(Str.trim(remote_raw!(host, args)?))
 
-setting! = |key| LyceumWebsite.setting(key, Env.var_str!(OsStr.from_str(key)) ?? "", Path.read_utf8!(Path.utf8(LyceumWebsite.dotenv_path)) ?? "")
+setting! = |key| AristosSite.setting(key, Env.var_str!(OsStr.from_str(key)) ?? "", Path.read_utf8!(Path.utf8(AristosSite.dotenv_path)) ?? "")

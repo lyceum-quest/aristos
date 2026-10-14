@@ -15,13 +15,13 @@ preload/
 repl-temp-*
 
 # Roc script executables
-/scripts/build-corpus-preload
 /scripts/build-release
 /scripts/check-browser-boundary
-/scripts/deploy
-/scripts/lint
-/scripts/run-model-experiment
-/scripts/run-conllu-experiment
+/scripts/deploy-site
+/scripts/fetch-preload
+
+# Left by an interrupted fetch-preload
+/preload.fetch-*/
 
 # Local planning and research documents (directories and all contents)
 /plans/
@@ -31,9 +31,6 @@ repl-temp-*
 # Local editor and OS files
 .DS_Store
 *~
-
-# Per-work scratch files from scripts/generate/loop.roc
-conllu/generated/*/.scratch/
 
 # Generated Elm test fixtures (devtools/generate-fsrs-fixtures.roc)
 /tests/FsrsFixtures.elm
